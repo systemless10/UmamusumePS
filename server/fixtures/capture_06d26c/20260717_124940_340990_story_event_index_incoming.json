@@ -1,0 +1,348 @@
+{
+  "ts": 1784317780.3409903,
+  "direction": "RES",
+  "endpoint": "story_event/index",
+  "data": {
+    "response_code": 1,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784317778,
+      "result_code": 1,
+      "notifications": {
+        "unread_information_exists": 1,
+        "trophy_badge_flag": 1,
+        "new_honor_data_array": [
+          {
+            "honor_id": 501101,
+            "create_time": "2026-07-17 19:04:57"
+          },
+          {
+            "honor_id": 502204,
+            "create_time": "2026-07-16 17:56:05"
+          }
+        ]
+      }
+    },
+    "data": {
+      "event_id": 1016,
+      "event_user_info": {
+        "event_point": 1001861,
+        "roulette_coin_num": 3,
+        "roulette_sheet_num": 1
+      },
+      "mission_list": [
+        {
+          "mission_id": 666,
+          "exec_count": 3,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 667,
+          "exec_count": 5,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 668,
+          "exec_count": 8,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 669,
+          "exec_count": 12,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 670,
+          "exec_count": 1,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 671,
+          "exec_count": 3,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 672,
+          "exec_count": 5,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 673,
+          "exec_count": 10,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 674,
+          "exec_count": 20,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 675,
+          "exec_count": 30,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 676,
+          "exec_count": 40,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 677,
+          "exec_count": 50,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 678,
+          "exec_count": 60,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 679,
+          "exec_count": 10,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 680,
+          "exec_count": 20,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 681,
+          "exec_count": 30,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 682,
+          "exec_count": 40,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 683,
+          "exec_count": 500000,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 684,
+          "exec_count": 1000000,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 685,
+          "exec_count": 1500000,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 686,
+          "exec_count": 2000000,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 687,
+          "exec_count": 5,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 688,
+          "exec_count": 10,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 689,
+          "exec_count": 15,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 690,
+          "exec_count": 20,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 691,
+          "exec_count": 30,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 692,
+          "exec_count": 40,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 693,
+          "exec_count": 500000,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 694,
+          "exec_count": 1000000,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 695,
+          "exec_count": 2000000,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 696,
+          "exec_count": 3000000,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 697,
+          "exec_count": 1,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 698,
+          "exec_count": 1,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 699,
+          "exec_count": 1,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 700,
+          "exec_count": 1,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 701,
+          "exec_count": 1,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 702,
+          "exec_count": 1,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 703,
+          "exec_count": 1,
+          "mission_status": 2,
+          "mission_type": 4,
+          "event_id": 0
+        },
+        {
+          "mission_id": 704,
+          "exec_count": 38,
+          "mission_status": 2,
+          "mission_type": 6,
+          "event_id": 0
+        }
+      ],
+      "story_data_list": [
+        {
+          "episode_id": 123,
+          "state": 1
+        },
+        {
+          "episode_id": 124,
+          "state": 1
+        },
+        {
+          "episode_id": 125,
+          "state": 1
+        },
+        {
+          "episode_id": 126,
+          "state": 1
+        },
+        {
+          "episode_id": 127,
+          "state": 1
+        },
+        {
+          "episode_id": 128,
+          "state": 1
+        },
+        {
+          "episode_id": 129,
+          "state": 1
+        },
+        {
+          "episode_id": 130,
+          "state": 1
+        }
+      ],
+      "new_story_id_list": [],
+      "first_access_flag": false
+    }
+  },
+  "req_id": "a3ae7e6f"
+}

@@ -1,0 +1,113 @@
+{
+ "ts": 1784318195.5064964,
+ "direction": "REQ",
+ "endpoint": "single_mode_team/gain_skills",
+ "data": {
+  "payload": {
+   "gain_skill_info_array": [
+    {
+     "skill_id": 200282,
+     "level": 1,
+     "name": "Competitive Spirit ○"
+    },
+    {
+     "skill_id": 200352,
+     "level": 1,
+     "name": "Corner Recovery ○"
+    },
+    {
+     "skill_id": 200092,
+     "level": 1,
+     "name": "Hakodate Racecourse ○"
+    },
+    {
+     "skill_id": 201102,
+     "level": 1,
+     "name": "Medium Straightaways ○"
+    },
+    {
+     "skill_id": 201382,
+     "level": 1,
+     "name": "Late Surger Straightaways ○"
+    },
+    {
+     "skill_id": 200042,
+     "level": 1,
+     "name": "Nakayama Racecourse ○"
+    },
+    {
+     "skill_id": 201112,
+     "level": 1,
+     "name": "Medium Corners ○"
+    },
+    {
+     "skill_id": 200332,
+     "level": 1,
+     "name": "Corner Adept ○"
+    },
+    {
+     "skill_id": 200342,
+     "level": 1,
+     "name": "Corner Acceleration ○"
+    },
+    {
+     "skill_id": 200712,
+     "level": 1,
+     "name": "Rosy Outlook"
+    },
+    {
+     "skill_id": 200722,
+     "level": 1,
+     "name": "Up-Tempo"
+    },
+    {
+     "skill_id": 900091,
+     "level": 1,
+     "name": "Resplendent Red Ace"
+    },
+    {
+     "skill_id": 210012,
+     "level": 1,
+     "name": "Ignited Spirit SPD"
+    },
+    {
+     "skill_id": 210032,
+     "level": 1,
+     "name": "Ignited Spirit PWR"
+    },
+    {
+     "skill_id": 200382,
+     "level": 1,
+     "name": "Straightaway Recovery"
+    },
+    {
+     "skill_id": 210042,
+     "level": 1,
+     "name": "Ignited Spirit GUTS"
+    },
+    {
+     "skill_id": 200871,
+     "level": 1,
+     "name": "Flustered Pace Chasers"
+    }
+   ],
+   "current_turn": 78,
+   "viewer_id": "<redacted>",
+   "device": 4,
+   "device_id": "<redacted>",
+   "device_name": "<redacted>",
+   "graphics_device_name": "<redacted>",
+   "ip_address": "<redacted>",
+   "platform_os_version": "Windows 11  (10.0.26200) 64bit",
+   "carrier": "",
+   "keychain": 0,
+   "locale": "JPN",
+   "button_info": "",
+   "dmm_viewer_id": null,
+   "dmm_onetime_token": null,
+   "steam_id": "<redacted>",
+   "steam_session_ticket": "<redacted>"
+  }
+ },
+ "req_id": "506fc29f"
+}

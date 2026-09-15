@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 106301, "url": "https://gametora.com/umamusume/characters/106301-ikuno-dictus", "events": {"": {"name": "ぷちアゲ・コンサルタント", "id": 2585, "choices": [{"label": "2人の功績にしておこう", "effects": [{"type": "speed", "value": "+10"}], "random_either": false}, {"label": "楽しかった……それで充分じゃない？", "effects": [{"type": "stamina", "value": "+10"}], "random_either": false}]}}}

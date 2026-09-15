@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 113401, "url": "https://gametora.com/umamusume/characters/113401-curren-bouquetdor", "events": {"": {"name": "優しさ一撃！", "id": 1962, "choices": [{"label": "3人の、思い出のしゃもじだね……", "effects": [{"type": "stamina", "value": "+10"}], "random_either": false}, {"label": "これも、ラッキーライラックのおかげだね", "effects": [{"type": "guts", "value": "+10"}], "random_either": false}]}}}

@@ -1,0 +1,24 @@
+{
+  "servertime": "now",
+  "resource_version": "10007700",
+  "scenario_ids": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "force_failure_rate": null,
+  "force_training_gain": null,
+  "force_ssr_rate": null,
+  "auth_enforce": true,
+  "legend_race_id": null,
+  "tp_recovery_seconds": 1,
+  "rp_recovery_seconds": 7200,
+  "career_tp_cost": 30,
+  "team_trials_rp_cost": 1,
+  "tp_refill_carat_cost": 10,
+  "tp_refill_amount": 30,
+  "rp_refill_carat_cost": 50,
+  "rp_refill_amount": 0,
+  "payment_mode": "off"
+}

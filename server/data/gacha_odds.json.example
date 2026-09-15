@@ -1,0 +1,58 @@
+{
+  "_readme": [
+    "Layered custom-odds config. Copy to 'gacha_odds.json' (same folder) to",
+    "activate; delete/rename to fall back to the plain master.mdb rates.",
+    "Hot-reloaded on save (mtime check) -- no server restart needed.",
+    "Full format doc: server/CONFIG_GUIDE.md, section 'Gacha odds'.",
+    "",
+    "Top-level keys select BANNERS:  '30111' exact id | '301*' id prefix |",
+    "'*' every banner.  Keys starting with '_' are ignored (comments).",
+    "",
+    "Precedence per banner (later layers win, per key / per card):",
+    "  master defaults -> '*' -> prefix sections (file order) -> exact id",
+    "",
+    "Section keys (all optional):",
+    "  on            true = force the banner into gacha/index, false = hide",
+    "                it and refuse pulls. IMPORTANT: while this file exists,",
+    "                banners nothing matches default to their master",
+    "                start/end dates (~18 in window) -- keep '*': {'on': true}",
+    "                if you want every banner listed like before.",
+    "  rarity_rates  {'1': pct, '2': pct, '3': pct} tier-first draw rates",
+    "                replacing the real 79/18/3. Unspecified tiers keep their",
+    "                default share; values are normalized, so they need not",
+    "                sum to 100. The force_ssr_rate knob in client_config.json",
+    "                still wins over this while set (testing back-compat).",
+    "  custom_odds   ordered list of {'items': SELECTOR, 'weight': VALUE};",
+    "                the LAST entry to match a card decides its weight.",
+    "                SELECTOR: '30052' exact card | '1*'/'2*'/'3*' all cards",
+    "                of that RARITY | '3011*' card-id prefix | '*' every",
+    "                card | or a LIST of selectors (any-of).",
+    "                VALUE: number (absolute weight, relative within the",
+    "                pool/tier) | 'weightR'/'weightSR'/'weightSSR' (this",
+    "                pool's average master weight for that band) | 'x2',",
+    "                'x0.5', ... (multiplier on the card's MASTER weight).",
+    "",
+    "The example below: every banner visible; all 30xxx banners get a 10%",
+    "SSR tier; on 30111 specifically the SSR tier is 6% and inside it card",
+    "30052 takes ~97% of SSR pulls (weight 99 vs 1 for the other SSRs),",
+    "while SR 20048 is doubled. Note how the '3*'-then-'30052' order makes",
+    "the pickup work: later entries override earlier ones per card."
+  ],
+
+  "*": { "on": true },
+
+  "30*": {
+    "rarity_rates": { "3": 10 }
+  },
+
+  "30111": {
+    "on": true,
+    "rarity_rates": { "1": 76, "2": 18, "3": 6 },
+    "custom_odds": [
+      { "items": "1*",    "weight": "weightR" },
+      { "items": "3*",    "weight": 1 },
+      { "items": "30052", "weight": 99 },
+      { "items": "20048", "weight": "x2" }
+    ]
+  }
+}

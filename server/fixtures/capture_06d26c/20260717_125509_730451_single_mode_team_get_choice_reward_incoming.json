@@ -1,0 +1,73 @@
+{
+  "ts": 1784318109.7304518,
+  "direction": "RES",
+  "endpoint": "single_mode_team/get_choice_reward",
+  "data": {
+    "response_code": 1,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784318108,
+      "result_code": 1,
+      "notifications": {
+        "unread_information_exists": 1,
+        "trophy_badge_flag": 1,
+        "new_honor_data_array": [
+          {
+            "honor_id": 501101,
+            "create_time": "2026-07-17 19:04:57"
+          },
+          {
+            "honor_id": 502204,
+            "create_time": "2026-07-16 17:56:05"
+          }
+        ]
+      }
+    },
+    "data": {
+      "choice_reward_array": [
+        {
+          "select_index": 1,
+          "gain_param_array": [
+            {
+              "display_id": 1,
+              "effect_value_0": 1,
+              "effect_value_1": 15,
+              "effect_value_2": 0
+            },
+            {
+              "display_id": 4,
+              "effect_value_0": 1041,
+              "effect_value_1": 5,
+              "effect_value_2": 0
+            }
+          ]
+        },
+        {
+          "select_index": 2,
+          "gain_param_array": [
+            {
+              "display_id": 1,
+              "effect_value_0": 1,
+              "effect_value_1": 5,
+              "effect_value_2": 0
+            },
+            {
+              "display_id": 4,
+              "effect_value_0": 1041,
+              "effect_value_1": 5,
+              "effect_value_2": 0
+            },
+            {
+              "display_id": 1,
+              "effect_value_0": 3,
+              "effect_value_1": 10,
+              "effect_value_2": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "req_id": "41b61275"
+}

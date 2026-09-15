@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 110002, "url": "https://gametora.com/umamusume/characters/110002-wonder-acute", "events": {"": {"name": "疾走ワンダーランド", "id": 4400, "choices": [{"label": "きっといい思い出になったな！", "effects": [{"type": "stamina", "value": "+10"}], "random_either": false}, {"label": "……少し休んでから帰ろうか", "effects": [{"type": "speed", "value": "+10"}], "random_either": false}]}}}

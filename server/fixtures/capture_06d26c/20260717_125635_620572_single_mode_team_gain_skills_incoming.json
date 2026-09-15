@@ -1,0 +1,15 @@
+{
+  "ts": 1784318195.6205726,
+  "direction": "RES",
+  "endpoint": "single_mode_team/gain_skills",
+  "data": {
+    "response_code": 205,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784318194,
+      "result_code": 205
+    }
+  },
+  "req_id": "506fc29f"
+}

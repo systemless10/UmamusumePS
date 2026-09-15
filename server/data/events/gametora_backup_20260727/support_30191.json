@@ -1,0 +1,1 @@
+{"kind": "support", "id": 30191, "url": "https://gametora.com/umamusume/supports/30191-sounds-of-earth", "events": {"": {"name": "そして私は、君を愛す", "id": 988, "choices": [{"label": "", "effects": [{"type": "power", "value": "+20"}, {"type": "skill_hint", "value": "+1", "skill_id": 200481}, {"type": "bond", "value": "+5", "char_id": 1102}], "random_either": false}]}}}

@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 114301, "url": "https://gametora.com/umamusume/characters/114301-victoire-pisa", "events": {"": {"name": "満天のスターリットスカイ", "id": 4282, "choices": [{"label": "俺も星を繋いでみたくなった", "effects": [{"type": "speed", "value": "+10"}], "random_either": false}, {"label": "ネオユニヴァースは君の先生、なのかも", "effects": [{"type": "wisdom", "value": "+10"}], "random_either": false}]}}}

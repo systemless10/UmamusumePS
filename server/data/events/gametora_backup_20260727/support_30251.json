@@ -1,0 +1,1 @@
+{"kind": "support", "id": 30251, "url": "https://gametora.com/umamusume/supports/30251-espoir-city", "events": {"": {"name": "別に嬉しくなんかねーし！！", "id": 1154, "choices": [{"label": "", "effects": [{"type": "guts", "value": "+15"}, {"type": "skill_hint", "value": "+1", "skill_id": 201671}, {"type": "bond", "value": "+5", "char_id": 1081}], "random_either": false}]}}}

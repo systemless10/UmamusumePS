@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 109601, "url": "https://gametora.com/umamusume/characters/109601-no-reason", "events": {"": {"name": "華麗に咲くは同室の桜", "id": 3411, "choices": [{"label": "それなら、みんなで食べに行こっか！", "effects": [{"type": "stamina", "value": "+10"}], "random_either": false}, {"label": "だったら、ゲーセンで遊ぶのはどう？", "effects": [{"type": "wisdom", "value": "+10"}], "random_either": false}]}}}

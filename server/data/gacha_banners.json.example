@@ -1,0 +1,51 @@
+{
+  "_readme": [
+    "Gacha banner overrides. Copy this file to 'gacha_banners.json' (same folder)",
+    "to activate it; delete/rename it to fall back to the real master.mdb banners.",
+    "",
+    "Only the fields you list are overridden -- anything omitted keeps its real",
+    "master.mdb value (pool, odds, guarantees, dupe-piece rules).",
+    "",
+    "FIELDS:",
+    "  gacha_id     required. Which banner to override. Reuse a REAL id so the",
+    "               client already has its art/text: 30110 = chara banner,",
+    "               30111 = support banner, 30108/30109/50010 = others.",
+    "  card_type    1 = character cards, 2 = support cards.",
+    "  single_cost  carats for a 1-pull (real value: 150).",
+    "  multi_cost   carats for a 10-pull (real value: 1500).",
+    "  pool         the full card list WITH odds. Omit to keep the real pool.",
+    "               'odds' are out of 1,000,000 across the whole pool.",
+    "               Real distribution: 790000 total across 1-star cards,",
+    "               180000 across 2-star, 30000 across 3-star (= 79/18/3 %).",
+    "               Odds do NOT need to sum to 1,000,000 -- they're normalized,",
+    "               so you can just use relative weights if you prefer.",
+    "",
+    "The 10-pull's last slot is always drawn from 2-star-or-better, per the",
+    "real banner rule.",
+    "",
+    "The example below is a rate-up banner: same real support pool, but three",
+    "chosen SSRs carry most of the 3-star weight. Edit and rename to use it."
+  ],
+
+  "banners": [
+    {
+      "gacha_id": 30111,
+      "card_type": 2,
+      "single_cost": 150,
+      "multi_cost": 1500,
+      "pool": [
+        { "card_id": 30052, "rarity": 3, "odds": 10000 },
+        { "card_id": 30101, "rarity": 3, "odds": 10000 },
+        { "card_id": 30028, "rarity": 3, "odds": 10000 },
+
+        { "card_id": 20048, "rarity": 2, "odds": 60000 },
+        { "card_id": 20005, "rarity": 2, "odds": 60000 },
+        { "card_id": 20023, "rarity": 2, "odds": 60000 },
+
+        { "card_id": 10029, "rarity": 1, "odds": 264000 },
+        { "card_id": 10083, "rarity": 1, "odds": 263000 },
+        { "card_id": 10069, "rarity": 1, "odds": 263000 }
+      ]
+    }
+  ]
+}

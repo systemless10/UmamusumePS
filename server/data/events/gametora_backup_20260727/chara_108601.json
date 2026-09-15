@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 108601, "url": "https://gametora.com/umamusume/characters/108601-mejiro-ramonu", "events": {"": {"name": "根源たるもの", "id": 3149, "choices": [{"label": "なんだか俺も食べたくなってきた！", "effects": [{"type": "guts", "value": "+10"}], "random_either": false}, {"label": "それにしても、まだ結構あるな……", "effects": [{"type": "power", "value": "+10"}], "random_either": false}]}}}

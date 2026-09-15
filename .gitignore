@@ -1,0 +1,44 @@
+# Python virtualenv / bytecode
+server/.venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+/captures/
+/20260717_124934_06d26c/
+
+# Logs
+*.log
+server/server.err.log
+server/server.out.log
+server/server_stderr.log
+server/server_stdout.log
+
+# Debug files
+debug_responses/
+build/
+
+# SQLite databases (accounts, careers, social, backups, harness runs).
+# The server creates these on first run, so a fresh clone starts empty.
+*.sqlite3
+*.sqlite3.bak*
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+
+# TLS private key material
+server/certs/*.key*.pem
+server/certs/server.cert.combined.pem
+
+server/certs/ios/
+
+# Rust build artifacts
+target/
+
+# OS cruft
+Thumbs.db
+.DS_Store
+server/logs/
+
+docs/
+uma_runtime/

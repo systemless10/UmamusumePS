@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 107301, "url": "https://gametora.com/umamusume/characters/107301-tsurumaru-tsuyoshi", "events": {"": {"name": "回り道の先に", "id": 4231, "choices": [{"label": "ああ、すごく綺麗だ", "effects": [{"type": "speed", "value": "+10"}], "random_either": false}, {"label": "君ならもっと上までいける", "effects": [{"type": "stamina", "value": "+10"}], "random_either": false}]}}}

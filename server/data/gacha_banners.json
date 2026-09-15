@@ -1,0 +1,26 @@
+{
+  "_readme": [
+    "ACTIVE gacha banner overrides (server/data/gacha_banners.json).",
+    "Only the banners listed here are overridden -- every other banner keeps",
+    "its real master.mdb pool, odds and guarantees. Delete or rename this file",
+    "to put 30111 back on real odds too. Format doc: gacha_banners.json.example",
+    "",
+    "30111 (support banner) is pinned to a single card: 30016, an SSR (rarity 3)",
+    "support card, at the whole pool's weight. Every slot of a single or a",
+    "ten-pull on this banner draws 30016; the ten-pull's guaranteed",
+    "2-star-or-better slot is satisfied by it as well, and dupes convert to",
+    "goddess statues / exchange points exactly as they normally would."
+  ],
+
+  "banners": [
+    {
+      "gacha_id": 30111,
+      "card_type": 2,
+      "single_cost": 150,
+      "multi_cost": 1500,
+      "pool": [
+        { "card_id": 30016, "rarity": 3, "odds": 1000000, "is_pickup": 1 }
+      ]
+    }
+  ]
+}

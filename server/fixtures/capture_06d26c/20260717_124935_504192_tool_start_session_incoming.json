@@ -1,0 +1,31 @@
+{
+  "ts": 1784317775.504192,
+  "direction": "RES",
+  "endpoint": "tool/start_session",
+  "data": {
+    "response_code": 1,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784317773,
+      "result_code": 1,
+      "notifications": {
+        "unread_information_exists": 1
+      },
+      "server_list": {
+        "resource_server": "assets-umamusume-en.akamaized.net/dl/vertical/",
+        "resource_server_cf": "assets-umamusume-en.akamaized.net/dl/vertical/",
+        "resource_server_login": "assets-umamusume-en.akamaized.net/dl/vertical/",
+        "resource_server_ingame": "assets-umamusume-en.akamaized.net/dl/vertical/"
+      }
+    },
+    "data": {
+      "attest": false,
+      "nonce": "",
+      "terms_updated": false,
+      "is_tutorial": false,
+      "resource_version": "10006910"
+    }
+  },
+  "req_id": "eadcbd1d"
+}

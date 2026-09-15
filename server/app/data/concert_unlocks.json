@@ -1,0 +1,294 @@
+{
+ "_generated_by": "tools/gen_concert_unlocks.py from docs/Game_Concert Theater - Umamusume Wiki.html",
+ "songs": [
+  {
+   "music_id": 1001,
+   "title": "Umapyoi Legend",
+   "kind": "ura_finals",
+   "params": {},
+   "source": "Get first place in the URA Finale Finals.",
+   "note": null
+  },
+  {
+   "music_id": 1004,
+   "title": "Never Looking Back",
+   "kind": "extra_story_episode",
+   "params": {
+    "episode": 6,
+    "story": "Half Anniversary"
+   },
+   "source": "Watch Episode 6 of the Half Anniversary Story .",
+   "note": "extra stories untracked"
+  },
+  {
+   "music_id": 1005,
+   "title": "Brilliant Phantasia",
+   "kind": "win_any_race",
+   "params": {
+    "races": [
+     "Oka Sho",
+     "Japanese Oaks",
+     "Shuka Sho"
+    ]
+   },
+   "source": "Win one of the following races: Oka Sho Japanese Oaks Shuka Sho",
+   "note": null
+  },
+  {
+   "music_id": 1006,
+   "title": "Make Debut!",
+   "kind": "win_grade_at_most",
+   "params": {
+    "grade": "G2"
+   },
+   "source": "Get first place in a race ranked G2 or lower while training.",
+   "note": null
+  },
+  {
+   "music_id": 1007,
+   "title": "Endless Dream!!",
+   "kind": "win_any_race",
+   "params": {
+    "races": [
+     "Hanshin Juvenile Fillies",
+     "Asahi Hai Futurity Stakes",
+     "Hopeful Stakes"
+    ]
+   },
+   "source": "Win one of the following races: Hanshin Juvenile Fillies Asahi Hai Futurity Stakes Hopeful Stakes Zen-Nippon Nisai Yushun",
+   "note": null
+  },
+  {
+   "music_id": 1008,
+   "title": "NEXT FRONTIER",
+   "kind": "win_any_race",
+   "params": {
+    "races": [
+     "Tenno Sho (Spring)",
+     "Tenno Sho (Autumn)",
+     "Arima Kinen"
+    ]
+   },
+   "source": "Win one of the following races: Tenno Sho (Spring) Tenno Sho (Autumn) Arima Kinen",
+   "note": null
+  },
+  {
+   "music_id": 1009,
+   "title": "UNLIMITED IMPACT",
+   "kind": "win_any_race",
+   "params": {
+    "races": [
+     "February Stakes",
+     "Champions Cup",
+     "Teio Sho",
+     "Japan Dirt Derby",
+     "JBC Sprint",
+     "JBC Classic",
+     "Tokyo Daishoten",
+     "Kawasaki Kinen",
+     "Kashiwa Kinen"
+    ]
+   },
+   "source": "Win one of the following races: February Stakes Champions Cup Teio Sho Japan Dirt Derby JBC Ladies' Classic JBC Sprint JBC Classic Tokyo Daishoten Kawasaki Kinen Kashiwa Kinen Mile Championship Nambu Hai",
+   "note": null
+  },
+  {
+   "music_id": 1010,
+   "title": "Special Record!",
+   "kind": "win_any_race",
+   "params": {
+    "races": [
+     "Osaka Hai",
+     "Takarazuka Kinen",
+     "Queen Elizabeth II Cup",
+     "Japan Cup"
+    ]
+   },
+   "source": "Win one of the following races: Osaka Hai Takarazuka Kinen Queen Elizabeth II Cup Japan Cup",
+   "note": null
+  },
+  {
+   "music_id": 1012,
+   "title": "Grow Up and Shine!",
+   "kind": "default",
+   "params": {},
+   "source": "Unlocked by default.",
+   "note": null
+  },
+  {
+   "music_id": 1025,
+   "title": "Signal of Something New",
+   "kind": "main_story_episode",
+   "params": {
+    "act": 1,
+    "chapter": 1,
+    "episode": 14
+   },
+   "source": "Watch Episode 14 of Chapter 1 of Main Story - Act 1 .",
+   "note": null
+  },
+  {
+   "music_id": 1026,
+   "title": "A Little Prayer",
+   "kind": "main_story_episode",
+   "params": {
+    "act": 1,
+    "chapter": 2,
+    "episode": 13
+   },
+   "source": "Watch Episode 13 of Chapter 2 of Main Story - Act 1 .",
+   "note": null
+  },
+  {
+   "music_id": 1027,
+   "title": "Instinctive Speed",
+   "kind": "win_any_race",
+   "params": {
+    "races": [
+     "Takamatsunomiya Kinen",
+     "Sprinters Stakes",
+     "Mile Championship",
+     "NHK Mile Cup",
+     "Yasuda Kinen",
+     "Victoria Mile"
+    ]
+   },
+   "source": "Win one of the following races: Takamatsunomiya Kinen Sprinters Stakes Mile Championship NHK Mile Cup Yasuda Kinen Victoria Mile",
+   "note": null
+  },
+  {
+   "music_id": 1028,
+   "title": "Winning the Soul",
+   "kind": "win_any_race",
+   "params": {
+    "races": [
+     "Satsuki Sho",
+     "Tokyo Yushun (Japanese Derby)",
+     "Kikuka Sho"
+    ]
+   },
+   "source": "Win one of the following races: Satsuki Sho Tokyo Yushun (Japanese Derby) Kikuka Sho",
+   "note": null
+  },
+  {
+   "music_id": 1029,
+   "title": "Girls' Legend U",
+   "kind": "special_grand_concert",
+   "params": {},
+   "source": "Hold a regular Grand Concert in Grand Concert scenario.",
+   "note": null
+  },
+  {
+   "music_id": 1030,
+   "title": "Those Tears Are for Tomorrow's Sake!",
+   "kind": "main_story_episode",
+   "params": {
+    "act": 1,
+    "chapter": 3,
+    "episode": 13
+   },
+   "source": "Watch Episode 13 of Chapter 3 of Main Story - Act 1 .",
+   "note": null
+  },
+  {
+   "music_id": 1031,
+   "title": "BLAZE",
+   "kind": "main_story_episode",
+   "params": {
+    "act": 1,
+    "chapter": 4,
+    "episode": 13
+   },
+   "source": "Watch Episode 13 of Chapter 4 of Main Story - Act 1 .",
+   "note": null
+  },
+  {
+   "music_id": 1032,
+   "title": "Run for Our Dream!",
+   "kind": "story_event_episode",
+   "params": {
+    "episode": 1,
+    "event": "Brand New Friends"
+   },
+   "source": "Watch Episode 1 of the Story Event Brand New Friends .",
+   "note": "story events untracked"
+  },
+  {
+   "music_id": 1035,
+   "title": "WINnin' 5",
+   "kind": "unity_cup_finals",
+   "params": {},
+   "source": "Beat Team Zenith in the Unity Cup finals.",
+   "note": null
+  },
+  {
+   "music_id": 1036,
+   "title": "Girls' Legend U",
+   "kind": "grand_concert",
+   "params": {},
+   "source": "Hold a regular Grand Concert in Grand Concert scenario.",
+   "note": null
+  },
+  {
+   "music_id": 1037,
+   "title": "Transforming",
+   "kind": "main_story_episode",
+   "params": {
+    "act": 1,
+    "chapter": 5,
+    "episode": 13
+   },
+   "source": "Watch Episode 13 of Chapter 5 of Main Story - Act 1 .",
+   "note": null
+  },
+  {
+   "music_id": 1048,
+   "title": "Blow My Gale",
+   "kind": "ts_climax",
+   "params": {},
+   "source": "Win first place in the Twinkle Star Climax in Trackblazer .",
+   "note": null
+  },
+  {
+   "music_id": 1050,
+   "title": "We are DREAMERS!!",
+   "kind": "extra_story_episode",
+   "params": {
+    "episode": 1,
+    "story": "1st Anniversary"
+   },
+   "source": "Watch Episode 1 of the 1st Anniversary Story .",
+   "note": "extra stories untracked"
+  },
+  {
+   "music_id": 1051,
+   "title": "Precious Smiles (Beyond the Future!)",
+   "kind": "main_story_finale",
+   "params": {
+    "act": 1,
+    "episode": 21
+   },
+   "source": "Watch Episode 21 of the Main Story - Act 1 finale.",
+   "note": null
+  },
+  {
+   "music_id": 1053,
+   "title": "Gaze on Me!",
+   "kind": "extra_story_episode",
+   "params": {
+    "episode": 1,
+    "story": "1.5th Anniversary"
+   },
+   "source": "Watch Episode 1 of the 1.5th Anniversary Story .",
+   "note": "extra stories untracked"
+  },
+  {
+   "music_id": 1054,
+   "title": "Ms. Victoria",
+   "kind": "default",
+   "params": {},
+   "source": "Distributed alongside it's introduction on Champion's Meeting. Unlocked by default.",
+   "note": null
+  }
+ ]
+}

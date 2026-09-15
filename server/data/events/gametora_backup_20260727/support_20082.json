@@ -1,0 +1,1 @@
+{"kind": "support", "id": 20082, "url": "https://gametora.com/umamusume/supports/20082-bubble-gum-fellow", "events": {"": {"name": "揺るがぬ矜持", "id": 424, "choices": [{"label": "", "effects": [{"type": "speed", "value": "+20"}, {"type": "skill_hint", "value": "+1", "skill_id": 203132}, {"type": "bond", "value": "+5", "char_id": 1124}], "random_either": false}]}}}

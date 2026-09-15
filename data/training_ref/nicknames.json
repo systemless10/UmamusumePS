@@ -1,0 +1,5653 @@
+[
+  {
+    "nickname_id": 1,
+    "name": "Rainy Runner",
+    "description": "Run in Rainy weather at least 4 times and win 3 times",
+    "rank": 1,
+    "group_id": 15,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "weather_race_win",
+      "weather": "Rainy",
+      "weather_code": 3,
+      "run_threshold": 4,
+      "win_threshold": 3
+    }
+  },
+  {
+    "nickname_id": 2,
+    "name": "Miss Cloudy",
+    "description": "Run in Cloudy weather at least 4 times and win 3 times",
+    "rank": 1,
+    "group_id": 16,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "weather_race_win",
+      "weather": "Cloudy",
+      "weather_code": 2,
+      "run_threshold": 4,
+      "win_threshold": 3
+    }
+  },
+  {
+    "nickname_id": 3,
+    "name": "Snow Queen",
+    "description": "Run in Snowy weather at least 3 times and win 2 times",
+    "rank": 1,
+    "group_id": 14,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "weather_race_win",
+      "weather": "Snowy",
+      "weather_code": 4,
+      "run_threshold": 3,
+      "win_threshold": 2
+    }
+  },
+  {
+    "nickname_id": 4,
+    "name": "Crownless Monarch",
+    "description": "Achieve Career rank C or higher having run in at least 1 G1 race but never winning any",
+    "rank": 1,
+    "group_id": 22,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        1
+      ],
+      "raw_clauses": [
+        "Achieve Career rank C or higher having run in at least 1 G1 race but never winning any"
+      ]
+    }
+  },
+  {
+    "nickname_id": 5,
+    "name": "Hard-Trying Haru Urara",
+    "description": "Obtain at least 550,000 fans",
+    "rank": 3,
+    "group_id": 3052,
+    "chara_id": 1052,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "fan_threshold",
+      "threshold": 550000
+    }
+  },
+  {
+    "nickname_id": 6,
+    "name": "Miss All Dirt",
+    "description": "Complete a Career playthrough having run in at least 10 races, all on dirt",
+    "rank": 1,
+    "group_id": 41,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1763330400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "all_races_ground",
+      "ground": "dirt",
+      "ground_code": 2,
+      "threshold": 10
+    }
+  },
+  {
+    "nickname_id": 7,
+    "name": "Miss All Turf",
+    "description": "Complete a Career playthrough having run in at least 10 races, all on turf",
+    "rank": 1,
+    "group_id": 42,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "all_races_ground",
+      "ground": "turf",
+      "ground_code": 1,
+      "threshold": 10
+    }
+  },
+  {
+    "nickname_id": 8,
+    "name": "Rampaging Racer",
+    "description": "Win a race after becoming Rushed 3 times",
+    "rank": 1,
+    "group_id": 31,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win a race after becoming Rushed 3 times"
+      ]
+    }
+  },
+  {
+    "nickname_id": 9,
+    "name": "Apple Far from the Tree",
+    "description": "Win a G1 after receiving Inspiration from two Legacies with no career graded race wins",
+    "rank": 1,
+    "group_id": 23,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1
+      ],
+      "raw_clauses": [
+        "Win a G1 after receiving Inspiration from two Legacies with no career graded race wins"
+      ]
+    }
+  },
+  {
+    "nickname_id": 10,
+    "name": "Yokozuna",
+    "description": "Win 6 G1 or G2 races by at least 3 lengths as a Front Runner or Pace Chaser",
+    "rank": 2,
+    "group_id": 2035,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        6,
+        1,
+        2,
+        3
+      ],
+      "raw_clauses": [
+        "Win 6 G1 or G2 races by at least 3 lengths as a Front Runner or Pace Chaser"
+      ]
+    }
+  },
+  {
+    "nickname_id": 12,
+    "name": "Gold Hunter",
+    "description": "Win 2 of the Kyoto Kimpai, Nakayama Kimpai, and Kinko Sho",
+    "rank": 1,
+    "group_id": 4,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_count",
+      "races": [
+        "Kyoto Kimpai",
+        "Nakayama Kimpai",
+        "Kinko Sho"
+      ],
+      "race_id_sets": [
+        [
+          3001
+        ],
+        [
+          3002
+        ],
+        [
+          2007
+        ]
+      ],
+      "threshold": 2
+    }
+  },
+  {
+    "nickname_id": 13,
+    "name": "Power Lifter",
+    "description": "Reach Power Training Level 5",
+    "rank": 1,
+    "group_id": 9,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "facility_level_threshold",
+      "stat": "Power",
+      "command_id": 102,
+      "threshold": 5
+    }
+  },
+  {
+    "nickname_id": 14,
+    "name": "Miss Dolphin",
+    "description": "Perform Stamina Training 35 times",
+    "rank": 1,
+    "group_id": 7,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        35
+      ],
+      "raw_clauses": [
+        "Perform Stamina Training 35 times"
+      ]
+    }
+  },
+  {
+    "nickname_id": 15,
+    "name": "Guts of Steel",
+    "description": "Reach Guts Training Level 5",
+    "rank": 1,
+    "group_id": 8,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "facility_level_threshold",
+      "stat": "Guts",
+      "command_id": 103,
+      "threshold": 5
+    }
+  },
+  {
+    "nickname_id": 16,
+    "name": "Quiz Queen",
+    "description": "Reach Wits Training Level 4",
+    "rank": 1,
+    "group_id": 10,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "facility_level_threshold",
+      "stat": "Wits",
+      "command_id": 106,
+      "threshold": 4
+    }
+  },
+  {
+    "nickname_id": 17,
+    "name": "Unyielding",
+    "description": "Win a race after losing 5 or more times in a row",
+    "rank": 1,
+    "group_id": 17,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5
+      ],
+      "raw_clauses": [
+        "Win a race after losing 5 or more times in a row"
+      ]
+    }
+  },
+  {
+    "nickname_id": 18,
+    "name": "Nascent Legend",
+    "description": "Win a Make Debut by at least 7 lengths",
+    "rank": 1,
+    "group_id": 29,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        7
+      ],
+      "raw_clauses": [
+        "Win a Make Debut by at least 7 lengths"
+      ]
+    }
+  },
+  {
+    "nickname_id": 19,
+    "name": "Eccentric",
+    "description": "Win a Make Debut without training a single time",
+    "rank": 1,
+    "group_id": 6,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win a Make Debut without training a single time"
+      ]
+    }
+  },
+  {
+    "nickname_id": 20,
+    "name": "Sixth Sense",
+    "description": "Complete a Career playthrough after running in at least 10 races and never failing a Training",
+    "rank": 1,
+    "group_id": 40,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough after running in at least 10 races",
+        "never failing a Training"
+      ]
+    }
+  },
+  {
+    "nickname_id": 21,
+    "name": "Divine Speed",
+    "description": "Win 6 times as Front Runner and attain Speed of 600 or higher",
+    "rank": 1,
+    "group_id": 33,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "style_win_count",
+      "clauses": [
+        {
+          "kind": "style_win_count",
+          "style": "Front Runner",
+          "style_code": 1,
+          "threshold": 6
+        }
+      ],
+      "unresolved_clauses": [
+        "attain Speed of 600 or higher"
+      ]
+    }
+  },
+  {
+    "nickname_id": 22,
+    "name": "Powerhouse",
+    "description": "Win a G1 as Late Surger or End Closer and attain Power and Guts of 500 or higher",
+    "rank": 1,
+    "group_id": 13,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        500
+      ],
+      "raw_clauses": [
+        "Win a G1 as Late Surger or End Closer",
+        "attain Power",
+        "Guts of 500 or higher"
+      ]
+    }
+  },
+  {
+    "nickname_id": 23,
+    "name": "Well-Traveled",
+    "description": "Win a graded race at each of the 10 central racecourses",
+    "rank": 1,
+    "group_id": 3,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Win a graded race at each of the 10 central racecourses"
+      ]
+    }
+  },
+  {
+    "nickname_id": 24,
+    "name": "Derby Umamusume",
+    "description": "Win the Japanese Derby",
+    "rank": 1,
+    "group_id": 34,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "race": "Japanese Derby",
+      "race_ids": [
+        1010
+      ]
+    }
+  },
+  {
+    "nickname_id": 25,
+    "name": "Oaks Umamusume",
+    "description": "Win the Japanese Oaks",
+    "rank": 1,
+    "group_id": 35,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "race": "Japanese Oaks",
+      "race_ids": [
+        1009
+      ]
+    }
+  },
+  {
+    "nickname_id": 26,
+    "name": "Double Crown",
+    "description": "Win 2 of the Satsuki Sho, Japanese Derby, and Kikuka Sho",
+    "rank": 2,
+    "group_id": 2026,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_count",
+      "races": [
+        "Satsuki Sho",
+        "Japanese Derby",
+        "Kikuka Sho"
+      ],
+      "race_id_sets": [
+        [
+          1005,
+          1028
+        ],
+        [
+          1010
+        ],
+        [
+          1015,
+          1026
+        ]
+      ],
+      "threshold": 2
+    }
+  },
+  {
+    "nickname_id": 27,
+    "name": "Double Tiara",
+    "description": "Win 2 of the Oka Sho, Japanese Oaks, and Shuka Sho",
+    "rank": 2,
+    "group_id": 2028,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_count",
+      "races": [
+        "Oka Sho",
+        "Japanese Oaks",
+        "Shuka Sho"
+      ],
+      "race_id_sets": [
+        [
+          1004
+        ],
+        [
+          1009
+        ],
+        [
+          1014
+        ]
+      ],
+      "threshold": 2
+    }
+  },
+  {
+    "nickname_id": 28,
+    "name": "Senior Spring Triple Crown",
+    "description": "Win the Osaka Hai, Tenno Sho (Spring), and Takarazuka Kinen",
+    "rank": 2,
+    "group_id": 2023,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Osaka Hai",
+        "Tenno Sho (Spring)",
+        "Takarazuka Kinen"
+      ],
+      "race_id_sets": [
+        [
+          1003
+        ],
+        [
+          1006,
+          1027
+        ],
+        [
+          1012,
+          1025
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 29,
+    "name": "Senior Autumn Triple Crown",
+    "description": "Win the Tenno Sho (Autumn), Japan Cup, and Arima Kinen",
+    "rank": 2,
+    "group_id": 2024,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Tenno Sho (Autumn)",
+        "Japan Cup",
+        "Arima Kinen"
+      ],
+      "race_id_sets": [
+        [
+          1016
+        ],
+        [
+          1019
+        ],
+        [
+          1023
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 30,
+    "name": "Tenno Sweep",
+    "description": "Win the Tenno Sho (Spring) and Tenno Sho (Autumn)",
+    "rank": 2,
+    "group_id": 2029,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Tenno Sho (Spring)",
+          "race_ids": [
+            1006,
+            1027
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Tenno Sho (Autumn)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 31,
+    "name": "Turf Terror",
+    "description": "Win 15 turf races",
+    "rank": 2,
+    "group_id": 2033,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "ground_win_count",
+      "ground": "turf",
+      "ground_code": 1,
+      "threshold": 15
+    }
+  },
+  {
+    "nickname_id": 32,
+    "name": "Iron Uma",
+    "description": "Run in 20 races",
+    "rank": 2,
+    "group_id": 2021,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_count",
+      "threshold": 20
+    }
+  },
+  {
+    "nickname_id": 33,
+    "name": "Dirt Devil",
+    "description": "Win 10 dirt races",
+    "rank": 1,
+    "group_id": 18,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "ground_win_count",
+      "ground": "dirt",
+      "ground_code": 2,
+      "threshold": 10
+    }
+  },
+  {
+    "nickname_id": 34,
+    "name": "Unstoppable",
+    "description": "Win 5 graded races in a row without ever losing at the OP level or below",
+    "rank": 1,
+    "group_id": 38,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5
+      ],
+      "raw_clauses": [
+        "Win 5 graded races in a row without ever losing at the OP level or below"
+      ]
+    }
+  },
+  {
+    "nickname_id": 35,
+    "name": "Late Bloomer",
+    "description": "Win your first G1 in senior year",
+    "rank": 1,
+    "group_id": 32,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1
+      ],
+      "raw_clauses": [
+        "Win your first G1 in senior year"
+      ]
+    }
+  },
+  {
+    "nickname_id": 36,
+    "name": "Bronze Collector",
+    "description": "Place 3rd in a G1 3 times",
+    "rank": 1,
+    "group_id": 20,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3,
+        1,
+        3
+      ],
+      "raw_clauses": [
+        "Place 3rd in a G1 3 times"
+      ]
+    }
+  },
+  {
+    "nickname_id": 37,
+    "name": "Silver Collector",
+    "description": "Place 2nd in a G1 3 times",
+    "rank": 2,
+    "group_id": 2032,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        1,
+        3
+      ],
+      "raw_clauses": [
+        "Place 2nd in a G1 3 times"
+      ]
+    }
+  },
+  {
+    "nickname_id": 38,
+    "name": "Skill Collector",
+    "description": "Acquire 15 or more skills",
+    "rank": 2,
+    "group_id": 2012,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        15
+      ],
+      "raw_clauses": [
+        "Acquire 15 or more skills"
+      ]
+    }
+  },
+  {
+    "nickname_id": 39,
+    "name": "Turf Sorceress",
+    "description": "Attain Speed of 800 or higher and run in at least 15 turf races",
+    "rank": 2,
+    "group_id": 2034,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        800,
+        15
+      ],
+      "raw_clauses": [
+        "Attain Speed of 800 or higher",
+        "run in at least 15 turf races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 40,
+    "name": "Eye of the Storm",
+    "description": "Win a G1 without having won a graded race before",
+    "rank": 1,
+    "group_id": 43,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1
+      ],
+      "raw_clauses": [
+        "Win a G1 without having won a graded race before"
+      ]
+    }
+  },
+  {
+    "nickname_id": 41,
+    "name": "Two-Way Runner",
+    "description": "Win at least 1 G1 on both turf and dirt",
+    "rank": 2,
+    "group_id": 2010,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        1
+      ],
+      "raw_clauses": [
+        "Win at least 1 G1 on both turf",
+        "dirt"
+      ]
+    }
+  },
+  {
+    "nickname_id": 42,
+    "name": "Place Perfect",
+    "description": "Complete a Career playthrough after running in at least 10 races and placing top 3 in all of them",
+    "rank": 1,
+    "group_id": 37,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10,
+        3
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough after running in at least 10 races",
+        "placing top 3 in all of them"
+      ]
+    }
+  },
+  {
+    "nickname_id": 43,
+    "name": "Empress",
+    "description": "Receive Inspiration from a Legacy Umamusume with a career win in the Japanese Oaks,\\nwin the Japanese Oaks and Tenno Sho (Autumn),\\nand obtain at least 320,000 fans",
+    "rank": 3,
+    "group_id": 3018,
+    "chara_id": 1018,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        320000
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a career win in the Japanese Oaks,\\nwin the Japanese Oaks",
+        "Tenno Sho (Autumn),\\nand obtain at least 320,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 44,
+    "name": "Beauty of the Century",
+    "description": "Win the Hanshin J.F., run in all races with a Great mood, and complete the Career playthrough with all training levels at 3 or higher, and without Slow Metabolism, Skin Breakout, or Slacker",
+    "rank": 3,
+    "group_id": 3040,
+    "chara_id": 1040,
+    "scenario_id": null,
+    "start_date": 1759874400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win the Hanshin J.F",
+        "run in all races with a Great mood",
+        "complete the Career playthrough with all training levels at 3 or higher",
+        "without Slow Metabolism",
+        "Skin Breakout",
+        "or Slacker"
+      ]
+    }
+  },
+  {
+    "nickname_id": 45,
+    "name": "Sable Assassin",
+    "description": "Complete a Career playthrough having run in at least 23 graded races, including wins in the Kikuka Sho and Tenno Sho (Spring) as at least 2nd favorite, and having obtained at least 320,000 fans",
+    "rank": 3,
+    "group_id": 3030,
+    "chara_id": 1030,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        23,
+        2,
+        320000
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough having run in at least 23 graded races",
+        "including wins in the Kikuka Sho",
+        "Tenno Sho (Spring) as at least 2nd favorite",
+        "having obtained at least 320,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 46,
+    "name": "Blinding Flash",
+    "description": "Win the Japanese Derby and Tenno Sho (Autumn) as a Late Surger and complete the playthrough with the Fast Learner condition",
+    "rank": 3,
+    "group_id": 3037,
+    "chara_id": 1037,
+    "scenario_id": null,
+    "start_date": 1761861600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Japanese Derby",
+          "race_ids": [
+            1010
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Tenno Sho (Autumn) as a Late Surger",
+        "complete the playthrough with the Fast Learner condition"
+      ]
+    }
+  },
+  {
+    "nickname_id": 47,
+    "name": "Herald of a New Age",
+    "description": "Win the Yayoi Sho, Satsuki Sho, Japanese Derby, and Kikuka Sho as favorite,\\nwin the Arima Kinen (Classic Year), and obtain at least 240,000 fans",
+    "rank": 3,
+    "group_id": 3035,
+    "chara_id": 1035,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Yayoi Sho",
+          "race_ids": [
+            2006
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Satsuki Sho",
+        "Japanese Derby",
+        "Kikuka Sho as favorite,\\nwin the Arima Kinen (Classic Year)",
+        "obtain at least 240,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 48,
+    "name": "Faster than Light",
+    "description": "Receive Inspiration from a Legacy Umamusume with Career rank S or higher,\\nwin the Hopeful Stakes, Yayoi Sho, and Satsuki Sho while undefeated,\\nand attain at least 1,200 Speed",
+    "rank": 3,
+    "group_id": 3032,
+    "chara_id": 1032,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1200
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with Career rank S or higher,\\nwin the Hopeful Stakes",
+        "Yayoi Sho",
+        "Satsuki Sho while undefeated,\\nand attain at least 1,200 Speed"
+      ]
+    }
+  },
+  {
+    "nickname_id": 49,
+    "name": "G1 Hunter",
+    "description": "Win 7 G1 races",
+    "rank": 3,
+    "group_id": 5023,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        7,
+        1
+      ],
+      "raw_clauses": [
+        "Win 7 G1 races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 50,
+    "name": "Speed Star",
+    "description": "Win the Takamatsunomiya Kinen, Sprinters Stakes, Yasuda Kinen, and Mile Championship",
+    "rank": 2,
+    "group_id": 2015,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Takamatsunomiya Kinen",
+        "Sprinters Stakes",
+        "Yasuda Kinen",
+        "Mile Championship"
+      ],
+      "race_id_sets": [
+        [
+          1002
+        ],
+        [
+          1013
+        ],
+        [
+          1011
+        ],
+        [
+          1018
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 51,
+    "name": "Monstrous Debut",
+    "description": "Win 5 races, including 3 G1 races, while undefeated",
+    "rank": 2,
+    "group_id": 2037,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5,
+        3,
+        1
+      ],
+      "raw_clauses": [
+        "Win 5 races",
+        "including 3 G1 races",
+        "while undefeated"
+      ]
+    }
+  },
+  {
+    "nickname_id": 52,
+    "name": "Triple Crown",
+    "description": "Win the Satsuki Sho, Japanese Derby, and Kikuka Sho",
+    "rank": 2,
+    "group_id": 2025,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Satsuki Sho",
+        "Japanese Derby",
+        "Kikuka Sho"
+      ],
+      "race_id_sets": [
+        [
+          1005,
+          1028
+        ],
+        [
+          1010
+        ],
+        [
+          1015,
+          1026
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 54,
+    "name": "The GOAT",
+    "description": "Complete a Career playthrough with a win rate of 85% or higher, 7 G1 wins, and at least 320,000 fans",
+    "rank": 3,
+    "group_id": 5024,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        85,
+        7,
+        1,
+        320000
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with a win rate of 85% or higher, 7 G1 wins",
+        "at least 320,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 55,
+    "name": "Record Holder",
+    "description": "Win at least 7 G1 races while maintaining a winning streak",
+    "rank": 3,
+    "group_id": 5022,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        7,
+        1
+      ],
+      "raw_clauses": [
+        "Win at least 7 G1 races while maintaining a winning streak"
+      ]
+    }
+  },
+  {
+    "nickname_id": 56,
+    "name": "Fighting Spirit",
+    "description": "Win a G1 with an Awful Mood",
+    "rank": 2,
+    "group_id": 2013,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1
+      ],
+      "raw_clauses": [
+        "Win a G1 with an Awful Mood"
+      ]
+    }
+  },
+  {
+    "nickname_id": 57,
+    "name": "Super Sprinter",
+    "description": "Win at least 7 graded races of 1,400 meters or less and attain Speed and Power of 1,200 or higher",
+    "rank": 3,
+    "group_id": 5008,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        7,
+        1400,
+        1200
+      ],
+      "raw_clauses": [
+        "Win at least 7 graded races of 1,400 meters or less",
+        "attain Speed",
+        "Power of 1,200 or higher"
+      ]
+    }
+  },
+  {
+    "nickname_id": 58,
+    "name": "Stamina Stockpile",
+    "description": "Win at least 7 graded races of 2,400 meters or more and\\nattain at least 1,200 Stamina",
+    "rank": 3,
+    "group_id": 5011,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        7,
+        2400,
+        1200
+      ],
+      "raw_clauses": [
+        "Win at least 7 graded races of 2,400 meters or more and\\nattain at least 1,200 Stamina"
+      ]
+    }
+  },
+  {
+    "nickname_id": 59,
+    "name": "Superb Stayer",
+    "description": "Win 4 G1 races over 2,400 meters or more",
+    "rank": 2,
+    "group_id": 2036,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4,
+        1,
+        2400
+      ],
+      "raw_clauses": [
+        "Win 4 G1 races over 2,400 meters or more"
+      ]
+    }
+  },
+  {
+    "nickname_id": 60,
+    "name": "Mile Queen",
+    "description": "Win 3 G1 mile races by at least 5 lengths",
+    "rank": 3,
+    "group_id": 5010,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3,
+        1,
+        5
+      ],
+      "raw_clauses": [
+        "Win 3 G1 mile races by at least 5 lengths"
+      ]
+    }
+  },
+  {
+    "nickname_id": 61,
+    "name": "Undefeated",
+    "description": "Complete a Career playthrough undefeated with at least 12 wins",
+    "rank": 3,
+    "group_id": 5020,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        12
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough undefeated with at least 12 wins"
+      ]
+    }
+  },
+  {
+    "nickname_id": 62,
+    "name": "Long Shot",
+    "description": "Win a graded race as the 6th to 9th favorite",
+    "rank": 1,
+    "group_id": 36,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        6,
+        9
+      ],
+      "raw_clauses": [
+        "Win a graded race as the 6th to 9th favorite"
+      ]
+    }
+  },
+  {
+    "nickname_id": 63,
+    "name": "Legendary Diva",
+    "description": "Win 5 G1 races, win the URA Finale, and obtain at least 320,000 fans",
+    "rank": 3,
+    "group_id": 5025,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5,
+        1,
+        320000
+      ],
+      "raw_clauses": [
+        "Win 5 G1 races",
+        "win the URA Finale",
+        "obtain at least 320,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 64,
+    "name": "Skill Master",
+    "description": "Acquire at least 20 skills",
+    "rank": 3,
+    "group_id": 5012,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        20
+      ],
+      "raw_clauses": [
+        "Acquire at least 20 skills"
+      ]
+    }
+  },
+  {
+    "nickname_id": 65,
+    "name": "Skill Savant",
+    "description": "Use at least 13 skills in a single race",
+    "rank": 3,
+    "group_id": 5013,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        13
+      ],
+      "raw_clauses": [
+        "Use at least 13 skills in a single race"
+      ]
+    }
+  },
+  {
+    "nickname_id": 66,
+    "name": "Ruler of Japan",
+    "description": "Win the Japanese Derby by at least 5 lengths as favorite, and win the Tenno Sho (Spring), Tenno Sho (Autumn), and Japan Cup",
+    "rank": 3,
+    "group_id": 3001,
+    "chara_id": 1001,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5
+      ],
+      "raw_clauses": [
+        "Win the Japanese Derby by at least 5 lengths as favorite",
+        "win the Tenno Sho (Spring)",
+        "Tenno Sho (Autumn)",
+        "Japan Cup"
+      ]
+    }
+  },
+  {
+    "nickname_id": 67,
+    "name": "Otherworldly Front-Runner",
+    "description": "Win at least 6 graded races as favorite using Front Runner while maintaining a winning streak, including a win in the Takarazuka Kinen while maintaining the lead 200 meters from the start until the finish",
+    "rank": 3,
+    "group_id": 3002,
+    "chara_id": 1002,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        6,
+        200
+      ],
+      "raw_clauses": [
+        "Win at least 6 graded races as favorite using Front Runner while maintaining a winning streak",
+        "including a win in the Takarazuka Kinen while maintaining the lead 200 meters from the start until the finish"
+      ]
+    }
+  },
+  {
+    "nickname_id": 68,
+    "name": "Phantom Bird",
+    "description": "Win the Japan Cup (Classic Year) with Pace Chaser and complete the playthrough having placed top 2 in all races and with at least 320,000 fans",
+    "rank": 3,
+    "group_id": 3014,
+    "chara_id": 1014,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        320000
+      ],
+      "raw_clauses": [
+        "Win the Japan Cup (Classic Year) with Pace Chaser",
+        "complete the playthrough having placed top 2 in all races",
+        "with at least 320,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 69,
+    "name": "Hot Rod",
+    "description": "Win at least 8 races in a row by an average of at least 7 lengths while undefeated",
+    "rank": 3,
+    "group_id": 3004,
+    "chara_id": 1004,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        8,
+        7
+      ],
+      "raw_clauses": [
+        "Win at least 8 races in a row by an average of at least 7 lengths while undefeated"
+      ]
+    }
+  },
+  {
+    "nickname_id": 70,
+    "name": "Free Spirit",
+    "description": "Win a G1 using Front Runner, Pace Chaser, Late Surger, and End Closer",
+    "rank": 3,
+    "group_id": 3024,
+    "chara_id": 1024,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1
+      ],
+      "raw_clauses": [
+        "Win a G1 using Front Runner",
+        "Pace Chaser",
+        "Late Surger",
+        "End Closer"
+      ]
+    }
+  },
+  {
+    "nickname_id": 71,
+    "name": "Bakushin King",
+    "description": "Win at least 11 races of 1,400 meters or less, and win the Sprinters Stakes (Senior Year) as the favorite and by at least 4 lengths",
+    "rank": 3,
+    "group_id": 3041,
+    "chara_id": 1041,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        11,
+        1400,
+        4
+      ],
+      "raw_clauses": [
+        "Win at least 11 races of 1,400 meters or less",
+        "win the Sprinters Stakes (Senior Year) as the favorite",
+        "by at least 4 lengths"
+      ]
+    }
+  },
+  {
+    "nickname_id": 72,
+    "name": "Speedy Stayer",
+    "description": "Win the Kikuka Sho by at least 5 lengths and\\nwin at least 6 graded races of 2,400 meters or more, including the Tenno Sho (Spring)",
+    "rank": 3,
+    "group_id": 3045,
+    "chara_id": 1045,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5,
+        6,
+        2400
+      ],
+      "raw_clauses": [
+        "Win the Kikuka Sho by at least 5 lengths and\\nwin at least 6 graded races of 2,400 meters or more",
+        "including the Tenno Sho (Spring)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 73,
+    "name": "Phoenix",
+    "description": "Win the Asahi Hai F.S., Arima Kinen (Classic Year), Takarazuka Kinen (Senior Year), and Arima Kinen (Senior Year) with a Mood of Good or lower",
+    "rank": 3,
+    "group_id": 3011,
+    "chara_id": 1011,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win the Asahi Hai F.S",
+        "Arima Kinen (Classic Year)",
+        "Takarazuka Kinen (Senior Year)",
+        "Arima Kinen (Senior Year) with a Mood of Good or lower"
+      ]
+    }
+  },
+  {
+    "nickname_id": 74,
+    "name": "Extraordinary Empress",
+    "description": "Win at least 7 G1 races, including the Japanese Derby, Yasuda Kinen, Japan Cup, Tenno Sho (Autumn), and Victoria Mile",
+    "rank": 3,
+    "group_id": 3008,
+    "chara_id": 1008,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "grade_win_count",
+      "clauses": [
+        {
+          "kind": "grade_win_count",
+          "grades": [
+            100
+          ],
+          "threshold": 7
+        }
+      ],
+      "unresolved_clauses": [
+        "including the Japanese Derby",
+        "Yasuda Kinen",
+        "Japan Cup",
+        "Tenno Sho (Autumn)",
+        "Victoria Mile"
+      ]
+    }
+  },
+  {
+    "nickname_id": 75,
+    "name": "Miss Perfect",
+    "description": "Receive Inspiration from a Legacy Umamusume with a Career win in the Satsuki Sho, win at least 10 graded races, including the Oka Sho, Shuka Sho, and Queen Elizabeth II Cup, and place top 2 in all races",
+    "rank": 3,
+    "group_id": 3009,
+    "chara_id": 1009,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10,
+        2
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a Career win in the Satsuki Sho",
+        "win at least 10 graded races",
+        "including the Oka Sho",
+        "Shuka Sho",
+        "Queen Elizabeth II Cup",
+        "place top 2 in all races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 76,
+    "name": "Monarch",
+    "description": "Receive Inspiration from a Legacy Umamusume with at least 7 career G1 wins,\\nwin at least 4 G1 races as favorite, win the Satsuki Sho and Japanese Derby while undefeated,\\nand win the Arima Kinen (Senior Year)",
+    "rank": 3,
+    "group_id": 3003,
+    "chara_id": 1003,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        7,
+        1,
+        4,
+        1
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with at least 7 career G1 wins,\\nwin at least 4 G1 races as favorite",
+        "win the Satsuki Sho",
+        "Japanese Derby while undefeated,\\nand win the Arima Kinen (Senior Year)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 77,
+    "name": "Unpredictable",
+    "description": "Win at least 6 G1 races, including the Satsuki Sho, Kikuka Sho, and Takarazuka Kinen and obtain at least 480,000 fans",
+    "rank": 3,
+    "group_id": 3007,
+    "chara_id": 1007,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "grade_win_count",
+      "clauses": [
+        {
+          "kind": "grade_win_count",
+          "grades": [
+            100
+          ],
+          "threshold": 6
+        }
+      ],
+      "unresolved_clauses": [
+        "including the Satsuki Sho",
+        "Kikuka Sho",
+        "Takarazuka Kinen",
+        "obtain at least 480,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 78,
+    "name": "Emperor",
+    "description": "Win the Satsuki Sho, Japanese Derby, and Kikuka Sho while undefeated, win the Japan Cup and Tenno Sho (Spring), and win the Arima Kinen twice in a row",
+    "rank": 3,
+    "group_id": 3017,
+    "chara_id": 1017,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Satsuki Sho",
+          "race_ids": [
+            1005,
+            1028
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Japanese Derby",
+        "Kikuka Sho while undefeated",
+        "win the Japan Cup",
+        "Tenno Sho (Spring)",
+        "win the Arima Kinen twice in a row"
+      ]
+    }
+  },
+  {
+    "nickname_id": 79,
+    "name": "Fortune's Smile",
+    "description": "Run in G1 or G2 races at least 15 times with a Mood of Great and win at least 3 G2 or above races in a row, including the Kikuka Sho",
+    "rank": 3,
+    "group_id": 3056,
+    "chara_id": 1056,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        2,
+        15,
+        3,
+        2
+      ],
+      "raw_clauses": [
+        "Run in G1 or G2 races at least 15 times with a Mood of Great",
+        "win at least 3 G2 or above races in a row",
+        "including the Kikuka Sho"
+      ]
+    }
+  },
+  {
+    "nickname_id": 80,
+    "name": "Enchanting Triple Crown",
+    "description": "Win a Make Debut by at least 8 lengths and win the Asahi Hai F.S., Satsuki Sho, Japanese Derby, and Kikuka Sho as favorite",
+    "rank": 3,
+    "group_id": 3005,
+    "chara_id": 1005,
+    "scenario_id": null,
+    "start_date": 1759442400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        8
+      ],
+      "raw_clauses": [
+        "Win a Make Debut by at least 8 lengths",
+        "win the Asahi Hai F.S",
+        "Satsuki Sho",
+        "Japanese Derby",
+        "Kikuka Sho as favorite"
+      ]
+    }
+  },
+  {
+    "nickname_id": 81,
+    "name": "Supporting Star",
+    "description": "Place 3rd in a G1 race 3 times and obtain at least 320,000 fans",
+    "rank": 3,
+    "group_id": 3060,
+    "chara_id": 1060,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3,
+        1,
+        3,
+        320000
+      ],
+      "raw_clauses": [
+        "Place 3rd in a G1 race 3 times",
+        "obtain at least 320,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 82,
+    "name": "Mesmerizing Muscle",
+    "description": "Win at least 1 G1 race against an Umamusume with the Mejiro name, win the Kikuka Sho, Takarazuka Kinen, and Arima Kinen, and obtain at least 240,000 fans",
+    "rank": 3,
+    "group_id": 3027,
+    "chara_id": 1027,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        1,
+        240000
+      ],
+      "raw_clauses": [
+        "Win at least 1 G1 race against an Umamusume with the Mejiro name",
+        "win the Kikuka Sho",
+        "Takarazuka Kinen",
+        "Arima Kinen",
+        "obtain at least 240,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 83,
+    "name": "Mightiest Miler",
+    "description": "Win at least 5 graded mile races, including the Unicorn Stakes and Yasuda Kinen, with at least 1 win in Rainy weather, and win the Mile Championship by at least 5 lengths",
+    "rank": 3,
+    "group_id": 3010,
+    "chara_id": 1010,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5,
+        1,
+        5
+      ],
+      "raw_clauses": [
+        "Win at least 5 graded mile races",
+        "including the Unicorn Stakes",
+        "Yasuda Kinen",
+        "with at least 1 win in Rainy weather",
+        "win the Mile Championship by at least 5 lengths"
+      ]
+    }
+  },
+  {
+    "nickname_id": 84,
+    "name": "Ideal Idol",
+    "description": "Run in at least 6 G1 races as favorite, win the Mile Championship, Yasuda Kinen, and Arima Kinen, and obtain at least 240,000 fans",
+    "rank": 3,
+    "group_id": 3006,
+    "chara_id": 1006,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        6,
+        1,
+        240000
+      ],
+      "raw_clauses": [
+        "Run in at least 6 G1 races as favorite",
+        "win the Mile Championship",
+        "Yasuda Kinen",
+        "Arima Kinen",
+        "obtain at least 240,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 85,
+    "name": "Queen of the Amazons",
+    "description": "Win at least 6 graded races as favorite using End Closer while maintaining a winning streak, including at least 2 wins by overtaking at least 5 runners in the final stretch",
+    "rank": 3,
+    "group_id": 3012,
+    "chara_id": 1012,
+    "scenario_id": null,
+    "start_date": 1758146400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        6,
+        2,
+        5
+      ],
+      "raw_clauses": [
+        "Win at least 6 graded races as favorite using End Closer while maintaining a winning streak",
+        "including at least 2 wins by overtaking at least 5 runners in the final stretch"
+      ]
+    }
+  },
+  {
+    "nickname_id": 86,
+    "name": "Centurial Overlord",
+    "description": "Win at least 8 graded races while maintaining a winning streak, including the Tenno Sho (Spring), Takarazuka Kinen, Tenno Sho (Autumn), Japan Cup, and Arima Kinen",
+    "rank": 3,
+    "group_id": 3015,
+    "chara_id": 1015,
+    "scenario_id": null,
+    "start_date": 1750897800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        8
+      ],
+      "raw_clauses": [
+        "Win at least 8 graded races while maintaining a winning streak",
+        "including the Tenno Sho (Spring)",
+        "Takarazuka Kinen",
+        "Tenno Sho (Autumn)",
+        "Japan Cup",
+        "Arima Kinen"
+      ]
+    }
+  },
+  {
+    "nickname_id": 87,
+    "name": "Incline Invicta",
+    "description": "Win the Asahi Hai F.S., Satsuki Sho, and Japanese Derby as favorite using Front Runner while undefeated\\nand attain at least 1,200 Stamina",
+    "rank": 3,
+    "group_id": 3026,
+    "chara_id": 1026,
+    "scenario_id": null,
+    "start_date": 1751493600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1200
+      ],
+      "raw_clauses": [
+        "Win the Asahi Hai F.S",
+        "Satsuki Sho",
+        "Japanese Derby as favorite using Front Runner while undefeated\\nand attain at least 1,200 Stamina"
+      ]
+    }
+  },
+  {
+    "nickname_id": 88,
+    "name": "Sand Falcon",
+    "description": "Win at least 9 graded dirt races using Front Runner while maintaining a winning streak, including the JBC Classic, Teio Sho, and Tokyo Daishoten",
+    "rank": 3,
+    "group_id": 3046,
+    "chara_id": 1046,
+    "scenario_id": null,
+    "start_date": 1754949600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        9
+      ],
+      "raw_clauses": [
+        "Win at least 9 graded dirt races using Front Runner while maintaining a winning streak",
+        "including the JBC Classic",
+        "Teio Sho",
+        "Tokyo Daishoten"
+      ]
+    }
+  },
+  {
+    "nickname_id": 89,
+    "name": "Sprint Sweetheart",
+    "description": "Win at least 9 races over 1,200 meters, including the Sprinters Stakes and Takamatsunomiya Kinen, and obtain at least 240,000 fans",
+    "rank": 3,
+    "group_id": 3038,
+    "chara_id": 1038,
+    "scenario_id": null,
+    "start_date": 1753653600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        9,
+        1200,
+        240000
+      ],
+      "raw_clauses": [
+        "Win at least 9 races over 1,200 meters",
+        "including the Sprinters Stakes",
+        "Takamatsunomiya Kinen",
+        "obtain at least 240,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 90,
+    "name": "All-Rounder",
+    "description": "Win at least 3 G1 races on turf and dirt each",
+    "rank": 2,
+    "group_id": 2009,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3,
+        1
+      ],
+      "raw_clauses": [
+        "Win at least 3 G1 races on turf",
+        "dirt each"
+      ]
+    }
+  },
+  {
+    "nickname_id": 91,
+    "name": "Mile Magnet",
+    "description": "Win the Oka Sho, NHK Mile C., Victoria Mile, Mile Championship, and Yasuda Kinen as favorite",
+    "rank": 3,
+    "group_id": 5009,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Oka Sho",
+          "race_ids": [
+            1004
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "NHK Mile C",
+        "Victoria Mile",
+        "Mile Championship",
+        "Yasuda Kinen as favorite"
+      ]
+    }
+  },
+  {
+    "nickname_id": 92,
+    "name": "Make Debut",
+    "description": "Run in a Make Debut race",
+    "rank": 1,
+    "group_id": 46,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Run in a Make Debut race"
+      ]
+    }
+  },
+  {
+    "nickname_id": 97,
+    "name": "Steamy Solidarity",
+    "description": "Experience a moment where you feel an irreplaceable bond",
+    "rank": 3,
+    "group_id": 5001,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Experience a moment where you feel an irreplaceable bond"
+      ]
+    }
+  },
+  {
+    "nickname_id": 98,
+    "name": "Finals Champion",
+    "description": "Win the URA Finale finals",
+    "rank": 3,
+    "group_id": 5026,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win the URA Finale finals"
+      ]
+    }
+  },
+  {
+    "nickname_id": 99,
+    "name": "Triple Tiara",
+    "description": "Win the Oka Sho, Japanese Oaks, and Shuka Sho",
+    "rank": 2,
+    "group_id": 2027,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Oka Sho",
+        "Japanese Oaks",
+        "Shuka Sho"
+      ],
+      "race_id_sets": [
+        [
+          1004
+        ],
+        [
+          1009
+        ],
+        [
+          1014
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 100,
+    "name": "Straightaway Supreme",
+    "description": "Win the Ibis Summer Dash, Lumiere Autumn Dash, and Idaten Stakes",
+    "rank": 1,
+    "group_id": 2,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Ibis Summer Dash",
+        "Lumiere Autumn Dash",
+        "Idaten Stakes"
+      ],
+      "race_id_sets": [
+        [
+          3042
+        ],
+        [
+          4101
+        ],
+        [
+          4055
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 101,
+    "name": "Visiting the Greats",
+    "description": "Win the Shinzan Kinen, Kyodo News Hai, Yayoi Sho, and St. Lite Kinen",
+    "rank": 1,
+    "group_id": 1,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Shinzan Kinen",
+        "Kyodo News Hai",
+        "Yayoi Sho",
+        "St. Lite Kinen"
+      ],
+      "race_id_sets": [
+        [
+          3003
+        ],
+        [
+          3012
+        ],
+        [
+          2006
+        ],
+        [
+          2023
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 102,
+    "name": "Jinx Breaker",
+    "description": "Win the Aoba Sho and Japanese Derby",
+    "rank": 1,
+    "group_id": 5,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Aoba Sho",
+          "race_ids": [
+            2016
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Japanese Derby"
+      ]
+    }
+  },
+  {
+    "nickname_id": 103,
+    "name": "Speed Queen",
+    "description": "Attain at least 1,200 Speed",
+    "rank": 2,
+    "group_id": 2019,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1200
+      ],
+      "raw_clauses": [
+        "Attain at least 1,200 Speed"
+      ]
+    }
+  },
+  {
+    "nickname_id": 104,
+    "name": "December Domination",
+    "description": "Win the Hopeful Stakes and win the Arima Kinen 2 times in a row",
+    "rank": 2,
+    "group_id": 2030,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Hopeful Stakes",
+          "race_ids": [
+            1024
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "win the Arima Kinen 2 times in a row"
+      ]
+    }
+  },
+  {
+    "nickname_id": 105,
+    "name": "Hanshin Harmony",
+    "description": "Win the Hanshin J.F. or Asahi Hai F.S. and win the Osaka Hai, Oka Sho, and Takarazuka Kinen",
+    "rank": 2,
+    "group_id": 2016,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win the Hanshin J.F. or Asahi Hai F.S",
+        "win the Osaka Hai",
+        "Oka Sho",
+        "Takarazuka Kinen"
+      ]
+    }
+  },
+  {
+    "nickname_id": 106,
+    "name": "Divergent Double Crown",
+    "description": "Win the NHK Mile Cup and Japanese Derby",
+    "rank": 2,
+    "group_id": 2017,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "NHK Mile Cup",
+          "race_ids": [
+            1007
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Japanese Derby"
+      ]
+    }
+  },
+  {
+    "nickname_id": 107,
+    "name": "Power & Perseverance",
+    "description": "Attain at least 1,000 Power and Guts",
+    "rank": 2,
+    "group_id": 2005,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1000
+      ],
+      "raw_clauses": [
+        "Attain at least 1,000 Power",
+        "Guts"
+      ]
+    }
+  },
+  {
+    "nickname_id": 108,
+    "name": "Impeccable",
+    "description": "Accomplish all Career goals and complete the playthrough undefeated",
+    "rank": 2,
+    "group_id": 2022,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Accomplish all Career goals",
+        "complete the playthrough undefeated"
+      ]
+    }
+  },
+  {
+    "nickname_id": 109,
+    "name": "Miler in the Making",
+    "description": "Win the Yasuda Kinen (Classic Year)",
+    "rank": 2,
+    "group_id": 2018,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win the Yasuda Kinen (Classic Year)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 110,
+    "name": "Rising Star",
+    "description": "Win the Takarazuka Kinen (Classic Year)",
+    "rank": 2,
+    "group_id": 2020,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win the Takarazuka Kinen (Classic Year)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 112,
+    "name": "Sprinter Stayer",
+    "description": "Win both a long and sprint G1 race",
+    "rank": 2,
+    "group_id": 2008,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1
+      ],
+      "raw_clauses": [
+        "Win both a long",
+        "sprint G1 race"
+      ]
+    }
+  },
+  {
+    "nickname_id": 113,
+    "name": "Fan Favorite",
+    "description": "Obtain at least 500,000 fans",
+    "rank": 3,
+    "group_id": 5015,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "fan_threshold",
+      "threshold": 500000
+    }
+  },
+  {
+    "nickname_id": 114,
+    "name": "Epoch Pioneer",
+    "description": "Win 10 G1 races",
+    "rank": 3,
+    "group_id": 5021,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10,
+        1
+      ],
+      "raw_clauses": [
+        "Win 10 G1 races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 115,
+    "name": "Trainaholic",
+    "description": "Complete a Career playthrough with all Trainings level 3 or higher",
+    "rank": 2,
+    "group_id": 2011,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with all Trainings level 3 or higher"
+      ]
+    }
+  },
+  {
+    "nickname_id": 116,
+    "name": "Super Uma",
+    "description": "Win a sprint, mile, medium, long, and dirt graded race",
+    "rank": 2,
+    "group_id": 2006,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win a sprint",
+        "mile",
+        "medium",
+        "long",
+        "dirt graded race"
+      ]
+    }
+  },
+  {
+    "nickname_id": 117,
+    "name": "Steely Mentality",
+    "description": "Win 5 G1 races with a Bad Mood or lower",
+    "rank": 3,
+    "group_id": 5007,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5,
+        1
+      ],
+      "raw_clauses": [
+        "Win 5 G1 races with a Bad Mood or lower"
+      ]
+    }
+  },
+  {
+    "nickname_id": 118,
+    "name": "Oi Overlord",
+    "description": "Win 4 G1 races at Oi Racecourse",
+    "rank": 2,
+    "group_id": 2014,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4,
+        1
+      ],
+      "raw_clauses": [
+        "Win 4 G1 races at Oi Racecourse"
+      ]
+    }
+  },
+  {
+    "nickname_id": 119,
+    "name": "Freestyle",
+    "description": "Win at least 1 graded race using Front Runner, Pace Chaser, Late Surger, and End Closer",
+    "rank": 2,
+    "group_id": 2007,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1
+      ],
+      "raw_clauses": [
+        "Win at least 1 graded race using Front Runner",
+        "Pace Chaser",
+        "Late Surger",
+        "End Closer"
+      ]
+    }
+  },
+  {
+    "nickname_id": 120,
+    "name": "Derby Dreamer",
+    "description": "Receive Inspiration from a Legacy Umamusume with a career win in the Japanese Derby and win the Japanese Derby",
+    "rank": 1,
+    "group_id": 25,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a career win in the Japanese Derby",
+        "win the Japanese Derby"
+      ]
+    }
+  },
+  {
+    "nickname_id": 121,
+    "name": "Kikuka Krazy",
+    "description": "Receive Inspiration from a Legacy Umamusume with a career win in the Kikuka Sho and win the Kikuka Sho",
+    "rank": 1,
+    "group_id": 24,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a career win in the Kikuka Sho",
+        "win the Kikuka Sho"
+      ]
+    }
+  },
+  {
+    "nickname_id": 122,
+    "name": "Satsuki Spirit",
+    "description": "Receive Inspiration from a Legacy Umamusume with a career win in the Satsuki Sho and win the Satsuki Sho",
+    "rank": 1,
+    "group_id": 26,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a career win in the Satsuki Sho",
+        "win the Satsuki Sho"
+      ]
+    }
+  },
+  {
+    "nickname_id": 123,
+    "name": "Sakura Seeker",
+    "description": "Receive Inspiration from a Legacy Umamusume with a career win in the Oka Sho and win the Oka Sho",
+    "rank": 1,
+    "group_id": 28,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a career win in the Oka Sho",
+        "win the Oka Sho"
+      ]
+    }
+  },
+  {
+    "nickname_id": 124,
+    "name": "Oaks Obsessed",
+    "description": "Receive Inspiration from a Legacy Umamusume with a career win in the Japanese Oaks and win the Japanese Oaks",
+    "rank": 1,
+    "group_id": 27,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a career win in the Japanese Oaks",
+        "win the Japanese Oaks"
+      ]
+    }
+  },
+  {
+    "nickname_id": 125,
+    "name": "Unexpected",
+    "description": "Receive Inspiration from a Legacy Umamusume with Sprint-Distance Aptitude A or higher and win a G1 of 3,000 meters or more",
+    "rank": 1,
+    "group_id": 21,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        3000
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with Sprint-Distance Aptitude A or higher",
+        "win a G1 of 3,000 meters or more"
+      ]
+    }
+  },
+  {
+    "nickname_id": 126,
+    "name": "Generation King",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 11 combined G1 wins and\\nwin against Special Week, Seiun Sky, Grass Wonder,\\nand El Condor Pasa at least 3 times each",
+    "rank": 3,
+    "group_id": 3061,
+    "chara_id": 1061,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        11,
+        1,
+        3
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 11 combined G1 wins and\\nwin against Special Week",
+        "Seiun Sky",
+        "Grass Wonder,\\nand El Condor Pasa at least 3 times each"
+      ]
+    }
+  },
+  {
+    "nickname_id": 127,
+    "name": "Best Actress",
+    "description": "Win the Kikuka Sho and Tenno Sho (Spring), attain at least 1,200 Stamina, and obtain at least 320,000 fans",
+    "rank": 3,
+    "group_id": 3013,
+    "chara_id": 1013,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Kikuka Sho",
+          "race_ids": [
+            1015,
+            1026
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Tenno Sho (Spring)",
+        "attain at least 1,200 Stamina",
+        "obtain at least 320,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 128,
+    "name": "Graded Giant",
+    "description": "Win a graded race",
+    "rank": 1,
+    "group_id": 45,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win a graded race"
+      ]
+    }
+  },
+  {
+    "nickname_id": 129,
+    "name": "G2 Winner",
+    "description": "Win a G2 race",
+    "rank": 1,
+    "group_id": 44,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "grade_win_count",
+      "grades": [
+        200
+      ],
+      "threshold": 1
+    }
+  },
+  {
+    "nickname_id": 130,
+    "name": "G1 Winner",
+    "description": "Win a G1 race",
+    "rank": 2,
+    "group_id": 2038,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "grade_win_count",
+      "grades": [
+        100
+      ],
+      "threshold": 1
+    }
+  },
+  {
+    "nickname_id": 131,
+    "name": "Consistent",
+    "description": "Run in at least 10 races and have a win rate of 80% or higher",
+    "rank": 1,
+    "group_id": 39,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10,
+        80
+      ],
+      "raw_clauses": [
+        "Run in at least 10 races",
+        "have a win rate of 80% or higher"
+      ]
+    }
+  },
+  {
+    "nickname_id": 132,
+    "name": "Peak Condition",
+    "description": "Run in at least 10 races and complete the playthrough with a Great Mood in all races",
+    "rank": 1,
+    "group_id": 30,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Run in at least 10 races",
+        "complete the playthrough with a Great Mood in all races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 133,
+    "name": "Undeniable",
+    "description": "Win at least 2 graded races by a distance",
+    "rank": 1,
+    "group_id": 19,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2
+      ],
+      "raw_clauses": [
+        "Win at least 2 graded races by a distance"
+      ]
+    }
+  },
+  {
+    "nickname_id": 134,
+    "name": "Shared Smarts",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 600 Wit and attain at least 600 Wit",
+    "rank": 1,
+    "group_id": 12,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        600,
+        600
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 600 Wit",
+        "attain at least 600 Wit"
+      ]
+    }
+  },
+  {
+    "nickname_id": 135,
+    "name": "Golden Cleat",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Speed and\\nattain at least 1,200 Speed",
+    "rank": 3,
+    "group_id": 5006,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        1200,
+        1200
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Speed and\\nattain at least 1,200 Speed"
+      ]
+    }
+  },
+  {
+    "nickname_id": 136,
+    "name": "Perpetual Motion",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Stamina and attain at least 1,200 Stamina",
+    "rank": 3,
+    "group_id": 5004,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        1200,
+        1200
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Stamina",
+        "attain at least 1,200 Stamina"
+      ]
+    }
+  },
+  {
+    "nickname_id": 137,
+    "name": "Muscle Machine",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Power and\\nattain at least 1,200 Power",
+    "rank": 3,
+    "group_id": 5005,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        1200,
+        1200
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Power and\\nattain at least 1,200 Power"
+      ]
+    }
+  },
+  {
+    "nickname_id": 138,
+    "name": "Got Guts",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Guts and attain at least 1,200 Guts",
+    "rank": 3,
+    "group_id": 5002,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        1200,
+        1200
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Guts",
+        "attain at least 1,200 Guts"
+      ]
+    }
+  },
+  {
+    "nickname_id": 139,
+    "name": "Inspired Intellect",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Wit and attain at least 1,200 Wit",
+    "rank": 3,
+    "group_id": 5003,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        1200,
+        1200
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Wit",
+        "attain at least 1,200 Wit"
+      ]
+    }
+  },
+  {
+    "nickname_id": 140,
+    "name": "Next-Gen Grandmaster",
+    "description": "Receive Inspiration from a Legacy Umamusume with\\ncareer wins in the Arima Kinen and Takarazuka Kinen and\\nwin the Arima Kinen and Takarazuka Kinen",
+    "rank": 2,
+    "group_id": 2031,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with\\ncareer wins in the Arima Kinen",
+        "Takarazuka Kinen and\\nwin the Arima Kinen",
+        "Takarazuka Kinen"
+      ]
+    }
+  },
+  {
+    "nickname_id": 141,
+    "name": "Mismatched",
+    "description": "Receive Inspiration from a Legacy Umamusume with at least 1,200 Wit and a Legacy Umamusume with under 400 Wit",
+    "rank": 1,
+    "group_id": 11,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1200,
+        400
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with at least 1,200 Wit",
+        "a Legacy Umamusume with under 400 Wit"
+      ]
+    }
+  },
+  {
+    "nickname_id": 142,
+    "name": "Nepo Uma",
+    "description": "Receive Inspiration from a Legacy Umamusume with the Classic Triple Crown and a Legacy Umamusume with the Triple Tiara",
+    "rank": 2,
+    "group_id": 2004,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with the Classic Triple Crown",
+        "a Legacy Umamusume with the Triple Tiara"
+      ]
+    }
+  },
+  {
+    "nickname_id": 143,
+    "name": "Lossless Lineage",
+    "description": "Receive Inspiration from 2 Legacy Umamusume who were undefeated in their careers and complete a playthrough undefeated with at least 10 wins",
+    "rank": 2,
+    "group_id": 2003,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        10
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume who were undefeated in their careers",
+        "complete a playthrough undefeated with at least 10 wins"
+      ]
+    }
+  },
+  {
+    "nickname_id": 144,
+    "name": "Rebellious Phase",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Wit and attain below 400 Wit",
+    "rank": 2,
+    "group_id": 2001,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        1200,
+        400
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 1,200 Wit",
+        "attain below 400 Wit"
+      ]
+    }
+  },
+  {
+    "nickname_id": 145,
+    "name": "Way of Kings",
+    "description": "Receive Inspiration from a Legacy Umamusume with career wins in the Satsuki Sho, Japanese Derby, and Kikuka Sho and win the Satsuki Sho, Japanese Derby, and Kikuka Sho",
+    "rank": 3,
+    "group_id": 5019,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with career wins in the Satsuki Sho",
+        "Japanese Derby",
+        "Kikuka Sho",
+        "win the Satsuki Sho",
+        "Japanese Derby",
+        "Kikuka Sho"
+      ]
+    }
+  },
+  {
+    "nickname_id": 146,
+    "name": "True Way of Kings",
+    "description": "Receive Inspiration from a Legacy Umamusume with career wins in the Satsuki Sho, Japanese Derby, and Kikuka Sho while undefeated and win the Satsuki Sho, Japanese Derby, and Kikuka Sho while undefeated",
+    "rank": 3,
+    "group_id": 5017,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with career wins in the Satsuki Sho",
+        "Japanese Derby",
+        "Kikuka Sho while undefeated",
+        "win the Satsuki Sho",
+        "Japanese Derby",
+        "Kikuka Sho while undefeated"
+      ]
+    }
+  },
+  {
+    "nickname_id": 147,
+    "name": "Mutation",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with Career rank C or lower and achieve Career rank A or higher",
+    "rank": 2,
+    "group_id": 2002,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with Career rank C or lower",
+        "achieve Career rank A or higher"
+      ]
+    }
+  },
+  {
+    "nickname_id": 148,
+    "name": "Way of Queens",
+    "description": "Receive Inspiration from a Legacy Umamusume with career wins in the Oka Sho, Japanese Oaks, and Shuka Sho and\\nwin the Oka Sho, Japanese Oaks, and Shuka Sho",
+    "rank": 3,
+    "group_id": 5018,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with career wins in the Oka Sho",
+        "Japanese Oaks",
+        "Shuka Sho and\\nwin the Oka Sho",
+        "Japanese Oaks",
+        "Shuka Sho"
+      ]
+    }
+  },
+  {
+    "nickname_id": 149,
+    "name": "True Way of Queens",
+    "description": "Receive Inspiration from a Legacy Umamusume with career wins in the Oka Sho, Japanese Oaks, and Shuka Sho while undefeated and\\nwin the Oka Sho, Japanese Oaks, and Shuka Sho while undefeated",
+    "rank": 3,
+    "group_id": 5016,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with career wins in the Oka Sho",
+        "Japanese Oaks",
+        "Shuka Sho while undefeated and\\nwin the Oka Sho",
+        "Japanese Oaks",
+        "Shuka Sho while undefeated"
+      ]
+    }
+  },
+  {
+    "nickname_id": 150,
+    "name": "Sensation Succession",
+    "description": "Receive Inspiration from 2 Legacy Umamusume with at least 460,000 fans and obtain at least 480,000 fans",
+    "rank": 3,
+    "group_id": 5014,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1483228800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        460000,
+        480000
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from 2 Legacy Umamusume with at least 460,000 fans",
+        "obtain at least 480,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 151,
+    "name": "Victory Derived",
+    "description": "Win the Kikuka Sho, Tenno Sho (Spring), and Takarazuka Kinen and complete the playthrough having accomplished all goals and placed top 2 in all races",
+    "rank": 3,
+    "group_id": 3023,
+    "chara_id": 1023,
+    "scenario_id": null,
+    "start_date": 1752184800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Kikuka Sho",
+          "race_ids": [
+            1015,
+            1026
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Tenno Sho (Spring)",
+        "Takarazuka Kinen",
+        "complete the playthrough having accomplished all goals",
+        "placed top 2 in all races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 152,
+    "name": "Hearts United",
+    "description": "Activate Unity Training with at least 3 characters simultaneously and complete the playthrough (Unity Cup only)",
+    "rank": 2,
+    "group_id": 1002,
+    "chara_id": null,
+    "scenario_id": 2,
+    "start_date": 1762466400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Activate Unity Training with at least 3 characters simultaneously",
+        "complete the playthrough (Unity Cup only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 153,
+    "name": "Team Player",
+    "description": "Activate Unity Training at least 50 times and complete the playthrough (Unity Cup only)",
+    "rank": 2,
+    "group_id": 1001,
+    "chara_id": null,
+    "scenario_id": 2,
+    "start_date": 1762466400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        50
+      ],
+      "raw_clauses": [
+        "Activate Unity Training at least 50 times",
+        "complete the playthrough (Unity Cup only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 154,
+    "name": "Witness to Legend",
+    "description": "Obtain the team title \"Superstardom\" (Unity Cup only)",
+    "rank": 3,
+    "group_id": 4001,
+    "chara_id": null,
+    "scenario_id": 2,
+    "start_date": 1762466400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Obtain the team title \"Superstardom\" (Unity Cup only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 155,
+    "name": "Dream Team",
+    "description": "Activate Unity Training at least 65 times and complete the playthrough (Unity Cup only)",
+    "rank": 3,
+    "group_id": 4002,
+    "chara_id": null,
+    "scenario_id": 2,
+    "start_date": 1762466400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        65
+      ],
+      "raw_clauses": [
+        "Activate Unity Training at least 65 times",
+        "complete the playthrough (Unity Cup only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 160,
+    "name": "Comeback Champion",
+    "description": "Win the Satsuki Sho by overtaking at least 4 runners in the final stretch using End Closer,\\nwin the Tenno Sho (Spring) using End Closer,\\nand attain at least 1,200 Guts",
+    "rank": 3,
+    "group_id": 3050,
+    "chara_id": 1050,
+    "scenario_id": null,
+    "start_date": 1754258400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4,
+        1200
+      ],
+      "raw_clauses": [
+        "Win the Satsuki Sho by overtaking at least 4 runners in the final stretch using End Closer,\\nwin the Tenno Sho (Spring) using End Closer,\\nand attain at least 1,200 Guts"
+      ]
+    }
+  },
+  {
+    "nickname_id": 161,
+    "name": "Monster in the Shadows",
+    "description": "Win the Satsuki Sho by at least 3 1/2 lengths, win the Japanese Derby by at least 5 lengths, win the Kikuka Sho by at least 7 lengths, and win the Arima Kinen 2 times in a row",
+    "rank": 3,
+    "group_id": 3016,
+    "chara_id": 1016,
+    "scenario_id": null,
+    "start_date": 1755727200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3,
+        1,
+        2,
+        5,
+        7,
+        2
+      ],
+      "raw_clauses": [
+        "Win the Satsuki Sho by at least 3 1/2 lengths",
+        "win the Japanese Derby by at least 5 lengths",
+        "win the Kikuka Sho by at least 7 lengths",
+        "win the Arima Kinen 2 times in a row"
+      ]
+    }
+  },
+  {
+    "nickname_id": 162,
+    "name": "Team Player Star Slayer",
+    "description": "Win against the duo in the URA Final (Unity Cup only)",
+    "rank": 3,
+    "group_id": 4003,
+    "chara_id": null,
+    "scenario_id": 2,
+    "start_date": 1762466400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win against the duo in the URA Final (Unity Cup only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 163,
+    "name": "Spirit Burst",
+    "description": "Trigger at least 10 Spirit Bursts (Unity Cup only)",
+    "rank": 3,
+    "group_id": 4004,
+    "chara_id": null,
+    "scenario_id": 2,
+    "start_date": 1762466400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Trigger at least 10 Spirit Bursts (Unity Cup only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 164,
+    "name": "Trickster",
+    "description": "Win the Satsuki Sho, Kikuka Sho, Arima Kinen (Classic Year), and Tenno Sho (Spring) as a Front Runner, maintaining the lead from 200 meters from the start until the finish in the Kikuka Sho",
+    "rank": 3,
+    "group_id": 3020,
+    "chara_id": 1020,
+    "scenario_id": null,
+    "start_date": 1757282400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Satsuki Sho",
+          "race_ids": [
+            1005,
+            1028
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Kikuka Sho",
+        "Arima Kinen (Classic Year)",
+        "Tenno Sho (Spring) as a Front Runner",
+        "maintaining the lead from 200 meters from the start until the finish in the Kikuka Sho"
+      ]
+    }
+  },
+  {
+    "nickname_id": 165,
+    "name": "Unrelenting Challenger",
+    "description": "Win at least 9 graded races while maintaining a winning streak, including the Tenno Sho (Spring), Takarazuka Kinen, and Arima Kinen",
+    "rank": 3,
+    "group_id": 3058,
+    "chara_id": 1058,
+    "scenario_id": null,
+    "start_date": 1761084000,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        9
+      ],
+      "raw_clauses": [
+        "Win at least 9 graded races while maintaining a winning streak",
+        "including the Tenno Sho (Spring)",
+        "Takarazuka Kinen",
+        "Arima Kinen"
+      ]
+    }
+  },
+  {
+    "nickname_id": 166,
+    "name": "Colossus",
+    "description": "Win the Yasuda Kinen and Mile Ch., win the Sprinters Stakes 2 times in a row, and attain at least 1,200 Power",
+    "rank": 3,
+    "group_id": 3028,
+    "chara_id": 1028,
+    "scenario_id": null,
+    "start_date": 1762898400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Yasuda Kinen",
+          "race_ids": [
+            1011
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Mile Ch",
+        "win the Sprinters Stakes 2 times in a row",
+        "attain at least 1,200 Power"
+      ]
+    }
+  },
+  {
+    "nickname_id": 167,
+    "name": "All-Around Otaku",
+    "description": "Win the Japan Dirt Derby, Mile Ch., February Stakes, Yasuda Kinen, Tenno Sho (Autumn), and Arima Kinen (Senior Year)",
+    "rank": 3,
+    "group_id": 3019,
+    "chara_id": 1019,
+    "scenario_id": null,
+    "start_date": 1763589600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Japan Dirt Derby",
+          "race_ids": [
+            1102
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Mile Ch",
+        "February Stakes",
+        "Yasuda Kinen",
+        "Tenno Sho (Autumn)",
+        "Arima Kinen (Senior Year)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 168,
+    "name": "Precocious Princess",
+    "description": "Receive Inspiration from a Legacy Umamusume with a career win in the Takamatsunomiya Kinen and win the Japanese Oaks, Shuka Sho, and Queen Elizabeth II Cup while undefeated",
+    "rank": 3,
+    "group_id": 3039,
+    "chara_id": 1039,
+    "scenario_id": null,
+    "start_date": 1764626400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a career win in the Takamatsunomiya Kinen",
+        "win the Japanese Oaks",
+        "Shuka Sho",
+        "Queen Elizabeth II Cup while undefeated"
+      ]
+    }
+  },
+  {
+    "nickname_id": 169,
+    "name": "Looming Shadow",
+    "description": "Win the Kikuka Sho, Arima Kinen (Classic Year), Tenno Sho (Spring), and Arima Kinen (Senior Year) using Late Surger and attain at least 1,200 Stamina",
+    "rank": 3,
+    "group_id": 3025,
+    "chara_id": 1025,
+    "scenario_id": null,
+    "start_date": 1765231200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Kikuka Sho",
+          "race_ids": [
+            1015,
+            1026
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Arima Kinen (Classic Year)",
+        "Tenno Sho (Spring)",
+        "Arima Kinen (Senior Year) using Late Surger",
+        "attain at least 1,200 Stamina"
+      ]
+    }
+  },
+  {
+    "nickname_id": 170,
+    "name": "L Hater",
+    "description": "Win the Japan Cup and Tenno Sho (Spring), win the Tenno Sho (Autumn) with a Great mood 2 times in a row, and win against Gold Ship at least 3 times",
+    "rank": 3,
+    "group_id": 3048,
+    "chara_id": 1048,
+    "scenario_id": null,
+    "start_date": 1766095200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Japan Cup",
+          "race_ids": [
+            1019
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Tenno Sho (Spring)",
+        "win the Tenno Sho (Autumn) with a Great mood 2 times in a row",
+        "win against Gold Ship at least 3 times"
+      ]
+    }
+  },
+  {
+    "nickname_id": 171,
+    "name": "Coolheaded Beauty",
+    "description": "As a late surger and the number one favorite, win the Hanshin J.F., Oka Sho, Japanese Oaks, and Shuka Sho, win the Queen Elizabeth II Cup 2 times in a row, and obtain at least 240,000 fans",
+    "rank": 3,
+    "group_id": 3059,
+    "chara_id": 1059,
+    "scenario_id": null,
+    "start_date": 1766959200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2,
+        240000
+      ],
+      "raw_clauses": [
+        "As a late surger",
+        "the number one favorite",
+        "win the Hanshin J.F",
+        "Oka Sho",
+        "Japanese Oaks",
+        "Shuka Sho",
+        "win the Queen Elizabeth II Cup 2 times in a row",
+        "obtain at least 240,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 172,
+    "name": "Capricious Clover",
+    "description": "As the number one favorite, win the Shuka Sho, Queen Elizabeth II Cup, and Arima Kinen (Classic Year) while undefeated, in particular winning the Shuka Sho by at least 3 1/2 lengths",
+    "rank": 3,
+    "group_id": 3022,
+    "chara_id": 1022,
+    "scenario_id": null,
+    "start_date": 1768514400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3,
+        1,
+        2
+      ],
+      "raw_clauses": [
+        "As the number one favorite",
+        "win the Shuka Sho",
+        "Queen Elizabeth II Cup",
+        "Arima Kinen (Classic Year) while undefeated",
+        "in particular winning the Shuka Sho by at least 3 1/2 lengths"
+      ]
+    }
+  },
+  {
+    "nickname_id": 173,
+    "name": "Now That's White Lightning!",
+    "description": "Win at least 8 graded races, including the Tenno Sho (Spring), Takarazuka Kinen (Senior Year), and Tenno Sho (Autumn) (Senior Year), and obtain at least 240,000 fans",
+    "rank": 3,
+    "group_id": 3021,
+    "chara_id": 1021,
+    "scenario_id": null,
+    "start_date": 1769119200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        8,
+        240000
+      ],
+      "raw_clauses": [
+        "Win at least 8 graded races",
+        "including the Tenno Sho (Spring)",
+        "Takarazuka Kinen (Senior Year)",
+        "Tenno Sho (Autumn) (Senior Year)",
+        "obtain at least 240,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 174,
+    "name": "Blooming Sakura",
+    "description": "Receive Inspiration from a Legacy Umamusume with a career win in the Asahi Hai F.S. and at least 1,200 Speed and win the Asahi Hai F.S., Satsuki Sho, Japanese Derby, and Japan Cup",
+    "rank": 3,
+    "group_id": 3069,
+    "chara_id": 1069,
+    "scenario_id": null,
+    "start_date": 1770847200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1200
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with a career win in the Asahi Hai F.S",
+        "at least 1,200 Speed",
+        "win the Asahi Hai F.S",
+        "Satsuki Sho",
+        "Japanese Derby",
+        "Japan Cup"
+      ]
+    }
+  },
+  {
+    "nickname_id": 175,
+    "name": "Unbreakable",
+    "description": "Win the Japanese Derby, win the Tenno Sho (Autumn) 2 times in a row, run in all races with a Great mood, and complete the Career playthrough without failing a single training",
+    "rank": 3,
+    "group_id": 3071,
+    "chara_id": 1071,
+    "scenario_id": null,
+    "start_date": 1772056800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Japanese Derby",
+          "race_ids": [
+            1010
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "win the Tenno Sho (Autumn) 2 times in a row",
+        "run in all races with a Great mood",
+        "complete the Career playthrough without failing a single training"
+      ]
+    }
+  },
+  {
+    "nickname_id": 176,
+    "name": "Brightest Star",
+    "description": "Win the Satsuki Sho, Japanese Derby, and Takarazuka Kinen as favorite and win against T.M. Opera O, Narita Top Road, and Meisho Doto at least 3 times each",
+    "rank": 3,
+    "group_id": 3033,
+    "chara_id": 1033,
+    "scenario_id": null,
+    "start_date": 1772748000,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Satsuki Sho",
+          "race_ids": [
+            1005,
+            1028
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Japanese Derby",
+        "Takarazuka Kinen as favorite",
+        "win against T.M. Opera O",
+        "Narita Top Road",
+        "Meisho Doto at least 3 times each"
+      ]
+    }
+  },
+  {
+    "nickname_id": 177,
+    "name": "Talent Takes Time",
+    "description": "Run in at least 12 G1 races and win at least 4 graded races of 2,500 meters or more, including the Kikuka Sho and Arima Kinen (Senior Year)",
+    "rank": 3,
+    "group_id": 3062,
+    "chara_id": 1062,
+    "scenario_id": null,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        12,
+        1,
+        4,
+        2500
+      ],
+      "raw_clauses": [
+        "Run in at least 12 G1 races",
+        "win at least 4 graded races of 2,500 meters or more",
+        "including the Kikuka Sho",
+        "Arima Kinen (Senior Year)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 178,
+    "name": "Bring Down the House",
+    "description": "Win at least 7 G1 races, including the Kikuka Sho, Tenno Sho (Spring), Takarazuka Kinen,Tenno Sho (Autumn) (Senior Year), and Arima Kinen (Senior Year), and obtain at least 480,000 fans",
+    "rank": 3,
+    "group_id": 3068,
+    "chara_id": 1068,
+    "scenario_id": null,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "grade_win_count",
+      "clauses": [
+        {
+          "kind": "grade_win_count",
+          "grades": [
+            100
+          ],
+          "threshold": 7
+        }
+      ],
+      "unresolved_clauses": [
+        "including the Kikuka Sho",
+        "Tenno Sho (Spring)",
+        "Takarazuka Kinen,Tenno Sho (Autumn) (Senior Year)",
+        "Arima Kinen (Senior Year)",
+        "obtain at least 480,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 179,
+    "name": "Gem of Dreams",
+    "description": "Receive Inspiration from a Legacy Umamusume with Career rank S or higher, win the Kikuka Sho, Tenno Sho (Spring), and Japan Cup (Senior Year), and win the Arima Kinen twice in a row",
+    "rank": 3,
+    "group_id": 3067,
+    "chara_id": 1067,
+    "scenario_id": null,
+    "start_date": 1774216800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with Career rank S or higher",
+        "win the Kikuka Sho",
+        "Tenno Sho (Spring)",
+        "Japan Cup (Senior Year)",
+        "win the Arima Kinen twice in a row"
+      ]
+    }
+  },
+  {
+    "nickname_id": 180,
+    "name": "Leading the Charge",
+    "description": "Complete a Career playthrough with at least 1,000 Result Pts\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 4005,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1000
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with at least 1,000 Result Pts\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 181,
+    "name": "Product Power",
+    "description": "Complete a Career playthrough having purchased at least 20 items from the Pro Shop\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 4006,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        20
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough having purchased at least 20 items from the Pro Shop\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 182,
+    "name": "Climax King",
+    "description": "Complete a Career playthrough having won all 3 races of the TS Climax\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 4007,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough having won all 3 races of the TS Climax\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 183,
+    "name": "Victorious",
+    "description": "Complete a Career playthrough with at least 20 G1 wins",
+    "rank": 3,
+    "group_id": 4008,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        20,
+        1
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with at least 20 G1 wins"
+      ]
+    }
+  },
+  {
+    "nickname_id": 184,
+    "name": "Moneymaker",
+    "description": "Complete a Career playthrough having earned at least 1,000 Pro Shop coins\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 1003,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1000
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough having earned at least 1,000 Pro Shop coins\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 185,
+    "name": "First Step to Glory",
+    "description": "Complete a Career playthrough with at least 15 G1 wins",
+    "rank": 2,
+    "group_id": 1004,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        15,
+        1
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with at least 15 G1 wins"
+      ]
+    }
+  },
+  {
+    "nickname_id": 186,
+    "name": "Stress-Free Stayer",
+    "description": "Receive Inspiration from a Legacy Umamusume with the Mejiro name, win at least 4 G2 or G1 races of 3,000 meters or more, including the Tenno Sho (Spring), and obtain at least 240,000 fans",
+    "rank": 3,
+    "group_id": 3074,
+    "chara_id": 1074,
+    "scenario_id": null,
+    "start_date": 1774562400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4,
+        2,
+        1,
+        3000,
+        240000
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with the Mejiro name",
+        "win at least 4 G2 or G1 races of 3,000 meters or more",
+        "including the Tenno Sho (Spring)",
+        "obtain at least 240,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 187,
+    "name": "Legendary",
+    "description": "Obtain the Spring Champion and Fall Champion epithets, and either the Stunning or Lady epithet\\n(Trackblazer only).",
+    "rank": 3,
+    "group_id": 5027,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Obtain the Spring Champion",
+        "Fall Champion epithets",
+        "either the Stunning or Lady epithet\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 188,
+    "name": "Mile a Minute",
+    "description": "Win the NHK Mile Cup, Oka Sho, Yasuda Kinen, Victoria Mile, and Mile Ch., and either Hanshin J.F. or Asahi Hai F.S.\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 5028,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "NHK Mile Cup",
+          "race_ids": [
+            1007
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Oka Sho",
+        "Yasuda Kinen",
+        "Victoria Mile",
+        "Mile Ch",
+        "either Hanshin J.F. or Asahi Hai F.S.\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 189,
+    "name": "Breakneck Miler",
+    "description": "Win the NHK Mile Cup, Yasuda Kinen, and Mile Championship\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 5029,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "NHK Mile Cup",
+          "race_ids": [
+            1007
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Yasuda Kinen",
+        "Mile Championship\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 190,
+    "name": "Phenomenal",
+    "description": "Get Stunning epithet & win 2: Tenno Sho (Spring/Autumn), Takarazuka Kinen, Japan Cup, Osaka Hai, Arima Kinen\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 5030,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2
+      ],
+      "raw_clauses": [
+        "Get Stunning epithet & win 2: Tenno Sho (Spring/Autumn)",
+        "Takarazuka Kinen",
+        "Japan Cup",
+        "Osaka Hai",
+        "Arima Kinen\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 191,
+    "name": "Incredible",
+    "description": "Obtain the Stunning epithet and win the Japan Cup (Classic Year) or Arima Kinen (Classic Year)\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 5031,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Obtain the Stunning epithet",
+        "win the Japan Cup (Classic Year) or Arima Kinen (Classic Year)\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 192,
+    "name": "Stunning",
+    "description": "Win the Satsuki Sho, Japanese Derby, and Kikuka Sho\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2039,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Satsuki Sho",
+          "race_ids": [
+            1005,
+            1028
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Japanese Derby",
+        "Kikuka Sho\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 193,
+    "name": "Sprint Go-Getter",
+    "description": "Win the Takamatsunomiya Kinen and Sprinters Stakes\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2040,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Takamatsunomiya Kinen",
+          "race_ids": [
+            1002
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Sprinters Stakes\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 194,
+    "name": "Dirt G1 Dominator",
+    "description": "Win 9 G1 dirt races\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 5032,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        9,
+        1
+      ],
+      "raw_clauses": [
+        "Win 9 G1 dirt races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 195,
+    "name": "Dirt G1 Powerhouse",
+    "description": "Win 5 G1 dirt races\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2041,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5,
+        1
+      ],
+      "raw_clauses": [
+        "Win 5 G1 dirt races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 196,
+    "name": "Dirt G1 Star",
+    "description": "Win 4 G1 dirt races\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2042,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4,
+        1
+      ],
+      "raw_clauses": [
+        "Win 4 G1 dirt races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 197,
+    "name": "Dirt G1 Achiever",
+    "description": "Win 3 G1 dirt races\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2043,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3,
+        1
+      ],
+      "raw_clauses": [
+        "Win 3 G1 dirt races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 198,
+    "name": "Goddess",
+    "description": "Obtain the Lady epithet, win the Victoria Mile and Hanshin J.F., and win the Queen Elizabeth II Cup 2 times in a row\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 5033,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2
+      ],
+      "raw_clauses": [
+        "Obtain the Lady epithet",
+        "win the Victoria Mile",
+        "Hanshin J.F",
+        "win the Queen Elizabeth II Cup 2 times in a row\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 199,
+    "name": "Heroine",
+    "description": "Obtain the Lady epithet and win the Queen Elizabeth II Cup (Classic Year)\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 5034,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Obtain the Lady epithet",
+        "win the Queen Elizabeth II Cup (Classic Year)\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 200,
+    "name": "Lady",
+    "description": "Win the Oka Sho, Japanese Oaks, and Shuka Sho\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2044,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Oka Sho",
+          "race_ids": [
+            1004
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Japanese Oaks",
+        "Shuka Sho\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 201,
+    "name": "Sprint Speedster",
+    "description": "Win the Takamatsunomiya Kinen, Sprinters Stakes, Yasuda Kinen, and Mile Ch.\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2045,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Takamatsunomiya Kinen",
+          "race_ids": [
+            1002
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Sprinters Stakes",
+        "Yasuda Kinen",
+        "Mile Ch.\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 202,
+    "name": "Shield Bearer",
+    "description": "Win the Tenno Sho (Spring) and Tenno Sho (Autumn)\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2046,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Tenno Sho (Spring)",
+          "race_ids": [
+            1006,
+            1027
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Tenno Sho (Autumn)\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 203,
+    "name": "Spring Champion",
+    "description": "Win the Osaka Hai, Tenno Sho (Spring), and Takarazuka Kinen\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2047,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Osaka Hai",
+          "race_ids": [
+            1003
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Tenno Sho (Spring)",
+        "Takarazuka Kinen\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 204,
+    "name": "Fall Champion",
+    "description": "Win the Tenno Sho (Autumn), Japan Cup, and Arima Kinen\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2048,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Tenno Sho (Autumn)",
+          "race_ids": [
+            1016
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Japan Cup",
+        "Arima Kinen\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 205,
+    "name": "Eat My Dust",
+    "description": "Win 15 dirt races\\n(Trackblazer only)",
+    "rank": 3,
+    "group_id": 5035,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        15
+      ],
+      "raw_clauses": [
+        "Win 15 dirt races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 206,
+    "name": "Playing Dirty",
+    "description": "Win 10 dirt races\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2049,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Win 10 dirt races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 207,
+    "name": "Dirty Work",
+    "description": "Win 5 dirt races\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2050,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5
+      ],
+      "raw_clauses": [
+        "Win 5 dirt races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 208,
+    "name": "Standard Distance Leader",
+    "description": "Win 10 standard distance races\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2051,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Win 10 standard distance races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 209,
+    "name": "Non-Standard Distance Leader",
+    "description": "Win 10 non-standard distance races\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2052,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Win 10 non-standard distance races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 210,
+    "name": "Dirt Sprinter",
+    "description": "Win the JBC Sprint 2 times in a row\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2053,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2
+      ],
+      "raw_clauses": [
+        "Win the JBC Sprint 2 times in a row\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 211,
+    "name": "Umatastic",
+    "description": "Win 3 races that have Umamusume Stakes in the name\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2054,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win 3 races that have Umamusume Stakes in the name\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 212,
+    "name": "Kicking Up Dust",
+    "description": "Win the Unicorn Stakes, Leopard Stakes, and Japan Dirt Derby\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2055,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Unicorn Stakes",
+          "race_ids": [
+            3033
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Leopard Stakes",
+        "Japan Dirt Derby\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 213,
+    "name": "Globe-Trotter",
+    "description": "Win 3 races that have a country in the name\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2056,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win 3 races that have a country in the name\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 214,
+    "name": "Junior Jewel",
+    "description": "Win 3 races that have Junior Stakes in the name\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2057,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win 3 races that have Junior Stakes in the name\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 215,
+    "name": "Turf Tussler",
+    "description": "Win a turf sprint, mile, medium, and long race\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2058,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win a turf sprint",
+        "mile",
+        "medium",
+        "long race\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 216,
+    "name": "Dirt Dancer",
+    "description": "Win a dirt sprint, mile, and medium race\\n(Trackblazer only)",
+    "rank": 2,
+    "group_id": 2059,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Win a dirt sprint",
+        "mile",
+        "medium race\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 217,
+    "name": "Pro Racer",
+    "description": "Win 10 OP level or higher races\\n(Trackblazer only)",
+    "rank": 1,
+    "group_id": 47,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Win 10 OP level or higher races\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 218,
+    "name": "Hokkaido Hotshot",
+    "description": "Win 3 graded races held at Sapporo or Hakodate\\n(Trackblazer only)",
+    "rank": 1,
+    "group_id": 48,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win 3 graded races held at Sapporo or Hakodate\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 219,
+    "name": "Tohoku Top Dog",
+    "description": "Win 3 graded races held at Fukushima, Niigata, or Morioka\\n(Trackblazer only)",
+    "rank": 1,
+    "group_id": 49,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win 3 graded races held at Fukushima",
+        "Niigata",
+        "or Morioka\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 220,
+    "name": "Kanto Conqueror",
+    "description": "Win 3 graded races held at Tokyo, Nakayama, Oi, Kawasaki, or Funabashi\\n(Trackblazer only)",
+    "rank": 1,
+    "group_id": 50,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win 3 graded races held at Tokyo",
+        "Nakayama",
+        "Oi",
+        "Kawasaki",
+        "or Funabashi\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 221,
+    "name": "West Japan Whiz",
+    "description": "Win 3 graded races held at Chukyo, Hanshin, or Kyoto\\n(Trackblazer only)",
+    "rank": 1,
+    "group_id": 51,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win 3 graded races held at Chukyo",
+        "Hanshin",
+        "or Kyoto\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 222,
+    "name": "Kokura Constable",
+    "description": "Win 2 graded races held at Kokura\\n(Trackblazer only)",
+    "rank": 1,
+    "group_id": 52,
+    "chara_id": null,
+    "scenario_id": 4,
+    "start_date": 1773352800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        2
+      ],
+      "raw_clauses": [
+        "Win 2 graded races held at Kokura\\n(Trackblazer only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 223,
+    "name": "Little Miss Prodigy",
+    "description": "Receive Inspiration from a Legacy Umamusume with no Career G1 wins, win the Hanshin J.F. and Oka Sho, win the Sprinters Stakes twice in a row, and obtain at least 100,000 fans in classic year",
+    "rank": 3,
+    "group_id": 3051,
+    "chara_id": 1051,
+    "scenario_id": null,
+    "start_date": 1776031200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        100000
+      ],
+      "raw_clauses": [
+        "Receive Inspiration from a Legacy Umamusume with no Career G1 wins",
+        "win the Hanshin J.F",
+        "Oka Sho",
+        "win the Sprinters Stakes twice in a row",
+        "obtain at least 100,000 fans in classic year"
+      ]
+    }
+  },
+  {
+    "nickname_id": 224,
+    "name": "Will of Steel",
+    "description": "Win the Satsuki Sho without having won a turf G1 before, then win the Osaka Hai, Yasuda Kinen, Takarazuka Kinen, and Arima Kinen in senior year, and attain at least 1,200 Power",
+    "rank": 3,
+    "group_id": 3072,
+    "chara_id": 1072,
+    "scenario_id": null,
+    "start_date": 1776722400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        1200
+      ],
+      "raw_clauses": [
+        "Win the Satsuki Sho without having won a turf G1 before",
+        "then win the Osaka Hai",
+        "Yasuda Kinen",
+        "Takarazuka Kinen",
+        "Arima Kinen in senior year",
+        "attain at least 1,200 Power"
+      ]
+    }
+  },
+  {
+    "nickname_id": 225,
+    "name": "God of Wind",
+    "description": "Win the Asahi Hai F.S., Satsuki Sho, Japanese Derby, and Japan Cup (Senior Year) using Front Runner, and attain at least 1,200 Speed and Guts",
+    "rank": 3,
+    "group_id": 3031,
+    "chara_id": 1031,
+    "scenario_id": null,
+    "start_date": 1777586400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1200
+      ],
+      "raw_clauses": [
+        "Win the Asahi Hai F.S",
+        "Satsuki Sho",
+        "Japanese Derby",
+        "Japan Cup (Senior Year) using Front Runner",
+        "attain at least 1,200 Speed",
+        "Guts"
+      ]
+    }
+  },
+  {
+    "nickname_id": 226,
+    "name": "Stormy Front Runner",
+    "description": "Win a G1 using Front Runner when 4th favorite or below, win the Tenno Sho (Spring), Takarazuka Kinen, and Arima Kinen using Front Runner in senior year, and attain at least S in Front Runner aptitude",
+    "rank": 3,
+    "group_id": 3064,
+    "chara_id": 1064,
+    "scenario_id": null,
+    "start_date": 1778450400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1,
+        4
+      ],
+      "raw_clauses": [
+        "Win a G1 using Front Runner when 4th favorite or below",
+        "win the Tenno Sho (Spring)",
+        "Takarazuka Kinen",
+        "Arima Kinen using Front Runner in senior year",
+        "attain at least S in Front Runner aptitude"
+      ]
+    }
+  },
+  {
+    "nickname_id": 227,
+    "name": "Warlord from Oi",
+    "description": "Win at least 4 turf and 4 dirt G1 races, including the Tokyo Daishoten and Takarazuka Kinen (Senior Year) using Pace Chaser, and the Tenno Sho (Spring) and Arima Kinen using Late Surger or End Closer",
+    "rank": 3,
+    "group_id": 3034,
+    "chara_id": 1034,
+    "scenario_id": null,
+    "start_date": 1780005600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4,
+        4,
+        1
+      ],
+      "raw_clauses": [
+        "Win at least 4 turf and 4 dirt G1 races",
+        "including the Tokyo Daishoten",
+        "Takarazuka Kinen (Senior Year) using Pace Chaser",
+        "the Tenno Sho (Spring)",
+        "Arima Kinen using Late Surger or End Closer"
+      ]
+    }
+  },
+  {
+    "nickname_id": 228,
+    "name": "Pouty Witch",
+    "description": "Win the Tulip Sho and Shuka Sho using End Closer, and the Takarazuka Kinen, Queen Elizabeth II Cup, and Arima Kinen in senior year using Late Surger or End Closer",
+    "rank": 3,
+    "group_id": 3044,
+    "chara_id": 1044,
+    "scenario_id": null,
+    "start_date": 1780610400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Tulip Sho",
+          "race_ids": [
+            3018
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Shuka Sho using End Closer",
+        "the Takarazuka Kinen",
+        "Queen Elizabeth II Cup",
+        "Arima Kinen in senior year using Late Surger or End Closer"
+      ]
+    }
+  },
+  {
+    "nickname_id": 229,
+    "name": "Barrier-Breaking Genius",
+    "description": "Win the Satsuki Sho, Japanese Derby, and Kikuka Sho, win the Tenno Sho (Spring), Takarazuka Kinen, Tenno Sho (Autumn), and Arima Kinen in senior year, and attain at least 1,200 Wit",
+    "rank": 3,
+    "group_id": 3036,
+    "chara_id": 1036,
+    "scenario_id": null,
+    "start_date": 1781820000,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Satsuki Sho",
+          "race_ids": [
+            1005,
+            1028
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Japanese Derby",
+        "Kikuka Sho",
+        "win the Tenno Sho (Spring)",
+        "Takarazuka Kinen",
+        "Tenno Sho (Autumn)",
+        "Arima Kinen in senior year",
+        "attain at least 1,200 Wit"
+      ]
+    }
+  },
+  {
+    "nickname_id": 230,
+    "name": "Embodiment of Dreams",
+    "description": "Run in at least 23 graded races and win the Yasuda Kinen (Senior Year), Takarazuka Kinen, Sprinters Stakes, and Mile Championship",
+    "rank": 3,
+    "group_id": 3053,
+    "chara_id": 1053,
+    "scenario_id": null,
+    "start_date": 1783461600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        23
+      ],
+      "raw_clauses": [
+        "Run in at least 23 graded races",
+        "win the Yasuda Kinen (Senior Year)",
+        "Takarazuka Kinen",
+        "Sprinters Stakes",
+        "Mile Championship"
+      ]
+    }
+  },
+  {
+    "nickname_id": 231,
+    "name": "Talisman of Victory",
+    "description": "Complete a Career playthrough having won at least 11 G1 dirt races, while running in all races with a Great Mood",
+    "rank": 3,
+    "group_id": 3098,
+    "chara_id": 1098,
+    "scenario_id": null,
+    "start_date": 1784239200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        11,
+        1
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough having won at least 11 G1 dirt races",
+        "while running in all races with a Great Mood"
+      ]
+    }
+  },
+  {
+    "nickname_id": 232,
+    "name": "Iwate's Natural Beauty",
+    "description": "Win a graded race at Morioka Racecourse, win the Oka Sho, Japanese Oaks, and Shuka Sho, and obtain at least 320,000 fans",
+    "rank": 3,
+    "group_id": 3029,
+    "chara_id": 1029,
+    "scenario_id": null,
+    "start_date": 1785967200,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        320000
+      ],
+      "raw_clauses": [
+        "Win a graded race at Morioka Racecourse",
+        "win the Oka Sho",
+        "Japanese Oaks",
+        "Shuka Sho",
+        "obtain at least 320,000 fans"
+      ]
+    }
+  },
+  {
+    "nickname_id": 233,
+    "name": "Virtuoso Vocalist",
+    "description": "Complete a Career playthrough having obtained at least 10 songs\\n(Our Grand Concert only)",
+    "rank": 2,
+    "group_id": 1005,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        10
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough having obtained at least 10 songs\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 234,
+    "name": "Born to Perform",
+    "description": "Complete a Career playthrough having scored a total of at least 1,500 performance points\\n(Our Grand Concert only)",
+    "rank": 2,
+    "group_id": 1006,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        1500
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough having scored a total of at least 1,500 performance points\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 235,
+    "name": "The Key to Success",
+    "description": "End the Grand Concert with a Great Success rating\\n(Our Grand Concert only)",
+    "rank": 3,
+    "group_id": 4009,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "End the Grand Concert with a Great Success rating\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 236,
+    "name": "Legendary Reprise",
+    "description": "Put on a special Grand Concert\\n(Our Grand Concert only)",
+    "rank": 3,
+    "group_id": 4010,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Put on a special Grand Concert\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 237,
+    "name": "Queen of Dance",
+    "description": "Complete a Career playthrough with a total score of at least 300 in Dance\\n(Our Grand Concert only)",
+    "rank": 3,
+    "group_id": 4011,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        300
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with a total score of at least 300 in Dance\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 238,
+    "name": "Popping with Passion",
+    "description": "Complete a Career playthrough with a total score of at least 300 in Passion\\n(Our Grand Concert only)",
+    "rank": 3,
+    "group_id": 4012,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        300
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with a total score of at least 300 in Passion\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 239,
+    "name": "Divine Songster",
+    "description": "Complete a Career playthrough with a total score of at least 300 in Vocals\\n(Our Grand Concert only)",
+    "rank": 3,
+    "group_id": 4013,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        300
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with a total score of at least 300 in Vocals\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 240,
+    "name": "Visual Kei",
+    "description": "Complete a Career playthrough with a total score of at least 300 in Visuals\\n(Our Grand Concert only)",
+    "rank": 3,
+    "group_id": 4014,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        300
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with a total score of at least 300 in Visuals\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 241,
+    "name": "Cool and Composed",
+    "description": "Complete a Career playthrough with a total score of at least 300 in Composure\\n(Our Grand Concert only)",
+    "rank": 3,
+    "group_id": 4015,
+    "chara_id": null,
+    "scenario_id": 3,
+    "start_date": 1784757600,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        300
+      ],
+      "raw_clauses": [
+        "Complete a Career playthrough with a total score of at least 300 in Composure\\n(Our Grand Concert only)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 242,
+    "name": "Regional Roundabout",
+    "description": "Win a graded race at 4 or more different regional racecourses",
+    "rank": 1,
+    "group_id": 53,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4
+      ],
+      "raw_clauses": [
+        "Win a graded race at 4 or more different regional racecourses"
+      ]
+    }
+  },
+  {
+    "nickname_id": 243,
+    "name": "Local Sightseer",
+    "description": "Win 3 regional races",
+    "rank": 1,
+    "group_id": 54,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        3
+      ],
+      "raw_clauses": [
+        "Win 3 regional races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 244,
+    "name": "Late Show",
+    "description": "Run at least 4 nighttime races and win 3",
+    "rank": 1,
+    "group_id": 55,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4,
+        3
+      ],
+      "raw_clauses": [
+        "Run at least 4 nighttime races",
+        "win 3"
+      ]
+    }
+  },
+  {
+    "nickname_id": 245,
+    "name": "Sunset Seeker",
+    "description": "Run at least 4 evening races and win 3",
+    "rank": 1,
+    "group_id": 56,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        4,
+        3
+      ],
+      "raw_clauses": [
+        "Run at least 4 evening races",
+        "win 3"
+      ]
+    }
+  },
+  {
+    "nickname_id": 246,
+    "name": "Seeking Fame Afar",
+    "description": "Win the Diolite Kinen, Empress Hai, Sparking Lady Cup, and Mercury Cup",
+    "rank": 1,
+    "group_id": 57,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Diolite Kinen",
+        "Empress Hai",
+        "Sparking Lady Cup",
+        "Mercury Cup"
+      ],
+      "race_id_sets": [
+        [
+          2040
+        ],
+        [
+          2038
+        ],
+        [
+          3073
+        ],
+        [
+          3076
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 247,
+    "name": "Dirt Specialist",
+    "description": "Obtain at least 5 skills that activate only in dirt races",
+    "rank": 2,
+    "group_id": 2060,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5
+      ],
+      "raw_clauses": [
+        "Obtain at least 5 skills that activate only in dirt races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 248,
+    "name": "Kawasaki's Iron Foot",
+    "description": "Win 5 graded races at Kawasaki Racecourse",
+    "rank": 2,
+    "group_id": 2061,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5
+      ],
+      "raw_clauses": [
+        "Win 5 graded races at Kawasaki Racecourse"
+      ]
+    }
+  },
+  {
+    "nickname_id": 249,
+    "name": "Nighttime Parade",
+    "description": "Win 5 nighttime races",
+    "rank": 2,
+    "group_id": 2062,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5
+      ],
+      "raw_clauses": [
+        "Win 5 nighttime races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 250,
+    "name": "Twilighter",
+    "description": "Win 5 evening races",
+    "rank": 2,
+    "group_id": 2063,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        5
+      ],
+      "raw_clauses": [
+        "Win 5 evening races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 251,
+    "name": "Dirt Demon",
+    "description": "Win 15 dirt races",
+    "rank": 2,
+    "group_id": 2064,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "ground_win_count",
+      "ground": "dirt",
+      "ground_code": 2,
+      "threshold": 15
+    }
+  },
+  {
+    "nickname_id": 252,
+    "name": "Speedster of the Sands",
+    "description": "Win the Procyon Stakes, Cluster Cup, Capella Stakes, and JBC Sprint",
+    "rank": 2,
+    "group_id": 2065,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Procyon Stakes",
+        "Cluster Cup",
+        "Capella Stakes",
+        "JBC Sprint"
+      ],
+      "race_id_sets": [
+        [
+          3037
+        ],
+        [
+          3077
+        ],
+        [
+          3069
+        ],
+        [
+          1104,
+          1112,
+          1115,
+          1118
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 253,
+    "name": "Dual Track Queen",
+    "description": "Win the Japanese Oaks and Kanto Oaks",
+    "rank": 2,
+    "group_id": 2066,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Japanese Oaks",
+          "race_ids": [
+            1009
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Kanto Oaks"
+      ]
+    }
+  },
+  {
+    "nickname_id": 254,
+    "name": "Dirt Mile Hero",
+    "description": "Win the Zen-Nippon Junior Yushun, M.C. Nambu Hai, and February Stakes",
+    "rank": 2,
+    "group_id": 2067,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "race_set_win_all",
+      "races": [
+        "Zen-Nippon Junior Yushun",
+        "M.C. Nambu Hai",
+        "February Stakes"
+      ],
+      "race_id_sets": [
+        [
+          1108
+        ],
+        [
+          1110
+        ],
+        [
+          1001
+        ]
+      ]
+    }
+  },
+  {
+    "nickname_id": 255,
+    "name": "Master of Many Locales",
+    "description": "Win the Marine Cup, Kanto Oaks, Sparking Lady Cup, Ladies' Prelude, JBC Ladies' Classic, TCK Jo-o Hai, and Empress Hai",
+    "rank": 2,
+    "group_id": 2068,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Marine Cup",
+          "race_ids": [
+            3074
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "Kanto Oaks",
+        "Sparking Lady Cup",
+        "Ladies' Prelude",
+        "JBC Ladies' Classic",
+        "TCK Jo-o Hai",
+        "Empress Hai"
+      ]
+    }
+  },
+  {
+    "nickname_id": 256,
+    "name": "Sand Transcender",
+    "description": "Win 12 G1 dirt races",
+    "rank": 3,
+    "group_id": 5036,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        12,
+        1
+      ],
+      "raw_clauses": [
+        "Win 12 G1 dirt races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 257,
+    "name": "Darling of the Sand",
+    "description": "Win 7 G1 dirt races",
+    "rank": 3,
+    "group_id": 5037,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1660910400,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [
+        7,
+        1
+      ],
+      "raw_clauses": [
+        "Win 7 G1 dirt races"
+      ]
+    }
+  },
+  {
+    "nickname_id": 258,
+    "name": "Twinkling Pearl",
+    "description": "Win the Oka Sho, NHK Mile Cup, Japanese Oaks, Shuka Sho, Takamatsunomiya Kinen, and Sprinters Stakes (Senior Year)",
+    "rank": 3,
+    "group_id": 3042,
+    "chara_id": 1042,
+    "scenario_id": null,
+    "start_date": 1786572000,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "specific_race_win",
+      "clauses": [
+        {
+          "kind": "specific_race_win",
+          "race": "Oka Sho",
+          "race_ids": [
+            1004
+          ]
+        }
+      ],
+      "unresolved_clauses": [
+        "NHK Mile Cup",
+        "Japanese Oaks",
+        "Shuka Sho",
+        "Takamatsunomiya Kinen",
+        "Sprinters Stakes (Senior Year)"
+      ]
+    }
+  },
+  {
+    "nickname_id": 394,
+    "name": "Independent Learner",
+    "description": "Complete a Career with Independent Training",
+    "rank": 1,
+    "group_id": 58,
+    "chara_id": null,
+    "scenario_id": null,
+    "start_date": 1784692800,
+    "end_date": 2524608000,
+    "condition": {
+      "kind": "text_only",
+      "numbers": [],
+      "raw_clauses": [
+        "Complete a Career with Independent Training"
+      ]
+    }
+  }
+]

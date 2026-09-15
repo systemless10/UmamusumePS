@@ -1,0 +1,1 @@
+{"kind": "support", "id": 30266, "url": "https://gametora.com/umamusume/supports/30266-chrono-genesis", "events": {"": {"name": "取材③：密着、からの", "id": 1194, "choices": [{"label": "", "effects": [{"type": "wisdom", "value": "+15"}, {"type": "skill_hint", "value": "+1", "skill_id": 200721}, {"type": "bond", "value": "+5", "char_id": 1133}], "random_either": false}]}}}

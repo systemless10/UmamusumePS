@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 109201, "url": "https://gametora.com/umamusume/characters/109201-dantsu-flame", "events": {"": {"name": "いつか唯一の光に", "id": 2081, "choices": [{"label": "ダンツはこれから主役になるウマ娘だから", "effects": [{"type": "stamina", "value": "+10"}], "random_either": false}, {"label": "まだまだなのは、あの人", "effects": [{"type": "power", "value": "+10"}], "random_either": false}]}}}

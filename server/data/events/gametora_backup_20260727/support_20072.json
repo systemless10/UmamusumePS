@@ -1,0 +1,1 @@
+{"kind": "support", "id": 20072, "url": "https://gametora.com/umamusume/supports/20072-tanino-gimlet", "events": {"": {"name": "迷える子羊に捧ぐ祝杯", "id": 402, "choices": [{"label": "", "effects": [{"type": "skill_points", "value": "+15"}, {"type": "skill_hint", "value": "+2", "skill_id": 201462}, {"type": "bond", "value": "+5", "char_id": 1084}], "random_either": false}]}}}

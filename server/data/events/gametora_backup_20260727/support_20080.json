@@ -1,0 +1,1 @@
+{"kind": "support", "id": 20080, "url": "https://gametora.com/umamusume/supports/20080-sakura-laurel", "events": {"": {"name": "サクラの想いは重なって", "id": 420, "choices": [{"label": "", "effects": [{"type": "wisdom", "value": "+15"}, {"type": "skill_hint", "value": "+1", "skill_id": 202592}, {"type": "bond", "value": "+5", "char_id": 1076}], "random_either": false}]}}}

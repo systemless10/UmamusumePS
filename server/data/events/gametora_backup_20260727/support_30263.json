@@ -1,0 +1,1 @@
+{"kind": "support", "id": 30263, "url": "https://gametora.com/umamusume/supports/30263-vivlos", "events": {"": {"name": "激闘！ガチココナッツ！", "id": 1185, "choices": [{"label": "", "effects": [{"type": "power", "value": "+15"}, {"type": "skill_hint", "value": "+1", "skill_id": 202111}, {"type": "bond", "value": "+5", "char_id": 1091}], "random_either": false}]}}}

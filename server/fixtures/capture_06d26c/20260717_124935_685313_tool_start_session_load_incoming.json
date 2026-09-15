@@ -1,0 +1,16 @@
+{
+  "ts": 1784317775.6853132,
+  "direction": "RES",
+  "endpoint": "tool/start_session/load",
+  "data": {
+    "response_code": 214,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784317774,
+      "result_code": 214,
+      "resource_version": "10006910"
+    }
+  },
+  "req_id": "27d4d65c"
+}

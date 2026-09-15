@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 113001, "url": "https://gametora.com/umamusume/characters/113001-lucky-lilac", "events": {"": {"name": "ラジオネーム：ラララのねーちゃん", "id": 2831, "choices": [{"label": "俺も楽しみだな、彼女の新作大喜利！", "effects": [{"type": "guts", "value": "+10"}], "random_either": false}, {"label": "その心は？", "effects": [{"type": "wisdom", "value": "+10"}], "random_either": false}]}}}

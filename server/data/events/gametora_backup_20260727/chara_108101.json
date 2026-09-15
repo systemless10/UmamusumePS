@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 108101, "url": "https://gametora.com/umamusume/characters/108101-espoir-city", "events": {"": {"name": "あーし式！ちびっ子攻略法", "id": 2223, "choices": [{"label": "さっきのセリフ、録音すればよかった", "effects": [{"type": "speed", "value": "+10"}], "random_either": false}, {"label": "素直になってくれるといいな", "effects": [{"type": "wisdom", "value": "+10"}], "random_either": false}]}}}

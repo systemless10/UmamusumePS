@@ -1,0 +1,241 @@
+{
+  "ts": 1784318224.166541,
+  "direction": "RES",
+  "endpoint": "single_mode_team/factor_select",
+  "data": {
+    "response_code": 1,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784318222,
+      "result_code": 1,
+      "notifications": {
+        "unread_information_exists": 1,
+        "trophy_badge_flag": 1,
+        "new_honor_data_array": [
+          {
+            "honor_id": 501101,
+            "create_time": "2026-07-17 19:04:57"
+          },
+          {
+            "honor_id": 502204,
+            "create_time": "2026-07-16 17:56:05"
+          }
+        ]
+      }
+    },
+    "data": {
+      "single_mode_factor_select_common": {
+        "rank_score": 2147483647,
+        "rank": 98,
+        "lottery_remain_num": 1,
+        "lottery_count": 1,
+        "factor_select_info_array": [
+          {
+            "lottery_id": 1,
+            "factor_info_array": [
+              {
+                "factor_id": 401,
+                "level": 0
+              },
+              {
+                "factor_id": 2101,
+                "level": 0
+              },
+              {
+                "factor_id": 10040201,
+                "level": 0
+              },
+              {
+                "factor_id": 2011101,
+                "level": 0
+              },
+              {
+                "factor_id": 1000301,
+                "level": 0
+              },
+              {
+                "factor_id": 1001601,
+                "level": 0
+              },
+              {
+                "factor_id": 2100101,
+                "level": 0
+              },
+              {
+                "factor_id": 401,
+                "level": 0
+              },
+              {
+                "factor_id": 2101,
+                "level": 0
+              },
+              {
+                "factor_id": 10040201,
+                "level": 0
+              },
+              {
+                "factor_id": 2011101,
+                "level": 0
+              },
+              {
+                "factor_id": 1000301,
+                "level": 0
+              },
+              {
+                "factor_id": 1001601,
+                "level": 0
+              },
+              {
+                "factor_id": 2100101,
+                "level": 0
+              },
+              {
+                "factor_id": 401,
+                "level": 0
+              },
+              {
+                "factor_id": 2101,
+                "level": 0
+              },
+              {
+                "factor_id": 10040201,
+                "level": 0
+              },
+              {
+                "factor_id": 2011101,
+                "level": 0
+              },
+              {
+                "factor_id": 1000301,
+                "level": 0
+              },
+              {
+                "factor_id": 1001601,
+                "level": 0
+              },
+              {
+                "factor_id": 2100101,
+                "level": 0
+              },
+              {
+                "factor_id": 401,
+                "level": 0
+              },
+              {
+                "factor_id": 2101,
+                "level": 0
+              },
+              {
+                "factor_id": 10040201,
+                "level": 0
+              },
+              {
+                "factor_id": 2011101,
+                "level": 0
+              },
+              {
+                "factor_id": 1000301,
+                "level": 0
+              },
+              {
+                "factor_id": 1001601,
+                "level": 0
+              },
+              {
+                "factor_id": 2100101,
+                "level": 0
+              },
+              {
+                "factor_id": 401,
+                "level": 0
+              },
+              {
+                "factor_id": 2101,
+                "level": 0
+              },
+              {
+                "factor_id": 10040201,
+                "level": 0
+              },
+              {
+                "factor_id": 2011101,
+                "level": 0
+              },
+              {
+                "factor_id": 1000301,
+                "level": 0
+              },
+              {
+                "factor_id": 1001601,
+                "level": 0
+              },
+              {
+                "factor_id": 2100101,
+                "level": 0
+              },
+              {
+                "factor_id": 401,
+                "level": 0
+              },
+              {
+                "factor_id": 2101,
+                "level": 0
+              },
+              {
+                "factor_id": 10040201,
+                "level": 0
+              },
+              {
+                "factor_id": 2011101,
+                "level": 0
+              },
+              {
+                "factor_id": 1000301,
+                "level": 0
+              },
+              {
+                "factor_id": 1001601,
+                "level": 0
+              },
+              {
+                "factor_id": 2100101,
+                "level": 0
+              },
+              {
+                "factor_id": 401,
+                "level": 0
+              },
+              {
+                "factor_id": 2101,
+                "level": 0
+              },
+              {
+                "factor_id": 10040201,
+                "level": 0
+              },
+              {
+                "factor_id": 2011101,
+                "level": 0
+              },
+              {
+                "factor_id": 1000301,
+                "level": 0
+              },
+              {
+                "factor_id": 1001601,
+                "level": 0
+              },
+              {
+                "factor_id": 2100101,
+                "level": 0
+              }
+            ]
+          }
+        ],
+        "factor_relottery_info_array": []
+      }
+    }
+  },
+  "req_id": "91ec6882"
+}

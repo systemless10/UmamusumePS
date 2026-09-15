@@ -1,0 +1,1 @@
+{"kind": "support", "id": 30303, "url": "https://gametora.com/umamusume/supports/30303-blast-onepiece", "events": {"": {"name": "違う手と手を、繋ぐんだ！", "id": 1291, "choices": [{"label": "", "effects": [{"type": "stamina", "value": "+15"}, {"type": "skill_hint", "value": "+1", "skill_id": 202471}, {"type": "bond", "value": "+5", "char_id": 1128}], "random_either": false}]}}}

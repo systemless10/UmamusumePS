@@ -1,0 +1,15 @@
+{
+  "ts": 1784318063.244156,
+  "direction": "RES",
+  "endpoint": "single_mode_team/continue",
+  "data": {
+    "response_code": 205,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784318062,
+      "result_code": 205
+    }
+  },
+  "req_id": "02a4a636"
+}

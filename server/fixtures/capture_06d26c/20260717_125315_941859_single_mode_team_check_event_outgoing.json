@@ -1,0 +1,29 @@
+{
+ "ts": 1784317995.9418595,
+ "direction": "REQ",
+ "endpoint": "single_mode_team/check_event",
+ "data": {
+  "payload": {
+   "event_id": 11526,
+   "chara_id": 1004,
+   "choice_number": 0,
+   "current_turn": 31,
+   "viewer_id": "<redacted>",
+   "device": 4,
+   "device_id": "<redacted>",
+   "device_name": "<redacted>",
+   "graphics_device_name": "<redacted>",
+   "ip_address": "<redacted>",
+   "platform_os_version": "Windows 11  (10.0.26200) 64bit",
+   "carrier": "",
+   "keychain": 0,
+   "locale": "JPN",
+   "button_info": "",
+   "dmm_viewer_id": null,
+   "dmm_onetime_token": null,
+   "steam_id": "<redacted>",
+   "steam_session_ticket": "<redacted>"
+  }
+ },
+ "req_id": "3d440261"
+}

@@ -1,0 +1,1 @@
+{"kind": "support", "id": 30243, "url": "https://gametora.com/umamusume/supports/30243-gran-alegria", "events": {"": {"name": "一番強いのは！", "id": 1132, "choices": [{"label": "", "effects": [{"type": "power", "value": "+5"}, {"type": "skill_hint", "value": "+1", "skill_id": 201033}, {"type": "bond", "value": "+5", "char_id": 1131}], "random_either": false}]}}}

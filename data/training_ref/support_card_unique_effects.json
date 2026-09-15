@@ -1,0 +1,6026 @@
+[
+  {
+    "support_card_id": 20001,
+    "chara_id": 1005,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Well, Look Who's Home",
+    "description": "Skill Point Bonus and Initial Wit",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "skill_point_bonus",
+        "effect_type_code": 30,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_wit",
+        "effect_type_code": 13,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 30,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 13,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20002,
+    "chara_id": 1009,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Nothing Hard Work Can't Solve!",
+    "description": "Mood Effect and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20003,
+    "chara_id": 1012,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Reach the Top!",
+    "description": "Friendship Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20004,
+    "chara_id": 1018,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Nothing Escapes the Vice Prez",
+    "description": "Mood Effect and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20005,
+    "chara_id": 1019,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Digital's Recharge Station",
+    "description": "Friendship Bonus and Initial Power",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_power",
+        "effect_type_code": 11,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 11,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20006,
+    "chara_id": 1023,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Trial Initiation",
+    "description": "Training Effectiveness and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20007,
+    "chara_id": 1024,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Cute + Cute = ?",
+    "description": "Friendship Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20008,
+    "chara_id": 1025,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "My Solo Drawn to Raindrop Drums",
+    "description": "Training Effectiveness and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20009,
+    "chara_id": 1026,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Pal-Assisted Training",
+    "description": "Friendship Bonus and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20010,
+    "chara_id": 1027,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "On and Off the Court",
+    "description": "Mood Effect and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20011,
+    "chara_id": 1029,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "City Girl 101",
+    "description": "Guts Bonus and Initial Guts",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "guts_bonus",
+        "effect_type_code": 6,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_guts",
+        "effect_type_code": 12,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 6,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 12,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20012,
+    "chara_id": 1032,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Experimental Studies on Subject A",
+    "description": "Skill Point Bonus and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "skill_point_bonus",
+        "effect_type_code": 30,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 30,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20013,
+    "chara_id": 1037,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "5:00 a.m.—Right on Schedule",
+    "description": "Mood Effect and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20014,
+    "chara_id": 1050,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Poolside High Tides",
+    "description": "Mood Effect and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20015,
+    "chara_id": 1055,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "A Marvelous ☆ Plan",
+    "description": "Mood Effect and Initial Wit",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_wit",
+        "effect_type_code": 13,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 13,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20016,
+    "chara_id": 1056,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Fate's Forecast",
+    "description": "Friendship Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20017,
+    "chara_id": 1058,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Fighting for Fortune",
+    "description": "Training Effectiveness and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20018,
+    "chara_id": 1059,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Ignore the Stares",
+    "description": "Training Effectiveness and Initial Wit",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_wit",
+        "effect_type_code": 13,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 13,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20019,
+    "chara_id": 1060,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "It's Just Water",
+    "description": "Mood Effect and Initial Guts",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_guts",
+        "effect_type_code": 12,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 12,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20020,
+    "chara_id": 1061,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "First-Rate Plan",
+    "description": "Speed Bonus and Initial Speed",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_speed",
+        "effect_type_code": 9,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 9,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20021,
+    "chara_id": 9004,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Trainers' Teamwork",
+    "description": "Failure Protection and Energy Cost Reduction",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "failure_rate_down",
+        "effect_type_code": 27,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "energy_cost_down",
+        "effect_type_code": 28,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 27,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 28,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20022,
+    "chara_id": 1021,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Now Dat's What I Call Grilled Squid!",
+    "description": "Skill Point Bonus and Initial Guts",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "skill_point_bonus",
+        "effect_type_code": 30,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_guts",
+        "effect_type_code": 12,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 30,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 12,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20023,
+    "chara_id": 1044,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Lamplit Training of a Witch-to-Be",
+    "description": "Training Effectiveness and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20024,
+    "chara_id": 1065,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Let's Get This Party Lit!",
+    "description": "Mood Effect and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20025,
+    "chara_id": 1063,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Never Skip Warm-Ups",
+    "description": "Wit Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "wit_bonus",
+        "effect_type_code": 7,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 7,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20026,
+    "chara_id": 1060,
+    "rarity": 2,
+    "unlock_level": 35,
+    "unique_skill_name": "Messing Around",
+    "description": "Training Effectiveness and Initial Wit",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_wit",
+        "effect_type_code": 13,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 13,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20027,
+    "chara_id": 1051,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Lifting Your Spirits",
+    "description": "Mood Effect and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20028,
+    "chara_id": 1047,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "The Perfect Book for You",
+    "description": "Friendship Bonus and Initial Stamina",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_stamina",
+        "effect_type_code": 10,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 10,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20029,
+    "chara_id": 1042,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "The World's My Oyster",
+    "description": "Friendship Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20030,
+    "chara_id": 1031,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "You Earned It!",
+    "description": "Mood Effect and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20031,
+    "chara_id": 1043,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "///WARNING GATE///",
+    "description": "Friendship Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20032,
+    "chara_id": 1034,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Laughing through the Mud",
+    "description": "Friendship Bonus and Stamina Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "stamina_bonus",
+        "effect_type_code": 4,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 4,
+      "value_1": 1,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20033,
+    "chara_id": 1014,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Mud-Caked Compañero",
+    "description": "Speed Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20034,
+    "chara_id": 1071,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "My Heart Will Go On",
+    "description": "Mood Effect and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20035,
+    "chara_id": 1048,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Turf as Nails",
+    "description": "Mood Effect and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20037,
+    "chara_id": 1022,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Grma, Ramen ♪",
+    "description": "Power Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20038,
+    "chara_id": 1070,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "The Brightest Star Shines On",
+    "description": "Training Effectiveness and Initial Speed",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_speed",
+        "effect_type_code": 9,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 9,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20039,
+    "chara_id": 1008,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "An Annoying Supervisor",
+    "description": "Training Effectiveness and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20040,
+    "chara_id": 1027,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Hot Hearts and Cool Drinks",
+    "description": "Friendship Bonus and Guts Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "guts_bonus",
+        "effect_type_code": 6,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 6,
+      "value_1": 1,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20041,
+    "chara_id": 1033,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Aim for the Brightest",
+    "description": "Speed Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20042,
+    "chara_id": 1041,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "The Perfect Morning Greeting!",
+    "description": "Friendship Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20043,
+    "chara_id": 1001,
+    "rarity": 2,
+    "unlock_level": 35,
+    "unique_skill_name": "At the End of the Day",
+    "description": "Training Effectiveness and Initial Power",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_power",
+        "effect_type_code": 11,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 11,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20044,
+    "chara_id": 1038,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Cozy Cute Memory ♪",
+    "description": "Friendship Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20045,
+    "chara_id": 1046,
+    "rarity": 2,
+    "unlock_level": 35,
+    "unique_skill_name": "Almost... an Umadol?! ♡",
+    "description": "Training Effectiveness and Initial Power",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_power",
+        "effect_type_code": 11,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 11,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20046,
+    "chara_id": 1044,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Reckless Witch Training",
+    "description": "Training Effectiveness and Initial Wit",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_wit",
+        "effect_type_code": 13,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 13,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20047,
+    "chara_id": 1003,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Step! Smile! Wink!",
+    "description": "Initial Stamina and Initial Guts",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "initial_stamina",
+        "effect_type_code": 10,
+        "value": 20
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_guts",
+        "effect_type_code": 12,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 10,
+      "value_0": 20,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 12,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20048,
+    "chara_id": 1006,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "I Love You... Dear Food",
+    "description": "Power Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20049,
+    "chara_id": 1040,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Going for Gold",
+    "description": "Speed Bonus and Initial Wit",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_wit",
+        "effect_type_code": 13,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 13,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20050,
+    "chara_id": 1020,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "Bobbing with the Waves",
+    "description": "Training Effectiveness and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 20051,
+    "chara_id": 1093,
+    "rarity": 2,
+    "unlock_level": 25,
+    "unique_skill_name": "The 3rd Miracle",
+    "description": "Friendship Bonus and Skill Pts Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "skill_point_bonus",
+        "effect_type_code": 30,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 30,
+      "value_1": 1,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30001,
+    "chara_id": 1001,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "The Brightest Star in Japan!",
+    "description": "Guts Bonus and Initial Guts",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "guts_bonus",
+        "effect_type_code": 6,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_guts",
+        "effect_type_code": 12,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 6,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 12,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30002,
+    "chara_id": 1002,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Beyond This Shining Moment",
+    "description": "Mood Effect and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30003,
+    "chara_id": 1003,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Dream Big!",
+    "description": "Friendship Bonus and Initial Speed",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_speed",
+        "effect_type_code": 9,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 9,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30004,
+    "chara_id": 1007,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Breakaway Battleship",
+    "description": "Training Effectiveness and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30005,
+    "chara_id": 1008,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Wild Rider",
+    "description": "Friendship Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30006,
+    "chara_id": 1011,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Fairest Fleur",
+    "description": "Mood Effect and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30007,
+    "chara_id": 1014,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Champion's Passion",
+    "description": "Friendship Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30008,
+    "chara_id": 1020,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Foolproof Plan",
+    "description": "Mood Effect and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30009,
+    "chara_id": 1021,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Split the Sky, White Lightning!",
+    "description": "Training Effectiveness and Initial Stamina",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_stamina",
+        "effect_type_code": 10,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 10,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30010,
+    "chara_id": 1022,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Wave of Gratitude",
+    "description": "Friendship Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30011,
+    "chara_id": 1031,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Watch My Star Fly!",
+    "description": "Training Effectiveness and Initial Guts",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_guts",
+        "effect_type_code": 12,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 12,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30012,
+    "chara_id": 1035,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "BNWinner!",
+    "description": "Friendship Bonus and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30013,
+    "chara_id": 1036,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "7 More Centimeters",
+    "description": "Mood Effect and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30014,
+    "chara_id": 1040,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Run(my)way",
+    "description": "Speed Bonus and Initial Speed",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_speed",
+        "effect_type_code": 9,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 9,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30015,
+    "chara_id": 1041,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Eat Fast! Yum Fast!",
+    "description": "Friendship Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30016,
+    "chara_id": 1045,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Piece of Mind",
+    "description": "Friendship Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30017,
+    "chara_id": 1046,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "My Umadol Way ☆",
+    "description": "Power Bonus and Initial Power",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_power",
+        "effect_type_code": 11,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 11,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30018,
+    "chara_id": 1051,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Even the Littlest Bud",
+    "description": "Mood Effect and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30019,
+    "chara_id": 1052,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Urara's Day Off!",
+    "description": "Friendship Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30020,
+    "chara_id": 1054,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Double Carrot Punch!",
+    "description": "Training Effectiveness and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30021,
+    "chara_id": 9001,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Tracen Reception",
+    "description": "Failure Protection and Energy Cost Reduction",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "failure_rate_down",
+        "effect_type_code": 27,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "energy_cost_down",
+        "effect_type_code": 28,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 27,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 28,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30022,
+    "chara_id": 1013,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Your Team Ace",
+    "description": "Stamina Bonus and Initial Stamina",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "stamina_bonus",
+        "effect_type_code": 4,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_stamina",
+        "effect_type_code": 10,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 4,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 10,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30023,
+    "chara_id": 1030,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Showered in Joy",
+    "description": "Friendship Bonus and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30024,
+    "chara_id": 1006,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Get Lots of Hugs for Me",
+    "description": "Power Bonus and Initial Power",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_power",
+        "effect_type_code": 11,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 11,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30025,
+    "chara_id": 1001,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "The Setting Sun and Rising Stars",
+    "description": "Training Effectiveness and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30026,
+    "chara_id": 1066,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Turbo Booooost!",
+    "description": "Mood Effect and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30027,
+    "chara_id": 1064,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Go Ahead and Laugh",
+    "description": "Training Effectiveness and Initial Guts",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_guts",
+        "effect_type_code": 12,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 12,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30028,
+    "chara_id": 1068,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Fire at My Heels",
+    "description": "Training Effectiveness and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30029,
+    "chara_id": 1067,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "The Will to Overtake",
+    "description": "Mood Effect and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30030,
+    "chara_id": 1062,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Just Keep Going",
+    "description": "Friendship Bonus and Initial Guts",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_guts",
+        "effect_type_code": 12,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 12,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30031,
+    "chara_id": 1029,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Hometown Cheers",
+    "description": "Training Effectiveness and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30032,
+    "chara_id": 1072,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Fiery Discipline",
+    "description": "Training Effectiveness and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30033,
+    "chara_id": 1035,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Dreams <I>Do</I> Come True!",
+    "description": "Friendship Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30034,
+    "chara_id": 1030,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Happiness Just around the Bend",
+    "description": "Stamina Bonus and Training Effectiveness",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "stamina_bonus",
+        "effect_type_code": 4,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 4,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 8,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30036,
+    "chara_id": 9006,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Planned Perfection",
+    "description": "Failure Protection and Energy Cost Reduction",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "failure_rate_down",
+        "effect_type_code": 27,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "energy_cost_down",
+        "effect_type_code": 28,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 27,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 28,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30038,
+    "chara_id": 1069,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Peak Sakura Season",
+    "description": "Training Effectiveness and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30039,
+    "chara_id": 1039,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Princess Bride",
+    "description": "Speed Bonus and Initial Speed",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_speed",
+        "effect_type_code": 9,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 9,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30040,
+    "chara_id": 1028,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Who Wants the First Bite?",
+    "description": "Mood Effect and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30041,
+    "chara_id": 1059,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "My Thoughts, My Desires",
+    "description": "Training Effectiveness and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30042,
+    "chara_id": 1053,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Head-on Fight!",
+    "description": "Power Bonus and Initial Power",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_power",
+        "effect_type_code": 11,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 11,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30043,
+    "chara_id": 1049,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "43, 8, 1",
+    "description": "Friendship Bonus and Guts Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "guts_bonus",
+        "effect_type_code": 6,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 6,
+      "value_1": 1,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30044,
+    "chara_id": 1016,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Two Pieces",
+    "description": "Speed Bonus and Initial Speed",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_speed",
+        "effect_type_code": 9,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 9,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30045,
+    "chara_id": 1044,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "It's All Mine!",
+    "description": "Friendship Bonus and Speed Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 3,
+      "value_1": 1,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30046,
+    "chara_id": 1035,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Full-Blown Tantrum",
+    "description": "Mood Effect and Stamina Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "stamina_bonus",
+        "effect_type_code": 4,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 4,
+      "value_1": 1,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30047,
+    "chara_id": 1009,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Mini☆Vacation",
+    "description": "Training Effectiveness and Initial Power",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_power",
+        "effect_type_code": 11,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 11,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30048,
+    "chara_id": 1027,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Winning Pitch",
+    "description": "Power Bonus and Skill Point Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "skill_point_bonus",
+        "effect_type_code": 30,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 30,
+      "value_1": 1,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30052,
+    "chara_id": 9008,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "From the Ground Up",
+    "description": "Training Energy Cost Reduction when Friendship Training occurs",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "friendship_energy_cost_down",
+        "effect_type_code": 113,
+        "raw_values": [
+          28,
+          30,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 113,
+      "value_0": 28,
+      "value_0_1": 30,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30053,
+    "chara_id": 1010,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Hands Up, Crook!",
+    "description": "Speed Bonus and Skill Point Bonus (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "speed_bonus",
+            "effect_type_code": 3,
+            "value": 1
+          },
+          {
+            "effect_type": "skill_point_bonus",
+            "effect_type_code": 30,
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 3,
+      "value_0_2": 1,
+      "value_0_3": 30,
+      "value_0_4": 1,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30054,
+    "chara_id": 1060,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Daring to Dream",
+    "description": "Wit Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "wit_bonus",
+        "effect_type_code": 7,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 7,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30055,
+    "chara_id": 1020,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Paint the Sky Red",
+    "description": "Speed Bonus and Initial Wit",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_wit",
+        "effect_type_code": 13,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 13,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30056,
+    "chara_id": 1061,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Tonight, We Waltz",
+    "description": "Friendship Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30057,
+    "chara_id": 1007,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "That Time I Became the Strongest",
+    "description": "Power Bonus and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30058,
+    "chara_id": 1003,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Regal Racers",
+    "description": "Power Bonus and Initial Power",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_power",
+        "effect_type_code": 11,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 11,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30059,
+    "chara_id": 1026,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Fugue of Fortune",
+    "description": "Stamina Bonus and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "stamina_bonus",
+        "effect_type_code": 4,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 4,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30060,
+    "chara_id": 1066,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Constellation of Stars",
+    "description": "Guts Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "guts_bonus",
+        "effect_type_code": 6,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 6,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30061,
+    "chara_id": 1023,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Our Resounding Steps",
+    "description": "Wit Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "wit_bonus",
+        "effect_type_code": 7,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 7,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30062,
+    "chara_id": 1002,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Winning Dream",
+    "description": "Training Effectiveness and Initial Stamina",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_stamina",
+        "effect_type_code": 10,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 10,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30063,
+    "chara_id": 1063,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Warm Heart, Soft Steps",
+    "description": "Training Effectiveness and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30064,
+    "chara_id": 1021,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Beware! Halloween Night!",
+    "description": "Friendship Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30065,
+    "chara_id": 1047,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Magical Heroine",
+    "description": "Friendship Bonus and Training Effectiveness",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 8,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30066,
+    "chara_id": 1026,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "The Ghost Finds Halloween Magic",
+    "description": "Training Effectiveness and Initial Speed",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_speed",
+        "effect_type_code": 9,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 9,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30067,
+    "chara_id": 1017,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Esteemed and Adored",
+    "description": "Skill Point Bonus (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "skill_point_bonus",
+            "effect_type_code": 30,
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 30,
+      "value_0_2": 2,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30068,
+    "chara_id": 1038,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Cutie Pie with Shining Eyes",
+    "description": "Mood Effect and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30069,
+    "chara_id": 1016,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "The Whistling Arrow's Taunt",
+    "description": "Training Effectiveness and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30070,
+    "chara_id": 1029,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Dancing Light into the Night",
+    "description": "Friendship Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30071,
+    "chara_id": 1065,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Make! Some! NOISE!",
+    "description": "Power Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30072,
+    "chara_id": 1024,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Party Formation",
+    "description": "Power Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30073,
+    "chara_id": 1050,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Strict Shopper",
+    "description": "Speed Bonus and Specialty Priority",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "speed_bonus",
+        "effect_type_code": 3,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "specialty_priority",
+        "effect_type_code": 19,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 3,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 19,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30074,
+    "chara_id": 1055,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Dazzling Day in the Snow",
+    "description": "Friendship Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30075,
+    "chara_id": 1025,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "My Solo Spun in Spiraling Runs",
+    "description": "Friendship Bonus and Stamina Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "friendship_bonus",
+        "effect_type_code": 1,
+        "value": 10
+      },
+      {
+        "kind": "standard",
+        "effect_type": "stamina_bonus",
+        "effect_type_code": 4,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 1,
+      "value_0": 10,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 4,
+      "value_1": 1,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30076,
+    "chara_id": 1002,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Searching for Unseen Sights",
+    "description": "Training Effectiveness and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30077,
+    "chara_id": 1033,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Lucky Star in the Sky",
+    "description": "Training Effectiveness and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30078,
+    "chara_id": 1056,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Touching Sleeves Is Good Luck! ♪",
+    "description": "Mood Effect and Failure Protection",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "mood_effect",
+        "effect_type_code": 2,
+        "value": 15
+      },
+      {
+        "kind": "standard",
+        "effect_type": "failure_rate_down",
+        "effect_type_code": 27,
+        "value": 10
+      }
+    ],
+    "_raw": {
+      "type_0": 2,
+      "value_0": 15,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 27,
+      "value_1": 10,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30079,
+    "chara_id": 1058,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Leaping into the Unknown",
+    "description": "Training Effectiveness and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30080,
+    "chara_id": 9005,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "This Might Sting!",
+    "description": "Increases the frequency at which a certain acupuncturist's event occurs.",
+    "idle_mode_sub_rate": 0,
+    "effects": [],
+    "_raw": {
+      "type_0": 0,
+      "value_0": 0,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30081,
+    "chara_id": 1001,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Passing the Dream On",
+    "description": "Training Effectiveness (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "training_effectiveness",
+            "effect_type_code": 8,
+            "value": 10
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 8,
+      "value_0_2": 10,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30082,
+    "chara_id": 1051,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Little Cupcakes, Big Emotions",
+    "description": "Wit Bonus (Friendship 100+)",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 100,
+        "bonuses": [
+          {
+            "effect_type": "wit_bonus",
+            "effect_type_code": 7,
+            "value": 3
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 100,
+      "value_0_1": 7,
+      "value_0_2": 3,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30083,
+    "chara_id": 1041,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Super! Sonic! Flower Power!",
+    "description": "Increases Training Effectiveness when not on preferred training. (Friendship 80+)",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_not_preferred_facility",
+        "effect_type_code": 102,
+        "raw_values": [
+          80,
+          20,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 102,
+      "value_0": 80,
+      "value_0_1": 20,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30084,
+    "chara_id": 1048,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "My Way",
+    "description": "Training Effectiveness and Hint Frequency",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "training_effectiveness",
+        "effect_type_code": 8,
+        "value": 5
+      },
+      {
+        "kind": "standard",
+        "effect_type": "hint_frequency",
+        "effect_type_code": 18,
+        "value": 20
+      }
+    ],
+    "_raw": {
+      "type_0": 8,
+      "value_0": 5,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 18,
+      "value_1": 20,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30085,
+    "chara_id": 1019,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "A Fan's Joy",
+    "description": "Increases Training Effectiveness if deck has 5+ different card types.",
+    "idle_mode_sub_rate": 10,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_deck_type_count",
+        "effect_type_code": 103,
+        "raw_values": [
+          5,
+          15,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 103,
+      "value_0": 5,
+      "value_0_1": 15,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30086,
+    "chara_id": 1077,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Peachy Silhouette",
+    "description": "Increases Training Effectiveness based on fans gained, up to 200,000 fans.",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_fans_gained",
+        "effect_type_code": 104,
+        "raw_values": [
+          10000,
+          20,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 104,
+      "value_0": 10000,
+      "value_0_1": 20,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30087,
+    "chara_id": 1074,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Little by Little",
+    "description": "Stamina Bonus (Friendship 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "stamina_bonus",
+            "effect_type_code": 4,
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 4,
+      "value_0_2": 2,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30088,
+    "chara_id": 1067,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Special Dreamers!",
+    "description": "Increases Training Effectiveness if deck has 4+ different card types.",
+    "idle_mode_sub_rate": 10,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_deck_type_count",
+        "effect_type_code": 103,
+        "raw_values": [
+          4,
+          10,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 103,
+      "value_0": 4,
+      "value_0_1": 10,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30089,
+    "chara_id": 1055,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "A MORE MARVELOUS WORLD! ☆",
+    "description": "Mood Effect (Friendship Gauge 100+)",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 100,
+        "bonuses": [
+          {
+            "effect_type": "mood_effect",
+            "effect_type_code": 2,
+            "value": 60
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 100,
+      "value_0_1": 2,
+      "value_0_2": 60,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30090,
+    "chara_id": 1017,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Enchaînement",
+    "description": "Initial Stats are increased based on the types of cards in the deck",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "initial_stat_deck_composition (gametora-confirmed, career-seed only)",
+        "effect_type_code": 105,
+        "raw_values": [
+          10,
+          2,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 105,
+      "value_0": 10,
+      "value_0_1": 2,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30091,
+    "chara_id": 1070,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Escorte Étoile",
+    "description": "Friendship Training with this card gives Friendship Bonus (up to 5 stacks)",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "friendship_bonus_stacking (gametora-confirmed, per-career counter)",
+        "effect_type_code": 106,
+        "raw_values": [
+          5,
+          1,
+          3,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 106,
+      "value_0": 5,
+      "value_0_1": 1,
+      "value_0_2": 3,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30092,
+    "chara_id": 1036,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Mag!c Number",
+    "description": "Speed Bonus (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "speed_bonus",
+            "effect_type_code": 3,
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 3,
+      "value_0_2": 2,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30093,
+    "chara_id": 1009,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Number 1 Outfit",
+    "description": "Power Bonus (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "power_bonus",
+            "effect_type_code": 5,
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 5,
+      "value_0_2": 2,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30094,
+    "chara_id": 1053,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Make These Feelings Reach You!",
+    "description": "Friendship Bonus based on how low Energy is",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "friendship_bonus_if_low_energy (TEMPORARY placeholder rate -- gametora exposed no numbers for this card, see training_formula.py)",
+        "effect_type_code": 107,
+        "raw_values": [
+          1,
+          10,
+          30,
+          15,
+          5
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 107,
+      "value_0": 1,
+      "value_0_1": 10,
+      "value_0_2": 30,
+      "value_0_3": 15,
+      "value_0_4": 5,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30095,
+    "chara_id": 1042,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Cheer that Changed the World",
+    "description": "Training Effectiveness based on max Energy",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_max_energy (gametora-confirmed)",
+        "effect_type_code": 108,
+        "raw_values": [
+          8,
+          100,
+          75,
+          5,
+          20
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 108,
+      "value_0": 8,
+      "value_0_1": 100,
+      "value_0_2": 75,
+      "value_0_3": 5,
+      "value_0_4": 20,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30096,
+    "chara_id": 1039,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Go Go☆Princess!",
+    "description": "Power Bonus and Race Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "race_bonus",
+        "effect_type_code": 15,
+        "value": 5
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 15,
+      "value_1": 5,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30097,
+    "chara_id": 1057,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Dear Mr. C.B.",
+    "description": "Wit Bonus and Skill Point Bonus (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "wit_bonus",
+            "effect_type_code": 7,
+            "value": 1
+          },
+          {
+            "effect_type": "skill_point_bonus",
+            "effect_type_code": 30,
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 7,
+      "value_0_2": 1,
+      "value_0_3": 30,
+      "value_0_4": 1,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30098,
+    "chara_id": 1052,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Sunny Passion ♪",
+    "description": "Hint Event Effectiveness and Skill Point Bonus",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "skill_point_bonus",
+        "effect_type_code": 30,
+        "value": 1
+      }
+    ],
+    "_raw": {
+      "type_0": 30,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30099,
+    "chara_id": 1063,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Beloved Orchid Bouquet",
+    "description": "Training Effectiveness based on total Friendship of cards in deck",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_deck_bond_sum (gametora-confirmed)",
+        "effect_type_code": 109,
+        "raw_values": [
+          8,
+          30,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 109,
+      "value_0": 8,
+      "value_0_1": 30,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30100,
+    "chara_id": 1030,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Day I Dreamed Of",
+    "description": "Training Effectiveness (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "training_effectiveness",
+            "effect_type_code": 8,
+            "value": 10
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 8,
+      "value_0_2": 10,
+      "value_0_3": 0,
+      "value_0_4": 1,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30101,
+    "chara_id": 1032,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Q≠0",
+    "description": "Friendship Bonus (Friendship Gauge 100+)",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 100,
+        "bonuses": [
+          {
+            "effect_type": "friendship_bonus",
+            "effect_type_code": 1,
+            "value": 20
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 100,
+      "value_0_1": 1,
+      "value_0_2": 20,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30102,
+    "chara_id": 1014,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Twinkle in Your Eyes ∞",
+    "description": "Training Effectiveness based on number of cards trained with",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_cards_in_facility (gametora-confirmed)",
+        "effect_type_code": 110,
+        "raw_values": [
+          8,
+          5,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 110,
+      "value_0": 8,
+      "value_0_1": 5,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30103,
+    "chara_id": 1062,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Machitan☆Adventure",
+    "description": "Wit Friendship Recovery (Friendship Gauge 100+)",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 100,
+        "bonuses": [
+          {
+            "effect_type": "wit_friendship_recovery",
+            "effect_type_code": 31,
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 100,
+      "value_0_1": 31,
+      "value_0_2": 5,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30104,
+    "chara_id": 1047,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "\"Rhodonite and the Dreamstone\"",
+    "description": "Training Effectiveness (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "training_effectiveness",
+            "effect_type_code": 8,
+            "value": 10
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 8,
+      "value_0_2": 10,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30105,
+    "chara_id": 1001,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Take Hold of Our Dreams!",
+    "description": "Power Bonus and Initial Friendship Gauge",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "standard",
+        "effect_type": "power_bonus",
+        "effect_type_code": 5,
+        "value": 1
+      },
+      {
+        "kind": "standard",
+        "effect_type": "initial_bond",
+        "effect_type_code": 14,
+        "value": 15
+      }
+    ],
+    "_raw": {
+      "type_0": 5,
+      "value_0": 1,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 14,
+      "value_1": 15,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30106,
+    "chara_id": 1018,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Tailwind to My Goals",
+    "description": "Power Bonus and Skill Point Bonus (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "power_bonus",
+            "effect_type_code": 5,
+            "value": 1
+          },
+          {
+            "effect_type": "skill_point_bonus",
+            "effect_type_code": 30,
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 5,
+      "value_0_2": 1,
+      "value_0_3": 30,
+      "value_0_4": 1,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30107,
+    "chara_id": 1004,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Sentimental Flare ♪",
+    "description": "Training Effectiveness based on Training Level",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_facility_level (gametora-confirmed)",
+        "effect_type_code": 111,
+        "raw_values": [
+          8,
+          5,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 111,
+      "value_0": 8,
+      "value_0_1": 5,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30108,
+    "chara_id": 1049,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Trusting the Dice",
+    "description": "Failure rate may be reduced to 0% when training occurs",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "failure_rate_zero_chance (gametora-confirmed proc)",
+        "effect_type_code": 112,
+        "raw_values": [
+          20,
+          0,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 112,
+      "value_0": 20,
+      "value_0_1": 0,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30109,
+    "chara_id": 1069,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "A Good Heart Blossoms to Its Fullest",
+    "description": "Training Effectiveness (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "training_effectiveness",
+            "effect_type_code": 8,
+            "value": 10
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 8,
+      "value_0_2": 10,
+      "value_0_3": 0,
+      "value_0_4": 1,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30110,
+    "chara_id": 1025,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "It's on the House",
+    "description": "Stamina Bonus (Friendship 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "stamina_bonus",
+            "effect_type_code": 4,
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 4,
+      "value_0_2": 2,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30111,
+    "chara_id": 1003,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Teio-Oo-Oo!!!",
+    "description": "Training Effectiveness based on total Friendship of cards in deck",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_deck_bond_sum (gametora-confirmed)",
+        "effect_type_code": 109,
+        "raw_values": [
+          8,
+          30,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 109,
+      "value_0": 8,
+      "value_0_1": 30,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30112,
+    "chara_id": 1066,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "TT Ignition!",
+    "description": "Friendship Training with this card gives Friendship Bonus (up to 5 stacks)",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "friendship_bonus_stacking (gametora-confirmed, per-career counter)",
+        "effect_type_code": 106,
+        "raw_values": [
+          5,
+          1,
+          3,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 106,
+      "value_0": 5,
+      "value_0_1": 1,
+      "value_0_2": 3,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30113,
+    "chara_id": 1023,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Uchronia Architect",
+    "description": "Training Effectiveness (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "training_effectiveness",
+            "effect_type_code": 8,
+            "value": 10
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 8,
+      "value_0_2": 10,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30114,
+    "chara_id": 1085,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Ah, Such Majesty",
+    "description": "Power Bonus (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "power_bonus",
+            "effect_type_code": 5,
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 5,
+      "value_0_2": 2,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30115,
+    "chara_id": 1064,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Moonlit Devil ♪",
+    "description": "Training Effectiveness based on how high Energy is",
+    "idle_mode_sub_rate": 30,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "training_bonus_if_current_energy (gametora-confirmed)",
+        "effect_type_code": 114,
+        "raw_values": [
+          8,
+          5,
+          20,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 114,
+      "value_0": 8,
+      "value_0_1": 5,
+      "value_0_2": 20,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30116,
+    "chara_id": 1065,
+    "rarity": 3,
+    "unlock_level": 30,
+    "unique_skill_name": "Sunlit Angel ♪",
+    "description": "Initial Stats are increased based on the types of cards in the deck",
+    "idle_mode_sub_rate": 0,
+    "effects": [
+      {
+        "kind": "implemented",
+        "name": "initial_stat_deck_composition (gametora-confirmed, career-seed only)",
+        "effect_type_code": 105,
+        "raw_values": [
+          10,
+          2,
+          0,
+          0,
+          0
+        ],
+        "wired_in": "training_formula.py"
+      }
+    ],
+    "_raw": {
+      "type_0": 105,
+      "value_0": 10,
+      "value_0_1": 2,
+      "value_0_2": 0,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30117,
+    "chara_id": 1043,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "Onwards, Demon Queen Lackeys!",
+    "description": "Training Effectiveness (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "training_effectiveness",
+            "effect_type_code": 8,
+            "value": 10
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 8,
+      "value_0_2": 10,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  },
+  {
+    "support_card_id": 30121,
+    "chara_id": 1026,
+    "rarity": 3,
+    "unlock_level": 40,
+    "unique_skill_name": "U & Me",
+    "description": "Training Effectiveness (Friendship Gauge 80+)",
+    "idle_mode_sub_rate": 20,
+    "effects": [
+      {
+        "kind": "friendship_gated_dual_bonus",
+        "friendship_threshold": 80,
+        "bonuses": [
+          {
+            "effect_type": "training_effectiveness",
+            "effect_type_code": 8,
+            "value": 10
+          }
+        ]
+      }
+    ],
+    "_raw": {
+      "type_0": 101,
+      "value_0": 80,
+      "value_0_1": 8,
+      "value_0_2": 10,
+      "value_0_3": 0,
+      "value_0_4": 0,
+      "type_1": 0,
+      "value_1": 0,
+      "value_1_1": 0,
+      "value_1_2": 0,
+      "value_1_3": 0,
+      "value_1_4": 0
+    }
+  }
+]

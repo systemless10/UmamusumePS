@@ -1,0 +1,1008 @@
+{
+ "seq": 27,
+ "endpoint": "idle_single_mode/pre_start",
+ "path": "/umamusume/idle_single_mode/pre_start",
+ "status": 200,
+ "upstream": "real",
+ "timestamp": "2026-08-18T12:30:08",
+ "request_headers": {
+  "Host": "api.games.umamusume.com",
+  "User-Agent": "UnityPlayer/2022.3.62f2 (UnityWebRequest/1.0, libcurl/8.10.1-DEV)",
+  "Accept": "*/*",
+  "Accept-Encoding": "deflate, gzip",
+  "SID": "REDACTED",
+  "APP-VER": "1.34.0",
+  "RES-VER": "10007400",
+  "Content-Type": "application/x-msgpack",
+  "ViewerID": "REDACTED",
+  "Device": "4",
+  "Device-SubType": "1",
+  "X-Unity-Version": "2022.3.62f2",
+  "Content-Length": "1400"
+ },
+ "response_headers": {
+  "Content-Type": "application/x-msgpack; charset=utf-8",
+  "Content-Length": "7000",
+  "Date": "Tue, 18 Aug 2026 17:30:08 GMT",
+  "Connection": "keep-alive"
+ },
+ "request": {
+  "scenario_id": 0,
+  "viewer_id": 900000000003,
+  "device": 4,
+  "device_id": "REDACTED",
+  "device_name": "REDACTED",
+  "graphics_device_name": "REDACTED",
+  "ip_address": "REDACTED",
+  "platform_os_version": "Windows 11  (10.0.26200) 64bit",
+  "carrier": "",
+  "keychain": 0,
+  "locale": "JPN",
+  "button_info": "",
+  "dmm_viewer_id": null,
+  "dmm_onetime_token": null,
+  "steam_id": "REDACTED",
+  "steam_session_ticket": "REDACTED"
+ },
+ "udid_hex": "REDACTED",
+ "response": {
+  "response_code": 1,
+  "data_headers": {
+   "viewer_id": 900000000003,
+   "sid": "REDACTED",
+   "servertime": 1787074208,
+   "result_code": 1,
+   "notifications": {
+    "trophy_badge_flag": 1,
+    "circle_action_flag": 1,
+    "new_honor_data_array": [
+     {
+      "honor_id": 100186,
+      "create_time": "2026-08-17 21:18:38"
+     },
+     {
+      "honor_id": 100815,
+      "create_time": "2026-08-16 04:47:01"
+     },
+     {
+      "honor_id": 320003,
+      "create_time": "2026-08-16 22:07:41"
+     }
+    ]
+   }
+  },
+  "data": {
+   "reserved_race_info": {
+    "default_deck_num": 0,
+    "needs_default_confirm": 1,
+    "reserved_race_array": [
+     {
+      "deck_num": 1,
+      "deck_name": "Agenda 1",
+      "race_array": [
+       {
+        "year": 1,
+        "program_id": 624
+       },
+       {
+        "year": 1,
+        "program_id": 625
+       },
+       {
+        "year": 1,
+        "program_id": 629
+       },
+       {
+        "year": 1,
+        "program_id": 630
+       },
+       {
+        "year": 1,
+        "program_id": 632
+       },
+       {
+        "year": 1,
+        "program_id": 633
+       },
+       {
+        "year": 1,
+        "program_id": 636
+       },
+       {
+        "year": 2,
+        "program_id": 74
+       },
+       {
+        "year": 2,
+        "program_id": 78
+       },
+       {
+        "year": 2,
+        "program_id": 80
+       },
+       {
+        "year": 2,
+        "program_id": 81
+       },
+       {
+        "year": 2,
+        "program_id": 101
+       },
+       {
+        "year": 2,
+        "program_id": 104
+       },
+       {
+        "year": 2,
+        "program_id": 109
+       },
+       {
+        "year": 2,
+        "program_id": 163
+       },
+       {
+        "year": 2,
+        "program_id": 164
+       },
+       {
+        "year": 2,
+        "program_id": 166
+       },
+       {
+        "year": 2,
+        "program_id": 168
+       },
+       {
+        "year": 2,
+        "program_id": 169
+       },
+       {
+        "year": 2,
+        "program_id": 171
+       },
+       {
+        "year": 2,
+        "program_id": 181
+       },
+       {
+        "year": 2,
+        "program_id": 195
+       },
+       {
+        "year": 2,
+        "program_id": 1023
+       },
+       {
+        "year": 2,
+        "program_id": 1026
+       },
+       {
+        "year": 3,
+        "program_id": 1
+       },
+       {
+        "year": 3,
+        "program_id": 3
+       },
+       {
+        "year": 3,
+        "program_id": 4
+       },
+       {
+        "year": 3,
+        "program_id": 5
+       },
+       {
+        "year": 3,
+        "program_id": 8
+       },
+       {
+        "year": 3,
+        "program_id": 14
+       },
+       {
+        "year": 3,
+        "program_id": 73
+       },
+       {
+        "year": 3,
+        "program_id": 77
+       },
+       {
+        "year": 3,
+        "program_id": 79
+       },
+       {
+        "year": 3,
+        "program_id": 82
+       },
+       {
+        "year": 3,
+        "program_id": 99
+       },
+       {
+        "year": 3,
+        "program_id": 104
+       },
+       {
+        "year": 3,
+        "program_id": 109
+       },
+       {
+        "year": 3,
+        "program_id": 1106
+       },
+       {
+        "year": 3,
+        "program_id": 1109
+       }
+      ]
+     },
+     {
+      "deck_num": 2,
+      "deck_name": "Agenda 2",
+      "race_array": [
+       {
+        "year": 1,
+        "program_id": 624
+       },
+       {
+        "year": 1,
+        "program_id": 625
+       },
+       {
+        "year": 2,
+        "program_id": 74
+       },
+       {
+        "year": 2,
+        "program_id": 76
+       },
+       {
+        "year": 2,
+        "program_id": 78
+       },
+       {
+        "year": 2,
+        "program_id": 80
+       },
+       {
+        "year": 2,
+        "program_id": 164
+       },
+       {
+        "year": 2,
+        "program_id": 166
+       },
+       {
+        "year": 3,
+        "program_id": 2
+       },
+       {
+        "year": 3,
+        "program_id": 4
+       },
+       {
+        "year": 3,
+        "program_id": 73
+       },
+       {
+        "year": 3,
+        "program_id": 75
+       },
+       {
+        "year": 3,
+        "program_id": 79
+       },
+       {
+        "year": 3,
+        "program_id": 1106
+       },
+       {
+        "year": 3,
+        "program_id": 1108
+       },
+       {
+        "year": 3,
+        "program_id": 1109
+       }
+      ]
+     },
+     {
+      "deck_num": 3,
+      "deck_name": "Agenda 3",
+      "race_array": [
+       {
+        "year": 1,
+        "program_id": 624
+       },
+       {
+        "year": 1,
+        "program_id": 625
+       },
+       {
+        "year": 2,
+        "program_id": 74
+       },
+       {
+        "year": 2,
+        "program_id": 77
+       },
+       {
+        "year": 2,
+        "program_id": 78
+       },
+       {
+        "year": 2,
+        "program_id": 80
+       },
+       {
+        "year": 2,
+        "program_id": 162
+       },
+       {
+        "year": 2,
+        "program_id": 164
+       },
+       {
+        "year": 2,
+        "program_id": 166
+       },
+       {
+        "year": 2,
+        "program_id": 1023
+       },
+       {
+        "year": 3,
+        "program_id": 4
+       },
+       {
+        "year": 3,
+        "program_id": 73
+       },
+       {
+        "year": 3,
+        "program_id": 75
+       },
+       {
+        "year": 3,
+        "program_id": 79
+       },
+       {
+        "year": 3,
+        "program_id": 1026
+       },
+       {
+        "year": 3,
+        "program_id": 1106
+       },
+       {
+        "year": 3,
+        "program_id": 1108
+       },
+       {
+        "year": 3,
+        "program_id": 1109
+       }
+      ]
+     },
+     {
+      "deck_num": 4,
+      "deck_name": "Agenda 4",
+      "race_array": [
+       {
+        "year": 1,
+        "program_id": 624
+       },
+       {
+        "year": 1,
+        "program_id": 625
+       },
+       {
+        "year": 2,
+        "program_id": 74
+       },
+       {
+        "year": 2,
+        "program_id": 80
+       },
+       {
+        "year": 2,
+        "program_id": 163
+       },
+       {
+        "year": 2,
+        "program_id": 166
+       },
+       {
+        "year": 2,
+        "program_id": 168
+       },
+       {
+        "year": 2,
+        "program_id": 1023
+       },
+       {
+        "year": 2,
+        "program_id": 1026
+       },
+       {
+        "year": 3,
+        "program_id": 1
+       },
+       {
+        "year": 3,
+        "program_id": 3
+       },
+       {
+        "year": 3,
+        "program_id": 4
+       },
+       {
+        "year": 3,
+        "program_id": 5
+       },
+       {
+        "year": 3,
+        "program_id": 73
+       },
+       {
+        "year": 3,
+        "program_id": 77
+       },
+       {
+        "year": 3,
+        "program_id": 79
+       },
+       {
+        "year": 3,
+        "program_id": 1022
+       },
+       {
+        "year": 3,
+        "program_id": 1106
+       },
+       {
+        "year": 3,
+        "program_id": 1109
+       }
+      ]
+     },
+     {
+      "deck_num": 5,
+      "deck_name": "Agenda 5",
+      "race_array": [
+       {
+        "year": 1,
+        "program_id": 624
+       },
+       {
+        "year": 1,
+        "program_id": 625
+       },
+       {
+        "year": 2,
+        "program_id": 74
+       },
+       {
+        "year": 2,
+        "program_id": 75
+       },
+       {
+        "year": 2,
+        "program_id": 78
+       },
+       {
+        "year": 2,
+        "program_id": 80
+       },
+       {
+        "year": 2,
+        "program_id": 81
+       },
+       {
+        "year": 2,
+        "program_id": 163
+       },
+       {
+        "year": 2,
+        "program_id": 164
+       },
+       {
+        "year": 2,
+        "program_id": 166
+       },
+       {
+        "year": 2,
+        "program_id": 168
+       },
+       {
+        "year": 2,
+        "program_id": 1023
+       },
+       {
+        "year": 2,
+        "program_id": 1026
+       },
+       {
+        "year": 3,
+        "program_id": 1
+       },
+       {
+        "year": 3,
+        "program_id": 3
+       },
+       {
+        "year": 3,
+        "program_id": 4
+       },
+       {
+        "year": 3,
+        "program_id": 5
+       },
+       {
+        "year": 3,
+        "program_id": 73
+       },
+       {
+        "year": 3,
+        "program_id": 75
+       },
+       {
+        "year": 3,
+        "program_id": 77
+       },
+       {
+        "year": 3,
+        "program_id": 79
+       },
+       {
+        "year": 3,
+        "program_id": 1022
+       },
+       {
+        "year": 3,
+        "program_id": 1106
+       },
+       {
+        "year": 3,
+        "program_id": 1109
+       }
+      ]
+     },
+     {
+      "deck_num": 6,
+      "deck_name": "Agenda 6",
+      "race_array": [
+       {
+        "year": 1,
+        "program_id": 623
+       },
+       {
+        "year": 1,
+        "program_id": 625
+       },
+       {
+        "year": 2,
+        "program_id": 74
+       },
+       {
+        "year": 2,
+        "program_id": 78
+       },
+       {
+        "year": 2,
+        "program_id": 80
+       },
+       {
+        "year": 2,
+        "program_id": 85
+       },
+       {
+        "year": 2,
+        "program_id": 162
+       },
+       {
+        "year": 2,
+        "program_id": 164
+       },
+       {
+        "year": 2,
+        "program_id": 165
+       },
+       {
+        "year": 2,
+        "program_id": 167
+       },
+       {
+        "year": 2,
+        "program_id": 171
+       },
+       {
+        "year": 2,
+        "program_id": 176
+       },
+       {
+        "year": 2,
+        "program_id": 183
+       },
+       {
+        "year": 2,
+        "program_id": 1023
+       },
+       {
+        "year": 2,
+        "program_id": 1024
+       },
+       {
+        "year": 2,
+        "program_id": 1027
+       },
+       {
+        "year": 3,
+        "program_id": 3
+       },
+       {
+        "year": 3,
+        "program_id": 5
+       },
+       {
+        "year": 3,
+        "program_id": 8
+       },
+       {
+        "year": 3,
+        "program_id": 9
+       },
+       {
+        "year": 3,
+        "program_id": 11
+       },
+       {
+        "year": 3,
+        "program_id": 33
+       },
+       {
+        "year": 3,
+        "program_id": 73
+       },
+       {
+        "year": 3,
+        "program_id": 76
+       },
+       {
+        "year": 3,
+        "program_id": 79
+       },
+       {
+        "year": 3,
+        "program_id": 80
+       },
+       {
+        "year": 3,
+        "program_id": 85
+       },
+       {
+        "year": 3,
+        "program_id": 109
+       },
+       {
+        "year": 3,
+        "program_id": 1022
+       },
+       {
+        "year": 3,
+        "program_id": 1024
+       },
+       {
+        "year": 3,
+        "program_id": 1027
+       }
+      ]
+     },
+     {
+      "deck_num": 7,
+      "deck_name": "Agenda 7",
+      "race_array": [
+       {
+        "year": 1,
+        "program_id": 623
+       },
+       {
+        "year": 1,
+        "program_id": 625
+       },
+       {
+        "year": 1,
+        "program_id": 629
+       },
+       {
+        "year": 1,
+        "program_id": 630
+       },
+       {
+        "year": 1,
+        "program_id": 632
+       },
+       {
+        "year": 1,
+        "program_id": 633
+       },
+       {
+        "year": 1,
+        "program_id": 636
+       },
+       {
+        "year": 2,
+        "program_id": 74
+       },
+       {
+        "year": 2,
+        "program_id": 75
+       },
+       {
+        "year": 2,
+        "program_id": 77
+       },
+       {
+        "year": 2,
+        "program_id": 78
+       },
+       {
+        "year": 2,
+        "program_id": 162
+       },
+       {
+        "year": 2,
+        "program_id": 164
+       },
+       {
+        "year": 2,
+        "program_id": 165
+       },
+       {
+        "year": 2,
+        "program_id": 167
+       },
+       {
+        "year": 2,
+        "program_id": 171
+       },
+       {
+        "year": 2,
+        "program_id": 176
+       },
+       {
+        "year": 2,
+        "program_id": 183
+       },
+       {
+        "year": 2,
+        "program_id": 1027
+       },
+       {
+        "year": 3,
+        "program_id": 1
+       },
+       {
+        "year": 3,
+        "program_id": 2
+       },
+       {
+        "year": 3,
+        "program_id": 5
+       },
+       {
+        "year": 3,
+        "program_id": 8
+       },
+       {
+        "year": 3,
+        "program_id": 9
+       },
+       {
+        "year": 3,
+        "program_id": 33
+       },
+       {
+        "year": 3,
+        "program_id": 73
+       },
+       {
+        "year": 3,
+        "program_id": 74
+       },
+       {
+        "year": 3,
+        "program_id": 75
+       },
+       {
+        "year": 3,
+        "program_id": 76
+       },
+       {
+        "year": 3,
+        "program_id": 77
+       },
+       {
+        "year": 3,
+        "program_id": 79
+       },
+       {
+        "year": 3,
+        "program_id": 81
+       },
+       {
+        "year": 3,
+        "program_id": 109
+       }
+      ]
+     },
+     {
+      "deck_num": 8,
+      "deck_name": "Agenda 8",
+      "race_array": [
+       {
+        "year": 1,
+        "program_id": 624
+       },
+       {
+        "year": 1,
+        "program_id": 625
+       },
+       {
+        "year": 1,
+        "program_id": 627
+       },
+       {
+        "year": 1,
+        "program_id": 630
+       },
+       {
+        "year": 1,
+        "program_id": 632
+       },
+       {
+        "year": 2,
+        "program_id": 73
+       },
+       {
+        "year": 2,
+        "program_id": 74
+       },
+       {
+        "year": 2,
+        "program_id": 76
+       },
+       {
+        "year": 2,
+        "program_id": 77
+       },
+       {
+        "year": 2,
+        "program_id": 79
+       },
+       {
+        "year": 2,
+        "program_id": 81
+       },
+       {
+        "year": 2,
+        "program_id": 82
+       },
+       {
+        "year": 2,
+        "program_id": 84
+       },
+       {
+        "year": 2,
+        "program_id": 101
+       },
+       {
+        "year": 2,
+        "program_id": 163
+       },
+       {
+        "year": 2,
+        "program_id": 164
+       },
+       {
+        "year": 2,
+        "program_id": 166
+       },
+       {
+        "year": 2,
+        "program_id": 169
+       },
+       {
+        "year": 2,
+        "program_id": 171
+       },
+       {
+        "year": 2,
+        "program_id": 176
+       },
+       {
+        "year": 2,
+        "program_id": 178
+       },
+       {
+        "year": 2,
+        "program_id": 181
+       },
+       {
+        "year": 3,
+        "program_id": 3
+       },
+       {
+        "year": 3,
+        "program_id": 4
+       },
+       {
+        "year": 3,
+        "program_id": 5
+       },
+       {
+        "year": 3,
+        "program_id": 6
+       },
+       {
+        "year": 3,
+        "program_id": 9
+       },
+       {
+        "year": 3,
+        "program_id": 10
+       },
+       {
+        "year": 3,
+        "program_id": 73
+       },
+       {
+        "year": 3,
+        "program_id": 74
+       },
+       {
+        "year": 3,
+        "program_id": 76
+       },
+       {
+        "year": 3,
+        "program_id": 77
+       },
+       {
+        "year": 3,
+        "program_id": 79
+       },
+       {
+        "year": 3,
+        "program_id": 81
+       },
+       {
+        "year": 3,
+        "program_id": 82
+       },
+       {
+        "year": 3,
+        "program_id": 83
+       },
+       {
+        "year": 3,
+        "program_id": 85
+       },
+       {
+        "year": 3,
+        "program_id": 101
+       }
+      ]
+     }
+    ]
+   },
+   "last_idle_single_mode_start_info": {
+    "training_policy_ground_type": 1,
+    "training_policy_param_rate_set_id": 3,
+    "priority_skill_array": []
+   }
+  }
+ }
+}

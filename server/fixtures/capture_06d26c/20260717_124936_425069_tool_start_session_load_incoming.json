@@ -1,0 +1,36 @@
+{
+  "ts": 1784317776.4250693,
+  "direction": "RES",
+  "endpoint": "tool/start_session/load",
+  "data": {
+    "response_code": 1,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784317774,
+      "result_code": 1,
+      "notifications": {
+        "unread_information_exists": 1,
+        "trophy_badge_flag": 1,
+        "new_honor_data_array": [
+          {
+            "honor_id": 501101,
+            "create_time": "2026-07-17 19:04:57"
+          },
+          {
+            "honor_id": 502204,
+            "create_time": "2026-07-16 17:56:05"
+          }
+        ]
+      }
+    },
+    "data": {
+      "attest": false,
+      "nonce": "",
+      "terms_updated": false,
+      "is_tutorial": false,
+      "resource_version": "10006910"
+    }
+  },
+  "req_id": "5a5b4dee"
+}

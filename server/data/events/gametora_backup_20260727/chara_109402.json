@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 109402, "url": "https://gametora.com/umamusume/characters/109402-jungle-pocket", "events": {"": {"name": "変わらない景色", "id": 2653, "choices": [{"label": "もっと昔の話も聞きたいけどなぁ", "effects": [{"type": "guts", "value": "+10"}], "random_either": false}, {"label": "ときどき遊びに来ような", "effects": [{"type": "stamina", "value": "+10"}], "random_either": false}]}}}

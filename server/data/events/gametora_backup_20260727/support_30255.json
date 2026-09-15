@@ -1,0 +1,1 @@
+{"kind": "support", "id": 30255, "url": "https://gametora.com/umamusume/supports/30255-air-messiah", "events": {"": {"name": "愛情がもたらす決断", "id": 1169, "choices": [{"label": "", "effects": [{"type": "wisdom", "value": "+15"}, {"type": "skill_hint", "value": "+1", "skill_id": 201411}, {"type": "bond", "value": "+5", "char_id": 1111}], "random_either": false}]}}}

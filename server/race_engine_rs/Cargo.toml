@@ -1,0 +1,23 @@
+[package]
+name = "race_engine_rs"
+version = "0.1.0"
+edition = "2021"
+
+# Bin crate that speaks the same JSON-on-stdin/stdout contract the existing
+# Node subprocess (race_simulator._run_simulation_node) uses -- a drop-in
+# swap for the hot path only, not a rewrite of the server.
+[[bin]]
+name = "race_engine_rs"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+# serde/serde_json go back in once a linker is available (their build
+# scripts, and serde_derive's proc-macro dylib, need one even for `cargo
+# check`). Until then every module is validated with plain
+# `rustc --emit=metadata` (std-only, genuinely linker-free).
+[dependencies]

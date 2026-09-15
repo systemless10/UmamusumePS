@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 113301, "url": "https://gametora.com/umamusume/characters/113301-chrono-genesis", "events": {"": {"name": "てのひらに歴史を", "id": 1917, "choices": [{"label": "ああ、一生懸命調べてみるよ！", "effects": [{"type": "guts", "value": "+10"}], "random_either": false}, {"label": "俺にとって君はレース史の先生だな", "effects": [{"type": "wisdom", "value": "+10"}], "random_either": false}]}}}

@@ -1,0 +1,1 @@
+{"kind": "chara", "id": 110801, "url": "https://gametora.com/umamusume/characters/110801-duramente", "events": {"": {"name": "それぞれの見え方", "id": 2134, "choices": [{"label": "息抜きしたい時はいつでも付き合うよ！", "effects": [{"type": "stamina", "value": "+10"}], "random_either": false}, {"label": "楽しんでくれてよかった", "effects": [{"type": "power", "value": "+10"}], "random_either": false}]}}}

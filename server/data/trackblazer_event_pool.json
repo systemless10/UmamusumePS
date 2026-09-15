@@ -1,0 +1,1227 @@
+{
+ "_generator": "tools/gen_trackblazer_event_pool.py",
+ "_source": "Regenerate server/data/trackblazer_event_pool.json.",
+ "careers": 1741,
+ "events": {
+  "203500": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1269,
+   "story_id": 400004200,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203501": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1419,
+   "story_id": 400004201,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203502": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1511,
+   "story_id": 400004202,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203503": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1488,
+   "story_id": 400004203,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203504": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1436,
+   "story_id": 400004204,
+   "turns": [
+    3,
+    70
+   ]
+  },
+  "203505": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1626,
+   "story_id": 400004205,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203506": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1528,
+   "story_id": 400004206,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203507": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.143,
+   "story_id": 400004207,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203508": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.166,
+   "story_id": 400004208,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203509": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1648,
+   "story_id": 400004209,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203510": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1373,
+   "story_id": 400004210,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203511": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1356,
+   "story_id": 400004211,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203512": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1424,
+   "story_id": 400004212,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203513": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.162,
+   "story_id": 400004213,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203514": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1648,
+   "story_id": 400004214,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203515": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1493,
+   "story_id": 400004215,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203516": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1379,
+   "story_id": 400004216,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203517": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1407,
+   "story_id": 400004217,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203518": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1712,
+   "story_id": 400004218,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203519": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1419,
+   "story_id": 400004219,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203520": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.147,
+   "story_id": 400004220,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203521": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1551,
+   "story_id": 400004221,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203522": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1424,
+   "story_id": 400004222,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203523": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1631,
+   "story_id": 400004223,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203524": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1401,
+   "story_id": 400004224,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203525": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1407,
+   "story_id": 400004225,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203526": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1424,
+   "story_id": 400004226,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203527": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1511,
+   "story_id": 400004227,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203528": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1505,
+   "story_id": 400004228,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203529": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1407,
+   "story_id": 400004229,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203530": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1505,
+   "story_id": 400004230,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203531": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1344,
+   "story_id": 400004231,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203532": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1574,
+   "story_id": 400004232,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203533": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1424,
+   "story_id": 400004233,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203534": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1321,
+   "story_id": 400004234,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203535": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1442,
+   "story_id": 400004235,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203536": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1539,
+   "story_id": 400004236,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203537": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1603,
+   "story_id": 400004237,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203538": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1453,
+   "story_id": 400004238,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203539": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1419,
+   "story_id": 400004239,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203540": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1591,
+   "story_id": 400004240,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203541": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1562,
+   "story_id": 400004241,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203542": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1379,
+   "story_id": 400004242,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203543": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1447,
+   "story_id": 400004243,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203544": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1522,
+   "story_id": 400004244,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203545": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1511,
+   "story_id": 400004245,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203546": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1591,
+   "story_id": 400004246,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203547": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1499,
+   "story_id": 400004247,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203548": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1413,
+   "story_id": 400004248,
+   "turns": [
+    30,
+    58
+   ]
+  },
+  "203549": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.108,
+   "story_id": 400004249,
+   "turns": [
+    30,
+    56
+   ]
+  },
+  "203550": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.108,
+   "story_id": 400004250,
+   "turns": [
+    30,
+    56
+   ]
+  },
+  "203551": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1183,
+   "story_id": 400004251,
+   "turns": [
+    31,
+    56
+   ]
+  },
+  "203558": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1384,
+   "story_id": 400004258,
+   "turns": [
+    37,
+    64
+   ]
+  },
+  "203561": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1419,
+   "story_id": 400004261,
+   "turns": [
+    37,
+    64
+   ]
+  },
+  "203562": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1447,
+   "story_id": 400004262,
+   "turns": [
+    13,
+    59
+   ]
+  },
+  "203563": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1482,
+   "story_id": 400004263,
+   "turns": [
+    13,
+    59
+   ]
+  },
+  "203564": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1706,
+   "story_id": 400004264,
+   "turns": [
+    13,
+    16
+   ]
+  },
+  "203565": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.143,
+   "story_id": 400004265,
+   "turns": [
+    13,
+    59
+   ]
+  },
+  "203568": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1442,
+   "story_id": 400004268,
+   "turns": [
+    37,
+    64
+   ]
+  },
+  "203570": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1424,
+   "story_id": 400004270,
+   "turns": [
+    37,
+    64
+   ]
+  },
+  "203571": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1436,
+   "story_id": 400004271,
+   "turns": [
+    37,
+    64
+   ]
+  },
+  "203572": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1511,
+   "story_id": 400004272,
+   "turns": [
+    37,
+    64
+   ]
+  },
+  "203573": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1804,
+   "story_id": 400004273,
+   "turns": [
+    17,
+    70
+   ]
+  },
+  "203574": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1671,
+   "story_id": 400004274,
+   "turns": [
+    17,
+    70
+   ]
+  },
+  "203579": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.17,
+   "story_id": 400004279,
+   "turns": [
+    17,
+    70
+   ]
+  },
+  "203580": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1878,
+   "story_id": 400004280,
+   "turns": [
+    17,
+    65
+   ]
+  },
+  "203581": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.1769,
+   "story_id": 400004281,
+   "turns": [
+    17,
+    65
+   ]
+  },
+  "203587": {
+   "choices": 1,
+   "choices_captured": true,
+   "rate": 0.17,
+   "story_id": 400004287,
+   "turns": [
+    21,
+    69
+   ]
+  },
+  "203588": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1126,
+   "story_id": 400004288,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203589": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1183,
+   "story_id": 400004289,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203590": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1172,
+   "story_id": 400004290,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203591": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1281,
+   "story_id": 400004291,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203592": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1132,
+   "story_id": 400004292,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203593": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1022,
+   "story_id": 400004293,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203594": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1166,
+   "story_id": 400004294,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203595": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1258,
+   "story_id": 400004295,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203596": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0661,
+   "story_id": 400004296,
+   "turns": [
+    23,
+    71
+   ]
+  },
+  "203603": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0798,
+   "story_id": 400004303,
+   "turns": [
+    21,
+    71
+   ]
+  },
+  "203604": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0965,
+   "story_id": 400004304,
+   "turns": [
+    17,
+    71
+   ]
+  },
+  "203605": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0867,
+   "story_id": 400004305,
+   "turns": [
+    17,
+    71
+   ]
+  },
+  "203606": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0075,
+   "story_id": 400004306,
+   "turns": [
+    45,
+    71
+   ]
+  },
+  "203607": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0023,
+   "story_id": 400004307,
+   "turns": [
+    54,
+    70
+   ]
+  },
+  "203608": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0052,
+   "story_id": 400004308,
+   "turns": [
+    53,
+    70
+   ]
+  },
+  "203612": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0729,
+   "story_id": 400004312,
+   "turns": [
+    20,
+    71
+   ]
+  },
+  "203613": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0994,
+   "story_id": 400004313,
+   "turns": [
+    17,
+    71
+   ]
+  },
+  "203614": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0965,
+   "story_id": 400004314,
+   "turns": [
+    18,
+    71
+   ]
+  },
+  "203615": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0643,
+   "story_id": 400004315,
+   "turns": [
+    31,
+    71
+   ]
+  },
+  "203616": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.062,
+   "story_id": 400004316,
+   "turns": [
+    34,
+    71
+   ]
+  },
+  "203617": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0655,
+   "story_id": 400004317,
+   "turns": [
+    33,
+    71
+   ]
+  },
+  "203621": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0862,
+   "story_id": 400004321,
+   "turns": [
+    21,
+    71
+   ]
+  },
+  "203622": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0167,
+   "story_id": 400004322,
+   "turns": [
+    33,
+    71
+   ]
+  },
+  "203624": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0994,
+   "story_id": 400004324,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203625": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0936,
+   "story_id": 400004325,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203626": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0862,
+   "story_id": 400004326,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203627": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0908,
+   "story_id": 400004327,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203628": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0833,
+   "story_id": 400004328,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203629": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1017,
+   "story_id": 400004329,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203630": {
+   "choices": 2,
+   "choices_captured": true,
+   "rate": 0.0902,
+   "story_id": 400004330,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203631": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0948,
+   "story_id": 400004331,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203632": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0902,
+   "story_id": 400004332,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203633": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0896,
+   "story_id": 400004333,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203634": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0839,
+   "story_id": 400004334,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203635": {
+   "choices": 2,
+   "choices_captured": true,
+   "rate": 0.089,
+   "story_id": 400004335,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203636": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.089,
+   "story_id": 400004336,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203637": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0833,
+   "story_id": 400004337,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203638": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.085,
+   "story_id": 400004338,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203639": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0948,
+   "story_id": 400004339,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203640": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0953,
+   "story_id": 400004340,
+   "turns": [
+    30,
+    58
+   ]
+  },
+  "203641": {
+   "choices": 2,
+   "choices_captured": true,
+   "rate": 0.0936,
+   "story_id": 400004341,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203642": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0936,
+   "story_id": 400004342,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203643": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0787,
+   "story_id": 400004343,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203644": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0804,
+   "story_id": 400004344,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203645": {
+   "choices": 2,
+   "choices_captured": true,
+   "rate": 0.0913,
+   "story_id": 400004345,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203646": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.1011,
+   "story_id": 400004346,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203647": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0994,
+   "story_id": 400004347,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203648": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.093,
+   "story_id": 400004348,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203649": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0735,
+   "story_id": 400004349,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203650": {
+   "choices": 2,
+   "choices_captured": true,
+   "rate": 0.0919,
+   "story_id": 400004350,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203651": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0925,
+   "story_id": 400004351,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203652": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0913,
+   "story_id": 400004352,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203653": {
+   "choices": 1,
+   "choices_captured": false,
+   "rate": 0.0908,
+   "story_id": 400004353,
+   "turns": [
+    3,
+    71
+   ]
+  },
+  "203654": {
+   "choices": 2,
+   "choices_captured": true,
+   "rate": 0.0902,
+   "story_id": 400004354,
+   "turns": [
+    3,
+    71
+   ]
+  }
+ }
+}

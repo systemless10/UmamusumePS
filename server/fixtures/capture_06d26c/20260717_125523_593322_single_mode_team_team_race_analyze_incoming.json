@@ -1,0 +1,53 @@
+{
+  "ts": 1784318123.593322,
+  "direction": "RES",
+  "endpoint": "single_mode_team/team_race_analyze",
+  "data": {
+    "response_code": 1,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784318121,
+      "result_code": 1,
+      "notifications": {
+        "unread_information_exists": 1,
+        "trophy_badge_flag": 1,
+        "new_honor_data_array": [
+          {
+            "honor_id": 501101,
+            "create_time": "2026-07-17 19:04:57"
+          },
+          {
+            "honor_id": 502204,
+            "create_time": "2026-07-16 17:56:05"
+          }
+        ]
+      }
+    },
+    "data": {
+      "analyze_mark_array": [
+        {
+          "distance_type": 3,
+          "mark_type": 3
+        },
+        {
+          "distance_type": 2,
+          "mark_type": 1
+        },
+        {
+          "distance_type": 1,
+          "mark_type": 1
+        },
+        {
+          "distance_type": 4,
+          "mark_type": 3
+        },
+        {
+          "distance_type": 5,
+          "mark_type": 2
+        }
+      ]
+    }
+  },
+  "req_id": "dd21724c"
+}

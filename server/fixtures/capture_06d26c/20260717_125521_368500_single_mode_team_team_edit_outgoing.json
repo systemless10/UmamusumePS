@@ -1,0 +1,118 @@
+{
+ "ts": 1784318121.3685002,
+ "direction": "REQ",
+ "endpoint": "single_mode_team/team_edit",
+ "data": {
+  "payload": {
+   "team_data_array": [
+    {
+     "distance_type": 1,
+     "member_id": 1,
+     "chara_id": 1004,
+     "running_style": 1
+    },
+    {
+     "distance_type": 2,
+     "member_id": 1,
+     "chara_id": 1068,
+     "running_style": 1
+    },
+    {
+     "distance_type": 3,
+     "member_id": 1,
+     "chara_id": 1041,
+     "running_style": 1
+    },
+    {
+     "distance_type": 4,
+     "member_id": 1,
+     "chara_id": 1055,
+     "running_style": 1
+    },
+    {
+     "distance_type": 5,
+     "member_id": 1,
+     "chara_id": 1032,
+     "running_style": 1
+    },
+    {
+     "distance_type": 1,
+     "member_id": 2,
+     "chara_id": 1009,
+     "running_style": 1
+    },
+    {
+     "distance_type": 2,
+     "member_id": 2,
+     "chara_id": 1022,
+     "running_style": 1
+    },
+    {
+     "distance_type": 3,
+     "member_id": 2,
+     "chara_id": 1010,
+     "running_style": 1
+    },
+    {
+     "distance_type": 4,
+     "member_id": 2,
+     "chara_id": 1019,
+     "running_style": 1
+    },
+    {
+     "distance_type": 5,
+     "member_id": 2,
+     "chara_id": 1030,
+     "running_style": 1
+    },
+    {
+     "distance_type": 1,
+     "member_id": 3,
+     "chara_id": 1034,
+     "running_style": 1
+    },
+    {
+     "distance_type": 2,
+     "member_id": 3,
+     "chara_id": 1035,
+     "running_style": 1
+    },
+    {
+     "distance_type": 3,
+     "member_id": 3,
+     "chara_id": 1043,
+     "running_style": 1
+    },
+    {
+     "distance_type": 4,
+     "member_id": 3,
+     "chara_id": 1046,
+     "running_style": 1
+    },
+    {
+     "distance_type": 5,
+     "member_id": 3,
+     "chara_id": 1052,
+     "running_style": 1
+    }
+   ],
+   "current_turn": 60,
+   "viewer_id": "<redacted>",
+   "device": 4,
+   "device_id": "<redacted>",
+   "device_name": "<redacted>",
+   "graphics_device_name": "<redacted>",
+   "ip_address": "<redacted>",
+   "platform_os_version": "Windows 11  (10.0.26200) 64bit",
+   "carrier": "",
+   "keychain": 0,
+   "locale": "JPN",
+   "button_info": "",
+   "dmm_viewer_id": null,
+   "dmm_onetime_token": null,
+   "steam_id": "<redacted>",
+   "steam_session_ticket": "<redacted>"
+  }
+ },
+ "req_id": "819553eb"
+}

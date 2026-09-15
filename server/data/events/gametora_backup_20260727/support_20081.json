@@ -1,0 +1,1 @@
+{"kind": "support", "id": 20081, "url": "https://gametora.com/umamusume/supports/20081-north-flight", "events": {"": {"name": "しっかりとちゃっかりと", "id": 422, "choices": [{"label": "", "effects": [{"type": "power", "value": "+15"}, {"type": "skill_hint", "value": "+2", "skill_id": 202372}, {"type": "bond", "value": "+5", "char_id": 1082}], "random_either": false}]}}}

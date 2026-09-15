@@ -1,0 +1,1 @@
+{"kind": "support", "id": 30269, "url": "https://gametora.com/umamusume/supports/30269-dantsu-flame", "events": {"": {"name": "今日も明日も一緒にゆっくり", "id": 1203, "choices": [{"label": "", "effects": [{"type": "speed", "value": "+15"}, {"type": "skill_hint", "value": "+1", "skill_id": 201701}, {"type": "bond", "value": "+5", "char_id": 1092}], "random_either": false}]}}}

@@ -1,0 +1,2949 @@
+{
+  "ts": 1784318146.6736598,
+  "direction": "RES",
+  "endpoint": "single_mode_team/race_entry",
+  "data": {
+    "response_code": 1,
+    "data_headers": {
+      "viewer_id": "<redacted>",
+      "sid": "<redacted>",
+      "servertime": 1784318145,
+      "result_code": 1,
+      "notifications": {
+        "unread_information_exists": 1,
+        "trophy_badge_flag": 1,
+        "new_honor_data_array": [
+          {
+            "honor_id": 501101,
+            "create_time": "2026-07-17 19:04:57"
+          },
+          {
+            "honor_id": 502204,
+            "create_time": "2026-07-16 17:56:05"
+          }
+        ]
+      }
+    },
+    "data": {
+      "chara_info": {
+        "single_mode_chara_id": 601,
+        "card_id": 100402,
+        "chara_grade": 7,
+        "speed": 1126,
+        "stamina": 378,
+        "power": 562,
+        "wiz": 1241,
+        "guts": 359,
+        "vital": 100,
+        "max_speed": 1359,
+        "max_stamina": 1330,
+        "max_power": 1311,
+        "max_wiz": 1800,
+        "max_guts": 1304,
+        "default_max_speed": 1200,
+        "default_max_stamina": 1200,
+        "default_max_power": 1200,
+        "default_max_wiz": 1200,
+        "default_max_guts": 1200,
+        "max_vital": 100,
+        "motivation": 4,
+        "fans": 155739,
+        "rarity": 4,
+        "race_program_id": 76,
+        "reserve_race_program_id": 0,
+        "race_running_style": 1,
+        "is_short_race": 0,
+        "proper_ground_turf": 7,
+        "proper_ground_dirt": 4,
+        "proper_running_style_nige": 7,
+        "proper_running_style_senko": 3,
+        "proper_running_style_sashi": 1,
+        "proper_running_style_oikomi": 1,
+        "proper_distance_short": 6,
+        "proper_distance_mile": 7,
+        "proper_distance_middle": 7,
+        "proper_distance_long": 8,
+        "talent_level": 5,
+        "skill_array": [
+          {
+            "skill_id": 110041,
+            "level": 4
+          }
+        ],
+        "disable_skill_id_array": [],
+        "skill_tips_array": [
+          {
+            "group_id": 20004,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20009,
+            "rarity": 1,
+            "level": 2
+          },
+          {
+            "group_id": 20028,
+            "rarity": 1,
+            "level": 5
+          },
+          {
+            "group_id": 20033,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20033,
+            "rarity": 2,
+            "level": 1
+          },
+          {
+            "group_id": 20034,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20035,
+            "rarity": 1,
+            "level": 4
+          },
+          {
+            "group_id": 20038,
+            "rarity": 1,
+            "level": 3
+          },
+          {
+            "group_id": 20046,
+            "rarity": 1,
+            "level": 5
+          },
+          {
+            "group_id": 20056,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20058,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20058,
+            "rarity": 2,
+            "level": 3
+          },
+          {
+            "group_id": 20065,
+            "rarity": 2,
+            "level": 1
+          },
+          {
+            "group_id": 20068,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20071,
+            "rarity": 1,
+            "level": 5
+          },
+          {
+            "group_id": 20072,
+            "rarity": 1,
+            "level": 5
+          },
+          {
+            "group_id": 20074,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20083,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20087,
+            "rarity": 1,
+            "level": 2
+          },
+          {
+            "group_id": 20098,
+            "rarity": 1,
+            "level": 2
+          },
+          {
+            "group_id": 20109,
+            "rarity": 1,
+            "level": 2
+          },
+          {
+            "group_id": 20110,
+            "rarity": 1,
+            "level": 2
+          },
+          {
+            "group_id": 20111,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 20115,
+            "rarity": 1,
+            "level": 2
+          },
+          {
+            "group_id": 20126,
+            "rarity": 1,
+            "level": 3
+          },
+          {
+            "group_id": 20130,
+            "rarity": 1,
+            "level": 2
+          },
+          {
+            "group_id": 20136,
+            "rarity": 1,
+            "level": 1
+          },
+          {
+            "group_id": 21001,
+            "rarity": 1,
+            "level": 4
+          },
+          {
+            "group_id": 21003,
+            "rarity": 1,
+            "level": 4
+          },
+          {
+            "group_id": 21004,
+            "rarity": 1,
+            "level": 3
+          },
+          {
+            "group_id": 90006,
+            "rarity": 1,
+            "level": 2
+          },
+          {
+            "group_id": 90009,
+            "rarity": 1,
+            "level": 5
+          },
+          {
+            "group_id": 90015,
+            "rarity": 1,
+            "level": 1
+          }
+        ],
+        "support_card_array": [
+          {
+            "position": 1,
+            "support_card_id": 30028,
+            "limit_break_count": 3,
+            "exp": 82935,
+            "owner_viewer_id": 0
+          },
+          {
+            "position": 2,
+            "support_card_id": 30015,
+            "limit_break_count": 0,
+            "exp": 23885,
+            "owner_viewer_id": 0
+          },
+          {
+            "position": 3,
+            "support_card_id": 20015,
+            "limit_break_count": 4,
+            "exp": 74990,
+            "owner_viewer_id": 0
+          },
+          {
+            "position": 4,
+            "support_card_id": 20012,
+            "limit_break_count": 4,
+            "exp": 74990,
+            "owner_viewer_id": 0
+          },
+          {
+            "position": 5,
+            "support_card_id": 20002,
+            "limit_break_count": 4,
+            "exp": 74990,
+            "owner_viewer_id": 0
+          },
+          {
+            "position": 6,
+            "support_card_id": 30010,
+            "limit_break_count": 4,
+            "exp": 118185,
+            "owner_viewer_id": 507379161379
+          }
+        ],
+        "succession_trained_chara_id_1": 176,
+        "succession_trained_chara_id_2": 220,
+        "turn": 68,
+        "skill_point": 1514,
+        "short_cut_state": 1,
+        "state": 0,
+        "playing_state": 2,
+        "scenario_id": 2,
+        "route_id": 20,
+        "start_time": "2026-07-17 19:51:12",
+        "evaluation_info_array": [
+          {
+            "target_id": 1,
+            "training_partner_id": 1,
+            "evaluation": 100,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 2,
+            "training_partner_id": 2,
+            "evaluation": 100,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 3,
+            "training_partner_id": 3,
+            "evaluation": 100,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 4,
+            "training_partner_id": 4,
+            "evaluation": 100,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 5,
+            "training_partner_id": 5,
+            "evaluation": 100,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 6,
+            "training_partner_id": 6,
+            "evaluation": 100,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 101,
+            "training_partner_id": 101,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 0,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 103,
+            "training_partner_id": 103,
+            "evaluation": 27,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 104,
+            "training_partner_id": 104,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 0,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 106,
+            "training_partner_id": 106,
+            "evaluation": 60,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1010,
+            "training_partner_id": 1010,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1019,
+            "training_partner_id": 1019,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1030,
+            "training_partner_id": 1030,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1034,
+            "training_partner_id": 1034,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1035,
+            "training_partner_id": 1035,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1043,
+            "training_partner_id": 1043,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1046,
+            "training_partner_id": 1046,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1052,
+            "training_partner_id": 1052,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1053,
+            "training_partner_id": 1053,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1054,
+            "training_partner_id": 1054,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1056,
+            "training_partner_id": 1056,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1061,
+            "training_partner_id": 1061,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          },
+          {
+            "target_id": 1062,
+            "training_partner_id": 1062,
+            "evaluation": 0,
+            "is_outing": 0,
+            "story_step": 0,
+            "is_appear": 1,
+            "group_outing_info_array": []
+          }
+        ],
+        "training_level_info_array": [
+          {
+            "command_id": 101,
+            "level": 5
+          },
+          {
+            "command_id": 102,
+            "level": 3
+          },
+          {
+            "command_id": 103,
+            "level": 3
+          },
+          {
+            "command_id": 105,
+            "level": 3
+          },
+          {
+            "command_id": 106,
+            "level": 5
+          },
+          {
+            "command_id": 601,
+            "level": 5
+          },
+          {
+            "command_id": 602,
+            "level": 5
+          },
+          {
+            "command_id": 603,
+            "level": 5
+          },
+          {
+            "command_id": 604,
+            "level": 5
+          },
+          {
+            "command_id": 605,
+            "level": 5
+          }
+        ],
+        "nickname_id_array": [
+          16,
+          21,
+          24,
+          26,
+          40,
+          51,
+          92,
+          120,
+          122,
+          128,
+          129,
+          130
+        ],
+        "chara_effect_id_array": [
+          10
+        ],
+        "route_race_id_array": [
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226,
+          227,
+          228
+        ],
+        "guest_outing_info_array": [],
+        "skill_upgrade_info_array": []
+      },
+      "home_info": {
+        "command_info_array": [
+          {
+            "command_type": 1,
+            "command_id": 101,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [
+              {
+                "target_type": 1,
+                "value": 15
+              },
+              {
+                "target_type": 3,
+                "value": 6
+              },
+              {
+                "target_type": 30,
+                "value": 4
+              },
+              {
+                "target_type": 10,
+                "value": -25
+              }
+            ],
+            "failure_rate": 0,
+            "level": 5
+          },
+          {
+            "command_type": 1,
+            "command_id": 105,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [
+              {
+                "target_type": 2,
+                "value": 11
+              },
+              {
+                "target_type": 4,
+                "value": 6
+              },
+              {
+                "target_type": 30,
+                "value": 4
+              },
+              {
+                "target_type": 10,
+                "value": -22
+              }
+            ],
+            "failure_rate": 0,
+            "level": 3
+          },
+          {
+            "command_type": 1,
+            "command_id": 102,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [
+              {
+                "target_type": 2,
+                "value": 4
+              },
+              {
+                "target_type": 3,
+                "value": 12
+              },
+              {
+                "target_type": 30,
+                "value": 4
+              },
+              {
+                "target_type": 10,
+                "value": -22
+              }
+            ],
+            "failure_rate": 0,
+            "level": 3
+          },
+          {
+            "command_type": 1,
+            "command_id": 103,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [
+              {
+                "target_type": 1,
+                "value": 3
+              },
+              {
+                "target_type": 3,
+                "value": 3
+              },
+              {
+                "target_type": 4,
+                "value": 8
+              },
+              {
+                "target_type": 30,
+                "value": 4
+              },
+              {
+                "target_type": 10,
+                "value": -22
+              }
+            ],
+            "failure_rate": 0,
+            "level": 3
+          },
+          {
+            "command_type": 1,
+            "command_id": 106,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [
+              {
+                "target_type": 1,
+                "value": 5
+              },
+              {
+                "target_type": 5,
+                "value": 6
+              },
+              {
+                "target_type": 30,
+                "value": 5
+              },
+              {
+                "target_type": 10,
+                "value": 5
+              }
+            ],
+            "failure_rate": 0,
+            "level": 5
+          },
+          {
+            "command_type": 3,
+            "command_id": 301,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [],
+            "failure_rate": 0,
+            "level": 0
+          },
+          {
+            "command_type": 3,
+            "command_id": 390,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [],
+            "failure_rate": 0,
+            "level": 0
+          },
+          {
+            "command_type": 4,
+            "command_id": 401,
+            "is_enable": 1,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [],
+            "failure_rate": 0,
+            "level": 0
+          },
+          {
+            "command_type": 7,
+            "command_id": 701,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [],
+            "failure_rate": 0,
+            "level": 0
+          },
+          {
+            "command_type": 8,
+            "command_id": 801,
+            "is_enable": 0,
+            "training_partner_array": [],
+            "tips_event_partner_array": [],
+            "params_inc_dec_info_array": [],
+            "failure_rate": 0,
+            "level": 0
+          }
+        ],
+        "race_entry_restriction": 0,
+        "disable_command_id_array": [],
+        "available_continue_num": 3,
+        "available_free_continue_num": 1,
+        "free_continue_num": 1,
+        "free_continue_time": 1784045768,
+        "shortened_race_state": 4
+      },
+      "race_start_info": {
+        "program_id": 76,
+        "random_seed": 1335663267,
+        "season": 3,
+        "weather": 2,
+        "ground_condition": 1,
+        "race_horse_data": [
+          {
+            "frame_order": 18,
+            "viewer_id": "<redacted>",
+            "trainer_name": "Systemless",
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 601,
+            "trained_chara_id": 0,
+            "nickname_id": 0,
+            "chara_id": 1004,
+            "card_id": 100402,
+            "mob_id": 0,
+            "rarity": 4,
+            "talent_level": 5,
+            "skill_array": [
+              {
+                "skill_id": 110041,
+                "level": 4
+              }
+            ],
+            "stamina": 378,
+            "speed": 1126,
+            "pow": 562,
+            "guts": 359,
+            "wiz": 1241,
+            "running_style": 1,
+            "race_dress_id": 100430,
+            "chara_color_type": 0,
+            "npc_type": 11,
+            "final_grade": 13,
+            "popularity": 1,
+            "popularity_mark_rank_array": [
+              1,
+              2,
+              1
+            ],
+            "proper_distance_short": 6,
+            "proper_distance_mile": 7,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 8,
+            "proper_running_style_nige": 7,
+            "proper_running_style_senko": 3,
+            "proper_running_style_sashi": 1,
+            "proper_running_style_oikomi": 1,
+            "proper_ground_turf": 7,
+            "proper_ground_dirt": 4,
+            "motivation": 4,
+            "win_saddle_id_array": [
+              12,
+              17,
+              18,
+              21,
+              33,
+              49
+            ],
+            "race_result_array": [
+              {
+                "viewer_id": "<redacted>",
+                "single_mode_chara_id": 601,
+                "race_num": 1,
+                "turn": 12,
+                "program_id": 676,
+                "frame_order": 7,
+                "weather": 2,
+                "ground_condition": 1,
+                "running_style": 1,
+                "popularity": 1,
+                "result_rank": 1,
+                "result_time": 679111,
+                "bashin_diff": 14841,
+                "bashin_diff_from_top": 0,
+                "skill_activate_count": 0,
+                "start_dash_state": 0,
+                "motivation": 5,
+                "is_excitement": 0,
+                "is_running_alone": 1,
+                "last_straight_line_rank": 1,
+                "auto_continue_num": 0,
+                "state": 1
+              },
+              {
+                "viewer_id": "<redacted>",
+                "single_mode_chara_id": 601,
+                "race_num": 2,
+                "turn": 23,
+                "program_id": 624,
+                "frame_order": 10,
+                "weather": 1,
+                "ground_condition": 1,
+                "running_style": 1,
+                "popularity": 1,
+                "result_rank": 1,
+                "result_time": 912991,
+                "bashin_diff": 5614,
+                "bashin_diff_from_top": 0,
+                "skill_activate_count": 0,
+                "start_dash_state": 0,
+                "motivation": 5,
+                "is_excitement": 0,
+                "is_running_alone": 0,
+                "last_straight_line_rank": 2,
+                "auto_continue_num": 0,
+                "state": 1
+              },
+              {
+                "viewer_id": "<redacted>",
+                "single_mode_chara_id": 601,
+                "race_num": 3,
+                "turn": 30,
+                "program_id": 1074,
+                "frame_order": 4,
+                "weather": 1,
+                "ground_condition": 2,
+                "running_style": 1,
+                "popularity": 1,
+                "result_rank": 1,
+                "result_time": 1039091,
+                "bashin_diff": 69600,
+                "bashin_diff_from_top": 0,
+                "skill_activate_count": 0,
+                "start_dash_state": 0,
+                "motivation": 5,
+                "is_excitement": 0,
+                "is_running_alone": 1,
+                "last_straight_line_rank": 1,
+                "auto_continue_num": 0,
+                "state": 1
+              },
+              {
+                "viewer_id": "<redacted>",
+                "single_mode_chara_id": 601,
+                "race_num": 4,
+                "turn": 31,
+                "program_id": 163,
+                "frame_order": 2,
+                "weather": 1,
+                "ground_condition": 1,
+                "running_style": 1,
+                "popularity": 1,
+                "result_rank": 1,
+                "result_time": 1173645,
+                "bashin_diff": 37569,
+                "bashin_diff_from_top": 0,
+                "skill_activate_count": 0,
+                "start_dash_state": 1,
+                "motivation": 5,
+                "is_excitement": 0,
+                "is_running_alone": 0,
+                "last_straight_line_rank": 1,
+                "auto_continue_num": 0,
+                "state": 1
+              },
+              {
+                "viewer_id": "<redacted>",
+                "single_mode_chara_id": 601,
+                "race_num": 5,
+                "turn": 34,
+                "program_id": 166,
+                "frame_order": 18,
+                "weather": 1,
+                "ground_condition": 1,
+                "running_style": 1,
+                "popularity": 1,
+                "result_rank": 1,
+                "result_time": 1423538,
+                "bashin_diff": 7530,
+                "bashin_diff_from_top": 0,
+                "skill_activate_count": 0,
+                "start_dash_state": 0,
+                "motivation": 5,
+                "is_excitement": 0,
+                "is_running_alone": 0,
+                "last_straight_line_rank": 1,
+                "auto_continue_num": 0,
+                "state": 1
+              },
+              {
+                "viewer_id": "<redacted>",
+                "single_mode_chara_id": 601,
+                "race_num": 6,
+                "turn": 48,
+                "program_id": 81,
+                "frame_order": 15,
+                "weather": 3,
+                "ground_condition": 3,
+                "running_style": 1,
+                "popularity": 1,
+                "result_rank": 6,
+                "result_time": 1493233,
+                "bashin_diff": 10002,
+                "bashin_diff_from_top": 70166,
+                "skill_activate_count": 0,
+                "start_dash_state": 1,
+                "motivation": 4,
+                "is_excitement": 1,
+                "is_running_alone": 0,
+                "last_straight_line_rank": 2,
+                "auto_continue_num": 0,
+                "state": 1
+              },
+              {
+                "viewer_id": "<redacted>",
+                "single_mode_chara_id": 601,
+                "race_num": 7,
+                "turn": 54,
+                "program_id": 3,
+                "frame_order": 3,
+                "weather": 2,
+                "ground_condition": 1,
+                "running_style": 1,
+                "popularity": 1,
+                "result_rank": 1,
+                "result_time": 1168972,
+                "bashin_diff": 55770,
+                "bashin_diff_from_top": 0,
+                "skill_activate_count": 0,
+                "start_dash_state": 2,
+                "motivation": 5,
+                "is_excitement": 0,
+                "is_running_alone": 0,
+                "last_straight_line_rank": 1,
+                "auto_continue_num": 0,
+                "state": 1
+              },
+              {
+                "viewer_id": "<redacted>",
+                "single_mode_chara_id": 601,
+                "race_num": 8,
+                "turn": 59,
+                "program_id": 73,
+                "frame_order": 16,
+                "weather": 3,
+                "ground_condition": 3,
+                "running_style": 1,
+                "popularity": 1,
+                "result_rank": 1,
+                "result_time": 910349,
+                "bashin_diff": 28282,
+                "bashin_diff_from_top": 0,
+                "skill_activate_count": 0,
+                "start_dash_state": 0,
+                "motivation": 5,
+                "is_excitement": 0,
+                "is_running_alone": 1,
+                "last_straight_line_rank": 1,
+                "auto_continue_num": 0,
+                "state": 1
+              }
+            ],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 7,
+            "fan_count": 155739,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 7,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 10090,
+            "trained_chara_id": 10090,
+            "nickname_id": 0,
+            "chara_id": 1009,
+            "card_id": null,
+            "mob_id": 0,
+            "rarity": 3,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200562,
+                "level": 1
+              },
+              {
+                "skill_id": 200352,
+                "level": 1
+              },
+              {
+                "skill_id": 200732,
+                "level": 1
+              },
+              {
+                "skill_id": 100091,
+                "level": 1
+              },
+              {
+                "skill_id": 200572,
+                "level": 1
+              }
+            ],
+            "stamina": 351,
+            "speed": 365,
+            "pow": 353,
+            "guts": 351,
+            "wiz": 291,
+            "running_style": 1,
+            "race_dress_id": 100901,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 7,
+            "popularity": 3,
+            "popularity_mark_rank_array": [
+              5,
+              7,
+              5
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 7,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 6,
+            "proper_running_style_nige": 7,
+            "proper_running_style_senko": 7,
+            "proper_running_style_sashi": 3,
+            "proper_running_style_oikomi": 1,
+            "proper_ground_turf": 7,
+            "proper_ground_dirt": 1,
+            "motivation": 4,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 10,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 10150,
+            "trained_chara_id": 10150,
+            "nickname_id": 0,
+            "chara_id": 1015,
+            "card_id": null,
+            "mob_id": 0,
+            "rarity": 3,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200162,
+                "level": 1
+              },
+              {
+                "skill_id": 200331,
+                "level": 1
+              },
+              {
+                "skill_id": 200562,
+                "level": 1
+              },
+              {
+                "skill_id": 200362,
+                "level": 1
+              },
+              {
+                "skill_id": 200432,
+                "level": 1
+              },
+              {
+                "skill_id": 200381,
+                "level": 1
+              }
+            ],
+            "stamina": 381,
+            "speed": 366,
+            "pow": 313,
+            "guts": 345,
+            "wiz": 339,
+            "running_style": 3,
+            "race_dress_id": 101501,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 8,
+            "popularity": 6,
+            "popularity_mark_rank_array": [
+              3,
+              4,
+              7
+            ],
+            "proper_distance_short": 1,
+            "proper_distance_mile": 3,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 7,
+            "proper_running_style_nige": 5,
+            "proper_running_style_senko": 7,
+            "proper_running_style_sashi": 7,
+            "proper_running_style_oikomi": 1,
+            "proper_ground_turf": 7,
+            "proper_ground_dirt": 7,
+            "motivation": 4,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 9,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 10180,
+            "trained_chara_id": 10180,
+            "nickname_id": 0,
+            "chara_id": 1018,
+            "card_id": null,
+            "mob_id": 0,
+            "rarity": 3,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200712,
+                "level": 1
+              },
+              {
+                "skill_id": 100181,
+                "level": 1
+              },
+              {
+                "skill_id": 200572,
+                "level": 1
+              },
+              {
+                "skill_id": 200462,
+                "level": 1
+              },
+              {
+                "skill_id": 200732,
+                "level": 1
+              }
+            ],
+            "stamina": 322,
+            "speed": 337,
+            "pow": 320,
+            "guts": 352,
+            "wiz": 370,
+            "running_style": 3,
+            "race_dress_id": 101801,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 7,
+            "popularity": 7,
+            "popularity_mark_rank_array": [
+              4,
+              8,
+              6
+            ],
+            "proper_distance_short": 5,
+            "proper_distance_mile": 6,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 3,
+            "proper_running_style_nige": 4,
+            "proper_running_style_senko": 7,
+            "proper_running_style_sashi": 7,
+            "proper_running_style_oikomi": 1,
+            "proper_ground_turf": 7,
+            "proper_ground_dirt": 1,
+            "motivation": 4,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 16,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 10370,
+            "trained_chara_id": 10370,
+            "nickname_id": 0,
+            "chara_id": 1037,
+            "card_id": null,
+            "mob_id": 0,
+            "rarity": 3,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200371,
+                "level": 1
+              },
+              {
+                "skill_id": 200302,
+                "level": 1
+              },
+              {
+                "skill_id": 200362,
+                "level": 1
+              },
+              {
+                "skill_id": 200602,
+                "level": 1
+              },
+              {
+                "skill_id": 200032,
+                "level": 1
+              }
+            ],
+            "stamina": 374,
+            "speed": 362,
+            "pow": 323,
+            "guts": 304,
+            "wiz": 322,
+            "running_style": 3,
+            "race_dress_id": 103701,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 7,
+            "popularity": 5,
+            "popularity_mark_rank_array": [
+              6,
+              6,
+              4
+            ],
+            "proper_distance_short": 1,
+            "proper_distance_mile": 1,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 6,
+            "proper_running_style_nige": 1,
+            "proper_running_style_senko": 6,
+            "proper_running_style_sashi": 7,
+            "proper_running_style_oikomi": 1,
+            "proper_ground_turf": 7,
+            "proper_ground_dirt": 2,
+            "motivation": 4,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 15,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 10450,
+            "trained_chara_id": 10450,
+            "nickname_id": 0,
+            "chara_id": 1045,
+            "card_id": null,
+            "mob_id": 0,
+            "rarity": 3,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200762,
+                "level": 1
+              },
+              {
+                "skill_id": 100451,
+                "level": 1
+              },
+              {
+                "skill_id": 200562,
+                "level": 1
+              },
+              {
+                "skill_id": 200482,
+                "level": 1
+              },
+              {
+                "skill_id": 200162,
+                "level": 1
+              }
+            ],
+            "stamina": 371,
+            "speed": 271,
+            "pow": 278,
+            "guts": 370,
+            "wiz": 359,
+            "running_style": 2,
+            "race_dress_id": 104501,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 6,
+            "popularity": 8,
+            "popularity_mark_rank_array": [
+              9,
+              3,
+              9
+            ],
+            "proper_distance_short": 1,
+            "proper_distance_mile": 1,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 7,
+            "proper_running_style_nige": 4,
+            "proper_running_style_senko": 7,
+            "proper_running_style_sashi": 6,
+            "proper_running_style_oikomi": 1,
+            "proper_ground_turf": 7,
+            "proper_ground_dirt": 1,
+            "motivation": 4,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 2,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 10470,
+            "trained_chara_id": 10470,
+            "nickname_id": 0,
+            "chara_id": 1047,
+            "card_id": null,
+            "mob_id": 0,
+            "rarity": 3,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200192,
+                "level": 1
+              },
+              {
+                "skill_id": 200371,
+                "level": 1
+              },
+              {
+                "skill_id": 201431,
+                "level": 1
+              },
+              {
+                "skill_id": 200492,
+                "level": 1
+              },
+              {
+                "skill_id": 201402,
+                "level": 1
+              },
+              {
+                "skill_id": 200382,
+                "level": 1
+              }
+            ],
+            "stamina": 407,
+            "speed": 368,
+            "pow": 321,
+            "guts": 308,
+            "wiz": 313,
+            "running_style": 3,
+            "race_dress_id": 104701,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 7,
+            "popularity": 4,
+            "popularity_mark_rank_array": [
+              7,
+              5,
+              3
+            ],
+            "proper_distance_short": 1,
+            "proper_distance_mile": 3,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 7,
+            "proper_running_style_nige": 1,
+            "proper_running_style_senko": 6,
+            "proper_running_style_sashi": 7,
+            "proper_running_style_oikomi": 2,
+            "proper_ground_turf": 7,
+            "proper_ground_dirt": 1,
+            "motivation": 4,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 4,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 1001005,
+            "trained_chara_id": 1001005,
+            "nickname_id": 0,
+            "chara_id": 1001,
+            "card_id": null,
+            "mob_id": 0,
+            "rarity": 3,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 100011,
+                "level": 1
+              },
+              {
+                "skill_id": 200511,
+                "level": 1
+              },
+              {
+                "skill_id": 200612,
+                "level": 1
+              },
+              {
+                "skill_id": 200032,
+                "level": 1
+              },
+              {
+                "skill_id": 200602,
+                "level": 1
+              }
+            ],
+            "stamina": 505,
+            "speed": 454,
+            "pow": 409,
+            "guts": 380,
+            "wiz": 384,
+            "running_style": 3,
+            "race_dress_id": 100101,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 8,
+            "popularity": 2,
+            "popularity_mark_rank_array": [
+              2,
+              1,
+              2
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 5,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 7,
+            "proper_running_style_nige": 1,
+            "proper_running_style_senko": 6,
+            "proper_running_style_sashi": 7,
+            "proper_running_style_oikomi": 5,
+            "proper_ground_turf": 7,
+            "proper_ground_dirt": 1,
+            "motivation": 5,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 5,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 158,
+            "trained_chara_id": 158,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8157,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200262,
+                "level": 1
+              }
+            ],
+            "stamina": 161,
+            "speed": 214,
+            "pow": 188,
+            "guts": 248,
+            "wiz": 262,
+            "running_style": 2,
+            "race_dress_id": 8,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 3,
+            "popularity": 18,
+            "popularity_mark_rank_array": [
+              14,
+              15,
+              18
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 5,
+            "proper_distance_middle": 6,
+            "proper_distance_long": 5,
+            "proper_running_style_nige": 5,
+            "proper_running_style_senko": 6,
+            "proper_running_style_sashi": 5,
+            "proper_running_style_oikomi": 4,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 3,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 6,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 211,
+            "trained_chara_id": 211,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8210,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200562,
+                "level": 1
+              },
+              {
+                "skill_id": 200722,
+                "level": 1
+              },
+              {
+                "skill_id": 200582,
+                "level": 1
+              },
+              {
+                "skill_id": 200032,
+                "level": 1
+              }
+            ],
+            "stamina": 220,
+            "speed": 319,
+            "pow": 298,
+            "guts": 145,
+            "wiz": 220,
+            "running_style": 2,
+            "race_dress_id": 12,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 5,
+            "popularity": 13,
+            "popularity_mark_rank_array": [
+              13,
+              13,
+              13
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 4,
+            "proper_distance_middle": 5,
+            "proper_distance_long": 4,
+            "proper_running_style_nige": 5,
+            "proper_running_style_senko": 6,
+            "proper_running_style_sashi": 5,
+            "proper_running_style_oikomi": 4,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 3,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 12,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 274,
+            "trained_chara_id": 274,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8273,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200592,
+                "level": 1
+              },
+              {
+                "skill_id": 200433,
+                "level": 1
+              }
+            ],
+            "stamina": 371,
+            "speed": 222,
+            "pow": 293,
+            "guts": 216,
+            "wiz": 238,
+            "running_style": 3,
+            "race_dress_id": 8,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 3,
+            "popularity": 10,
+            "popularity_mark_rank_array": [
+              18,
+              9,
+              14
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 4,
+            "proper_distance_middle": 5,
+            "proper_distance_long": 4,
+            "proper_running_style_nige": 4,
+            "proper_running_style_senko": 5,
+            "proper_running_style_sashi": 6,
+            "proper_running_style_oikomi": 5,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 3,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 11,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 298,
+            "trained_chara_id": 298,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8297,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200642,
+                "level": 1
+              },
+              {
+                "skill_id": 200482,
+                "level": 1
+              },
+              {
+                "skill_id": 200391,
+                "level": 1
+              }
+            ],
+            "stamina": 168,
+            "speed": 230,
+            "pow": 321,
+            "guts": 189,
+            "wiz": 154,
+            "running_style": 4,
+            "race_dress_id": 11,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 3,
+            "popularity": 16,
+            "popularity_mark_rank_array": [
+              17,
+              18,
+              10
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 4,
+            "proper_distance_middle": 5,
+            "proper_distance_long": 4,
+            "proper_running_style_nige": 3,
+            "proper_running_style_senko": 4,
+            "proper_running_style_sashi": 5,
+            "proper_running_style_oikomi": 6,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 3,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 14,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 301,
+            "trained_chara_id": 301,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8300,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200472,
+                "level": 1
+              },
+              {
+                "skill_id": 200632,
+                "level": 1
+              },
+              {
+                "skill_id": 200622,
+                "level": 1
+              },
+              {
+                "skill_id": 200342,
+                "level": 1
+              }
+            ],
+            "stamina": 281,
+            "speed": 353,
+            "pow": 308,
+            "guts": 171,
+            "wiz": 215,
+            "running_style": 4,
+            "race_dress_id": 8,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 5,
+            "popularity": 11,
+            "popularity_mark_rank_array": [
+              12,
+              11,
+              11
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 4,
+            "proper_distance_middle": 5,
+            "proper_distance_long": 4,
+            "proper_running_style_nige": 3,
+            "proper_running_style_senko": 4,
+            "proper_running_style_sashi": 5,
+            "proper_running_style_oikomi": 6,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 3,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 13,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 470,
+            "trained_chara_id": 470,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8469,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200372,
+                "level": 1
+              },
+              {
+                "skill_id": 200352,
+                "level": 1
+              }
+            ],
+            "stamina": 208,
+            "speed": 352,
+            "pow": 270,
+            "guts": 154,
+            "wiz": 147,
+            "running_style": 2,
+            "race_dress_id": 11,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 4,
+            "popularity": 15,
+            "popularity_mark_rank_array": [
+              10,
+              17,
+              15
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 5,
+            "proper_distance_middle": 6,
+            "proper_distance_long": 5,
+            "proper_running_style_nige": 5,
+            "proper_running_style_senko": 6,
+            "proper_running_style_sashi": 5,
+            "proper_running_style_oikomi": 4,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 3,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 3,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 475,
+            "trained_chara_id": 475,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8474,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200352,
+                "level": 1
+              },
+              {
+                "skill_id": 200372,
+                "level": 1
+              }
+            ],
+            "stamina": 204,
+            "speed": 340,
+            "pow": 331,
+            "guts": 227,
+            "wiz": 220,
+            "running_style": 2,
+            "race_dress_id": 11,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 5,
+            "popularity": 9,
+            "popularity_mark_rank_array": [
+              11,
+              12,
+              8
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 4,
+            "proper_distance_middle": 5,
+            "proper_distance_long": 4,
+            "proper_running_style_nige": 5,
+            "proper_running_style_senko": 6,
+            "proper_running_style_sashi": 5,
+            "proper_running_style_oikomi": 4,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 4,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 17,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 492,
+            "trained_chara_id": 492,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8491,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200352,
+                "level": 1
+              },
+              {
+                "skill_id": 200612,
+                "level": 1
+              },
+              {
+                "skill_id": 200022,
+                "level": 1
+              }
+            ],
+            "stamina": 175,
+            "speed": 346,
+            "pow": 260,
+            "guts": 230,
+            "wiz": 158,
+            "running_style": 3,
+            "race_dress_id": 8,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 4,
+            "popularity": 14,
+            "popularity_mark_rank_array": [
+              8,
+              16,
+              16
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 6,
+            "proper_distance_middle": 7,
+            "proper_distance_long": 6,
+            "proper_running_style_nige": 4,
+            "proper_running_style_senko": 5,
+            "proper_running_style_sashi": 6,
+            "proper_running_style_oikomi": 5,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 1,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 8,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 499,
+            "trained_chara_id": 499,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8498,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200602,
+                "level": 1
+              },
+              {
+                "skill_id": 200492,
+                "level": 1
+              },
+              {
+                "skill_id": 200262,
+                "level": 1
+              }
+            ],
+            "stamina": 274,
+            "speed": 204,
+            "pow": 269,
+            "guts": 205,
+            "wiz": 308,
+            "running_style": 3,
+            "race_dress_id": 11,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 4,
+            "popularity": 12,
+            "popularity_mark_rank_array": [
+              16,
+              10,
+              12
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 4,
+            "proper_distance_middle": 5,
+            "proper_distance_long": 4,
+            "proper_running_style_nige": 4,
+            "proper_running_style_senko": 5,
+            "proper_running_style_sashi": 6,
+            "proper_running_style_oikomi": 5,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 3,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          },
+          {
+            "frame_order": 1,
+            "viewer_id": 0,
+            "trainer_name": null,
+            "owner_viewer_id": 0,
+            "owner_trainer_name": "",
+            "single_mode_chara_id": 505,
+            "trained_chara_id": 505,
+            "nickname_id": 0,
+            "chara_id": 1,
+            "card_id": 0,
+            "mob_id": 8504,
+            "rarity": 1,
+            "talent_level": 1,
+            "skill_array": [
+              {
+                "skill_id": 200012,
+                "level": 1
+              }
+            ],
+            "stamina": 154,
+            "speed": 210,
+            "pow": 236,
+            "guts": 275,
+            "wiz": 228,
+            "running_style": 4,
+            "race_dress_id": 8,
+            "chara_color_type": 0,
+            "npc_type": 0,
+            "final_grade": 3,
+            "popularity": 17,
+            "popularity_mark_rank_array": [
+              15,
+              14,
+              17
+            ],
+            "proper_distance_short": 2,
+            "proper_distance_mile": 4,
+            "proper_distance_middle": 5,
+            "proper_distance_long": 4,
+            "proper_running_style_nige": 3,
+            "proper_running_style_senko": 4,
+            "proper_running_style_sashi": 5,
+            "proper_running_style_oikomi": 6,
+            "proper_ground_turf": 6,
+            "proper_ground_dirt": 1,
+            "motivation": 4,
+            "win_saddle_id_array": [],
+            "race_result_array": [],
+            "team_id": 0,
+            "team_member_id": 0,
+            "team_rank": 0,
+            "single_mode_win_count": 0,
+            "fan_count": 0,
+            "item_id_array": [],
+            "motivation_change_flag": 0,
+            "frame_order_change_flag": 0
+          }
+        ],
+        "continue_num": 0,
+        "is_force_running_style": 0
+      },
+      "unchecked_event_array": [
+        {
+          "event_id": 11522,
+          "chara_id": 1004,
+          "story_id": 501004416,
+          "play_timing": 2,
+          "event_contents_info": {
+            "support_card_id": 0,
+            "show_clear": 0,
+            "show_clear_sort_id": 0,
+            "choice_array": [],
+            "is_effected_multi_chara": false,
+            "tips_training_partner_id": null
+          },
+          "succession_event_info": null,
+          "minigame_result": null
+        }
+      ],
+      "team_data_set": {
+        "team_info": {
+          "team_name_id": 5,
+          "speed_rank": 8,
+          "stamina_rank": 6,
+          "power_rank": 6,
+          "guts_rank": 6,
+          "wiz_rank": 8,
+          "team_power": 7,
+          "team_rank": 20,
+          "team_rank_state": 0,
+          "team_title": 3,
+          "guide_partner_count": 97,
+          "is_scout_enable": true,
+          "team_chara_info_array": [
+            {
+              "training_partner_id": 1,
+              "speed": 1081,
+              "stamina": 533,
+              "power": 705,
+              "wiz": 554,
+              "guts": 516,
+              "speed_limit": 1120,
+              "stamina_limit": 860,
+              "power_limit": 960,
+              "wiz_limit": 870,
+              "guts_limit": 860,
+              "speed_limit_base": 750,
+              "stamina_limit_base": 700,
+              "power_limit_base": 720,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 9027
+            },
+            {
+              "training_partner_id": 2,
+              "speed": 800,
+              "stamina": 450,
+              "power": 576,
+              "wiz": 614,
+              "guts": 462,
+              "speed_limit": 1120,
+              "stamina_limit": 860,
+              "power_limit": 960,
+              "wiz_limit": 870,
+              "guts_limit": 860,
+              "speed_limit_base": 750,
+              "stamina_limit_base": 700,
+              "power_limit_base": 720,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 7436
+            },
+            {
+              "training_partner_id": 3,
+              "speed": 807,
+              "stamina": 462,
+              "power": 498,
+              "wiz": 1120,
+              "guts": 507,
+              "speed_limit": 980,
+              "stamina_limit": 860,
+              "power_limit": 860,
+              "wiz_limit": 1120,
+              "guts_limit": 860,
+              "speed_limit_base": 720,
+              "stamina_limit_base": 700,
+              "power_limit_base": 700,
+              "wiz_limit_base": 750,
+              "guts_limit_base": 700,
+              "rank_score": 8675
+            },
+            {
+              "training_partner_id": 4,
+              "speed": 863,
+              "stamina": 496,
+              "power": 527,
+              "wiz": 995,
+              "guts": 472,
+              "speed_limit": 980,
+              "stamina_limit": 860,
+              "power_limit": 860,
+              "wiz_limit": 1120,
+              "guts_limit": 860,
+              "speed_limit_base": 720,
+              "stamina_limit_base": 700,
+              "power_limit_base": 700,
+              "wiz_limit_base": 750,
+              "guts_limit_base": 700,
+              "rank_score": 8156
+            },
+            {
+              "training_partner_id": 5,
+              "speed": 921,
+              "stamina": 513,
+              "power": 574,
+              "wiz": 1120,
+              "guts": 576,
+              "speed_limit": 980,
+              "stamina_limit": 860,
+              "power_limit": 860,
+              "wiz_limit": 1120,
+              "guts_limit": 860,
+              "speed_limit_base": 720,
+              "stamina_limit_base": 700,
+              "power_limit_base": 700,
+              "wiz_limit_base": 750,
+              "guts_limit_base": 700,
+              "rank_score": 9945
+            },
+            {
+              "training_partner_id": 6,
+              "speed": 352,
+              "stamina": 287,
+              "power": 271,
+              "wiz": 417,
+              "guts": 303,
+              "speed_limit": 720,
+              "stamina_limit": 700,
+              "power_limit": 700,
+              "wiz_limit": 750,
+              "guts_limit": 700,
+              "speed_limit_base": 720,
+              "stamina_limit_base": 700,
+              "power_limit_base": 700,
+              "wiz_limit_base": 750,
+              "guts_limit_base": 700,
+              "rank_score": 2846
+            },
+            {
+              "training_partner_id": 1010,
+              "speed": 386,
+              "stamina": 231,
+              "power": 298,
+              "wiz": 344,
+              "guts": 261,
+              "speed_limit": 750,
+              "stamina_limit": 700,
+              "power_limit": 720,
+              "wiz_limit": 700,
+              "guts_limit": 700,
+              "speed_limit_base": 750,
+              "stamina_limit_base": 700,
+              "power_limit_base": 720,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 3281
+            },
+            {
+              "training_partner_id": 1019,
+              "speed": 840,
+              "stamina": 643,
+              "power": 699,
+              "wiz": 780,
+              "guts": 694,
+              "speed_limit": 840,
+              "stamina_limit": 830,
+              "power_limit": 900,
+              "wiz_limit": 780,
+              "guts_limit": 780,
+              "speed_limit_base": 750,
+              "stamina_limit_base": 720,
+              "power_limit_base": 750,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 9271
+            },
+            {
+              "training_partner_id": 1030,
+              "speed": 443,
+              "stamina": 427,
+              "power": 351,
+              "wiz": 412,
+              "guts": 402,
+              "speed_limit": 790,
+              "stamina_limit": 900,
+              "power_limit": 780,
+              "wiz_limit": 780,
+              "guts_limit": 830,
+              "speed_limit_base": 700,
+              "stamina_limit_base": 750,
+              "power_limit_base": 700,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 720,
+              "rank_score": 4640
+            },
+            {
+              "training_partner_id": 1034,
+              "speed": 667,
+              "stamina": 421,
+              "power": 426,
+              "wiz": 700,
+              "guts": 410,
+              "speed_limit": 700,
+              "stamina_limit": 720,
+              "power_limit": 750,
+              "wiz_limit": 700,
+              "guts_limit": 700,
+              "speed_limit_base": 700,
+              "stamina_limit_base": 720,
+              "power_limit_base": 750,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 6104
+            },
+            {
+              "training_partner_id": 1035,
+              "speed": 566,
+              "stamina": 477,
+              "power": 572,
+              "wiz": 598,
+              "guts": 482,
+              "speed_limit": 760,
+              "stamina_limit": 700,
+              "power_limit": 760,
+              "wiz_limit": 750,
+              "guts_limit": 750,
+              "speed_limit_base": 760,
+              "stamina_limit_base": 700,
+              "power_limit_base": 760,
+              "wiz_limit_base": 750,
+              "guts_limit_base": 750,
+              "rank_score": 5792
+            },
+            {
+              "training_partner_id": 1043,
+              "speed": 737,
+              "stamina": 472,
+              "power": 553,
+              "wiz": 532,
+              "guts": 515,
+              "speed_limit": 800,
+              "stamina_limit": 700,
+              "power_limit": 720,
+              "wiz_limit": 700,
+              "guts_limit": 700,
+              "speed_limit_base": 800,
+              "stamina_limit_base": 700,
+              "power_limit_base": 720,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 5905
+            },
+            {
+              "training_partner_id": 1046,
+              "speed": 790,
+              "stamina": 563,
+              "power": 701,
+              "wiz": 747,
+              "guts": 515,
+              "speed_limit": 790,
+              "stamina_limit": 830,
+              "power_limit": 900,
+              "wiz_limit": 780,
+              "guts_limit": 780,
+              "speed_limit_base": 700,
+              "stamina_limit_base": 720,
+              "power_limit_base": 750,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 8187
+            },
+            {
+              "training_partner_id": 1052,
+              "speed": 364,
+              "stamina": 262,
+              "power": 280,
+              "wiz": 373,
+              "guts": 270,
+              "speed_limit": 710,
+              "stamina_limit": 700,
+              "power_limit": 710,
+              "wiz_limit": 700,
+              "guts_limit": 750,
+              "speed_limit_base": 710,
+              "stamina_limit_base": 700,
+              "power_limit_base": 710,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 750,
+              "rank_score": 1898
+            },
+            {
+              "training_partner_id": 1053,
+              "speed": 688,
+              "stamina": 511,
+              "power": 507,
+              "wiz": 700,
+              "guts": 500,
+              "speed_limit": 750,
+              "stamina_limit": 720,
+              "power_limit": 750,
+              "wiz_limit": 700,
+              "guts_limit": 700,
+              "speed_limit_base": 750,
+              "stamina_limit_base": 720,
+              "power_limit_base": 750,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 6782
+            },
+            {
+              "training_partner_id": 1054,
+              "speed": 711,
+              "stamina": 463,
+              "power": 550,
+              "wiz": 605,
+              "guts": 550,
+              "speed_limit": 800,
+              "stamina_limit": 700,
+              "power_limit": 720,
+              "wiz_limit": 700,
+              "guts_limit": 700,
+              "speed_limit_base": 800,
+              "stamina_limit_base": 700,
+              "power_limit_base": 720,
+              "wiz_limit_base": 700,
+              "guts_limit_base": 700,
+              "rank_score": 6864
+            },
+            {
+              "training_partner_id": 1056,
+              "speed": 470,
+              "stamina": 415,
+              "power": 362,
+              "wiz": 604,
+              "guts": 419,
+              "speed_limit": 840,
+              "stamina_limit": 780,
+              "power_limit": 780,
+              "wiz_limit": 920,
+              "guts_limit": 780,
+              "speed_limit_base": 720,
+              "stamina_limit_base": 700,
+              "power_limit_base": 700,
+              "wiz_limit_base": 750,
+              "guts_limit_base": 700,
+              "rank_score": 5079
+            },
+            {
+              "training_partner_id": 1061,
+              "speed": 658,
+              "stamina": 493,
+              "power": 590,
+              "wiz": 750,
+              "guts": 509,
+              "speed_limit": 800,
+              "stamina_limit": 700,
+              "power_limit": 770,
+              "wiz_limit": 750,
+              "guts_limit": 700,
+              "speed_limit_base": 800,
+              "stamina_limit_base": 700,
+              "power_limit_base": 770,
+              "wiz_limit_base": 750,
+              "guts_limit_base": 700,
+              "rank_score": 6854
+            },
+            {
+              "training_partner_id": 1062,
+              "speed": 541,
+              "stamina": 465,
+              "power": 565,
+              "wiz": 621,
+              "guts": 464,
+              "speed_limit": 760,
+              "stamina_limit": 700,
+              "power_limit": 760,
+              "wiz_limit": 750,
+              "guts_limit": 750,
+              "speed_limit_base": 760,
+              "stamina_limit_base": 700,
+              "power_limit_base": 760,
+              "wiz_limit_base": 750,
+              "guts_limit_base": 750,
+              "rank_score": 5859
+            }
+          ],
+          "team_data_array": [
+            {
+              "distance_type": 1,
+              "member_id": 1,
+              "chara_id": 1004,
+              "running_style": 1
+            },
+            {
+              "distance_type": 1,
+              "member_id": 2,
+              "chara_id": 1009,
+              "running_style": 1
+            },
+            {
+              "distance_type": 1,
+              "member_id": 3,
+              "chara_id": 1034,
+              "running_style": 1
+            },
+            {
+              "distance_type": 2,
+              "member_id": 1,
+              "chara_id": 1068,
+              "running_style": 1
+            },
+            {
+              "distance_type": 2,
+              "member_id": 2,
+              "chara_id": 1022,
+              "running_style": 1
+            },
+            {
+              "distance_type": 2,
+              "member_id": 3,
+              "chara_id": 1035,
+              "running_style": 1
+            },
+            {
+              "distance_type": 3,
+              "member_id": 1,
+              "chara_id": 1041,
+              "running_style": 1
+            },
+            {
+              "distance_type": 3,
+              "member_id": 2,
+              "chara_id": 1010,
+              "running_style": 1
+            },
+            {
+              "distance_type": 3,
+              "member_id": 3,
+              "chara_id": 1043,
+              "running_style": 1
+            },
+            {
+              "distance_type": 4,
+              "member_id": 1,
+              "chara_id": 1055,
+              "running_style": 1
+            },
+            {
+              "distance_type": 4,
+              "member_id": 2,
+              "chara_id": 1019,
+              "running_style": 1
+            },
+            {
+              "distance_type": 4,
+              "member_id": 3,
+              "chara_id": 1046,
+              "running_style": 1
+            },
+            {
+              "distance_type": 5,
+              "member_id": 1,
+              "chara_id": 1032,
+              "running_style": 1
+            },
+            {
+              "distance_type": 5,
+              "member_id": 2,
+              "chara_id": 1030,
+              "running_style": 1
+            },
+            {
+              "distance_type": 5,
+              "member_id": 3,
+              "chara_id": 1052,
+              "running_style": 1
+            }
+          ],
+          "team_edit_flag": 1
+        },
+        "command_info_array": [
+          {
+            "command_type": 1,
+            "command_id": 101,
+            "guide_event_partner_array": [],
+            "soul_event_partner_array": [],
+            "sp_soul_event_partner_array": [],
+            "params_inc_dec_info_array": []
+          },
+          {
+            "command_type": 1,
+            "command_id": 105,
+            "guide_event_partner_array": [],
+            "soul_event_partner_array": [],
+            "sp_soul_event_partner_array": [],
+            "params_inc_dec_info_array": []
+          },
+          {
+            "command_type": 1,
+            "command_id": 102,
+            "guide_event_partner_array": [],
+            "soul_event_partner_array": [],
+            "sp_soul_event_partner_array": [],
+            "params_inc_dec_info_array": []
+          },
+          {
+            "command_type": 1,
+            "command_id": 103,
+            "guide_event_partner_array": [],
+            "soul_event_partner_array": [],
+            "sp_soul_event_partner_array": [],
+            "params_inc_dec_info_array": []
+          },
+          {
+            "command_type": 1,
+            "command_id": 106,
+            "guide_event_partner_array": [],
+            "soul_event_partner_array": [],
+            "sp_soul_event_partner_array": [],
+            "params_inc_dec_info_array": []
+          }
+        ],
+        "evaluation_info_array": [
+          {
+            "target_id": 1,
+            "chara_id": 1068,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 2
+          },
+          {
+            "target_id": 2,
+            "chara_id": 1041,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 2
+          },
+          {
+            "target_id": 3,
+            "chara_id": 1055,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 2
+          },
+          {
+            "target_id": 4,
+            "chara_id": 1032,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 2
+          },
+          {
+            "target_id": 5,
+            "chara_id": 1009,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 2
+          },
+          {
+            "target_id": 6,
+            "chara_id": 1022,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 101,
+            "chara_id": 9001,
+            "member_state": 0,
+            "soul_threshold_id": 1,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 103,
+            "chara_id": 9003,
+            "member_state": 0,
+            "soul_threshold_id": 1,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 104,
+            "chara_id": 9004,
+            "member_state": 0,
+            "soul_threshold_id": 1,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 106,
+            "chara_id": 9006,
+            "member_state": 0,
+            "soul_threshold_id": 1,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1010,
+            "chara_id": 1010,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1019,
+            "chara_id": 1019,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 1
+          },
+          {
+            "target_id": 1030,
+            "chara_id": 1030,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 1
+          },
+          {
+            "target_id": 1034,
+            "chara_id": 1034,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1035,
+            "chara_id": 1035,
+            "member_state": 1,
+            "soul_threshold_id": 2,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1043,
+            "chara_id": 1043,
+            "member_state": 1,
+            "soul_threshold_id": 3,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1046,
+            "chara_id": 1046,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 1
+          },
+          {
+            "target_id": 1052,
+            "chara_id": 1052,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1053,
+            "chara_id": 1053,
+            "member_state": 1,
+            "soul_threshold_id": 4,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1054,
+            "chara_id": 1054,
+            "member_state": 1,
+            "soul_threshold_id": 4,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1056,
+            "chara_id": 1056,
+            "member_state": 1,
+            "soul_threshold_id": 5,
+            "soul_event_state": 1
+          },
+          {
+            "target_id": 1061,
+            "chara_id": 1061,
+            "member_state": 1,
+            "soul_threshold_id": 4,
+            "soul_event_state": 0
+          },
+          {
+            "target_id": 1062,
+            "chara_id": 1062,
+            "member_state": 1,
+            "soul_threshold_id": 2,
+            "soul_event_state": 0
+          }
+        ],
+        "scenario_progress": 3,
+        "frame_order_info_array": null,
+        "race_result_array": null,
+        "final_win_type": null,
+        "opponent_info_array": null,
+        "event_effect_info": null,
+        "not_up_team_parameter_info": {
+          "status_array": []
+        },
+        "team_race_history_array": [
+          {
+            "race_num": 1,
+            "turn": 24,
+            "team_race_set_id": 302,
+            "result_state": 2
+          },
+          {
+            "race_num": 2,
+            "turn": 36,
+            "team_race_set_id": 306,
+            "result_state": 2
+          },
+          {
+            "race_num": 3,
+            "turn": 48,
+            "team_race_set_id": 301,
+            "result_state": 1
+          },
+          {
+            "race_num": 4,
+            "turn": 60,
+            "team_race_set_id": 403,
+            "result_state": 3
+          }
+        ],
+        "command_result": null
+      }
+    }
+  },
+  "req_id": "3e4b367e"
+}
