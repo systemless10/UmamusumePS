@@ -134,4 +134,4 @@ Cygames, Inc. This project is not affiliated with or endorsed by Cygames.
 
 ## License
 
-This project is licenced under MIT.
+This project is licenced under AGPL-3.0.
