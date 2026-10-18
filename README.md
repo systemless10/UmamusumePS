@@ -12,6 +12,8 @@ A working, feature rich private server implementation for the Global and JP vers
 
 ---
 
+Join the [discord](https://discord.gg/E49vgNdRF7) for support and updates
+
 ## Features
 
 - **Wire protocol:** msgpack payloads with AES-CBC encryption, no modification to the game client is required to play.
