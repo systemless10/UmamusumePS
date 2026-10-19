@@ -9,6 +9,7 @@ A working, feature rich private server implementation for the Global and JP vers
 > - This project is freeware. If you paid for access to it, you have been scammed.
 > - This software comes with **NO WARRANTY**. The developers are not responsible for any loss of data that results from using it.
 > - It is recommended to use a alternative Steam account (that does not have a datalink to your real game data), when joining any instances of this server.
+> - AI (Artificial Intelligence) was used in the creation of this project.
 
 ---
 
