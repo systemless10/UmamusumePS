@@ -1,0 +1,144 @@
+#title Raffle Chance!
+0 One day, on the way back from shopping with Vivlos—
+1 Ooh?
+2 Tore-cchi, something's going on!
+3 Step right up, the New Year Grand Raffle Festival is on～! The grand prize is a Hot Spring Trip Ticket!
+3{ Hot Spring Trip Ticket
+4 First prize is a Premium Carrot Hamburger Steak, second is a Carrot Mountain, and third is One Carrot!
+5 Step right up, it's a fun, fun raffle! Anyone can play～!
+6 Wow! Amazing, amazing♡
+7 Hey, hey, wanna give it a try?
+8 We might even win the hot spring trip.
+9 I was the luckiest at stuff like this in my whole family!
+10 C'mon, can we? Please, please?
+10> All right, let's give it a try
+11 I happened to have one raffle ticket from the shopping we'd just done.
+12 Yay♡ Okaaay...—
+13 ...Hey, hey, mister.
+14 ...Hm? M-me?
+15 Yep. So, there's something I wanna ask～...
+16 Stare～～...♡
+17 *Ba-dump*...!? U-um, well...
+17> Begging won't get you the grand prize | Begging won't get you the grand prize
+18 Aww? It won't～?
+19 But that's fine, I've got luck on my side♡ Okaaay, here goes!
+20 Vivlos eagerly turned the raffle drum's lever!
+21 The result was—
+22 Would you look at that! Congratulaaations!! The grand prize, the Hot Spring Trip Ticket, has been drawn～～!!
+23 Obtained <itemname>.
+23{ <itemname>
+24 Whoooa～!?
+25 Tore-cchi～～!?
+25> Luck really is on your side! | Luck really is on your side!
+26 Hey, hey, isn't this crazy?! That's so me～!
+27 Congratulations! Good for you!
+28 Thank youuu～♡ Maybe it's thanks to you, mister?
+29 You prayed a little for me to win, right?
+30 Ahaha... Praying isn't cheating, right?
+31 Uh-huh, uh-huh.
+32 If you cheer for me, mister, I feel like I could do anything♡
+33 R-really...? All right, guess I'll cheer for you at your races too!
+34 Kyaa～. Thank youuu!
+34> (She's as good at charming people as ever...)
+35 Now I've just gotta work hard, huh, Tore-cchi?
+36 But you need stamina to work hard, right? So...
+37 First we go to the hot springs and, like, recharge♡
+38 Vivlos has important races ahead of her. Really, this is when she should be focusing on training, but...
+39 Just kidding, I've got important races. Later, right?
+39> ...Go ahead
+40 Huh?
+40> Go to the hot springs
+41 Are you sure? Even though I have races?
+41> A lot has happened | A lot has happened
+42 There had been a string of moments where she couldn't really rest emotionally. Vivlos has been working so hard, and I've always wanted to praise her for it.
+42> Think of it as a reward for working so hard! | Think of it as a reward for working so hard!
+43 A reward...
+44 ...
+44> I'll adjust the schedule. When works for you?
+45 ...At the very end of everything that's planned now!
+45> Huh? But that's...
+46 Yeah, it's fine. I'd rather do it after everything's over, after all!
+47 If it's a reward for working hard, I've already gotten one from you, Tore-cchi.
+47> Huh?
+48 You praise me so much every day, right? That's enough.
+49 So let's make the hot spring a reward for me... and for you, Tore-cchi?
+49> For me...? | For me...?
+50 Yep!
+51 You work super hard too, Tore-cchi. I want you to get a real reward!
+52 Starting tomorrow, I'll work super hard again... so let's look forward to our reward, Tore-cchi!
+53 Feeling Vivlos's kindness... I quietly tucked the hot spring trip ticket into the last page of my planner.
+54 Congratulations, first prize～! The prize is a Premium Carrot Hamburger Steak!
+55 Obtained <itemname>.
+55{ <itemname>
+56 Whooa～!
+57 Hey, hey, isn't that amazing?! Isn't luck on my side～!?
+57> Amazing! | Amazing!
+58 Riiight, riiight～♡
+59 Ooh, the hamburger steak looks suuuper tasty♡
+60 Okay, I'm gonna call them～.
+60> Call?
+61 Yep! 'Cause it looks suuuper tasty!
+62 I want the people I love to taste it too.
+63 Hello, Onee-chan? Can you come to the cafeteria now～?
+64 Mmm～! It's so good, Onee-chan♡
+65 Yes, it is... The seasoning is bold, yet you can still taste the meat's natural flavor.
+66 Wow, Onee-chan, you're way too good at food reviews! That's so you!
+67 Come on, you too, Tore-cchi! Do a food review?
+67> ...The juices are so juicy!
+68 Kyahaha. That's like a pun～!
+68> (I actually thought hard about that...)
+69 Ehehe, this is so fun.
+70 It'd be even more perfect if Chevacchi were here, though...
+71 I left Cheval's portion with her roommate.
+72 Thanks. It was so sudden, after all.
+73 It smells so good～, I bet Chevacchi will eat it right away.
+74 If everyone thinks it's yummy, I'm suuuper happy too♡
+75 Second prize～!! The prize is a Carrot Mountain!
+76 Obtained <itemname>.
+76{ <itemname>
+77 Hyaa～! That's so many!
+78 Can I really have all this?
+79 Yep, of course! Enjoy every bite!
+80 Yaaay～! Thank youuu♡
+81 Hey, hey, Tore-cchi! There's so much of it.
+82 If we're gonna do it anyway—isn't this a party!?
+83 The next day—
+84 —Yep, this! A carrot cake I made!
+85 Whoa～, so cool! Bite-sized and cute♪
+86 ...Is there an unusual spice in it? What a stylish finish. Was it your idea?
+87 Yep, I was going for a little Dubai-style vibe～♡
+88 I imagined the spice souk... the market, and mixed in all kinds of spices♪
+89 ...Though Onee-chan and Tore-cchi did most of the actual making♡
+89> Haha...
+90 What did you all make with your carrots～?
+91 And so, the garden party went on, glamorous and bright.
+92 Third prize～! The prize is One Carrot!
+93 Obtained <itemname>.
+93{ <itemname>
+94 Aww～, third prize, huh.
+94> Still, a prize is a prize | Still, a prize is a prize
+95 Mmm～... But I really wanted to win something amazing.
+96 ...Oh, I know.
+97 ...Waaah?
+97> ...Hm?
+98 Tore-cchi, I want you to comfort me～...
+98> ...Y-you did great!
+99 .........
+99> You turned it with all your might, well done!
+100 .........
+100> ...If you draw, every prize is first prize! | ...If you draw, every prize is first prize!
+101 ...
+102 Uhahaha! Geez, Tore-cchiii～♡
+103 *giggle*... Ehe, whatever, it's all good.
+104 Mister. I'll take my first-prize carrot, please.
+105 I'm not quite sure why, but Vivlos happily accepted her one carrot.
+106 Too bad, no prize! The participation prize is a pack of tissues～.
+107 Obtained <itemname>.
+107{ <itemname>
+108 Whaaat!?
+109 No waaaaay! Whyyy!?
+110 Of all things... a participation prize!?
+110> It's all luck, you know...
+111 But, but, a celebrity with luck on her side would win, right?
+112 Then I'm not a celebrity at all! Nooo～～...
+113 Vivlos's spirits had taken a dive...

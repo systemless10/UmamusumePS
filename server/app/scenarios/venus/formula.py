@@ -1,20 +1,3 @@
-"""GRAND MASTERS (scenario 5) -- the training numbers: the home preview, its
-energy, and the scenario's bonus line on top of it.
-
-Fitted to the real JP server (docs/JP_GRAND_MASTERS_SCENARIO.md §5):
-
-    home   = Ramen's formula (ramen.formula.home_raw) on this scenario's own
-             per-level base values (base SP 5); the group card 30137 rainbows
-             only while its Pure Passion (condition 102) is up; under Byerley's
-             wisdom every card is a friendship card; under Darley's every
-             facility trains at "level 6"                   2,603/2,625 previews
-    energy = speed -19..-25, the rest -20..-26 by level, wit +5; Darley's
-             wisdom uses the level-5 cost                          2,100/2,100
-    bonus  = floor((home + F_t) x (1 + G/100)) - home   (F_t the slots' +N of
-             type t, G the goddesses' training effect), halved above 1200 like
-             Ramen's bonus                                          801/805
-    energy line = ceil(|shown cost| x Darley's energy-down% / 100)  1,412/1,412
-"""
 
 from __future__ import annotations
 
@@ -31,10 +14,6 @@ STATS = RF.STATS
 TARGET_SP = RF.TARGET_SP
 TARGET_ENERGY = RF.TARGET_ENERGY
 
-# FACILITY BASE VALUES PER LEVEL {command: {level: {target_type: value}}}.
-# Level 1 and level 5 (= summer 601-605) are master's single_mode_training_effect
-# rows for scenario 5; levels 2-4 are fitted from 6 careers' previews. Level 6
-# is what Darley's wisdom trains at (§4.2): 4 samples per facility, 18/20.
 BASE = {
     101: {1: {1: 10, 3: 3}, 2: {1: 11, 3: 3}, 3: {1: 12, 3: 3}, 4: {1: 13, 3: 4},
           5: {1: 14, 3: 5}, 6: {1: 15, 3: 6}},
@@ -47,8 +26,6 @@ BASE = {
     106: {1: {1: 2, 5: 8}, 2: {1: 2, 5: 9}, 3: {1: 2, 5: 10}, 4: {1: 3, 5: 11},
           5: {1: 4, 5: 12}, 6: {1: 5, 5: 13}},
 }
-# The same rows with every level reading as level 6 -- what home_raw is handed
-# on Darley's wisdom turn (summer included: the camp ids read level 5 there).
 LV6 = {cmd: {lv: dict(rows[6]) for lv in range(1, 6)} for cmd, rows in BASE.items()}
 BASE_SP = 5
 ENERGY = {101: {1: -19, 2: -20, 3: -21, 4: -23, 5: -25}}
@@ -64,9 +41,6 @@ def level_of(command_id: int, level: int) -> int:
 
 
 def friend_fn(chara_info: dict, command_id: int, all_friend: bool = False):
-    """The friendship test for this facility: a normal card of its own type at
-    bond 80; the group card anywhere at bond 80 while Pure Passion is up
-    (10/10 rainbows while up, 0/45 otherwise); every card under Byerley."""
     base = SUMMER_TO_BASE.get(command_id, command_id)
     passion = M.PURE_PASSION in set(chara_info.get("chara_effect_id_array") or ())
 
@@ -98,8 +72,6 @@ def home_raw(chara_info: dict, command_id: int, level: int, partners, card_level
 
 def home_line(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
               **kw) -> dict:
-    """{target_type: home_pre} -- floored and capped at 100, before the 1200
-    halving (the value the bonus line is computed against)."""
     raw = home_raw(chara_info, command_id, level, partners, card_levels, **kw)
     return {tt: RF.capped(v) for tt, v in raw.items()}
 
@@ -135,9 +107,6 @@ def energy(chara_info: dict, command_id: int, level: int, partners, card_levels=
         for f in energy_down_factors(chara_info, partners, card_levels):
             mult *= f
         return -int(math.floor(-base * mult + 1e-9))
-    # Wit gives energy, plus each friendship card's wit recovery (type 31) --
-    # with GM's friendship test, so the group card adds its own under Pure
-    # Passion (11/11 previews that read 2 high otherwise).
     fn = friend_fn(chara_info, command_id, all_friend)
     total = 0.0
     for sid, bond in RF.facility_cards(chara_info, partners):
@@ -151,7 +120,6 @@ def energy(chara_info: dict, command_id: int, level: int, partners, card_levels=
 
 def home_gains(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
                *, all_friend: bool = False, level6: bool = False) -> dict | None:
-    """The home preview in calculate_training_gain's shape."""
     line = home_line(chara_info, command_id, level, partners, card_levels,
                      all_friend=all_friend, level6=level6)
     if not line:
@@ -167,9 +135,6 @@ def home_gains(chara_info: dict, command_id: int, level: int, partners, card_lev
 def bonus_params(chara_info: dict, command_id: int, level: int, partners, card_levels=None, *,
                  slot_bonus: dict, training_pct: int, energy_down: int,
                  all_friend: bool = False, level6: bool = False) -> list:
-    """venus_data_set.command_info_array[].params_inc_dec_info_array for one
-    facility (§5.2, §5.3). `slot_bonus` is {type 1-6: F_t}; F_t lands only on
-    a target the facility trains (SP on all of them)."""
     line = home_line(chara_info, command_id, level, partners, card_levels,
                      all_friend=all_friend, level6=level6)
     out = []

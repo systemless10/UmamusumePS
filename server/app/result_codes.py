@@ -1,20 +1,3 @@
-"""
-The client's result codes (data_headers.result_code), and the one place the
-server builds a refusal envelope.
-
-The client does all of the error UI itself: it takes the result_code off a
-response and looks it up in master.mdb text_data -- category 2 is the dialog
-TITLE, category 1 the MESSAGE, both keyed by the code (e.g. 1056 -> "Error" /
-"That Trainer ID does not exist."). Some of those messages end in "Returning
-to Title screen" / "Returning to Home", and the client really does that. So
-"serving" an error is purely a matter of sending the right code; the server
-never sends text. A code with no text_data row (PARAM_ERROR 205 among them)
-gets the client's generic dialog.
-
-Names are the client's own, from Gallop.GallopResultCode in the IL2CPP dump
-(dump.cs). The block marked "newer than dump.cs" are codes master.mdb has text
-for that the dump predates; their names are ours, from their text.
-"""
 
 from __future__ import annotations
 
@@ -312,7 +295,6 @@ class ResultCode(IntEnum):
     NOT_AVAILABLE_AGE_LIMIT = 90002
     USER_NOT_FOUND_ON_LOGIN = 99999
     STORY_EVENT_NOT_DATA = 100001
-    # --- newer than dump.cs: in master.mdb text_data, not in GallopResultCode
     PAYMENT_PRICE_INFO_ERROR = 339
     MAINTENANCE_TASK_931 = 931
     MAINTENANCE_TASK_937 = 937
@@ -324,7 +306,6 @@ class ResultCode(IntEnum):
     MAINTENANCE_TASK_991 = 991
     SINGLE_MODE_SUCCESSION_RENTAL_LEADER_CHANGED = 2513
     CIRCLE_PARTNER_POST_NOT_FOUND = 5029
-    # --- JP-only (JP 2.31 dump.cs GallopResultCode; Global's dump predates them)
     SINGLE_MODE_TRAINER_SKILL_MISS_MATCH_ERROR = 2515
     RACE_FIT_ASSISTANCE_EVENT_END = 8860
     RACE_FIT_ASSISTANCE_EVENT_UPDATE = 8861
@@ -337,12 +318,6 @@ class ResultCode(IntEnum):
 
 
 def refuse(code: int = ResultCode.PARAM_ERROR) -> dict:
-    """The full error envelope for `code`. response_code stays 1 -- the real
-    server reports errors in data_headers.result_code only.
-
-    JP differs: every real JP error reply (gacha/exec 218, pioneer
-    factor_order_load 201, skill_set/get_share_info 9851 in umacap) carries
-    response_code == result_code and no data key."""
     from . import region
     if region.CURRENT_REGION.get() == "jp":
         return {"response_code": int(code),
@@ -354,8 +329,6 @@ def refuse(code: int = ResultCode.PARAM_ERROR) -> dict:
 
 @functools.lru_cache(maxsize=None)
 def describe(code: int) -> str:
-    """'NAME (title: message)' for logs -- what the player is being shown.
-    Read-only master.mdb lookup; never raises into a response."""
     try:
         name = ResultCode(code).name
     except ValueError:
@@ -365,7 +338,7 @@ def describe(code: int) -> str:
         rows = dict(master_data.query(
             'SELECT category, text FROM text_data WHERE category IN (1, 2) AND "index"=?',
             (int(code),)))
-    except Exception:  # noqa: BLE001 - logging aid only
+    except Exception:
         rows = {}
     if not rows:
         return f"{name}"

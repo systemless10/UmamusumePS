@@ -1,0 +1,67 @@
+#title Hishi Miracle Arrives!
+0 Average... Everyone's always saying "average this, average that," but...
+1 Somehow, I don't think "average" at Tracen Academy is very average at all?
+1{ Tracen Academy
+2 Alright, time for some average practice! Let's go, let's go, let's gooo! Hmph!
+3 Dashes, weight training, gate practice... Wait, we're doing all of this in one day...?!
+4 Ugh... third, third, third again. I can't break out of average. No matter what, I can't win...
+5 At the Arima Kinen!
+5{ Arima Kinen
+6 (Everyone, and I mean everyone, sets the bar for "average" way too high. An "average" girl is someone like me, right?)
+7 (I can't think of daily hard work as a given! Come to think of it, ever since I was little...)
+8 Ku-chan, you did great in the footrace! Maybe you'll run in real races when you grow up?
+8{ Ku
+9 Waces... I wonder if they're fun...?
+10 Tracen Academy... I can't believe I actually got in. This isn't a dream, right?
+11 Hey, hey, Mira-ko. Why'd you come here, Mira-ko?
+11{ Mira-ko
+12 Why? Well, people around me kinda cheered me on, or expected things from me, I guess.
+13 I couldn't decide on my future, so I figured I'd spend my youth somewhere super famous, y'know?
+14 A mock race... Guess I'll pass this time. I'm busy and all...
+15 Ugh, more importantly, what am I gonna do about my test? If I get a bad score and they cut my allowance...
+16 (I never really had a will of my own. I just drifted toward whatever looked fun...)
+17 (I made it into Tracen Academy, but of course I never imagined I'd actually run in the Twinkle Series.)
+17{ Twinkle Series
+18 (I was just living an average student life. And yet...)
+19 ...Out of nowhere, I met them. The person who'd change my every day.
+20 What's going to happen to me now?
+21 Hah, hah, haaah...
+21> More, Hishi Miracle! | Keep going, Hishi Miracle!
+22 Hah, hah, hiiih...!
+22> You're a monster of potential!
+23 Hah, hah, that again?!
+23> You can do it if you try!
+24 Ugh, if you put it like that...
+25 Then I've got no choice...! Haaaaaaaah!!
+26 Wheeze, wheeze... So tired... Water...
+27 This Umamusume is Hishi Miracle. I saw potential in her and signed an exclusive contract.
+27{ Hishi Miracle
+28 Seriously, why'd you set your sights on such a slow starter? Isn't it a pain to keep firing me up?
+28> Because you always come through!
+29 A slow starter... In other words, she can't get moving on her own, and her engine takes a while to warm up.
+30 If I don't call out, praise her, and push hard, she runs out of steam. But...
+31 Hah... hah...
+32 ...?!
+33 Hah... hah... Huh...? Did that... turn into an actual race...?
+34 She held her own in a run alongside Narita Top Road, a model student who'd already debuted.
+34{ Narita Top Road
+35 Before that, she'd lost nine straight races at the academy. But if you expect a lot from her, Hishi Miracle delivers.
+36 Trainer, if I'm debuting in the Twinkle Series...
+37 That means I can't keep living my student life like before, right?
+37> That's right! | Yeah!
+38 I see... I was gonna race a little on the side, get into a sports college, then get a job at a sports company...
+39 So I'm saying goodbye to that modest little path, huh.
+39> Do you... not want to?
+40 It's not that I don't... It's more like it's not good or bad in the first place.
+41 I'm always just kinda hoping things'll go nicely and work out somehow. That's about it.
+42 She's motivated, but not super motivated. She'll try reasonably hard, but she can't push herself too far.
+43 That was Hishi Miracle, a thoroughly average Umamusume. No, a thoroughly average, ordinary girl.
+44 By the way... Trainer. Since I'm debuting, are you maybe thinking about, like... winning?
+44> Of course!
+45 That's just a hope... right?
+45> No, I want to win! | Nope, I want to win!
+46 Whoa, you're super motivated! Well, I'd like to win too, I guess.
+47 It'd be nice to debut safely and win one or two races.
+48 If I can manage that, I'll call it a miracle.
+49 Push her and she shines... but leave her be and she won't. Nothing is promised, and nothing is ruled out.
+50 Just how far can the oh-so-average Hishi Miracle go? Her true-to-life challenge begins now.

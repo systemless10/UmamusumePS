@@ -1,0 +1,42 @@
+#title Each of Us Shining
+0 They're moving down the backstretch at a relaxed pace. Could this favor the front group...?!
+1 Oh?! One of them makes a long spurt here! Little Cocon is already making her move!
+2 Spurting before the third corner?! Is she gonna be okay...?!
+3 Normally, I'd find it hard to say she would be. But Little Cocon is different.
+4 Everyone is about to witness it—her greatest weapon.
+5 The other Umamusume all start closing in at once! But Little Cocon's pace isn't dropping!
+6 It's Little Cocon! Incredible staying power! A magnificent victory on this graded stage!
+7 ...Come forth. .........Some kind of amazing magic.
+8 Not so fast! Take this!
+9 Seriously. Can't you play something more normal... Wait, that's cold?! Why, you...!!
+10 That day, at Trainer Kiryuin's invitation, we were holding a get-together inside the simulator.
+11 Your trainee couldn't make it, Trainer <username>? ...Well, it was a sudden invitation.
+12 Maybe we were really lucky that the Three Goddesses and Trainer Kashimoto were free.
+13 Things have settled down now that the spring races are over. It was a good time for a breather.
+14 Bitter Glasse made her presence known on the Classic circuit at the Japanese Derby. That's no small feat.
+14{ Japanese Derby
+15 Little Cocon got solid results too. That's proof her conditioning is going well!
+16 Meek's been making steady progress at her own pace too.
+17 Lately, we've even started to see her growing little by little!
+18 That's the result of you watching over her so carefully. It's why she can keep to her pace without worry.
+19 And how about you two? Is everything going well with <chrname>?
+20 <chrname>'s condition is—
+20> She's working hard!
+21 Hehe, keep watching over her just like that.
+22 With the Three Goddesses' support, each of the trainers was feeling real progress.
+23 Above all, seeing Happy Meek and Bitter Glasse romping around having fun really showed how well things were going.
+24 You're growing steadily as a trainer. Maybe it'd be rude to keep calling you "little lamb" now?
+24> Oh, come on...
+25 Haha! Stand tall! Even from where we're standing, you've all grown as trainers!
+26 I hope these hoofprints of yours become something brilliant. So that someday, they become a history that's told for generations and supports many others.
+27 Every bit of knowledge we pass on to you is part of a grand history.
+28 In other words, you're running in the present by inheriting the hoofprints of the Umamusume and trainers who ran before.
+28> The hoofprints of Umamusume and trainers...
+29 As history shows, there has always been a trainer by an Umamusume's side.
+30 As those who run alongside Umamusume, keep striving to improve.
+30> Yes...!
+31 Well then, think I'll go play with Little Cocon and the others! The best way to judge a trainer's skill is to look at their Umamusume!
+32 Whoa?! Byerley Turk, you're way too fast!
+33 Hahaha! Make more use of your own weapons! Or you'll fall prey to the water gun!
+34 In the history of Umamusume, there's always a trainer at an Umamusume's side.
+35 It was a breather that made me feel there must be an essential role for us there.

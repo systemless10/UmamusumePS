@@ -1,6 +1,3 @@
-"""Port of RaceSolverBuilder.ts -- base->adjusted stat pipeline, skill-data
-loading/wiring through the condition parser + sample-policy layer, pacer
-construction, and wisdom-gate checks."""
 
 from __future__ import annotations
 
@@ -26,8 +23,6 @@ from ..race_exact.rng import f32
 from .region import Region, RegionList
 
 def _skills() -> dict:
-    # The client's own master.mdb, not the vendored JP skill_data.json -- see
-    # skill_table.py for how far the two had drifted apart.
     from .skill_table import skills
     return skills()
 
@@ -76,7 +71,7 @@ class _StaminaSyoubu:
 
     @staticmethod
     def calc_approximate_modifier(stamina: float, distance: float) -> float:
-        random_factor = 1.0  # TODO: unclear how the real random-factor scaling works
+        random_factor = 1.0
         return math.sqrt(stamina - 1200) * 0.0085 * _StaminaSyoubu.distance_factor(distance) * random_factor
 
 
@@ -86,7 +81,6 @@ def _adjust_overcap(stat: float) -> float:
 
 
 def _base_stat(raw: float, motiv_coef: float) -> float:
-    """Native float-half overcap and float32 motivation multiplication."""
     return max(1.0, min(2000.0, f32(_adjust_overcap(raw) * motiv_coef)))
 
 
@@ -106,15 +100,6 @@ def build_base_stats(horse_desc: dict, mood: int) -> HorseParameters:
     )
 
 
-# Single Mode Modifier (doc): in a career race EVERY runner -- the trainee and
-# all of the NPCs -- gets +400 to each adjusted stat. Confirmed against real
-# career captures: every horse's decoded starting HP is exactly
-# 0.8*StrategyCoef*(Stamina*Mood + 400) + Distance (e.g. 120 Stamina, awful
-# mood, Late Surger at 2000m -> 2412, real 2412), and the real spurt speed and
-# late-race HP drain only reproduce with the same +400 on Speed and Guts.
-# Without it a debut field of ~100-stat NPCs ran out of HP mid-race, spurted
-# late and finished ~6s slow and strung out; the real field all spurted from
-# the start of the late race and finished within 1.2s of each other.
 SINGLE_MODE_MODIFIER = 400.0
 
 
@@ -169,7 +154,6 @@ class SkillData:
 
     def __init__(self, skill_id, perspective, rarity, wisdom_check, sample_policy, regions, extra_condition, effects,
                  cooldown: float = 0.0, green: bool = False):
-        # base cooldown in seconds (x CourseDistance/1000 at build)
         self.cooldown = cooldown
         self.green = green
         self.skill_id = skill_id
@@ -182,14 +166,10 @@ class SkillData:
         self.effects = effects
 
 
-# Doc's skill-level multiplier tables (levels 1-10), by effect category.
-# Real Global mechanic, not present in the vendored TS engine (which never
-# passes skill level at all -- everything fires at its flat stored value).
 _LEVEL_MULTIPLIER_TARGET_SPEED = [1.00, 1.00, 1.01, 1.04, 1.07, 1.10, 1.13, 1.16, 1.19, 1.22, 1.25]
 _LEVEL_MULTIPLIER_ACCEL = [1.00, 1.00, 1.02, 1.04, 1.06, 1.08, 1.10, 1.125, 1.15, 1.175, 1.20]
 _LEVEL_MULTIPLIER_STAT = [1.00, 1.00, 1.01, 1.02, 1.03, 1.04, 1.05, 1.06, 1.07, 1.08, 1.10]
 _LEVEL_MULTIPLIER_OTHER = [1.00, 1.00, 1.02, 1.04, 1.06, 1.08, 1.10, 1.12, 1.14, 1.16, 1.18]
-# index 0 unused (levels are 1-indexed); each table above has 11 entries (0..10)
 
 _STAT_SKILL_TYPES = frozenset([SkillType.SPEED_UP, SkillType.STAMINA_UP, SkillType.POWER_UP,
                                 SkillType.GUTS_UP, SkillType.WISDOM_UP,
@@ -209,12 +189,6 @@ def _level_multiplier(skill_type: int, level: int) -> float:
     return _LEVEL_MULTIPLIER_OTHER[level]
 
 
-# Value Scaling type 8/9, Multiply Random: the value is multiplied by 0 (60%),
-# 0.02 (30%) or 0.04 (10%). This is the HP half of Nothing Ventured (202031)
-# and Risky Business (202032): -100% max HP * that roll, i.e. nothing most of
-# the time and at worst 4%. Without it the raw -1.0 drained the whole bar;
-# before that, the vendored JP table had it pre-baked as a guaranteed 4% (and
-# the speed half wrongly scaled down to 0.018/0.01 m/s).
 _MULTIPLY_RANDOM_USAGES = (8, 9)
 
 
@@ -224,20 +198,13 @@ def _multiply_random(roll: float) -> float:
     return 0.02 if roll < 0.9 else 0.04
 
 
-# The doc's pre-race Value Scaling tables (SkillAbilityValueUsage ids from the
-# client's own enum), keyed by what the horse brings into the race.
-_TEAM_TOTAL_MULT = ((1200, 0.8), (1800, 0.9), (2600, 1.0), (3600, 1.1), (None, 1.2))    # 3-7
-_WIN_COUNT_MULT = ((6, 0.8), (14, 0.9), (18, 1.0), (25, 1.1), (None, 1.2))              # 10
-_MAX_RAW_STAT_MULT = ((600, 0.8), (800, 0.9), (1000, 1.0), (1100, 1.1), (None, 1.2))    # 13
-# 12 MultiplyFanCount: the client's thresholds live in its RaceParamDefine
-# asset, which no reference documents -- this table is an APPROXIMATION on the
-# same 0.8-1.2 steps as the others, neutral around a typical finished career.
+_TEAM_TOTAL_MULT = ((1200, 0.8), (1800, 0.9), (2600, 1.0), (3600, 1.1), (None, 1.2))
+_WIN_COUNT_MULT = ((6, 0.8), (14, 0.9), (18, 1.0), (25, 1.1), (None, 1.2))
+_MAX_RAW_STAT_MULT = ((600, 0.8), (800, 0.9), (1000, 1.0), (1100, 1.1), (None, 1.2))
 _FAN_COUNT_MULT = ((100000, 0.8), (200000, 0.9), (300000, 1.0), (400000, 1.1), (None, 1.2))
 
 
 def _static_value_multiplier(value_usage, ctx: dict) -> float:
-    """Value scalings known before the race starts. 1.0 when the horse's data
-    for it isn't known (an NPC); the in-race ones are race_solver's."""
     if value_usage == 2:
         return min(1.0 + 0.01 * (ctx.get("numSkills") or 0), 1.2)
     if value_usage in (3, 4, 5, 6, 7):
@@ -317,10 +284,6 @@ def build_skill_data(horse: HorseParameters, race_params: RaceParameters, course
         if len(regions) == 0:
             continue
         if triggers and "is_activate_other_skill_detail" not in skill["condition"] and "is_used_skill_id" not in skill["condition"]:
-            # Some two-trigger skills need both triggers placed (e.g. all the
-            # is_activate_other_skill_detail ones); others should only ever
-            # place one even with non-mutually-exclusive conditions. Only
-            # place a second trigger for the two known cases that need it.
             continue
         effects = _build_skill_effects(skill, perspective, level, rng, ctx)
         if effects or ignore_null_effects:
@@ -339,10 +302,6 @@ def build_skill_data(horse: HorseParameters, race_params: RaceParameters, course
             ))
     if triggers:
         return triggers
-    # No alternative's condition is satisfiable for this course/horse. Still
-    # add a placeholder (for Adventure of 564-style ActivateRandomGold
-    # interactions) at a location after the course ends, with a constantly
-    # false dynamic condition so it never activates normally.
     effects = _build_skill_effects(alternatives[0], perspective, level, rng, ctx)
     if not effects and not ignore_null_effects:
         return []
@@ -381,14 +340,11 @@ class RaceSolverBuilder:
         self._other_raw_wisdom = 2000
         self._other_mood = 2
         self._hp_policy_factory: Callable = lambda course, params, rng: GameHpPolicy(course, params.ground_condition, rng)
-        self._sample_policy_override: list[Optional[dict]] = [None, {}, {}, {}]  # Perspectives start at 1
+        self._sample_policy_override: list[Optional[dict]] = [None, {}, {}, {}]
         self._extra_skill_hooks: list[Callable] = []
         self._on_skill_activate: Optional[Callable] = None
         self._on_skill_deactivate: Optional[Callable] = None
         self._single_mode = False
-        # what the horse brings into the race beyond stats (value scaling and
-        # the chara-id / viewer conditions): charaId, fanCount, winCount,
-        # maxRawStat, teamStatTotals, numSkills, isViewer
         self._context: dict = {}
 
     def seed(self, lo: int, hi: int = 0) -> "RaceSolverBuilder":
@@ -440,7 +396,6 @@ class RaceSolverBuilder:
         return self
 
     def single_mode(self, flag: bool = True) -> "RaceSolverBuilder":
-        """A career (single mode) race: every adjusted stat +400."""
         self._single_mode = bool(flag)
         return self
 
@@ -450,13 +405,10 @@ class RaceSolverBuilder:
         return self
 
     def chara_ids(self, ids) -> "RaceSolverBuilder":
-        """Every runner's character id (is_exist_chara_id)."""
         self._race_params.chara_ids = tuple(ids)
         return self
 
     def gate_index(self, index: int) -> "RaceSolverBuilder":
-        """0-based starting-gate index, for initial lane placement (doc's
-        Lane System). Not part of the original TS engine."""
         self._gate_index = index
         return self
 
@@ -493,7 +445,6 @@ class RaceSolverBuilder:
         return self
 
     def with_asiwotameru(self) -> "RaceSolverBuilder":
-        """Must be called after horse() and mood()."""
         base_displayed_power = self._horse["power"] * (1 + 0.02 * self._race_params.mood)
 
         def hook(skilldata: list[SkillData], horse: HorseParameters, course: CourseData):
@@ -507,9 +458,6 @@ class RaceSolverBuilder:
                 skilldata.append(SkillData(
                     skill_id='asitame', perspective=Perspective.SELF, rarity=SkillRarity.WHITE,
                     wisdom_check=False, regions=spurt_start, sample_policy=ImmediatePolicy,
-                    # Released "at the start of the last spurt" (doc) -- not
-                    # at the start of the late race, which for a horse that
-                    # has to hold back is well before she actually spurts.
                     extra_condition=(lambda s: s.is_last_spurt),
                     effects=[SkillEffect(
                         SkillType.ACCEL, 3.0 / (course.distance / 1000.0),
@@ -590,21 +538,13 @@ class RaceSolverBuilder:
         clone._sample_policy_override = [None if m is None else dict(m) for m in self._sample_policy_override]
         clone._on_skill_activate = self._on_skill_activate
         clone._on_skill_deactivate = self._on_skill_deactivate
-        # NB same gotcha as upstream: with_asiwotameru()/with_stamina_syoubu()
-        # close over *our* horse/mood, not the clone's.
         clone._extra_skill_hooks = list(self._extra_skill_hooks)
         return clone
 
     def build(self):
-        """Generator yielding `nsamples` RaceSolver instances (a `redo`
-        boolean may be sent back via .send() to re-run the same sample with
-        the same skill picks but reset rng, matching the TS generator's
-        two-way `yield` protocol)."""
         horse = build_base_stats(self._horse, self._race_params.mood)
         solver_rng = Rule30CARng.seeded(self._rng.int32())
         pacer_rng = Rule30CARng.seeded(self._rng.int32())
-        # Pre-race skill rolls: the wisdom check below and any Multiply Random
-        # values. Its own stream, so neither disturbs trigger placement.
         skill_rng = Rule30CARng.seeded(self._rng.int32())
 
         pacer_horse = None
@@ -631,7 +571,7 @@ class RaceSolverBuilder:
             hook(skilldata, horse, self._course)
 
         triggers = []
-        followups = []   # per skill, per sample: the later all_corner_random triggers
+        followups = []
         for sd in skilldata:
             override = self._sample_policy_override[sd.perspective]
             sp = (override.get(sd.skill_id) if override else None) or sd.sample_policy
@@ -645,15 +585,9 @@ class RaceSolverBuilder:
 
         wisdom_rngs = {sid: Rule30CARng(*seed) for sid, seed in self._wisdom_seeds.items()}
 
-        # Skill Activation Chance (doc): every skill flagged for it rolls a
-        # wisdom check BEFORE the race, max(100 - 9000/BaseWiz, 20)%, on BASE
-        # wisdom (mood applied; not strategy proficiency, skills or the
-        # single-mode bonus). It was never rolled at all -- run_race never
-        # called with_wisdom_checks() -- so every skill a horse carried was
-        # guaranteed to be live.
         own_chance = max(1 - 90 / horse.wisdom, 0.2)
         live = []
-        passed: dict[str, bool] = {}   # one roll per SKILL, not per alternative
+        passed: dict[str, bool] = {}
         for sdi, sd in enumerate(skilldata):
             if sd.wisdom_check and sd.perspective == Perspective.SELF:
                 if sd.skill_id not in passed:
@@ -666,8 +600,6 @@ class RaceSolverBuilder:
         followups = [followups[i] for i in live]
         cooldown_scale = self._course.distance / 1000.0
 
-        # must come after skill activations are decided: conditions like
-        # base_power depend on BASE stats
         horse = build_adjusted_stats(horse, self._course, self._race_params.ground_condition,
                                      single_mode=self._single_mode)
 

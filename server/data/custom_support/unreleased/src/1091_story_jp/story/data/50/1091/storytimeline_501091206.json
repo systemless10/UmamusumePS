@@ -1,0 +1,443 @@
+{
+ "title": "ヴィクトリアマイルにむけて",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "『ヴィクトリアマイル』当日。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――あの子が『秋華賞』を勝利して、\nトリプルティアラを達成したとき。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "何度も何度も、夢にさえ現れた――\nあの巨大な背中が重なった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――ジェンティルドンナ。華々しくなる\nはずだった私のキャリアも、自信も……\n全てを打ち壊した、トリプルティアラウマ娘。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "これはもちろん、\nヴィブロス――貴方のためのレースよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――けれどレースなのだから、\n私のためでないこともあり得ない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "貴方が私のために頑張って、\nトリプルティアラをとってくれたから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "私も……姉として、\nあの日の屈辱を超えてみせる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "トリプルティアラウマ娘となった妹と、\nかつてのマイル女王である姉が対決する。\nこのドラマに、場内は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（わああああ……！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A",
+   "text": "すごいよなぁ。\n姉妹でこんなに活躍してるなんて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客B",
+   "text": "どっちが勝つんだろう……！\nさすがに妹かな？　現役バリバリだし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A",
+   "text": "何しろトリプルティアラウマ娘だろ？\nヴィルシーナにはトラウマじゃないの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "――ちょっと待ってください……！\n今のは、聞き捨てなりません！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A&B",
+   "text": "誰！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "ヴィルシーナの魅力はなんといっても、\n不撓不屈の根性！　ティアラ路線の悪夢を\n乗り越えて、『ヴィクトリアM』を連覇した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "ストイックな彼女ですから、確実に\n現役時の状態に戻しているでしょう。\n……いや、もしかすると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "超えるべきトリプルティアラウマ娘を前に、\n以前よりも強くなっているかもしれない……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "そしてヴィブロスもまた、\n名実ともに最高のウマ娘……\n勝負はまだわからないですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A&B",
+   "text": "なるほど……！\nなんか燃えてきた！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……すごい熱気。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……姉さんと僕の対決でも、\nこんなに盛り上がってたのかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……僕に、何を見せたいんだ。\n2人とも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁああ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドキドキする～！",
+   "choice_data_list": [
+    "それは緊張？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "すーっごく、\n楽しみな感じ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『中山記念』の後、体の調子に合わせて\n少しずつトレーニングを積んできた\nヴィブロス。調子も悪くなさそうだ。",
+   "choice_data_list": [
+    "自信のほどは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んー、そうだな～。\nお姉ちゃんはちょーすごいけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "自信はあるよ！\nトリプルティアラウマ娘になれたもん！",
+   "choice_data_list": [
+    "成長した姿を見せよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだねっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんに、\n見せてくる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "夢の姉妹対決……\nこのドラマに、場内は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（わああああ……！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A",
+   "text": "すごいよなぁ。\n姉妹でこんなに活躍してるなんて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客B",
+   "text": "どっちが勝つんだろう……！\nさすがに妹かな？　現役バリバリだし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "――ちょっと待ってください……！\n1つ誤解を訂正したいです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A&B",
+   "text": "誰！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "ヴィルシーナの魅力はなんといっても、\n不撓不屈の根性！　ティアラ路線の悪夢を\n乗り越えて、『ヴィクトリアM』を連覇した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "ストイックな彼女ですから、確実に\n現役時の状態に戻しているでしょう。\n……いや、もしかすると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "道を示すべき妹を前に、\n以前よりも強くなっているかもしれない……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹のファン",
+   "text": "そしてヴィブロスもまた、\n名実ともに最高のウマ娘……\n勝負はまだわからないですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A&B",
+   "text": "なるほど……！\nなんか燃えてきた！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……すごい熱気。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……姉さんと僕の対決でも、\nこんなに盛り上がってたのかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……僕に、何を見せたいんだ。\n2人とも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁああ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドキドキする～！",
+   "choice_data_list": [
+    "それは緊張？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "すーっごく、\n楽しみな感じ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『中山記念』の後、体の調子に合わせて\n少しずつトレーニングを積んできた\nヴィブロス。調子も悪くなさそうだ。",
+   "choice_data_list": [
+    "自信のほどは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うーん……やっぱり、\nお姉ちゃんはちょーすごいからなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わかんないけど、\n今は楽しみなだけかもっ。",
+   "choice_data_list": [
+    "思いきり楽しんでおいで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんに、\n見せてくる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――いらっしゃい、ヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ、\nなんか変な感じっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "そうかしら？\n私はこんな日が来る予感がしていたわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス。\n今日は甘やかしてあげないわよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『ヴィクトリアマイル』は私のレース……\n貴方だからこそ、譲らない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "子どもの頃みたいに、\n優しく追いつかせてあげたりしないわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんに甘やかされるのも、\n甘えるのも大好き！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも……レースだったら、\n私がお姉ちゃんを甘やかしてあげたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんとの全力で！\nきてくれていいよっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぜーんぶ、\n受け止めてあげるからね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……そうさせてもらうわ。\nよろしくね、ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ。\n全力で遊ぼう、お姉ちゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,340 @@
+{
+ "title": "『癒し』の伝道師",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "うわ～動物園だぁ～！\n来るのいつぶりだっけ？　覚えてないや～。",
+   "choice_data_list": [
+    "ほどよい混み具合だな",
+    "ほどよい混み具合だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ですね～。これなら結構のんびりできそう。\nファインちゃんにもう1回お礼言わなきゃ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……というのも、ファインモーションが\nこのチケットを配りまわっていたのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "動物の誘致に関わった関係でもらったらしく、\n『息抜きにぜひ』と、分けてもらった。",
+   "choice_data_list": [
+    "（よし、しっかり息抜きするぞ～！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは！　トレーナーさんウサギだらけ～。\n現在のお気持ちはいかがですか～？",
+   "choice_data_list": [
+    "癒されてます～"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その時、ふと閃いた！\nこのアイディアはヒシミラクルとの\nトレーニングに活かせるかもしれない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～？　ふふっ！\nちょっと何言ってるかわかりませ～ん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふわぁ～、森林コーナー落ち着くなぁ……。\nテーブルもあるし、ちょっとひと眠り～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女につられて欠伸をしつつ、\nウサギから得た閃きをノートに書く。",
+   "choice_data_list": [
+    "（うさぎ跳びの負荷の減少に……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "ごきげんよう！　息抜きの調子は――\n……って、あら？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "あ！　勝手に覗いたりしてごめんね？\n何を書いているんだろうって思って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "……そうだ！　あっちの猫広場は行った？\nきっといい気分転換に――",
+   "choice_data_list": [
+    "大丈夫、ちゃんと息抜きもしてるから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "あれ、そうだったの？",
+   "choice_data_list": [
+    "自分に合ったやり方とペースでな",
+    "自分に合ったやり方とペースでね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『癒しトレーニング』で気づいたのだ。\n自分は『無理に癒される』のは向かないと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "だから今日も、ウサギなどの動物たちに\n癒されつつ……仕事のことを考えていた。\n自分には、これが合っているのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "こう見えて、ウサギまみれになったり、\nゴリラに求愛されたりしてるんだよ？　ふふ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "――そっか。うふふっ、ならいいんだ♪\n楽しい思い出、たくさん作っていってね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～満喫したぁ――で、\nいつもなら帰る時間……なんですけど～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの、わたしのとっておき『癒しスポット』\n――よかったら、行きません？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女のとっておきの『癒しスポット』は、\nバスを乗り継いだ先に、隠れるようにあった。",
+   "choice_data_list": [
+    "きれいな場所だな～",
+    "きれいな場所だね～"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ですよね～。わたし、この時間の\nここの場所が特にお気に入りで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女にならって、目を閉じてみる。\n一定のペースで寄せては返す波音……。\nそれを聴いていて――ふと思った。",
+   "choice_data_list": [
+    "なんだか、君みたいだな",
+    "なんだか、貴方みたいだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え？",
+   "choice_data_list": [
+    "ペースが変わらないところが波と似てる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうですかね～？\nでも……うふふ、そっかそっか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……トレーナーさん。\nさっきのアレ、すご～く嬉しかったです！",
+   "choice_data_list": [
+    "アレ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "動物園でファインちゃんに言ってたやつです。\n『自分のペースで』～ってやつ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "嬉しかったし……、\n同じぐらい、ホッとしたぁ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――みんな、それぞれに合ったペースが\nあると思うんですよ～、わたし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "アップテンポで動くほうが合ってたり～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "落ち着いて動くほうが合ってたり。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしは昔から、急かされたり\n焦らされたりするのがけっこー苦手で。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "がんばるべき～とか、目指すべき！　とかも。\nわかってるけど、う～ん？　みたいな。\nペースが違うと、疲れちゃいません？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『癒され方』も一緒。\nその人のペースに合ってないと、疲れちゃう。",
+   "choice_data_list": [
+    "だな",
+    "だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その言葉で思い出す。まだ自分に合う\n『癒され方』を知らなかった頃のことを……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "休もう休もうとして気疲れしていたのは、\nきっと『ペース』が合ってなかったのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だから、よかった～～ってなりました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんに合う『ペース』を\n一緒に見つけられて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ナイスわたし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、ちなみに『このペースかな』ってのは\nマジで勘で決めたので。\n大したあれでもないんですけどね。",
+   "choice_data_list": [
+    "大したことあるよ！！！",
+    "それは立派な才能だよ",
+    "俺のトレーナーさんは優秀だなぁ",
+    "私のトレーナーさんは優秀だなぁ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、ちなみに『このペースかな』ってのは\nマジで勘で決めたので。\n大したあれでもないんですけどね。",
+   "choice_data_list": [
+    "大したことあるよ！！！",
+    "それは立派な才能だよ",
+    "俺のトレーナーさんは優秀だなぁ",
+    "私のトレーナーさんは優秀だなぁ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わっ、びっくりした～。\nも～トレーナーさんは毎回全力すぎますって。",
+   "choice_data_list": [
+    "た、たしかに……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そーそー、いつも大げさなんですって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（でも、これでいい。\nううん――これがいいんだよね、わたしには）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "才能かぁ。\nだらける才能ならあると思いますけど。",
+   "choice_data_list": [
+    "それもまた才能"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "も～全部褒めるじゃないですか～。\nていうか、それ言ったらトレーナーさんも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "褒めて調子にのらせる才能ありますよ？\n困ったことにー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それ、まだ続いてたんですか～？\nもうわたしのトレーニングいらずですって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "というわけで、免許皆伝でーす。\nこれからはわたしとサボり……\nもとい、ほどほどに癒されましょうね～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

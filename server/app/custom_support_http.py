@@ -1,4 +1,3 @@
-"""Plugin-only bootstrap routes; register before the encrypted catch-all API."""
 from fastapi import APIRouter, HTTPException, Request, Response
 
 from . import custom_support as C

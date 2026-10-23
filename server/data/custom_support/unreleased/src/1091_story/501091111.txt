@@ -1,0 +1,69 @@
+#title My Loving Family♡
+0 Vivlos raced through her first three years in the Twinkle Series with love for her family.
+1 After a run of success the whole world recognized, there was only one path for her to aim for next. And that was—
+2 —Mama～! Are we buying new dresses?
+3 Let's see～. Since it's a special occasion, why don't we all get new ones～♡
+4 "To run in the races in Dubai"—toward that big dream, Vivlos and her family were getting ready for the trip.
+5 Trainer, you have some time after this, don't you～?
+5> Yes, I do, but...
+6 Then let's go pick them out together! We could even do matching outfits♡
+6> ...I'm buying one too?! | ...I'm buying one too?!
+7 Yep, of course! I mean, you don't have one, right?
+8 If I win in Dubai, there'll probably be lots of chances to dress up～.
+9 As my trainer, you've gotta look sharp♡
+9> ...Then I'll buy it myself!
+10 Oh my, even though we'd buy it for you?
+11 Hey, Mama. Have you seen Papa's blue-violet necktie? He wants to take it to Dubai.
+12 Oh my, it's missing? I feel like I saw it recently...?
+12> Ah, I have it
+13 Huh? Tore-cchi has it... Why?!
+13> When I had dinner with your parents the other day...
+14 Ahh! Right, right, now I remember～. Papa got so excited talking that he took his tie off.
+15 Oh, you said you were going out to eat! The grown-ups' dinner, right?
+16 Honestly, Papa has completely taken a liking to you, Trainer!
+16> I had a great time too
+17 ...Hehe～.
+18 Hey, Mama, after we get back from Dubai... should we make the guest room into Trainer's room?
+18> ...What?!
+19 Oh my! What a lovely idea～. Shall we?
+19> No no no no no?!
+20 I mean, you come over every weekend～, and you're already family～!
+21 Quit talking weird and hurry up and get ready.
+21> It is pretty weird... | It is pretty weird...
+22 It's weird?
+23 ...So, Tore-cchi... you don't think of me... as family?!
+24 Nooo, I don't want that, that's so lonely!
+25 Hey, do you really not think of us as family...?
+25> Ugh...
+26 Tore-cchiii～...?
+26> Ugh...
+27 ...How do I put this... Hang in there... I guess.
+28 And so, the days leading up to Dubai flew by—
+29 Together with Vivlos's whole family, we arrived in Dubai early in the morning after a direct flight of about twelve hours.
+30 We rested at the hotel to recover from the trip—and then, night fell.
+31 Tore-cchi, not yet, okay? Keep your eyes closed tight?
+32 .........We're here. Okay, you can open your eyes—
+33 Welcome to Dubai, Tore-cchi!
+33> Wow...!
+34 A dazzling world spread out before me... There was no doubt about it—this was Dubai!
+35 Hey, hey, isn't it amazing?! Isn't it beautiful?!
+36 Keep it a secret from everyone that we snuck out first, okay?
+37 Tomorrow you have to act like you're seeing it for the first time again, got it?
+37> No matter how many times I see it, it'll still move me
+38 ...Ehehe, yeah, you're right.
+38> Thanks for bringing me here
+39 No, thank YOU.
+40 Thank you for getting here together with me!
+41 Yeah, I really... fiiinally made it here～!
+41> This is where your dream began, huh | This is where your dream began, huh
+42 Yeah!
+43 A suuuper sparkly, suuuper glamorous dream...
+44 I came back to make it come true.
+45 With everyone from back then, and with my new family!
+45> Want to build a private gym here too?
+46 In Dubai? Ahaha, that would be the best♡
+47 Tore-cchi, are you ready to become suuuper glamorous?
+47> Of course!
+48 That's my Tore-cchi♡
+49 You know, I... there's something I want suuuper badly!
+50 —I'm gonna stand at the top of the world! With everyone I love the most, the strongest ever♡

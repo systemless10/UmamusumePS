@@ -1,0 +1,55 @@
+{
+ "title": "激励ッ！夏合宿の差し入れ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "夏合宿がいよいよ始まる。トレーニングに\n向けて気持ちを高めていると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "注意ッ！　重たいのでケガせぬように！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "感謝ッ！\nでは、そちらの建物に運び込んでほしい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "声のする方を見ると、秋川理事長の指示で\n大きな荷物を運ぶ人たちがいた。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "秋川"
+   ]
+  },
+  {
+   "name": "秋川理事長",
+   "text": "おお、<username>トレーナー！\n夏の合宿に備えるトレーナー諸君に朗報ッ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "より充実した合宿トレーニングができるよう、\nVRウマレーターを合宿所にも用意した！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "是非ッ！　学園にいる時と同様、\n三女神とのトレーニングも活用したまえ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "秋川理事長の思わぬ差し入れのおかげで、\n合宿期間も三女神と共にトレーニングが\n行えることになったのだった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

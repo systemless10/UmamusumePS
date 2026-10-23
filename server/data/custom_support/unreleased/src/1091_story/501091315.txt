@@ -1,0 +1,81 @@
+#title After the Victoria Mile: Torch
+0 —Haaaaaaaaaaah!
+1 ...!! ...Heh...— That's my little sister...!
+2 —...Let's go, Vivlos!! Toward your dream...!
+3 !! Yeaaaaah!!
+4 —Hyaaaaaaaah!! —Haaaaaaaah!!
+5 —The dream sister showdown! The result is...—
+6 ...～～～～!
+7 —Vivlos! Try and catch up!
+8 Wait for me, Onee-chan! Onee-chaaan～!
+9 I made Onee-chan get serious...
+10 I'm suuuuuuper amazing!!
+11 —Indeed you are.
+12 Good work, Vivlos!
+13 Onee-chan...!
+14 You've gotten strong. ...So very strong.
+15 Ehe, right～?
+16 You know, that was suuuuper fun! Thank you for racing with me!
+17 Same here. Running with you, somehow...
+18 You feel kinda refreshed?
+19 !
+20 Ehehe, bingo! So you can make a face like that too, Onee-chan!
+21 It's kinda less "Onee-chan" and more... "Verxina-chan"♡
+22 Don't tease me. ...But it really was fun.
+23 And my heart truly feels lighter. I'm always the one receiving from you.
+24 Nuh-uh! I got something from you too. A wonderful cheer from you!
+25 I'll work hard! Toward my dream...!
+26 ...—
+27 ...They're both amazing. Not like me...
+28 ...But...
+29 But... I'm also...
+30 These are my beloved big sisterrrs♡ Hey, hey, aren't they both suuuper great!
+31 Ehehe. 'Cause I'm their little sister.
+32 To my sister who I love and who's precious to me! I want her to see it!
+33 —I'm also... your big sister.
+34 Chevacchiiiii～?
+35 !
+36 Hmmm～... I can't find her. But she's here, right?
+37 Chevacchi, I managed it! I got to race my suuuper amazing Onee-chan!
+38 You'll definitely manage it too, Chevacchiii～!
+39 'Cause you're my big sister!
+40 ...!
+41 ...Vivlos.
+42 —...I have to move forward.
+43 I'll get stronger— so I can be proud.
+44 Tore-cchiii～!
+45 I ran suuuper well with Onee-chan!
+45> Good work!
+46 Nooo～! Praise me?
+46> Amazing, Vivlos! | Amazing, Vivlos!
+47 Nihehe～♡ Tore-cchi, you got better at praising♡
+48 ...I wonder if Chevacchi was watching too?
+49 I wonder if it cheered her up?
+49> I'm sure your feelings reached her
+50 Right.
+51 Tore-cchi, you know. Next year, I really do wanna go to Dubai!
+52 'Cause it's my precious dream that everyone's cheering for!
+52> Right, let's aim for it | Right, let's aim for it
+53 Over this year, she'd grow her body further and get in shape. If we keep at it steadily, she'll surely become an Umamusume who can withstand a grueling overseas expedition.
+53> I'll take you to Dubai! | I'll take you to Dubai!
+54 Yeah, take me there!
+54> Our next race should be one that leads to Dubai | Our next race should be one that leads to Dubai
+55 Oooh～!?
+56 There are races that might lead to Dubai in terms of distance, racecourse, or past comparisons, but if I were to suggest one to her now...
+56> We could choose by "opponents" | We could choose by "opponents"
+57 Opponents? Why?
+57> To borrow their overseas experience
+58 Among the senior Umamusume right now, there are girls with experience in overseas races... or girls aiming overseas.
+59 One is Satono Crown. One of the Satono family, which has raised many strong Umamusume, she has experience racing in Hong Kong.
+59{ Satono Crown
+60 The other is Satono Diamond... also from the Satono family, and the same generation as Vivlos. She's aiming for the Prix de l'Arc de Triomphe.
+60{ Satono Diamond | Prix de l'Arc de Triomphe
+61 There's a race both of them have announced they'll run. It's—
+61> Want to run the Takarazuka Kinen? | Want to run the Takarazuka Kinen?
+62 The Takarazuka Kinen is the Kansai Grand Prix race. From this race, which carries the dreams of people and Umamusume alike, we'll connect to her dream of Dubai.
+62{ Takarazuka Kinen
+63 Ooh～...!
+64 It's like a new chapter!?
+65 Got it, let's go with the Takarazuka Kinen. I mean...
+66 With that lineup, it's like the Celebrity Kinen～!?
+67 And so, our next goal race was set: the Takarazuka Kinen!

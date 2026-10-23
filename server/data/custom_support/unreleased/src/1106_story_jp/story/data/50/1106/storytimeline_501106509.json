@@ -1,0 +1,41 @@
+{
+ "title": "連続出走で……",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある日の放課後。ヒシミラクルが\n友だちといるのを見かけたのだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふわぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "ミラ子、まだ眠いの？\n授業中も居眠りしてたのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん……。なんか、ずっと眠くて……。\n夜もちゃんと寝てるんだけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "授業中も……いつの間にか寝てて……。\nふわぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやらヒシミラクルは、\nレース続きでかなり疲弊しているようだ。\n今後の予定を見直した方がいいかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+#title No More Losing!
+0 I... lost again.
+1 I'm not sparkling at all... How was I running back when I was winning...?
+2 ...Hey, Tore-cchi, what do I do to run like before...?
+2> Let's try remembering how you felt at the start | If you still want to struggle, you can still bounce back!
+3 At the start... like when I first started running? Mmm, well... It was fun, super fun.
+4 When I sped up, the wind went whoosh～. And when I crossed the finish, I could hear the cheering...
+5 .........I see. I was only thinking about how to win, so maybe I haven't been enjoying running lately.
+5> If you've realized that, you'll be fine | If you've realized that, you'll be fine
+6 Yeah. I'll stop thinking about complicated stuff and run all out! Thanks, Tore-cchi!
+7 Wanting to struggle... I do... I do!
+8 I still have no idea what to do or anything... but I don't wanna stop.
+9 'Cause... if I stop in a place like this, I'll never make it to Dubai.
+10 —Practice can be harsher. It's okay if it takes time.
+11 Make me... stronger, Tore-cchi!

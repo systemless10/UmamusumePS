@@ -1,0 +1,357 @@
+{
+ "title": "よろしくしようね、トレっち？",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "ね～～～トレっちぃ～～～。\nこれほんとに、全部食べなきゃダメ？",
+   "choice_data_list": [
+    "ああ、全部だ",
+    "うん、全部だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うへ～……ラーメンに、アボカドサラダに、さつまいも、\nゆでたまご山盛り……他にもたくさん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こんなにカロリー摂ったらスタイル悪くなっちゃうよー！\nせめて麺だけ、こんにゃくに変えてもいい？",
+   "choice_data_list": [
+    "いや、君はもっとカロリーを摂れ！",
+    "いや、貴方はもっとカロリーを摂って！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『先生、これ撮ってるの？\nいえーい♪　ねえねえ、加工フィルターつけてる？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの教官",
+   "text": "『ヴィブロスさん。ふざけていないで――』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『わかってるって！　1600mね、走ってきまーす』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスのトレーニング映像を見た時……\nもしこの先彼女と歩むならば、もっと体力をつけさせたいと感じた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "レースとは過酷なものだ。走った後は激しく消耗し、全回復に\n数週を費やすこともある。華奢なヴィブロスにはより厳しいだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "海外遠征を視野に入れているのであればなおさら、レース生活を\n耐え抜くための体づくりは必須……今は食べることに慣れさせたい。",
+   "choice_data_list": [
+    "いつかドバイに挑むために備えるんだ！",
+    "いつかドバイに挑むために備えるの！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わかった、私……ちゃんとがんばって食べる！\nセレブに向かって、いただきまーす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――んえええ……こんなにお腹いっぱいなの、\nはじめてかも……。",
+   "choice_data_list": [
+    "よく頑張ったな",
+    "よく頑張ったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん……もっと褒めて？",
+   "choice_data_list": [
+    "いい子だ！",
+    "いい子だね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んん～、もっと！",
+   "choice_data_list": [
+    "じゃあもっと頑張ろうな",
+    "じゃあもっと頑張ろうね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありゃ、ここまでかー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んへへ……。\nちょっとお姉ちゃんっぽい♪",
+   "choice_data_list": [
+    "どっちのお姉さん？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "1番上のお姉ちゃん！\nシュヴァちはぜーんぜん、甘やかしてくれないもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんはかっこよくてー、キレイでー、\nちょー優しいんだよ。なにより、ちょー強くて……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ね、トレーナーさん。\nあともーちょっとだけ、甘えさせて？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私ね、実は……ドバイの他に、もう1つ目標があるの。\nそれは……トリプルティアラ！",
+   "choice_data_list": [
+    "トリプルティアラ……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "それは『桜花賞』『オークス』『秋華賞』を勝利した者が\n得られる称号……その頂につい最近、達したウマ娘がいる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ジェンティルドンナ――彼女は見事トリプルティアラウマ娘になり、\nその陰で連続で2着だったのが……ヴィルシーナだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイでキラキラセレブになるには、\nまず日本でクイーンにならないとだしー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……お姉ちゃんが負けちゃったレースだから。\n妹として、リベンジみたいな……私が勝てたら、エモくない？",
+   "choice_data_list": [
+    "エモいかもしれないけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、考えが甘いって言いたいんでしょ？　大丈夫、わかってるよ！\nだって、お姉ちゃんは……ほんとに、すっごく強かったんだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だけど、勝てなかった。シュヴァちだってちょーすごいのに、\n今もがいてるなって思うし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あの2人が苦労するくらい、レースって大変なんだよね。\nだからこそ！　私がやらなきゃでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって絶対、才能あるもんね！\nねー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――今の話……本気なの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、お姉ちゃん！　シュヴァちも～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "最近しょげてると思ってたら……\nもうすっかり元気なのね。それはよかったけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トリプルティアラをとりたいだなんて、初めて聞いた。\nでもね……トゥインクル・シリーズって、とっても大変なのよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むう。\nそんなの――",
+   "choice_data_list": [
+    "ヴィブロスはわかってると思うよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "もちろん大変さを実感するのはこれからだろうが、彼女は周りが\nよく見えているとても賢い子だ。姉2人への尊敬もきちんとある。",
+   "choice_data_list": [
+    "心配しなくても大丈夫"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーナーさん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ。だよねー、トレっち♪\nいい子の続き、してしてー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ちょ、馴れ馴れしすぎるんじゃ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "でも、気を許せないと判断した相手には、\nあんなふうに甘えないわ。だから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ごめんね、ヴィブロス。私も本当はわかってる。\n貴方がちゃんと考えている子だって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "でもどうしても心配になっちゃうのよ。私の中で、\n貴方はいつもニコニコでふわふわの赤ちゃんなんだもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "シュヴァル、貴方もね。だから、どうしても2人には\n過干渉になっちゃって……。でももう、自分の道を歩むんだもんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさん、ヴィブロスのことをよろしくお願いします！\nお姉ちゃんたちも、見守ってるからね。応援してる！　ね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……キミなら、大丈夫なんだろうけど。\nが、頑張って……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うんっ。\nお姉ちゃん、シュヴァち……ありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ、せっかく私たち契約したんだし～。\nお祝いに船上パーティーしたいな？",
+   "choice_data_list": [
+    "船上パーティー！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、待って。ふつーにリムジンパーティーでもいいかも？\nトレっちはなにがいい？　プールとか貸し切っちゃう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもでも、未来のセレブには、やっぱり船上パーティーかな！\nよろしくね、トレっち♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……これから貯金が重要になる予感がしつつ、ヴィブロスと\nトゥインクル・シリーズに挑んでいくことが決まった。のだが――",
+   "choice_data_list": [
+    "その前に……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん？",
+   "choice_data_list": [
+    "トレっちはやめなさい"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やめなーい♪\nだって～……イヤじゃないでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "にひひ、目を見ればわかるもーん♪\nいっしょに世界まで飛んでっちゃおーね、トレっち♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

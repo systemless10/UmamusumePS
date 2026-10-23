@@ -1,0 +1,29 @@
+#title Toward the SWBC
+0 The day of the SWBC—
+1 All right! I'm in perfect shape! I can run all-out today! I can do this!
+2 You get changed automatically in the simulator, so you don't have to wear your racewear...
+3 It feels different! It means I'm dead serious about this race!
+4 ...Hmph. .........Fully fired up.
+5 Even you're wearing it...
+6 Well, if we're talking serious, then so am I. I'll show them my weapon and my trainer's...!
+7 All three of us managed to get our trainees into the race!
+8 There were twists and turns, but we made it this far.
+9 That's the path those girls and I have walked—our history.
+10 I wonder if someday our history will also become knowledge that supports someone.
+11 Hehe, we'll have to keep producing plenty of results so that it does.
+11> Yes, you're right!
+12 Now then! At last, the SWBC is about to begin!
+13 Your Umamusume has grown splendidly to get this far...
+14 Howeeever! The same goes for the other Umamusume!
+15 Wholehearted! Face these hand-picked elite racers and give it everything you have!
+16 I think it will be an even more grueling race than the WBC, testing your true ability.
+17 But believe in the path you've walked so far, and seize victory!
+18 Seen off by an even bigger crowd than before, <chrname> and I headed into the world of the VR simulator—
+19 We've been waiting for you. Welcome to the SWBC.
+20 The slope's finally getting steep. Are you ready?
+20> Of course!
+21 Hehe, you both seem more fired up than usual.
+22 It's all right. As long as you have the desire to run, your chance will come.
+23 Take a good look. At your Umamusume's future.
+24 Now, let the race begin. ...Go claim the summit with everything you have!
+25 And so, at last, the SWBC begins!

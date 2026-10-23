@@ -1,28 +1,3 @@
-"""The race engine's skill table, built from the CLIENT'S OWN master.mdb.
-
-skill_data.json (vendored from uma-tools) is Cygames' JP table as uma-tools
-last scraped it. The server does not serve that client. Diffed against the
-Global master.mdb on 2026-09-24:
-
-  * 67 skills trigger on a different condition -- JP later reworked them and
-    Global has not caught up (e.g. Special Week's unique, 100031, is
-    `is_finalcorner==1&corner==0` on Global; the JSON carried JP's
-    `is_last_straight==1` rework with an overtake precondition). Those skills
-    fired at the wrong place on the course, or not at all.
-  * 28 skills carry a different value or duration (100101 is 4s on Global, 5s
-    in the JSON).
-  * 20 Global skills were missing entirely (the Global-only event and scenario
-    greens), so a horse holding one silently never got it.
-  * The JSON has no target count, value/duration scaling type or cooldown at
-    all, which every debuff and several unique skills need.
-
-So the table is read from master.mdb -- whichever client install master_data
-resolves -- and the JSON is only kept as a fallback for ids master.mdb does not
-have (and for running the engine with no game install at all, e.g. in tests).
-
-Both engines read the SAME table: the Python engine in-process, the Rust worker
-from the file `ensure_file()` writes (see race_simulator._rs_worker).
-"""
 
 from __future__ import annotations
 
@@ -38,8 +13,6 @@ from pathlib import Path
 log = logging.getLogger("uma-server")
 
 _JSON_PATH = Path(__file__).resolve().parent / "data" / "skill_data.json"
-# Written next to the other server runtime data, never committed (see
-# .gitignore). Regenerated whenever master.mdb is newer than it.
 _CACHE_PATH = Path(os.environ.get("UMA_RACE_SKILL_TABLE")
                    or Path(__file__).resolve().parents[3] / "data" / f"race_skill_table_{region.PROCESS_REGION}.json")
 
@@ -63,8 +36,6 @@ def _alternative(row, n: int) -> dict | None:
             "targetValue": int(row[f"target_value_{n}_{j}"]),
             "valueUsage": int(row[f"ability_value_usage_{n}_{j}"]),
             "levelUsage": int(row[f"ability_value_level_usage_{n}_{j}"]),
-            # SkillAbilityAdditionalActivateType: 0 none, 1 on each overtake,
-            # 2/3 on each other skill activation (see race_solver).
             "additionalActivate": int(row[f"additional_activate_type_{n}_{j}"] or 0),
         })
     return {
@@ -86,11 +57,7 @@ def _from_master() -> dict:
             continue
         out[str(row["id"])] = {
             "rarity": int(row["rarity"]),
-            # activate_lot is the pre-race wisdom roll flag (the JSON's
-            # wisdomCheck was copied from this very column upstream).
             "wisdomCheck": int(row["activate_lot"]),
-            # skill tags; 601-615 are the passive (green) skills value usage 14
-            # counts
             "tags": [int(t) for t in str(row["tag_id"] or "").split("/") if t.strip().isdigit()],
             "alternatives": alts,
         }
@@ -119,11 +86,6 @@ def skills() -> dict:
 
 
 def ensure_file() -> Path:
-    """Give Rust exactly the in-memory regional table, including fallback entries.
-
-    A timestamp alone cannot identify the master that produced a cache. Global
-    and JP share a workspace and can run at the same time.
-    """
     table = skills()
     encoded = json.dumps(table, separators=(",", ":"))
     with _lock:

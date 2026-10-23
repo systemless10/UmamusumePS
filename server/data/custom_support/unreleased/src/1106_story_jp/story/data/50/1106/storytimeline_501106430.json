@@ -1,0 +1,31 @@
+{
+ "title": "ジャパンCの後に・おじさんに導かれて",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "走り終えたものの、やはり夢は見つからない。\nが、そんなヒシミラクルに向かって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "また夢を見せてくれという、\nおじさんの声援が届く。夢がない自分にも、\n夢を見てくれる人はいるようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "年末の『有馬記念』ではアグネスデジタル、\nさらに本好きの英雄ゼンノロブロイらも\n待つが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは\nおじさんの声に導かれるままに、\n『有馬記念』に進むのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ゼンノロブロイ"
+   ]
+  }
+ ]
+}

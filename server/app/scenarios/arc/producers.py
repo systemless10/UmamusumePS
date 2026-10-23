@@ -1,11 +1,3 @@
-"""PROJECT L'ARC (scenario 6) -- the event calendar and its resolvers.
-
-Every beat is on docs/JP_LARC_SCENARIO.md §3.2 / §12, read off the 23 real
-careers: the turn it fires on, which response carried it, its play_timing and
-its choice count. As in Mecha, `ctx.turn` is the turn just PLAYED (the beats
-that close it, timing 6 / 3) and `ctx.advanced_turn` the turn being arrived at
-(timing 1).
-"""
 
 from __future__ import annotations
 
@@ -21,21 +13,21 @@ log = logging.getLogger("uma-server")
 
 PRIO_ARRIVAL = CE.PRIO_TRAILING + 5
 PRIO_CLOSE = CE.PRIO_TRAILING
-PRIO_SCREEN = CE.PRIO_TRAILING + 2         # the exhibition opener: last of the turn
+PRIO_SCREEN = CE.PRIO_TRAILING + 2
 
-CLOSING = {                                # played turn -> (event, story, choices)
+CLOSING = {
     1: (206001, 400006000, 0), 14: (206004, 400006003, 0), 31: (206082, 400006009, 0),
     38: (206017, 400006014, 0)}
-ROSTER = (206002, 400006001)               # closes T2: the members, Director, Mei
-REPORTER = (206100, 400000100)             # closes T10: 変人記者、登場！？ (103)
-EYES = (206005, 400006004)                 # closes T19: overseas points +100
-TUTORIAL = (206003, 400006002)             # T3 arrival (the client answers 2)
+ROSTER = (206002, 400006001)
+REPORTER = (206100, 400000100)
+EYES = (206005, 400006004)
+TUTORIAL = (206003, 400006002)
 NOTICE = {35: (206339, 400006113), 59: (206340, 400006113)}
 EXPEDITION_START = {37: (206016, 400006010), 61: (206025, 400006010)}
-NEW_YEAR = {False: (206087, 400006024), True: (206088, 400006025)}    # T49, by the classic Arc
-ARC_AFTERMATH = {True: (206084, 400006021), False: (206085, 400006022)}  # T44: mood -2
-SOON = (206086, 400006023)                 # T45: mood to max, overseas +30
-SENIOR_PREVIEW = {False: (206090, 400006042, 0), True: (206095, 400006035, 1)}   # T64
+NEW_YEAR = {False: (206087, 400006024), True: (206088, 400006025)}
+ARC_AFTERMATH = {True: (206084, 400006021), False: (206085, 400006022)}
+SOON = (206086, 400006023)
+SENIOR_PREVIEW = {False: (206090, 400006042, 0), True: (206095, 400006035, 1)}
 GOALS = {24: (206081, 400006100, 3, 20), 54: (206089, 400006102, 7, 50)}
 WITH = (206406, 400006005)
 WITH_TURN = 25
@@ -45,13 +37,9 @@ UNLOCK = {"event": (206344, 400006105), "other": (206121, 400006105)}
 MEMBER_WIN = (206101, 400006104)
 MONTHLY = (206083, 400000091)
 FINALE = {"won": (206035, 400006044, 20, 60, 1), "lost": (206033, 400006045, 15, 40, 1),
-          "double": (206034, 400006043, 25, 60, 3)}      # U4: the most common amounts
-# Trust's hint (§12.3): the With chara's skill group, gold when linked (U16:
-# only the groups seen in the captures).
+          "double": (206034, 400006043, 25, 60, 3)}
 TRUST_HINT = {1070: 20110, 1067: 20045, 1107: 20114, 1049: 20203}
 
-# Resolving these hands the client the exhibition screen (ps 16), which opens
-# only on an EMPTY chain.
 SCREEN_EVENTS = frozenset(e for e, _s in M.EXHIBITION_OPEN.values())
 
 
@@ -83,11 +71,8 @@ def race_bonus(full_state: dict, chara_info: dict) -> int:
 
 
 def scaled(base: int, rb: int) -> int:
-    """§12.1: base x (1 + deck race bonus / 100), floored."""
     return int(base) * (100 + int(rb)) // 100
 
-
-# ============================================================ calendar ===
 
 @CE.producer("arc_calendar", priority=CE.PRIO_SCENARIO, scenario=SCENARIO_ID)
 def arc_calendar(ctx: CE.Ctx) -> list:
@@ -95,7 +80,6 @@ def arc_calendar(ctx: CE.Ctx) -> list:
     fs, ci = ctx.full_state, ctx.chara_info
     st = impl.state(fs)
     out = []
-    # ---- beats closing the played turn
     if played in CLOSING:
         e, s, n = CLOSING[played]
         out.append(_beat(e, s, n_choices=n, timing=6, from_endpoint=True, priority=PRIO_CLOSE))
@@ -143,7 +127,6 @@ def arc_calendar(ctx: CE.Ctx) -> list:
         e, s = M.EXHIBITION_OPEN[M.EXHIBITIONS[played]]
         out.append(_beat(e, s, timing=6, from_endpoint=True, priority=PRIO_SCREEN,
                          resolver="arc_exhibition_open", payload={"turn": played}))
-    # ---- the turn arrived at
     if arrived == impl.ROSTER_TURN:
         out.append(_beat(*TUTORIAL, n_choices=0, priority=PRIO_ARRIVAL))
     if arrived in NOTICE:
@@ -180,8 +163,6 @@ def _story_of(event_id: int) -> int:
 
 
 def threshold_events(full_state: dict, chara_info: dict) -> list:
-    """§7: 期待度上昇のお祝いに！ on the first arrival off the expedition after
-    the rate crossed 20/40/60/80/100 %."""
     st = impl.state(full_state)
     rate = impl.approval_rate(st)
     out = []
@@ -197,8 +178,6 @@ def threshold_events(full_state: dict, chara_info: dict) -> list:
 
 
 def due_events(full_state: dict, chara_info: dict, played: int) -> list:
-    """What an action owed (SS match end, a race's result and its member
-    beat), in the order owed."""
     st = impl.state(full_state)
     due, st["due"] = list(st["due"]), []
     out = []
@@ -214,7 +193,6 @@ def due_events(full_state: dict, chara_info: dict, played: int) -> list:
 
 
 def ss_end_event(due: dict) -> CE.Event | None:
-    """206057 SSマッチ終了！ (timing 6 on the selection_exec reply)."""
     if not due:
         return None
     return _beat(*SS_END, timing=6, from_endpoint=True, priority=CE.PRIO_FRONT,
@@ -223,8 +201,6 @@ def ss_end_event(due: dict) -> CE.Event | None:
 
 
 def unlock_event(full_state: dict, chara_info: dict) -> CE.Event | None:
-    """課題の克服 (§9.2): one beat per batch of aptitudes whose conditions just
-    completed; 206344 for the expedition's (types 24), 206121 otherwise."""
     pids = impl.unlockable(full_state, chara_info)
     if not pids:
         return None
@@ -241,11 +217,7 @@ def emit_unlocks(full_state: dict, chara_info: dict) -> None:
         CE.emit(full_state, ev)
 
 
-# ========================================================= the With pick ===
-
 def with_options(full_state: dict, chara_info: dict) -> list:
-    """§13: [the trainee's fixed option] + [the deck's link charas, Mei
-    included, ascending] + [random other link charas, ascending] -- five."""
     st = impl.state(full_state)
     if st["with_options"]:
         return list(st["with_options"])
@@ -280,14 +252,7 @@ def with_event(full_state: dict, chara_info: dict) -> CE.Event | None:
                     source="arc", payload={"options": opts})
 
 
-# ============================================================== races ===
-
 def goal_race_entry_events(full_state: dict, chara_info: dict, program_id: int) -> list | None:
-    """The pre-race story (race_entry, timing 2, no choice) of the scenario's
-    goal races; served as wire entries, as Grand Masters' final (the race-prep
-    check_event resolves them without the event queue). Before the senior Arc
-    a link trainee's own story comes first and 400006036 on its check_event
-    (C6, C7, C16: the shared race-prep chain)."""
     program_id = int(program_id or 0)
     st = impl.state(full_state)
     pres = []
@@ -307,8 +272,6 @@ def goal_race_entry_events(full_state: dict, chara_info: dict, program_id: int) 
 
 
 def race_result_event(full_state: dict, chara_info: dict, d: dict) -> CE.Event | None:
-    """§12.1: the race's result story, its stats and SP x (1 + race bonus),
-    its overseas points unscaled."""
     st = impl.state(full_state)
     program = int(d.get("program_id") or 0)
     won = int(d.get("rank") or 99) == 1
@@ -342,18 +305,15 @@ def race_result_event(full_state: dict, chara_info: dict, d: dict) -> CE.Event |
     if program == M.FOY and won:
         effects.append({"type": "skill_hint", "skill_id": M.SKILL_ARC_WHITE, "value": "+1"})
     if program in M.EXHIBITION_NUM and won and M.EXHIBITION_NUM[program] >= 2:
-        effects.append({"type": "unique_skill_level", "value": "+1"})       # §11.4
+        effects.append({"type": "unique_skill_level", "value": "+1"})
     return _beat(e, s, timing=timing, priority=CE.PRIO_TRAILING, once=once,
                  resolver="arc_race_result", choices=_one(effects),
                  payload={"gexp": gexp, "program_id": program, "turn": int(d.get("turn") or 0),
                           "won": won})
 
 
-# =========================================================== resolvers ===
-
 @CE.resolver("arc_roster")
 def _roster(full_state, chara_info, event, choice_number, **kw):
-    """206002: the fifteen members join (§4.1) and train from the next board."""
     impl.start_roster_turn(full_state, chara_info)
     impl.RI.refresh_home(full_state, chara_info)
     return {}
@@ -368,7 +328,6 @@ def _gexp(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("arc_facilities")
 def _facilities(full_state, chara_info, event, choice_number, **kw):
-    """20 / 60 / 100 %: every facility +1 (§7)."""
     impl.RI.raise_all_facilities(full_state, chara_info)
     impl.RI.refresh_home(full_state, chara_info)
     return {}
@@ -376,7 +335,6 @@ def _facilities(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("arc_expedition")
 def _expedition(full_state, chara_info, event, choice_number, **kw):
-    """海外遠征スタート！ meets the type-24 conditions of aptitudes 3 and 6."""
     impl.state(full_state)["expedition_started"] = True
     emit_unlocks(full_state, chara_info)
     return {}
@@ -390,8 +348,6 @@ def _unlock(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("arc_ss_end")
 def _ss_end(full_state, chara_info, event, choice_number, **kw):
-    """206057: overseas points +10 per member in the match (§6.5), then any
-    aptitude the members beaten completed."""
     st = impl.state(full_state)
     st["gexp"] = int(st["gexp"]) + 10 * int((event.payload or {}).get("n") or 0)
     emit_unlocks(full_state, chara_info)
@@ -400,7 +356,6 @@ def _ss_end(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("arc_member_win")
 def _member_win(full_state, chara_info, event, choice_number, **kw):
-    """206101: the members who ran with the trainee, gauge +1 (§5, V2)."""
     st = impl.state(full_state)
     impl.flag(st, "not_up_boost", impl.raise_gauges(st, (event.payload or {}).get("charas") or ()))
     return {}
@@ -408,7 +363,6 @@ def _member_win(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("arc_with")
 def _with(full_state, chara_info, event, choice_number, **kw):
-    """The pick is the option's link index (gain_select_id_index)."""
     st = impl.state(full_state)
     opts = list((event.payload or {}).get("options") or ())
     pick = int(choice_number or 0)
@@ -421,7 +375,6 @@ def _with(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("arc_exhibition_open")
 def _exhibition_open(full_state, chara_info, event, choice_number, **kw):
-    """『代表交流戦』第N戦開幕: the exhibition screen (ps 16), the turn held."""
     st = impl.state(full_state)
     turn = int((event.payload or {}).get("turn") or 0)
     st["hold_turn"] = turn
@@ -452,8 +405,6 @@ def _race_result(full_state, chara_info, event, choice_number, **kw):
 
 
 def trust_event(full_state: dict, chara_info: dict, turn: int) -> CE.Event | None:
-    """Trust＜From X＞ (§12.3, timing 14 after exhibition 4): all +10, mood +1,
-    X's skill hint (gold when X is linked; U16: known groups only)."""
     st = impl.state(full_state)
     x = int(st["with"])
     e = M.LINK_CHAIN.get(x, (0, 0, 0))[2]
@@ -479,14 +430,10 @@ def _trust(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("arc_senior_result")
 def _senior_result(full_state, chara_info, event, choice_number, **kw):
-    """The senior Arc's result, then the monthly issue (206083, paid by the
-    Reporter's bond -- smt.reporter_issue_pay) and the finale."""
     st = impl.state(full_state)
     rank = int((event.payload or {}).get("rank") or 99)
     ev = _beat(*MONTHLY, timing=3, priority=CE.PRIO_TRAILING, resolver="arc_monthly",
                payload={"rank": rank},
-               # By the Reporter's bond, not the rank (8 real careers; a 12th
-               # at bond 69 paid +10): the shared issue rule.
                choices=_one(_smt().reporter_issue_effects(chara_info)))
     if ev:
         CE.emit(full_state, ev)
@@ -499,8 +446,6 @@ def _monthly(full_state, chara_info, event, choice_number, **kw):
     st = impl.state(full_state)
     key = ("double" if st["senior_won"] and st["classic_won"] else
            "won" if st["senior_won"] else "lost")
-    # Friend-card sendoffs come between the monthly issue and the finale (real
-    # T67 chains: 206083 -> 25 Mei -> 42 Tazuna -> 206033/206035).
     for fe in _smt().friend_ending_ce_events(full_state, chara_info, CE.PRIO_TRAILING, "arc"):
         CE.emit(full_state, fe)
     e, s, stats, sp, hint = FINALE[key]

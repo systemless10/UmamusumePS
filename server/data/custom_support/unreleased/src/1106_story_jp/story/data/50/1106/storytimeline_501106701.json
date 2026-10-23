@@ -1,0 +1,38 @@
+{
+ "title": "休息はバッチリ！",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさーん！　おはようございます！",
+   "choice_data_list": [
+    "ずいぶん元気だな",
+    "ずいぶん元気だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい！　実は新しいアロマのおかげで、\nとってもリラックスできたんですよ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "休日を使ってアロマの調合したんですけどね、\nすーっごくいい香りのオイルができて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今度、トレーナーさんにも\nおすそ分けしますね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは、とても充実した休日を\n過ごすことができたようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

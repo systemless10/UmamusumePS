@@ -1,5 +1,3 @@
-// Users: every account with a save in the current region, its details, and
-// account-level actions (profile, password, copy / export / import / delete).
 
 import { REGION_NAME, act, ago, bytes, call, color, dateTime, esc, fmt, gameIcon, icon, keepScroll, loadCatalog, loadUsers,
   reportError, store, userName } from "./core.js";
@@ -52,7 +50,7 @@ export const usersWin = {
         list.innerHTML = rows.map((u) => `<button class="urow ${u.id === store.viewer ? "on" : ""}" data-id="${esc(u.id)}">
           <div class="avatar sm ${u.leader ? "has-img" : ""}" style="--c:${color(u.id)}">${u.leader ? gameIcon("chara", u.leader, "av") : ""}
             <span class="initial">${esc(userName(u)[0]?.toUpperCase() || "?")}</span></div>
-          <div class="grow"><span class="name ellipsis">${esc(userName(u))}${u.default ? ` <span class="accent" title="Default account">★</span>` : ""}</span>
+          <div class="grow"><span class="name ellipsis">${esc(userName(u))}${u.default && store.users[store.region]?.chosen ? ` <span class="tag" title="Opens by default">default</span>` : ""}</span>
             <span class="faint ellipsis">${esc(u.id)} · ${u.last_seen ? ago(u.last_seen) : "no login"}${u.career ? " · in career" : ""}</span></div>
           <span class="faint">${bytes(u.bytes)}</span></button>`).join("") || `<div class="faint">No users.</div>`;
       });
@@ -90,6 +88,10 @@ export const usersWin = {
             ${p.leader_chara_id ? gameIcon("chara", p.leader_chara_id, "av") : ""}<span class="initial">${esc((p.name || "?")[0])}</span></div>
           <div class="grow"><div class="trainer">${esc(p.name || "(no name)")}</div>
             <div class="faint">${esc(d.id)} · ${REGION_NAME[d.region]} · last seen ${a.last_seen ? ago(a.last_seen) : "never"}</div></div>
+          ${(() => { const meta = store.users[store.region]; const on = meta?.default === d.id && meta?.chosen;
+            return `<button class="btn sm ${on ? "" : "ghost"}" data-act="${on ? "undefault" : "default"}"
+              title="${on ? "Tools and the panel open this account when none is picked. Click to go back to the last seen account." : "Open this account by default in the panel and the command-line tools"}">
+              ${on ? "Default account ✓" : "Make default"}</button>`; })()}
           <button class="btn sm" data-act="export">${icon("download")} Export save</button></div>
 
         <div class="tiles sm">
@@ -178,6 +180,9 @@ export const usersWin = {
           input: "text", value: "merge" });
         if (!mode) return;
         await act(btn, "Importing", () => call("save.import", { data, mode: mode.trim() }), "Imported");
+      } else if (name === "default" || name === "undefault") {
+        await act(btn, "Default account", () => call("users.set_default", { on: name === "default" }),
+          name === "default" ? "Default account set" : "Default is now the last seen account");
       } else if (name === "copy") {
         const src = await ask(win, { title: "Copy another viewer's save onto this one",
           text: `Everything in <b>${esc(d.id)}</b> is replaced (undo is in History).`, input: "text", placeholder: "Source viewer id", ok: "Copy" });

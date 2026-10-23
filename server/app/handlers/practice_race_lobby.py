@@ -1,42 +1,3 @@
-"""PRACTICE RACE -- everything around the race itself.
-
-practice_race.py owns the one endpoint that matters most (race_start, which
-actually simulates the race) plus get_follow_user_data. This module is the rest
-of the screen: the saved-race shelf, the entry presets, and the practice-partner
-system. Sixteen endpoints, none of them ever captured -- every request and
-response shape here is read field-by-field off dump.cs
-(PracticeRace*Request / PracticeRace*Response.CommonResponse) and the nested
-types they name (PracticeRaceSavedRaceInfo, PracticeRacePresetInfo,
-PracticePartnerOwnerInfo, PracticePartnerUsedHistory).
-
-Because nothing is capture-backed, the rule throughout is: get the SHAPE exactly
-right and never invent a success. Arrays are always present and always arrays
-(never absent -- MessagePack C# leaves an absent array null, and the client
-iterates these with no null guard; that exact bug is what made picking a track
-softlock before get_follow_user_data existed). An action the state cannot
-support answers 205 instead of pretending.
-
-THE PARTNER SYSTEM, and why it is real here
--------------------------------------------
-A practice partner is somebody else's finished career, borrowed to fill a gate.
-Three ways to get one, all three live on this server:
-
-  * your circle        -- search_partner's circle_user_partner_chara_array,
-                          built from the real circle membership in social.py
-  * the recommend list -- other accounts on this server, via directory
-  * a partner ID       -- create_partner_id mints a shareable code for ONE of
-                          your own trained charas; get_partner_info resolves
-                          somebody else's code by scanning published lobbies
-
-That last one is why this is not a stub feature: get_partner_id and
-create_partner_id are two of the endpoints the live client has actually been
-caught posting here (5 hits each in server.log, both answered with a no-op), so
-the borrow flow is reachable in normal play.
-
-HOUSE NUMBERS. Three limits below have no master.mdb table behind them and no
-capture to read them off (JP's saved-race limit, PARTNER_ID_LIMIT,
-PARTNER_LIMIT). They are labelled where they are defined. Everything else is derived from state.
-"""
 
 from __future__ import annotations
 
@@ -55,11 +16,6 @@ log = logging.getLogger("uma-server")
 
 STATE_KEY = "practice_race_lobby"
 
-# --- house numbers (see the module docstring) --------------------------------
-# How many finished races the shelf holds. Overflow evicts the oldest
-# NON-favourite, never a favourite and never the one just run. Global's client
-# shows the shelf as N/5 (seen in play 2026-10-05); JP's cap is unverified and
-# keeps the earlier house number.
 _SAVED_RACE_LIMITS = {"global": 5, "jp": 20}
 
 
@@ -67,11 +23,8 @@ def saved_race_limit() -> int:
     return _SAVED_RACE_LIMITS[region.CURRENT_REGION.get()]
 
 
-# How many of your own trained charas may have a live partner ID at once.
 PARTNER_ID_LIMIT = 5
-# How many borrowed partners you may keep.
 PARTNER_LIMIT = 30
-# How many other accounts the recommend list offers.
 RECOMMEND_SIZE = 10
 
 _OK_STATE = 1
@@ -93,8 +46,6 @@ def _blank() -> dict:
 
 
 def state(full_state: dict) -> dict:
-    """The lobby sub-state, created on demand and forward-migrated. Callers own
-    saving."""
     st = full_state.get(STATE_KEY)
     if not isinstance(st, dict):
         st = _blank()
@@ -116,11 +67,6 @@ def _preset_defaults(path) -> dict:
 
 
 def seed_presets(container: dict, kind: str) -> None:
-    """The entry presets every account starts with: ids 1..N, empty, named by
-    the region's seeds/exhibition.json (real replies: Global's practice race
-    serves 10 "Team Slot N", JP's 10 "出走リストN" and 5 for room match). The
-    client saves into these ids, so they must exist before the first save.
-    Idempotent; a region with no seed for `kind` gets none."""
     n, pattern = _preset_defaults(region.seeds_dir() / "exhibition.json").get(kind, (0, ""))
     have = {p["preset_id"] for p in container["presets"]}
     for i in range(1, n + 1):
@@ -137,21 +83,7 @@ def _load(payload: dict):
     return viewer_id, full_state, state(full_state)
 
 
-# ============================================================ saved races ===
-#
-# race_start stashes the race it just ran as `pending`; race_end is what decides
-# whether it goes on the shelf. Splitting it that way is the client's own flow
-# (you watch the race, THEN choose "save"), and it is why race_start no longer
-# mints a throwaway random practice_race_id.
-
 def remember_race(viewer_id, request: dict, response_data: dict) -> int:
-    """Called by practice_race.handle_race_start. Stashes the finished race as
-    the pending one and returns the practice_race_id to report for it.
-
-    The whole response payload is kept, not just a summary: race_replay has to
-    hand back trained_chara_array / race_result_info / entry_info_array
-    verbatim, and re-simulating would produce a DIFFERENT race than the one the
-    player watched."""
     full_state = state_store.get_state(viewer_id) or {}
     st = state(full_state)
     race_id = int(st["next_race_id"])
@@ -166,8 +98,6 @@ def remember_race(viewer_id, request: dict, response_data: dict) -> int:
         "user_entry_num": len(entries),
         "is_favorite": 0,
         "save_time": social.now(),
-        # The conditions the race was set up with -- race_replay reports these
-        # as before_* so the replay screen can redraw the setup it ran under.
         "before_season": int(request.get("season") or 0),
         "before_weather": int(request.get("weather") or 0),
         "before_ground_condition": int(request.get("ground_condition") or 0),
@@ -186,8 +116,6 @@ def remember_race(viewer_id, request: dict, response_data: dict) -> int:
 
 
 def _meta(entry: dict) -> dict:
-    """One PracticeRaceSavedRaceInfo row -- the shelf listing, without the race
-    payload hanging off it."""
     return {"practice_race_id": entry["practice_race_id"],
             "race_instance_id": entry["race_instance_id"],
             "entry_num": entry["entry_num"],
@@ -198,13 +126,6 @@ def _meta(entry: dict) -> dict:
 
 @registry.endpoint("practice_race/index")
 def handle_index(payload: dict) -> dict:
-    """PracticeRaceIndexResponse{state, practice_race_id} -- the resume probe
-    the screen opens with.
-
-    INFERRED: with only two ints and no capture, the reading that fits is "is
-    there a race waiting to be saved, and which one" -- the same pair race_start
-    answers with, where state is 1 and practice_race_id names the race just run.
-    So: a pending race reports itself, and an empty shelf reports 0/0."""
     _, _, st = _load(payload)
     pending = st.get("pending")
     if isinstance(pending, dict):
@@ -221,14 +142,6 @@ def handle_get_saved_race_list(payload: dict) -> dict:
 
 @registry.endpoint("practice_race/race_end")
 def handle_race_end(payload: dict) -> dict:
-    """PracticeRaceRaceEndRequest{is_save, overwrite_race_id} -> {state}.
-
-    is_save 0 discards the race that was just watched; the real reply's state
-    is 0 for that. overwrite_race_id names a shelf slot to
-    replace (that is what the client offers when the shelf is full); 0 appends.
-
-    Refuses when there is no pending race: answering "saved" with nothing to
-    save would put a row on the shelf that replays to an empty screen."""
     viewer_id, full_state, st = _load(payload)
     pending = st.get("pending")
     if not isinstance(pending, dict):
@@ -237,8 +150,6 @@ def handle_race_end(payload: dict) -> dict:
 
     st["pending"] = None
     if not int(payload.get("is_save") or 0):
-        # Discarded: state 0 (real replies, Global capture 20260829_205611 and
-        # JP umacap 2026-10-03, both race_end{is_save: 0} -> {state: 0}).
         state_store.save_state(viewer_id, full_state)
         return _ok({"state": _FAIL_STATE})
 
@@ -254,8 +165,6 @@ def handle_race_end(payload: dict) -> dict:
         while len(saved) > limit:
             victim = next((i for i, e in enumerate(saved) if not e["is_favorite"]), None)
             if victim is None:
-                # Everything is favourited -- drop the OLDEST rather than the
-                # race just run, which is the one the player asked to keep.
                 victim = 0
             dropped = saved.pop(victim)
             log.info("practice_race: shelf full (%s), dropped race %s",
@@ -278,9 +187,6 @@ def handle_delete_race(payload: dict) -> dict:
 
 @registry.endpoint("practice_race/change_favorite_race")
 def handle_change_favorite_race(payload: dict) -> dict:
-    """Response echoes {practice_race_id, is_favorite} -- so the echo has to be
-    what was actually stored, not what was asked for. An unknown race refuses
-    rather than echoing a flag nothing holds."""
     viewer_id, full_state, st = _load(payload)
     race_id = int(payload.get("practice_race_id") or 0)
     entry = next((e for e in st["saved"] if e["practice_race_id"] == race_id), None)
@@ -293,10 +199,6 @@ def handle_change_favorite_race(payload: dict) -> dict:
 
 @registry.endpoint("practice_race/race_replay")
 def handle_race_replay(payload: dict) -> dict:
-    """The stored race, played back verbatim. The race_scenario blob and its
-    random_seed are what the client renders from, so this MUST be the same
-    bytes the player watched the first time -- re-simulating would quietly show
-    a different race under the same name."""
     _, _, st = _load(payload)
     race_id = int(payload.get("practice_race_id") or 0)
     entry = next((e for e in st["saved"] if e["practice_race_id"] == race_id), None)
@@ -312,8 +214,6 @@ def handle_race_replay(payload: dict) -> dict:
     return _ok(data)
 
 
-# ================================================================ presets ===
-
 def _preset_wire(preset: dict) -> dict:
     return {"preset_id": preset["preset_id"], "name": preset.get("name") or "",
             "preset_chara_array": preset.get("preset_chara_array") or []}
@@ -327,18 +227,6 @@ def handle_get_preset_array(payload: dict) -> dict:
 
 @registry.endpoint("practice_race/save_preset")
 def handle_save_preset(payload: dict) -> dict:
-    """PracticeRaceSavePresetRequest{preset_info_array:[{preset_id,
-    preset_chara_array}]} -- the client sends the whole set it wants stored.
-
-    preset_id 0 means "new". The response carries more than the presets: it also
-    re-states the borrowed partners (add_partner_info_array /
-    practice_partner_owner_info_array), because a preset can reference somebody
-    else's horse and the screen redraws those from this same response.
-
-    is_excluded_flag reports that at least one entry could NOT be resolved to a
-    horse any more -- a borrowed partner that has since been deleted, say. That
-    is a real condition worth reporting honestly: the alternative is a preset
-    that silently loads one horse short."""
     viewer_id, full_state, st = _load(payload)
     roster = trained_chara._get_or_seed_roster(viewer_id) or []
     mine = {c.get("trained_chara_id") for c in roster}
@@ -384,16 +272,7 @@ def handle_change_preset_name(payload: dict) -> dict:
     return _ok({"preset_info": _preset_wire(preset)})
 
 
-# =============================================================== partners ===
-
 def _owner_info(me, owner_viewer_id, chara: dict, owner_name: str = "") -> dict:
-    """PracticePartnerOwnerInfo{partner_trained_chara_id, owner_viewer_id,
-    owner_name, owner_trained_chara_id, friend_state}.
-
-    partner_trained_chara_id and owner_trained_chara_id are the same horse seen
-    from the two sides -- the borrower's handle for it and the owner's own id
-    for it. Nothing here re-keys borrowed horses, so they are equal; keeping
-    both fields rather than one is what the wire declares."""
     tid = chara.get("trained_chara_id") or 0
     return {"partner_trained_chara_id": tid,
             "owner_viewer_id": social._wire_id(owner_viewer_id),
@@ -403,10 +282,6 @@ def _owner_info(me, owner_viewer_id, chara: dict, owner_name: str = "") -> dict:
 
 
 def _best_of(viewer_id, rosters: dict, cards: dict):
-    """(chara, owner_name) for one account's offered partner: the horse they
-    have SET as their Star Umamusume, falling back to their strongest. Same
-    choice directory makes for every other borrow surface, so the horse a player
-    offers is consistent across circle, recommend and partner-ID."""
     roster = rosters.get(str(viewer_id)) or []
     if not roster:
         return None, ""
@@ -417,18 +292,6 @@ def _best_of(viewer_id, rosters: dict, cards: dict):
 
 @registry.endpoint("practice_race/search_partner")
 def handle_search_partner(payload: dict) -> dict:
-    """PracticeRaceSearchPartnerResponse{circle_user_partner_chara_array,
-    recommend_partner_chara_array, practice_partner_owner_info_array}.
-
-    Both lists are REAL accounts on this server, not filler: the circle list is
-    the caller's actual circle membership out of social.py, and the recommend
-    list is other published accounts out of directory. Anyone already in the
-    circle list is kept out of the recommend list so the same trainer is not
-    offered twice on one screen.
-
-    The owner array covers BOTH lists -- it is the lookup the client uses to put
-    a name against whichever horse gets picked, so it has to span everything on
-    offer."""
     viewer_id, _, _ = _load(payload)
     me = str(viewer_id)
 
@@ -459,10 +322,6 @@ def handle_search_partner(payload: dict) -> dict:
 
 @registry.endpoint("practice_race/save_partner")
 def handle_save_partner(payload: dict) -> dict:
-    """Borrow one horse and keep it. Stores a SNAPSHOT rather than a reference:
-    the owner can retire or overwrite that career tomorrow, and a saved partner
-    that silently changes stats between races would make every replay on the
-    shelf a lie about what ran."""
     viewer_id, full_state, st = _load(payload)
     me = str(viewer_id)
     target = payload.get("target_viewer_id")
@@ -493,8 +352,6 @@ def handle_save_partner(payload: dict) -> dict:
 
 @registry.endpoint("practice_race/delete_partner")
 def handle_delete_partner(payload: dict) -> dict:
-    """Returns what is LEFT (practice_partner_chara_array), not what went -- the
-    screen redraws the whole list from this."""
     viewer_id, full_state, st = _load(payload)
     drop = {int(t) for t in (payload.get("target_trained_chara_id_array") or []) if t}
     st["partners"] = [p for p in st["partners"]
@@ -504,23 +361,12 @@ def handle_delete_partner(payload: dict) -> dict:
                                                  for p in st["partners"]]})
 
 
-# ------------------------------------------------------------ partner IDs --
-
 def _issued(st, tid) -> dict | None:
     return (st.get("partner_ids") or {}).get(str(tid))
 
 
 @registry.endpoint("practice_race/get_partner_id")
 def handle_get_partner_id(payload: dict) -> dict:
-    """Live-hit 5x against the no-op fallback before this existed.
-
-    partner_id 0 means "this horse has no code yet", which is the client's cue
-    to offer create_partner_id -- so an un-minted horse is a normal answer here,
-    not a refusal.
-
-    is_already_circle_post_chara is answered from the real circle post list
-    (circles._post_partner_array offers each member's Star Umamusume), so the
-    screen does not offer to post a horse that is already up there."""
     viewer_id, _, st = _load(payload)
     tid = payload.get("target_trained_chara_id")
     issued = _issued(st, tid) or {}
@@ -532,15 +378,12 @@ def handle_get_partner_id(payload: dict) -> dict:
         "is_exist_used_history":
             1 if any(h.get("trained_chara_id") == tid
                      for h in st["used_history"]) else 0,
-        # Nothing on this server meters how many times a day a horse may be
-        # posted, so the count is what has actually been minted, not a quota.
         "daily_post_partner_count": len(st["partner_ids"]),
         "is_already_circle_post_chara": 1 if _is_circle_posted(viewer_id, tid) else 0,
     })
 
 
 def _is_circle_posted(viewer_id, tid) -> bool:
-    """Is this horse the one the caller's circle already shows for them?"""
     circle = social.circle_of(str(viewer_id))
     if not circle:
         return False
@@ -552,14 +395,6 @@ def _is_circle_posted(viewer_id, tid) -> bool:
 
 @registry.endpoint("practice_race/create_partner_id")
 def handle_create_partner_id(payload: dict) -> dict:
-    """Mint a shareable code for one of YOUR OWN trained charas. Live-hit 5x
-    against the no-op fallback before this existed.
-
-    Refuses for a horse that is not in the caller's roster -- minting a code for
-    somebody else's career would let get_partner_info hand it out under the
-    wrong owner. Re-minting a horse that already has a code returns the existing
-    one rather than orphaning it: any code already shared has to keep resolving.
-    """
     viewer_id, full_state, st = _load(payload)
     tid = payload.get("target_trained_chara_id")
     roster = trained_chara._get_or_seed_roster(viewer_id) or []
@@ -592,13 +427,6 @@ def handle_create_partner_id(payload: dict) -> dict:
 
 @registry.endpoint("practice_race/get_partner_info")
 def handle_get_partner_info(payload: dict) -> dict:
-    """Resolve somebody else's partner code. This is the one endpoint here that
-    reads ACROSS accounts: it scans every lobby state on the server for the code.
-
-    register_time is part of the request, and is checked -- it is what stops a
-    recycled id from resolving to whatever horse holds that number now. A code
-    whose owner has since deleted the career refuses rather than returning an
-    empty horse."""
     viewer_id, _, _ = _load(payload)
     me = str(viewer_id)
     partner_id = int(payload.get("partner_id") or 0)
@@ -633,15 +461,11 @@ def handle_get_partner_info(payload: dict) -> dict:
     return _refuse(ResultCode.PRACTICE_RACE_INVALID_PARTNER_ID_ERROR)
 
 
-# ============================================================ use history ===
-
 _HISTORY_LIMIT = 50
 _HISTORY_TYPE_PARTNER = 1
 
 
 def _record_partner_use(st: dict, viewer_id, entries) -> None:
-    """Log every BORROWED horse a race used, for used_history. Own horses are
-    not logged -- the screen exists to show who has been borrowing whom."""
     borrowed = {p["chara"].get("trained_chara_id"): p for p in st["partners"]}
     circle = social.circle_of(str(viewer_id))
     circle_name = (circle or {}).get("name") or ""
@@ -662,8 +486,6 @@ def _record_partner_use(st: dict, viewer_id, entries) -> None:
 
 @registry.endpoint("practice_race/used_history")
 def handle_used_history(payload: dict) -> dict:
-    """PracticeRaceUsedHistoryRequest{target_trained_chara_id} -> the times that
-    ONE horse was used, plus a total. A target of 0 asks for everything."""
     _, _, st = _load(payload)
     tid = payload.get("target_trained_chara_id")
     rows = st["used_history"]

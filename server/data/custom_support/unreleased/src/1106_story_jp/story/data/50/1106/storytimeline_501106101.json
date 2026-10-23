@@ -1,0 +1,389 @@
+{
+ "title": "新年の抱負",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "新年――軽めの初仕事を終えてひと息つく。\n廊下から、新年の挨拶をする\nウマ娘の声が聞こえてきた。",
+   "choice_data_list": [
+    "（ヒシミラクルはどうしているかな）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……なんとなく、予想はつくが。\nそんなことを思いながら机の上を片づけ、\n出かけることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あれ？　トレーナーさん？\nわ、偶然ですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あけましておめでとうございます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "商店街でヒシミラクルと出くわした。\n新年の挨拶をしたが、まさか会えるとは\n思わなかったためについ口にする。",
+   "choice_data_list": [
+    "君は家でゴロゴロしているかと……",
+    "貴方は家でゴロゴロしているかと……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、ひっど！\nわたしをグータラ魔人みたいに！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いつまでもゴロゴロなんてしてません～。\n今年のわたしはひと味違うんですから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほら、体を動かそうと思って、自主的に\n散歩に出てきたんですよ。すごくないです？",
+   "choice_data_list": [
+    "なら、もっと体を動かさないか？",
+    "なら、もっと体を動かさない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それは……もしかして、トレーニング的な――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やー、ないない。ないですって～！\nお正月ですよ？　暦の上でも真っ赤っか！\n休日も休日！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "貴重な休暇を満喫すべきです。\n今日はトレーナーさんもお仕事お休み！　ね？",
+   "choice_data_list": [
+    "それもそうだな",
+    "それもそうだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あれ……あっさり引きましたね。",
+   "choice_data_list": [
+    "だって、君は昨年頑張ったから",
+    "だって、貴方は昨年頑張ったから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "デビューが決まってからのヒシミラクルは、\n日々、トレーニングに励んできた。\n彼女なりに継続して頑張っていたと思う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。\nえへへ……そう言ってもらえると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん、自分でも、去年はがんばれたなって\n思うんですよ。デビュー前に比べたら、\nちゃんとがんばれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やればできるじゃん、わたし。\n……みたいな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だから今年も……がんばろうと思うんです。\nまあ、それなりにですけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とはいえそれは、休み明けからで。\n今日は遊びますよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちなみに、トレーナーさんなら\nなにして遊びます？　ちょっと興味あるな～。",
+   "choice_data_list": [
+    "遊園地のアトラクション完全制覇",
+    "カフェでゆったり過ごす",
+    "福袋で運試し！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なるほど、徹底的に遊び倒すと。\nいいですね～、わたしも全力で遊びたいです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ということで、ヒシミラクルと遊園地に来た。\nすると、入口でよく知る2人組に出会った。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マーベラスサンデー",
+   "text": "ミラ子、あけましてマーベラース☆★☆\nすっごい偶然！　確率的に超レアレア！\nマーベラスなご縁に感謝だねっ★",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ミラ子"
+   ]
+  },
+  {
+   "name": "マヤノトップガン",
+   "text": "うんうんっ！　なんか嬉しいなー！\nねえねえ、アトラクション一緒に回らない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、いいね！　トレーナーさん、\n2人なら、効率よくアトラクションを回る\nコツを知ってると思うんですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マヤノトップガン",
+   "text": "それなら、マヤたちにおまかせっ！\n余裕で全部乗れるコースに案内してあげる！",
+   "choice_data_list": [
+    "ぜひ、よろしくお願いするよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マーベラスサンデー",
+   "text": "あははははっ！　マーーベラーーース☆\nジェットコースターぎゅんぎゅんぎゅーん★",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃあああああっ！\n……っ、あは、あはは～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マヤノトップガン",
+   "text": "あっ！　マヤ、わかっちゃった！\n脱出の謎、とーけたっ！　みんなこっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっと追いつい……ま、また走るの！？\n待って～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マーベラスサンデー",
+   "text": "わーいわーい、アトラクション制覇っ☆\nマーベラス★☆　次はお土産屋さん制覇しよ！",
+   "choice_data_list": [
+    "あの2人、ずっと元気だな……",
+    "あの2人、ずっと元気だね……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええ……これが噂の『ブートキャンプ』……。\n想像の50倍キツいんですが……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてヒシミラクルは、意図せず\nタフなお正月を過ごすことになったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "カフェでまったり、わたしも好きです～。\nなんなら今から行っちゃいます？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルと雰囲気のよいカフェに入る。\nすると、見知った顔の店員がやってきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロライアン",
+   "text": "いらっしゃいませ！　やあ、ヒシミラクル。\nあけましておめでとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ、ライアンちゃん？\nびっくりした～。バイト？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロライアン",
+   "text": "ここ、知り合いの店なんだ。前にすごく\nお世話になったから、お礼に手伝いをね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふえ～、それはそれは。\nお正月からお疲れさまです～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロライアン",
+   "text": "あはは、楽しんでやってるよ！\nじゃ、注文が決まったら呼んでね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……聞きました？　お手伝い、つまり無償。\nライアンちゃんらしいというか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "貴重な休みに……わたしには真似できません。\nほんと、すごいなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "あ、あの……ライアンさんっ！\n握手してもらえますか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロライアン",
+   "text": "はい、よろこんで！\n――それでは、お手をよろしいでしょうか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ファンサまで大サービスじゃないですか。\nてか、対応慣れしてるな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱり住む世界が違いますねぇ。\nあ～、カフェラテおいし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "勤勉なメジロライアンに感心しつつも、\n気にせずゆったり過ごすヒシミラクルだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "福袋！　なにが入ってるか見てみた～い。\nトレーナーさん、ついていってもいいですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――あ、福袋ワゴンの前にいるの……\nナカヤマちゃんじゃないですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "特設会場の人混みの中、最前列で福袋を\n吟味するナカヤマフェスタの姿があった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナカヤマフェスタ",
+   "text": "価格以上の品数は約束されている……\nだが、問題は私が使えるかどうか、だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナカヤマフェスタ",
+   "text": "去年はそこを見誤ってババを引いちまったが。\n――今年は見極めるぜ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナカヤマフェスタ",
+   "text": "狙うは当然、高価格帯！\nハイリスクハイリターンこそ勝負の醍醐味！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナカヤマフェスタ",
+   "text": "袋の大きさ、色、配置……\n導き出されるベット先は――これだっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……なんか、すごいですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よく高い福袋にチャレンジできるなぁ。\nわたしも前に失敗したことあるから、\n高いのなんて怖くて買えません。",
+   "choice_data_list": [
+    "福袋はもう買わないの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえ、無謀な勝負はしないだけで。\nお得が約束されてる\n毎年人気の福袋は買いますよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ここなら、輸入食品店の福袋がおすすめです。\n買ってみます？",
+   "choice_data_list": [
+    "ああ、俺もそっちを買おうかな",
+    "うん、私もそっちを買おうかな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ではでは、安心安全確実な\n運試しといきますか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "できることなら失敗はしたくない。\nヒシミラクルと、勝利が約束された福袋での\n運試しへと向かったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

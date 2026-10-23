@@ -1,0 +1,49 @@
+{
+ "title": "武者震い",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "――ごきげんようトレーナー♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日はきっと、すばらしい1日になるわ♪",
+   "choice_data_list": [
+    "……いったいなにごと？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あはっ♪　どうどう？　セレブっぽかった？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "レッドカーペット歩きの、予行演習～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日走るレースだって、\nぜ～んぶドバイにつながってる！　なら――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どんなレースでだって堂々としてなくちゃ♪\nセレブにふさわしく、ね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、ぜーったい勝ってきちゃうから！\nトレっちもあとでいっしょに練習しよーね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

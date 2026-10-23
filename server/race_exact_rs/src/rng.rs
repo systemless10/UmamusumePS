@@ -1,7 +1,3 @@
-//! Gallop.RaceRandom over .NET System.Random(seed): one shared stream per race.
-//!
-//! Ported from server/app/simulation/race_exact/rng.py, which was checked against
-//! the native client generator (docs/race_exact_evidence/native_rng_*_audit.json).
 
 const MBIG: i32 = 2147483647;
 const MSEED: i32 = 161803398;
@@ -41,8 +37,6 @@ impl NetRandom {
                 }
             }
         }
-        // Research only: zero-based logical sample indices, independent of
-        // stream displacement. An omitted draw returns a peek without advancing.
         let indices = |name| std::env::var(name).ok().map_or(Vec::new(), |v|
             v.split(',').filter(|s| !s.trim().is_empty()).map(|s| s.trim().parse().expect("RX_RNG indices must be unsigned integers")).collect());
         NetRandom { sa, inext: 0, inextp: 21, calls: 0, stream_calls: 0,
@@ -52,7 +46,6 @@ impl NetRandom {
     pub fn internal_sample(&mut self) -> i32 {
         let index = self.calls;
         self.calls += 1;
-        // A repeated index inserts that many draws.
         for _ in 0..self.insert.iter().filter(|&&i| i == index).count() { self.raw_sample(); }
         if self.skip.contains(&index) { return self.clone().raw_sample(); }
         self.raw_sample()
@@ -85,7 +78,6 @@ impl NetRandom {
         self.internal_sample() as f64 * (1.0 / MBIG as f64)
     }
 
-    /// Random.Next(lo, hi); ranges wider than MBIG take two samples (client 0x20198f0).
     pub fn next_range(&mut self, lo: i32, hi: i32) -> i32 {
         assert!(lo <= hi, "Random.Next minimum exceeds maximum");
         let range = hi as i64 - lo as i64;
@@ -101,7 +93,6 @@ impl NetRandom {
     }
 }
 
-/// Optional draw trace: zero-based logical index; probes may shift the stream.
 #[derive(Clone, Debug, serde::Serialize)]
 pub struct Draw {
     pub index: u64,
@@ -110,7 +101,6 @@ pub struct Draw {
     pub kind: &'static str,
     pub value: f64,
     pub tag: String,
-    /// Race time of the draw (trace only).
     pub t: f32,
 }
 
@@ -118,9 +108,7 @@ pub struct Draw {
 pub struct RaceRandom {
     r: NetRandom,
     pub trace: Option<Vec<Draw>>,
-    /// Current race time, recorded in the trace.
     pub now: f32,
-    /// float_range evaluates the scaled draw in double and rounds once (skill trigger windows).
     pub wide: bool,
 }
 
@@ -142,7 +130,6 @@ impl RaceRandom {
         }
     }
 
-    /// Raw InternalSample() (JP server pre-start draws).
     pub fn raw(&mut self, tag: &dyn Fn() -> String) -> i32 {
         let first = self.r.calls;
         let v = self.r.internal_sample();
@@ -150,8 +137,6 @@ impl RaceRandom {
         v
     }
 
-    /// GetRandom(int max) = Next(0, max)
-    /// Debug: the next Random.NextDouble without consuming it.
     pub fn peek_double(&self) -> f64 { self.r.clone().next_double() }
     pub fn peek_doubles(&self, n: usize) -> Vec<f64> { let mut r = self.r.clone(); (0..n).map(|_| r.next_double()).collect() }
 
@@ -162,7 +147,6 @@ impl RaceRandom {
         v
     }
 
-    /// GetRandom(int min, int max) = Next(min, max)
     pub fn int_range(&mut self, lo: i32, hi: i32, tag: &dyn Fn() -> String) -> i32 {
         let first = self.r.calls;
         let v = self.r.next_range(lo, hi);
@@ -170,7 +154,6 @@ impl RaceRandom {
         v
     }
 
-    /// GetRandom(float max) = clamp((float)NextDouble() * |max| + 0, 0, max)
     pub fn float_max(&mut self, max: f32, tag: &dyn Fn() -> String) -> f32 {
         let first = self.r.calls;
         let d = self.r.next_double() as f32;
@@ -184,14 +167,11 @@ impl RaceRandom {
         v
     }
 
-    /// GetRandom(float min, float max) = clamp((float)NextDouble() * |max - min| + min, min, max)
     pub fn float_range(&mut self, lo: f32, hi: f32, tag: &dyn Fn() -> String) -> f32 {
         let mode = if self.wide { Wide::Double } else { Wide::Float };
         self.float_range_with(lo, hi, mode, tag)
     }
 
-    /// `Wide::Double`: the double draw is scaled in double and rounded once.
-    /// `Wide::FloatDraw`: the draw is rounded to float, then scaled in double and rounded once.
     pub fn float_range_with(&mut self, lo: f32, hi: f32, mode: Wide, tag: &dyn Fn() -> String) -> f32 {
         let first = self.r.calls;
         let dd = self.r.next_double();
@@ -220,7 +200,6 @@ mod tests {
 
     #[test]
     fn matches_known_dotnet_values() {
-        // System.Random(0).Next() sequence (reference .NET Framework values).
         let mut r = NetRandom::new(0);
         assert_eq!(r.internal_sample(), 1559595546);
         assert_eq!(r.internal_sample(), 1755192844);

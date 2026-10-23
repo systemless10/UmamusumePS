@@ -1,24 +1,3 @@
-"""The Archive's event gallery: every career event the account has seen,
-served as load/index event_data_array (NoteDataForDisplay[]).
-
-The client never reports events; the real server records each one it serves.
-Checked over 156 consecutive JP load/index snapshots and the career replies
-between them: every event a reply put in unchecked_event_array whose story
-exists in single_mode_story_data entered the next snapshot's list (952/952
-predictions right, none spurious), with:
-
-  * data_id  = the story_id served, or -- when the reply served a short
-    variant -- the row whose short_story_id it is (501013400 played ->
-    501013100 recorded);
-  * chara_id = the row's card_chara_id, else support_chara_id, else the
-    character of its support_card_id, else 0 for the common categories 0/1,
-    else the trainee of the career that saw it (951/952; every static case
-    of the Global 3,120-entry capture agrees);
-  * create_time = when it was first seen; new_flag 1 until the gallery is
-    viewed. Seen events are never re-stamped.
-
-Order on the wire is (chara_id, data_id), as in every capture.
-"""
 
 from __future__ import annotations
 
@@ -28,11 +7,11 @@ import time
 from . import master_data
 from . import state as state_store
 
-STATE_KEY = "event_gallery"     # {str(data_id): [chara_id, create_time, new_flag]}
+STATE_KEY = "event_gallery"
 _COMMON_CATEGORIES = (0, 1)
 
 
-@functools.lru_cache(maxsize=1)
+@master_data.context_cache(maxsize=4)
 def _stories() -> tuple[dict, dict]:
     rows, by_short = {}, {}
     for r in master_data.query(
@@ -58,7 +37,6 @@ def _card_charas() -> dict:
 
 
 def targets(story_id) -> list:
-    """The gallery story ids a served story_id stands for."""
     rows, by_short = _stories()
     if story_id in rows:
         return [story_id]
@@ -88,7 +66,6 @@ def _store(full_state: dict) -> dict:
 
 
 def record(full_state: dict, story_id, trainee_chara_id: int = 0) -> list:
-    """Record one served story; returns the NoteDataForDisplay rows it added."""
     st = _store(full_state)
     added = []
     for sid in targets(story_id):
@@ -103,8 +80,6 @@ def record(full_state: dict, story_id, trainee_chara_id: int = 0) -> list:
 
 
 def record_served(viewer_id, response: dict) -> None:
-    """Record every event a career reply serves. Saves only when something
-    is new, so an ordinary turn costs one lookup."""
     data = response.get("data") if isinstance(response, dict) else None
     if not isinstance(data, dict):
         return
@@ -135,8 +110,6 @@ def wire_array(full_state: dict) -> list:
 
 
 def mark_viewed(full_state: dict) -> bool:
-    """Clear every new_flag (the gallery screen was opened). True if any
-    flag changed."""
     st = full_state.get(STATE_KEY)
     changed = False
     if isinstance(st, dict):

@@ -1,0 +1,411 @@
+{
+ "title": "やる気出しすぎ、甘えすぎ",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～、めざせメイクデビューかぁ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ガムシャラにやるとか、\nっぽくないけど、でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "はぁ、はぁ、もう1本！\nいえ、あと2本お願いします！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "次こそ――オペラオーちゃんに一矢を！\n惜敗続きからの脱却を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トップロードちゃん、かっこい～。\nさすがGⅠウマ娘……。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トップロード",
+    "GⅠ"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『菊花賞』を勝った後も、\nずっとGⅠ上位の常連さんだもんね。\n強いだけじゃなく、いつも一生懸命で……。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "菊花賞"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よぉし、わたしもっ！\nわたしも少しはがんばらなきゃ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっとだけ多めに自主練しよっかな。\nめざめろ！　わたしのメチャスゴ才能っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（グキィッ！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あひゃばぁ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……ヒシミラクルはしゅんとした顔で、\n保健室で休んでいた。",
+   "choice_data_list": [
+    "何があったんだ！？",
+    "何があったの！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ごめんなさい、すみません～。\nつい熱血したくなったってか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『わたしだって～！』って\n追加自主練したら、脚やらかしちゃって……。",
+   "choice_data_list": [
+    "そうか、とにかく休んで",
+    "そう、とにかく休んで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "やってしまったものは仕方ない。\n幸い軽傷だったので、\n2、3日休ませることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（チュンチュン、チュン……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～、今日から休みかぁ。\nなんか落ち着かないけど～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんも安静にって言ってたし。\nおとなしくしとかなきゃね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（チュンチュン、チュン……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "3日目……。痛みはもう、ほぼないよね。\nでも万が一ってこともあるし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日は温泉特集でも読んどこっかな。\n治れ、治れ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、今日で休み、何日目だっけ？\nもうそろそろ……。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーニングないの、最高すぎる～。\nこれが前までのわたしの生活～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、体がよろこんでる。\nだから、だから～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（チュンチュン、チュン……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日こそはトレーニングやるっ、やりたいっ。\nでも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『トレーナーさんへ。痛みはだいぶ\nいいんですけど、まだ少し違和感が……』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやっ、『そこそこ違和感が！』。\nこうかな。ですから今日は……と……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "負傷してから、だいぶ経ったが――\nヒシミラクルはなかなかトレーニング場に\n戻ってこられなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "だが無理をして悪化させるよりはいい。\n仕方なく、1人でトレーニングメニューを\n考えていると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "どうも、ご同僚。\nヒシミラクルはまだ休み？",
+   "choice_data_list": [
+    "あ、はい……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "少し先輩のトレーナーが話しかけてきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "そっか。\nじゃあ、そろそろ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "別の担当ウマ娘を探したほうがいいかもな。",
+   "choice_data_list": [
+    "どういうことですか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "いるんだよな。ケガをきっかけに、気持ちが\n普通の暮らしに戻っちゃうウマ娘。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "五月病みたいなやつ？　ってか、\nそもそもレースに挑むほうが不自然なんだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "やらなくてもいいのに、\nとんでもない無理をして挑むわけだから。",
+   "choice_data_list": [
+    "…………"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルが戻ってこないのには……\n戻りたくない気持ちもあるのだろうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "わからない。\nわからないが、でも……。",
+   "choice_data_list": [
+    "彼女は……来ますよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "そうかな。信じるのは自由だけど、\n向こうもツラいかもしれないぞ？\nそれに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "戻ってこなければ、\n君も大切な時間を棒に振ることになる。\n担当ウマ娘もいないままに。",
+   "choice_data_list": [
+    "彼女は……来ますから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "たとえ確証はなくても、\nそう言うしかなかった。\nなぜならヒシミラクルは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分が見出し、信じたウマ娘だから。\nきっとケガが長引いているだけに違いない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナー",
+   "text": "そっか。ならせめて期限は決めておけよ。\nあと何日とかさ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして――その数日後。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさぁん！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ、はぁ、はぁ、トレーナーさん！",
+   "choice_data_list": [
+    "走れるのか、もう！？",
+    "走れるの、もう！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……！？　はい……！！\n大丈夫です、ちょっと痛――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえいえっ、痛くないです！\n平気平気、もう、やっと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そろそろゆっくりなら始めても\n平気かな～なんて。ですから……。",
+   "choice_data_list": [
+    "……よかった！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "と、トレーナーさん……。",
+   "choice_data_list": [
+    "治ったなら本当に……！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、はい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "大げさ……ですよ。\n大げさ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "治るなんて、わかりきってたじゃないですか。\nそりゃ、いつかは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――サイテーだ、わたし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もう少しズルズル行ったら、ダメになるって\n思った。だから、どうにか……。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんにウソついた。\nしかもウソついたまんまで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これは……よくない。あまりにもダメだ。\nだから……うん、謝ろう……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "って、どのツラで～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "言えるわけないじゃん～！\n本当は治ってたのに、\nダラけてました～なんて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……お母さん、クーちゃんは悪い子です。\n謝ることすらできません。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あなたもちょっと悪いと思いますっ！\nわたしを厳しく育ててくれたら。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ごめんなさい、トレーナーさん。\n直接は言えないけど……もうしません。\nもうしないから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今回のダメダメは、この先、少しずつ\n返していきます。きっと……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

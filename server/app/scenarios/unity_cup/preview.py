@@ -1,24 +1,3 @@
-"""UNITY CUP (scenario 2) -- the per-facility TEAM overlay, and banking it.
-
-The scenario's command_info() and award_training_gains() hooks.
-
-command_info_array here is the exact parallel of Grand Live's token preview: it
-shadows the five training commands with the teammates standing in each one and
-what they will contribute. The client renders the teammate portraits, the soul
-flame on anyone about to detonate, and the bonus-stat badge from it.
-
-    {"command_type": 1, "command_id": 103,
-     "guide_event_partner_array":   [5, 6, 1019],   # joining this training
-     "soul_event_partner_array":    [],             # about to Explode
-     "sp_soul_event_partner_array": [1010],         # about to SpExplode
-     "params_inc_dec_info_array":   [{target_type, value}, ...]}
-
-THE ROLL IS CACHED PER TURN, for the same reason Grand Live's is: the client is
-shown this preview and then trains against it. Re-rolling on the next response
-would place different teammates in the facility than the ones the player was
-promised -- and here that is worse than a cosmetic drift, because the preview
-is also what decides who banks growth and whose gauge ticks.
-"""
 
 from __future__ import annotations
 
@@ -33,50 +12,16 @@ log = logging.getLogger("uma-server")
 
 PREVIEW_KEY = "unity_cup_partner_preview"
 
-# WHO SHOWS UP, and who actually raises their gauge. Both measured off
-# captures/bot/20260905_152744_icarus, over 201 turns and four roster sizes.
-#
-#   present  84% / 97% / 92% / 87% of the roster at 4 / 6 / 10 / 13 scouts
-#   guides   51% of present deck members (559/1095), 46% of present scouts
-#            (652/1403) -- the same coin either way, so ONE constant
-#
-# The distinction matters and used to be missing entirely: a teammate standing
-# in a facility is NOT necessarily raising their gauge there. Capture 0187 has
-# 1056 in facility 103's training_partner_array with an EMPTY
-# guide_event_partner_array and an empty bonus, next to 3 and 6 in 102 who are
-# guides and do carry one. Present is the portrait; guide is the flame.
-#
-# The old model rolled 2-5 placements TOTAL across all five facilities. That is
-# roughly a fifth of what the game does, and it is why the flame almost never
-# appeared on anybody (user-reported 2026-09-05).
-AWAY_CHANCE = 0.10          # a teammate who sits the turn out entirely
-GUIDE_CHANCE = 0.50         # of those present, who raises their gauge here
+AWAY_CHANCE = 0.10
+GUIDE_CHANCE = 0.50
 
-# The client draws at most five bodies in a facility -- the same cap
-# single_mode_team._MAX_FACILITY_PARTNERS applies to cards, NPCs and Grand
-# Live's supporters. The capture's per-facility partner histogram tops out at
-# exactly 5, never 6.
 MAX_PER_FACILITY = 5
 
-# Deck teammates carry their DECK POSITION as target_id, so ids 1-6 are both a
-# support card and a teammate. That is not a collision to work around, it is
-# the mechanic: a deck teammate is standing wherever her card is standing, and
-# is therefore never placed by the roll below.
 DECK_TARGET_MAX = 6
 
 
 def scout_placements(full_state: dict, chara_info: dict, turn,
                      occupied: dict = None) -> dict:
-    """{facility command_id: [target_id, ...]} -- the SCOUTED teammates only.
-
-    Feeds home_info's training_partner_array through the scenario's
-    partner_placements hook, which is the array the client draws portraits
-    from. Deck teammates are deliberately absent: they ride their own support
-    card's placement, so rolling them here would draw them twice.
-
-    Deterministic in (seed, turn, target_id) because it is computed TWICE per
-    response -- once building home_info and once building the overlay -- and
-    the two must agree body for body."""
     if turn is None:
         return {}
     st = unity_cup.state(full_state)
@@ -90,9 +35,6 @@ def scout_placements(full_state: dict, chara_info: dict, turn,
     for member in sorted(members, key=lambda m: int(m["target_id"])):
         rng = random.Random(
             "%s:place:%s:%s" % (st.get("seed", 0), turn, member["target_id"]))
-        # A full gauge never sits a turn out. The capture has no teammate who
-        # reached soul 5 and then failed to fire, so the burst is not something
-        # the away roll gets to cancel.
         if not unity_cup.burst_ready(member) and rng.random() < AWAY_CHANCE:
             continue
         stat = unity_cup.member_soul_type(member)
@@ -107,16 +49,6 @@ def scout_placements(full_state: dict, chara_info: dict, turn,
                 out.setdefault(cmd, []).append(member["target_id"])
                 break
         else:
-            # EVERY facility already full. Standing this teammate down is a
-            # second, invisible away-roll on top of AWAY_CHANCE, and the
-            # capture says there is no such thing: across 265 real turns,
-            # exactly 0.903 of the state-1 roster is placed each turn, which is
-            # the 10% away roll and nothing else. The teammates who fall
-            # through here are the LAST ones in target_id order, so the drop is
-            # not even random -- the same few never train, never fill a gauge
-            # and never burst. Put her in the emptiest facility instead: the
-            # cap is what the client can DRAW, and one extra body over it is a
-            # far smaller divergence than a teammate who sits out the career.
             cmd = min(unity_cup.TRAINING_COMMAND_IDS,
                       key=lambda c: (taken.get(c, 0), c))
             taken[cmd] = taken.get(cmd, 0) + 1
@@ -125,24 +57,12 @@ def scout_placements(full_state: dict, chara_info: dict, turn,
 
 
 def _raises_gauge(st: dict, turn, target_id) -> bool:
-    """Whether this teammate carries the gauge flame in the facility she is
-    standing in this turn. Deterministic for the same reason placement is."""
     return random.Random(
         "%s:guide:%s:%s" % (st.get("seed", 0), turn, target_id)
     ).random() < GUIDE_CHANCE
 
 
 def command_info(full_state: dict, chara_info: dict, home_commands):
-    """team_data_set.command_info_array -- who is in each facility this turn.
-
-    Returns (commands, rolled); `rolled` tells the caller a NEW roll was made
-    and therefore needs persisting.
-
-    WHO IS HERE IS READ OFF home_info, never rolled again. The facility's
-    training_partner_array is what the client actually draws, so intersecting
-    it with the roster is the one derivation that cannot disagree with the
-    screen. Rolling it independently is what produced the user-reported desync
-    of 2026-09-05: a bonus badge on a facility with nobody standing in it."""
     st = unity_cup.state(full_state)
     turn = chara_info.get("turn")
     cache = full_state.get(PREVIEW_KEY)
@@ -154,9 +74,6 @@ def command_info(full_state: dict, chara_info: dict, home_commands):
     by_id = {c.get("command_id"): c for c in (home_commands or [])
              if isinstance(c, dict)}
 
-    # Before the team exists there is nothing to overlay, but the array must
-    # still carry all five commands -- the capture serves five empty entries on
-    # turns 1-2 rather than an empty array, and the client reads the length.
     if not members:
         return [_empty(cmd) for cmd in unity_cup.TRAINING_COMMAND_IDS], False
 
@@ -165,7 +82,7 @@ def command_info(full_state: dict, chara_info: dict, home_commands):
     for cmd in unity_cup.TRAINING_COMMAND_IDS:
         entry = by_id.get(cmd)
         served = cmd
-        if entry is None:                        # summer camp serves 601-605
+        if entry is None:
             camp_id = _camp_id(cmd)
             if camp_id in by_id:
                 entry, served = by_id[camp_id], camp_id
@@ -184,7 +101,6 @@ def command_info(full_state: dict, chara_info: dict, home_commands):
             elif _raises_gauge(st, turn, member["target_id"]):
                 guide.append(member["target_id"])
                 taking.append(member)
-            # else: present and drawn, but contributes nothing this turn.
         commands.append({
             "command_type": 1,
             "command_id": served,
@@ -193,9 +109,6 @@ def command_info(full_state: dict, chara_info: dict, home_commands):
             "sp_soul_event_partner_array": sp_soul,
             "params_inc_dec_info_array": _bonus_params(cmd, taking, entry),
         })
-        # ONLY the participants are banked. A teammate who is merely standing
-        # here banks no growth and no gauge -- which is exactly why her
-        # facility shows no bonus for her.
         placements[str(cmd)] = [m["target_id"] for m in taking]
 
     full_state[PREVIEW_KEY] = {"turn": turn, "commands": copy.deepcopy(commands),
@@ -216,36 +129,11 @@ def _camp_id(command_id: int) -> int:
     return command_id
 
 
-# ---------------------------------------------------- what the team pays --
-# GameTora's Unity Cup tables, verbatim (docs/Unity Cup Scenario _ GameTora.html,
-# "Trainee Stat Gains", "Spirit Burst Bonus Values", "Extreme Spirit Burst").
-#
-# THE OLD NUMBERS WERE INVENTED. _bonus_params used to pay a flat 2/1/+1sp per
-# participating teammate, 7/+4sp per burst and 12/+8sp per Extreme burst --
-# constants fitted by eye to one capture's badge. The real rule is two
-# independent pieces that ADD:
-#
-#   1. Special Training, ONE lookup on the number of white flames in the
-#      facility (not per teammate, and nothing at all below two flames), and
-#   2. each bursting teammate's own vector, from her own table.
-#
-# Bursts count as flames for (1) -- GameTora: "Spirit Bursts also count as
-# Special Training" -- so a lone burst still pays no Special Training share.
-
-# flames -> (primary, secondary, skill points), for the speed/stamina/power
-# facilities. Below 2 flames the trainee gets nothing.
 _SPECIAL_MAIN = {2: (2, 0, 1), 3: (4, 1, 3), 4: (6, 3, 5), 5: (10, 5, 7)}
-# flames -> (guts, speed, power, skill points)
-# 3 and 4 flames pay 3 / 5 guts, not the 4 / 6 of the other facilities:
-# capture_06d26c, all 16 distinct 3- and 4-flame guts previews (bursts and
-# Extreme bursts included) match with 3 / 5, and none with the old 4 / 6.
 _SPECIAL_GUTS = {2: (2, 0, 0, 1), 3: (3, 1, 1, 3), 4: (5, 2, 2, 5),
                  5: (10, 3, 3, 7)}
-# flames -> (wiz, speed, skill points)
 _SPECIAL_WIZ = {2: (1, 0, 0), 3: (2, 0, 2), 4: (4, 1, 4), 5: (6, 2, 6)}
 
-# facility stat -> {stat: gain} for a Spirit Burst, and the scenario-linked
-# variant. "skill_point" rides in the same dict; the caller splits it out.
 _BURST = {
     "speed":   {"speed": 15, "power": 7, "skill_point": 5},
     "stamina": {"stamina": 15, "guts": 7, "skill_point": 5},
@@ -275,15 +163,11 @@ _EXTREME_LINKED = {
     "wiz":     {"speed": 8, "wiz": 25, "skill_point": 20},
 }
 
-# A Spirit Burst on the WIT facility hands back 5 more energy. target_type 10
-# is the energy row of params_inc_dec_info_array (single_mode_team serves the
-# facility's own cost there and _merge_preview_params sums the two).
 TARGET_TYPE_ENERGY = 10
 _WIZ_BURST_ENERGY = 5
 
 
 def _special_training_gains(stat: str, flames: int) -> dict:
-    """The trainee's Special Training share for `flames` white flames."""
     flames = min(int(flames or 0), 5)
     if flames < 2:
         return {}
@@ -299,22 +183,6 @@ def _special_training_gains(stat: str, flames: int) -> dict:
 
 
 def _bonus_params(command_id: int, here: list, entry) -> list:
-    """The BONUS-ONLY breakdown this facility's teammates contribute, in
-    home_info's own target_type encoding.
-
-    Same rule Grand Live's badge follows: home_info already carries the
-    combined total, so what belongs here is only the scenario's own share --
-    the client cannot un-mix the total back into "how much was the team".
-
-    Bursting teammates dominate it, which is what makes the soul flame worth
-    chasing: a plain four-flame speed facility pays {spd 6, pow 3, skillpt 5},
-    and one Extreme burst in it adds {spd 20, pow 10, skillpt 15} on top.
-
-    SCENARIO-LINKED CARDS pay +1 on every stat this facility's SPECIAL TRAINING
-    already gives, once per linked participant, and swap their own burst vector
-    for the linked table. The two are counted separately on purpose (GameTora's
-    own note): a stat a burst gives but Special Training does not is NOT
-    bumped."""
     if not here:
         return []
     stat = unity_cup.COMMAND_STAT.get(
@@ -325,9 +193,6 @@ def _bonus_params(command_id: int, here: list, entry) -> list:
     gains = _special_training_gains(stat, len(here))
     linked = sum(1 for m in here if _is_scenario_linked(m))
     if linked and gains:
-        # Only the stats this facility actually pays. A zero row stays zero:
-        # GameTora's worked example lifts +2 guts to +3 guts / +2 spd / +2 pow
-        # only because the third body had already turned speed and power on.
         for key, value in list(gains.items()):
             if value:
                 gains[key] = value + linked
@@ -360,15 +225,6 @@ def _bonus_params(command_id: int, here: list, entry) -> list:
 
 def training_failure_override(full_state: dict, chara_info: dict, command_id,
                               partner_ids):
-    """0 when a teammate in this facility is about to SpExplode, else None.
-
-    THE PURPLE BURST ONLY. Capture-confirmed 157/157 facility-showings across
-    two runs (min = max = 0), while the blue burst leaves the rate alone -- so
-    this keys on the SpExploded tier, not on "any burst".
-
-    Read straight from the roster rather than from the cached overlay: this
-    runs while home_info is being built, which is BEFORE the overlay for the
-    same turn exists."""
     if not partner_ids:
         return None
     st = unity_cup.state(full_state)
@@ -381,11 +237,6 @@ def training_failure_override(full_state: dict, chara_info: dict, command_id,
 
 
 def training_award_bonus(full_state: dict, chara_info: dict, command_id) -> list:
-    """The teammate bonus the client is already displaying for this facility,
-    handed back so the server actually pays it.
-
-    Read out of the SAME cached preview the client was shown -- never
-    recomputed -- so the number awarded is the number on the button."""
     base = unity_cup.CAMP_BASE.get(command_id, command_id)
     if base not in unity_cup.TRAINING_COMMAND_IDS:
         return []
@@ -399,15 +250,6 @@ def training_award_bonus(full_state: dict, chara_info: dict, command_id) -> list
 
 
 def award_training_gains(full_state: dict, chara_info: dict, payload: dict) -> None:
-    """Bank the team's side of a real training action.
-
-    Pays against the preview the client was actually SHOWN, never a fresh roll
-    -- the same contract Grand Live's token banking has, and for a stronger
-    reason: the preview already told the player which teammates were about to
-    detonate, so re-rolling here would fire a different set.
-
-    Only command_type 1 on a training facility pays. Rest, outings, the
-    infirmary and races place no teammates and bank nothing."""
     if payload.get("command_type") != 1:
         return
     command_id = payload.get("command_id")
@@ -416,7 +258,7 @@ def award_training_gains(full_state: dict, chara_info: dict, payload: dict) -> N
         return
     cache = full_state.get(PREVIEW_KEY) or {}
     if cache.get("turn") != payload.get("current_turn"):
-        return                       # no preview was shown this turn
+        return
     target_ids = (cache.get("placements") or {}).get(str(base)) or \
         (cache.get("placements") or {}).get(str(command_id)) or []
     if not target_ids:
@@ -436,9 +278,6 @@ def award_training_gains(full_state: dict, chara_info: dict, payload: dict) -> N
             gains = unity_cup.fire_burst(member, tier)
             log.info("unity cup: teammate %s burst tier %s -> %s",
                      member["chara_id"], tier, gains)
-            # Counted for the career, not for the turn: "Team Zenith Declares
-            # War" scales its reward off the TOTAL number of bursts, and the
-            # elite team on race 4 requires at least one Extreme.
             unity_cup.count_burst(st, tier == unity_cup.SOUL_SP_EXPLODED)
             tips = _burst_skill_tips(
                 member, rng, chara_info, unity_cup.COMMAND_STAT.get(base, "speed"),
@@ -455,47 +294,19 @@ def award_training_gains(full_state: dict, chara_info: dict, payload: dict) -> N
             unity_cup.advance_soul(member, rng)
         st["guide_count"] = int(st.get("guide_count") or 0) + 1
 
-    # THIS training was a Unity Training: teammates stood on it and were just
-    # paid. Counted once for the facility, with the number of teammates on it
-    # -- epithets 152/153/155 (see impl.count_unity_training).
     unity_cup.count_unity_training(st, partners)
 
-    # THE PREVIEW THAT WAS JUST PAID IS NOW STALE. It still lists the teammates
-    # who were ABOUT to detonate, and it is rebuilt from the same cache on the
-    # very next response -- so the training-result screen would be served an
-    # overlay still flagging a burst that has already fired, while the
-    # evaluation row underneath it already reads soul_event_state 1. Dropping
-    # it here forces the next attach() to rebuild against the post-burst state.
-    #
-    # Safe to drop only AFTER the payout above: the cache is the contract for
-    # what this training pays, and it has now been honoured.
     full_state.pop(PREVIEW_KEY, None)
 
-    # command_result is consumed by the very next build_team_data_set (it is
-    # popped there): it belongs to THIS response only, the same way the client
-    # renders the hint cards once off the training result screen.
     if soul_tips or sp_soul_tips:
         st["command_result"] = {"skill_tips_array": None,
                                 "soul_skill_tips_array": soul_tips or None,
                                 "sp_soul_skill_tips_array": sp_soul_tips or None}
 
 
-# A burst hands the trainee a skill hint, and it comes out of THE BURSTING
-# TEAMMATE'S SUPPORT CARD HINT POOL -- her R card when she is not in the deck
-# (user-stated 2026-09-06, and GameTora's post-update rules say the same). The
-# old version drew a group id out of member["skills"], which is the teammate's
-# RACE skill list, so the tip pointed at whatever she happened to run with.
-#
-# LEVEL = the card's Hint Lv. Bonus + 2, so never below 2, and one higher again
-# for a scenario-linked card.
 _BURST_TIP_BASE_LEVEL = 2
 _SCENARIO_LINK_TIP_BONUS = 1
 
-# An Extreme burst ALSO teaches the Ignited Spirit skill of the facility it
-# fired on -- the white half of each Burning/Ignited pair (rarity 1; the gold
-# Burning half comes from "Team Zenith Declares War"). Level 1 plus the card's
-# hint bonus, and if that one is maxed or already learned, a different Ignited
-# skill instead.
 IGNITED_SPIRIT = {"speed": 210012, "stamina": 210022, "power": 210032,
                   "guts": 210042, "wiz": 210052}
 _EXTREME_TIP_BASE_LEVEL = 1
@@ -503,8 +314,6 @@ _MAX_TIP_LEVEL = 5
 
 
 def _member_card(member: dict) -> int:
-    """The support card a teammate's hints come from: her deck card if she is
-    in the deck, otherwise the R card her scout row names."""
     return int(member.get("support_card_id")
                or unity_cup.scout_support_card(member.get("scout_id")) or 0)
 
@@ -517,15 +326,6 @@ def _hint_bonus(support_card_id: int) -> int:
 
 
 def _is_scenario_linked(member: dict) -> bool:
-    """A scenario-link SUPPORT CARD standing as a teammate -- i.e. a deck
-    teammate (target_id 1-6) whose chara is one of the four specials.
-
-    The chara alone is not enough. capture_06d26c scouted all four specials as
-    ordinary teammates (targets 1010/1030/1052/1056) and every one of their
-    flames and bursts paid the PLAIN tables: 103 with [1, 5, 1030, 1056]
-    guiding paid guts 5 / spd 2 / pow 2 / SP 5, not the +1-per-link 7/4/4/7,
-    and Taiki's and Rice's bursts paid 15, not the linked 20. The link is the
-    card's, as it is in every other scenario."""
     if int(member.get("target_id") or 0) > DECK_TARGET_MAX:
         return False
     return int(member.get("chara_id") or 0) in {
@@ -542,12 +342,6 @@ def _tip_level(chara_info: dict, skill_id: int) -> int:
 
 
 def _aptitude_hint(chara_info: dict, rng: random.Random, learned: set):
-    """The documented fallback when a card's pool is spent: "a random hint based
-    on your trainee's A aptitudes".
-
-    APPROXIMATE -- the trainee's own learnable pool, whites only, is the stand-in
-    for that aptitude-keyed pool. Nothing in master.mdb maps an aptitude to a
-    skill list directly, and no capture pins the real one down."""
     card_id = int((chara_info or {}).get("card_id") or 0)
     if not card_id:
         return None
@@ -561,18 +355,11 @@ def _aptitude_hint(chara_info: dict, rng: random.Random, learned: set):
 
 def _burst_skill_tips(member: dict, rng: random.Random, chara_info: dict,
                       stat: str, extreme: bool) -> list:
-    """The tips ONE bursting teammate hands over, applied to chara_info as they
-    are built so the hint is really granted and not merely displayed."""
     card_id = _member_card(member)
     bonus = _hint_bonus(card_id)
     learned = {s.get("skill_id") for s in (chara_info or {}).get("skill_array") or ()}
     tips = []
 
-    # THE TWO BURSTS TEACH DIFFERENT THINGS, and only one of them draws from
-    # the card. A blue (ordinary) burst rolls the support card's own hint pool;
-    # a purple (Extreme) burst teaches the facility's Ignited Spirit skill and
-    # NOTHING ELSE -- it does not also roll the pool (user-reported
-    # 2026-09-06). Handing out both was giving every purple two hints.
     if not extreme:
         level = _BURST_TIP_BASE_LEVEL + bonus
         if _is_scenario_linked(member):
@@ -596,7 +383,6 @@ def _burst_skill_tips(member: dict, rng: random.Random, chara_info: dict,
 
 
 def _grant(chara_info: dict, skill_id: int, level: int) -> dict:
-    """Raise the hint and return the {group_id, rarity, level} the client draws."""
     level = max(1, int(level))
     event_engine._apply_skill_hint(chara_info, skill_id, level)
     group_id, rarity = master_data.skill_tip_key(skill_id)

@@ -1,0 +1,231 @@
+{
+ "title": "それぞれの輝き",
+ "text_block_list": [
+  {
+   "name": "実況",
+   "text": "緩いペースで向こう正面を進んでいきます。\nこれは先団がやや有利な展開か……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "おっと！？　ここで1人がロングスパート！\nリトルココンが早くも仕掛けました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "第3コーナー手前からスパート！？\n大丈夫なのか……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "普通なら大丈夫とは言い難いでしょう。\nですが、リトルココンは別です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "誰もがこれから目の当たりにしますよ。\n――あの子の最大の武器を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "他のウマ娘もここで一斉に追い上げる！\nしかし、リトルココンのペースは落ちない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "リトルココンだーっ！　驚異の粘り腰！\nこの重賞の舞台で、見事な勝利ですっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……でてこい。\n…………なんかすごい魔法。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "なんの！　これをくらえっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "あのさぁ。もう少しまともな遊びは……\nって、冷たっ！？　この……！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "この日、桐生院トレーナーの誘いにより\nシミュレーター内で“懇親会”を行っていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "<username>トレーナーの\n担当の子は予定が合いませんでしたか。\n……まあ、急なお誘いでしたからね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "三女神と樫本トレーナーの都合が\n取れたのは、本当に運がよかったのかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "春のレースを終えて一段落つきましたからね。\n息抜きにはよいタイミングでした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "クラシック戦線で、その存在を示した\nビターグラッセは大したものだ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "日本ダービー"
+   ]
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "リトルココンも、しっかり結果を出した。\n調整が上手くいっている証拠だ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ミークも、ミークのペースで\nコツコツと進んできています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "最近では、徐々に成長も見られるように\nなったんですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたがしっかり見守っている成果ね。\nだからあの子も、安心してペースを守れる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたたちはどうかしら？\n<chrname>ちゃんとは順調？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>の調子は――",
+   "choice_data_list": [
+    "頑張ってますっ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふっ、その調子で見守り続けてあげてね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "三女神による支えもあり、トレーナーたち\nそれぞれが大きな手ごたえを感じている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "なによりハッピーミークやビターグラッセが\n楽しそうにはしゃぎまわっている姿に、\nその充実ぶりを強く感じられた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "トレーナーとして順調に成長しているし、\nこれはもう、子羊くんと呼ぶのは失礼か？",
+   "choice_data_list": [
+    "いやぁ～"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ははっ！　胸を張れ！　俺たちから見ても、\n君たちはトレーナーとして成長してる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "この蹄跡が輝かしいものになることを願うよ。\nやがて、多く語り継がれ\n多くの支えとなる歴史となれるようにな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "我々がお前たちに伝えている知識、\nそのどれもが壮大な歴史の一部だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "いわば、かつて走ったウマ娘とトレーナーの\n蹄跡を受け継ぎ、お前たちは今を走っている。",
+   "choice_data_list": [
+    "ウマ娘とトレーナーの蹄跡……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "歴史が示すとおり、ウマ娘の横には\n常にトレーナーがいる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "これからもウマ娘と共に走る者として、\n精進するように。",
+   "choice_data_list": [
+    "はい……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "それじゃ、リトルココンたちと遊んでくるか！\nトレーナーの力量を見るには、\nウマ娘を見るのが1番だ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "うわっ！？\nバイアリータークさん速すぎる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "はははっ！　もっと自分の武器を活かすんだ！\n水鉄砲の餌食になるぞ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘の歴史において、\nトレーナーは必ずウマ娘の横にいる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "欠かすことのできない大事な役割が\nきっとあるのだと感じた息抜きの時間だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

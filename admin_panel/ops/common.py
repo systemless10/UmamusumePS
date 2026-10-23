@@ -1,4 +1,3 @@
-"""Helpers shared by the worker ops: master text, save load/save, arg parsing."""
 
 from __future__ import annotations
 
@@ -13,8 +12,6 @@ from app import master_data as M
 from app import region
 from app import state as state_store
 
-# Each region's own default account (same as admin.py / career.py).
-DEFAULT_VIEWERS = {"global": "900000000001", "jp": "900000000002"}
 TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 STATS = ("speed", "stamina", "power", "guts", "wiz")
@@ -27,7 +24,7 @@ APTITUDES = (
 
 
 class OpError(Exception):
-    """A refusal the panel shows as-is (bad input, nothing to edit, ...)."""
+    pass
 
 
 def region_name() -> str:
@@ -46,8 +43,6 @@ def set_prefer_english(enabled: bool) -> None:
     if enabled == _prefer_english:
         return
     _prefer_english = enabled
-    # The workers serialize requests. Clear display catalogues when a browser
-    # requests another language; the game's master connection stays untouched.
     from . import catalog
     for value in vars(catalog).values():
         if callable(getattr(value, "cache_clear", None)):
@@ -73,7 +68,6 @@ def english_connection():
 
 @M.context_cache(maxsize=None)
 def _texts(category: int, prefer_english: bool) -> dict:
-    # Bypass the server's always-English matching view for native labels.
     out = {int(r[0]): r[1] for r in M.query(
         "SELECT [index], text FROM main.text_data WHERE category=?", (category,))}
     if prefer_english and region_name() == "jp":
@@ -128,7 +122,6 @@ def int_arg(args: dict, key: str, default=None, lo=None, hi=None):
 
 
 def opt_int(args: dict, key: str, lo=None, hi=None):
-    """An optional whole number: None when absent/blank."""
     if args.get(key) in (None, ""):
         return None
     return int_arg(args, key, lo=lo, hi=hi)
@@ -152,8 +145,6 @@ def item_count(full_state: dict, item_id: int) -> int:
 
 
 def set_item(full_state: dict, item_id: int, number: int) -> None:
-    """Set an item's count; 0 removes the row (what the server's own spend
-    paths leave behind is a 0 row, which the client also accepts)."""
     items = full_state.setdefault("item_list_state", [])
     it = find(items, "item_id", item_id)
     if number <= 0:
@@ -176,3 +167,64 @@ def card_name(card_id) -> str:
 
 def skill_name(skill_id) -> str:
     return text(47, skill_id) or f"Skill {skill_id}"
+
+
+def future_content() -> bool:
+    if region_name() == "jp":
+        return True
+    from .system import read_cfg
+    v = read_cfg("global")[0].get("future_content", "")
+    return v.lower() in ("1", "true", "yes", "on")
+
+
+def future_bundles() -> tuple:
+    from app import custom_support as C
+    return C.unreleased_bundles() if future_content() else ()
+
+
+def installed_packs() -> tuple[set[int], set[str]]:
+    import json
+    import struct
+    from .system import hachimi_dir
+    charas, cards = set(), set()
+    for p in sorted((hachimi_dir() / "umapacks").glob("*.umapack")):
+        try:
+            with open(p, "rb") as fh:
+                if fh.read(8) != b"UMAPACK1":
+                    continue
+                h = json.loads(fh.read(struct.unpack("<I", fh.read(4))[0]))
+        except (OSError, ValueError, struct.error):
+            continue
+        c = h.get("chara")
+        if isinstance(c, int):
+            charas.add(c)
+        elif str(c).startswith("support_"):
+            cards.add(str(c))
+        charas.update(h.get("charas") or ())
+        cards.update(h.get("cards") or ())
+    return charas, cards
+
+
+def hidden_ported() -> tuple[set[int], set[int]]:
+    if region_name() == "jp":
+        return set(), set()
+    from pathlib import Path
+    from app import custom_support as C
+    tcards, _ = C.unreleased_ids()
+    scards = C.unreleased_support_ids()
+    if not future_content():
+        return tcards, scards
+    charas, stems = installed_packs()
+    shown_t, shown_s = set(), set()
+    for b in C.unreleased_bundles():
+        if "chara_id" in b and b["chara_id"] in charas:
+            shown_t |= set(b["cards"])
+    for chara, ids in C._published()[0]:
+        if chara in charas:
+            shown_t |= set(ids)
+    d = C.root() / "unreleased"
+    for f in d.glob("*.json") if d.is_dir() else ():
+        if f.stem in stems:
+            import json
+            shown_s |= set(json.loads(f.read_text()).get("support_cards") or ())
+    return tcards - shown_t, scards - shown_s

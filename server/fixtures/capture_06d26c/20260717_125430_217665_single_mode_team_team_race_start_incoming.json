@@ -244,7 +244,7 @@
             "support_card_id": 30010,
             "limit_break_count": 4,
             "exp": 118185,
-            "owner_viewer_id": 900000000054
+            "owner_viewer_id": 507379161379
           }
         ],
         "succession_trained_chara_id_1": 176,
@@ -1456,7 +1456,7 @@
               {
                 "frame_order": 12,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1041,
@@ -1542,7 +1542,7 @@
               {
                 "frame_order": 4,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1010,
@@ -1620,7 +1620,7 @@
               {
                 "frame_order": 2,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1046,
@@ -1706,7 +1706,7 @@
               {
                 "frame_order": 8,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1003100,
@@ -1784,7 +1784,7 @@
               {
                 "frame_order": 6,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 290,
@@ -1837,7 +1837,7 @@
               {
                 "frame_order": 5,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 171,
@@ -2418,7 +2418,7 @@
               {
                 "frame_order": 12,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1068,
@@ -2504,7 +2504,7 @@
               {
                 "frame_order": 4,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1022,
@@ -2578,7 +2578,7 @@
               {
                 "frame_order": 5,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1043,
@@ -2648,7 +2648,7 @@
               {
                 "frame_order": 1,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 416,
@@ -2710,7 +2710,7 @@
               {
                 "frame_order": 2,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 453,
@@ -3329,7 +3329,7 @@
               {
                 "frame_order": 4,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1055,
@@ -3403,7 +3403,7 @@
               {
                 "frame_order": 5,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1019,
@@ -3481,7 +3481,7 @@
               {
                 "frame_order": 3,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1052,
@@ -3534,7 +3534,7 @@
               {
                 "frame_order": 8,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1013100,
@@ -3620,7 +3620,7 @@
               {
                 "frame_order": 7,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 346,
@@ -3678,7 +3678,7 @@
               {
                 "frame_order": 6,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 372,
@@ -4234,7 +4234,7 @@
               {
                 "frame_order": 7,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1004,
@@ -4442,7 +4442,7 @@
               {
                 "frame_order": 10,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1009,
@@ -4520,7 +4520,7 @@
               {
                 "frame_order": 11,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1034,
@@ -4606,7 +4606,7 @@
               {
                 "frame_order": 5,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 40,
@@ -5300,7 +5300,7 @@
               {
                 "frame_order": 4,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1032,
@@ -5370,7 +5370,7 @@
               {
                 "frame_order": 5,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1030,
@@ -5460,7 +5460,7 @@
               {
                 "frame_order": 6,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1053,
@@ -5538,7 +5538,7 @@
               {
                 "frame_order": 11,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0096",
+                "trainer_name": "Team Tenacity",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 567,

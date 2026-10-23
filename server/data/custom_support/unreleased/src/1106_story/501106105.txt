@@ -1,0 +1,25 @@
+#title Summer Camp (Year 3) Begins!
+0 Hooo! Let's work super hard, Trainer!!
+1 Summer camp. The total opposite of last year, when all she did was whine, Hishi Miracle was overflowing with motivation.
+2 I'm not the me I used to be anymore.
+3 I accomplished a lot this spring, right?
+3> That's right! | Yeah!
+4 I've got amazing results, I put in the effort, and I made up my mind!
+5 From here on, I'm the real me—full throttle, no holding back, the genuine article!
+6 Right?!
+6> That's right! | Yeah!
+7 Then... hmmm... hmmmmm...
+8 This summer... maybe no popsicles, no lazing on the beach, no scallop hunting.
+9 Yeah, I think I wanna go without them...!
+10 It's good that she's motivated. But...
+10> I think you should take it easy a little.
+11 Huh? Take it easy?
+11> Yeah, you're probably tired, too. | Yeah, you're probably tired, too.
+12 Especially after the Takarazuka Kinen. Winning against that lineup must have been no small burden.
+13 Even someone as resilient as Hishi Miracle must still be tired. If possible, I'd like to help her recover...
+14 Whaaat are you saying?
+15 Being tired is soft. That's way too soft. That's no different from the lazy old me!
+16 That's not the real me. You just don't know yet, Trainer.
+17 Let's go, let's go, let's go! Hyaaah!!
+18 Her eyes ablaze, she dashes off. The sight of her from behind was...
+19 Reassuring, but she seemed a little too worked up.

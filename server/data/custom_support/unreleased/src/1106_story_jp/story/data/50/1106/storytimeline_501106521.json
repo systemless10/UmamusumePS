@@ -1,0 +1,35 @@
+{
+ "title": "夜ふかし気味で……",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "むむ～……枕の位置が悪い……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もっと、首にフィットする感じに\nしたいんだよね～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "こっちかな……ダメだ、沈み過ぎる。\n……ここだと、毛布との位置が…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よし、完璧！　これでぐっすり寝られ――\nもうこんな時間！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは、よい睡眠をと思うあまり、\n枕の位置にこだわって夜ふかしをして\nしまうのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

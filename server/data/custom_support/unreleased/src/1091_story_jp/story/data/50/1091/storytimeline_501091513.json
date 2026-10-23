@@ -1,0 +1,265 @@
+{
+ "title": "今はまだおとぎ話",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "今日は雑誌用の写真撮影のため、\nヴィブロスと海に来ていた。\nなぜ海かというと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だってだって！　どぉ～しても、\nキレイな海と砂漠みたいなビーチで\n撮ってもらいたかったんだもんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ～、連れてきてくれて\nありがとね、トレっち♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "カメラマンさんもありがとうございます。\nかわいく撮ってくださいね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カメラマン",
+   "text": "ええ、もちろん。\nいいものを撮りましょうね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "撮影は順調に進んでいく。\n彼女の勝負服は不思議と\nこの景色に合っているように見えた。",
+   "choice_data_list": [
+    "青がよく映えるな",
+    "青がよく映えるね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でしょでしょ？\nお姉ちゃんたちとおそろいの色なんだよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "確か、彼女の姉たち――\nヴィルシーナとシュヴァルグランの\n勝負服も美しい青の配色を取り入れている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、でもね、意味はみんな違うの。\n私の青は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイの青空と青い海！\nだから海で撮ってもらいたかったの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でね、実は、お姉ちゃんとおそろいは\nもうひとつあって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "この金色の耳飾りもおそろい♡",
+   "choice_data_list": [
+    "君の耳飾りにはどんな意味があるんだ？",
+    "貴方の耳飾りにはどんな意味があるの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ、まだヒミツ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カメラマン",
+   "text": "今の表情、いいですね！　もう1枚！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "波打ち際ではしゃぎ、\n砂浜を駆けまわるヴィブロスは、\n元気いっぱいな砂漠のお姫様のようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "無事、ひと通りの撮影が終了した。\n空が紅と紫に暮れ、日没もそう遠くない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カメラマン",
+   "text": "お疲れ様でした！\n記事は後日お送りしますので――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのあの！　あともうちょ～っとだけ\n撮影を続けてもらえないですか……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "この空の色でも撮りたいんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カメラマン",
+   "text": "ああ、マジックアワーですね。\n魔法のような写真が撮れる時間帯。\nうん……いいですね、撮りましょう！",
+   "choice_data_list": [
+    "では、よろしくお願いします！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よろしくお願いしま～す！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "昼とは打って変わり、\nヴィブロスは静かな雰囲気で撮影に応じる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "砂浜は砂漠に、海は果てしない南の海に見え、\nそしてヴィブロスの金色の髪飾りが、\n黄昏の光に映えて魔法のようにきらめく。",
+   "choice_data_list": [
+    "（この光景をどこかで見たような……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "見てみて、トレっち！\n私がはじめてドバイに行ったときの写真だよ！\n飛行機から撮ったの！　キレイでしょ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お日さまが砂漠に沈んでいくときでね、\nただでさえキレイなドバイのビルが\nキラキラ輝きだしてね――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "てっぺんに金色のお星さまを飾った\n妖精のお城みたいに見えたの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まるで魔法の国だよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "きっとヴィブロスは、\nドバイの魔法のようなきらめきを\n自分の勝負服で表現したかったのだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カメラマン",
+   "text": "お疲れ様です！\n最高のものが撮れました。\n読者の反応が楽しみです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私も楽しみ～♡\nカメラマンさん、お願い全部叶えてくれて、\nありがとうございました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえねえトレっち、私の撮影どうだった？",
+   "choice_data_list": [
+    "ドバイと同じくらい輝いていたよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ……えへへへ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあね、じゃあね、\n昼間と夕方の私、どっちがトレっちの好み？",
+   "choice_data_list": [
+    "明るい昼はお姫様みたいだった",
+    "夕方はミステリアスだったな",
+    "夕方はミステリアスだったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあね、じゃあね、\n昼間と夕方の私、どっちがトレっちの好み？",
+   "choice_data_list": [
+    "明るい昼はお姫様みたいだった",
+    "夕方はミステリアスだったな",
+    "夕方はミステリアスだったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姫さま！？\nそれって超セレブだよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "も～トレっちったら、\n褒めるのうまいんだから～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあさ、またいつかお昼に来ようよ。\nもっとキレイでセレブな私、見せてあげるー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうそう、ドバイって、ゴージャスで、\nしかもミステリアスなんだよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そーいうドバイのイメージも、\n勝負服に込めてるの。\nほらこの耳飾り、こだわったんだ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ギラギラッ！　じゃなくて\nキラキラ～♪　って輝けるようにね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

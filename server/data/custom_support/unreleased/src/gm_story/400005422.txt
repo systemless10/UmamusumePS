@@ -1,0 +1,5 @@
+#title After the SWBC: Victory
+0 The SWBC, gathering an even more elite field than any of the Three Goddesses' previous races. <chrname> won it splendidly.
+1 For showing the results of running side by side in a tangible form, we received praise from the Three Goddesses as well.
+2 But our race wasn't over yet. There was one more thing to aim for.
+3 The Grandmasters, where we'd race the Three Goddesses directly to see whether <chrname> had reached the very peak of running, still awaited us.

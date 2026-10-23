@@ -1,9 +1,3 @@
-"""Trainer Aptitude Test. Global wire contract: dump.cs + Aug 2026 captures.
-
-Scoring/coin replay fixtures and remaining evidence limits are documented in
-docs/TRAINING_CHALLENGE_IMPLEMENTATION.md. State is scoped by event ID; re-running
-an old event preserves earned rewards rather than issuing them twice.
-"""
 from __future__ import annotations
 
 import copy
@@ -38,7 +32,6 @@ def current(main_only=False):
 
 
 def ranking_cutoff(event):
-    # Rankings roll over at 22:00 UTC. The first partial day is tallying.
     now = patch._servertime()
     cutoff = ((now - 22 * 3600) // 86400) * 86400 + 22 * 3600
     return cutoff if cutoff > event["start_date"] else None
@@ -84,15 +77,13 @@ def available_exams(full, event):
 
 
 def overlay_login(data, full):
-    """Initialize the client's exam repository with this account's open exams.
-
-    WorkTrainingChallengeData.UpdateAtLoginApi consumes these load/index fields.
-    Leaving the captured login's empty array makes every test appear locked.
-    Login must not consume the event screen's first-access flag.
-    """
     event = current()
-    data["training_challenge_user_info"] = user_info(full, event) if event else None
-    data["training_challenge_exam_infos"] = exam_infos(full, event) if event else []
+    if not event or not event_state(full, event)["select_exam_id"]:
+        data["training_challenge_user_info"] = None
+        data["training_challenge_exam_infos"] = None
+        return
+    data["training_challenge_user_info"] = user_info(full, event)
+    data["training_challenge_exam_infos"] = exam_infos(full, event)
 
 
 @registry.endpoint("training_challenge/index")
@@ -102,7 +93,7 @@ def handle_index(payload):
         return refuse(ResultCode.TRAINING_CHALLENGE_NOT_IN_TERM)
     full = S.get_state(payload["viewer_id"]) or {}
     st = event_state(full, event)
-    first = not st["seen"]
+    first = not st["seen"] or not st["select_exam_id"]
     st["seen"] = True
     ranking_state = 1 if ranking_cutoff(event) is not None else 2
     response = _ok({"event_id": event["id"], "event_user_info": user_info(full, event),
@@ -122,7 +113,6 @@ def handle_exam_select(payload):
         return refuse()
     event_state(full, event)["select_exam_id"] = payload["exam_id"]
     S.save_state(payload["viewer_id"], full)
-    # Capture 0017: the empty CommonResponse is omitted, not data={}.
     return _ok()
 
 
@@ -173,7 +163,6 @@ def scenario_values(full, record):
 
 
 def score(record, exam, full=None):
-    """Pure calculation; never grants items or changes a high score."""
     full = full or {}
     rows = [dict(r) for r in M.query("SELECT * FROM training_challenge_score WHERE score_group_id=? ORDER BY score_type,disp_order,data,id", (exam["score_group_id"],))]
     skills = {i["skill_id"] if isinstance(i, dict) else i for i in record.get("skill_array", record.get("skill_data_array", []))}
@@ -280,7 +269,6 @@ def handle_ranking(payload):
         return _ok({"ranking_user_list": []})
     for viewer, all_events in S.all_states_for_key(STATE_KEY).items():
         st = all_events.get(str(event["id"]), {})
-        # Compatibility for saves created before completion history existed.
         history = st.get("history", [{"time": 0, "exam_id": i["exam_id"],
             "score": i["high_score_value"], "result_type": i["result_type"],
             "trained_chara": i["high_score_trained_chara"]} for i in st.get("exams", {}).values()])

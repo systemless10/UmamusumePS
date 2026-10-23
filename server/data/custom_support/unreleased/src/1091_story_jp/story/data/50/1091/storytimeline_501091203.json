@@ -1,0 +1,44 @@
+{
+ "title": "紫苑Sにむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "最後の一冠、『秋華賞』を確実に\n勝利するため、夏合宿を経て\n『紫苑S』に挑むことにしたヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『紫苑S』で好走したウマ娘は、\n『秋華賞』でも活躍することが多い。\nそのレースで、今の実力を確かめる――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ここでがんばれたら、\n『秋華賞』もきっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うんっ。",
+   "choice_data_list": [
+    "成長した今の君なら、大丈夫だ",
+    "成長した今の貴方なら、大丈夫"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだよね。\n合宿、がんばったもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――行ってきます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

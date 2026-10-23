@@ -1,0 +1,11 @@
+#title Grandmasters: Victory
+0 Like a dream, and yet something I'd always believed in—victory in the Grandmasters...!
+1 Above the powerhouses gathered here, and above the Three Goddesses who'd poured their knowledge into them without reservation—<chrname> shone at the very top!
+2 Ahaha! That's something else! You showed us the best running there is!
+3 An Umamusume who runs carrying on our wisdom, at the very peak—this is exactly what the Three Goddesses hoped for. You've overcome us, well done...!
+4 The history of the Umamusume and trainers who ran before has truly reached your Umamusume through you.
+5 Just as I thought, you're the best trainer she could have.
+6 And from here on, keep running, and carve your history deep.
+7 ...You've truly grown so much. Let me celebrate from the bottom of my heart—congratulations.
+8 And so, the grand stage of the Grandmasters came to a close.
+9 The history called wisdom, granted by the Three Goddesses, had been shaped by <chrname> into a new history.

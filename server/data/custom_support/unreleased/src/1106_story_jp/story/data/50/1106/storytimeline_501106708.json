@@ -1,0 +1,69 @@
+{
+ "title": "レース勝利！",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "1着！！　わたしが1着ですよ！\nすごくないですか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自分は凡才だと思ってましたが、\n実は意外に才能があったり……？",
+   "choice_data_list": [
+    "ああ、素晴らしい走りだった！",
+    "うん、素晴らしい走りだったよ！",
+    "その才能をもっと伸ばしていこう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自分は凡才だと思ってましたが、\n実は意外に才能があったり……？",
+   "choice_data_list": [
+    "ああ、素晴らしい走りだった！",
+    "うん、素晴らしい走りだったよ！",
+    "その才能をもっと伸ばしていこう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふ～ん。それほどでも～。",
+   "choice_data_list": [
+    "よっ！天才！鬼才！英才！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "い、いやいや、さすがに褒めすぎですって！\nどこまでも調子に乗っちゃいますよ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ま、でも、素直にうれしいです。\n次も1着になれるよう、がんばりますね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ま、マジレスですか……。\nいや、うん、トレーナーさんならそうか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "才能あるかどうかはわかりませんけど……\nそうですね。もっと力をつけていきたいです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――1着でゴールしたときの達成感、\nハンパなかったですから！\nもう1度、味わいたいです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

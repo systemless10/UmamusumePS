@@ -1,0 +1,232 @@
+{
+ "title": "桜花賞の後に・Never Again!",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "はぁっ……はぁっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ゴホッ……ゴホッ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁっ……。\nあー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "せっかく、出られたのに。\n約束したのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ごめんね、みんな。\nお姉ちゃん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私……っ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（パチパチパチ……！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "お疲れさま、ヴィブロス！\nそして……ありがとう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "頑張ってくれて。\n素晴らしい走りを見せてくれて……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……貴方はきっと、\n大丈夫よ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "……そうだ、ヴィブロスは、\n頑張ってくれたじゃないか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "夢を見せてくれて、ありがとう！！\n次のレースも応援するよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンたち",
+   "text": "まだティアラ路線は続いてる！\nヴィブロス、お疲れ様～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンたち",
+   "text": "一冠でも勝てば、\nリベンジになるよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、そうだよね。\nまだ、お姉ちゃんのリベンジはできる……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『オークス』『秋華賞』……\n――勝ちたいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "レース直後は激しい消耗を見せた\nヴィブロスだったが、少し時間が経つと――",
+   "choice_data_list": [
+    "体調は平気？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むしろ、レース前よりいー感じ！\nもう1本だって走れそう！",
+   "choice_data_list": [
+    "絶対ダメ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー。\nだって、ちょー調子いいよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "疲れも今はなーんにもないの！\nトレーニングしたっていいんだよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "リベンジだって、\nしなきゃだし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "レースの興奮で、\n今は何も感じていないようだが……\nそれに身を任せては危険だ。",
+   "choice_data_list": [
+    "もう少し休んでから出よう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー？\nトレっち、ちょっと心配症？",
+   "choice_data_list": [
+    "とにかく君が大切なんだ",
+    "とにかく貴方が大切なの"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へっ！？",
+   "choice_data_list": [
+    "『オークス』までしっかり体を休めよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、そゆこと……だよね……\n焦ったぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ、\nわかりましたっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちのたーいせつな私のために、\n今日はしっかり休みます♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "次の目標は、トリプルティアラ二冠目……\n『オークス』だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマホの音",
+   "text": "『注目のヴィブロスは、姉ヴィルシーナの\nリベンジならずでしたが、期待のもてる\n走りを見せました。今後も注目です――』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……期待のもてる、か。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "キミは子どもの頃から、\nなんでもできる子だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……僕と違って――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

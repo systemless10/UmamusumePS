@@ -1,0 +1,125 @@
+{
+ "title": "無茶は厳禁！",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヒシミラクルが大ケガをしてしまったので、\nすぐに保健室で処置してもらった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いたた……。ううっ……。",
+   "choice_data_list": [
+    "しばらく安静にしよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。",
+   "choice_data_list": [
+    "どうかした？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……せっかくトレーニングを\nがんばってきたのに。ここで休んだら、\nブランクができちゃうんだなって思うと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの……軽めのトレーニングでいいので。\n少しだけ……ダメですか？",
+   "choice_data_list": [
+    "今は休むべきだ",
+    "今は休むべきだよ",
+    "危険だと判断したら、すぐに止めるよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの……軽めのトレーニングでいいので。\n少しだけ……ダメですか？",
+   "choice_data_list": [
+    "今は休むべきだ",
+    "今は休むべきだよ",
+    "危険だと判断したら、すぐに止めるよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "もしもケガが悪化したら、\n療養期間がさらに伸びてしまうと説明した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それは……もっと困ります。\nでも、そうですよね……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "早くトレーニングに復帰できるように、\nちゃんと休みます……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わかりました。注意しながら、\n慎重にやっていきます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……すみません。\n痛みが強くなってきたかも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱり、やめておきます。\n無理はしない約束でしたしね……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルのケガが悪化したようだ……。\nすぐにトレーニングを中止し、安静にさせた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いち、にー、さん、しー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん。このくらいなら大丈夫そうです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "気をつけながら、\nこの調子でやっていきますね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルはその後も\n軽めのトレーニングを続け、\n順調に復帰を果たせたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

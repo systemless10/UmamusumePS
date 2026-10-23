@@ -1,0 +1,257 @@
+{
+ "title": "保健室にて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "調子が悪そうなヒシミラクルを\n保健室で休ませることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "大丈夫ですって～休むの得意ですし。\nってことで、寝てきま～す。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、火事！？\nいやでも、熱くない――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "――さあ、やってまいりました！\n『具材争奪！　お好み焼き賭けバトル！』～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "1発勝負待ったなし！　20ダイス出目予想！\n当てれば相手の賭け具材を奪取！\n外せば自分の賭け具材没収の大博打～ッ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あー、そうだった。\nお腹すいてお好み焼き食べに来て……\nここに連れてこられた……んだっけ？）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "第1回戦はこのカード！\n“ミラクル”VS“ギャンブラー”！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナカヤマフェスタ",
+   "text": "私の持ち玉『豚玉』を……\n無論、『17』に全BETだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～、全没収はイヤだけど、\nとにかくすっごいお腹すいてるし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――う～～～～。わたしの『ねぎ玉』を、\n『13』に全BETで！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（全部没収されたら、途中退場して……\n他のお好み焼き屋さんで食べればいいしっ！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "それではいざ尋常に――\nロール・ザ・ダイス！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "ヒシミラクル見事『13』で的中！\n今持っている『ねぎ玉』に加え、\nナカヤマの『豚玉』を奪取だァ～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ、当たっちゃった……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "勝者はそのまま勝ち残りだ！\nお次の対戦者は――あの“世紀末覇王”だ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "テイエムオペラオー",
+   "text": "ナカヤマさんは『具なし』へと\n散ってしまったか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "テイエムオペラオー",
+   "text": "――だが、この世紀末覇王は超えさせない！\nエビよ、タコよ、ホタテよ！！\nその運命……全てこのボクが背負おう！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "テイエムオペラオー",
+   "text": "――はーっはっは！！\nオンリーワンの『1』に全BETだっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じゃ、じゃあ――今回は『3』に全BET！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "それではいざ尋常に――\nロール・ザ・ダイス！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "ななな、なんと！？\nヒシミラクルまたしても『3』を的中！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "『ねぎ玉』『豚玉』に加え、\n覇王の『海鮮玉』までをも奪取だァ～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、えぇ……嘘～。\nまた当たっちゃった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……もしかしてこれ、前人未到の\n『超ウルトラハイパーDXミラクル全部乗せ\nスーパー玉』食べれたりしちゃったり……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――いや名前長すぎやろ！！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "おおっと！！　ここで満を持しての登場！！\n前人未到の“ミラクル”を阻む最後の刺客！\n浪速の白い稲妻――タマモクロス！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "……たこ焼きだけやない。\nお好み焼きかて、ウチは愛してる……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "せやからヒシミラクル……アンタが稼いだ\nその具材――全部ウチが頂くでぇ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "――出るのは『2』！！\nカサ増し狙って全BETで勝負や！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしだって、お好み焼きを愛してます！\nスポーツ観戦帰りに家族と食べてた、\n思い出の料理だから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "行きつけのお店！\n『ジュー兵衛』さんにちなんだ『10』に……\nここまで来たらもちろん――全BETでっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "……それではいざ尋常に、\n――ラスト・ロール・ザ・ダイス！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "『10』！　『10』だ『10』だ『10』だ～！\n“ミラクルガール”ヒシミラクル！！\n“奇跡”のグランドスラム達成だァ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～！　『超ウルトラハイパーDXミラクル\n全部乗せスーパー玉』おいし～～！！\nお腹減っててよかったぁ～～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふあ～、よく寝たぁ。\nそれにしても変な夢だったなぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『超ウルトラハイパーDXミラクル\n全部乗せスーパー玉』かぁ……\n今度作ってみよ～っと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その後戻ってきたヒシミラクルは、\nすっかり調子を取り戻していたのだった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "……それではいざ尋常に、\n――ラスト・ロール・ザ・ダイス！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "司会者",
+   "text": "『2』！　『2』だ『2』だ『2』だ～！\n“浪速の稲妻”タマモクロス！！\n一攫千金の大金星ーーーーー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えー！　ここまで来て『具なし』～！？\nそんなぁ～～～～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……うう、嫌な夢だった……。\nも～せっかくのお昼寝だったのに最悪だぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どこかげっそりした様子で\n保健室から戻って来たヒシミラクルだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

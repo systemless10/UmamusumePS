@@ -1,11 +1,3 @@
-//! Minimal hand-rolled JSON value parser/serializer -- just enough to load
-//! course_data.json/skill_data.json and speak the race-spec stdin/stdout
-//! contract, with zero external dependencies (so the final binary needs no
-//! crates.io access to build, matching how the rest of this crate was kept
-//! dependency-free while the build toolchain was still being set up).
-//! Not a general-purpose JSON library: no streaming, no arbitrary-precision
-//! numbers (all numbers are f64, which is exactly what every field in this
-//! contract needs), no comments/trailing-comma leniency.
 
 use std::collections::BTreeMap;
 use std::fmt::Write as _;
@@ -81,8 +73,6 @@ impl Value {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Parsing
 
 pub fn parse(s: &str) -> Result<Value, String> {
     let chars: Vec<char> = s.chars().collect();
@@ -138,7 +128,7 @@ fn expect_literal(chars: &[char], pos: &mut usize, lit: &str) -> Result<(), Stri
 }
 
 fn parse_object(chars: &[char], pos: &mut usize) -> Result<Value, String> {
-    *pos += 1; // '{'
+    *pos += 1;
     let mut map = BTreeMap::new();
     skip_ws(chars, pos);
     if *pos < chars.len() && chars[*pos] == '}' {
@@ -177,7 +167,7 @@ fn parse_object(chars: &[char], pos: &mut usize) -> Result<Value, String> {
 }
 
 fn parse_array(chars: &[char], pos: &mut usize) -> Result<Value, String> {
-    *pos += 1; // '['
+    *pos += 1;
     let mut arr = Vec::new();
     skip_ws(chars, pos);
     if *pos < chars.len() && chars[*pos] == ']' {
@@ -206,7 +196,7 @@ fn parse_array(chars: &[char], pos: &mut usize) -> Result<Value, String> {
 }
 
 fn parse_string(chars: &[char], pos: &mut usize) -> Result<String, String> {
-    *pos += 1; // opening quote
+    *pos += 1;
     let mut out = String::new();
     loop {
         if *pos >= chars.len() {
@@ -278,8 +268,6 @@ fn parse_number(chars: &[char], pos: &mut usize) -> Result<Value, String> {
     text.parse::<f64>().map(Value::Number).map_err(|_| format!("invalid number {text:?}"))
 }
 
-// ---------------------------------------------------------------------------
-// Serializing
 
 pub fn to_string(v: &Value) -> String {
     let mut out = String::new();
@@ -320,9 +308,6 @@ fn write_value(out: &mut String, v: &Value) {
 
 fn write_number(out: &mut String, n: f64) {
     if n.is_nan() || n.is_infinite() {
-        // Not valid JSON; every producer of these values in this codebase
-        // guards against them reaching serialization, but fall back to
-        // `null` rather than emit invalid JSON if one ever slips through.
         out.push_str("null");
     } else if n == n.trunc() && n.abs() < 1e15 {
         let _ = write!(out, "{}", n as i64);
@@ -349,7 +334,6 @@ fn write_string(out: &mut String, s: &str) {
     out.push('"');
 }
 
-// -- small builder helpers used by main.rs's response assembly -------------
 
 pub fn obj(pairs: Vec<(&str, Value)>) -> Value {
     Value::Object(pairs.into_iter().map(|(k, v)| (k.to_string(), v)).collect())

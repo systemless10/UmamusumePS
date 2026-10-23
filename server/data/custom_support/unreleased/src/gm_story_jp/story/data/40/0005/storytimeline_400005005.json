@@ -1,0 +1,277 @@
+{
+ "title": "愛深き心・ゴドルフィンバルブ",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "今日もまた、<chrname>と\nシミュレーターでトレーニングしていると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "はい、ゴール。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……ふぅ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "お疲れさま、クールダウンで1周したら、\n休憩にしましょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "焦らずに1歩ずつ、進んでいきましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……はい。\n…………クールしてきます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "あの、併走トレーニングに付き合って\nいただいて、ありがとうございました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "それで、どうでしょうか……ミークの状態、\n伸びが少し遅れているように感じて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そんなに心配そうな顔をしなくても大丈夫よ。\nまずは見守る側がしっかりしないと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "――と、あら。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "あ、<username>トレーナー。",
+   "choice_data_list": [
+    "何か問題ですか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "いえ、問題といいますか……ミークの状態が\nいまひとつ上がらないと感じていまして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "トレーニングが緩めなのか、それとも\nそもそも合わないことをさせているのか、\n何が原因かと相談していたのですが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふっ、まずは頭の整理をしましょうか。\nはい、みんなで大きく深呼吸をして～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "それでミークちゃんのことだけど、\nトレーニングの内容に問題はないわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そして、ミークちゃんにも素質がある。\n多くのデータがそのことを保証しているもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ふぅ～……安心しました。\nでも、それでも状態が上がらないのは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……やはり晩成型ということでしょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そうね～、現状の体つきや、本格化を\n迎えてからのラップタイムの推移――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "それらと似たデータを持つ過去のウマ娘を\nグルーピングしてみると、\n総じて晩成タイプのウマ娘が多いわね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "つまりミークちゃんも晩成タイプの\n確率が高いと言えるでしょう。\nあなたの目は、正しいということよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……っ！\nはぁ～～……よかったです……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "もしかして私ではミークに\n力不足なのではと思ったりもして……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふっ、あなたはちゃんと\n見守ることができているわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "だから今は焦らずに、急かさずに、\nミークちゃんを見守りましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……はい！\n頑張ります！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "お疲れ様です、ミーク。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……はい。\n…………お疲れました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……あの、ミーク。\n今後の方針について話したいのだけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……おー。\n…………わくわく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "まず、これから多くのウマ娘が、来年の\nクラシックレースを目標に動き出します。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "でも、ウマ娘にはそれぞれのペースがあって、\nミークにもミークのペースがあります。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "そしてそれは、周りと比べるものでは\nないって私は思いました。だからその……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ミークのペースでやっていきましょう！\n時間はかかりますが、じっくり、急がず……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……。\n…………じー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "み、ミーク……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……はい、りょうかいです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "い、いいんですか？\nクラシックの大舞台には間に合わないかも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……問題ないです。\n…………私たちのペースで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ミーク……！　しっかり支えますからね！\nミークは必ず開花するんですから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "頑張っていきましょう、私たちのペースで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……がんばります。\n…………えい、えい、えい、おー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ハッピーミークの開花を信じて、しっかりと\n支え続けようと意気込む桐生院トレーナー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "その2人の背中を押すゴドルフィンバルブも、\nとても優しく心強い存在だと思うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

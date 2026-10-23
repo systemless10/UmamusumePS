@@ -1,0 +1,372 @@
+{
+ "title": "神戸新聞杯の後に・びっくり急転！",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜぇ、はぁ……。やった？\nもう集中力、ぐっちゃんぐっちゃんに\nなりそうだったけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "脚……ちゃんと動いてくれたぁ～！\nふぅぅ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "レース前、さまざまな混乱がありながらも、\n見事『神戸新聞杯』を乗り越えた\nヒシミラクル。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その走りを見て……今後どうするか、\nトレーナーとしての気持ちは固まった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "記者A",
+   "text": "素晴らしい走りでしたね、\nヒシミラクルさん！\n完全開花じゃないですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、それほどでも～。流れも向いたし、\nお得意のミラクルってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "記者A",
+   "text": "そのミラクルパワーで、\n次は『菊花賞』ですか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、それはトレーナーさんとも\n相談して～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "記者B",
+   "text": "シンボリクリスエスさん、前哨戦としては\nいい走りだったんじゃないですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "ああ。\nBreathはよくなった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "記者B",
+   "text": "次は当然『菊花賞』ですよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "次は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "No.\n『菊花賞』は走らない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、クリスエスちゃん！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "記者B",
+   "text": "な、何か問題でも？\n調子とか、3000mの距離とか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "何も問題はない。\nだが今日の走りで……わかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "さらにhard、そしてbest。\n恩に報いる道がある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Nextは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "『天皇賞（秋）』だ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "天皇賞（秋）"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えええ、『天皇賞（秋）』って……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――タニノギムレットのレース休養に続く、\nまさかの爆弾だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "クラシック級の有力ウマ娘は、普通、\n秋は三冠最後の『菊花賞』へ向かう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そこを見送っての『天皇賞（秋）』出走は\nかなりのイレギュラー。\nシニア級混合レースである分、難度も高い。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "シニア級"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "だが『菊花賞』は3000m、\n『天皇賞（秋）』は2000m。中距離で、\nシニア級ウマ娘と互角以上にやれるなら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『天皇賞（秋）』は候補になりうる。\nシンボリクリスエスの実力を踏まえれば、\nありえる選択と思えた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とととトレーナーさん、なにがなんだか～。\nわたしの頭、もうゴチャゴチャの\nお好み焼き失敗状態ってか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ギムレットちゃんが抜けちゃって、\nクリスエスちゃんも行っちゃって……。\nえ、え、えええっ！？",
+   "choice_data_list": [
+    "確かに想定外だな……",
+    "確かに想定外だね……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "勢力図は、春から一気に変わった。\n問題はこれを受けて、\nヒシミラクルがどう判断するかだ。",
+   "choice_data_list": [
+    "どうする、ヒシミラクル？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どうするって……次走ですか？\nわたしがどうするか決める感じ？",
+   "choice_data_list": [
+    "ああ、ズバッと",
+    "うん、ズバッと"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ズバッとって言われても～。\n自分から『菊花賞』……？　えぇぇ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ドン引いている。ここは例によって、\n押して押して押しまくるしかない。",
+   "choice_data_list": [
+    "努力はしてきたよな！",
+    "努力はしてきたよね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "努力は……まあ。でもレースに人生賭ける\n覚悟とかはぜんぜんですけど～。",
+   "choice_data_list": [
+    "強力な2人が不在……ってことは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "2人が不在ってことは～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "当然、勝てるチャンスということだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "順位が2つあがるってことですよね。\n7着でも5着みたいな……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "膨らまない夢。\n煮え切らない態度。だが――",
+   "choice_data_list": [
+    "どうするかは任せる、ヒシミラクル！",
+    "どうするかは任せるよ、ヒシミラクル！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "信じて、本人の意志と勢いに\n任せることにした。そう――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "あの夏を走り切ったヒシミラクルなら、\nきっと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうですねぇ。\n任せてもらえるなら、今回は～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お見送り……かなぁ。\nまだいいよね。GⅠ目標はまだ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "夏――不発。あれだけの困難を\n乗り越えたにもかかわらず、\nヒシミラクルは依然ズブかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ならば仕方ない。\n伝家の宝刀を手渡すことにした。",
+   "choice_data_list": [
+    "ヒシミラクル、これ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、この紙は……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『菊花賞』の出走登録表……？\nしかも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もう記入済み。これを見て、\nよく考えろってことですか？",
+   "choice_data_list": [
+    "いや、それ……コピー",
+    "ううん、それ……コピー"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ、コピーって……。",
+   "choice_data_list": [
+    "提出しておいたから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええええっ、提出って……。じゃあもう\n決めちゃったんじゃないですか～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、どうして～？",
+   "choice_data_list": [
+    "無理にでも出したほうがいいから！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "もちろん自主性は尊重したい。だがその結果、\nヒシミラクルが不幸になるなら意味はない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "強引に押し進める以上、\n責任は結果で取るしかなかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "も～、ひどいですよ～。\nトレーナーさんの鬼、悪魔、英語の先生～！",
+   "choice_data_list": [
+    "Yes! Let's go!"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほんとに英語の先生しなくても\nいいですってばぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どうしても行くんですか？　知りませんよ？\nトレーナーさんがそう決めたんなら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もう、やけっぱち！　わかりましたぁ！\nギムレットちゃんもクリスエスちゃんも\nいないなら――！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "押して押して押しまくった結果、\nようやくやる気になってくれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "強敵不在の『菊花賞』。これはまさしく\nヒシミラクルにとって大チャンスだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

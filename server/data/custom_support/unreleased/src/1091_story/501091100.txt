@@ -1,0 +1,108 @@
+#title Introducing Vivlos!
+0 A country where sparkly celebrities gather... "Dubai."
+1 The country I dream of! And the races held there are... super-duper glamorous, of course!
+2 Someday, I wanna run in Dubai's races, all full of sparkle too—and win!
+3 Right? Isn't that a suuuper wonderful dream?
+4 I signed a trainer contract with Vivlos for the Twinkle Series. The very next day...
+4{ Twinkle Series | Vivlos
+5 Tore-cchi! Morning♡
+5> Tore-cchi...
+6 Hm? What is it?
+6> Could you maybe not call me that?
+7 Whaaat? You don't like it?!
+8 ......You really don't like it?
+9 Heyyy...?
+9> It's not that I don't like it...
+10 So you don't hate it? Then it's fine, right?
+11 You're Tore-cchi♡ It's decided.
+12 ...Vivlos is the youngest of three sisters. Maybe that's why she's so good at getting her way... I'll need to learn how to handle her well.
+12> Anyway, let's start training today. | Anyway, let's start training today.
+13 Yeah, I'm in your care! I've been looking forward to this so much.
+14 What should we do first? For starters...
+15 Let's build a private gym!
+15> ...Huh?
+16 The one at Tracen Academy is amazing too, but something even more amazing!
+16{ Tracen Academy
+17 It'd be huge and full of the newest machines, and all the walls would be glass! And outside could be a huge desert?!
+18 Kyaa, so glamorous♪
+19 Vivlos yearns for all things "celebrity." Her love of the glamorous and dazzling comes from... her dream.
+20 I'm gonna go to Dubai someday! So I've gotta level up my celebrity vibes.
+21 In Dubai, there's a day when international G1 races are held. G1s in all kinds of categories are run that day, and Umamusume from all over the world gather for a huge celebration.
+21{ G1
+22 Running in those Dubai races is Vivlos's dream—she told me so before we signed the contract.
+23 Hey, Tore-cchi! Let's get a private gym, okay?
+23> ...The academy gym is top-of-the-line celebrity! | ...The academy gym is top-of-the-line celebrity!
+24 Oh? Hmm...?
+25 ...Well, okay! Then I guess the gym's fine.
+26 For now, anyway♡
+26> ?!
+27 And before we go to the celebrity gym, there are some people I wanna introduce you to!
+28 First up, the ladies you already know, Tore-cchi!
+29 Hello, Trainer.
+30 ...H-hi.
+31 The ones who appeared were Vivlos's older sisters... Verxina and Cheval Grand.
+31{ Verxina | Cheval Grand
+32 The eldest, Verxina. She was a great Umamusume who shone in the Tiara series and won consecutive G1s.
+33 The second sister, Cheval Grand. She debuted last year and is working hard to get results, aiming for a graded race win.
+33{ graded race
+34 These are my beloved Onee-chans♡ See, see, aren't they both super great?
+35 And today, there's more! I'm gonna introduce you to some very important people!
+36 Led along by Vivlos and her sisters, I arrived at... their family home. Waiting there were...
+37 Hello! I'm Vivlos's mother♪
+38 And I'm her father! Welcome, Trainer!
+39 A youthful, glamorous Umamusume and a sturdy, refreshing man... Vivlos's parents were snuggled up close together.
+39> (Whoa, they're both the real deal...)
+40 Vivlos's parents are both famous public figures. I've seen them on TV many times.
+41 Her father is an active baseball player, known for his big-hearted personality and devotion to his wife.
+42 Her mother was once an Umamusume with idol-like popularity. She never won a graded race, but she made her presence known in the racing world.
+42> (And above all...)
+43 Daaarling? I think the cup on the far right would be best for our trainer, don't you?
+43> (She has the exact same vibe as Vivlos!)
+44 Ahh, Tore-cchi! Don't stare at Mama so much!
+44> Huh?
+45 Papa, tell him no too!
+46 Ahh, our Vivlos is so cute! As expected of our daughter! There, there, there, there!!
+47 S-stop it, it's embarrassing...
+48 It's always been like this, hasn't it? It's a bit late now.
+49 It seems Vivlos's family gets along very well. Her friendly personality must have been nurtured in this warmth.
+50 Wahaha! Well, I'm just glad to see everyone doing well!
+50> You haven't seen each other in a while?
+51 That's right! You see, they all live in the dorms now, right? And my wife and I both have our own work...
+52 It's been suuuper long since we all got together like this!
+53 Now that Vivlos is debuting too, like her two sisters, we'll get to see her even less.
+54 So we're counting on you, Trainer! Please, take good care of Vivlos!!
+54> Y-yes...!
+55 ...Hey, hey. Listen, there's something I want Papa and Mama to hear!
+56 You know I wanna go to Dubai, right?
+57 Of course~ Ever since our family trip when you were all little... you've been crazy about it, haven't you?
+58 I remember you made a huuuge fuss, saying "I'm definitely gonna live in Dubai!"
+59 Ehehe. This time, I'm gonna aim for Dubai's races with my own strength!
+60 I see, I see! What an amazing goal! We're rooting for you, Vivlos!
+61 Thank you♡ But, before that... I have one more goal.
+62 I'm going to take the Tiara path!
+63 For Onee-chan's revenge... I'm gonna win the Triple Tiara!
+63{ Triple Tiara
+64 The major races of the Classic class are divided into the Classic Triple Crown path and the Tiara path.
+64{ Classic class | Classic Triple Crown
+65 The latter is a glamorous path made up of the Oka Sho, the Japanese Oaks, and the Shuka Sho... A winner of all three is called a Triple Tiara Umamusume.
+65{ Oka Sho | Japanese Oaks | Shuka Sho
+66 Only four have ever conquered that steep path and claimed the honor of the Tiara. And one of them is...
+67 Gentildonna. The strongest Umamusume of the Tiara path back then, who kept Verxina in second place.
+67{ Gentildonna
+68 ...Vivlos. Are you sure about this? Doing it for my sake?
+69 Of course! I love you, Onee-chan!
+70 Besides, isn't a Triple Tiara Umamusume super glamorous? Very Dubai♪
+71 ...I see.
+72 We'll just cheer on whatever you decide, Vivlos.
+73 Go for it, Vivlos! Wherever we are, we're rooting for your dream!
+74 Thank you! I'll do my best!
+75 And so, after explaining her dream to her family once more...
+76 ...So, it's more food?
+76> You're a bit too delicate. | You're a bit too delicate.
+77 Compared to others her age, Vivlos's build is a little frail. Alongside proper training, building up her body is a must.
+77> Let's build a body that can handle racing overseas!
+78 Racing overseas... Right, I'm going to Dubai, after all!
+79 Okay! I'll eat.
+80 I'm gonna become a super amazing, sturdy Umamusume! And make all my dreams come true♡
+81 I'm counting on you, Tore-cchi! ...Itadakimasu!
+82 And so, together with the cheerful, friendly Umamusume Vivlos... our challenge in the Twinkle Series began!

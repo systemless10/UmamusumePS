@@ -1,0 +1,87 @@
+{
+ "title": "SWBCの後に・敗北",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "――大きな歓声に覆われる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "惜しくも勝利は逃したものの、強豪が集う\nレースでの経験は、大きな財産になるだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "素晴らしいレースだったよ！\n君たちは、以前にも増して輝いていたな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "いずれ白日のように輝くかもしれない――\nははっ、間近でその姿を見られたらいいなあ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "本日はご苦労だった。\n大地の鳴動にも似た、よい足音だったぞ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "堂々たるその姿、再び見せてほしい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ダーレーアラビアンも、バイアリータークも\nいつにも増して嬉しそうね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……だけど、これで満足してはいけないわ。\nもちろんわたしたちも満足はしていない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ウマ娘たちの大成と成就が、三女神の願い。\nそして、願うからこそわたしたちは試したい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたが二人三脚で育ててきたウマ娘が\n頂点たる走りへと至ったかを知る舞台――",
+   "choice_data_list": [
+    "……『グランドマスターズ』！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "これまでの走り、そして今の走りから\n<chrname>がその大舞台へ\n立つに足るか、判断させてもらおう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "もし、相まみえることになった場合、\nその時は倒すべき相手として臨むように。",
+   "choice_data_list": [
+    "はいっ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、<chrname>の成長を\nしっかりと感じ、『SWBC』は幕を閉じた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

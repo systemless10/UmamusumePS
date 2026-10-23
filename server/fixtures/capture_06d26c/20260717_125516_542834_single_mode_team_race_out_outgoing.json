@@ -15,7 +15,7 @@
    "carrier": "",
    "keychain": 0,
    "locale": "JPN",
-   "button_info": "REDACTED",
+   "button_info": "{\"ViewerId\":100000000001,\"DeviceId\":4,\"ScenarioId\":2,\"ClickPosX\":10209813,\"ClickPosY\":1258957,\"ClickServerTime\":1784318116}",
    "dmm_viewer_id": null,
    "dmm_onetime_token": null,
    "steam_id": "REDACTED",

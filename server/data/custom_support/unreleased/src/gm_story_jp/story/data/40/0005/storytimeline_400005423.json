@@ -1,0 +1,29 @@
+{
+ "title": "SWBCの後に・敗北",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "これまでの三女神によるレースの中でも\nさらに精鋭が集う『SWBC』。\n<chrname>は惜しくも負けてしまう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "それでもここまで走り続けた成果を\n三女神たちは讃えてくれる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかし、ここで自分たちのレースが\n終わったわけではない。\n目指すべきものが、もう1つある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>が頂点たる走りへと\n至ったのか、三女神と直接走り合う\n『グランドマスターズ』がまだ控えていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

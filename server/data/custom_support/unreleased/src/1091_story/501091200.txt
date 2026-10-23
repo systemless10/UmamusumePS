@@ -1,0 +1,50 @@
+#title Toward the Debut Race
+0 The day of Vivlos's Make Debut arrived. When we headed to Kyoto, where the racecourse is—
+0{ Make Debut
+1 Vivlos～! Go for iiit!!
+2 The moment we stepped off the bullet train, a crowd of people greeted us. Some were even holding up fans with Vivlos's name on them.
+3 ...Could it be, I'm getting suuuper much attention?
+3> Looks like it | Looks like it
+4 Whoa, that's sooo amazing! And I haven't even debuted yet!
+5 ...Well, of course, huh. I mean—
+6 Whoa, she really is super cute! She looks just like her mom. That Umamusume—
+7 I only became a fan of Verxina later on... but I'm supporting the little sister from the very start～!
+8 Mama and Onee-chan are suuuper famous, after all.
+9 I wanna be a celebrity like them tooo♪
+9> (Doesn't look like she's feeling the pressure)
+10 Some girls are weighed down by that much attention... but with Vivlos, there doesn't seem to be anything to worry about. Then—
+11 Vivlos! Congratulations on your debut!
+12 Thank youuu～! Are you a fan of Mama or Onee-chan too?
+13 Huh? Ah, I'm a fan of Verxina.
+14 Back with Verxina, I watched every single one of her races in person!
+15 Whoa～! That's amazing! You really are a huge fan!
+16 Yes! So I want to support her little sister too! I went to watch Cheval Grand's debut race as well.
+17 Really! Then～, will you cheer for me as much as you did for Onee-chan?
+18 Of course! ...No, I'll put even more of my heart into it!
+19 So that you can become a wonderful Umamusume like your sister... please let me cheer for you with all my heart!
+19> (Like her sister, huh...)
+20 If she announces she'll follow the path of her sister Verxina, expectations for the Triple Tiara will naturally rise. Not starstruck excitement—real, heartfelt hope.
+21 —When that time comes, will she really be able to avoid feeling the pressure...?
+22 Hm, hmm-hmm♪ Debut, debut♪
+22> (...For now, let's just focus on the race in front of us)
+23 (Knock, knock)
+24 Vivlos. How are you feeling?
+25 Your Make Debut is almost here! Exciting, isn't it, Vivlos sweetie♪
+26 The ones who came into the waiting room were Vivlos's parents, and Verxina.
+27 You all came all this way? To Kyoto?
+28 Of course～. It's Vivlos's precious, precious debut race!
+29 We even brought some power from Cheval, who's working hard at training—without asking her!
+29{ Cheval
+30 Vivlos, believe in yourself, and come back safe!
+31 Whoaaa, I'm so happy! Papa, Mama, thank you!
+32 Earlier, at the station, one of Onee-chan's fans cheered for me too♪
+33 ! I see...
+34 Onee-chan, give me a "you can do it" too...?
+35 ...Do your best, Vivlos. You only get one debut race in your whole life.
+36 Go make a glamorous Make Debut, in your own way!
+37 Yeah, thank you! Onee-chan♡
+38 ...Stare.
+38> ...Me too? | ...Me too?
+39 Yep. I wanna hear you say "you can do it"?
+39> ...You can do it!
+40 Yeah, thanks! I'll go do my best!

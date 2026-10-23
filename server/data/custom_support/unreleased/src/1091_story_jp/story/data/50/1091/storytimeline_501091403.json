@@ -1,0 +1,29 @@
+{
+ "title": "Keep Going",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは腹痛、呼吸音の異変に再び\n襲われる。複数の症状を患っている可能性が\nあり、完治には半年かかると診断された。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "駆けつけたヴィルシーナは、完全に回復する\nまではレースに出ず、休む方がいいと話し、\nトレーナーもそれに同意しかける。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかしヴィブロスは譲らない。\nトリプルティアラもドバイも諦めないと、\n2人に訴え、その心を動かす。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして後日――ヴィブロスがティアラ路線を\n走ることが正式に表明され、\nファンたちは大いに喜んだのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

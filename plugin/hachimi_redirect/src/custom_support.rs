@@ -1,12 +1,13 @@
-//! Optional custom support module. Never changes the game's downloaded master.
-//! A successful private DB open, row probe and texture decode precede readiness.
 use super::*;
 use serde_json::{json, Value};
 use std::collections::HashMap;
 
 pub static ENABLED: AtomicBool = AtomicBool::new(false);
 pub static SERVER_EVENTS: AtomicBool = AtomicBool::new(false);
-pub fn enabled() -> bool { ENABLED.load(Ordering::Acquire) || SERVER_EVENTS.load(Ordering::Acquire) }
+pub static UNRELEASED: AtomicBool = AtomicBool::new(false);
+pub fn enabled() -> bool {
+    ENABLED.load(Ordering::Acquire) || SERVER_EVENTS.load(Ordering::Acquire) || UNRELEASED.load(Ordering::Acquire)
+}
 pub static LOADED: AtomicBool = AtomicBool::new(false);
 static INSTALLED: OnceLock<Result<(), String>> = OnceLock::new();
 static MASTER_HOOK: OnceLock<Result<(), String>> = OnceLock::new();
@@ -28,7 +29,6 @@ type AsyncFn = unsafe extern "C" fn(*mut c_void, *mut c_void, i32, *mut c_void, 
 
 struct CardArt { donor: i32, texture: usize, sprite: usize, texture_handle: u32, sprite_handle: u32, slots: Vec<String>, slot_art: HashMap<usize, (usize, usize)> }
 struct Pack { manifest: Value, dir: PathBuf, server: String, token: String, expires: u64, instance: String, cards: HashMap<i32, CardArt> }
-// Handles are rooted with il2cpp_gchandle_new. All Unity calls occur on the game thread.
 
 fn status(s: impl Into<String>) { *STATUS.lock().unwrap_or_else(|e| e.into_inner()) = s.into(); }
 fn region_name() -> &'static str { if region() == Region::Jp { "jp" } else { "global" } }
@@ -39,10 +39,6 @@ fn server() -> Option<String> {
 }
 
 pub fn install() {
-    // Hachimi invokes plugin initialization while attaching to the process.
-    // Managed reflection/allocation here can crash before Unity starts. Only
-    // install the native master-open detour; its managed caller installs the
-    // resource hooks before opening the first private master.
     let result = MASTER_HOOK.get_or_init(|| unsafe {
         let connection = class(c"LibNative.Runtime.dll", c"LibNative.Sqlite3", c"Connection")?;
         hook(method(connection, c"Open", 4)?, hk_open as *mut c_void, &OPEN)
@@ -51,7 +47,7 @@ pub fn install() {
     else { status("Waiting for the game's master connection. Restart if already logged in."); log(3, "custom support: master-open hook installed; managed setup deferred"); }
 }
 
-unsafe fn class(image: &CStr, ns: &CStr, name: &CStr) -> Result<*mut c_void, String> {
+pub(crate) unsafe fn class(image: &CStr, ns: &CStr, name: &CStr) -> Result<*mut c_void, String> {
     let api = API.get().ok_or("No plugin API")?;
     let image = api.get_image.ok_or("No image lookup")?(image.as_ptr());
     if image.is_null() { return Err("Required client assembly missing".into()); }
@@ -59,13 +55,13 @@ unsafe fn class(image: &CStr, ns: &CStr, name: &CStr) -> Result<*mut c_void, Str
     if c.is_null() { Err(format!("Client class {} missing", name.to_string_lossy())) } else { Ok(c) }
 }
 
-unsafe fn method(c: *mut c_void, name: &CStr, n: i32) -> Result<*const c_void, String> {
+pub(crate) unsafe fn method(c: *mut c_void, name: &CStr, n: i32) -> Result<*const c_void, String> {
     let f: FromName = il2cpp("il2cpp_class_get_method_from_name").ok_or("No method lookup")?;
     let m = f(c, name.as_ptr(), n);
     if m.is_null() { Err(format!("Method {}({n}) missing", name.to_string_lossy())) } else { Ok(m) }
 }
 
-unsafe fn hook(m: *const c_void, detour: *mut c_void, slot: &AtomicUsize) -> Result<(), String> {
+pub(crate) unsafe fn hook(m: *const c_void, detour: *mut c_void, slot: &AtomicUsize) -> Result<(), String> {
     let addr = *(m as *const usize);
     if addr == 0 { return Err("Client method has no compiled body".into()); }
     let t = interceptor_hook(addr, detour);
@@ -74,7 +70,7 @@ unsafe fn hook(m: *const c_void, detour: *mut c_void, slot: &AtomicUsize) -> Res
     Ok(())
 }
 
-unsafe fn invoke(m: *const c_void, obj: *mut c_void, args: &mut [*mut c_void]) -> Result<*mut c_void, String> {
+pub(crate) unsafe fn invoke(m: *const c_void, obj: *mut c_void, args: &mut [*mut c_void]) -> Result<*mut c_void, String> {
     let f: Invoke = il2cpp("il2cpp_runtime_invoke").ok_or("No runtime invoke")?;
     let mut exc = std::ptr::null_mut();
     let r = f(m, obj, if args.is_empty() { std::ptr::null_mut() } else { args.as_mut_ptr() }, &mut exc);
@@ -112,7 +108,6 @@ unsafe fn install_hooks() -> Result<(), String> {
         il2cpp("il2cpp_thread_current").ok_or("No managed-thread lookup")?;
     if current().is_null() { return Err("Master opened outside a managed game thread".into()); }
     log(3, "custom support: resolving resource hooks on the managed master-open thread");
-    // Resolve every required method before mutating any hook state.
     let connection = class(c"LibNative.Runtime.dll", c"LibNative.Sqlite3", c"Connection")?;
     let resource = class(c"umamusume.dll", c"Gallop", c"ResourcePath")?;
     let names = [c"GetSupportCardTexTexturePath", c"GetSupportStillTexTexturePath", c"GetSupportCardThumbnailIconPath", c"GetSupportCardSTexturePath"];
@@ -124,7 +119,6 @@ unsafe fn install_hooks() -> Result<(), String> {
     let load = inflate(manager, c"Load", 3)?;
     let async_load = inflate(manager, c"LoadAsync", 4)?;
     let exists = method(manager, c"IsExistAsset", 1)?;
-    // Required for the readiness probe and safe typed texture/sprite returns.
     method(connection, c"Query", 1)?;
     let query = class(c"LibNative.Runtime.dll", c"LibNative.Sqlite3", c"Query")?;
     method(query, c"Step", 0)?; method(query, c"GetInt", 1)?; method(query, c"Dispose", 0)?;
@@ -149,8 +143,6 @@ unsafe extern "C" fn hk_open(this: *mut c_void, file: *mut c_void, vfs: *mut c_v
     if !input.replace('\\', "/").ends_with("/master/master.mdb") {
         return original(this, file, vfs, key, cipher, mi);
     }
-    // Every master connection in this process must use the same revision:
-    // Gallop's ORM caches survive connection reopenings.
     if LOADED.load(Ordering::Acquire) {
         let path = STATE.lock().unwrap_or_else(|e| e.into_inner()).as_ref()
             .map(|p| p.dir.join("master.mdb"));
@@ -181,8 +173,6 @@ unsafe extern "C" fn hk_open(this: *mut c_void, file: *mut c_void, vfs: *mut c_v
     let ok = original(this, custom_file, vfs, key, cipher, mi);
     if !ok { status("Custom master could not open; using stock master."); return original(this, file, vfs, key, cipher, mi); }
     LOADED.store(true, Ordering::Release);
-    // If readiness fails after opening, retain the private master but do not
-    // advertise capability. Official-server switching is blocked until restart.
     let ready = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| verify_ready(this, &mut pack)));
     match ready {
         Ok(Ok(())) => status(format!("{} custom cards ready · {}", pack.cards.len(), &pack.manifest["digest"].as_str().unwrap_or("")[..12])),
@@ -214,8 +204,6 @@ fn prepare(base_path: &str) -> Result<Pack, String> {
         let donor = c["art_donor"].as_i64().ok_or("Missing art donor")? as i32;
         let art = c["art_sha256"].as_str().unwrap_or("");
         if !art.is_empty() { download_verified(&server, challenge, &format!("{id}.png"), art, &dir)?; }
-        // Framed variants for the thumbnail/icon slots, whose stock textures
-        // have the rarity frame baked in (server: framed_slot_art).
         let mut slots = Vec::new();
         if let Some(map) = c["slot_art"].as_object() {
             for (slot, sha) in map {
@@ -230,9 +218,17 @@ fn prepare(base_path: &str) -> Result<Pack, String> {
     if !cards.is_empty() && !ENABLED.load(Ordering::Acquire) {
         return Err("This pack contains custom cards. Enable custom supports and restart.".into());
     }
-    if cards.is_empty() && events.is_none_or(|e| e.is_empty()) { return Err("Empty private master pack".into()); }
+    let charas = manifest["charas"].as_array();
+    let scenarios = manifest["scenarios"].as_array();
+    let unreleased = charas.is_some_and(|c| !c.is_empty()) || scenarios.is_some_and(|s| !s.is_empty());
+    if cards.is_empty() && events.is_none_or(|e| e.is_empty()) && !unreleased {
+        return Err("Empty private master pack".into());
+    }
     if events.is_some_and(|e| !e.is_empty()) && !SERVER_EVENTS.load(Ordering::Acquire) {
         return Err("This pack contains server events. Enable server events and restart.".into());
+    }
+    if unreleased && !UNRELEASED.load(Ordering::Acquire) {
+        return Err("This pack contains unreleased trainees or scenarios. Enable them and restart.".into());
     }
     let instance = format!("{}-{}-{}", std::process::id(), epoch(), GENERATION.load(Ordering::Acquire));
     Ok(Pack { manifest, dir, server, token:String::new(), expires:0, instance, cards })
@@ -285,20 +281,33 @@ unsafe fn verify_ready(connection: *mut c_void, p: &mut Pack) -> Result<(), Stri
             art.slot_art.insert(index, (texture as usize, sprite as usize));
         }
     }
-    // Probe the opened connection, not merely the downloaded file. An event
-    // capability is advertised only after the game's master sees its rows.
     for event in p.manifest["events"].as_array().into_iter().flatten() {
         let table = match event["family"].as_str() {
             Some("training_challenge") => "training_challenge_master",
             Some("story_event") => "story_event_data",
+            Some("factor_research") => "factor_research_data",
+            Some("champions") => "champions_schedule",
+            Some("legend_race") => "legend_race",
+            Some("heroes") => "heroes_data",
+            Some("challenge_match") => "challenge_match_data",
+            Some("team_building") => "team_building_data",
+            Some("map_event") => "map_event_data",
             _ => return Err("Unsupported server event family".into()),
         };
-        let key = if table == "story_event_data" { "story_event_id" } else { "id" };
+        let key = match table {
+            "story_event_data" => "story_event_id",
+            "factor_research_data" => "factor_research_event_id",
+            "heroes_data" => "heroes_id",
+            "challenge_match_data" => "challenge_match_id",
+            "team_building_data" => "team_building_event_id",
+            "map_event_data" => "event_id",
+            _ => "id",
+        };
         let id = event["event_id"].as_i64().ok_or("Missing event ID")?;
         let start = event["start_date"].as_u64().ok_or("Missing event start")?;
         let end = event["end_date"].as_u64().ok_or("Missing event end")?;
         let sql = cstr(&format!("SELECT {key} FROM {table} WHERE {key}={id} AND start_date={start} AND {}={end}",
-            if table == "story_event_data" { "end_date" } else { "end_result_date" }));
+            if table == "training_challenge_master" { "end_result_date" } else { "end_date" }));
         let q = invoke(query_method, connection, &mut [string(sql.as_ptr())])?;
         if q.is_null() { return Err("Event schedule lookup failed".into()); }
         let probe = invoke(step, q, &mut []);
@@ -306,6 +315,27 @@ unsafe fn verify_ready(connection: *mut c_void, p: &mut Pack) -> Result<(), Stri
         let value = probe?;
         if value.is_null() || *((value as *const u8).add(0x10)) == 0 {
             return Err("Event schedule is missing from the opened master".into());
+        }
+    }
+    let has_row = |sql: String| -> Result<bool, String> {
+        let sql = cstr(&sql);
+        let q = invoke(query_method, connection, &mut [string(sql.as_ptr())])?;
+        if q.is_null() { return Err("Master lookup failed".into()); }
+        let probe = invoke(step, q, &mut []);
+        let _ = invoke(dispose, q, &mut []);
+        let value = probe?;
+        Ok(!value.is_null() && *((value as *const u8).add(0x10)) != 0)
+    };
+    for card in p.manifest["charas"].as_array().into_iter().flatten().flat_map(|c| c["cards"].as_array().into_iter().flatten()) {
+        let id = card.as_i64().ok_or("Invalid trainee card ID")?;
+        if !has_row(format!("SELECT id FROM card_data WHERE id={id}"))? {
+            return Err("Unreleased trainee is missing from the opened master".into());
+        }
+    }
+    for scenario in p.manifest["scenarios"].as_array().into_iter().flatten() {
+        let id = scenario["scenario_id"].as_i64().ok_or("Invalid scenario ID")?;
+        if !has_row(format!("SELECT id FROM single_mode_scenario WHERE id={id}"))? {
+            return Err("Unreleased scenario is missing from the opened master".into());
         }
     }
     let req = json!({"challenge":p.manifest["challenge"],"digest":p.manifest["digest"],
@@ -316,7 +346,7 @@ unsafe fn verify_ready(connection: *mut c_void, p: &mut Pack) -> Result<(), Stri
     Ok(())
 }
 
-unsafe fn decode_texture(bytes: &[u8]) -> Result<(*mut c_void, *mut c_void, u32, u32), String> {
+pub(crate) unsafe fn decode_texture(bytes: &[u8]) -> Result<(*mut c_void, *mut c_void, u32, u32), String> {
     type New = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
     type Array = unsafe extern "C" fn(*mut c_void, usize) -> *mut c_void;
     type Root = unsafe extern "C" fn(*mut c_void, bool) -> u32;
@@ -345,9 +375,6 @@ unsafe fn decode_texture(bytes: &[u8]) -> Result<(*mut c_void, *mut c_void, u32,
     let sc = class(c"UnityEngine.CoreModule.dll", c"UnityEngine", c"Sprite")?;
     let sprite = invoke(method(sc, c"Create", 3)?, std::ptr::null_mut(), &mut [texture, rect.as_mut_ptr() as *mut c_void, pivot.as_mut_ptr() as *mut c_void])?;
     if sprite.is_null() { return Err("Sprite creation failed".into()); }
-    // Runtime assets are destroyed by Resources.UnloadUnusedAssets on scene
-    // changes unless flagged DontUnloadUnusedAsset (32); a GC handle only keeps
-    // the managed wrapper, leaving a dead native texture behind.
     let hide = method(class(c"UnityEngine.CoreModule.dll", c"UnityEngine", c"Object")?, c"set_hideFlags", 1)?;
     for obj in [texture, sprite] {
         let mut flags = 32i32;
@@ -402,8 +429,6 @@ fn custom_slot(path: *mut c_void) -> Option<usize> {
     s.strip_prefix("umaps-custom/")?.split('/').nth(1)?.parse().ok()
 }
 
-/// (texture, sprite) for one resource slot: its framed variant when the pack
-/// has one, else the plain art.
 fn slot_objects(art: &CardArt, slot: Option<usize>) -> (usize, usize) {
     slot.and_then(|i| art.slot_art.get(&i).copied()).unwrap_or((art.texture, art.sprite))
 }
@@ -433,8 +458,7 @@ unsafe extern "C" fn hk_load(this: *mut c_void, path: *mut c_void, hash: i32, lo
 }
 
 unsafe extern "C" fn hk_async(this: *mut c_void, path: *mut c_void, hash: i32, callback: *mut c_void, lower: bool, mi: *const c_void) {
-    if custom_id(path).is_some() && !callback.is_null() {
-        // Async loader returns void; the Action<T> parameter determines texture vs sprite.
+    if (custom_id(path).is_some()) && !callback.is_null() {
         let c = *(callback as *const *mut c_void);
         if let Ok(m) = method(c, c"Invoke", 1) {
             type Param = unsafe extern "C" fn(*const c_void, u32) -> *const c_void;
@@ -496,25 +520,20 @@ pub unsafe fn add_header(headers: *mut c_void) {
 }
 
 pub fn menu(u: &Ui<'_>) {
-    u.separator(); u.heading("Private master data");
+    u.separator(); u.heading("UmaPack");
     if let Some(cb) = u.api.checkbox {
-        let mut on = ENABLED.load(Ordering::Acquire);
-        unsafe { cb(u.ui, c"Enable custom support cards (restart required)".as_ptr(), &mut on) };
-        if on != ENABLED.load(Ordering::Acquire) {
-            ENABLED.store(on, Ordering::Release);
+        let all = [&ENABLED, &SERVER_EVENTS, &UNRELEASED];
+        let was = all.iter().all(|f| f.load(Ordering::Acquire));
+        let mut on = was;
+        unsafe { cb(u.ui, c"Enable UmaPack (restart required)".as_ptr(), &mut on) };
+        if on != was {
+            for f in all { f.store(on, Ordering::Release); }
             save_config(&CONFIG.read().unwrap_or_else(|e| e.into_inner()));
-            status("Setting saved. Restart the game to apply it.");
+            status("UmaPack setting saved. Restart the game to apply it.");
         }
+        if !was && all.iter().any(|f| f.load(Ordering::Acquire)) { u.small("Partly on (set in redirect.cfg)."); }
     }
-    if let Some(cb) = u.api.checkbox {
-        let mut on = SERVER_EVENTS.load(Ordering::Acquire);
-        unsafe { cb(u.ui, c"Enable server event schedules (restart required)".as_ptr(), &mut on) };
-        if on != SERVER_EVENTS.load(Ordering::Acquire) {
-            SERVER_EVENTS.store(on, Ordering::Release);
-            save_config(&CONFIG.read().unwrap_or_else(|e| e.into_inner()));
-            status("Event setting saved. Restart the game to apply it.");
-        }
-    }
+    u.small("Custom support cards, server events and unreleased trainees / scenarios.");
     u.small("Optional. Requires a matching published pack on your private server.");
     let text = STATUS.lock().unwrap_or_else(|e| e.into_inner()).clone();
     if !text.is_empty() { u.small(&text); }
@@ -523,8 +542,6 @@ pub fn menu(u: &Ui<'_>) {
 
 fn epoch() -> u64 { std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap_or_default().as_secs() }
 
-// HTTPS only, no redirects, configured private origin only. WinHTTP is separate
-// from Unity's encrypted transport and preserves Global/JP packet formats.
 #[link(name="winhttp")]
 extern "system" {
     fn WinHttpOpen(agent:*const u16, access:u32, proxy:*const u16, bypass:*const u16, flags:u32)->*mut c_void;
@@ -543,6 +560,13 @@ impl Drop for Handle { fn drop(&mut self) { if !self.0.is_null() { unsafe { WinH
 fn wide(s:&str)->Vec<u16> { s.encode_utf16().chain(std::iter::once(0)).collect() }
 fn http(origin:&str, verb:&str, path:&str, body:&[u8])->Result<Vec<u8>,String> {
     if server().as_deref() != Some(origin) { return Err("Private server changed".into()); }
+    http_to(origin, verb, path, body)
+}
+pub(crate) fn http_to(origin:&str, verb:&str, path:&str, body:&[u8])->Result<Vec<u8>,String> {
+    http_to_t(origin,verb,path,body,[5000,5000,10000,30000])
+}
+
+pub(crate) fn http_to_t(origin:&str, verb:&str, path:&str, body:&[u8], t:[i32;4])->Result<Vec<u8>,String> {
     let rest = origin.strip_prefix("https://").ok_or("HTTPS is required")?;
     let (authority,prefix) = rest.split_once('/').unwrap_or((rest,""));
     let (host,port) = authority.rsplit_once(':').map(|(h,p)| Ok::<_,String>((h,p.parse::<u16>().map_err(|_| "Invalid server port")?))).unwrap_or(Ok((authority,443)))?;
@@ -550,14 +574,14 @@ fn http(origin:&str, verb:&str, path:&str, body:&[u8])->Result<Vec<u8>,String> {
     unsafe {
         let session = Handle(WinHttpOpen(wide("UmaPS Custom Supports/1").as_ptr(),0,std::ptr::null(),std::ptr::null(),0));
         if session.0.is_null() { return Err("Cannot initialize pack download".into()); }
-        WinHttpSetTimeouts(session.0,5000,5000,10000,30000);
+        WinHttpSetTimeouts(session.0,t[0],t[1],t[2],t[3]);
         let conn = Handle(WinHttpConnect(session.0,wide(host).as_ptr(),port,0));
         if conn.0.is_null() { return Err("Cannot connect to private server".into()); }
         let target = if prefix.is_empty() {path.to_string()} else {format!("/{prefix}{path}")};
         let req = Handle(WinHttpOpenRequest(conn.0,wide(verb).as_ptr(),wide(&target).as_ptr(),std::ptr::null(),std::ptr::null(),std::ptr::null(),0x800000));
         if req.0.is_null() { return Err("Cannot request custom pack".into()); }
-        let mut security = 0x3300u32; // local private certificate, same policy as redirect
-        let mut redirects = 0u32; // never follow another origin
+        let mut security = 0x3300u32;
+        let mut redirects = 0u32;
         WinHttpSetOption(req.0,31,&mut security as *mut _ as *mut c_void,4);
         WinHttpSetOption(req.0,88,&mut redirects as *mut _ as *mut c_void,4);
         let headers=wide("Content-Type: application/json\r\nX-Uma-Custom-Plugin: 1\r\n");
@@ -571,8 +595,7 @@ fn http(origin:&str, verb:&str, path:&str, body:&[u8])->Result<Vec<u8>,String> {
     }
 }
 
-// SHA-256 keeps binary integrity independent of JSON decoding or filesystem names.
-fn sha256(data:&[u8])->String {
+pub(crate) fn sha256(data:&[u8])->String {
     const K:[u32;64]=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
     let mut h=[0x6a09e667u32,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
     let mut padded=data.to_vec(); padded.push(0x80); while padded.len()%64!=56 {padded.push(0);} padded.extend_from_slice(&((data.len() as u64)*8).to_be_bytes());

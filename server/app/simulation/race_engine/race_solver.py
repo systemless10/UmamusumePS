@@ -1,21 +1,3 @@
-"""Port of RaceSolver.ts -- the core per-tick physics/skill-activation loop.
-
-Uses native float32 end-speed integration during start dash, legacy
-velocity-Verlet-style integration afterward, and three
-compensated-sum (Kahan-Babuska-Neumaier) accumulators for skill modifiers,
-and precomputes `base_target_speed`/`base_accel` arrays exactly once at
-construction time (a subtlety worth flagging: green/stat-boost skills that
-fire mid-race mutate `self.horse` but do NOT retroactively change these
-precomputed arrays, matching the original engine's behavior bit-for-bit).
-
-Everything that needs the rest of the field (position keep, lanes, blocking,
-the competition mechanics, debuffs) is on top of that single-horse core and
-follows the race mechanics docs (docs/race docs.pdf, docs/Game_Mechanics -
-Umamusume Wiki.html) checked against real proxy-captured race_scenario blobs
-from the genuine server. Full replay comparison still fails; this remains
-an approximate solver. race_engine_rs/src/race_solver.rs is a line-for-line
-port of this file and must stay RNG-for-RNG identical to it.
-"""
 
 from __future__ import annotations
 
@@ -29,18 +11,9 @@ from .random_gen import Rule30CARng
 from ..race_exact.rng import f32
 from .region import Region
 
-# ---------------------------------------------------------------------------
-# Speed / acceleration tables (Object.freeze([...]) in RaceSolver.ts)
 
-# BUG FIXED 2026-08-29: two wrong values found cross-checking the Global
-# wiki's Strategy Phase Coefficient table for Target Speed. Sashi (Late
-# Surger, row 3) opening-leg was 0.938, should be 0.93. Oikomi (End Closer,
-# row 4) final-leg/last-spurt was 1.0, should be 1.02 -- a real 2% deficit
-# specifically in the phase that determines a closer's finishing kick.
-# (1.02 re-confirmed 2026-09-24 against a real capture: an End Closer's
-# decoded spurt speed, 24.06 m/s, only reproduces with 1.02.)
 _SPEED_STRATEGY_PHASE_COEFFICIENT = [
-    [],  # strategies start numbered at 1
+    [],
     [1.0, 0.98, 0.962],
     [0.978, 0.991, 0.975],
     [0.93, 0.998, 0.994],
@@ -68,8 +41,6 @@ def _last_spurt_speed(horse: HorseParameters, course: CourseData) -> float:
     )
 
 
-# Serialized JP RaceParamDefine.Speed.PhaseAccelCoefArray: the End/Last
-# coefficient for Oikomi is 0.997 (the former wiki-based 0.967 was wrong).
 _ACCEL_STRATEGY_PHASE_COEFFICIENT = [
     [],
     [1.0, 1.0, 0.996],
@@ -95,7 +66,6 @@ def _base_accel(base_accel_const: float, horse: HorseParameters, phase: int) -> 
 
 _PHASE_DECELERATION = [-1.2, -0.8, -1.0]
 
-# -- competition-mechanics constant tables (doc, see _update_* methods) -----
 _STRATEGY_PROFICIENCY_MODIFIER_APPROX = [1.1, 1.0, 0.85, 0.75, 0.6, 0.4, 0.2, 0.1]
 
 _COMPETE_DIST_THRESHOLD = {
@@ -107,8 +77,6 @@ _COMPETE_STRATEGY_COEF = {
 _COMPETE_STAMINA_STRATEGY_COEF = {
     Strategy.OONIGE: 1.5, Strategy.NIGE: 1.2, Strategy.SENKOU: 1.0, Strategy.SASI: 1.0, Strategy.OIKOMI: 1.0,
 }
-# Secure Lead: the lead a horse wants over a rival whose strategy should be
-# further back, by (own strategy, rival strategy) -- the doc's full matrix.
 _SECURE_LEAD_COEF = {
     Strategy.OONIGE: {Strategy.NIGE: 2.0, Strategy.SENKOU: 7.0, Strategy.SASI: 8.0, Strategy.OIKOMI: 8.0},
     Strategy.NIGE: {Strategy.SENKOU: 4.0, Strategy.SASI: 8.0, Strategy.OIKOMI: 8.0},
@@ -118,11 +86,8 @@ _SECURE_LEAD_COEF = {
 _SECURE_LEAD_STRATEGY_COEF = {Strategy.OONIGE: 0.2, Strategy.NIGE: 1.0, Strategy.SENKOU: 1.0, Strategy.SASI: 0.8}
 _SECURE_LEAD_STAMINA_STRATEGY_COEF = {Strategy.OONIGE: 1.2, Strategy.NIGE: 1.0, Strategy.SENKOU: 0.8, Strategy.SASI: 0.8}
 
-# Front-to-back order of the strategies, for "a strategy that should be
-# behind" (Pace Up Ex, Secure Lead).
 _FORWARDNESS = {Strategy.OONIGE: 0, Strategy.NIGE: 1, Strategy.SENKOU: 2, Strategy.SASI: 3, Strategy.OIKOMI: 4}
 
-# Force-in (early race, drifting toward the rail) per-strategy bonus.
 _FORCE_IN_STRATEGY = {Strategy.NIGE: 0.02, Strategy.OONIGE: 0.02, Strategy.SENKOU: 0.01,
                       Strategy.SASI: 0.01, Strategy.OIKOMI: 0.03}
 
@@ -131,8 +96,6 @@ _VISIBLE_DISTANCE = 20.0
 
 
 def _competition_distance_coefficient(distance: float) -> float:
-    """Shared course-length coefficient table (doc: identical brackets used
-    by both Compete Before Spurt and Secure Lead's stamina-cost formulas)."""
     if distance < 1801:
         return 0.3
     if distance < 2101:
@@ -147,8 +110,6 @@ def _competition_distance_coefficient(distance: float) -> float:
 
 
 class _PositionKeep:
-    # Index = strategy. Nige/Oonige never read these (front runners keep
-    # position by other rules).
     BASE_MIN_THRESHOLD = [0, 0, 3.0, 6.5, 7.5, 0]
     BASE_MAX_THRESHOLD = [0, 0, 5.0, 7.0, 8.0, 0]
 
@@ -167,9 +128,6 @@ class _PositionKeep:
 
 
 class TemptationMode(IntEnum):
-    """HorseTemptationCalculator.TemptationMode, from the client's own IL2CPP
-    dump. Sent per frame on the wire (RaceSimulateHorseFrameData's
-    TemptationMode) -- it is how the client knows a horse is rushed."""
     NULL = 0
     POSITION_SASHI = 1
     POSITION_SENKO = 2
@@ -185,11 +143,10 @@ _TEMPTATION_STRATEGY = {
 
 
 class RaceEventType(IntEnum):
-    """SimulateEventType, from the client's own IL2CPP dump."""
     SCORE = 0
     SKILL = 3
-    COMPETE_TOP = 4        # spot struggle
-    COMPETE_FIGHT = 5      # dueling
+    COMPETE_TOP = 4
+    COMPETE_FIGHT = 5
     RELEASE_CONSERVE_POWER = 6
 
 
@@ -201,10 +158,6 @@ class Timer:
 
 
 class CompensatedAccumulator:
-    """Kahan-Babuska-Neumaier sum: for any sequence, adding a value in any
-    order interleaved with subtracting it in any other order results in
-    acc+err == 0.0 (needed since skills add/remove modifiers at arbitrary
-    times over a long race)."""
 
     __slots__ = ("acc", "err")
 
@@ -255,34 +208,23 @@ class SkillType(IntEnum):
 
 _STAT_TYPES = frozenset([SkillType.SPEED_UP, SkillType.STAMINA_UP, SkillType.POWER_UP,
                          SkillType.GUTS_UP, SkillType.WISDOM_UP, SkillType.ALL_STATUS_UP])
-# Effects whose value needs an actual duration (everything else is instant or
-# permanent), for the skill event's wire duration.
 _TIMED_TYPES = frozenset([SkillType.CURRENT_SPEED, SkillType.CURRENT_SPEED_WITH_NATURAL_DECELERATION,
                           SkillType.TARGET_SPEED, SkillType.ACCEL, SkillType.LANE_MOVE_SPEED_UP,
                           SkillType.VISIBLE_DISTANCE, SkillType.TARGET_LANE])
 
 
 def _bucket(value: float, table) -> float:
-    """First multiplier whose `value < bound`; the last one otherwise."""
     for bound, mult in table:
         if bound is None or value < bound:
             return mult
     return table[-1][1]
 
 
-# SkillAbilityValueUsage scalings that depend on the race itself (the doc's
-# Value Scaling tables; ids from the client's own enum).
-_GREEN_COUNT_MULT = ((3, 0.0), (5, 1.0), (6, 2.0), (None, 3.0))        # 14
-_SPEED1_MULT = ((1700, 0.0), (1800, 1.0), (1900, 2.0), (2000, 3.0), (None, 4.0))   # 22
-_SPEED2_MULT = ((1400, 1.0), (1600, 2.0), (None, 3.0))                 # 23
-# 11 MultiplyOrderUpCountCornerPhaseEndAfter (Firelight): scales with the
-# runners passed on a corner in the late race. The client's thresholds live in
-# its RaceParamDefine asset, which no reference documents -- this table is an
-# APPROXIMATION (+10% per runner passed, up to 4).
+_GREEN_COUNT_MULT = ((3, 0.0), (5, 1.0), (6, 2.0), (None, 3.0))
+_SPEED1_MULT = ((1700, 0.0), (1800, 1.0), (1900, 2.0), (2000, 3.0), (None, 4.0))
+_SPEED2_MULT = ((1400, 1.0), (1600, 2.0), (None, 3.0))
 _CORNER_LATE_ORDER_UP_MULT = ((1, 1.0), (2, 1.1), (3, 1.2), (4, 1.3), (None, 1.4))
-# Longest side-block of the mid race (value usage 20 / time usage 5).
 _BLOCKED_SIDE_MULT = ((2, 1.0), (4, 2.0), (6, 3.0), (None, 4.0))
-# SkillAbilityAdditionalActivateType: how many times each kind can fire.
 _ADDITIONAL_ACTIVATE_LIMIT = {1: 3, 2: 3, 3: 2}
 
 
@@ -323,9 +265,6 @@ class SkillEffect:
         self.target = target
         self.target_value = target_value
         self.time_usage = time_usage
-        # only the value scalings that depend on the race itself are still
-        # pending here (see _dynamic_value_multiplier); the builder applied
-        # every pre-race one to `modifier` already
         self.value_usage = value_usage
         self.additional_activate = additional_activate
 
@@ -348,18 +287,11 @@ class PendingSkill:
         self.trigger = trigger
         self.extra_condition = extra_condition
         self.effects = effects
-        # Skill Cooldown (doc): after activating, the skill may activate again
-        # once BaseCooldown*CourseDistance/1000 seconds have passed (0 = once).
-        # `followups` are the further trigger regions a multi-trigger skill
-        # (all_corner_random: up to 4) moves on to.
         self.cooldown = cooldown
         self.followups = followups
-        # tagged 601-615 (the passive greens value usage 14 counts)
         self.green = green
 
     def rearmed(self, pos: float) -> Optional["PendingSkill"]:
-        """This skill back in the pending list after its cooldown: on the next
-        of its triggers still ahead, or its own trigger when it has only one."""
         trigger, followups = self.trigger, self.followups
         if followups:
             rest = [r for r in followups if r.end > pos]
@@ -391,17 +323,12 @@ class RaceSolver:
                  on_skill_activate: Optional[Callable] = None,
                  on_skill_deactivate: Optional[Callable] = None,
                  gate_index: int = 0):
-        # clone since green skills may modify the stat values
         self.horse = horse.clone()
         self.course = course
         self.hp = hp
         self.pacer = pacer
         self.rng = rng
         self.gate_index = gate_index
-        # Set by race_field.RaceField once the whole roster is built. None
-        # during the very first ("gate skill") activation round below, since
-        # no other horse exists yet at that point -- field-dependent dynamic
-        # conditions must treat that as "unknown".
         self.field = None
         self.field_index = 0
         self.finished = False
@@ -413,34 +340,18 @@ class RaceSolver:
         self.timers: list[Timer] = []
         self.accumulatetime = self._new_timer()
 
-        # WHAT HAPPENED, for the wire scenario: every skill activation
-        # (including the gate-time passives, which fire in this constructor
-        # before any hook could be attached) and every race event.
-        #   activation_log: (t, skill_id, effects, target_indices, timed_duration)
-        #   event_log: (t, RaceEventType)
         self.activation_log: list[tuple] = []
         self.event_log: list[tuple] = []
-        self.kakari_log: list[tuple] = []   # (start_t, end_t)
-        # (ready_time, PendingSkill) waiting out a cooldown
+        self.kakari_log: list[tuple] = []
         self._cooling: list[tuple] = []
-        # Additional Activate effects waiting for their trigger, and skills
-        # whose duration grows with each overtake (IncrementOrderUp):
-        #   watcher: [effect, skill_id, perspective, kind, times_left, timer, group]
-        #   order_up: [timers, times_left]
         self._watchers: list[list] = []
         self._order_up_groups: list[list] = []
         self._activation_group = 0
         self._green_activations = 0
         self._corner_late_order_up = 0
-        # longest continuous side-block in the mid race; the run resets only
-        # when both sides are clear
         self._mid_side_block = 0.0
         self._mid_side_block_max = 0.0
-        # positive ability types of every skill she activated this tick (the
-        # field reads it for is_other_character_activate_advantage_skill)
         self.advantage_types: set = set()
-        # effects aimed at others that fired before the field existed (a gate
-        # passive); the field applies them once it is built
         self.deferred_external: list[tuple] = []
         self.chara_id = 0
         self.is_viewer = False
@@ -451,10 +362,6 @@ class RaceSolver:
         self.overtake_target_timer = 0.0
         self.overtake_no_order_up_timer = 0.0
 
-        # bit of a hack, see RaceSolver.ts's comment on gateRoll: n%k is
-        # uniformly distributed for a random n only when n_max ≡ k-1 (mod k)
-        # for every k; the smallest such n_max for k in [1,18] is
-        # lcm(1..18)-1, so draw up to lcm(1..18).
         self.gate_roll = self.rng.uniform(12252240)
         self.random_lot = self.rng.uniform(100)
         self.phase = 0
@@ -462,33 +369,22 @@ class RaceSolver:
         self.active_target_speed_skills: list[_ActiveSkill] = []
         self.active_current_speed_skills: list[_ActiveSkill] = []
         self.active_accel_skills: list[_ActiveSkill] = []
-        # Lane Move Speed Up (ability type 28): adds its value to the horse's
-        # lane-change speed while active, and -- while active AND the horse
-        # moved lane on the PREVIOUS frame -- MoveLaneModifier =
-        # sqrt(0.0002*Power) to target speed (see _update_target_speed).
         self.active_lane_speed_skills: list[_ActiveSkill] = []
         self.activate_count = [0, 0, 0]
         self.activate_count_heal = 0
-        # Activations past the halfway mark of the course -- the DISTANCE half,
-        # not a phase; see activation_conditions._activate_count_later_half_filter_gte.
         self.activate_count_later_half = 0
         self.activate_count_last_frame = 0
         self.on_skill_activate = on_skill_activate or _noop_hook
         self.on_skill_deactivate = on_skill_deactivate or _noop_hook
         self.section_length = self.course.distance / 24.0
 
-        # -- position keep (doc: Position Keeping) --------------------------
         self.is_pace_down = False
         self.pos_keep_end = self.section_length * 10.0
         self.pos_keep_speed_coef = 1.0
         self._pos_keep_mode: Optional[str] = None
         self.pos_keep_effect_exit_distance = 0.0
         self.pos_keep_effect_start = 0.0
-        # Checked every 2 seconds; after leaving a mode, a 1s cooldown comes
-        # first -- modeled as the timer restarting from -1.
         self.pos_keep_timer = self._new_timer()
-        # A mode lasts at most one section (three for Oonige), the section
-        # length rounded down BEFORE multiplying.
         self.pos_keep_continue_distance = math.floor(self.section_length) * (
             3 if self.horse.strategy == Strategy.OONIGE else 1)
 
@@ -500,8 +396,6 @@ class RaceSolver:
         self.modifiers_kakari_chance = 0.0
         self.lane_speed_skill_modifier = 0.0
 
-        # must come before the first round of skill activations so concen
-        # etc can modify it
         self.start_delay = 0.1 * self.rng.random()
         if self.pacer:
             self.pacer.start_delay = 0.0
@@ -514,11 +408,6 @@ class RaceSolver:
         self.is_last_spurt = False
         self.last_spurt_start_pos = -1.0
 
-        # -- lanes (doc: Lane) ------------------------------------------------
-        # Initial lane: HorseIndex * HorseLane + Adjustor, the adjustor being
-        # the gap between the two physical gate blocks (0.6 horse-lanes from
-        # gate 10 on; Ooi has one block; Longchamp 1.86 from gate 14). Real
-        # frame-0 lanes confirm it exactly: 0, 555, ... 4444, then 5333.
         self.lane = (self.gate_index + self._gate_adjustor()) * HORSE_LANE
         self.lane_target = self.lane
         self.lane_change_speed = 0.0
@@ -532,10 +421,6 @@ class RaceSolver:
         self._behind_near_lane_timer = 0.0
         self._moved_lane_this_tick = False
 
-        # -- competition mechanics (doc: Spot Struggle, Dueling, Compete Before
-        # Spurt, Secure Lead, Stamina Keep). Spot struggle is started by the
-        # FIELD (it is between horses, not one horse's decision) -- see
-        # RaceField._update_compete_top.
         self.compete_top_active = False
         self._compete_top_timer = self._new_timer()
         self._compete_top_modifier = 0.0
@@ -558,26 +443,17 @@ class RaceSolver:
         self.is_kakari = False
         self.temptation_mode = TemptationMode.NULL
         self.temptation_count = 0
-        self.process_skill_activations()  # activate gate skills (before minSpeed: green skills can modify guts)
+        self.process_skill_activations()
         self.min_speed = 0.85 * _base_speed(self.course) + math.sqrt(200.0 * self.horse.guts) * 0.001
         self.start_dash = True
-        self.modifiers_accel.add(24.0)  # start dash accel
+        self.modifiers_accel.add(24.0)
 
-        # after skill activations, since greens can affect downhill check if starting on a hill
         self._init_hills()
 
-        # also must come after the first round of skill activations
         self.base_target_speed = [_base_target_speed(self.horse, self.course, p) for p in (0, 1, 2)]
         self.last_spurt_speed = _last_spurt_speed(self.horse, self.course)
         self.last_spurt_transition = -1
 
-        # Rushed (doc: Rushed, Kakari). Rolled before the race; she rushes on
-        # ENTERING a random section 2..9 -- section k starts at (k-1) lengths,
-        # so 1..8 lengths. (Was 2 + uniform(7): sections 3..9, which could
-        # never produce the section-2 rushes real races show.) The chance is a
-        # whole percentage, rounded UP: the game rolls an integer RNG.
-        # Roll for section first, then check, so rng always advances twice
-        # regardless of outcome (avoids data-dependent rng advancement).
         self.kakari_start = (1 + self.rng.uniform(8)) * self.section_length
         kakari_pct = math.ceil(math.pow(6.5 / math.log10(0.1 * self.horse.wisdom + 1), 2) - 1e-9)
         if self.rng.random() * 100.0 >= kakari_pct + self.modifiers_kakari_chance * 100.0:
@@ -594,10 +470,8 @@ class RaceSolver:
             max_v = self.horse.wisdom / 5500.0 * math.log10(self.horse.wisdom * 0.1)
             factor = (max_v - 0.65 + self.rng.random() * 0.65) / 100.0
             self.section_modifier.append(_base_speed(self.course) * factor)
-        self.section_modifier.append(0.0)  # tick after race is done / one uma runs off the end
+        self.section_modifier.append(0.0)
 
-        # Everything below is drawn AFTER the original engine's own draws, so
-        # the rolls above (and the Rust port's copies of them) are unchanged.
         self._temptation_roll = self.rng.random()
         self._force_in_random = self.rng.random() * 0.1
         self.pos_keep_rng = Rule30CARng.seeded(self.rng.int32())
@@ -611,12 +485,8 @@ class RaceSolver:
             for i, p in enumerate([0, 1, 2, 0, 1, 2])
         ]
 
-    # -- setup helpers --------------------------------------------------
 
     def refresh_derived_stats(self) -> None:
-        """Recompute everything derived from her stats at construction, for a
-        stat boost that reaches her from another runner's gate passive (it
-        can only be applied once the whole field exists)."""
         self.min_speed = 0.85 * _base_speed(self.course) + math.sqrt(200.0 * self.horse.guts) * 0.001
         self.base_target_speed = [_base_target_speed(self.horse, self.course, p) for p in (0, 1, 2)]
         self.last_spurt_speed = _last_spurt_speed(self.horse, self.course)
@@ -634,21 +504,18 @@ class RaceSolver:
     def _gate_adjustor(self) -> float:
         gate = self.gate_index + 1
         track = self.course.race_track_id
-        if track == 10101:      # Ooi: a single gate block
+        if track == 10101:
             return 0.0
-        if track == 10201:      # Longchamp
+        if track == 10201:
             return 1.86 if gate >= 14 else 0.0
         return 0.6 if gate >= 10 else 0.0
 
     def _init_hills(self) -> None:
-        # slopes must be sorted by start for the sequential-consumption logic below
         self.n_hills = len(self.course.slopes)
         self.hill_start = [s.start for s in self.course.slopes][::-1]
         self.hill_end = [s.start + s.length for s in self.course.slopes][::-1]
         self.hill_idx = -1
 
-        # separate rng per hill so a downhill proc on one hill doesn't affect
-        # how many times the rng is rolled on a later hill
         self.hill_rng = [Rule30CARng.seeded((self.rng.int32() << 32) | self.rng.int32()) for _ in self.course.slopes]
         self.downhill_timer = self._new_timer()
 
@@ -661,13 +528,12 @@ class RaceSolver:
         else:
             self.slope_per = 0
 
-    # -- per-tick ---------------------------------------------------------
 
     def get_max_speed(self) -> float:
         if self.start_dash:
             return min(self.target_speed, 0.85 * _base_speed(self.course))
         elif self.current_speed + self.modifiers_one_frame_accel > self.target_speed:
-            return 9999.0  # allow decelerating if targetSpeed drops
+            return 9999.0
         else:
             return self.target_speed
 
@@ -725,10 +591,6 @@ class RaceSolver:
         self._update_competition_mechanics(dt)
 
     def _update_blocking(self, dt: float) -> None:
-        """Doc's Blocking section. Front block caps actual speed to a
-        fraction of the blocking horse's speed; side/all just accumulate
-        continuous-duration timers the skill-condition table reads
-        (blocked_front_continuetime etc)."""
         if self.field is None:
             self._front_blocker_index = -1
             self._blocked_front_timer = 0.0
@@ -754,12 +616,8 @@ class RaceSolver:
         all_blocked = blocker is not None and side_blocked
         self._blocked_all_timer = self._blocked_all_timer + dt if all_blocked else 0.0
 
-    # -- lanes (doc: Target Lane / Overtake Targets / Normal Mode / Overtake
-    # Mode / Extra Move Lane) ---------------------------------------------
 
     def _move_lane_point(self) -> float:
-        # "In races without this parameter, the entry point of the initial
-        # corner is used" -- none of our courses carry it.
         return self.course.corners[0].start if self.course.corners else self.course.distance
 
     @property
@@ -904,8 +762,6 @@ class RaceSolver:
         return best
 
     def _update_lane(self, dt: float) -> None:
-        """Doc's Lane Change Speed (target/current/actual speed) toward the
-        target lane from _update_lane_target."""
         if self.field is None:
             return
         self._update_lane_target()
@@ -918,7 +774,6 @@ class RaceSolver:
         first_move_modifier = (1.0 + self.lane / max(self.course.max_lane, 1e-9) * 0.05) if before_mlp else 1.0
         order_modifier = 1.0 + self.field.order_of(self) * 0.01 if self.phase >= 2 else 1.0
         target_lane_change_speed = 0.02 * (0.3 + 0.001 * self.horse.power) * first_move_modifier * order_modifier
-        # current speed approaches its target at a constant 0.02*1.5
         if self.lane_change_speed < target_lane_change_speed:
             self.lane_change_speed = min(target_lane_change_speed, self.lane_change_speed + 0.03 * dt)
         else:
@@ -926,11 +781,9 @@ class RaceSolver:
         moving_in = self.lane_target < self.lane
         actual_speed = max(0.0, min(0.6, self.lane_change_speed + self.lane_speed_skill_modifier))
         if moving_in:
-            actual_speed *= 1.0 + self.lane  # moving in is faster the further out she is
+            actual_speed *= 1.0 + self.lane
         inner_blocked, outer_blocked = self.field.side_room(self)
         if (inner_blocked if moving_in else outer_blocked):
-            # blocked on that side: no lateral movement, but lane-change speed
-            # keeps building (doc)
             self._moved_lane_this_tick = False
             return
         step = actual_speed * dt * (-1.0 if moving_in else 1.0)
@@ -943,9 +796,6 @@ class RaceSolver:
         self._moved_lane_this_tick = abs(step) > 1e-9
 
     def _update_near_lane_timers(self, dt: float) -> None:
-        """Doc: behind/infront_near_lane_time -- near = |distGap|<2.5m AND
-        |laneGap|<1 horse-lane, checked only against the horse immediately
-        ahead/behind by live order; accumulates while continuously true."""
         if self.field is None:
             self._infront_near_lane_timer = 0.0
             self._behind_near_lane_timer = 0.0
@@ -962,13 +812,8 @@ class RaceSolver:
                        and abs(behind_lane_gap) < self.field.HORSE_LANE)
         self._behind_near_lane_timer = self._behind_near_lane_timer + dt if near_behind else 0.0
 
-    # -- rushed ---------------------------------------------------------------
 
     def _roll_temptation_mode(self) -> TemptationMode:
-        """Doc: while rushed, Front Runners go to speed-up mode (Boost), Pace
-        Chasers run as Front Runners, Late Surgers 75% Front Runner / 25%
-        Pace Chaser, End Closers 70/20/10 Front Runner/Pace Chaser/Late
-        Surger."""
         s = self.horse.strategy
         r = self._temptation_roll
         if s in (Strategy.NIGE, Strategy.OONIGE):
@@ -988,8 +833,6 @@ class RaceSolver:
             self.temptation_mode = self._roll_temptation_mode()
             self.kakari_timer.t = -self.kakari_duration
             self._kakari_started_at = self.accumulatetime.t
-            # A rushed horse drops whatever position-keep mode it was in and
-            # re-decides as its temptation strategy on the next check.
             self._exit_position_keep(cooldown=False)
             self.pos_keep_timer.t = 2.0
             self.on_skill_activate(self, 'kakari', Perspective.SELF)
@@ -999,12 +842,8 @@ class RaceSolver:
             self.kakari_log.append((self._kakari_started_at, self.accumulatetime.t))
             self.on_skill_deactivate(self, 'kakari', Perspective.SELF)
 
-    # -- position keep (doc: Position Keeping) -----------------------------
 
     def ai_strategy(self) -> int:
-        """The strategy position keep plays as: a rushed horse runs as its
-        temptation strategy (this does NOT change the strategy used for its
-        own target speed / accel coefficients)."""
         mode = self.temptation_mode
         if self.is_kakari and mode in _TEMPTATION_STRATEGY:
             return _TEMPTATION_STRATEGY[mode]
@@ -1012,7 +851,7 @@ class RaceSolver:
 
     def _pos_keep_wit_check(self, coef: float) -> bool:
         if self.is_kakari:
-            return True  # rushed: every position-keep wisdom roll succeeds
+            return True
         pct = coef * math.log10(max(self.horse.wisdom, 1) * 0.1)
         return self.pos_keep_rng.random() * 100.0 < pct
 
@@ -1035,8 +874,6 @@ class RaceSolver:
         return 17.5 if strategy == Strategy.OONIGE else 4.5
 
     def _lead_in_group(self, strategy: int) -> Optional[float]:
-        """Metres ahead of the next horse of the same (AI) strategy, or None
-        if she is not the frontmost of it."""
         best_other = None
         for other in self.field.solvers:
             if other is self or not strategy_matches(other.ai_strategy(), strategy):
@@ -1131,8 +968,6 @@ class RaceSolver:
             self.last_spurt_speed = speed
         if self.pos >= self.last_spurt_transition:
             self.is_last_spurt = True
-            # what the result record reports: where she actually went into
-            # the spurt (~phase-2 start for a full spurt), -1 if she never did
             self.last_spurt_start_pos = self.pos
 
     def _update_target_speed(self) -> None:
@@ -1145,8 +980,6 @@ class RaceSolver:
             self.target_speed += self.section_modifier[int(self.pos // self.section_length)]
         self.target_speed += self.modifiers_target_speed.acc + self.modifiers_target_speed.err
 
-        # Force-in: in the early race, well off the rail with the inside clear,
-        # she pushes in a little faster (random part rolled once pre-race).
         if self.phase == 0 and self.field is not None and self.lane > 0.12:
             inner_blocked, _ = self.field.side_room(self)
             if not inner_blocked:
@@ -1158,15 +991,9 @@ class RaceSolver:
             self.target_speed -= self.slope_per / 10000.0 * 200.0 / self.horse.power
             self.target_speed = max(self.target_speed, self.min_speed)
 
-        # Doc: MoveLaneModifier -- applied when affected by a skill that
-        # modifies lane move speed (ability type 28) AND lane movement
-        # happened on the PREVIOUS frame. This runs before _update_lane(dt)
-        # in step(), so _moved_lane_this_tick still holds last tick's value
-        # here -- exactly "the previous frame", no extra state needed.
         if self.active_lane_speed_skills and self._moved_lane_this_tick:
             self.target_speed += math.sqrt(0.0002 * self.horse.power)
 
-        # Target speed cannot exceed 30 m/s (Game:Mechanics, Target Speed).
         self.target_speed = min(self.target_speed, 30.0)
 
     def _apply_forces(self) -> None:
@@ -1208,13 +1035,10 @@ class RaceSolver:
             self.downhill_timer.t = 0.0
 
     def _update_phase(self) -> None:
-        # phase 3 (from 5/6 distance) is treated the same as phase 2 for
-        # speed-modifier purposes -- capped at 2 here deliberately.
         if self.pos >= self.next_phase_transition and self.phase < 2:
             self.phase += 1
             self.next_phase_transition = phase_start(self.course.distance, self.phase + 1)
 
-    # -- skills ---------------------------------------------------------------
 
     def process_skill_activations(self) -> None:
         for i in range(len(self.active_target_speed_skills) - 1, -1, -1):
@@ -1251,7 +1075,6 @@ class RaceSolver:
             if all(tm.t >= 0 for tm in self._order_up_groups[i][0]):
                 del self._order_up_groups[i]
 
-        # skills whose cooldown has run out go back into the pending list
         if self._cooling:
             still = []
             for ready, sk in self._cooling:
@@ -1298,10 +1121,6 @@ class RaceSolver:
         return any(c.start <= self.pos < c.start + c.length for c in self.course.corners)
 
     def _update_overtake_effects(self) -> None:
-        """Every runner passed this tick: Additional Activate OrderUp effects
-        fire (each up to 3 times), IncrementOrderUp skills last another
-        second (x distance/1000, up to 3 times), and Firelight's late-race
-        corner count goes up."""
         if self.field is None:
             return
         gained = self.field.previous_order_of(self) - self.field.order_of(self)
@@ -1325,11 +1144,8 @@ class RaceSolver:
     def _scaled_duration(self, ef: SkillEffect, rarity: int) -> float:
         base = ef.base_duration
         if ef.time_usage == 2 and self.field is not None:
-            # MultiplyDistanceDiffTop
             base *= min(0.8 + self.field.distance_to_leader(self) / 62.5, 1.6)
         elif ef.time_usage in (3, 7):
-            # MultiplyRemainHp: type 1 (3) Mejiro Bright / McQueen, type 2 (7)
-            # Matikanetannhauser
             hp = getattr(self.hp, "hp", 0.0)
             steps = ((3500, 4.0), (3200, 3.5), (3000, 3.0), (2800, 2.5), (2600, 2.2), (2400, 2.0),
                      (2000, 1.5)) if ef.time_usage == 3 else \
@@ -1339,22 +1155,17 @@ class RaceSolver:
                     base *= mult
                     break
         elif ef.time_usage == 5:
-            # MultiplyBlockedSideMaxContinueTimePhaseMiddleRun1
             base *= _bucket(self._mid_side_block_max, _BLOCKED_SIDE_MULT)
         return base * (self.course.distance / 1000) * (
             self.modifiers_special_skill_duration_scaling if rarity == SkillRarity.EVOLUTION else 1)
 
     def activate_skill(self, s: PendingSkill) -> None:
-        # ExtendEvolvedDuration must apply after other effects on the same
-        # skill, so it doesn't extend its own siblings' durations.
         effects = sorted(s.effects, key=lambda ef: 1 if ef.type == SkillType.EXTEND_EVOLVED_DURATION else 0)
         targets: list[int] = []
         timed_duration = None
         special = s.skill_id in ('asitame', 'staminasyoubu')
         self._activation_group += 1
         group = self._activation_group
-        # another skill activating: Additional Activate type 2/3 watchers of
-        # OTHER skills still running fire now
         if not special:
             for w in self._watchers:
                 if w[3] in (2, 3) and w[4] > 0 and w[5].t < 0 and w[6] != group:
@@ -1370,17 +1181,12 @@ class RaceSolver:
             if ef.type in _TIMED_TYPES:
                 timed_duration = max(timed_duration or 0.0, scaled_duration)
             if ef.additional_activate:
-                # does nothing now; applied for the rest of the skill's
-                # duration each time its trigger happens while it runs
                 tm = self._new_timer(-scaled_duration)
                 group_timers.append(tm)
                 self._watchers.append([ef, s.skill_id, s.perspective, ef.additional_activate,
                                        _ADDITIONAL_ACTIVATE_LIMIT.get(ef.additional_activate, 0), tm, group])
                 continue
             if ef.target != SkillTarget.SELF and not special:
-                # A debuff (or any effect aimed at other horses): the field
-                # picks the targets now and applies it once every horse has
-                # stepped this tick, so it never depends on stepping order.
                 if self.field is not None:
                     for t in self.field.queue_external_effect(self, ef, scaled_duration, s.skill_id):
                         if t not in targets:
@@ -1412,7 +1218,6 @@ class RaceSolver:
         self.on_skill_activate(self, s.skill_id, s.perspective)
 
     def apply_effect(self, ef: SkillEffect, scaled_duration: float, skill_id: str, perspective):
-        """Applies one effect; returns the duration timer it started, if any."""
         t = ef.type
         if t == SkillType.NOOP:
             pass
@@ -1443,9 +1248,6 @@ class RaceSolver:
         elif t == SkillType.WISDOM_UP:
             self.horse.wisdom = max(self.horse.wisdom + ef.modifier, 1)
         elif t == SkillType.ALL_STATUS_UP:
-            # IDENTIFIED 2026-09-03: type 32 is the "very slightly increase all
-            # attributes" half of 102602211 "Perfect Boost" / 103102111; its
-            # modifier is on the same 1/10000 stat-point scale as types 1-5.
             self.horse.speed = max(self.horse.speed + ef.modifier, 1)
             self.horse.stamina = max(self.horse.stamina + ef.modifier, 1)
             self.horse.raw_stamina = max(self.horse.raw_stamina + ef.modifier, 1)
@@ -1482,14 +1284,10 @@ class RaceSolver:
             return tm
         elif t == SkillType.RECOVERY:
             self.hp.recover(ef.modifier)
-            # Only a real HEAL counts as one and re-plans the spurt; an HP
-            # drain (Nothing Ventured / Risky Business's gamble, or a
-            # Stamina-Eater-style debuff) does neither -- doc: "Debuffs on the
-            # other hand do not trigger a re-calculation."
             if ef.modifier > 0:
                 if perspective == Perspective.SELF:
                     self.activate_count_heal += 1
-                self._stamina_keep_active = False  # doc: HP-recovery resets Stamina Keep
+                self._stamina_keep_active = False
                 if self.phase >= 2 and not self.is_last_spurt:
                     self.last_spurt_transition = -1
                     self._update_last_spurt_state()
@@ -1520,7 +1318,6 @@ class RaceSolver:
             self.activate_skill(s)
             self.pending_removal.add(s.skill_id)
 
-    # -- competition mechanics ------------------------------------------------
 
     def _update_competition_mechanics(self, dt: float) -> None:
         if self.field is None:
@@ -1532,10 +1329,6 @@ class RaceSolver:
         self._update_dueling(dt)
 
     def _update_stamina_keep(self) -> None:
-        """Doc: Stamina Keep -- she wants 1.035-1.04x the HP it takes to
-        finish; checked every 2 seconds, noticed with a wisdom-scaled chance
-        (the doc's formula, flagged there as speculative). While kept, she
-        stays out of Compete Before Spurt / Secure Lead; a heal resets it."""
         if self._stamina_keep_active or self._stamina_keep_check.t < 2.0 or self.is_last_spurt:
             return
         self._stamina_keep_check.t = 0.0
@@ -1550,10 +1343,6 @@ class RaceSolver:
             self._stamina_keep_active = True
 
     def start_compete_top(self) -> None:
-        """Called by the field when a spot struggle starts with this horse in
-        it. Target speed += (500*Guts)^0.6 * 0.0001 for (700*Guts)^0.5 *
-        0.012 * StrategyProficiency seconds, HP drain 1.4x (Oonige 3.5x) or
-        3.6x / 7.7x if rushed."""
         guts = max(self.horse.guts, 1)
         strat_prof = _STRATEGY_PROFICIENCY_MODIFIER_APPROX[self.horse.strategy_aptitude]
         self._compete_top_modifier = math.pow(500.0 * guts, 0.6) * 0.0001
@@ -1580,13 +1369,10 @@ class RaceSolver:
             self.end_compete_top()
 
     def _update_compete_before_spurt(self) -> None:
-        """Doc: Compete Before Spurt, sections 11-15, checked every 2 seconds.
-        The doc gives the effect formulas but not the entry chance -- the
-        position-keep pace-up wisdom curve is used by analogy."""
         if self._compete_spurt_active:
             if self._compete_spurt_timer.t >= 0:
                 self._compete_spurt_active = False
-                self._compete_spurt_check.t = -1.0   # 1s cooldown
+                self._compete_spurt_check.t = -1.0
                 self.modifiers_target_speed.add(-self._compete_spurt_modifier)
             return
         if not (self.section_length * 10.0 <= self.pos < self.section_length * 15.0):
@@ -1621,14 +1407,10 @@ class RaceSolver:
             self.hp.hp -= stamina_cost
 
     def _update_secure_lead(self) -> None:
-        """Doc: Secure Lead, sections 11-15: every 2 seconds, if her lead over
-        a horse whose strategy should be further back is less than
-        StrategyCoefficient + 0.0003*(CourseDistance+1000) m (the doc's
-        per-pair matrix), 20% chance to push for 2 seconds."""
         if self._secure_lead_active:
             if self._secure_lead_timer.t >= 0:
                 self._secure_lead_active = False
-                self._secure_lead_check.t = -1.0   # 1s cooldown
+                self._secure_lead_check.t = -1.0
                 self.modifiers_target_speed.add(-self._secure_lead_modifier)
             return
         if not (self.section_length * 10.0 <= self.pos < self.section_length * 15.0):
@@ -1664,9 +1446,6 @@ class RaceSolver:
             self.hp.hp -= stamina_cost
 
     def _update_dueling(self, dt: float) -> None:
-        """Doc: Dueling / Compete Fight, final straight only: the same rival
-        within 3m and 0.25 course-widths for over 2 seconds, top half of the
-        field, speed within 0.6 m/s, HP >= 15%. Ends below 5% HP."""
         if not self.course.straights:
             return
         in_final_straight = self._in_final_straight()
@@ -1711,9 +1490,6 @@ class RaceSolver:
         self.event_log.append((self.accumulatetime.t, RaceEventType.COMPETE_FIGHT))
 
     def cleanup(self) -> None:
-        """Deactivate any skills that haven't finished their durations yet
-        (call at the end of a simulation, in case a skill activated near the
-        end and the race finished before its duration expired)."""
         for s in self.active_target_speed_skills:
             self.on_skill_deactivate(self, s.skill_id, s.perspective)
         for s in self.active_current_speed_skills:

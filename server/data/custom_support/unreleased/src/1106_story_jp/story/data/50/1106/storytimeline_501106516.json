@@ -1,0 +1,126 @@
+{
+ "title": "その日だけのおいしさ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある日の放課後。ヒシミラクルが\n鼻歌を歌いながらスマホを見ていた。",
+   "choice_data_list": [
+    "何か嬉しいことがあったのか？",
+    "何か嬉しいことがあったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ～。次の休日、\nお好み焼き屋さんに行くんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "最近お気に入りのお店なんですよ。\n生地がふわっふわで、具も大きいのが\nゴロゴロ入ってるんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そこ、食材にもすごくこだわってて。\n仕入れ次第で、メニューが変わるんですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "つまり、同じお好み焼きには、\n2度と出会えないかもしれなくて～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "悔いが残らないよう、旬の味を\n胃袋の限界を超えてでも味わってきます！",
+   "choice_data_list": [
+    "食べすぎには注意だよ",
+    "思う存分食べて、楽しんでおいで！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいや、大丈夫ですよ。お好み焼きは\nキャベツが入っててヘルシーですから～。",
+   "choice_data_list": [
+    "……俺も一緒に行っていいか？",
+    "……私も一緒に行っていい？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "かまいませんが……もしかして、\nわたしが食べすぎないか心配してます？",
+   "choice_data_list": [
+    "うん……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "たは～、信用ないなぁ。でも、\nセーブできる自信はあまりないかも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――あ、そうだ。2人で行くなら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんとシェアすれば、\nいろんな種類を食べられる～。\n天才的な発想だと思いませんか？",
+   "choice_data_list": [
+    "お腹すかせてきたから任せて！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おお～、頼りにしてますからね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてヒシミラクルと一緒にお好み焼きを\n堪能し、彼女の食べすぎを防いだのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい。トレーナーさんのお許しも出たし。\n全種類コンプリートするぞ～！　おー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わあ、今回は海鮮系のお好み焼きが\nいっぱいある～。この組み合わせ、\nイケてるのかな？　気になる～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ、ぜーんぶ注文注文っと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よーし、今日は食べるぞ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは、大量のお好み焼きを\nお腹いっぱい堪能したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "title": "頭痛で憂鬱",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～……なでなでして～！",
+   "choice_data_list": [
+    "ええ？どうしたんだ？",
+    "ええ？どうしたの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううっ……頭がね、痛いの。\n朝からずっと……お薬飲んでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こーゆーときね、ママにしてもらったの。\n早くよくなりそうだから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、なでなでして？　おねが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――！？　たぁっ……いたた……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううっ……上手に甘えられない……。\nもぉ、イヤ～～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "引き続き、頭痛に悩まされてしまう\nヴィブロスであった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

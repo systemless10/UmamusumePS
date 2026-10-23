@@ -1,0 +1,143 @@
+#title Just an Acupuncturist, No Worries! ☆
+0 One day, I bring <chrname> to the infirmary for a checkup.
+1 Oh, yes, yes! A custom— no, a student!
+2 Are you hurt? Sick? Stressed? Whatever it is, I treat it all!
+2> Who are you?!
+3 Well, considering you're at the academy infirmary, I'd say that makes me your trusty school nurse! Yup, just your average school employee!
+3> ...No you aren't?
+4 Ahaha! Guess there's no fooling you. I suppose I should start by giving you my name.
+5 Ahem! Allow me to introduce myself!
+6 I am the (likely) savior of all Umamusume, the (self-proclaimed) legendary acupuncturist with the magic touch...
+7 My name is Tsurumi Anshinzawa!! Wow, no worries～☆
+7> ...
+7{ Tsurumi Anshinzawa
+8 Whoa, a flashy lady...! But... maybe she doesn't really feel like a celebrity...?
+9 Gosh! You sure seem worried! ☆
+10 No matter! No matter! We've made our introductions, so lie down and let me put these needles to work!
+11 Ehhh～～～, no, no! I don't want anything that hurts～!
+12 Hahaha! No need to be scared! All I'm going to do is slip these extraordinary needles precisely into your chakra points.
+13 Then voilà, presto! Something indescribable will happen!
+13> (This is indescribably sketchy...)
+14 And let me assure you, there's absolutely nothing sketchy about this at all! It's never gone anything less than perfectly!
+15 ...For my master.
+15> For your master?! What about for you?!
+16 Don't fret! This is my first time, so technically, I've never failed a patient either!
+17 And it's not like I have no experience! I spent ten years under a legendary master, fetching dri—I mean, training!
+18 See? No worries! ☆
+18> (We need to get outta here, stat!)
+19 There's no way we're doing this. I take <chrname> and head for the door, when...
+20 W-wait! Where are you going?!
+21 You're Vivlos-chan, right? The Umamusume aiming for Dubai's sparkly races, a celebrity in the making!
+21> ...You know her?
+22 Have I heard of her? Of course I have! I'm a big fan!
+23 That's precisely why I'm here! To give you my support! Let me help you!
+24 Just give me a chance! Pleeease!
+25 Y... you're right! Taking a bold leap like this might be my chance to become a celebrity...!?
+26 Please! Pretty please with a carrot on top! I'll even let you choose which chakra I activate!
+27 I'm <i>sure</i> I won't mess up!
+28 Well... pretty sure.
+28> <i>Pretty</i> sure?!
+29 I mean, it's on the sure side! That's <i>good,</i> right? Anyway, don't get hung up on the details!
+30 Let's get to the good stuff! Which chakra should I activate? Do you want a boost to your abilities? Your health? Or maybe your <i>charm?</i>
+31 I smell danger in the air, but I figure there might—and I emphasize <i>might</i>—be a chance of getting something special out of this treatment.
+32 What should we do?
+32> Activate the strength chakra. | Activate the winning chakra. | Activate the health chakra. | Activate the charm chakra. | This is too sketchy. Let's quit while we still can.
+33 I see, I see. So you want me to activate the strength chakra?
+34 Then let's get started! Are you ready? There's no going back after!
+34> Go ahead. | Wait, hold on.
+35 All right, leave it to me! Time to locate that chakra! Ollie, ollie, oxen free!
+36 Now, just relaaax... See? No worries! ☆
+37 Aaand poke!
+38 Kyaah...!
+39 Puncture Perfect!
+40 Fuwaah... it's all warm and toasty? Like when Mama pats my head...!
+41 Amaaazing! Anshinzawa-san, are you a genius? Are you maybe super famous!?
+42 <i>Gasp...</i> You're kidding... It actually worked?!
+43 No waaay! I can't believe it! I'm a total genius!
+44 <chrname> is overflowing with so much power she's almost unrecognizable!
+45 We took a chance and it paid off! This is a great leap toward achieving our goal!
+46 Huh, wha? Somehow... my strength is draining...
+47 Uuu～... challenges are sooo haaard～～...!
+48 <chrname>'s condition deteriorates rapidly.
+49 So... That's that, I guess...
+50 Well, would you look at the time? I should get going! Bye! ☆
+51 I should've known better than to test our luck. I'm not the one suffering, yet I'm full of regret.
+52 I see, I see. So, you want me to activate the winning chakra?
+53 Then let's get started! Are you ready? There's no going back after!
+53> Go ahead. | Wait, hold on.
+54 All right, leave it to me! Time to locate that chakra! Ollie, ollie, oxen free!
+55 Now, just relaaax... See? No worries! ☆
+56 Aaand poke!
+57 Kyaah...!
+58 Puncture Perfect!
+59 Fuwaah... it's all warm and toasty? Like when Mama pats my head...!
+60 Amaaazing! Anshinzawa-san, are you a genius? Are you maybe super famous!?
+61 <i>Gasp...</i> You're kidding... It actually worked?!
+62 No waaay! I can't believe it! I'm a total genius!
+63 I can sense a huge improvement in <chrname>'s skills!
+64 We took a chance and it paid off! This is a great leap toward achieving our goal!
+65 Huh, wha? Somehow... my strength is draining...
+66 Uuu～... challenges are sooo haaard～～...!
+67 <chrname>'s condition deteriorates rapidly.
+68 So... That's that, I guess...
+69 Well, would you look at the time? I should get going! Bye! ☆
+70 I should've known better than to test our luck. I'm not the one suffering, yet I'm full of regret.
+71 I see, I see. So, you want me to activate the health chakra?
+72 Then let's get started! Are you ready? There's no going back after!
+72> Go ahead. | Wait, hold on.
+73 All right, leave it to me! Time to locate that chakra! Ollie, ollie, oxen free!
+74 Now, just relaaax... See? No worries! ☆
+75 Aaand poke!
+76 Kyaah...!
+77 Puncture Perfect!
+78 Fuwaah... it's all warm and toasty? Like when Mama pats my head...!
+79 Amaaazing! Anshinzawa-san, are you a genius? Are you maybe super famous!?
+80 <i>Gasp...</i> You're kidding... It actually worked?!
+81 No waaay! I can't believe it! I'm a total genius!
+82 <chrname>'s entire body is radiating a healthy glow! She's the absolute picture of health!
+83 We took a chance and it paid off! This is a great leap toward achieving our goal!
+84 Huh, wha? Somehow... my strength is draining...
+85 Uuu～... challenges are sooo haaard～～...!
+86 <chrname>'s condition deteriorates rapidly.
+87 So... That's that, I guess...
+88 Well, would you look at the time? I should get going! Bye! ☆
+89 I should've known better than to test our luck. I'm not the one suffering, yet I'm full of regret.
+90 I see, I see. So, you want me to activate the charm chakra?
+91 Then let's get started! Are you ready? There's no going back after!
+91> Go ahead. | Wait, hold on.
+92 All right, leave it to me! Time to locate that chakra! Ollie, ollie, oxen free!
+93 Now, just relaaax... See? No worries! ☆
+94 Aaand poke!
+95 Eek...!
+96 Puncture Perfect!
+97 Whoa... I feel all warm and fuzzy? Just like when Mama gives me head pats...!
+98 Amazing! Are you a genius, Anshinzawa? Wait, are you super famous or something?!
+99 <i>Gasp...</i> You're kidding... It actually worked?!
+100 No waaay! I can't believe it! I'm a total genius!
+101 <chrname> is overflowing with charm! She's bound to turn heads everywhere she goes!
+102 We took a chance and it paid off! This is a great leap toward achieving our goal!
+103 Huh? Wh-what? I suddenly feel... all limp...
+104 Ugh... Challenges are sooo hard...!
+105 <chrname>'s condition deteriorates rapidly.
+106 So... That's that, I guess...
+107 Well, would you look at the time? I should get going! Bye! ☆
+108 I should've known better than to test our luck. I'm not the one suffering, yet I'm full of regret.
+109 Aw, c'mon! Don't be like that!
+109> Decline. | Reconsider.
+110 Hey! You there! I hope you know trespassers <i>will</i> be prosecuted!
+111 Gah! I've been found out!
+112 Welp, I'm outta here! ☆
+113 Hey! Stop right there!
+114 She's gone... She didn't really seem like a super bad person, though...
+115 Being a celebrity is all about building up every day, right!
+115> Yep | Yep
+116 I'm curious who this Anshinzawa character really is, but there's no use ruminating over it. Best to forget about today and move on.
+117 Had a change of heart, did you? No worries, it happens!
+118 Go ahead and tell me which chakra you want me to activate, then!
+119 Well?! Don't leave us in suspense! Wait a second... How long have I been here?
+120 Hey! You there! I hope you know trespassers <i>will</i> be prosecuted!
+121 Gah! I've been found out!
+122 Welp, I'm outta here! ☆
+123 Hey! Stop right there!
+124 The situation takes a sharp turn before I can make a decision.
+125 What was that all about? <chrname> and I look at each other in bewilderment.

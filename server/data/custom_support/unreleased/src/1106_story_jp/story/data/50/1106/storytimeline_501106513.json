@@ -1,0 +1,280 @@
+{
+ "title": "“ふつ～”じゃない物",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "この日は雑誌用の写真を撮影するため、\n同期のウマ娘たちとスタジオに来ていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わぁ～！　みんなの勝負服姿、かっこいい！\nやっぱり圧倒されるな～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエスちゃんは、バチっと決まってて、\nまさに臨戦態勢って感じですし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ギムレットちゃんは、オリジナリティに\nあふれててすごく際立ってる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ファインちゃんは優雅で、\n気品に満ちてて華やか～って感じ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "比べてみても、わたしの勝負服は――",
+   "choice_data_list": [
+    "君の勝負服も負けてないぞ！",
+    "貴方の勝負服も負けてないよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………そうなんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "負けてないんですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、いえ……もちろんそんな\n抜きんでていいとかって話じゃないんですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ただ、それでも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "負けてはないんです。\n引けを取ってないと思います！",
+   "choice_data_list": [
+    "自信たっぷりだな",
+    "自信たっぷりだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……えへへ。\nこだわりましたからね、勝負服は。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………トレーナーさんは\n当然知ってると思いますが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝負服を着られるウマ娘って、\nほんと～～～にひと握りじゃないですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "日本最高峰のトゥインクル・シリーズ、\nしかもその中でもごくごくひと握りしか\n出られない、GⅠレースで着られる衣装。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それでも、それだから……\n憧れなんです、勝負服って。\n……わたしにとっても、そうです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "衣装のデザインをどうするか聞かれて……\nわたし、すっごい悩みました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝負服を作っても、GⅠで活躍できず、\n無駄に終わるかもしれない……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなのよく聞く話だし、\n自分もそうなるのかな……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんて、考えちゃったりもしました。\nけど……思い出したんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしには、応援してくれる人たちがいる。\n家族や、トレーナーさんが。だから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "せめて期待に見合う\nかっこいい姿を見せたいって思って！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしはふつ～のウマ娘だけど、それでも！\n勝負服を着てるときくらいは、\n『それでも』って言えるようになりたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そう言い聞かせながら、\n自分なりに、デザインを突き詰めたんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "色合いは、コースで目立つように\n青系で整えたり――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "光を反射する装飾で、\n遠くからでも見つけられるようにしたり！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんな想いを込めたから、\n勝負服“は”負けてないんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………って、あはは～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜんぜん着こなせてないので、\nまだまだ“ふつ～”のウマ娘なんですけど～！",
+   "choice_data_list": [
+    "それだけの想いを込めて、普通なはずない！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えーっと……ははっ。\nそう言っていただけると嬉しいです～！",
+   "choice_data_list": [
+    "勝負服に見合う力をつけていこう",
+    "その熱量をトレーニングに活かそう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あははっ、もしそうなったら、\n向かうとこ敵なし！　まさに最強ですね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "ミラ子さん、勝負服着たら最強なんだ！\nふふっ、いいこと聞いちゃったー♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――――最強か。\n――手合わせ、願いたい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "大成の暁には\nともに神々の戦いを再演するか……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええーっ、違うってば！？\n実力が見合ったらの話してたのっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まだまだわたしはふつ～のウマ娘！\n最強なんて、まだまだまだまだ遠いよ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "遠い、か……。最強を無理だとは\n言わなかった点に、彼女の勝負服への\n信頼を感じるのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どうですかね～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほら、わたし結構気分屋じゃないですか？\nやる気がもてばいいけどなぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "なんとも気だるげに、\nそう言ったヒシミラクルであったが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの……もう1枚お願いしてもいいですか？\nポーズが上手く決まってなかった気がして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カメラマンA",
+   "text": "わかりました！\nそれではもう1枚いきますよー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい！　お願いしま～す！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "撮影に意欲的に励む姿は、\nその場の誰よりも輝いて見えるのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

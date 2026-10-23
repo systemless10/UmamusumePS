@@ -1,23 +1,24 @@
-// Everything else on an account: the present box (send / delete / clear),
-// paid features, titles, epithets, songs and borrowable friend support cards.
 
 import { act, call, dateTime, esc, gameIcon, icon, keepScroll, loadCatalog, store } from "./core.js";
+import { customSupportWin } from "./custom-support.js";
 import { ask, empty, itemRow, itemSearch, opts, picker, supportRow, supportSearch, targetPicker, umaRow, umaSearch } from "./widgets.js";
 
-const TABS = [["mail", "Mail"], ["paid", "Paid features"], ["titles", "Titles"], ["epithets", "Epithets"], ["songs", "Songs"], ["friends", "Friend cards"]];
+const TABS = [["mail", "Mail"], ["paid", "Paid features"], ["titles", "Titles"], ["epithets", "Epithets"], ["songs", "Songs"], ["friends", "Friend cards"], ["custom", "Custom cards · experimental"]];
 const KINDS = [["item", "Item"], ["90", "Carats"], ["50", "Uma card"], ["51", "Support card"], ["102", "Star pieces"], ["80", "Song"], ["70", "Outfit"]];
 const PAID = { umasuku: "Umasuku (daily carats pass)", umaplan: "Umaplan (pick-two inspiration)", reroll_pass: "Spark re-roll pass", order_pass: "Spark order pass" };
 const REWARD = { 90: "Carats", 50: "Uma", 51: "Support", 70: "Outfit", 80: "Song", 102: "Pieces" };
 
 export const moreWin = {
-  title: "More", icon: "sparkle", size: [620, 460], place: [0.25, 0.06, 0.65, 0.88], key: "8",
+  title: "Mail & extras", icon: "sparkle", size: [620, 460], place: [0.25, 0.06, 0.65, 0.88], key: "3",
   tools(win) { return [targetPicker(win)]; },
   mount(body, win) {
     win.state.tab ??= "mail";
+    let host = null;
     let cat = null, d = {}, mail = { kind: "item", id: null, label: "", num: 1, msg: "", copies: 1 }, epChara = null, q = "";
     body.classList.add("flush");
 
     async function load() {
+      if (win.state.tab === "custom") return render();
       try {
         cat = await loadCatalog();
         const t = win.state.tab;
@@ -44,8 +45,28 @@ export const moreWin = {
       return cat.itemById.get(id)?.name || `${REWARD[t] || `Type ${t}`} ${id}`;
     }
 
+    function unmountCustom() {
+      if (!host) return;
+      for (const f of host.offs) f?.();
+      host.cleanup?.();
+      host = null;
+    }
+    function renderCustom() {
+      if (host) return;
+      body.innerHTML = `<div class="pane-top">${tabs()}
+          <div class="notebox">Experimental. Custom cards reach players only in a custom umapack they copy into
+            <span class="mono">hachimi/umapacks/</span> with the umapack-capable plugin; the server serves the rest.</div></div>
+        <div class="more-host win-body" style="flex:1;min-height:0;position:relative"></div>`;
+      const pane = body.querySelector(".more-host");
+      host = { kind: win.kind + ":custom", el: win.el, body: pane, offs: [],
+        state: win.state.t_custom ||= {}, save: () => win.save(), parent: win };
+      host.cleanup = customSupportWin.mount(pane, host);
+    }
+
     function render() {
       const t = win.state.tab;
+      if (t === "custom") return renderCustom();
+      unmountCustom();
       if (!cat || !d) return;
       keepScroll(body, () => { body.innerHTML = ({ mail: renderMail, paid: renderPaid, titles: renderTitles, epithets: renderEpithets,
         songs: renderSongs, friends: renderFriends })[t]?.() || ""; });
@@ -53,7 +74,6 @@ export const moreWin = {
       if (t === "friends") mountFriendPicker();
     }
 
-    // ------------------------------------------------------------ mail
     function renderMail() {
       if (!d.mail) return frame("", empty("Loading…"));
       const box = [...d.mail].reverse();
@@ -88,7 +108,6 @@ export const moreWin = {
           body.querySelector("[data-mwhat]").textContent = `Selected: ${mail.label} · #${mail.id}`; } }));
     }
 
-    // ------------------------------------------------------------ paid
     function renderPaid() {
       if (!d.paid) return frame("", empty("Loading…"));
       const now = Date.now() / 1000;
@@ -102,7 +121,6 @@ export const moreWin = {
         `<button class="btn primary sm" data-grant="all">Grant all for 30 days</button><button class="btn sm" data-revoke="all">Revoke all</button>`);
     }
 
-    // ------------------------------------------------------------ titles
     function renderTitles() {
       if (!d.titles) return frame("", empty("Loading…"));
       const owned = d.titles.owned;
@@ -115,7 +133,6 @@ export const moreWin = {
          <button class="btn danger sm" data-a="honors-none">Remove shown</button>`);
     }
 
-    // ------------------------------------------------------------ epithets
     function renderEpithets() {
       if (!d.charas) return frame("", empty("Loading…"));
       const charas = Object.entries(cat.misc.charas).sort((a, b) => a[1].localeCompare(b[1]));
@@ -130,7 +147,6 @@ export const moreWin = {
          <span class="grow"></span><button class="btn primary sm" data-a="ep-save">${icon("save")} Save epithets</button>`);
     }
 
-    // ------------------------------------------------------------ songs
     function renderSongs() {
       if (!d.songs) return frame("", empty("Loading…"));
       const owned = new Set(d.songs.owned);
@@ -142,7 +158,6 @@ export const moreWin = {
         `<button class="btn primary sm" data-a="songs-all">Unlock every released song</button>`);
     }
 
-    // ------------------------------------------------------------ friend cards
     function renderFriends() {
       if (!d.friends) return frame("", empty("Loading…"));
       return frame(`<div class="ed-sec"><div class="section">Add a borrowable friend card</div><div class="ed-row">
@@ -194,10 +209,11 @@ export const moreWin = {
     }
 
     body.addEventListener("click", async (e) => {
+      if (e.target.closest(".more-host")) return;
       const b = e.target.closest("button");
       if (!b) return;
       const t = b.dataset;
-      if (t.tab) { win.state.tab = t.tab; win.save(); q = ""; render(); load(); return; }
+      if (t.tab) { win.state.tab = t.tab; win.save(); q = ""; unmountCustom(); render(); load(); return; }
       if (t.mdel) { if (await act(b, "Delete mail", () => call("mail.delete", { ids: [+t.mdel] }), "Deleted")) load(); return; }
       if (t.grant) { const days = body.querySelector(`[data-days="${t.grant}"]`)?.value || 30;
         if (await act(b, "Paid feature", () => call("paid.grant", { name: t.grant, days }), "Granted")) load(); return; }
@@ -206,6 +222,7 @@ export const moreWin = {
       if (t.a) onAction(t.a, b);
     });
     body.addEventListener("change", async (e) => {
+      if (e.target.closest(".more-host")) return;
       const el = e.target;
       if (el.matches("[data-mk]")) { mail.kind = el.value; mail.id = null; render(); }
       else if (el.matches("[data-mn]")) mail.num = +el.value;
@@ -219,12 +236,12 @@ export const moreWin = {
         if (await act(null, "Song", () => call("music.set", { ids: [+el.dataset.song], action: el.checked ? "add" : "remove" }))) load();
       }
     });
-    body.addEventListener("input", (e) => { if (e.target.matches("[data-q]")) { q = e.target.value; render(); } });
+    body.addEventListener("input", (e) => { if (!e.target.closest(".more-host") && e.target.matches("[data-q]")) { q = e.target.value; render(); } });
 
     win.reveal = (o) => { if (o.tab) { win.state.tab = o.tab; load(); } };
-    const off = store.on((kind) => { if (kind === "target") { d = {}; load(); } });
+    const off = store.on((kind) => { if (kind === "target" && win.state.tab !== "custom") { d = {}; load(); } });
     body.innerHTML = empty("Loading…");
     load();
-    return off;
+    return () => { unmountCustom(); off?.(); };
   },
 };

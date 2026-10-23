@@ -1,12 +1,3 @@
-"""Port of ConditionParser.ts -- tokenizer + Pratt (top-down operator
-precedence) parser for skill activation-condition strings.
-
-Grammar (no parentheses, no other precedence control):
-    Or  ::= And '@' Or | And
-    And ::= Cmp '&' And | Cmp
-    Cmp ::= condition Op integer
-    Op  ::= '==' | '!=' | '>' | '>=' | '<' | '<='
-"""
 
 from __future__ import annotations
 
@@ -128,8 +119,6 @@ def _expression(state: _ParserState, rbp: int) -> Node:
 
 
 class Parser:
-    """Bound to a specific condition table (default `Conditions`, or the
-    `activate_count`-as-random variant for `withActivateCountsAsRandom()`)."""
 
     def __init__(self, conditions: dict[str, Condition] = None,
                  operators: Optional[dict] = None):

@@ -1,0 +1,17 @@
+{
+ "title": "宝塚記念にむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『宝塚記念』に勢ぞろいした\n豪華ライバルたち。\nその1人1人をヒシミラクルは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "エビ、イカ、ホタテ、ズワイガニ。\n全部入りお好み焼きの具に例える。\nまとめて平らげるべく、コースに向かう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

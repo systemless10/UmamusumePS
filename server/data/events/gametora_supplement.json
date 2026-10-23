@@ -10,62 +10,22 @@
      "label": "",
      "random_either": false,
      "effects": [
-      {
-       "type": "power",
-       "value": "+35"
-      },
-      {
-       "type": "guts",
-       "value": "+35"
-      },
-      {
-       "type": "skill_points",
-       "value": "+25"
-      },
-      {
-       "type": "skill_hint",
-       "value": "+2",
-       "skill_id": 201661
-      },
-      {
-       "type": "skill_hint",
-       "value": "+2",
-       "skill_id": 203152
-      }
+      {"type": "power", "value": "+35"},
+      {"type": "guts", "value": "+35"},
+      {"type": "skill_points", "value": "+25"},
+      {"type": "skill_hint", "value": "+2", "skill_id": 201661},
+      {"type": "skill_hint", "value": "+2", "skill_id": 203152}
      ]
     }
    ],
    "conditions": [
-    [
-     "win",
-     "200801|2"
-    ],
-    [
-     "win",
-     "100401|2"
-    ],
-    [
-     "win",
-     "201501|2"
-    ],
-    [
-     "win",
-     "100901|2"
-    ],
-    [
-     "win",
-     "202201|2"
-    ],
-    [
-     "win",
-     "101401|2"
-    ],
-    [
-     "date",
-     2,
-     10,
-     2
-    ]
+    ["win", "200801|2"],
+    ["win", "100401|2"],
+    ["win", "201501|2"],
+    ["win", "100901|2"],
+    ["win", "202201|2"],
+    ["win", "101401|2"],
+    ["date", 2, 10, 2]
    ],
    "supplement": "Still in Love's Tiara-route secret: win Fillies' Review, Oka Sho, Flora S, Oaks, Rose S and Shuka Sho in Classic; plays after the Shuka Sho (Classic, Late October). Rewards per BlueStacks and kamigame (Power/Guts +35, SP +25, hints 遊びはおしまいっ！ / むきだしの情熱 +2); GameTora's page (checked 2026-09-27) has no secret section."
   }

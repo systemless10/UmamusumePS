@@ -1,6 +1,3 @@
-//! Client position-keep strategies (Global RVAs 3422400..3425fa0).
-//! The caller supplies the pacemaker. The independent candidate uses an inferred
-//! initial selection; the real server's later switching rules remain unresolved.
 use crate::{data::Tree, math, rng::RaceRandom};
 
 #[derive(Clone, Copy)]
@@ -20,9 +17,7 @@ pub struct Keep {
     pub mode: i32,
     pub count: i32,
     pub multiply: f32,
-    /// Outcome of this tick's check (mode, 0 = stay), or -1 when no check ran.
     pub checked: i32,
-    /// Debug: mode this tick's check computed before the lottery (-1 when no check ran).
     pub wanted: i32,
     pub cooldown: f32,
     interval: f32,
@@ -41,7 +36,6 @@ fn offset(p: &Tree<'_>, distance: i32, style: i32) -> (f32, f32) {
 }
 
 impl Keep {
-    /// Opt-in trace support; does not consume RNG or change keep state.
     pub fn rng_probe_state(&self) -> [f32; 5] {
         [self.checked as f32, self.cooldown, self.interval, self.end_distance, self.target_gap]
     }
@@ -79,11 +73,9 @@ impl Keep {
         let speed_up_end = if h.ex {
             p.f("PositionKeepSpeedUpEndDistanceDiffOonige")
         } else if !(pacemaker == owner && h.style != 1)
-            // Native GetHorseList(RunningStyle.Nige), then RunningStyleEx == 0.
             && runners.iter().filter(|other| other.style == 1 && !other.ex).count() == 1 {
             p.f("PositionKeepSpeedUpEndDistanceDiffOne")
         } else { p.f("PositionKeepSpeedUpEndDistanceDiff") };
-        // Replay evidence: a rushing runner in last place can still speed up.
         let force_rush = tempted && std::env::var("RX_TEMPT_FORCEKEEP").map_or(true, |v| v != "0");
         let far_behind = behind.map_or(!force_rush, |other| h.distance - other.distance >= speed_up_end);
         let gap = pace.distance - h.distance;
@@ -103,8 +95,6 @@ impl Keep {
             else if pace.order < h.order && h.style < pace.style { 5 }
             else {
                 let (min, max) = offset(p, distance, style);
-                // Falsification probe: does server pace-up eligibility quantize
-                // its maximum gap? Target-gap sampling remains the native float.
                 let max = if std::env::var("RX_PK_MAX_FLOOR").is_ok_and(|v| v == "1")
                     || style == 2 && std::env::var("RX_PK_MAX_FLOOR_SENKO").is_ok_and(|v| v == "1") {
                     max.floor()
@@ -126,7 +116,6 @@ impl Keep {
             self.mode = mode;
             self.checked = mode;
             self.count += 1;
-            // Native integer division and multiplication precede the float cast.
             let continue_sections = if h.ex {
                 p.arr("PositionKeepContinueSectionExArray")[0].as_i64().unwrap() as i32
             } else { p.i("PositionKeepContinueSection") };
@@ -148,8 +137,6 @@ impl Keep {
                 self.target_gap = random.float_range(min, max, &|| format!("keep{owner}:gap{mode}"));
             }
         }
-        // IPositionKeepStrategy.Update is empty. CheckEnd runs on the same tick
-        // as TryStart and uses the accessor's pre-movement order.
         let end = h.distance >= self.end_distance || match self.mode {
             1 => far_behind,
             2 if h.order == 0 => behind.is_none_or(|other| h.distance - other.distance

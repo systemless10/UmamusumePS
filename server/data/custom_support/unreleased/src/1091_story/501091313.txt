@@ -1,0 +1,67 @@
+#title After the Shuka Sho: Praise
+0 ...I lost.
+1 I couldn't... give it enough... ...
+2 .........*sniffle*.
+3 Waaaaaaaaaaaaah...!
+3> (Vivlos...!)
+4 *hic*, I'm so frustrated... Uuugh...—
+5 Vivlos sweetie...! Vivloooos!!
+6 Vivlos.........! Nnnggh～～!!
+7 Vivlos is the one who's most frustrated. We mustn't cry, but... waaah!
+8 Waaaaaah! Waaaaaah!
+9 ...Vivlos.
+10 ...Everyone, let's give her a round of applause, shall we?
+11 When things are hard...
+12 Someone else's kindness makes you happy.
+13 Besides, she was... strong. Truly...—
+14 Good work, Vivlos. Thank you—
+15 Vivlos lost. But she had raced through the Tiara races with all her might. For her sake—
+16 Kyaa～, a suuuper party! Suuuuper glamorous!!
+17 Hahaha, right? It's a present from us! Enjoy it to your heart's content!
+17> (Th-the scale of this...!)
+18 Please enjoy yourself too, Trainer. The food at this hotel is absolutely delicious!
+18> Thank you very much
+19 Hey, you prepared something this amazing for me...
+20 ...Even though I lost. Sorry it couldn't be a victory party.
+21 No matter where you placed, it doesn't change that you worked hard and ran through the Tiara races.
+22 The pride we feel in you... in all of you, will never change!
+23 ...
+24 ...
+25 Good work once again, Vivlos.
+26 Onee-chan...
+27 I'm proud of you too. Thank you for working so hard!
+28 ...Hehe♪ I got to see that face... so it's okay!
+29 What's that? Mama's smiling too～. Ufu♪
+30 And Papa too! Cheeese!
+31 Come on, Trainer, you too!
+31> ...S-smile
+32 ...Stare.
+33 I-I'm not doing it...!
+34 Hehehe... Hahaha...!
+35 ...—
+36 "—Ahaha...! All right, what should we see next!"
+37 "Look, Vivlos! It's so pretty—"
+38 ...
+38> Having fun? | Having fun?
+39 ...Could you tell? Yeah... I'm having so much fun—
+40 After the party ended, at Vivlos's request, we headed back to the academy ahead of the others.
+40> Was it okay not to go with everyone? | Was it okay not to go with everyone?
+41 Yeah. 'Cause I wanted to talk with you, Tore-cchi!
+41> Good work again, Vivlos
+42 Yeah.
+43 I really gave it my all! Now I can move forward.
+44 —I can aim for Dubai with everything I've got!
+45 That's right, from here on... we'd be aiming for her other dream: the races in Dubai.
+46 Today I realized it. I really do wanna go to Dubai!
+47 What should we do first?
+47> Let's see... | Let's see...
+48 First, I want information on how Vivlos can run in the races in Dubai. To get it, we need to choose a race in Japan with similar conditions.
+48> I want to go for the Nakayama Kinen
+49 Ooh! I was thinking the same thing!
+50 There've been girls who got results in the Nakayama Kinen and then won in Dubai, right?
+50> You looked it up
+50{ Nakayama Kinen
+51 Ehehe, I am the Dubai Master, after all!
+52 From the Nakayama Kinen, to Dubai... it's decided♪
+53 I'm gonna go to Dubai, and then...! I'm gonna be suuuper glamorous～!
+54 And so, aiming for the races in Dubai... first, we'd take on the prep race: the Nakayama Kinen!

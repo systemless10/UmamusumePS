@@ -1,11 +1,8 @@
-// Window types. Each: { title, icon, size: [min w, min h], place: [x, y, w, h] as fractions of the
-// desktop for the default layout, key (Alt+key), tools?(win), mount(body, win) -> cleanup }.
 
 import { esc, store, ui } from "./core.js";
 import { usersWin } from "./users.js";
 import { saveWin } from "./save.js";
 import { supportsWin } from "./supports.js";
-import { customSupportWin } from "./custom-support.js";
 import { umasWin } from "./umas.js";
 import { legacyWin } from "./legacy.js";
 import { careerWin } from "./career.js";
@@ -13,7 +10,14 @@ import { itemsWin } from "./items.js";
 import { moreWin } from "./more.js";
 import { historyWin } from "./history.js";
 import { tuningWin } from "./tuning.js";
+import { bannersWin } from "./banners.js";
 import { racesWin } from "./races.js";
+import { champions } from "./champions.js";
+import { syncWin } from "./sync.js";
+import { jobsWin } from "./jobs.js";
+import { serverWin } from "./server-config.js";
+import { pvpWin } from "./pvp.js";
+import { setupWin } from "./setup.js";
 
 const errorsWin = {
   title: "Errors", icon: "alert", size: [420, 300], place: [0.55, 0.5, 0.45, 0.5], dock: false,
@@ -40,20 +44,29 @@ const errorsWin = {
   },
 };
 
+export const GROUPS = ["Account", "Roster", "Game", "Content", "System"];
+const g = (group, w, extra = {}) => ({ ...w, group, ...extra });
+
 export const WINDOWS = {
-  users: usersWin,
-  save: saveWin,
-  supports: supportsWin,
-  customSupport: customSupportWin,
-  umas: umasWin,
-  legacy: legacyWin,
-  career: careerWin,
-  tuning: tuningWin,
-  races: racesWin,
-  items: itemsWin,
-  more: moreWin,
-  history: historyWin,
-  errors: errorsWin,
+  users: g("Account", usersWin),
+  items: g("Account", itemsWin),
+  more: g("Account", moreWin),
+  save: g("Account", saveWin),
+  umas: g("Roster", umasWin),
+  legacy: g("Roster", legacyWin),
+  supports: g("Roster", supportsWin),
+  career: g("Roster", careerWin),
+  sync: g("Game", syncWin),
+  races: g("Game", racesWin),
+  tuning: g("Game", tuningWin),
+  banners: g("Game", bannersWin),
+  pvp: g("Game", pvpWin, { needs: ["global"] }),
+  champions: g("Game", champions, { dock: false, key: null }),
+  setup: setupWin,
+  server: serverWin,
+  jobs: g("System", jobsWin, { worker: false }),
+  history: g("System", historyWin),
+  errors: { ...errorsWin, worker: false },
 };
 
 export function drag(handle, target, onEnd) {
@@ -76,7 +89,6 @@ export function drag(handle, target, onEnd) {
   });
 }
 
-// Buttons anywhere that open a window: <button data-open="users">
 document.addEventListener("click", (e) => {
   const b = e.target.closest("[data-open]");
   if (b) ui.open(b.dataset.open, b.dataset.openArg ? JSON.parse(b.dataset.openArg) : {});

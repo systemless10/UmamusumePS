@@ -1,0 +1,25 @@
+{
+ "title": "菊花賞の後に・そこそこミラクル",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ステイヤーとしての素質が開花。\nヒシミラクルは、この大舞台で好走し、\nその才能の片鱗を見せた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そろそろ自分で目標を決められるウマ娘に\nなってほしい。そんなトレーナーの願いを\n受けて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは『天皇賞（春）』で勝つ！と\n勢いで宣言してしまうのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "天皇賞（春）"
+   ]
+  }
+ ]
+}

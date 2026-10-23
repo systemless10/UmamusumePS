@@ -1,0 +1,287 @@
+{
+ "title": "トレセン学園の“ふつ～”な過ごし方",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ある日、ヒシミラクルと出会ったのだが、\nやたら背後を気にしている。\n何かあるのかと、見てみると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "シンボリクリスエスが鋭い双眸で、\nヒシミラクルを見つめているではないか。",
+   "choice_data_list": [
+    "……何をやったんだ？",
+    "……何をやったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なにもしてないですよ！？\nただ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Usual――普通の――学園での\n過ごし方を――教えてほしい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "？　あ、え～っと、学園での過ごし方？\n……どーしてそんなこと知りたいの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――日本のレース界を、盛り上げる。\nその使命のため――\nUsualを知る必要が、ある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そーいうのは、わたしなんかより、\nヤエノちゃんとかのほうが適任じゃ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――――平均的とは――違う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～…………かもね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……と、まあ、そういう具合で\nわたしの日常を見て学びたいそうでして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それで、ずっと観察されているんですよ……。\nちょっと後ろから…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "大した問題ではなさそうだ。それに、\n日頃のんびりしている彼女のことだ。\nかえってメリハリが利いていいかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ランチタイムにヒシミラクルを見かけた。\n背後を気にしていないところを見ると、\n件の観察は終わったのだろうか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん……食べたいものないなぁ……。\n今日、カフェはいいかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "じゃ、どーする？　パンでも買う？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だね。購買行こ。\nにんじんパン、まだあるといいな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――？　Lunchは、\nカフェで――食べる予定では？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "なぜ――購買に変える？\n――ここに来た、意味は？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――――わからない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "どうやら、シンボリクリスエスは、\nヒシミラクルのマイペースさに\n振り回されているようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "この日、ヒシミラクルはトレーニング時間に\nなっても、コースに現れなかった。と――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――ヒシミラクルから、伝言だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "『気が乗らないので、今日はいいかな～』\n――だ、そうだ。",
+   "choice_data_list": [
+    "…………。ヒシミラクルは今どこに？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――ヒシミラクル。\n伝言は――完了した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "伝言……？　伝言って？",
+   "choice_data_list": [
+    "『気が乗らないので、今日はいいかな～』"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん！？\nち、違うんです！　それ伝言じゃなくて……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――違ったのか？　私に言ったため――\nmessage――と、判断した――私のミスだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……いやいや、謝らないで……。\nこれはその～、なんて言えばいいかな～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほら、ダイエット中においしいお菓子を見て、\n摘まみたくなるときあるでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "で、気持ちを偽って我慢すると、よけいに\n食べたくなって集中できなくなる……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなときに、素直になって、ちょっとだけ\n食べることで、余裕も集中力も生まれる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今回のトレーニングに遅れたことも、\nそういうわけで。\nわたしなりに、考えてのことでして～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "気負わず、偽らずにゆったりと過ごす……。\nそれが、ふつ～に過ごすってことなんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――――気負わず――か。\nならば、妨げてしまったな――すまない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うんうん、わかってもらえたなら\nなによりだよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――――ああ、勉強になった。",
+   "choice_data_list": [
+    "あまり参考にはしないほうがいいと思う",
+    "これからも監視してくれない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――ああ。\nサボりを――参考にするつもりは、ない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは～……。\nじゃ、わたしはお役御免かな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――いや。それ以外は――参考になる。\n観察を――続行させてもらう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、続けるの！？　自分でいうのも\n変だけど、参考にはしないほうがいいよ～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやー、さすがにそれは迷惑ですよ。\nクリスエスちゃんもやることあるでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――――使命の、ためだ。\n監視可能な――余裕ある――予定を組もう。",
+   "choice_data_list": [
+    "ありがとう。助かるよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、余裕の使い方、\nちょっと考えたほうがいいと思うなぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルには、これくらいの\nプレッシャーがあるほうが、\nかえっていいのかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

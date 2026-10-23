@@ -1,0 +1,23 @@
+{
+ "title": "グランドマスターズ・勝利",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "すべてのウマ娘に栄光と成就を――三女神の\n願いを形にした『グランドマスターズ』で\n<chrname>は見事に勝利した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "かつて走ったウマ娘たちの知識を助けに、\n今を走るウマ娘の頂点に\n<chrname>は輝いたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "三女神はその功績を讃え、\n満足そうに微笑むのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

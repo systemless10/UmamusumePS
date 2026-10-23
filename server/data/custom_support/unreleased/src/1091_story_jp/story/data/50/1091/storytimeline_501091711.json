@@ -1,0 +1,83 @@
+{
+ "title": "今度こそ負けない！",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "また……負けちゃった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "全然キラキラできてない……。\n勝ってたときどうやって走ってたっけ……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ねえトレっち、\n私、どうしたら前みたいに走れるの……？",
+   "choice_data_list": [
+    "最初の頃の気持ちを思い出してみようか",
+    "足掻く気持ちがあるなら、まだ再起できる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "最初の頃って……走りはじめた頃？\nん～っとね……楽しかったよ、すっごく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "スピード上げたら風がブワ～ってなって。\nゴールしたら歓声が聞こえてきて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………そっか。\n勝ち方ばっかり考えてたから、\n最近あんまり楽しく走ってなかったのかも。",
+   "choice_data_list": [
+    "それが自覚できたのなら、きっと大丈夫だ",
+    "それが自覚できたのなら、きっと大丈夫"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん。難しいこと考えないで思いっきり\n走ってみる！　ありがとね、トレっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "足掻く気持ち……。\nある……あるよっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まだどうしたらいいかとか、\n全然わかんないけど……止まりたくない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって……こんなところで止まってたら、\nドバイにだって一生行けっこないじゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――練習、もっと厳しくていい。\n時間かかったっていいから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私のこと……強くして、トレっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

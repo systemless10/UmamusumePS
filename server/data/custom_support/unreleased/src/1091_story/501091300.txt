@@ -1,0 +1,41 @@
+#title Summer Camp (Year 2) Complete
+0 The last day of summer camp. As a final touch, I was checking Vivlos's all-out running—
+1 Hyaaaaaaaaah!!
+1> (Yeah, she's really improving!)
+2 Her true strength, held back until now because of her health, exploded—Vivlos had definitely grown this summer.
+3 (Thud...)
+3> Hm?
+4 Ah, I'm sorry. I dropped the snacks I brought...
+5 Huff... Huff...! Hyaaa～～...!
+6 Onee-chan! Did you see that run just now?
+7 ...Yes. That was amazing, Vivlos!
+8 It surprised me. ...You've become this strong.
+9 Ehehe～, right, right?
+10 Do you think so too, Tore-cchi?
+10> You've definitely gotten stronger! | You've definitely gotten stronger!
+11 Yaaaaaay!
+12 Onee-chan. I'm gonna win for sure!
+13 The Shuka Sho... look forward to it, okay?
+14 ...Yes! I'm rooting for you.
+15 ...How strange, I—
+16 —To think her running would overlap with "hers."
+17 Throughout summer camp, Vivlos worked her hardest without overdoing it.
+17> One last check—how are you feeling?
+18 ...
+19 Yeah, I'm fine!
+20 My tummy and throat don't feel weird at all. I feel suuuper good!
+20> All right, great work, really!
+21 Yeah! Tore-cchi, thank you so much!
+21> I didn't do anything to be thanked for
+22 Nuh-uh. I could work hard because you thought so much about me, Tore-cchi.
+23 So... thank you anyway♡
+24 Now I'll win the Shion Stakes, and win the Shuka Sho too, and then...!
+25 Once the Tiara races are over, it's right into senior year. That race is held in March—
+25> Dubai at last, huh | Dubai at last, huh
+25{ senior year
+26 Yes, that～～♪
+27 I'm focusing on the Tiara races, so it's kinda on the back burner right now, but...
+28 I decided I'd work hard at both!
+28> First, let's do our best at the Shion Stakes!
+29 Yeah!
+30 Preparations for the Shuka Sho's prep race—the Shion Stakes—were all set.

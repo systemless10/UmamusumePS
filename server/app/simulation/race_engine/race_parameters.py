@@ -1,4 +1,3 @@
-"""Port of RaceParameters.ts."""
 
 from __future__ import annotations
 
@@ -86,9 +85,6 @@ def parse_grade(g) -> Grade:
 
 
 class RaceParameters:
-    """Mutable "partial" race parameters, mirroring RaceSolverBuilder's
-    `PartialRaceParameters` (everything except `skill_id`, which is filled
-    in per-skill when building skill data)."""
 
     __slots__ = (
         "mood", "ground_condition", "weather", "season", "time", "grade",
@@ -105,15 +101,11 @@ class RaceParameters:
         self.popularity: int = 1
         self.order_range: Optional[tuple[int, int]] = None
         self.num_umas: Optional[int] = None
-        # every runner's character id (is_exist_chara_id)
         self.chara_ids: tuple = ()
         self.context: dict = {}
 
 
 class RaceParametersWithSkillId:
-    """The `extra` object passed to condition filters: RaceParameters plus
-    the currently-being-built skill's own id (self-referential conditions
-    like is_activate_other_skill_detail)."""
 
     __slots__ = (
         "mood", "ground_condition", "weather", "season", "time", "grade",

@@ -1,0 +1,23 @@
+{
+ "title": "知識の海に抱かれて",
+ "text_block_list": [
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふっ、今日もウマ娘のために\nがんばってくれているみたいね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたが<chrname>ちゃんを\n支えるように、わたしも2人を支えるわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "数多なる知識で、あなたたちを\n優しく包んであげるから、安心してね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

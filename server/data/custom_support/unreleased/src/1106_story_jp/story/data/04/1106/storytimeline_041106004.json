@@ -1,0 +1,330 @@
+{
+ "title": "そんなに言うなら走ろうかなあ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "選抜レースを目前に控えたある日のこと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ふうっ、自己採点おわりっ。",
+   "choice_data_list": [
+    "どうだった？学力テスト"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "このままいけばスポーツ系大学の推薦くらいはもらえちゃうかも？\nって感じです。期待に応えるにはじゅうぶんかな～。",
+   "choice_data_list": [
+    "期待って……地元の人たちの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ですです。このまま勉強して～、スポーツ系の大学入って、\nスポーツ系の企業とかに入って、安定した暮らしをする。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そういう道を選んでも、地元のみんなは褒めてくれると思うんです。\nだって、じゅうぶん立派な未来でしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、トゥインクル・シリーズでデビューしたら……\nその向こうに行って、もう戻れない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そこから先は『本気のウマ娘』の世界じゃないですか。\n人生全部、レースに懸ける……特別な子たちの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしは、人生全部をレースに懸ける覚悟なんて、\nしてないんですよね。ぜんぜん。",
+   "choice_data_list": [
+    "……うん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもこないだ、トップロードちゃんと競り合って……\n競り合いになって、な～んかいけそうじゃんって思って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ガラにもなくちょ～っぴり、悩んでるんです。\nどうしようかなって。これから。",
+   "choice_data_list": [
+    "……ヒシミラクルは、どうしたい？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしは～……なんか、いい感じになればそれでよくて。\nがんばって走って、なんとなく幸せならいいかなって。",
+   "choice_data_list": [
+    "この間競り合った時、幸せだった？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……………はい。……えへへ。",
+   "choice_data_list": [
+    "じゃあ、期待させて"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぇっ。",
+   "choice_data_list": [
+    "ここから先も、ずっと、誰よりも"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お、おお……その、え～と……。",
+   "choice_data_list": [
+    "期待してるし、信じさせてほしい"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そ、そこまで言うかぁ～……。\nあ～、わ～、もぉ～、わかりました……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……がんばりますよぉ……選抜レースっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――ついにやって来た、選抜レース当日。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（今日も、トレーナーさんが合図を出してくれるはず……）",
+   "choice_data_list": [
+    "ヒシミラクル！！今だ！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（だから早いって……！　今スタートしたばっか！）",
+   "choice_data_list": [
+    "いける！やれる！期待の新人！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（うお～、きたきた……！\nこれやっぱ恥ずかしいな～！　でも――）",
+   "choice_data_list": [
+    "絶対勝てる！君が最強！",
+    "絶対勝てる！貴方が最強！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（やる気、出るかも！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "なんか今日のミラ子、いつもと違くない？\nこないだの併走からちょっと変っつーか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "ん……そだね。でも……でもさ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はあっ……はあっ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "――カッコいいよ、今日のミラ子。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（なに必死になってんだろう。そんなに走るの好きだっけ）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（これ勝ったら、デビューするんだよなぁ。\nプロのトレーニングってキツいだろうなぁ）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（戻れなくなるんだよなぁ。もう漫画一気読みして徹夜とか、\nなかなかできなくなっちゃうんだよなぁ）",
+   "choice_data_list": [
+    "最終直線っ！！まだいけるぞ！！",
+    "最終直線っ！！まだいけるよ！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あの人も、なんであんなに必死になってんだろう――）",
+   "choice_data_list": [
+    "君の実力、そんなもんじゃないだろ！！",
+    "貴方の実力、そんなもんじゃないでしょ！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……あー、わたしに）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "期待してくれてる、からか……っ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……あんまり考えなくてもいっかな。今、なんか、幸せだし）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あの人の期待のぶんだけさ、\nもうちょっと……がんばってみるかぁ！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは――1着！\n意外な勝利にどよめく人波を、大急ぎでかきわける。",
+   "choice_data_list": [
+    "これでっ……本契約だよな！！",
+    "これでっ……本契約だよね！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ふ。ふふふ……あはは！\nそんなに急がなくたって、逃げないですよ、わたし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ね、トレーナーさん。\nわたしねぇ、やっぱりそこまでレースに人生懸けられません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だから、『期待されたぶんだけ』がんばります。\n……それでも、いいですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしが走り続けられるように、ず～っと……\n期待の言葉で、ハッパかけてくださいよ。",
+   "choice_data_list": [
+    "もちろん。GⅠだって勝ちまくろう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは、おーきく出すぎですって～。\nそんなの、奇跡でも起きなきゃ――",
+   "choice_data_list": [
+    "君の名前は『ミラクル』だ",
+    "貴方の名前は『ミラクル』だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……言うじゃ～ないですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あーあ、今わたし、空気と勢いに流されてるなぁ。\nでも――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……そこまで言うなら、よろしくお願いします、ね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（まあ……いいかな）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やば～い、また資源ごみ忘れてた……えーと、\n段ボールまとめて、雑誌はこないだ捨てたし……あ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……これは、もう、いいかなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは、何冊かあった大学のパンフレットを\n本棚から抜き出して紐でまとめた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よし、と。\nじゃあ今日も……トレーニング、やったるかぁ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

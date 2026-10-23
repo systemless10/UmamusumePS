@@ -1,25 +1,3 @@
-"""DESIGN YOUR ISLAND (scenario 11, JP only) -- 無人島へようこそ ("Pioneer").
-
-Like every scenario it builds on the URA base (base.Scenario's defaults ARE
-URA); this class is the whole seam between the scenario and the shared career
-code, which only ever calls hooks.
-
-WHAT LIVES WHERE
-    impl.py       the mechanics -- points, plans and building, tickets, the
-                  island team, evaluations, and the pioneer_data_set envelope
-    formula.py    the training numbers: normal, island versions, Island Training
-    master.py     the single_mode_11_* tables
-    endpoints.py  planning, check_point, shima_training_exec, pioneer_live,
-                  pioneer_complete, the auto-plan settings
-    producers.py  the event calendar and its resolvers
-
-docs/JP_DESIGN_YOUR_ISLAND_SCENARIO.md is the spec: every rule, number and
-event here is traced there to the real server's captures, master.mdb or the
-client.
-
-JP ONLY BY CONSTRUCTION: Global's master.mdb has no single_mode_11_* tables,
-so the released-and-implemented intersection never advertises it there.
-"""
 
 from __future__ import annotations
 
@@ -36,13 +14,9 @@ class Pioneer(Scenario):
     data_set_on_race_start = True
     state_keys = (impl.STATE_KEY,)
 
-    # ------------------------------------------------- shared-content gates --
-    # The Director trains from turn 1 (211006), the Reporter from turn 14
-    # (211022 closes turn 13), NPC Tucker from turn 3 (211079) -- NPC_UNLOCKS.
     uses_fixed_schedule = False
     has_versus_npc = False
     debut_reporter_event = 0
-    # The real turn-78 chain: 101006 -> 10 -> 211040/211041 -> 26 (or 36) -> 6.
     has_director_ending = False
     finals_events = {
         1: {"pre": (101001, 400000101, False), "post": (101002, 400000104, 12)},
@@ -55,7 +29,6 @@ class Pioneer(Scenario):
     npc_targets = frozenset({113})
     sp_appraisers = frozenset({102, 113})
 
-    # 34 evaluation, 35 construction plan, 38 after the live, 39 the live (§1).
     playing_states = frozenset({5, 34, 35, 38, 39})
     turn_end_hold_state = 5
 
@@ -64,20 +37,16 @@ class Pioneer(Scenario):
         return (producers.LEVELUP_EVENTS.get(base, 211024), 400000005)
 
     def appraisal_events(self):
-        """The Director's own series (SP), the Reporter's URA one (stat), and
-        NPC Tucker's praise (SP, 400011100-103) -- her tiers past 40 are
-        INFERRED at 60 / 80 (§11)."""
         return {102: [(90, 211065, 5), (70, 211064, 4), (40, 211063, 3), (0, 211062, 2)],
                 103: [(90, 1010, 5), (70, 1009, 4), (40, 1008, 3), (0, 1007, 2)],
                 113: [(80, 211083, 5), (60, 211082, 4), (40, 211081, 3), (0, 211080, 2)]}
 
     def levels_facilities_by_training(self) -> bool:
-        return False                  # impl.level_for: camp days count, evaluations 2/4 add one
+        return False
 
     def npc_supporters(self, full_state, chara_info) -> list:
         return impl.islanders(full_state, chara_info)
 
-    # ------------------------------------------------------------ endpoints --
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 
@@ -89,9 +58,6 @@ class Pioneer(Scenario):
         return M.ISLAND_TO_TRAINING.get(cid, super().base_command(cid))
 
     def scenario_command(self, full_state, chara_info, payload):
-        """Island Training (§7.1): the gains the button showed plus its bonus
-        line, a ticket spent, every deck card's bond +10 (+7 for a friend or
-        group card). Energy and mood untouched."""
         if int(payload.get("command_id") or 0) != M.ISLAND_TRAINING:
             return None
         st = impl.state(full_state)
@@ -99,9 +65,6 @@ class Pioneer(Scenario):
         pv = impl.stored(st, turn).get("island") or {}
         st["tickets"] = max(0, int(st["tickets"]) - 1)
         st["gain"] = 0
-        # The deck cards already at 100 go out in not_up_parameter_info (see
-        # endpoints.handle_shima_training_exec): without them the client's
-        # bond-up window waits forever on cards that cannot rise.
         capped = []
         for pos, sid in sorted(impl.deck(chara_info).items()):
             gain = 10 if formula.RF.is_normal_card(sid) else 7
@@ -117,9 +80,6 @@ class Pioneer(Scenario):
         return [{"target_type": tt, "value": v} for tt, v in sorted(merged.items())]
 
     def partner_outing(self, full_state, chara_info, partner, turn) -> bool:
-        """Every outing with Tucker owes 211075 (§3.3): behind her date while
-        the five last, alone after that. None once the points stop (the real
-        T70/71 outings paid nothing)."""
         turn = int(turn or impl.turn_of(chara_info))
         st = impl.state(full_state)
         if int(partner or 0) != M.TUCKER_CHARA or not impl.tucker_card(chara_info) \
@@ -129,7 +89,6 @@ class Pioneer(Scenario):
         st["due"].append({"kind": "tucker", "step": st["tucker_outings"], "turn": turn})
         return True
 
-    # ------------------------------------------------------------- response --
     def command_info(self, full_state, chara_info, home_commands):
         if not isinstance(chara_info, dict):
             return None, False
@@ -139,8 +98,6 @@ class Pioneer(Scenario):
         return None, bool(changed or impl.state(full_state).get("gain"))
 
     def home_commands(self, full_state, chara_info, turn, commands) -> list:
-        """The island's command list (§2, §6): the island versions and 3606 in
-        the camps and the URA finals, and Island Training beside the five."""
         turn = int(turn or 0)
         st = impl.state(full_state)
         out = [dict(c) for c in commands]
@@ -221,8 +178,6 @@ class Pioneer(Scenario):
                 holder.pop("pioneer_data_set", None)
         if call in ("start", "load"):
             data["auto_planning_info"] = impl.auto_planning_info(impl.state(full_state))
-        # shima_training_gain_info.gain_num: the tickets just granted, on the
-        # reply that granted them only (a one-shot; command_info persists it).
         impl.state(full_state)["gain"] = 0
         for ev in data.get("unchecked_event_array") or ():
             post = self._FINALS_POST.get(int(ev.get("event_id") or 0))
@@ -233,8 +188,6 @@ class Pioneer(Scenario):
 
     @staticmethod
     def _carry_npc_rows(chara_info: dict) -> None:
-        """The NPC rows 101-115 ride every chara_info from turn 1 at is_appear
-        0 (every real reply), bar the charas the deck brings."""
         arr = chara_info.setdefault("evaluation_info_array", [])
         present = {e.get("target_id") for e in arr if isinstance(e, dict)}
         for target_id, _chara in impl.npc_rows(chara_info):
@@ -243,7 +196,6 @@ class Pioneer(Scenario):
                             "evaluation": 0, "is_outing": 0, "story_step": 0,
                             "is_appear": 0, "group_outing_info_array": []})
 
-    # ------------------------------------------------------------- training --
     def training_gains(self, full_state, chara_info, command_id, facility_level, camp, partners):
         from ...handlers import single_mode_team as smt
         levels = smt._support_card_levels(full_state)
@@ -255,18 +207,14 @@ class Pioneer(Scenario):
         return formula.home_gains(chara_info, base, facility_level, partners, levels)
 
     def training_award_bonus(self, full_state, chara_info, command_id) -> list:
-        """The bonus line the client showed on this facility (§5.3, §6) -- paid
-        on top of home_info's number, exactly as the button read."""
         cid = int(command_id or 0)
         if cid == M.ISLAND_TRAINING:
-            return []                  # scenario_command pays Island Training whole
+            return []
         st = impl.state(full_state)
         pv = impl.stored(st, impl.turn_of(chara_info))
         return [dict(p) for p in pv["bonus"].get(str(cid)) or ()]
 
     def award_training_gains(self, full_state, chara_info, payload) -> None:
-        """A successful training: its development points, its count toward
-        the facility's level; a crossed threshold queues its ticket beat."""
         st = impl.state(full_state)
         turn = int(payload.get("current_turn") or impl.turn_of(chara_info))
         if int(payload.get("command_type") or 0) != 1:
@@ -294,8 +242,6 @@ class Pioneer(Scenario):
                           "points": impl.race_points_for(full_state, chara_info, turn, goal=goal)})
 
     def specialty_bonus_by_type(self, full_state, chara_info, type_index) -> int:
-        """Facility effect 201: +rate to that card type's own-facility weight,
-        the camp rows during the camps and finals (§13 #8)."""
         cmd = {0: 101, 1: 105, 2: 102, 3: 103, 4: 106}.get(int(type_index))
         if cmd is None:
             return 0
@@ -305,9 +251,6 @@ class Pioneer(Scenario):
             impl.facilities(impl.state(full_state)), M.EFFECT_SPECIALTY, period=periods, v3=cmd))
 
     def hint_partners(self, full_state, chara_info, command_id, partners, hinting):
-        """Hint rate: the latest evaluation's (204), the Beach House's, and an
-        island version's own; Skilled Lv4/5 (101) makes every normal card's
-        hint fire on its island version (§4.4)."""
         st = impl.state(full_state)
         turn = impl.served_turn(full_state, chara_info)
         facs = impl.facilities(st)
@@ -339,12 +282,10 @@ class Pioneer(Scenario):
     def training_failure_override(self, full_state, chara_info, command_id, partners):
         cid = int(command_id or 0)
         if cid == M.ISLAND_TRAINING:
-            return 0                 # Island Training cannot fail (§7.1)
+            return 0
         turn = impl.served_turn(full_state, chara_info)
         base = self.base_command(cid)
         if impl.island_turn(turn) and base in M.ISLAND_VERSIONS:
-            # An island version fails as its own level-5 row, whatever the
-            # facility's level (URA finals turns included).
             from ... import training_formula as tf
             from ...handlers import single_mode_team as smt
             return tf.failure_rate(chara_info.get("vital", 100), command_id=M.ISLAND_VERSIONS[base],
@@ -353,7 +294,6 @@ class Pioneer(Scenario):
                                    facility_cards=smt._facility_failure_cards(chara_info, partners))
         return None
 
-    # ----------------------------------------------------------------- flow --
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
         st = impl.state(full_state)
         turn = int(turn or 0)
@@ -394,8 +334,6 @@ class Pioneer(Scenario):
         return {}
 
     def _tucker_dates(self, full_state, chara_info) -> None:
-        """A Tucker date just resolved (her story_step moved): 211075 follows
-        it, offering the date's development points (§3.3)."""
         from ... import career_events as CE
         t = impl.tucker_card(chara_info)
         if not t:
@@ -415,12 +353,10 @@ class Pioneer(Scenario):
             if ev:
                 CE.emit(full_state, ev)
 
-    # ------------------------------------------------------------------ run --
     def snapshot(self, full_state) -> dict:
         st = impl.state(full_state)
         return {"pioneer_results": [dict(r) for r in st["results"]],
                 "pioneer_total_points": impl.total_points(st),
-                # PioneerTotalPoint (11001): the five plan totals -- 本能の懸け橋 scales on it.
                 "scenario_data_array": [{"type": 11001, "value": impl.total_points(st)}]}
 
     def reset(self, full_state) -> None:

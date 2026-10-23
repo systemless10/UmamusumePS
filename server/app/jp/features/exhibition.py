@@ -1,34 +1,3 @@
-"""Practice race and room match, JP's form.
-
-`WIRE` umacap api-20261003-222052-340 (2.31.5): a whole practice race (index,
-trial_chara_load, recommend list, follow data, presets, race_start, saved list,
-race_end) and a room match session (index, recommend list, presets, create_room,
-change_allow_display, polling, destroy_room, room_list, my race conditions,
-save_race_condition, entry list, saved results). The shared handlers
-(app/handlers/practice_race*.py, room_match.py) run both modes -- presets,
-shelves, rooms and the race itself, with the fixes this capture showed Global
-needs too. This module answers only where JP's client differs:
-
-  * get_recommend_race_condition_list (both modes): the server's おすすめレース
-    presets for upcoming race events. Not in master, so served from the capture
-    (seeds/exhibition.json, tools/build_jp_exhibition.py), each while its own
-    begin_date..end_date (JST) window is open. A practice preset has no dates;
-    it shares the window of the room preset with the same id.
-  * trial_chara_load: the captured 体験ウマ娘 roster (use_type 4), until the
-    captured next_update_time. After that the real roster has rotated to one we
-    have not seen, so the list is empty.
-  * Trial charas can be entered: practice race_start entry 0 in the capture is
-    trained_chara_id 69, use_type 4, and rooms carry is_allow_trial_character.
-    Race rows carry the entry's use_type; preset lists flag a preset whose
-    trial chara has rotated out (is_expired_trial_character).
-  * My race conditions (room_match/*_race_condition*): 5 saved slots, レース条件N,
-    race_condition_detail null until saved. Save/delete/rename answer no data.
-  * create_room / entry_room: JP's room settings (max_user_num,
-    specified_entry_num, set_easy_option_type, is_allow_trial_character,
-    trained_chara_restriction_upper/lower, sp_rule_data_id,
-    recommend_condition_id, is_disable_recommend_npc) are kept on the room and
-    served on every room_info (after()).
-"""
 
 from __future__ import annotations
 
@@ -50,12 +19,9 @@ log = logging.getLogger("uma-server")
 
 JST = datetime.timezone(datetime.timedelta(hours=9))
 USE_TYPE_TRIAL = 4
-# Trial charas are the server's, not the account's: their ids must never meet a
-# roster id, and the client pairs race rows to trained charas by that id.
 TRIAL_ID_BASE = 1_900_000_000
-CONDITION_KEY = "jp_room_match_conditions"   # {str(slot): {"name", "detail"}}
+CONDITION_KEY = "jp_room_match_conditions"
 
-# RoomMatchRoomInfo fields JP added; create_room carries them all.
 ROOM_EXTRAS = ("max_user_num", "specified_entry_num", "set_easy_option_type",
                "is_allow_trial_character", "trained_chara_restriction_upper",
                "trained_chara_restriction_lower", "sp_rule_data_id",
@@ -87,8 +53,6 @@ def _jst(text: str) -> datetime.datetime:
     return datetime.datetime.strptime(text, "%Y-%m-%d %H:%M:%S").replace(tzinfo=JST)
 
 
-# ============================================================== recommend ===
-
 def _room_recommend() -> list[dict]:
     now = _now()
     return [p for p in (_seed().get("recommend") or {}).get("room_match") or []
@@ -101,19 +65,13 @@ def handle_room_recommend(payload: dict) -> dict:
 
 
 def handle_practice_recommend(payload: dict) -> dict:
-    """PracticeRaceGetRecommendRaceConditionListResponse. The list must be
-    present, even when empty: PartsPracticeRaceSetRaceConditionRecommend.Setup
-    throws on null and the select-race view waits forever."""
     open_ids = {p["race_condition_preset_id"] for p in _room_recommend()}
     return _ok({"race_condition_preset_info": [
         copy.deepcopy(p) for p in (_seed().get("recommend") or {}).get("practice_race") or []
         if p["race_condition_preset_id"] in open_ids]})
 
 
-# ================================================================== trial ===
-
 def _next_trial_rotation(now: datetime.datetime) -> datetime.datetime:
-    """Friday 11:59:59 JST after now, when no captured roster is current."""
     at = now.replace(hour=11, minute=59, second=59, microsecond=0)
     at += datetime.timedelta(days=(4 - at.weekday()) % 7)
     return at if at > now else at + datetime.timedelta(days=7)
@@ -125,7 +83,6 @@ def _trial_live() -> bool:
 
 
 def trial_roster(viewer_id) -> list[dict]:
-    """The current 体験ウマ娘, owned by the caller as the real server serves them."""
     if not _trial_live():
         return []
     out = []
@@ -138,9 +95,6 @@ def trial_roster(viewer_id) -> list[dict]:
 
 
 def handle_trial_chara_load(payload: dict) -> dict:
-    """TrialCharaLoadResponse{trial_chara_array, next_update_time}. A missing
-    field hangs the practice race screen (the loader's callback never fires).
-    next_update_time is slash-separated, unlike every other JP timestamp."""
     if _trial_live():
         nxt = _seed()["trial_chara"]["next_update_time"]
     else:
@@ -150,7 +104,6 @@ def handle_trial_chara_load(payload: dict) -> dict:
 
 
 def resolve_entry(viewer_id, spec: dict) -> dict | None:
-    """practice_race.resolve_entry, plus the trial charas (use_type 4)."""
     if int(spec.get("use_type") or 0) == USE_TYPE_TRIAL:
         found = next((c for c in trial_roster(viewer_id)
                       if c["trained_chara_id"] == spec.get("trained_chara_id")), None)
@@ -158,11 +111,7 @@ def resolve_entry(viewer_id, spec: dict) -> dict | None:
     return practice_race.resolve_entry(viewer_id, spec)
 
 
-# ========================================================= practice race ===
-
 def handle_practice_race_start(payload: dict) -> dict:
-    """The shared race, with trial charas; each row carries its entry's
-    use_type (`WIRE`: 4 on the trial chara's row, 0 elsewhere)."""
     resp = practice_race.handle_race_start(payload, resolve=resolve_entry)
     data = resp.get("data")
     if isinstance(data, dict) and "race_result_info" in data:
@@ -174,8 +123,6 @@ def handle_practice_race_start(payload: dict) -> dict:
 
 
 def _flag_expired_trial(handler):
-    """is_expired_trial_character: 1 when a preset still holds a trial chara
-    that has since rotated out."""
     def handle(payload: dict) -> dict:
         resp = handler(payload)
         data = resp.get("data")
@@ -188,8 +135,6 @@ def _flag_expired_trial(handler):
         return resp
     return handle
 
-
-# ====================================================== my race conditions ===
 
 def _conditions(full_state: dict) -> dict:
     st = full_state.get(CONDITION_KEY)
@@ -236,10 +181,7 @@ handle_change_race_condition_name = _edit_condition(
     lambda s, p: {**s, "name": str(p.get("race_condition_name") or "")[:32]})
 
 
-# ============================================================= room match ===
-
 def _room_entries(vid, entries, room: dict) -> list[dict] | int:
-    """rm._entry_charas with JP's trial charas and rank window."""
     entries = [e for e in (entries or []) if e.get("trained_chara_id")]
     cap = room.get("specified_entry_num") or rm.MAX_CHARAS_PER_USER
     if not entries or len(entries) > cap:
@@ -265,8 +207,6 @@ def _room_entries(vid, entries, room: dict) -> list[dict] | int:
 
 
 def handle_create_room(payload: dict) -> dict:
-    """rm._create with JP's settings. JP limits rank with
-    trained_chara_restriction_upper/lower and sends restriction 0."""
     vid = str(payload.get("viewer_id"))
     race_instance_id = int(payload.get("race_instance_id") or 0)
     course_max = rm._course_entry_num(race_instance_id)
@@ -314,8 +254,6 @@ def handle_create_room(payload: dict) -> dict:
 
 
 def handle_entry_room(payload: dict) -> dict:
-    """rm.handle_entry_room with JP's trial charas, rank window and trainer cap
-    (max_user_num, 0 = no cap)."""
     vid = str(payload.get("viewer_id"))
     with rm._db() as conn:
         room = rm._load_room(conn, payload.get("room_id"))
@@ -359,7 +297,6 @@ def _room_extras(conn, vid: str, room_id) -> dict:
 
 
 def after(endpoint: str, payload: dict, resp: dict) -> None:
-    """Serve JP's room settings on every room_info a room_match reply carries."""
     data = resp.get("data")
     if not endpoint.startswith("room_match/") or not isinstance(data, dict):
         return

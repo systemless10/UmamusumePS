@@ -1,18 +1,3 @@
-"""Undo history for every save edit the panel makes.
-
-install() wraps state.save_state / state.delete_state in this worker process.
-Before a write reaches the disk, the wrapper reads what each touched key holds
-right now and keeps the FIRST such text per key for the op in progress. When
-the op ends, commit() stores one history row per viewer: the op's label plus
-{key: text before the op (None = the key did not exist)}.
-
-Undo writes those texts back through save_state, so an undo is itself a
-history row (undoing it is a redo). Everything is per region:
-server/data[/jp]/admin_history.sqlite3, next to the saves it describes.
-
-Only the save store is covered. accounts.sqlite3 edits (password reset,
-account deletion) are not.
-"""
 
 from __future__ import annotations
 
@@ -23,12 +8,12 @@ import time
 from app import region
 from app import state as S
 
-KEEP_ROWS = 2000                    # oldest rows beyond this are pruned
+KEEP_ROWS = 2000
 
 _orig_save = S.save_state
 _orig_delete = S.delete_state
-_pending: dict[str, dict] = {}      # viewer -> {key: old text | None}
-_new_viewers: set[str] = set()      # viewers that had no save before this op
+_pending: dict[str, dict] = {}
+_new_viewers: set[str] = set()
 _reader: sqlite3.Connection | None = None
 _hist: sqlite3.Connection | None = None
 
@@ -36,7 +21,7 @@ _hist: sqlite3.Connection | None = None
 def _state_db() -> sqlite3.Connection:
     global _reader
     if _reader is None:
-        S.get_state("__admin_probe__")          # make sure the schema exists
+        S.get_state("__admin_probe__")
         _reader = sqlite3.connect(region.data_dir() / "state.sqlite3", check_same_thread=False)
     return _reader
 
@@ -97,16 +82,10 @@ def install() -> None:
 def begin() -> None:
     _pending.clear()
     _new_viewers.clear()
-    # state.py diffs saves against texts it remembers from earlier reads. This
-    # worker lives for hours while the game server writes the same rows, so a
-    # remembered text can be stale -- and a save whose value happens to equal
-    # it (an undo restoring an older value) would be skipped. Start every op
-    # cold, like a one-shot admin.py run.
     S.clear_cache()
 
 
 def commit(label: str) -> list[int]:
-    """Store the finished op's changes; returns the new history ids."""
     ids = []
     db = _db()
     for vid, rec in _pending.items():
@@ -148,8 +127,6 @@ def entry(entry_id: int) -> dict | None:
 
 
 def later_overlaps(entry_id: int) -> list[dict]:
-    """Later changes to the same viewer that touched any of the same keys --
-    undoing this entry also throws those away for the shared keys."""
     e = entry(entry_id)
     if not e:
         return []

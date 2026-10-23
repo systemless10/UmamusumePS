@@ -1,0 +1,23 @@
+{
+ "title": "太陽から注ぐ知識",
+ "text_block_list": [
+  {
+   "name": "ダーレーアラビアン",
+   "text": "今日もウマ娘のために、努力を重ねて\nくれているようだね、子羊くん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "君自身の成長は、そのまま\n<chrname>の成長へと繋がっていく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "太陽が照らす、君たちの進むべき道を\n駆け抜けてみせてくれよな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

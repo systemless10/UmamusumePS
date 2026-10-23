@@ -1,0 +1,87 @@
+#title Hot Spring Trip
+0 One day, after the three years I'd raced through with Vivlos had finally settled down...
+1 Tore-cchi～!
+2 Isn't it time?! Hey, hey!
+2> Time for what?
+3 For a reward, a reward!
+4 Isn't now the only time for a reward day? Let's go on a hot spring trip～?
+4> A hot spring trip...
+5 Come to think of it, around the time she entered senior year, Vivlos had won a hot spring trip in a raffle. Back then, I'm pretty sure—
+6 So let's make the hot spring a reward for me... and for you, Tore-cchi?
+7 You work super hard too, Tore-cchi. I want you to get a real reward!
+8 —Receiving such kindness from her, I'd quietly tucked the hot spring trip ticket into my planner.
+8> (I'm the one who wants to reward her) | (I'm the one who wants to reward her)
+9 Through everything that happened, Vivlos worked so hard. Praise alone isn't enough.
+9> (I want to give her some other reward too)
+10 Tore-cchi?
+10> !
+11 So, on our next day off! Let's go to the hot springs.
+11> Sure | Sure
+12 ...That's it—what about inviting her family on the trip? She loves her family, so she'd probably be delighted by a surprise.
+13 I already told Papa and everyone that I'm going with you, Tore-cchi!
+13> You did? | You did?
+14 Yep!
+15 I wanna talk with you, Tore-cchi, so I can't invite Papa and everyone, but they said to have fun♪
+15> O-oh, I see...
+16 Hm? What's wrong?
+16> Nothing...
+17 Okay? Then, I'm counting on you♡
+18 Look forward to it suuuuper... much!
+19 ...Okay. Let's do this～!
+20 I'd have to think of some other reward for her. The obvious idea would be something glamorous, which she loves—
+21 "Whaaat, are you sure, Tore-cchi?! This bag..."
+22 "It costs XXX thousand♡ Thank youuu～"
+22> (...That's definitely not it) | (...That's definitely not it)
+23 She'd certainly be happy. But in my position, it wouldn't be appropriate. ...Then, I suddenly remembered—
+24 Then give me a hug!
+25 "I'll grant just one request"... For her answer, she'd chosen a hug. Of course, I still can't do that, but—
+25> (If it's the other one...)
+26 We're here～!
+27 Whoa, the vibe here is suuuper nice♡ This place was popular on Umastagram too!
+28 Hey, hey, Tore-cchi! Take a cute pic of—
+29 No, wait. I'll take your pic!
+29> Just me? | Just me?
+30 Yep. I'll use the app properly and everything～.
+30> Then let's take one together
+31 Really? If that's what you want, Tore-cchi♡
+32 And so, after taking plenty of pictures, we each headed off to the baths—
+33 Bathing...
+34 Hanyaa～...
+34> Was the water nice?
+35 Yeah～... It was suuuper nice!
+36 Tore-cchi, can you dry my hair? The tips are still a little—
+37 ...No, wait!
+38 Tore-cchi, I'll dry YOUR hair!
+38> Huh, it's already dry, though...
+39 Then, then, how about I put some hair oil on for you?
+40 They say if you put it on after the blow-dryer, it protects your hair!
+40> Then I'll just do it myself—
+41 No! Let me do it?
+42 'Cause today I decided I'm gonna pamper you completely, Tore-cchi!
+42> Huh?
+43 Ah, I said it! I meant to keep it a secret～!
+44 It's a reward, a reward. Remember I said I wanted to give you one too, Tore-cchi?
+45 If I'm gonna do it, I thought I'd give you one from me too, not just the hot springs.
+46 'Cause you really worked so, so hard for me, Tore-cchi.
+46> Vivlos...
+47 So... it's okay, Tore-cchi?
+48 Lean on me as much as you want?
+48> ...You beat me to it!
+49 Huh?
+49> I want to give you a reward too | I want to give you a reward too
+50 !
+51 To me...?
+51> ...Can I touch your head?
+52 Huh.
+53 ...Okay. Go ahead...?
+54 —Eep.
+55 I gently patted her head. "Head pats"... That was her other request.
+55> You worked really hard | You worked really hard
+56 Pampering each other... Funnily enough, we'd both been thinking of the same reward.
+57 ...
+58 ...S-somehow... my heart's pounding... But.
+59 Thank you, Trainer. —I'm so happy...
+59> It's not very glamorous, though...
+60 Why not? It's suuuper glamorous!
+61 'Cause a feeling like this... no one else gets to have it, right?
+62 It was a moment when I felt an irreplaceable bond between Vivlos and me...

@@ -1,0 +1,151 @@
+{
+ "title": "日本ダービーの後に・誰かの夢の中",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ……はぁ……走れた……\n走り終えられた～。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "この熱気は……なに？\nていうか、ここはどこ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『日本ダービー』。こんな場所、\nわたしの中には、ずっとなかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしは……どこを走ってたの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Interviewか……。声援には感謝を。\n成否はさまざまだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――また次のMissionが始まる。\n以上だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "ハッ、迷宮も、突破してみれば、\nなんてことはない。牛頭の怪物はいなかった。\nいたのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "蒼い猫もどき！\nつまりは“ワタシ”の成り損ない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "シェイカーは――1から振り直しか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（クリスエスちゃん、ギムレットちゃん、\nふたりとも……かっこよすぎ……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（なに言ってるのか、よくわかんないけど、\nでも、ちゃ～んと自分があって……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "インタビュアー",
+   "text": "ヒシミラクルさん、\nレースを終えての感想は！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "感想……。えぇ……と……。\nそう……ですね……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "夢の舞台……に立てて、\nうれしかったです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（夢……。そうだ……。\n『日本ダービー』は夢……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（でも――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、夢の中を走ってきました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "誰もが見る夢。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしのじゃない夢の中を。",
+   "choice_data_list": [
+    "わたしのじゃない……夢？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい～。あぁもう……！\nわたし、うっすいなぁ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いつも言われるまま、ラッキーのまんまに\nやるだけで。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これがふつ～なんだと思います。\nだいたい、こんなもの。ただ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエスちゃんやギムレットちゃんが\nすごすぎるんです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "力は出し切ったものの『日本ダービー』は\nヒシミラクルにとって、どこか現実味のない\n経験になったようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

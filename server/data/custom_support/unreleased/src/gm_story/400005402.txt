@@ -1,0 +1,8 @@
+#title Our Own Starts
+0 That day, the trainers whose Umamusume had safely finished their debut races were sharing information.
+1 Trainer Aoi Kiryuin, a fellow rookie who started at the same time as me, said the Three Goddesses' support had made up for her lack of experience.
+1{ Aoi Kiryuin
+2 Trainer Riko Kashimoto, who already has experience as a trainer, also said she's desperate for the Three Goddesses' knowledge.
+2{ Riko Kashimoto
+3 Rookie or veteran, the weight of carrying an Umamusume's dreams is no different.
+4 I resolved once again to keep deepening my bond with my Umamusume and run alongside her, even after her debut.

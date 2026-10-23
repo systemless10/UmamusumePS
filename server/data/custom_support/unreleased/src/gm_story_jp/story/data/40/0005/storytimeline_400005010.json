@@ -1,0 +1,273 @@
+{
+ "title": "三女神の福音",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "3月に入り、クラシック級のウマ娘たちは\nよりトレーニングに熱を入れていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ビターグラッセは次のレースまで\nひと月を切りました。\n今日から新しいメニューに取り組みましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "リトルココン、貴方は有酸素運動を\nさらに増やし、持久力の強化を図ります。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "2人とも、まずは目の前の目標に向けて\n頑張ってください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "2人",
+   "text": "はいっ！",
+   "choice_data_list": [
+    "気合いが入っていますね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "この時期になると、他のウマ娘たちも\n一気に実力を伸ばしてきますからね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……いよいよ、あの子たちも\n夢に向かって本番というわけです。",
+   "choice_data_list": [
+    "トレーナーも頑張りどころですね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "まさしく。だからこそ、\n三女神という存在は渡りに船です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……正直、AIのサポートには懐疑的でした。\nトレーニングのノウハウは頭にありますし、\nわからなければ調べればいい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ですが、私にはない角度からの発想や指摘――\nさらにはその正確さ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "現にあの子たちは、思った以上の成長を\nここにきて見せています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "膨大なデータ、我々の頭脳では到底及ばない\n高速計算によるシミュレーションの試行回数。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……AIのサポートというのは、\nここまでウマ娘にとって有益なのですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "では、私はそろそろ三女神のところへ\n行ってきます。今後の話をする約束ですので。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "実際に<chrname>のトレーニングも\n三女神の知識による手ごたえを感じている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "三女神の存在は、我々に欠かせなく\nなりつつあるのかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "ふーっ！　今日も体を使った使った！\nまた一段と強くなれたって感じだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "本当に、ストイック通り越して脳筋だね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "ははっ！　でもさ、リトルココンだって\n毎日成長してるなって思わないか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "本当、樫本トレーナーが担当でよかった。\nやりたいこと、ちゃんとやらせてくれるし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "トレーナーがつく前は、よくみんなから\n1人で突っ走るなって言われてたんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "ついていけないヤツと、揉めたりもしてな。\nでも、樫本トレーナーは違った――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……今日も追加の自主トレですか、\nビターグラッセ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "樫本トレーナー……あの、すみません。\nもっとやっておきたいって思って……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……だけど、これってやっぱりただの\nやり過ぎですよね。みんなの言うとおり、\n正しいトレーニングじゃない……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……なるほど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ウマ娘がそれぞれ違うのは当たり前。\n貴方が合わせにいくというのも違うでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "さっそくメニューを見直します。そのかわり、\n今度からは遠慮なく言ってきてください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "え……？　は、はい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "樫本トレーナーは厳しいとか噂されるけど、\nむしろ逆！　私たちをよく見てくれてるよな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……うん、そうだね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "お互いに結果出して、トレーナーのこと\n喜ばせような！　んじゃ、また明日！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……本当に、よく見てくれてる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "やったー！　1着ー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "お疲れ様です、リトルココン。\nチームへの合流早々、合同練習へ\n参加させてしまい、すみませんでした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……それは別にいいですけど……。\nそれよりも、ぜんぜん勝てなかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "勝敗は問題ではありません。見たかったのは、\n貴方に素質があるかどうか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "そして私は、貴方にそれがあると感じました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "アタシに素質がある……？\n6着だったアタシに……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……一緒に走ったウマ娘と比べてみなさい。\n貴方だけ、もう息が整っている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "え……？\nホント……じゃん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "（アタシの武器も、それに……\nアタシ自身も見つけてくれた……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "（樫本トレーナーとなら、きっと勝てる。\nどんなでっかいレースだって、きっと……！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

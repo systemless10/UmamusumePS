@@ -1,0 +1,5 @@
+#title After the SWBC: Defeat
+0 The SWBC, gathering an even more elite field than any of the Three Goddesses' previous races. <chrname> narrowly lost.
+1 Even so, the Three Goddesses praised everything we'd achieved by running this far.
+2 But our race wasn't over yet. There was one more thing to aim for.
+3 The Grandmasters, where we'd race the Three Goddesses directly to see whether <chrname> had reached the very peak of running, still awaited us.

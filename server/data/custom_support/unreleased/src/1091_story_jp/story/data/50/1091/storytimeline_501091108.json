@@ -1,0 +1,547 @@
+{
+ "title": "ファン感謝祭",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "迎えたファン大感謝祭！\n普段応援してくれるファンを楽しませるべく、\nウマ娘たちが様々な競技を披露する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして、ヴィブロスが選んだ競技は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、\n私がんばってくるから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちゃーんと私だけ見て！\n応援してねっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "――さあ、いよいよ決勝が行われます！\n『俺の私の妹選手権』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "トレセン学園のウマ娘たちは、\n多種多様の個性を持っています。\nその中でも“妹”に焦点を絞ったこの競技――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "ナンバーワン妹が今、\n決まろうとしています！",
+   "choice_data_list": [
+    "（競技とは？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "それでは、決勝へ進出した妹たち、\nステージへ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "――やっぱり、\nこうなると思ってた♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "こんな妹があっていいのか！？\n堂々たるカワイさで君臨する、\n初代妹王者、カレンチャン！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "カレンチャン"
+   ]
+  },
+  {
+   "name": "カレンチャン",
+   "text": "カレンに挑むのは……\n今ノリにノッてる、あなただって♪",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "カレン"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "カレンさんっ！\nちょー光栄だよっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "絶対王者に挑むのは、ヴィブロス！\n実姉が2人いる末っ子という最強の妹が、\nこのカワイイ壁をついに打破するのか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私ね、この競技を目指して、\n今日までがんばってきたの！",
+   "choice_data_list": [
+    "（そうだったっけ？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんたちの妹として！\n絶対負けないっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お手柔らかにね？\nカレンさん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "こちらこそ♡\nよろしくね、ヴィブロスちゃん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じ～～っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "じー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "両者、一歩も引かない……！\nすでに競技は始まっている模様です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "大丈夫よヴィブロス。\n貴方なら必ず勝利できるわ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "だって、間違いなく\n貴方とシュヴァルが1番かわいい妹だもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アドマイヤベガ",
+   "text": "……カレンさんはこの大会、\nいまだに無敗だけれど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……あら？　アヤベさんは、\nカレンさんの応援ですか？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "アヤベ"
+   ]
+  },
+  {
+   "name": "アドマイヤベガ",
+   "text": "たまたま、\n通りかかっただけ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ふぅん……なら、構いませんね？\nうちのヴィブロスが、カレンさんを下しても。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アドマイヤベガ",
+   "text": "……どうぞ、お好きに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "――さあ、準備が整ったようです！\nそれでは、決勝戦のお題を発表しましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "ズバリ、『おねだり』です！\n思わずなんでも聞いてあげたくなる魅力は、\nまさしく妹に相応しい武器！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "観客の絶叫の大きかったほうが勝利！\n今回のナンバーワン妹となります！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "まずは先攻、\n絶対王者カレンチャン！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "はーいっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "んー、そうだなー。\nヴィブロスちゃんが相手だからー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "あ、ヴィルシーナさーん！\nちょっと来てください！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えっ！？\nな、なんで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "お姉ちゃんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "っ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "お姉ちゃんにはもう、\n大切な妹がいるのはわかってる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "でもね、カレンも……\nお姉ちゃんの妹になりたいの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "ダメ、かな……？\nお姉ちゃん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "こ、これは……！？　なんとカレンチャン、\n相手の土俵で真っ向勝負を仕掛けたーー！\n王者でありながら、なんと貪婪な魂か！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客たち",
+   "text": "カワイイカレンチャン！！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "観客たちの絶叫も届きました！\n今声量を計測しています！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むううう～～っ！\nお姉ちゃんにおねだりなんて……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やだっ！\n私のお姉ちゃんなのにっ！",
+   "choice_data_list": [
+    "（妬いちゃってるな……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは今、大いにかかっている状態だ。\nこれでは冷静に、いつもの『おねだり』を\nすることができない……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんっ、ダメ！",
+   "choice_data_list": [
+    "あっ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんは、\n私のお姉ちゃんだもんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……もう、ヴィブロス。\nそんなの当たり前じゃない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "でも、ステージから降りるべきでは、\nなかったかもしれないわね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "残念ながら、ヴィブロスさんは\n場外へ出てしまったため、不戦敗となります。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ！？\nそんなルールだったっけ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "けして自分からステージを降りない。\n主役であること……それもまた妹の資質です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よくわかんなーいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……でもいいや。\nお姉ちゃんが私のこと、大好きなら♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ええ、もちろん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……もう1人、\n妹がいてもいいけれど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ふふ、冗談よ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……結局この競技がなんだったのか、\nよくわからずじまいだが……\nヴィブロスが満足そうなのでよしとしよう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん～っ！",
+   "choice_data_list": [
+    "待て、ヴィブロス",
+    "待って、ヴィブロス"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち！\nだって、お姉ちゃんが！",
+   "choice_data_list": [
+    "君はナンバーワン妹になるんだろ？",
+    "貴方はナンバーワン妹になるんでしょ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "よくわからないが、この日のために\nヴィブロスは頑張ってきた……らしい。\nならば冷静に、勝ち目を見出さなければ。",
+   "choice_data_list": [
+    "『おねだり』なら、君は最強だ",
+    "『おねだり』なら、貴方は最強"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち……。",
+   "choice_data_list": [
+    "（俺は何を言ってるんだろう……）",
+    "（私は何を言ってるんだろう……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだよねっ。\n今まで、なんだっておねだりしてきたもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとう、トレっち！\n私、もー大丈夫！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "迎え撃つ形となったヴィブロス！\nさあ、一体どんなおねだりを見せるのか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あのね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私は……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんながお姉ちゃんだと思って、\nおねだりするっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん！\n私、あなたの1番がいいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私のこと、\n大好きになってくれる……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客たち",
+   "text": "……っ！\nうおおおおおおっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客たち",
+   "text": "私が……俺が……！\nヴィブロスのお姉ちゃんだ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "ヴィブロス、なんという正攻法！\nこれはまさしくおねだり！\n最強で究極の妹だぁ～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "何言ってるのかしら、この人たち。\nヴィブロスの姉は、\n私とシュヴァルだけなのだけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アドマイヤベガ",
+   "text": "……カレンさん。\nプライドの高さが、仇となったわね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "今、歓声を計測中です！\nさあ、果たして勝者は……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イベント実況",
+   "text": "――ヴィブロス、ヴィブロスです！\n絶対王者を下し、国民の妹となりました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やった～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "残念、負けちゃった！\nでもね、うれしいな♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "カワイイは、強い相手がいてこそ更に磨ける。\n来年、リベンジさせてね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もちろんっ！\nでも、絶対負けないよっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス＆カレン",
+   "text": "じ～～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてヴィブロスは、第何回目かの\nナンバーワン妹になったのだった……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

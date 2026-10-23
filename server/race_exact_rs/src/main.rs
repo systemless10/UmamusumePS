@@ -48,7 +48,6 @@ fn run()->Result<(),String> {
             .map(|e|e.map(|e|e.path())).collect::<Result<Vec<_>,_>>().map_err(|e|e.to_string())?;
         paths.retain(|p|p.is_file() && p.extension().is_some_and(|e|e=="json"));paths.sort();
         if paths.is_empty() {return Err("input directory contains no JSON races".into());}
-        // Races are independent: run them on all cores (output is per-file, order-free).
         let next=std::sync::atomic::AtomicUsize::new(0);
         let threads=std::thread::available_parallelism().map_or(4,|n|n.get());
         let errors=std::sync::Mutex::new(Vec::new());

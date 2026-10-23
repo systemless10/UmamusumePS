@@ -1,0 +1,289 @@
+{
+ "title": "『日直：ヒシミラクル』",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーニングまでまだ時間あるし、\nクラス日誌ちょっと書いておこうかなぁ～。",
+   "choice_data_list": [
+    "今日日直だったのか",
+    "今日日直だったんだ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だったんですよ～。\n黒板消しとか、大変でー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～と、『本日の日直』……ヒシミラクル。\n『公欠』がバンブーちゃん。\nそれで、今日の遅刻者が……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "担任の教師",
+   "text": "『タニノギムレット……また遅刻ですか。\n累計遅刻日数分、反省文を――』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "『……先生、\nアンタには“アレ”が聴こえなかったのか？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "担任の教師",
+   "text": "『はい？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "『何地彼方よりいでし、饑神の咆哮だ……。\n脳を震わせたが最後、魂に残響し、\n血肉への飢えを呼び覚ます……っ！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "『――“石焼きにんじん”だ。\nアンタも食べるか？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "担任の教師",
+   "text": "『結構です！\nというか、食べるのもやめなさ～い！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――なーんてことがあったなぁ。\nなんで怒られてまで焼きにんじんを……。\nお昼休みじゃダメだったんですかね～？",
+   "choice_data_list": [
+    "（朝からすごいな……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "遅刻者は『タニノギムレット』で……\n『1限：国語』『2限：スポーツ科学』\n……そうだそうだ、そのドッジボールで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ヒュー――――…………）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "『――Outstanding.　……見事、だな。\n私のballを――避ける、とは』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヤエノムテキ",
+   "text": "『“金剛八重垣流”をおさめし者なれば、\nこれしきのこと。\n……ですが、そろそろ潮時でしょう』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "『OK――次が――finaleだ』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "クリスエス＆ヤエノ",
+   "text": "『――フッ！』\n『――ハッ！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（――ビュン！）\n（――ドゴン！）\n（――ドッカーン！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "『ね、ねえ……。\nこれってドッジボールだよね……？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『……た、たぶん？\nまぁ、わたしたちは端にいとこ』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あれ、ほんとに壮絶な戦いだったなぁ～。\n最後はボール同士がぶつかって割れてたし。",
+   "choice_data_list": [
+    "（……漫画の世界かな？？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "で、あとは『今日の反省点』かぁ……。\n反省、反省……強いていうならアレかなぁ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "『――だから、屋台を作るのはどうかなって！\nみんなはどう思う？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『う～ん、カフェテリアのメニューを\n増やすのに屋台はいらないんじゃ～……？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "『理想郷の創造か……ククッ、面白い！\nならば、屋台の作成は俺に任せろ。\n壊した柵で再利用してやる！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『？？　アルミ缶……サンチュ……？？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "『Permission.\n――理事長の、許可が――必要だ』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『え、もしかして取りに……？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "『Challenge――するのは、いいことだ』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "『そうだね！\n失敗してもきっと素敵な思い出になるもの♪』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "『じゃあ、クリスには一緒に計画書を、\nギムレットには屋台づくりを頼もうかな？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "『ミラ子さんにはメニューの相談に\n乗ってもらいたいから、また今度お話しよう？\n――それじゃあ、また♪』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『あ、うん……また……？？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "反省点、『友人を止められませんでした』\nで、『今日のひとこと』が――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『グラウンドの端に、ド根性で\n咲いている花を見つけて癒されました』っと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん、これでオッケ～。\nあ～疲れたぁ～。",
+   "choice_data_list": [
+    "……って、それだけ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "聞いているだけでも、いろいろと濃い\n1日だったような気がするが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいや、このくらいのこと\nこの学園だったらいつものことですってー。",
+   "choice_data_list": [
+    "遅刻とかドッジボールとかお昼とか！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "周りがなんかすごいってだけで\nわたしは基本、平和～な1日でしたねー。",
+   "choice_data_list": [
+    "体力、よくもったな……",
+    "体力、よくもったね……",
+    "精神力が鍛えられそうだな",
+    "精神力が鍛えられそうだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "周りがなんかすごいってだけで\nわたしは基本、平和～な1日でしたねー。",
+   "choice_data_list": [
+    "体力、よくもったな……",
+    "体力、よくもったね……",
+    "精神力が鍛えられそうだな",
+    "精神力が鍛えられそうだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まぁ、たしかに？\n今日は割と巻き込まれたんで\n疲れてるっちゃ疲れてるかも？",
+   "choice_data_list": [
+    "……ココアでもいれようか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "！　え、いいんですか～！？\nちょうど甘いもの飲みたかったんです～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうなんですかね？\nただ外から見ているだけですけど～。",
+   "choice_data_list": [
+    "疲れたらここ来ていいからな",
+    "疲れたらここ来ていいからね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、ほんとですか～？\nそんなこと言うと入り浸りますけど～ふふ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

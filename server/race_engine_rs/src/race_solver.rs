@@ -1,18 +1,3 @@
-//! Port of race_solver.py -- the core per-tick physics/skill-activation
-//! loop. Uses the same velocity-Verlet-style integration, the same three
-//! compensated-sum (Kahan-Babuska-Neumaier) accumulators for skill
-//! modifiers, and precomputes `base_target_speed`/`base_accel` arrays
-//! exactly once at construction time (a subtlety worth flagging: green/
-//! stat-boost skills that fire mid-race mutate `self.horse` but do NOT
-//! retroactively change these precomputed arrays, matching the original
-//! engine's behavior bit-for-bit).
-//!
-//! `field: Option<&RaceField>` is threaded as an explicit parameter through
-//! every method that needs multi-horse awareness (matching Python's
-//! `self.field`, which the field-coordination layer -- not part of the
-//! original engine -- sets once the whole roster is built) rather than
-//! stored on the struct, so this file needs no self-referential pointer or
-//! unsafe code; see race_field.rs's module doc for why.
 
 use std::cell::Cell;
 use std::collections::HashSet;
@@ -26,10 +11,7 @@ use crate::race_field::{RaceField, HORSE_LANE};
 use crate::random_gen::Rule30CARng;
 use crate::region::Region;
 
-// ---------------------------------------------------------------------------
-// Speed / acceleration tables (Object.freeze([...]) in RaceSolver.ts)
 
-// index 0 unused (strategies are 1-indexed)
 const SPEED_STRATEGY_PHASE_COEFFICIENT: [[f64; 3]; 6] = [
     [0.0, 0.0, 0.0],
     [1.0, 0.98, 0.962],
@@ -102,8 +84,6 @@ fn compete_stamina_strategy_coef(s: Strategy) -> f64 {
         _ => 1.0,
     }
 }
-/// Secure Lead: the lead a horse wants over a rival whose strategy should be
-/// further back, by (own strategy, rival strategy) -- the doc's full matrix.
 fn secure_lead_coef(own: Strategy, rival: Strategy) -> Option<f64> {
     use Strategy::*;
     match (own, rival) {
@@ -136,8 +116,6 @@ fn secure_lead_stamina_strategy_coef(s: Strategy) -> f64 {
     }
 }
 
-/// Front-to-back order of the strategies, for "a strategy that should be
-/// behind" (Pace Up Ex, Secure Lead).
 fn forwardness(s: Strategy) -> i32 {
     match s {
         Strategy::Oonige => 0,
@@ -148,7 +126,6 @@ fn forwardness(s: Strategy) -> i32 {
     }
 }
 
-/// Force-in (early race, drifting toward the rail) per-strategy bonus.
 fn force_in_strategy(s: Strategy) -> f64 {
     match s {
         Strategy::Nige | Strategy::Oonige => 0.02,
@@ -159,8 +136,6 @@ fn force_in_strategy(s: Strategy) -> f64 {
 
 const VISIBLE_DISTANCE: f64 = 20.0;
 
-/// Shared course-length coefficient table (doc: identical brackets used by
-/// both Compete Before Spurt and Secure Lead's stamina-cost formulas).
 fn competition_distance_coefficient(distance: f64) -> f64 {
     if distance < 1801.0 {
         0.3
@@ -177,8 +152,6 @@ fn competition_distance_coefficient(distance: f64) -> f64 {
     }
 }
 
-// Index = strategy. Nige/Oonige never read these (front runners keep
-// position by other rules).
 const POSITION_KEEP_BASE_MIN_THRESHOLD: [f64; 6] = [0.0, 0.0, 3.0, 6.5, 7.5, 0.0];
 const POSITION_KEEP_BASE_MAX_THRESHOLD: [f64; 6] = [0.0, 0.0, 5.0, 7.0, 8.0, 0.0];
 
@@ -193,9 +166,6 @@ fn position_keep_max_threshold(strategy: Strategy, distance: f64) -> f64 {
     POSITION_KEEP_BASE_MAX_THRESHOLD[strategy as usize] * position_keep_course_factor(distance)
 }
 
-/// HorseTemptationCalculator.TemptationMode, from the client's own IL2CPP
-/// dump. Sent per frame on the wire -- it is how the client knows a horse is
-/// rushed.
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub enum TemptationMode {
     Null = 0,
@@ -205,12 +175,10 @@ pub enum TemptationMode {
     Boost = 4,
 }
 
-/// SimulateEventType, from the client's own IL2CPP dump.
 pub const EVENT_COMPETE_TOP: i32 = 4;
 pub const EVENT_COMPETE_FIGHT: i32 = 5;
 pub const EVENT_RELEASE_CONSERVE_POWER: i32 = 6;
 
-// ---------------------------------------------------------------------------
 
 pub type Timer = Rc<Cell<f64>>;
 
@@ -218,10 +186,6 @@ fn new_timer_value(t: f64) -> Timer {
     Rc::new(Cell::new(t))
 }
 
-/// Kahan-Babuska-Neumaier sum: for any sequence, adding a value in any order
-/// interleaved with subtracting it in any other order results in
-/// acc+err == 0.0 (needed since skills add/remove modifiers at arbitrary
-/// times over a long race).
 #[derive(Clone, Copy)]
 pub struct CompensatedAccumulator {
     pub acc: f64,
@@ -282,14 +246,11 @@ impl SkillType {
     fn is_stat(self) -> bool {
         matches!(self, SkillType::SpeedUp | SkillType::StaminaUp | SkillType::PowerUp | SkillType::GutsUp | SkillType::WisdomUp | SkillType::AllStatusUp)
     }
-    /// Effects whose value needs an actual duration (everything else is
-    /// instant or permanent), for the skill event's wire duration.
     fn is_timed(self) -> bool {
         matches!(self, SkillType::CurrentSpeed | SkillType::CurrentSpeedWithNaturalDeceleration | SkillType::TargetSpeed | SkillType::Accel | SkillType::LaneMoveSpeedUp | SkillType::VisibleDistance | SkillType::TargetLane)
     }
 }
 
-/// Skill effect target types (doc: Skill Target).
 pub mod skill_target {
     pub const SELF: i32 = 1;
     pub const ALL: i32 = 2;
@@ -322,8 +283,6 @@ pub struct SkillEffect {
     pub target: i32,
     pub target_value: i32,
     pub time_usage: i32,
-    /// only the in-race value scalings are still pending here (see
-    /// dynamic_value_multiplier); the builder applied the pre-race ones
     pub value_usage: i32,
     pub additional_activate: i32,
 }
@@ -344,19 +303,12 @@ pub struct PendingSkill {
     pub trigger: Region,
     pub extra_condition: SharedCond,
     pub effects: Vec<SkillEffect>,
-    /// Skill Cooldown (doc): after activating, the skill may activate again
-    /// once BaseCooldown*CourseDistance/1000 seconds have passed (0 = once).
-    /// `followups` are the further trigger regions a multi-trigger skill
-    /// (all_corner_random: up to 4) moves on to.
     pub cooldown: f64,
     pub followups: Vec<Region>,
-    /// tagged 601-615 (the passive greens value usage 14 counts)
     pub green: bool,
 }
 
 impl PendingSkill {
-    /// This skill back in the pending list after its cooldown: on the next of
-    /// its triggers still ahead, or its own trigger when it has only one.
     fn rearmed(&self, pos: f64) -> Option<PendingSkill> {
         let mut again = self.clone();
         if !self.followups.is_empty() {
@@ -371,7 +323,6 @@ impl PendingSkill {
     }
 }
 
-/// An Additional Activate effect waiting for its trigger.
 struct Watcher {
     effect: SkillEffect,
     skill_id: String,
@@ -382,16 +333,13 @@ struct Watcher {
     group: u64,
 }
 
-/// First multiplier whose `value < bound`; the last one otherwise.
 fn bucket(value: f64, table: &[(Option<f64>, f64)]) -> f64 {
     crate::race_solver_builder::bucket(value, table)
 }
 
-// In-race value scalings -- see race_solver.py.
 const GREEN_COUNT_MULT: [(Option<f64>, f64); 4] = [(Some(3.0), 0.0), (Some(5.0), 1.0), (Some(6.0), 2.0), (None, 3.0)];
 const SPEED1_MULT: [(Option<f64>, f64); 5] = [(Some(1700.0), 0.0), (Some(1800.0), 1.0), (Some(1900.0), 2.0), (Some(2000.0), 3.0), (None, 4.0)];
 const SPEED2_MULT: [(Option<f64>, f64); 3] = [(Some(1400.0), 1.0), (Some(1600.0), 2.0), (None, 3.0)];
-// APPROXIMATION -- Firelight's thresholds are undocumented.
 const CORNER_LATE_ORDER_UP_MULT: [(Option<f64>, f64); 5] = [(Some(1.0), 1.0), (Some(2.0), 1.1), (Some(3.0), 1.2), (Some(4.0), 1.3), (None, 1.4)];
 const BLOCKED_SIDE_MULT: [(Option<f64>, f64); 4] = [(Some(2.0), 1.0), (Some(4.0), 2.0), (Some(6.0), 3.0), (None, 4.0)];
 
@@ -411,8 +359,6 @@ struct ActiveSkill {
     natural_deceleration: bool,
 }
 
-/// One skill activation, for the wire scenario (race_solver.py's
-/// activation_log tuple).
 pub struct Activation {
     pub t: f64,
     pub skill_id: String,
@@ -436,7 +382,6 @@ enum PosKeepMode {
     Overtake,
 }
 
-/// What the lane logic needs to know about another horse.
 #[derive(Clone, Copy)]
 struct OtherView {
     idx: usize,
@@ -451,30 +396,14 @@ pub struct RaceSolver {
     pub pacer: Option<Box<RaceSolver>>,
     pub rng: Rule30CARng,
     pub gate_index: i32,
-    /// Set once the whole roster's `RaceField` is built. `None` during the
-    /// very first ("gate skill") activation round inside `new()`, since no
-    /// other horse exists yet at that point.
     pub field_index: Option<usize>,
     pub finished: bool,
 
     pub pending_skills: Vec<PendingSkill>,
     pub pending_removal: HashSet<String>,
-    /// Skills sorted by trigger position, so the per-tick scan only looks at
-    /// the ones the horse has actually reached instead of re-testing every
-    /// unfired skill on all ~1800 frames. Only valid when `pending_removal`
-    /// can never be populated -- see `armed_scan`'s construction-time check.
     armed_scan: bool,
-    /// Parallel to `pending_skills`: `pending_seq[j]` is the original
-    /// insertion-order sequence number of `pending_skills[j]`. Stays sorted
-    /// ascending as items are removed (both shrink together), which is what
-    /// lets a `seq` be mapped back to its current index via binary search.
     pending_seq: Vec<usize>,
-    /// Sequence numbers of currently-armed (trigger.start already reached)
-    /// skills, kept sorted ascending; scanned in descending order to match
-    /// the full scan's iteration order.
     armed: Vec<usize>,
-    /// (trigger_start, seq) for not-yet-armed skills, sorted descending by
-    /// trigger_start so `.pop()` yields the nearest one.
     pending_queue: Vec<(f64, usize)>,
 
     pub used_skills: HashSet<String>,
@@ -484,30 +413,21 @@ pub struct RaceSolver {
     pub timers: Vec<Timer>,
     pub accumulatetime: Timer,
 
-    /// What happened, for the wire scenario: every skill activation
-    /// (including the gate-time passives), every race event, every rushed
-    /// span.
     pub activation_log: Vec<Activation>,
     pub event_log: Vec<(f64, i32)>,
     pub kakari_log: Vec<(f64, f64)>,
     pub kakari_started_at: f64,
 
-    /// (ready_time, skill) waiting out a cooldown
     cooling: Vec<(f64, PendingSkill)>,
     next_seq: usize,
     watchers: Vec<Watcher>,
-    /// IncrementOrderUp: (timers of one activation, extensions left)
     order_up_groups: Vec<(Vec<Timer>, i32)>,
     activation_group: u64,
     green_activations: i32,
     corner_late_order_up: i32,
-    /// longest continuous side-block in the mid race
     mid_side_block: f64,
     mid_side_block_max: f64,
-    /// positive ability types of every skill she activated this tick
     pub advantage_types: Vec<i32>,
-    /// effects aimed at others that fired before the field existed:
-    /// (effect, duration, skill_id, activation_log index)
     pub deferred_external: Vec<(SkillEffect, f64, String, usize)>,
     pub chara_id: i32,
     pub is_viewer: bool,
@@ -526,15 +446,9 @@ pub struct RaceSolver {
     active_target_speed_skills: Vec<ActiveSkill>,
     active_current_speed_skills: Vec<ActiveSkill>,
     active_accel_skills: Vec<ActiveSkill>,
-    /// Lane Move Speed Up (ability type 28): adds its value to the horse's
-    /// lane-change speed while active, and -- while active AND the horse
-    /// moved lane on the PREVIOUS frame -- MoveLaneModifier =
-    /// sqrt(0.0002*Power) to target speed (see update_target_speed).
     active_lane_speed_skills: Vec<ActiveSkill>,
     pub activate_count: [i32; 3],
     pub activate_count_heal: i32,
-    // Activations past the halfway mark of the course -- the DISTANCE half,
-    // not a phase; see activation_conditions' activate_count_later_half.
     pub activate_count_later_half: i32,
     pub activate_count_last_frame: i32,
 
@@ -542,18 +456,13 @@ pub struct RaceSolver {
     on_skill_deactivate: SkillHook,
 
     section_length: f64,
-    // -- position keep (doc: Position Keeping) --
     pub is_pace_down: bool,
     pos_keep_end: f64,
     pos_keep_speed_coef: f64,
     pos_keep_mode: Option<PosKeepMode>,
     pos_keep_effect_exit_distance: f64,
     pos_keep_effect_start: f64,
-    /// Checked every 2 seconds; after leaving a mode a 1s cooldown comes
-    /// first -- modeled as the timer restarting from -1.
     pos_keep_timer: Timer,
-    /// A mode lasts at most one section (three for Oonige), the section
-    /// length rounded down BEFORE multiplying.
     pos_keep_continue_distance: f64,
 
     modifiers_target_speed: CompensatedAccumulator,
@@ -573,7 +482,6 @@ pub struct RaceSolver {
     pub is_last_spurt: bool,
     pub last_spurt_start_pos: f64,
 
-    // -- lanes (doc: Lane) --
     pub lane: f64,
     lane_target: f64,
     lane_change_speed: f64,
@@ -587,9 +495,6 @@ pub struct RaceSolver {
     pub behind_near_lane_timer: Cell<f64>,
     pub moved_lane_this_tick: bool,
 
-    // -- competition mechanics (doc: Spot Struggle, Dueling, Compete Before
-    // Spurt, Secure Lead, Stamina Keep). Spot struggle is started by the
-    // FIELD -- see RaceField::update_compete_top.
     pub compete_top_active: bool,
     compete_top_timer: Timer,
     compete_top_modifier: f64,
@@ -667,7 +572,6 @@ impl RaceSolver {
         let pending_seq: Vec<usize> = (0..skills.len()).collect();
         let next_seq = skills.len();
         let mut pending_queue: Vec<(f64, usize)> = skills.iter().enumerate().map(|(seq, sk)| (sk.trigger.start, seq)).collect();
-        // descending: pop() yields the nearest
         pending_queue.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
 
         let gorosi_rng = Rule30CARng::seeded(rng.int32() as u64);
@@ -699,7 +603,7 @@ impl RaceSolver {
             pace_effect_rng,
 
             timers: Vec::new(),
-            accumulatetime: new_timer_value(0.0), // placeholder, replaced below
+            accumulatetime: new_timer_value(0.0),
 
             activation_log: Vec::new(),
             event_log: Vec::new(),
@@ -843,7 +747,6 @@ impl RaceSolver {
             order_band_out_700: Cell::new(None),
         };
 
-        // Every timer must be registered so step() advances it.
         solver.next_seq = next_seq;
         solver.accumulatetime = solver.new_timer(0.0);
         solver.pos_keep_timer = solver.new_timer(0.0);
@@ -854,45 +757,28 @@ impl RaceSolver {
         solver.secure_lead_check = solver.new_timer(0.0);
         solver.stamina_keep_check = solver.new_timer(0.0);
 
-        // bit of a hack, see RaceSolver.ts's comment on gateRoll: n%k is
-        // uniformly distributed for a random n only when n_max === k-1 (mod
-        // k) for every k; the smallest such n_max for k in [1,18] is
-        // lcm(1..18)-1, so draw up to lcm(1..18).
         solver.gate_roll = solver.rng_uniform(12252240.0) as i64;
         solver.random_lot = solver.rng_uniform(100.0) as i64;
 
-        // must come before the first round of skill activations so concen
-        // etc can modify it
         solver.start_delay = 0.1 * solver.rng.random();
         if let Some(p) = solver.pacer.as_mut() {
             p.start_delay = 0.0;
         }
 
-        // Initial lane: HorseIndex * HorseLane + Adjustor, the adjustor being
-        // the gap between the two physical gate blocks.
         solver.lane = (solver.gate_index as f64 + solver.gate_adjustor()) * HORSE_LANE;
         solver.lane_target = solver.lane;
 
-        // gate skills (before minSpeed: green skills can modify guts). The
-        // rng-consumption order from here on is race_solver.py's __init__.
         solver.process_skill_activations(None);
         solver.min_speed = 0.85 * base_speed(solver.course) + (200.0 * solver.horse.guts).sqrt() * 0.001;
         solver.start_dash = true;
-        solver.modifiers_accel.add(24.0); // start dash accel
+        solver.modifiers_accel.add(24.0);
 
-        // after skill activations, since greens can affect downhill check if
-        // starting on a hill
         solver.init_hills();
 
-        // also must come after the first round of skill activations
         solver.base_target_speed = [base_target_speed(&solver.horse, solver.course, 0), base_target_speed(&solver.horse, solver.course, 1), base_target_speed(&solver.horse, solver.course, 2)];
         solver.last_spurt_speed = last_spurt_speed(&solver.horse, solver.course);
         solver.last_spurt_transition = -1.0;
 
-        // Rushed (doc: Rushed, Kakari): she rushes on ENTERING a random
-        // section 2..9 (1..8 section lengths). The chance is a whole
-        // percentage, rounded UP. Roll for section first, then check, so rng
-        // always advances twice regardless of outcome.
         solver.kakari_start = (1.0 + solver.rng_uniform(8.0)) * solver.section_length;
         let kakari_pct = ((6.5 / (0.1 * solver.horse.wisdom + 1.0).log10()).powf(2.0) - 1e-9).ceil();
         if solver.rng.random() * 100.0 >= kakari_pct + solver.modifiers_kakari_chance * 100.0 {
@@ -913,10 +799,8 @@ impl RaceSolver {
             let factor = (max_v - 0.65 + solver.rng.random() * 0.65) / 100.0;
             solver.section_modifier.push(base_speed(solver.course) * factor);
         }
-        solver.section_modifier.push(0.0); // tick after race is done / one uma runs off the end
+        solver.section_modifier.push(0.0);
 
-        // Drawn AFTER the original engine's own draws, so the rolls above
-        // are unchanged.
         solver.temptation_roll = solver.rng.random();
         solver.force_in_random = solver.rng.random() * 0.1;
         solver.pos_keep_rng = Rule30CARng::seeded(solver.rng.int32() as u64);
@@ -936,8 +820,6 @@ impl RaceSolver {
         self.rng.uniform(upper) as f64
     }
 
-    // Calling `self.on_skill_activate(self, ...)` directly would borrow the
-    // hook mutably while also passing `self` -- swap it out for the call.
     fn call_activate_hook(&mut self, skill_id: &str, perspective: Perspective) {
         let mut hook = std::mem::replace(&mut self.on_skill_activate, noop_hook());
         hook(self, skill_id, perspective);
@@ -950,7 +832,6 @@ impl RaceSolver {
         self.on_skill_deactivate = hook;
     }
 
-    // -- setup helpers --------------------------------------------------
 
     fn new_timer(&mut self, t: f64) -> Timer {
         let tm = new_timer_value(t);
@@ -958,15 +839,12 @@ impl RaceSolver {
         tm
     }
 
-    /// Stop ticking a finished skill's duration timer (nothing reads it again).
     fn release_timer(&mut self, tm: &Timer) {
         if let Some(pos) = self.timers.iter().position(|t| Rc::ptr_eq(t, tm)) {
             self.timers.remove(pos);
         }
     }
 
-    /// Recompute everything derived from her stats at construction, for a
-    /// stat boost that reaches her from another runner's gate passive.
     pub fn refresh_derived_stats(&mut self) {
         self.min_speed = 0.85 * base_speed(self.course) + (200.0 * self.horse.guts).sqrt() * 0.001;
         self.base_target_speed = [base_target_speed(&self.horse, self.course, 0), base_target_speed(&self.horse, self.course, 1), base_target_speed(&self.horse, self.course, 2)];
@@ -980,22 +858,18 @@ impl RaceSolver {
     fn gate_adjustor(&self) -> f64 {
         let gate = self.gate_index + 1;
         match self.course.race_track_id {
-            10101 => 0.0, // Ooi: a single gate block
-            10201 => if gate >= 14 { 1.86 } else { 0.0 }, // Longchamp
+            10101 => 0.0,
+            10201 => if gate >= 14 { 1.86 } else { 0.0 },
             _ => if gate >= 10 { 0.6 } else { 0.0 },
         }
     }
 
     fn init_hills(&mut self) {
-        // slopes must be sorted by start for the sequential-consumption
-        // logic below
         self.n_hills = self.course.slopes.len();
         self.hill_start = self.course.slopes.iter().map(|s| s.start).rev().collect();
         self.hill_end = self.course.slopes.iter().map(|s| s.start + s.length).rev().collect();
         self.hill_idx = -1;
 
-        // separate rng per hill so a downhill proc on one hill doesn't
-        // affect how many times the rng is rolled on a later hill
         let mut hill_rng = Vec::with_capacity(self.n_hills);
         for _ in 0..self.n_hills {
             let hi = self.rng.int32() as u64;
@@ -1017,13 +891,12 @@ impl RaceSolver {
         }
     }
 
-    // -- per-tick ---------------------------------------------------------
 
     fn get_max_speed(&self) -> f64 {
         if self.start_dash {
             self.target_speed.min(0.85 * base_speed(self.course))
         } else if self.current_speed + self.modifiers_one_frame_accel > self.target_speed {
-            9999.0 // allow decelerating if targetSpeed drops
+            9999.0
         } else {
             self.target_speed
         }
@@ -1151,12 +1024,8 @@ impl RaceSolver {
         self.blocked_all_timer.set(if all_blocked { self.blocked_all_timer.get() + dt } else { 0.0 });
     }
 
-    // -- lanes (doc: Target Lane / Overtake Targets / Normal Mode / Overtake
-    // Mode / Extra Move Lane) ---------------------------------------------
 
     fn move_lane_point(&self) -> f64 {
-        // "In races without this parameter, the entry point of the initial
-        // corner is used" -- none of our courses carry it.
         self.course.corners.first().map_or(self.course.distance, |c| c.start)
     }
 
@@ -1369,8 +1238,6 @@ impl RaceSolver {
         best
     }
 
-    /// Doc's Lane Change Speed (target/current/actual speed) toward the
-    /// target lane from update_lane_target.
     fn update_lane(&mut self, dt: f64, field: Option<&RaceField>) {
         let field = match field {
             Some(f) => f,
@@ -1388,7 +1255,6 @@ impl RaceSolver {
         let first_move_modifier = if before_mlp { 1.0 + self.lane / self.course.max_lane.max(1e-9) * 0.05 } else { 1.0 };
         let order_modifier = if self.phase >= 2 { 1.0 + field.order_of(i) as f64 * 0.01 } else { 1.0 };
         let target_lane_change_speed = 0.02 * (0.3 + 0.001 * self.horse.power) * first_move_modifier * order_modifier;
-        // current speed approaches its target at a constant 0.02*1.5
         if self.lane_change_speed < target_lane_change_speed {
             self.lane_change_speed = target_lane_change_speed.min(self.lane_change_speed + 0.03 * dt);
         } else {
@@ -1397,12 +1263,10 @@ impl RaceSolver {
         let moving_in = self.lane_target < self.lane;
         let mut actual_speed = (self.lane_change_speed + self.lane_speed_skill_modifier).min(0.6).max(0.0);
         if moving_in {
-            actual_speed *= 1.0 + self.lane; // moving in is faster the further out she is
+            actual_speed *= 1.0 + self.lane;
         }
         let (inner_blocked, outer_blocked) = field.side_room(i, self.pos, self.lane);
         if if moving_in { inner_blocked } else { outer_blocked } {
-            // blocked on that side: no lateral movement, but lane-change
-            // speed keeps building (doc)
             self.moved_lane_this_tick = false;
             return;
         }
@@ -1438,11 +1302,7 @@ impl RaceSolver {
         self.behind_near_lane_timer.set(if near_behind { self.behind_near_lane_timer.get() + dt } else { 0.0 });
     }
 
-    // -- rushed ---------------------------------------------------------------
 
-    /// Doc: while rushed, Front Runners go to speed-up mode (Boost), Pace
-    /// Chasers run as Front Runners, Late Surgers 75% Front Runner / 25%
-    /// Pace Chaser, End Closers 70/20/10 Front Runner/Pace Chaser/Late Surger.
     fn roll_temptation_mode(&self) -> TemptationMode {
         let r = self.temptation_roll;
         match self.horse.strategy {
@@ -1468,8 +1328,6 @@ impl RaceSolver {
             self.temptation_mode = self.roll_temptation_mode();
             self.kakari_timer.set(-self.kakari_duration);
             self.kakari_started_at = self.accumulatetime.get();
-            // A rushed horse drops whatever position-keep mode it was in and
-            // re-decides as its temptation strategy on the next check.
             self.exit_position_keep(false);
             self.pos_keep_timer.set(2.0);
             self.call_activate_hook("kakari", Perspective::Self_);
@@ -1481,11 +1339,7 @@ impl RaceSolver {
         }
     }
 
-    // -- position keep (doc: Position Keeping) -----------------------------
 
-    /// The strategy position keep plays as: a rushed horse runs as its
-    /// temptation strategy (this does NOT change the strategy used for its
-    /// own target speed / accel coefficients).
     pub fn ai_strategy(&self) -> Strategy {
         if self.is_kakari {
             match self.temptation_mode {
@@ -1500,7 +1354,7 @@ impl RaceSolver {
 
     fn pos_keep_wit_check(&mut self, coef: f64) -> bool {
         if self.is_kakari {
-            return true; // rushed: every position-keep wisdom roll succeeds
+            return true;
         }
         let pct = coef * (self.horse.wisdom.max(1.0) * 0.1).log10();
         self.pos_keep_rng.random() * 100.0 < pct
@@ -1532,8 +1386,6 @@ impl RaceSolver {
         }
     }
 
-    /// Metres ahead of the next horse of the same (AI) strategy, `None` if
-    /// she is not the frontmost of it (+inf if she is alone in it).
     fn lead_in_group(&self, field: &RaceField, strategy: Strategy) -> Option<f64> {
         let i = self.field_index.unwrap();
         let mut best_other: Option<f64> = None;
@@ -1679,8 +1531,6 @@ impl RaceSolver {
         }
         if self.pos >= self.last_spurt_transition {
             self.is_last_spurt = true;
-            // what the result record reports: where she actually went into
-            // the spurt (~phase-2 start for a full spurt), -1 if she never did
             self.last_spurt_start_pos = self.pos;
         }
     }
@@ -1697,8 +1547,6 @@ impl RaceSolver {
         }
         self.target_speed += self.modifiers_target_speed.acc + self.modifiers_target_speed.err;
 
-        // Force-in: in the early race, well off the rail with the inside
-        // clear, she pushes in a little faster (random part rolled pre-race).
         if self.phase == 0 && self.lane > 0.12 {
             if let Some(f) = field {
                 let (inner_blocked, _) = f.side_room(self.field_index.unwrap(), self.pos, self.lane);
@@ -1715,14 +1563,10 @@ impl RaceSolver {
             self.target_speed = self.target_speed.max(self.min_speed);
         }
 
-        // Doc: MoveLaneModifier -- a lane-move-speed skill active AND lane
-        // movement on the PREVIOUS frame (update_lane runs after this, so
-        // moved_lane_this_tick still holds last tick's value here).
         if !self.active_lane_speed_skills.is_empty() && self.moved_lane_this_tick {
             self.target_speed += (0.0002 * self.horse.power).sqrt();
         }
 
-        // Target speed cannot exceed 30 m/s (Game:Mechanics, Target Speed).
         self.target_speed = self.target_speed.min(30.0);
     }
 
@@ -1776,14 +1620,12 @@ impl RaceSolver {
     }
 
     fn update_phase(&mut self) {
-        // Phase is deliberately capped at 2 for speed-modifier purposes.
         if self.pos >= self.next_phase_transition && self.phase < 2 {
             self.phase += 1;
             self.next_phase_transition = crate::course_data::phase_start(self.course.distance, self.phase + 1);
         }
     }
 
-    // -- skill activation -------------------------------------------------
 
     fn process_skill_activations(&mut self, field: Option<&RaceField>) {
         for i in (0..self.active_target_speed_skills.len()).rev() {
@@ -1830,7 +1672,6 @@ impl RaceSolver {
         }
         self.order_up_groups.retain(|g| !g.0.iter().all(|tm| tm.get() >= 0.0));
 
-        // skills whose cooldown has run out go back into the pending list
         if !self.cooling.is_empty() {
             let now = self.accumulatetime.get();
             let cooling = std::mem::take(&mut self.cooling);
@@ -1846,8 +1687,6 @@ impl RaceSolver {
         }
 
         if self.armed_scan {
-            // Evaluate unarmed conditions too: dynamic preconditions latch
-            // before the sampled activation position is reached.
             for sk in &self.pending_skills {
                 if self.pos < sk.trigger.start { (sk.extra_condition)(self, field); }
             }
@@ -1857,9 +1696,6 @@ impl RaceSolver {
         }
     }
 
-    /// Append a skill to the pending list (Python's `pending_skills.append`),
-    /// keeping the armed-scan bookkeeping in step: the newest sequence number,
-    /// so it is visited first, as the end of the Python list is.
     fn push_pending(&mut self, sk: PendingSkill) {
         let seq = self.next_seq;
         self.next_seq += 1;
@@ -1870,9 +1706,6 @@ impl RaceSolver {
         self.pending_queue.insert(at, (start, seq));
     }
 
-    /// Position-ordered equivalent of the full scan below. Arms skills as
-    /// `pos` reaches their trigger.start, then tests only the armed ones,
-    /// visiting them in the same relative order the full scan does.
     fn process_pending_armed(&mut self, pos: f64, field: Option<&RaceField>) {
         while let Some(&(start, _seq)) = self.pending_queue.last() {
             if start > pos {
@@ -1915,9 +1748,6 @@ impl RaceSolver {
         self.activate_count_last_frame = activate_count_this_frame;
     }
 
-    /// Plain full-list scan, used whenever any pending skill carries an
-    /// ACTIVATE_RANDOM_GOLD effect (so `pending_removal` can become
-    /// non-empty).
     fn process_pending_full(&mut self, pos: f64, field: Option<&RaceField>) {
         let mut activate_count_this_frame = 0;
         let mut i = self.pending_skills.len();
@@ -1955,13 +1785,10 @@ impl RaceSolver {
     fn scaled_duration(&self, ef: &SkillEffect, rarity: SkillRarity, field: Option<&RaceField>) -> f64 {
         let mut base = ef.base_duration;
         if ef.time_usage == 2 {
-            // MultiplyDistanceDiffTop
             if let Some(f) = field {
                 base *= (0.8 + f.distance_to_leader(self.field_index.unwrap(), self.pos) / 62.5).min(1.6);
             }
         } else if ef.time_usage == 3 || ef.time_usage == 7 {
-            // MultiplyRemainHp: type 1 (3) Mejiro Bright / McQueen, type 2 (7)
-            // Matikanetannhauser
             let hp = self.hp.hp_value().unwrap_or(0.0);
             let steps: &[(f64, f64)] = if ef.time_usage == 3 {
                 &[(3500.0, 4.0), (3200.0, 3.5), (3000.0, 3.0), (2800.0, 2.5), (2600.0, 2.2), (2400.0, 2.0), (2000.0, 1.5)]
@@ -1975,7 +1802,6 @@ impl RaceSolver {
                 }
             }
         } else if ef.time_usage == 5 {
-            // MultiplyBlockedSideMaxContinueTimePhaseMiddleRun1
             base *= bucket(self.mid_side_block_max, &BLOCKED_SIDE_MULT);
         }
         base * (self.course.distance / 1000.0) * if rarity == SkillRarity::Evolution { self.modifiers_special_skill_duration_scaling } else { 1.0 }
@@ -1996,10 +1822,6 @@ impl RaceSolver {
         self.course.corners.iter().any(|c| c.start <= self.pos && self.pos < c.start + c.length)
     }
 
-    /// Every runner passed this tick: Additional Activate OrderUp effects
-    /// fire (each up to 3 times), IncrementOrderUp skills last another second
-    /// (x distance/1000, up to 3 times), and Firelight's late-race corner
-    /// count goes up.
     fn update_overtake_effects(&mut self, field: Option<&RaceField>) {
         let field = match field {
             Some(f) => f,
@@ -2040,15 +1862,11 @@ impl RaceSolver {
 
     #[allow(clippy::too_many_arguments)]
     fn activate_skill(&mut self, skill_id: &str, perspective: Perspective, rarity: SkillRarity, effects: &[SkillEffect], green: bool, field: Option<&RaceField>) {
-        // ExtendEvolvedDuration must apply after other effects on the same
-        // skill, so it doesn't extend its own siblings' durations.
         let mut effects = effects.to_vec();
         effects.sort_by_key(|ef| (ef.effect_type == SkillType::ExtendEvolvedDuration) as u8);
         let special = skill_id == "asitame" || skill_id == "staminasyoubu";
         self.activation_group += 1;
         let group = self.activation_group;
-        // another skill activating: Additional Activate type 2/3 watchers of
-        // OTHER skills still running fire now
         if !special {
             let mut fire: Vec<(SkillEffect, f64, String, Perspective)> = Vec::new();
             for w in self.watchers.iter_mut() {
@@ -2078,8 +1896,6 @@ impl RaceSolver {
                 timed_duration = Some(timed_duration.unwrap_or(0.0).max(scaled_duration));
             }
             if ef.additional_activate != 0 {
-                // does nothing now; applied for the rest of the skill's
-                // duration each time its trigger happens while it runs
                 let tm = self.new_timer(-scaled_duration);
                 group_timers.push(tm.clone());
                 self.watchers.push(Watcher {
@@ -2094,9 +1910,6 @@ impl RaceSolver {
                 continue;
             }
             if ef.target != skill_target::SELF && !special {
-                // A debuff (or any effect aimed at other horses): the field
-                // picks the targets now and applies it once every horse has
-                // stepped this tick, so it never depends on stepping order.
                 if let Some(f) = field {
                     for t in f.queue_external_effect(self.field_index.unwrap(), self.pos, self.lane, self.chara_id, self.visible_distance(), self.context.get("teamId").and_then(crate::json::Value::as_i64).unwrap_or(0), self.debuff_cancel, &ef, scaled_duration, skill_id) {
                         if !targets.contains(&t) {
@@ -2154,7 +1967,6 @@ impl RaceSolver {
     }
 
     pub fn apply_effect(&mut self, ef: &SkillEffect, scaled_duration: f64, skill_id: &str, perspective: Perspective, field: Option<&RaceField>) -> Option<Timer> {
-        // returns the duration timer the effect started, if any
         match ef.effect_type {
             SkillType::Noop => {}
             SkillType::Oonige => {if self.horse.strategy==Strategy::Nige {self.horse.strategy=Strategy::Oonige; self.pos_keep_continue_distance=self.section_length.floor()*3.0;}}
@@ -2175,7 +1987,6 @@ impl RaceSolver {
             SkillType::PowerUp => self.horse.power = (self.horse.power + ef.modifier).max(1.0),
             SkillType::GutsUp => self.horse.guts = (self.horse.guts + ef.modifier).max(1.0),
             SkillType::WisdomUp => self.horse.wisdom = (self.horse.wisdom + ef.modifier).max(1.0),
-            // Effect type 32 -- see race_solver.py's ALL_STATUS_UP branch.
             SkillType::AllStatusUp => {
                 self.horse.speed = (self.horse.speed + ef.modifier).max(1.0);
                 self.horse.stamina = (self.horse.stamina + ef.modifier).max(1.0);
@@ -2213,14 +2024,11 @@ impl RaceSolver {
             }
             SkillType::Recovery => {
                 self.hp.recover(ef.modifier);
-                // Only a real HEAL counts as one and re-plans the spurt; an
-                // HP drain (Nothing Ventured / Risky Business's gamble, or a
-                // Stamina-Eater-style debuff) does neither.
                 if ef.modifier > 0.0 {
                     if perspective == Perspective::Self_ {
                         self.activate_count_heal += 1;
                     }
-                    self.stamina_keep_active = false; // doc: HP-recovery resets Stamina Keep
+                    self.stamina_keep_active = false;
                     if self.phase >= 2 && !self.is_last_spurt {
                         self.last_spurt_transition = -1.0;
                         self.update_last_spurt_state();
@@ -2248,8 +2056,6 @@ impl RaceSolver {
                 && ef.effect_type != SkillType::AllStatusUp))
             .map(|(i, _)| i)
             .collect();
-        // Python's range(len-1, -1, -1) includes i==0, whose self-swap still
-        // consumes a gorosi_rng roll.
         for i in (0..gold_indices.len()).rev() {
             let j = self.gorosi_rng.uniform((i + 1) as f64) as usize;
             gold_indices.swap(i, j);
@@ -2266,7 +2072,6 @@ impl RaceSolver {
         }
     }
 
-    // -- competition mechanics ------------------------------------------------
 
     fn update_competition_mechanics(&mut self, dt: f64, field: Option<&RaceField>) {
         let field = match field {
@@ -2280,10 +2085,6 @@ impl RaceSolver {
         self.update_dueling(dt, field);
     }
 
-    /// Doc: Stamina Keep -- she wants 1.035-1.04x the HP it takes to finish;
-    /// checked every 2 seconds, noticed with a wisdom-scaled chance. While
-    /// kept, she stays out of Compete Before Spurt / Secure Lead; a heal
-    /// resets it.
     fn update_stamina_keep(&mut self) {
         if self.stamina_keep_active || self.stamina_keep_check.get() < 2.0 || self.is_last_spurt {
             return;
@@ -2303,9 +2104,6 @@ impl RaceSolver {
         }
     }
 
-    /// Called by the field when a spot struggle starts with this horse in
-    /// it. Target speed += (500*Guts)^0.6 * 0.0001 for (700*Guts)^0.5 *
-    /// 0.012 * StrategyProficiency seconds.
     pub fn start_compete_top(&mut self) {
         let guts = self.horse.guts.max(1.0);
         let strat_prof = STRATEGY_PROFICIENCY_MODIFIER_APPROX[self.horse.strategy_aptitude as usize];
@@ -2329,12 +2127,11 @@ impl RaceSolver {
         }
     }
 
-    /// Doc: Compete Before Spurt, sections 11-15, checked every 2 seconds.
     fn update_compete_before_spurt(&mut self, field: &RaceField) {
         if self.compete_spurt_active {
             if self.compete_spurt_timer.get() >= 0.0 {
                 self.compete_spurt_active = false;
-                self.compete_spurt_check.set(-1.0); // 1s cooldown
+                self.compete_spurt_check.set(-1.0);
                 self.modifiers_target_speed.add(-self.compete_spurt_modifier);
             }
             return;
@@ -2376,15 +2173,11 @@ impl RaceSolver {
         }
     }
 
-    /// Doc: Secure Lead, sections 11-15: every 2 seconds, if her lead over a
-    /// horse whose strategy should be further back is less than the doc's
-    /// per-pair coefficient + 0.0003*(CourseDistance+1000) m, 20% chance to
-    /// push for 2 seconds.
     fn update_secure_lead(&mut self, field: &RaceField) {
         if self.secure_lead_active {
             if self.secure_lead_timer.get() >= 0.0 {
                 self.secure_lead_active = false;
-                self.secure_lead_check.set(-1.0); // 1s cooldown
+                self.secure_lead_check.set(-1.0);
                 self.modifiers_target_speed.add(-self.secure_lead_modifier);
             }
             return;
@@ -2437,9 +2230,6 @@ impl RaceSolver {
         }
     }
 
-    /// Doc: Dueling / Compete Fight, final straight only: the same rival
-    /// within 3m and 0.25 course-widths for over 2 seconds, top half of the
-    /// field, speed within 0.6 m/s, HP >= 15%. Ends below 5% HP.
     fn update_dueling(&mut self, dt: f64, field: &RaceField) {
         if self.course.straights.is_empty() {
             return;
@@ -2459,7 +2249,7 @@ impl RaceSolver {
             return;
         }
         let i = self.field_index.unwrap();
-        let mut target: Option<(usize, f64)> = None; // (index, current_speed)
+        let mut target: Option<(usize, f64)> = None;
         for j in 0..field.n {
             if j == i {
                 continue;
@@ -2512,8 +2302,6 @@ impl RaceSolver {
         self.on_skill_deactivate = hook;
     }
 
-    /// Deactivate any skills that haven't finished their durations yet
-    /// (call at the end of a simulation).
     pub fn cleanup(&mut self) {
         let pending: Vec<(String, Perspective)> = self
             .active_target_speed_skills
@@ -2532,8 +2320,6 @@ impl RaceSolver {
     }
 }
 
-/// The doc's vision cone: 20m ahead, widening from 2 horse-lanes at the
-/// horse to 13.5 at 20m.
 pub fn is_visible_from(pos: f64, lane: f64, other_pos: f64, other_lane: f64) -> bool {
     let dist_gap = other_pos - pos;
     if !(0.0..=VISIBLE_DISTANCE).contains(&dist_gap) {

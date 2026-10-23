@@ -1,0 +1,83 @@
+#title New Year's Shrine Visit
+0 The Classic class brought all sorts of things, from the bright challenge of the Tiara path to worries like her body acting up and friction in her family.
+1 Hoping she can make it safely through the Senior class, I came to the year's first shrine visit with Vivlos.
+2 What should I do? What should I wish for?
+2> Why not wish for everything? | Why not wish for everything?
+3 But, but...
+4 It has to be a wish with everything I've got! ...So, what should I do?
+5 I really want it to come true... so I might be a little torn.
+6 Usually Vivlos would wish for everything without hesitation... but after everything that's happened, she seems to be more careful.
+6> Then I'll pray for you too. | Then I'll pray for you too.
+7 Really?
+8 Oh, but... they say if you say your wish out loud, it won't come true, right?
+9 How will I tell you my wish?
+9> That's true...
+10 ...Well, Tore-cchi and I are on the same wavelength anyway. It'll be fine♡
+11 I'm counting on you, Tore-cchi! Think about it reeeally carefully when you pray, okay?
+12 And so, I try to think of a wish for her that won't overlap with hers...
+12> Pray for Vivlos's recovery | Pray for Vivlos's growth | Pray for Vivlos to become a celebrity
+13 Above all, I prayed for Vivlos's body to recover so she could chase the dreams she wants...
+14 Tore-cchi, you had a super desperate look on your face!
+14> You were watching? | You were watching?
+15 Just a peek! I was kinda curious.
+16 Hey, hey, what did you pray for?
+16> ...I'd rather not say.
+17 'Cause it won't come true?
+17> 'Cause it won't come true.
+18 I'm so curious... but I'll hold back!
+19 I don't wanna ruin something you wished for so carefully, Tore-cchi.
+20 I hope it comes true.
+21 That night...
+22 Mmm... mmm...
+23 ...Vivlos...
+24 Huh... Trainer?
+25 For my precious, precious you, I've prepared the finest celebrity hotel.
+26 For my precious, precious you, I've prepared the finest celebrity hotel.
+27 This is my love for you. Please, rest easy.
+28 This is my love for you. Please, rest easy.
+29 Whaaat, geez♡ Love and stuff♡ You're making me blush♡
+30 Tore-cchi, you're seriously the best! Yeah, I'll rest easy!
+31 ...You know, my wish is... to always be with Tore-cchi...
+32 ...Ehe, ehehe... Mmm... ehe...
+33 Zzz...
+34 I prayed for Vivlos's success, so she can win any race from here on.
+34> (Get stronger... Vivlos!)
+35 Yes, so she can overcome whatever trials come her way. I want her to get stronger, stronger, stronger...
+36 Tore-cchi, you were kinda burning up, huh? Like you had flames behind you.
+36> Because I put my heart into it...! | Because I put my heart into it...!
+37 Yeah, it looked like it!
+38 ...I don't know, but I don't think we overlapped!
+39 Also, it's kinda scary, so maybe it's good I didn't ask.
+40 That night...
+41 Mmm... mmm...
+42 ...Vivlos!
+43 Huh... Trainer?
+44 Now, Vivlos! Dribble like a butterfly, shoot like a bee!
+45 Huh?! Why?!
+46 Build your physique! Physique is everything, Vivlos!
+47 Build your physique! Physique is everything, Vivlos!
+48 Get stronger! Now, 100 shots!!
+49 What what what what?! Nooo, Tore-cchi's broken!
+50 ...Nngh... nngh... I can't shoot anymore...
+51 Besides... it should be baseball... Zzz.
+52 Deep down, Vivlos's wish has to be about being a celebrity... It might overlap, but wishing twice might make her even more glamorous.
+52> (May she become her ideal self.)
+53 Tore-cchi, weren't you kinda smirking?
+53> I just thought it was a strange wish, even for me.
+54 Whaaat! What did you wish for?!
+55 I wanna compare answers!
+55> ...Is that okay? | ...Is that okay?
+56 Oh, it's not! I'm curious, but...
+57 If it comes true, tell me someday, okay?
+58 That night...
+59 Mmm... mmm...
+60 ...Lady Vivlos...
+61 Huh? There's a voice but nobody's here... What?!
+62 Lady Vivlos. You wished to become a celebrity.
+63 And your trainer also wished for you to become a celebrity.
+64 Whoa, really?! See, we're on the same wavelength♡
+65 And so, for a limited time, double points... no, I shall make you a celebrity with 500 times the points.
+66 Really?! Like, a super ultra celebrity?!
+67 Oh, but... Tore-cchi might get mad and say, "Don't fall for celebrity deals that sound too good to be true."
+68 And I want a celebrity life with Tore-cchi too! Something they'd be okay with is...
+69 ...Mmm... Actually... about plus 35, please... Zzz.

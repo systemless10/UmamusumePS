@@ -1,0 +1,48 @@
+#title After the Japanese Oaks: Double Tiara♡
+0 Huff...! Huff...!!
+1 (It hurts...! It hurts sooo much～...! But... just a little more...!)
+2 Just a little more—
+3 Just! A little more.........!!
+4 Aaaaaaaaah...!!
+5 (Wooooooah...!)
+6 First place is Vivlos! It's Vivlos! After the Oka Sho, she's won the Japanese Oaks too! She's claimed the second crown!
+7 ...!
+8 I did it...!
+9 Huff... I diiiid iiiit～!!
+10 Amazing, Vivlos...! She really won two crowns...!
+11 This... could she seriously do it? The dream Verxina couldn't achieve...!
+12 The Triple Tiara...!
+13 ...!
+14 Vivlos... I know you can—
+15 Vivloooo!! You've gotta win the Shuka Sho too!!
+16 ...For the sake of the girl who fell just one step short, too! The Triple Tiara... please...!
+17 !
+18 ...—
+19 ...Yeah, I promise.
+20 I've gotta win. No matter what!
+21 —Trainer!
+21> Vivlos! Congrat—
+22 Yeah! Thank you! So, so!
+23 The Shuka Sho! What should I do to win for sure!?
+24 Back from the track, Vivlos barely stopped to accept the praise—her eyes were filled with strong determination.
+25 I know there's no such thing, but... now that I've come this far!
+26 I wanna live up to everyone's expectations. The Triple Tiara... I definitely wanna win it!
+27 Of course I'll work hard at training! There's summer camp, right?
+27> Yeah | Yeah
+28 Summer camp, where Umamusume aim to improve their abilities... There, they grow beyond recognition.
+29 But that's the same for everyone, right? So, one more thing!
+30 I want extra confidence! One more thing, to win...!
+30> Then, should we add a race?
+31 Camp certainly helps you grow, but your race sense gets a little dull. So, to be fully prepared, she'd run a prep race for the Shuka Sho—
+31> Like the Shion Stakes
+32 I see...
+33 Having a race would definitely make me feel better.
+33> Can you run while keeping an eye on your health?
+34 Ahh～! Suddenly you're treating me like a little kid!
+35 I am a kid, but I'm not THAT much of a kid. So it's fine!
+36 Plus, you'll be watching me too, right, Tore-cchi?
+36> Of course
+37 Then it's fine! Let's run the Shion Stakes?
+37{ Shion Stakes
+38 And then the Shuka Sho... I'll win it for sure and become a Triple Tiara Umamusume!
+39 And so, our next goal race was set: the Shion Stakes, after summer camp.

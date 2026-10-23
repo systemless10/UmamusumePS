@@ -1,0 +1,17 @@
+{
+ "title": "WBCにむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "1年の区切り、ついに『WBC』が開催される。\n実力を示してきた<chrname>の、\nクラシック級での締めくくりのレース。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "三女神が見送る中、ここまでの二人三脚の\n結果を見せるべく、大舞台へと上がる……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

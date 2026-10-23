@@ -1,11 +1,13 @@
-"""The in-progress career. Everything that moves the run (turn, races, events,
-park/resume) is career.py's / admin.py's own command, called in-process, so
-the reconcile rules those tools learned the hard way still hold. Plain
-property edits go through career._reconcile afterwards for the same reason."""
 
 from __future__ import annotations
 
+import functools
+import importlib
 import json
+import pkgutil
+import re
+import sqlite3
+from pathlib import Path
 from types import SimpleNamespace
 
 import admin as ADMIN
@@ -54,6 +56,91 @@ def _bonds(ci):
     return out
 
 
+@functools.lru_cache(maxsize=1)
+def _event_stories() -> dict:
+    out = {}
+
+    def walk(v, depth=0):
+        if depth > 3:
+            return
+        if isinstance(v, tuple) and len(v) >= 2 and all(isinstance(x, int) for x in v):
+            story = v[-1]
+            if story >= 10 ** 8:
+                for e in v[:-1]:
+                    if 0 < e < 10 ** 7:
+                        out.setdefault(e, story)
+            return
+        if isinstance(v, (tuple, list)):
+            for x in v:
+                walk(x, depth + 1)
+        elif isinstance(v, dict):
+            for x in v.values():
+                walk(x, depth + 1)
+
+    for m in pkgutil.iter_modules(scenarios.__path__):
+        for sub in ("producers", "__init__", "events"):
+            try:
+                mod = importlib.import_module(f"{scenarios.__name__}.{m.name}" + ("" if sub == "__init__" else f".{sub}"))
+            except Exception:
+                continue
+            for k, v in vars(mod).items():
+                if k.isupper():
+                    walk(v)
+    return out
+
+
+_KINDS = {"hint_reveal": "Hint reveal", "chain": "Support chain event", "random": "Random event"}
+
+
+_JP_MASTER = Path.home() / ".local/share/Steam/steamapps/common/UmamusumePrettyDerby_Jpn/UmamusumePrettyDerby_Jpn_Data/Persistent/master/master.mdb"
+
+
+@functools.lru_cache(maxsize=1)
+def _jp_titles() -> dict:
+    try:
+        conn = sqlite3.connect(_JP_MASTER.as_uri() + "?mode=ro", uri=True)
+        return dict(conn.execute("SELECT [index], text FROM text_data WHERE category=181"))
+    except Exception:
+        return {}
+
+
+def _story_title(story_id) -> str:
+    if not story_id:
+        return ""
+    return text(181, story_id) or _jp_titles().get(int(story_id), "")
+
+
+def _event_label(event_id=None, story_id=None) -> str:
+    story_id = story_id or _event_stories().get(int(event_id or 0))
+    return _story_title(story_id) or (f"Story {story_id}" if story_id else f"Event {event_id}")
+
+
+def _key_label(key: str) -> str:
+    head, *rest = key.split(":")
+    nums = [int(x) for x in re.findall(r"\d+", ":".join(rest))]
+    for n in nums:
+        if n < 1000:
+            continue
+        if n >= 10 ** 8 and _story_title(n):
+            return _story_title(n)
+        if n in _event_stories():
+            return _event_label(n)
+    if head in _KINDS:
+        return _KINDS[head]
+    return head.replace("_", " ").capitalize()
+
+
+def _with_label(e):
+    return {**e, "title": _event_label(e.get("event_id"), e.get("story_id"))} if isinstance(e, dict) else e
+
+
+@op("career.raw")
+def raw(viewer, args):
+    full_state = load(viewer)
+    key = args.get("key") or T.STATE_KEY
+    return full_state.get(key)
+
+
 @op("career.state")
 def state(viewer, args):
     full_state = load(viewer)
@@ -91,16 +178,15 @@ def state(viewer, args):
         "commands": [{"id": c.get("command_id"), "enabled": bool(c.get("is_enable")),
                       "level": c.get("level")} for c in home.get("command_info_array") or []],
         "race_entry_restriction": home.get("race_entry_restriction"),
-        "events": {"active": st.get("active"), "queue": st.get("queue") or [],
-                   "fired": [{"key": k, "turn": CAREER._once_key_turn(k)} for k in st.get("fired") or []]},
+        "events": {"active": _with_label(st.get("active")), "queue": [_with_label(e) for e in st.get("queue") or []],
+                   "fired": [{"key": k, "title": _key_label(k), "turn": CAREER._once_key_turn(k)} for k in st.get("fired") or []]},
+        "state_key": T.STATE_KEY,
         "in_flight": [k for k in CAREER._transient_keys() if k in full_state],
         "bonds": _bonds(ci),
         "end_turn": CAREER.CAREER_END_TURN,
     }
 
 
-# chara_info fields that only move through a command (turn needs the full
-# reconcile + ledger rewind of set-turn).
 _COMMAND_ONLY = {"turn"}
 
 
@@ -128,8 +214,6 @@ def patch(viewer, args):
 
 @op("career.data_patch", label="Career: edit {path}")
 def data_patch(viewer, args):
-    """Set one dotted path in the career's data (career.py `set`), or with
-    full_state in the whole viewer state, then reconcile."""
     v = args.get("value")
     ns = SimpleNamespace(path=str(args.get("path") or ""), value=v if isinstance(v, str) else json.dumps(v),
                          create=bool(args.get("create")), full_state=bool(args.get("full_state")))
@@ -137,7 +221,6 @@ def data_patch(viewer, args):
     return {"ok": True}
 
 
-# career.py / admin.py commands and their argparse defaults.
 _CMDS = {
     "set_turn": (CAREER.cmd_set_turn, dict(value=None, fill_races=False, rank=1, with_rewards=False, keep_races=False,
                                            keep_events=False, reset_fired=False, mark_past=False, playing_state=1)),

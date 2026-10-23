@@ -1,0 +1,437 @@
+{
+ "title": "I'm With You♡",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "『宝塚記念』に向けて、\nヴィブロスは更にトレーニングを積んでいた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ、トレっち、\nどうかな？",
+   "choice_data_list": [
+    "そうだな……",
+    "そうだね……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どきどき。",
+   "choice_data_list": [
+    "負荷を上げようか！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やった～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ベンチプレス、\n重量足してきまーす♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスはメンタル的にも安定し、\n体も成長してきた。体調にはまだまだ\n気をつけなければならないが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "――あら！\nうちの子、いい感じなんですね～。",
+   "choice_data_list": [
+    "！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "こんにちは、トレーナーさん！\nトレーニング中、お邪魔します！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれぇっ！　ママとパパ～！？\nどうしたの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "久しぶりだな、ヴィブロス！\n――差し入れ、持ってきたぞ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス、\nこっちよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんまで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "補食用の、あんパンやおにぎり……\nうちの球団のトレーナーから教わって、\nよさそうなのを持ってきたぞ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "あとうちのスタジアムの、\n名物グルメも！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "私も、貴方の大好きなお料理を持ってきたの。\n食べたら元気が出ると思って！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "トレーナーさん、どれを選ぶかは\nヴィブロスちゃんと貴方の判断に任せるね。",
+   "choice_data_list": [
+    "はい、ありがとうございます"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえねえ、\nちょーうれしい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うれしいんだけど……\n急にどうしたの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "ママたちも何かしたいって思ったの～。\n貴方たちの『ヴィクトリアマイル』を見て――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "2人とも、お互いがお互いを高め合う\nレースを見せてくれたでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "ママもね、一応レースに出てたから……\n2人がどれほどすごいのかわかるよ。\nどれほど頑張ったのかも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "なのにママたちったら、\nお仕事ばっかりで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "――子どもたちがこれほど成長してるのに、\n近くで見守れないなんてもったいない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "『秋華賞』の時みたいに、\n君たちをもっと近くで見ていたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "遅くなってすまない！　だが……\n頑張る君たちの力にならせてくれ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ママ、パパ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "2人とも、これからお仕事の合間を\n縫ってなるべく様子を見に来てくれるって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "私も、この後の目標は特にないし……\n貴方たちのサポートをするわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……それって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "しばらく家族みんなで、\nいっしょにいられるってこと！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ええ、そうよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……～～～～っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちは！？\nここにいないの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あの子は別々がいいって。\nでもね、大丈夫よ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "これ、預かってるもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィルシーナがヴィブロスに渡したのは、\n釣り上げた魚がモチーフになっている、\nかわいらしいチャームだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これって……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえねえ、あのチャームかわいくない？\nおそろしよーよ、シュヴァち♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "しない……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへ。\nそっか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな、\n私のためにありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、絶対にみんなのこと、\n笑顔にするからね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ねぇトレっち、\nお願いがあるんだけど！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "――……ぷはぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "あ、これおいしい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……母さんたち、\n僕の分まで……いいのに。",
+   "choice_data_list": [
+    "シュヴァルグラン"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "あ、ヴィブロスの……。\n……えっと、な、何か……？",
+   "choice_data_list": [
+    "ヴィブロスから差し入れを預かってる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ヴィブロスから……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これ、シュヴァちに渡しておいて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これね、激レアクルーズのチケットなの！\nちょーがんばってとったんだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "1人でも楽しめる雰囲気だから、\nシュヴァちも息抜きできるかなって！",
+   "choice_data_list": [
+    "自分で渡して一緒に行かないのか？",
+    "自分で渡して一緒に行かないの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "多分ね、シュヴァち、\n1人で集中したい感じなんだと思うの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "がんばってるシュヴァちの、\n邪魔したくないし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あんまり大好きしたら、\nイヤなのかもだから……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……普段、ぐいぐい来るくせに。\n変なところで引くんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "いや……僕のせい、か。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……でも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "あ……あのっ。",
+   "choice_data_list": [
+    "ん？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……これ、本当は、\nチャームに添えようと思って……\nでも、やめて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "でも……。\nこれ……やっぱり、渡しておいてください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――これ、シュヴァちから？",
+   "choice_data_list": [
+    "ああ",
+    "うん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ、トレっち！",
+   "choice_data_list": [
+    "あの子はまだコースにいるぞ",
+    "あの子はまだコースにいるよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、ありがとう～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "シュヴァルグランから渡された手紙には、\n『お互い頑張ろう』とたった一言……\nしかし、姉妹を結ぶには十分なようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "title": "お肌の調子が……",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "ああ、だいぶ荒れちゃってるなぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "肌には気を使ってたんだけど……。\nクリームかな？　それともストレス――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はっ！　こういう悩みがストレスに……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あれ、でも……肌が荒れたから悩んでて……？\n悩んでるから荒れた……？　あれ、どっち？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ああ～、わかんない……けど！\n悩んじゃダメ～！　悩むな悩むな～……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "肌荒れに悩まされてしまう\nヒシミラクルなのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

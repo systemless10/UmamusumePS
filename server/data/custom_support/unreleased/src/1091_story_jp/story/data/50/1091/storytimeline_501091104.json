@@ -1,0 +1,438 @@
+{
+ "title": "夏合宿（2年目）にて",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヴィブロスとの『頑張りすぎず、頑張る』\n夏合宿は、いたって順調に進んでいた――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁっ……はぁっ……！\nぜえっ……。",
+   "choice_data_list": [
+    "よし、休憩しよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふぅ……。",
+   "choice_data_list": [
+    "体の調子は？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うーん……ちょっと苦しいけど、\n休んで深呼吸したら大丈夫だと思う！",
+   "choice_data_list": [
+    "じゃあ治まってから再開しよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わかった！\n大丈夫、って思ったら言うね。",
+   "choice_data_list": [
+    "パラソルの下で休んでくれ",
+    "パラソルの下で休んでね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！\n準備、ありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスは自分の言うことをよく聞き、\n少しの異変もすぐに伝えてくれている。\nおかげで今のところ不安要素はない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "頑張ってるわね、ヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……お疲れ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん、シュヴァち！\nあ、それジュース？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "シュヴァち"
+   ]
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ええ。\nオレンジジュースよ。",
+   "choice_data_list": [
+    "せっかくだから、中で休めば？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、そうするー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぷはー！\nおいしい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとう、2人とも！\n特にシュヴァち……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーニング、がんばってるとこだよね？\nわざわざありがと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……姉さんが……。\n……いや、別に。",
+   "choice_data_list": [
+    "（シュヴァルグラン、あまり元気がない？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "今年に入り、GⅡレース『阪神大賞典』で\n見事勝利した彼女だったが、直近のレース\nでは掲示板を外す結果となってしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "GⅡ",
+    "阪神大賞典"
+   ]
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "にしても、\nさっきは驚いたわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさんとの会話。\n貴方、あんなにしっかり話せるのね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "しっかり？\nいつもしっかりしてるよ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "そうね。けれど、雰囲気まで真剣だった。\nそれがなんだか新鮮で。",
+   "choice_data_list": [
+    "新鮮？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "この子、末っ子でしょう？\nだから私たちをよく見ていたんでしょうね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "どんなことでも飲み込みが早くて、\n甘え方もわかっていて、器用で……。\nいつもニコニコしていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレセン学園に入るのだって、\n全く苦労しなかったんです。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トレセン学園"
+   ]
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "だから……もし大変な困難に当たったとき、\nもしかすると折れてしまうかも、\nと心配していたんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "けれど、全然平気みたいね。\n貴方にそんな強いところがあったなんて、\n知らなかったわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ。\nだって、お姉ちゃんたちの妹だもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん……それに、シュヴァち。\n根性のあるところは、2人にそっくりでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……や、姉さんはそうかもしれないけど。\n僕は……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちは十分すごいよ。\nとーっても！　すごい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トゥインクル・シリーズで走ってから、\nよーくわかった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トゥインクル・シリーズ"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私も2人みたいになりたい！\nって、勇気をもらってるよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ヴィブロス……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……成長、したね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "っ！",
+   "choice_data_list": [
+    "よかったな、ヴィブロス",
+    "よかったね、ヴィブロス"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えっへへ～。\nうん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ、もっと成長したとこ、\n見せてあげる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、\n2人にトレーニングしてもらってもいい？",
+   "choice_data_list": [
+    "もちろん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "負荷的に、2人それぞれに教えてもらうのは\n厳しそうだ。どちらかを選ぶのなら、\n2人の特性を考えて……。",
+   "choice_data_list": [
+    "シュヴァルグランにパワーをつけてもらう",
+    "ヴィルシーナから粘り強さを教わる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "えっ。\n僕ですか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "いや、僕なんか……\nヴィブロスに教えられること、ないです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんで？\nたくさんあるよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だってシュヴァちの走りって、\n力強い感じするしー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "走ってる姿もかっこいいし～♡\n最後に追い込む姿もギラッて感じで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "そ、そんなこと……ないから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！\nなんで逃げるの～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……騒がしくてすみません。\nあの子たちはいつもああなんです。",
+   "choice_data_list": [
+    "仲良しでいいじゃないか",
+    "仲良しでいいじゃない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……そうですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "待って、シュヴァち～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "しばらくシュヴァルグランを\n追いかけていたヴィブロス。\nきっとパワフルさが身についたことだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おおっ、さすがトレっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんの走りはド根性！\nって感じがかっこいいんだよね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……それは私が、\nとても泥臭いってこと？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やば！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "と、トレっち！\nもう戻らなきゃだよね？",
+   "choice_data_list": [
+    "？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きょとんしないの～！\nほら、行こ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさん、\nぜひこの子は私にお任せください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――しっかりと泥臭さを、\n教えて差し上げますから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――んえええ～、\nお姉ちゃん～～、もうやだよ～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ダメよ、あとスクワット100回。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "鬼～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスと一緒の時は、基本的に優しい\nヴィルシーナだが……“女王”らしい\n苛烈さを見せた今日だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

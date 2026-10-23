@@ -1,0 +1,36 @@
+#title Dance Lesson
+0 Vivlos asked me to watch her dance, so I went to the dance studio—
+1 —I'm done! What even is this!?
+2 Huh, what's wrong, Sweep? You seem kinda worked up.
+3 It's this dance choreography! They said it's a dance witches use, so I've been doing it, but...
+4 It's all jumbled and weird!
+5 Ahh～! That's the one going viral on social media♡ I never really watched it properly, though～.
+6 Hmm. I see...?
+7 You go all bouncy♪
+8 Next is a tap-tap-tap...!
+9 After that, a kinda cool one～.
+10 And last... strike a cute pose♪
+11 Wha...!! How can YOU do it!?
+11> Do you have a trick for memorizing it? | Do you have a trick for memorizing it?
+12 I never really thought about it, but... hmmm～.
+13 Oh! See, see, it's just like magic～! With magic, you name spells to match their effects, right?
+14 With this dance too, you give the moves names like "bouncy"～, and just dance them in order!
+15 ! The same as... magic...
+15> So the trick is "magic"! | So the trick is "magic"! | You're good at teaching, Vivlos | You're good at teaching, Vivlos
+16 ! The same as... magic...
+16> So the trick is "magic"! | So the trick is "magic"! | You're good at teaching, Vivlos | You're good at teaching, Vivlos
+17 ...!!
+18 Yup, yup～♡ So you can totally do it too, Sweep!
+19 ...Show me.
+20 Dance it one more time? Ehh, then how about a reward or—
+21 Your magic, I mean! You can use it, right!? You know so much about magic!
+22 Huh, that...?
+23 Ehe, I got praised♪ Sweep, praise me too, praise me～♡
+24 ...Hmph! You got it faster than me, the future Great Witch. You could act way more stuck-up about it.
+25 Ehh? No way I'd do that! It wouldn't make me happy at all～.
+26 Instead, getting praised and spoiled makes me try harder♡
+27 Hmm, is that so... Then...
+28 So, c'mon! Praise me, praise me～♡
+29 —I might praise you! If you can dance better than me in a few days!
+30 I'm Sweep Tosho! The future Great Witch... I'm definitely not staying beaten!
+31 ...Fufu! Then I guess I'll go all out♪

@@ -1,0 +1,349 @@
+{
+ "title": "だって、ほんとなんだもん",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヴィブロスの模擬レースを見てから数日。彼女の夢である\nドバイのレースへ、自分がちゃんと導けるのか判断材料が欲しい――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そこでここ数日は、彼女自身のデータの他に、彼女の姉2人――\n“ヴィルシーナ”と“シュヴァルグラン”についても調べていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『――そうですね、ヴィクトリアマイルの連覇を果たしたときは、\n少し救われたような気持ちはありました』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『トリプルティアラ路線では、全て2着……最後の秋華賞の後は、\n正直、悪夢を見ることもありました。あと1歩踏み出せてたら……』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『でもその悔しさが、ヴィクトリアマイルの勝利に繋がったのだと\n思っています。今では、あの日の負けにも感謝しています――』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィルシーナ……史上初の『ヴィクトリアM』を連覇したウマ娘。\n持ち前の真面目さと根性で、悔しい時期を乗り越え栄光を掴んだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "はぁっ……はぁっ……。\nくそ、最後、もっと加速しないと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……もっと頑張るんだ。\nじゃないと……偉大なウマ娘になんかなれない……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "シュヴァルグラン……デビュー後、まだ重賞勝利経験はないが、\n姉に似て真面目な性格で、伸びしろはまだまだありそうだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そんな2人の妹であるヴィブロスもまた、豊かな才能を受け継ぎ、\n教官によるトレーニングでは優秀な成績を残している。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "この先、本格的なトレーニングでしっかり鍛えていけば、\n彼女の語るドバイのレースも遠い夢ではないのかもしれない――",
+   "choice_data_list": [
+    "（懸念があるとすれば……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [
+    "って、ヴィブロス！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "……なんだか落ち込んでいるように見える。そういえば、\n契約の話を持ち帰ると伝えてから、彼女と会うのは今日が初めてだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ごめんなさいっ。",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私……昔からね、『おねだり上手なんだから』って、\nみんなに言われてきたの。",
+   "choice_data_list": [
+    "……ん？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "パパもママも、お姉ちゃんたちもすっごく優しくて、\nいっぱい甘やかしてくれて……大好きなんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んー、シュヴァちには、なんか失敗しちゃうときもあるけど。\nでも、みーんなにいっぱい愛をもらって生きてきたの。",
+   "choice_data_list": [
+    "（なんの話だろう……？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おもちゃも、おやつも、お友だちも……はじめたてのレースだって。\n欲しいものは、なんでも私のものだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもね、はじめて実らなかったものがあるの。\nそれが――ドバイへの気持ち。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "子どもの頃にね、家族でドバイに旅行に行ったの。\nそこでね、私……ちょーすっごい世界を見たんだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "本当に、すっごかったんだから！　見るもの全部がキッラキラで、\nちょーセレブ！　私もセレブになりたいって、すっごい思った！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "絶対、絶対ここに住むって、パパとママにおねだりしたの。\nでも……できないって。結局、叶わなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "諦められなくて、ドバイのことをいっぱい調べたの。\nそれで……出会ったの。ドバイのレースたちに……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もー、すっごかった……！　眩しくって、すぐトリコになったの！\nレース場も、そこに来る人たちも、ウマ娘たちも……全部キラキラ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そこで走って勝てたら……ただ住むより、もっとセレブじゃない？\nあのレースの勝者には、宝石いっぱいのアクセサリーが似合うもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そのときね、もっと胸がワクワクして……新しい夢が生まれたんだ。\n――ドバイのレースに勝ちたいって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも……ママもパパも、お姉ちゃんたちだって、\n『ヴィブロスはまたそんなこと言って～』って……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "本気じゃないって思ってる。確かに、\n子どもっぽい夢に聞こえるかもだけど……ふざけてないよ。",
+   "choice_data_list": [
+    "……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんとの本気で、キラキラのドバイのレースを走りたいの！\nその夢のためにがんばりたい。がんばれるって思ってる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "真面目なお姉ちゃんたちと比べたら、変なのはわかってるよ。\nでも……。……それが私の、夢なんだもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……トレーナーさんは、\nこんなの夢じゃないって思う？",
+   "choice_data_list": [
+    "（ああ……そういうことか）",
+    "（ああ……そういうこと）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスがなぜ落ち込んでいたのか、そして滔々と自身の\nバックボーンを語り出したのか……やっと腑に落ちた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ちょうどドバイの話をしたところで自分が立ち去り、その後\n返答もないので、彼女はショックを受けて自分に原因を求めたのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やっぱり……\n真剣じゃない、かな。",
+   "choice_data_list": [
+    "いや、素敵な夢だと思うぞ",
+    "ううん、素敵な夢だと思うよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え……。",
+   "choice_data_list": [
+    "ごめん、説明不足だったな。あのな――",
+    "ごめん、説明不足だったね。あのね――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――じゃあ、トレーナーさんは……私をドバイに連れていけるか、\nずっと考えてくれてたの？",
+   "choice_data_list": [
+    "夢を叶える手伝いをするのが仕事だから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。\n私をダメって、思ったんじゃないってこと？",
+   "choice_data_list": [
+    "君がダメなわけがない",
+    "貴方がダメなわけがない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "模擬レースやトレーニング風景を見て、彼女から光るものを感じた。\n適切な指導をしていけば、この先いくらでも伸びていくだろう。",
+   "choice_data_list": [
+    "君ならドバイを目指せる",
+    "貴方ならドバイを目指せる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……それって……。\nトレーナーさん、私……期待しちゃうよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私をドバイに連れていくイメージが、見えたってことだよね？\nじゃあ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "期待に潤んだ眼差しで見つめられる。しかし、\n『おねだり』されなくても、心はもう前に動いていた――",
+   "choice_data_list": [
+    "君のトレーナーになるよ！",
+    "貴方のトレーナーになるよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんとだ、私……全然ダメじゃないね。\nだってトレーナーさんがいいって、ちゃんとわかったんだもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……そうっ！　私の目は、いつだって正しいもんね！\nトレっちって最高！　私も最高～♡",
+   "choice_data_list": [
+    "（トレっちに戻った……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それでそれで、私のこといっぱい考えてくれたんでしょ？\n私がドバイに行くには、どうしたらいいの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "もちろん、全てはこの先のトレーニング次第だが……現時点で、\n彼女がもっとよくなるために考えていることが1つあった。",
+   "choice_data_list": [
+    "（あの時もちょっと気になってた――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "店員",
+   "text": "それで、以前お気に召していたスカートがちょうど入荷したんです！\n試着されますか？　一応、サイズはXSがございますけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとうございます！　ん～やっぱりかわいいー！　けど……\n見た感じ、まだおっきいかも。ウエストぶかぶかになりそー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "彼女はけして身長が低すぎるわけではない。それに対して、\n体格がとても華奢なのだ。恐らく体重も……だから――",
+   "choice_data_list": [
+    "まずは、食べよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。\nほよっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

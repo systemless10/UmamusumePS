@@ -1,4 +1,3 @@
-"""race_exact_rs adapter (Global exact; JP experimental, region="jp"). Raw wire snapshots bypass legacy post-processing."""
 from __future__ import annotations
 
 import atexit
@@ -74,7 +73,6 @@ def _worker():
     master = Path(_work_dir) / "master.json"
     master.write_text(json.dumps({table: [dict(row) for row in master_data.query(
         f'SELECT * FROM "{table}"')] for table in _TABLES}), encoding="utf-8")
-    # Research switches and interventions must never affect live races.
     env = {key: value for key, value in os.environ.items() if not key.startswith("RX_")}
     _proc = subprocess.Popen(
         [str(executable), "serve", "--master", str(master), "--assets", str(assets)],
@@ -85,10 +83,8 @@ def _worker():
 
 
 def run_input(race_input: dict) -> dict:
-    """One seeded race; reuse immutable assets/master data, retry a dead worker once."""
     global _pid, _proc, _work_dir, _lock
     if _pid != os.getpid():
-        # A process-pool child gets its own worker; never kill the parent's worker.
         for stream in ((_proc.stdin, _proc.stdout) if _proc is not None else ()):
             stream.close()
         _pid, _proc, _work_dir, _lock = os.getpid(), None, None, threading.Lock()
@@ -144,7 +140,15 @@ def build_input(horses, course_set_id, ground, weather, season, seed, gates,
         h["running_style"] = int(h.get("running_style") or 2)
         h["motivation"] = int(h.get("motivation") or 3)
         h["chara_id"] = int(h.get("chara_id") or (h.get("card_id") or 0) // 100)
-        h["viewer_id"] = (h["viewer_id"] or 0) if "viewer_id" in h else int(h.get("is_viewer", i == 0))
+        v = h.get("viewer_id")
+        if isinstance(v, int) and not isinstance(v, bool):
+            h["viewer_id"] = v
+        elif isinstance(v, str) and v.strip().isdigit():
+            h["viewer_id"] = int(v)
+        elif v:
+            h["viewer_id"] = 1
+        else:
+            h["viewer_id"] = 0 if "viewer_id" in h else int(h.get("is_viewer", i == 0))
         h["popularity"] = int(h.get("popularity") or popularity.index(i) + 1)
         h["skill_array"] = [{"skill_id": int(sk["skill_id"]), "level": int(sk.get("level") or 1)} for sk in h.get("skill_array") or []]
         prepared.append(h)
@@ -165,11 +169,7 @@ def _horse_distance_at(frames, horse, t):
 
 
 def encode_snapshot(snapshot):
-    """Encode already-quantized fields and ordered raw event parameters unchanged."""
     n = snapshot["runner_count"]
-    # JP's v100000005 drops the header's result size and instead lists one size
-    # per horse before the results, each 39 bytes: the 31-byte record plus
-    # RunUpTimeRaw and an empty NoActivateSkillArray (both zero in real captures).
     jp = snapshot["version"] >= 100000005
     if jp:
         out = bytearray(struct.pack("<iifiiiii", 4, snapshot["version"],
@@ -180,7 +180,6 @@ def encode_snapshot(snapshot):
     for frame in snapshot["frames"]:
         out.extend(struct.pack("<f", frame["t"]))
         for h in frame["horses"]:
-            # Fields past 18 runners can exceed the client's int16 lane/speed/hp encoding; clamp.
             out.extend(struct.pack("<fhhhbb", h["distance"], *(max(-32768, min(32767, h[k])) for k in ("lane", "speed", "hp")),
                                    max(-128, min(127, h["tempt"])), max(-128, min(127, h["block"]))))
     out.extend(struct.pack("<i", 0))
@@ -193,14 +192,10 @@ def encode_snapshot(snapshot):
             out.extend(struct.pack("<fi", 0.0, 0))
     out.extend(struct.pack("<ii", 0, len(snapshot["events"])))
     for e in snapshot["events"]:
-        # int32 wire params; wrap anything a >32-runner field pushes past that (bit patterns).
         params = [(int(v) + 2**31) % 2**32 - 2**31 for v in e["params"]]
         if not jp:
             out.extend(struct.pack(f"<hfBB{len(params)}i", 6 + 4 * len(params), e["t"], e["type"], len(params), *params))
             continue
-        # JP: skill events carry 9 params (zero tail in captures), and every
-        # record ends with a flag byte (always 1) and two floats -- the
-        # acting horse's distance in captures (0 at t=0); we send its distance.
         if e["type"] == 3:
             params = (params + [0] * 9)[:9]
         dist = _horse_distance_at(snapshot["frames"], params[0] if params else -1, e["t"])
@@ -210,7 +205,6 @@ def encode_snapshot(snapshot):
 
 
 def adapt_result(snapshot, seed, course_set_id, gates, gate_to_original, horses):
-    """Keep wire order for playback; expose original horse order to existing handlers."""
     n = len(horses)
     frames = []
     for frame in snapshot["frames"]:

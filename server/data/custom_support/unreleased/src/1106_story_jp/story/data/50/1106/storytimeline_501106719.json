@@ -1,0 +1,35 @@
+{
+ "title": "一気見したくて……",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "――えっ、ここであの人が……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ううっ……。ドラマの続き、気になる～！\nでも、もうすぐトレーニングの時間だし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ちょっと遅刻するくらい、いいよね……？\nあと数分、あと数分だけ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわ、やばい後ろに誰かいるよ！\n誰！？　次の話、次の話～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは動画に熱中し、\nトレーニングをなまけてしまったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

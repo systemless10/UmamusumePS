@@ -1,0 +1,37 @@
+{
+ "title": "WBCの後に・敗北",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "惜敗に終わった『WBC』。\nしかし三女神たちは、しっかりウマ娘との\n二人三脚を果たしていると評価するのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "一方、秋から勝てないレースの続く\nビターグラッセは、『WBC』でも\n満足のいく走りができなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "来年こそはと意気込むビターグラッセに対し、\n樫本トレーナーは自分こそが努力すべきだと、\n心の中にある決意を固めつつあった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "桐生院トレーナーとハッピーミークも、\n合宿中に立てた“年内重賞勝利”という\n目標を果たせなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "重賞"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "それはあくまで気持ちを前向きにさせる目標\nであったが、なかなか花開かない実力への\n歯がゆさを一層に燻ぶらせるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

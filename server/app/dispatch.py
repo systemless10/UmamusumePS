@@ -1,17 +1,3 @@
-"""
-The request pipeline both regions share: decoded request in, response dict out.
-
-Every API call is dispatched to a real stateful handler (HANDLERS, then the
-handlers/registry.py feature modules) or, if none exists, to the fallback:
-Global replays the closest captured response; JP has no captures to replay
-(app/fixtures.py indexes none for it), so it gets a bare success envelope and
-a log line naming the endpoint that still needs a handler.
-
-Transport lives outside this module: app/main.py (Global, key in the packet)
-and app/jp/server.py (JP, X25519 seal) each decode, call handle_decoded, and
-encode. Region-specific DATA is chosen underneath by region.data_dir() and
-friends, so nothing here branches on the region.
-"""
 
 from __future__ import annotations
 
@@ -26,6 +12,7 @@ from . import concerts
 from . import config
 from . import event_gallery
 from . import master_data
+from . import tuning
 from . import scenarios
 from . import state as state_store
 from .fixtures import store as fixtures
@@ -38,36 +25,16 @@ from . import session as session_store
 
 log = logging.getLogger("uma-server")
 
-# Feature modules self-register their endpoints (handlers/registry.py) so new
-# features never edit this file. Loaded once at import.
 registry.autoload()
 
-# TEMP DEBUG: monotonic request counter for naming dumped response snapshots.
 import itertools as _itertools
 _seq_counter = _itertools.count(1)
 def _request_seq() -> str:
     return f"{next(_seq_counter):04d}"
 
-# GallopResultCode.SESSION_ERROR (dump.cs) -- the real client's own constant
-# for "your session/sid is invalid", distinct from PARAM_ERROR (205, every
-# ordinary business-logic refusal on this server) and AUTH_ERROR (202,
-# credential-based failures like a bad transition-code password). Used only
-# by the sid-mismatch short-circuit in handle_decoded() below.
 _SESSION_ERROR = ResultCode.SESSION_ERROR
 
-# endpoint (as seen in the captures' "endpoint" field, slash form) -> handler
-# a handler takes the request payload dict and returns the full response
-# envelope dict ({"response_code", "data_headers", "data"}).
 HANDLERS = {
-    # The live client's main career (URA and others via SingleModeURAAPI etc.)
-    # posts to the single_mode/* family; our original capture set is the
-    # scenario-2 single_mode_team/* family. Both use the SAME request/response
-    # types (SingleModeStartRequest -> SingleModeStartCommon, ...), so the same
-    # handlers serve both -- single_mode_team/* fixtures act as the structural
-    # template regardless of which prefix came in. Without the single_mode/*
-    # routes, a real career start hit the no-op fallback (empty
-    # single_mode_start_common -> client NullRef in ApplySingleModeStartResponse
-    # -> "start career does nothing").
     "single_mode/start": single_mode_team.handle_start,
     "single_mode/load": single_mode_team.handle_load,
     "single_mode/exec_command": single_mode_team.handle_exec_command,
@@ -85,22 +52,14 @@ HANDLERS = {
     "single_mode/minigame_end": single_mode_team.handle_minigame_end,
     "single_mode/continue": single_mode_team.handle_continue,
     "single_mode/factor_select": single_mode_team.handle_factor_select,
-    # JP's pick-one-of-two inspiration (never sent by Global's client).
     "single_mode/select_succession": single_mode_team.handle_select_succession,
     "single_mode/factor_order_load": single_mode_team.handle_factor_order_load,
     "single_mode/factor_relottery_end": single_mode_team.handle_factor_relottery_end,
-    # Aliased onto every scenario prefix by _install_scenario_routes below, so
-    # the paid spark re-roll and the skip setting exist for URA, Aoharu, Grand
-    # Live and Trackblazer from this one pair of lines.
     "single_mode/factor_lottery": single_mode_team.handle_factor_lottery,
     "single_mode/change_short_cut": single_mode_team.handle_change_short_cut,
     "pre_single_mode/index": single_mode_team.handle_pre_single_mode_index,
     "pre_single_mode/friend_support_card_reload":
         single_mode_team.handle_friend_support_card_reload,
-    # race/analyze is the TOP-LEVEL twin of single_mode*/race_analyze -- dump.cs
-    # gives both the same request ({program_id, current_turn}) and the same
-    # single-field response ({race_horse_data_array}), so it is the same screen
-    # and the same handler, not a second implementation.
     "race/analyze": single_mode_team.handle_race_analyze,
     "live_theater/index": live_theater.handle_index,
     "live_theater/live_start": live_theater.handle_live_start,
@@ -116,18 +75,6 @@ HANDLERS = {
     "single_mode_team/start": single_mode_team.handle_start,
     "single_mode_team/load": single_mode_team.handle_load,
     "single_mode_team/exec_command": single_mode_team.handle_exec_command,
-    # The race flow uses the SAME handlers as single_mode/* for the same reason
-    # start/load/exec_command/check_event above do. It used to point at the
-    # naive capture-replay pair (handle_race_entry / _handle_race_flow_step),
-    # which served the captured MARUZENSKY race responses verbatim -- her
-    # chara_info, stats, aptitudes and bonds -- because the race endpoints are
-    # exactly the ones _sync_chara_info skips, so nothing patched them on the
-    # way out. That was fixed for single_mode/* on 2026-08-20 (see
-    # handle_ura_race_start's docstring: "the race itself still ran as swimsuit
-    # Maruzensky") but the team-prefix twin was left on the old handlers, so
-    # any career posting single_mode_team/* still got the whole leak -- live
-    # report 2026-09-05: a Mayano Top Gun run took on Maru's state at the
-    # turn-12 debut and softlocked.
     "single_mode_team/race_entry": single_mode_team.handle_ura_race_entry,
     "single_mode_team/race_start": single_mode_team.handle_ura_race_start,
     "single_mode_team/race_end": single_mode_team.handle_ura_race_end,
@@ -147,15 +94,10 @@ HANDLERS = {
         trained_chara.handle_get_succession_history_array,
 }
 
+from .handlers import factor_research as _factor_research
+HANDLERS.update(_factor_research.COMMON_HANDLERS)
 
-# A bare, well-formed success envelope for endpoints we have neither a
-# handler nor a captured fixture for. The real client is unforgiving about
-# malformed responses (a response_code:0/error body reliably surfaces as a
-# generic "Could not receive parameters from server" and derails the whole
-# session) -- an empty-but-valid success is a much safer default than an
-# error for background/non-critical calls (voice note saves, telemetry,
-# etc.). Endpoints where an empty response actually breaks something belong
-# in HANDLERS or need a fixture captured, not a better fallback here.
+
 NOOP_SUCCESS = {
     "response_code": 1,
     "data_headers": {"result_code": 1, "notifications": {}},
@@ -163,17 +105,6 @@ NOOP_SUCCESS = {
 }
 
 
-# Career-START endpoints of scenarios we DON'T implement. These must REFUSE,
-# never no-op: answering success fabricates a started career in the client's
-# local state, which then layers that scenario's UI over the real URA run --
-# live-hit: an accidental Unity Cup start got the no-op, the client believed a
-# Trackblazer career existed ('Continue Career: Unity Cup' on the home dialog),
-# and winning a later URA goal race rendered Trackblazer's Twinkle Star Climax
-# screen over the URA career and softlocked. result_code 205 makes the client
-# show a plain error and stay on the setup screen instead.
-# (single_mode_live/start and single_mode_free/start are NOT here any more --
-# Grand Live and Trackblazer are implemented, see HANDLERS above. Everything
-# still listed is a scenario we genuinely don't serve.)
 _UNSUPPORTED_STARTS = ("single_mode_team/start_team",
                        "single_mode_venus/start",
                        "single_mode_pioneer/start", "single_mode_arc/start",
@@ -182,11 +113,6 @@ _UNSUPPORTED_STARTS = ("single_mode_team/start_team",
 _REFUSE = refuse()
 
 
-# client_config.json "feature_maintenance": [names] -> the result code that
-# feature's endpoints answer with while it is down. Codes and their feature
-# split are GallopResultCode's own MAINTENANCE_TASK_*; the client shows
-# text_data's "Feature Maintenance" dialog for each. Keys are endpoint
-# prefixes -- "gacha/" matches gacha/exec, gacha/index, ...
 _FEATURE_MAINTENANCE = {
     "gacha": (ResultCode.MAINTENANCE_TASK_GACHA, ("gacha/",)),
     "present": (ResultCode.MAINTENANCE_TASK_PRESENT, ("present/",)),
@@ -225,11 +151,6 @@ _FEATURE_MAINTENANCE = {
 
 
 def _maintenance_code(endpoint: str) -> int:
-    """Non-zero when client_config.json has this endpoint under maintenance:
-    "maintenance": true takes the whole server down (MAINTENANCE, 101 -- the
-    client's "Under Maintenance" dialog, on every endpoint including login),
-    "feature_maintenance": ["gacha", ...] just those features (see
-    _FEATURE_MAINTENANCE for the names)."""
     if config.get("maintenance", False):
         return ResultCode.MAINTENANCE
     for name in config.get("feature_maintenance", []) or []:
@@ -239,18 +160,8 @@ def _maintenance_code(endpoint: str) -> int:
     return 0
 
 
-# DEBUG BISECTION HOOK. Set UMA_REPLAY_NEWEST to a comma-separated endpoint
-# list to bypass its handler and serve the NEWEST captured response verbatim
-# (patch.py still stamps viewer_id/sid/servertime). This answers "is our
-# generated response the problem, or the endpoint itself?" in one launch --
-# if a real recorded response also fails, the content is not the fault.
-# Off unless the env var is set; safe to leave in place.
 _REPLAY_NEWEST = {e.strip() for e in os.environ.get("UMA_REPLAY_NEWEST", "").split(",") if e.strip()}
 
-# Same idea, but from a LITERAL file (tools/capture_proxy.py output) instead of
-# the fixture index -- lets a specific real, TODAY-fresh capture (same client
-# build) be replayed verbatim, which is a much stronger test than anything in
-# the (2026-07) fixture set. Format: "endpoint=/path/to/capture.json,...".
 _REPLAY_FILE: dict[str, str] = {}
 for _entry in os.environ.get("UMA_REPLAY_FILE", "").split(","):
     _entry = _entry.strip()
@@ -273,10 +184,6 @@ def _newest_capture(endpoint: str):
     return max(pairs, key=lambda p: p.ts).response if pairs else None
 
 
-# Endpoints that fell through to the no-op success this process run. The
-# request logger below dumps each one's REQUEST payload exactly once, so a
-# blank/hanging screen can be traced to its endpoint by opening it once --
-# no proxy, no client mod.
 _UNHANDLED_SEEN: set[str] = set()
 _UNHANDLED_DUMPED: set[str] = set()
 
@@ -304,76 +211,13 @@ def _fallback_response(endpoint: str) -> dict:
     return NOOP_SUCCESS
 
 
-# ---- client-version compatibility -------------------------------------------
-# Our fixtures were captured from an OLDER build, so a game update leaves them
-# subtly stale. These are the drift points that actually break the client;
-# re-check them (diff a fresh capture's response keys against the fixtures)
-# whenever the game updates again.
-#
-# resource_version: the client compares this to its local assets -- serving the
-# old one makes it re-download the resource bundle on every launch (the "80MB
-# download"). Bump to the value a fresh tool/start_session returns.
-#
-# The live value is read from client_config.json (next to the server package) so
-# it can be tweaked without editing code; this is only the fallback used when
-# that file is missing or unreadable.
-GAME_RESOURCE_VERSION = "10007550"   # 2026-08-25, authoritative -- read straight
-                                      # off a real client's own RES-VER request
-                                      # header in the newest capture_proxy.py
-                                      # --upstream real session (captures/
-                                      # 20260825_094909/0203_support_card_deck_
-                                      # change_party.json, timestamp 12:05,
-                                      # APP-VER still 1.34.0 unchanged). Was
-                                      # 10007400.
+GAME_RESOURCE_VERSION = "10008400"
 
 def _resource_version() -> str:
     return str(config.get("resource_version", GAME_RESOURCE_VERSION))
 
-# Fields the newer client expects that pre-update fixtures don't contain.
-# pre_single_mode/index gained default_running_style_array; without it the career
-# setup screen never finishes initializing (Start does nothing, UI unclickable).
 _ADDED_RESPONSE_FIELDS = {
     "pre_single_mode/index": {"default_running_style_array": []},
-    # load/index IS the client's LoginTask -- established from the game's own
-    # il2cpp metadata (global-metadata.dat), where LoginRequest declares
-    # exactly one field, `adid`, which is what the client posts to load/index.
-    # That metadata also lists every field Gallop.LoginResponse declares, and
-    # diffing it against what we actually serve found these EIGHT missing --
-    # all of them additions in builds newer than our 2026-07 captures. A
-    # response that omits fields the client's formatter declares is what
-    # surfaces as the generic "Could not receive parameters from server".
-    #
-    # Provenance of each value (setdefault, so a real handler value always wins):
-    #   transfer_event_info      nullable dict, 19 captures, null is valid  [cap]
-    #   idle_single_mode_load_info nullable dict, 9 captures, null is valid [cap]
-    #   option_info_array        list, 8 captures, all [{"type":3,"value":0}] [cap]
-    # The remaining five appear in NO capture (they postdate every dump we
-    # have), so their types are inferred from their names and are the least
-    # certain part of this entry -- an `_array` gets [], an int-ish id/rank
-    # gets 0. If the client starts complaining about one of these BY NAME,
-    # that names the type to correct.
-    # ONLY the two fields a real server response actually carries. Verified
-    # against a live capture (tools/capture_proxy.py --upstream real).
-    #
-    # 2026-08-11 ROOT CAUSE, for the record: six more fields used to be listed
-    # here, invented from the il2cpp metadata's field list with types GUESSED
-    # from their names ("an int-ish id/rank gets 0"). One of those guesses was
-    # `recheck_steam_order_id: 0` -- and C# declares it `public string`
-    # (dump.cs, LoginResponse.CommonResponse). It serialized as msgpack
-    # positive-fixint 0x00 as the LAST field of the map, so the client's
-    # generated formatter walked the whole response, reached it, tried to read
-    # a string, and reported exactly:
-    #     LoginResponse Deserialize error at field: code is invalid.
-    #     code:0 format:positive fixint
-    # ("code" there is the deserializer's word for the msgpack TYPE BYTE, not
-    # a field name -- which is why grepping every capture for a field called
-    # "code" found nothing.) Proven by hooking Gallop.LoginTask.Deserialize in
-    # the live client and dumping the exact bytes it received.
-    #
-    # The real server sends NONE of those six. Absent keys are fine: the
-    # formatter is AutomataDictionary/map-based and simply leaves unset fields
-    # at their C# defaults. Do not "helpfully" add fields the real server
-    # omits -- and never infer a wire type from a field NAME.
     "load/index": {
         "idle_single_mode_load_info": None,
         "option_info_array": [{"type": 3, "value": 0}],
@@ -382,26 +226,12 @@ _ADDED_RESPONSE_FIELDS = {
 
 
 def _install_scenario_routes() -> None:
-    """Give every registered scenario its own endpoint family.
-
-    A scenario posts its career to its own prefix (URA single_mode/*, Grand Live
-    single_mode_live/*), but the requests and responses are the SAME types --
-    the only wire difference is the data_set the scenario's attach() swaps in at
-    single_mode_team's one chokepoint. So each prefix is aliased onto the very
-    same handler objects: one code path, no per-scenario branch in between, and
-    URA behaviour that cannot drift because there is nothing scenario-specific
-    on the way. Endpoints a scenario has and the shared family does not (Grand
-    Live's master_square / live_start) come from its extra_endpoints().
-
-    This used to be 18 hand-written "single_mode_live/..." lines. Adding a
-    scenario now adds none.
-    """
     shared = {ep.split("/", 1)[1]: fn for ep, fn in HANDLERS.items()
               if ep.startswith("single_mode/")}
     for scen in scenarios.all_scenarios():
         prefix = scen.endpoint_prefix
         if prefix == "single_mode":
-            continue                     # the family `shared` was read from
+            continue
         routes = dict(shared)
         routes.update(scen.extra_endpoints())
         for suffix, fn in routes.items():
@@ -411,62 +241,45 @@ def _install_scenario_routes() -> None:
 _install_scenario_routes()
 
 
-_scenario_ids_cache: list | None = None
+_scenario_ids_cache: dict = {}
 
 
 def _scenario_ids() -> list:
-    """The career scenario list to serve. client_config.json's "scenario_ids"
-    wins when set (a list, for experimenting); otherwise it's auto-detected from
-    master.mdb."""
+    from . import custom_support
+    hidden = custom_support.hidden_scenarios()
     override = config.get("scenario_ids")
     if isinstance(override, list) and override:
         try:
-            return [int(x) for x in override]
+            ids = [int(x) for x in override if int(x) not in hidden]
+            implemented = set(scenarios.implemented_ids())
+            return ids + sorted(s for s in custom_support.pack_scenarios() if s not in ids and s in implemented)
         except (TypeError, ValueError):
             log.warning("client_config.json scenario_ids not a list of ints: %r", override)
-    # Released in master.mdb AND implemented here. Either half alone is wrong:
-    # master.mdb lists scenarios we have no package for (advertising one puts
-    # the player into a career nothing serves), and the registry knows nothing
-    # about release dates or which region's data this is.
     implemented = set(scenarios.implemented_ids())
-    return [sid for sid in _available_scenario_ids() if sid in implemented]
+    return [sid for sid in _available_scenario_ids() if sid in implemented and sid not in hidden]
 
 
 def _available_scenario_ids() -> list:
-    """Career scenarios currently released, straight from master.mdb. The
-    fixtures freeze whatever set existed when they were captured (e.g. [1,2,4]),
-    so a game update that adds a scenario silently keeps it hidden -- reading
-    master.mdb (which the update refreshes) picks new ones up automatically.
-    Uses real time, not the frozen servertime, since a scenario released after
-    the fixture capture would otherwise still be filtered out."""
-    global _scenario_ids_cache
-    if _scenario_ids_cache is None:
+    from . import custom_support
+    pack = custom_support.CURRENT_PACK.get()
+    if pack not in _scenario_ids_cache:
         now = int(time.time())
         try:
             rows = master_data.query(
                 "SELECT id FROM single_mode_scenario "
                 "WHERE start_date <= ? AND end_date > ? ORDER BY id", (now, now))
-            _scenario_ids_cache = [r["id"] for r in rows]
-        except Exception:  # noqa: BLE001 - never break a response over this
+            _scenario_ids_cache[pack] = [r["id"] for r in rows]
+        except Exception:
             log.exception("could not read scenario list from master.mdb")
-            _scenario_ids_cache = []
-    return _scenario_ids_cache
+            _scenario_ids_cache[pack] = []
+    return _scenario_ids_cache[pack]
 
 
 def _apply_version_compat(endpoint: str, response: dict) -> dict:
-    """Bring a fixture-derived response up to the current client build."""
     data = (response or {}).get("data")
     if not isinstance(data, dict):
         return response
     if "resource_version" in data:
-        # ALWAYS serve the true authoritative version, never the client's own
-        # stale self-report. A prior version of this echoed client_res_ver back
-        # when present, reasoning "that can never trigger a download" -- but
-        # that's backwards: the client staying on a stale version (confirmed
-        # live: it reports 10006910 while the real Cygames server's own
-        # tool/start_session response says 10007310) IS the bug, not something
-        # to preserve. Telling it the real current value is what makes it
-        # actually catch up, exactly like the real server does.
         data["resource_version"] = _resource_version()
     if "single_mode_scenario_id_array" in data:
         ids = _scenario_ids()
@@ -477,26 +290,15 @@ def _apply_version_compat(endpoint: str, response: dict) -> dict:
     return response
 
 
-# fn(endpoint, payload) -> refusal envelope or None, consulted before the
-# handler runs (inside the session checks, so the refusal still gets a sid).
 REQUEST_GUARDS: list = []
 
 
 def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | None) -> dict:
-    """The shared game-logic core: decoded request in, patched response dict
-    out."""
     endpoint = endpoint_path.strip("/")
     if endpoint.startswith("umamusume/"):
-        # The real client's BASE_URL includes a "/umamusume/" prefix
-        # (https://api.games.umamusume.com/umamusume/{ep}); our fixtures and
-        # HANDLERS are keyed by the bare endpoint, so strip it here rather
-        # than everywhere else.
         endpoint = endpoint[len("umamusume/") :]
     viewer_id = payload.get("viewer_id", "unknown")
 
-    # Full payload at DEBUG (noisy -- some endpoints carry huge arrays), just
-    # the endpoint name at INFO. Skip the boilerplate device-profile fields
-    # every request carries so the interesting bits aren't buried.
     if log.isEnabledFor(logging.DEBUG):
         _boilerplate = {
             "device", "device_id", "device_name", "graphics_device_name",
@@ -509,41 +311,15 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
     else:
         log.info("REQUEST %s", endpoint)
 
-    # RAW bytes, not hex -- accounts.check_session compares this against an
-    # MD5 digest it computes itself (see its docstring for why a hex string
-    # here would never match anything). Callers pass this in (Global reads it
-    # from decoded.sid; JP has no equivalent yet, so passes None).
     handler = HANDLERS.get(endpoint) or registry.get(endpoint)
     if endpoint in _REPLAY_NEWEST or endpoint in _REPLAY_FILE:
-        handler = None  # force the raw-capture path in _fallback_response
-    # ONE request at a time per viewer: every handler is a read-modify-write
-    # over the viewer's state blob, and get_state/save_state lock separately,
-    # so two in-flight requests for the same account raced. Different viewers
-    # stay fully concurrent. Session/sid bookkeeping is IN this same lock too
-    # (moved 2026-08-18, alongside the frozen-sid bug fixed below) -- it was
-    # previously outside it, so two genuinely-concurrent requests for one
-    # viewer could each read the sid stored by the OTHER before either had
-    # written its own roll, a real race that would cause spurious mismatches
-    # once auth_enforce is on, independent of the frozen-sid bug.
+        handler = None
     with accounts.viewer_lock(viewer_id):
         from . import custom_support
         custom_ok = custom_support.preflight(endpoint, payload)
-        # Lazy account-deletion wipe: account/deletion_request starts a grace
-        # period (accounts.DELETION_GRACE_PERIOD_SECONDS); tool/start_session
-        # is the natural place to check whether it has elapsed, since it's
-        # the one call guaranteed to happen at the start of every session.
-        # deletion_days_remaining returns 0 once the deadline has passed (but
-        # the row hasn't been swept yet) -- actually deleting here means the
-        # very next thing this endpoint does (touch/start_session below) acts
-        # on a genuinely fresh/nonexistent account, exactly as if the real
-        # account had been permanently removed.
         if endpoint == "tool/start_session" and accounts.deletion_days_remaining(viewer_id) == 0:
             accounts.delete_account(viewer_id)
             state_store.delete_state(viewer_id)
-        # tool/start_session establishes a fresh session BASE; every other
-        # call rolls a new sid on the current base (session.py's docstring --
-        # verified against a real login that the real sid changes on every
-        # response, not just at session start).
         sid = (session_store.start_session(viewer_id) if endpoint == "tool/start_session"
                else session_store.get_or_create_sid(viewer_id))
         session_ok = True
@@ -551,71 +327,18 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
         if endpoint == "tool/start_session":
             accounts.touch(viewer_id, sid)
         else:
-            # REAL BUG, found 2026-08-18: this used to call accounts.touch(viewer_id)
-            # with NO sid on every non-start_session call, so the stored "last
-            # known sid" only ever got set once, at start_session, and stayed
-            # frozen there for the rest of the session -- while `sid` above
-            # rolls a NEW value on every single call (by design, matching the
-            # real server's own behavior). The client correctly tracks and
-            # re-presents whatever sid it was last given, so from the SECOND
-            # call onward `presented_sid` was always one step ahead of our
-            # frozen stored value: a guaranteed mismatch on nearly every
-            # request, regardless of whether the client did anything wrong.
-            # This is why "sid mismatch" warnings appeared on almost every
-            # logged request all session -- enforce=False (the default) only
-            # ever WARNED on it, so gameplay was unaffected. Check the
-            # PRESENTED sid against what we stored from the PREVIOUS
-            # response (the real check) BEFORE overwriting it with the new
-            # one we're about to send back for the NEXT call to be checked
-            # against.
-            #
-            # SECOND real bug, found the same day auth_enforce was first
-            # tested live: check_session's return value was never actually
-            # READ anywhere -- the call above executed but nothing branched
-            # on its result, so auth_enforce had ZERO effect on whether a
-            # request proceeded regardless of its config value; only the
-            # WARNING's own "(enforce=True)" text differed. Every request
-            # kept returning 200 even with mismatches logged (confirmed live
-            # 2026-08-18: three straight "sid mismatch ... enforce=True"
-            # warnings, three straight 200 OKs). So enforcement wasn't just
-            # silently failing, it was never wired up in the first place.
-            #
-            # Now actually acts on it: a rejected session short-circuits
-            # BEFORE the handler runs, with GallopResultCode.SESSION_ERROR
-            # (201, dump.cs's own real result-code constant for exactly
-            # this -- not the generic PARAM_ERROR/205 every other refusal on
-            # this server uses) so a genuine auth failure is distinguishable
-            # from an ordinary business-logic refusal, both in the log and
-            # to the client, instead of surfacing as an unlabeled
-            # "Connection Error Occurred".
             session_ok = accounts.check_session(
                 viewer_id, presented_sid, enforce=bool(config.get("auth_enforce", False)))
             if session_ok:
                 accounts.touch(viewer_id, sid)
             else:
-                # NEWEST LOGIN WINS. A second client's tool/start_session
-                # mints a fresh session base and stores its sid, so the first
-                # client's next request presents a sid from the old session
-                # and lands here. It gets SESSION_ERROR (201), which returns
-                # it to the title screen. Two things must NOT happen to it:
-                #   * touch(): storing this response's sid would overwrite the
-                #     new client's stored sid, and the NEW client would be
-                #     kicked on its next request instead of the old one.
-                #   * a valid sid: `sid` above was rolled on the new session's
-                #     base, so handing it back would let the kicked client
-                #     carry on inside the new session. It gets a throwaway.
                 log.warning("kicking stale session for viewer %s from %s "
                             "(logged in from another client)", viewer_id, endpoint)
                 sid = make_sid()
 
         if not session_ok:
-            # Skip the handler entirely -- still flows through the normal
-            # patch_response/encode tail below so data_headers gets the
-            # correct viewer_id/servertime/sid like every other response.
             response = refuse(_SESSION_ERROR)
         elif maintenance_code:
-            # Same short-circuit for an operator-declared maintenance
-            # (client_config.json, see _maintenance_code).
             response = refuse(maintenance_code)
         elif not custom_ok:
             response = refuse()
@@ -623,17 +346,19 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
                                if (r := g(endpoint, payload)) is not None), None)) is not None:
             response = guarded
         else:
-            # Which endpoint FAMILY this arrived on. See
-            # single_mode_team.CURRENT_ENDPOINT -- the career handlers are
-            # shared across all four scenario prefixes, and one of them
-            # (handle_load with nothing persisted) has no career to read
-            # the scenario off.
             single_mode_team.CURRENT_ENDPOINT.set(endpoint)
             conditions.begin_request()
+            sp_before = (tuning.career_sp(viewer_id)
+                         if endpoint.startswith("single_mode") and tuning.mult("skill_point_multiplier") != 1.0
+                         else None)
+            tuning.TRAINING_SP.set(0)
             response = handler(payload) if handler is not None else _fallback_response(endpoint)
+            if sp_before is not None:
+                try:
+                    tuning.settle_skill_points(viewer_id, sp_before, response)
+                except Exception:
+                    log.exception("skill_point_multiplier settle failed; serving unscaled")
             custom_support.pin_career(endpoint, payload, response)
-            # A one-shot condition guard (JP ポジティブ思考 / 幸運体質) spent
-            # during this request is reported here, whichever handler spent it.
             guards = conditions.guard_report()
             data = response.get("data") if isinstance(response, dict) else None
             if guards and isinstance(data, dict):
@@ -641,26 +366,9 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
             response = _apply_version_compat(endpoint, response)
             response = single_mode_team.sync_chara_info(viewer_id, endpoint, response)
             if endpoint.startswith("single_mode"):
-                # A scenario's song-bearing story (Onsen's endings, Ramen's
-                # 極 festival) unlocks its Concert Theater song on the reply
-                # that queues it, whichever career handler built that reply.
                 response = concerts.attach_story_songs(viewer_id, endpoint, response)
-                # Every event a career reply serves enters the Archive's event
-                # gallery (event_gallery.py), whichever handler built it.
                 event_gallery.record_served(viewer_id, response)
             if endpoint == "tool/start_session":
-                # tool/start_session is a fixture replay (no handler): its
-                # frozen data_headers.notifications carries whatever the
-                # captured account genuinely had unread AT CAPTURE TIME
-                # ({"unread_information_exists": 1}) and, left alone, serves
-                # that identically on literally the FIRST call of every
-                # single launch forever -- the same "frozen seed
-                # masquerading as live state" bug class as load.py's
-                # unread_announce_id_array fix (see that one's comment for
-                # the full user report this and it share: "supposed to be
-                # one time but keep showing up... every time I restart the
-                # game"). No real handler here to compute this honestly, so
-                # just stop repeating the one-time flag after its first use.
                 notifs = (response.get("data_headers") or {}).get("notifications")
                 if isinstance(notifs, dict) and notifs.get("unread_information_exists"):
                     full_state = state_store.get_state(viewer_id) or {}
@@ -670,14 +378,10 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
                         full_state["seen_unread_information_flag"] = True
                         state_store.save_state(viewer_id, full_state)
 
-    # Every refusal, with the dialog the client will put up for it (the text
-    # comes from master.mdb, keyed by the code -- see result_codes.py).
     result_code = ((response or {}).get("data_headers") or {}).get("result_code")
     if result_code not in (None, ResultCode.RESULT_CODE_OK):
         log.info("RESULT %s -> %s %s", endpoint, result_code, describe(result_code))
 
-    # TEMP DEBUG: dump single_mode training-screen responses so we can diff the
-    # exact response that crashes the client against a known-good capture.
     if endpoint.startswith("single_mode") and ("check_event" in endpoint or "exec_command" in endpoint or "get_choice_reward" in endpoint or "load" in endpoint):
         try:
             import json as _json, os as _os
@@ -716,29 +420,14 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
         except Exception:
             pass
 
-    # TEMP DEBUG: endpoints whose REAL request shape is unverified (no genuine
-    # capture -- multi_race_reserve was never captured at all; gain_skills'
-    # one capture has a mislabeled request body, see handle_gain_skills).
-    # Dump the FULL raw request+response verbatim (not the chara_info-focused
-    # summary above) so the first live use confirms the true field names.
     if ("multi_race_reserve" in endpoint or "gain_skills" in endpoint
             or "minigame_end" in endpoint or "gacha/exec" in endpoint
             or "gacha/limit_exchange" in endpoint
             or "jukebox/" in endpoint
             or "item/exchange" in endpoint
-            # 2026-09-11 live report: "claiming a present doesn't update until
-            # I restart, at least for carats". Our receive_all body already
-            # matches the real server's capture field-for-field (including
-            # add_fcoin, which IS the live-apply channel -- the real session
-            # calls only present/index afterwards, never a wallet refetch), so
-            # the divergence has to be in what actually goes out. Dump it.
             or "present/" in endpoint
-            # 2026-09-11: legend_race/* just shipped and its start UI came
-            # back broken. Only legend_race/index was ever captured, so the
-            # other eight are dump.cs shapes -- log the real traffic.
             or "legend_race/" in endpoint
             or "training_challenge/" in endpoint
-            # every never-before-seen unhandled endpoint, once per run
             or (endpoint in _UNHANDLED_SEEN and endpoint not in _UNHANDLED_DUMPED)):
         _UNHANDLED_DUMPED.add(endpoint)
         try:
@@ -761,20 +450,6 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
             pass
 
     patched = patch_response(response, payload, sid)
-    # tool/signup is the ONE endpoint where the response's identity is NOT
-    # the request's: the request carries viewer_id=0 (no account exists
-    # yet), but the response mints a brand new one. patch_response's
-    # identity-echo (by design, correct for every OTHER endpoint) stamps
-    # data_headers.viewer_id from the REQUEST's viewer_id -- so signup's own
-    # data_headers.viewer_id came back 0 even though data.viewer_id (the
-    # nested field, which patch.py deliberately never echoes into) correctly
-    # had the new id. Real-server verified wrong: a real capture's signup
-    # response has data_headers.viewer_id == the new id, not 0. Live-
-    # reported symptom this caused: the client kept sending viewer_id=0 on
-    # every later call (writing progress into a single shared "viewer 0"
-    # state bucket instead of the real new account) and re-showed country/
-    # ToS/birthday on every subsequent launch, since every response kept
-    # telling it "you are still viewer 0."
     if endpoint == "tool/signup":
         new_viewer_id = (patched.get("data") or {}).get("viewer_id")
         if new_viewer_id and isinstance(patched.get("data_headers"), dict):

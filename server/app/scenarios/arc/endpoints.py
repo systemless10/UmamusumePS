@@ -1,18 +1,3 @@
-"""PROJECT L'ARC (scenario 6) -- the endpoints only this scenario has.
-
-    single_mode_arc/selection_exec       {current_turn, exec_auto_play_plan_id}   the SS match (ps 1 -> 5)
-    single_mode_arc/potential_level_up   {current_turn, potential_level_up_info_array}  buy aptitude levels
-    single_mode_arc/arc_race_analyze     {current_turn}             the exhibition's field (read-only)
-    single_mode_arc/arc_race_entry       {current_turn}             ps 16 -> 17
-    single_mode_arc/arc_race_start       {current_turn, is_short}   ps 17 -> 18, points paid
-    single_mode_arc/arc_race_end         {current_turn}             ps 18 -> 19, fans + rewards
-    single_mode_arc/arc_race_out         {current_turn}             ps 19 -> 5, the result story
-    single_mode_arc/arc_race_continue    {continue_type, current_turn}  retry (never captured, V4)
-
-None is nested in a *_request_common (docs/JP_LARC_SCENARIO.md §1-§2). The
-arc_data_set every reply carries is attached at the response chokepoint
-(Arc.attach). Refusal codes are the real server's (§9.2 probe career).
-"""
 
 from __future__ import annotations
 
@@ -26,8 +11,8 @@ from . import impl, master as M, producers
 
 log = logging.getLogger("uma-server")
 
-SS_COMMAND_TYPE = 61          # internal: selection_exec rides exec_command as this type
-INVALID = 102                 # the probe's code for a level past the table / a non-race turn
+SS_COMMAND_TYPE = 61
+INVALID = 102
 
 
 def _smt():
@@ -57,12 +42,7 @@ _envelope = VE._envelope
 _finish = VE._finish
 
 
-# ------------------------------------------------------------ SS match ---
-
 def handle_selection_exec(payload: dict) -> dict:
-    """§6: uses the turn like a training, so it runs the shared exec_command
-    pipeline (turn advance, goal checks, event poll) as an internal command
-    type whose gains Arc.scenario_command hands over."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -92,10 +72,7 @@ def handle_selection_exec(payload: dict) -> dict:
     return response
 
 
-# ---------------------------------------------------------- aptitudes ---
-
 def handle_potential_level_up(payload: dict) -> dict:
-    """§9.2: accepted at ps 1 and ps 16; `level` is the new level."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -115,23 +92,17 @@ def handle_potential_level_up(payload: dict) -> dict:
     return _finish(viewer_id, full_state, career, chara_info, response)
 
 
-# --------------------------------------------------------- exhibitions ---
-
 def _race_turn(full_state: dict, chara_info: dict) -> int:
     return int(impl.state(full_state).get("hold_turn") or 0)
 
 
 def _simulate(full_state: dict, viewer_id, chara_info: dict, sp: dict) -> None:
-    """The field and the race (§11.2-§11.3), simulated once so the paddock,
-    the race and the result agree."""
     VE._simulate(full_state, viewer_id, chara_info, sp)
     sp["race_instance_id"] = M.program_instance(int(sp["program_id"]))
     patch_members(sp.get("race_start_info"))
 
 
 def patch_members(rsi) -> None:
-    """Members race with card_id 0 on the wire (they are fielded with their
-    base card so the simulator can name their placing)."""
     for h in (rsi or {}).get("race_horse_data") or ():
         if impl.TRAINEE_SLOT_BASE < int(h.get("single_mode_chara_id") or 0) <= impl.TRAINEE_SLOT_BASE + 15:
             h["card_id"] = 0
@@ -184,8 +155,6 @@ def handle_arc_race_entry(payload: dict) -> dict:
 
 
 def handle_arc_race_start(payload: dict) -> dict:
-    """ps 17 -> 18: the result is fixed, and the supporter points are paid on
-    this reply (§11.1)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -208,8 +177,6 @@ def handle_arc_race_start(payload: dict) -> dict:
 
 
 def member_places(sp: dict) -> dict:
-    """{member chara: placing} off the simulation (members carry their base
-    card in the simulated field, rival_finish_orders' key)."""
     st_members = {}
     for chara, place in (sp.get("rival_finish_orders") or {}).items():
         st_members[int(chara)] = int(place)
@@ -217,8 +184,6 @@ def member_places(sp: dict) -> dict:
 
 
 def handle_arc_race_end(payload: dict) -> dict:
-    """ps 18 -> 19: fans and the race's item rewards; the result goes into
-    race_history_array (not the career's race_history)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -257,8 +222,6 @@ def handle_arc_race_end(payload: dict) -> dict:
 
 
 def handle_arc_race_out(payload: dict) -> dict:
-    """ps 19 -> 5 with the result story (timing 14); resolving it releases
-    the held turn (producers._race_result)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -284,8 +247,6 @@ def handle_arc_race_out(payload: dict) -> dict:
 
 
 def handle_arc_race_continue(payload: dict) -> dict:
-    """V4: never captured -- the shared continue budgets, back to the paddock
-    with a fresh simulation (as Grand Masters' / Twinkle Legends')."""
     got = _career(payload)
     if got is None:
         return refuse()

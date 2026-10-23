@@ -1,0 +1,62 @@
+#title Free Heart: Darley Arabian
+0 <chrname> had the day off from training today, and while I was thinking about how to spend it—
+1 To improve endurance, it really comes down to how well her lung capacity— Hm?
+1> Are you about to start training?
+2 Ah, Trainer <username>. I'm about to start Little Cocon's training.
+2{ Little Cocon
+3 Besides Bitter Glasse, Trainer Kashimoto also trains an Umamusume named Little Cocon.
+4 She pushed through her debut race to win—she's quite the talent.
+5 I say "about to start," but knowing her, she's probably already begun training.
+6 Since it was a good opportunity, I went along with Trainer Kashimoto to watch Little Cocon train.
+7 Huff... Huff...
+8 Hey, you're Little Cocon, right? Your debut race was amazing!
+9 Right?! If you want, wanna run with us? Let's train together!
+10 ...I'll pass. I don't like matching my pace to other people.
+11 Waaah, she turned us down! Oh well, join us if you ever feel like it.
+12 Yeah. If I ever feel like it.
+13 Good work, Little Cocon.
+14 Trainer Kashimoto. I look forward to working with you again today.
+15 ...And who's that over there?
+16 This is Trainer <username>. They'd like to watch your training today.
+17 Watch? Hmm... No idea what you'd get out of it.
+18 Well then, let's begin. First, five laps on the dirt at a three-minute pace.
+19 Yes. I'm off.
+20 ...There's a weapon I want her to hone.
+21 Endurance—a weapon that will let her make a long spurt even as her races get longer.
+22 Since she'll be running long distances, I don't want to put strain on her legs, so I have her train on dirt more often.
+22> I see...
+23 Yo, little lambs!
+24 Darley Arabian, is something the matter?
+25 Not really, just thinking you've got good instincts. Little Cocon's weapon—now that's something to see!
+26 With her, her basic abilities are high too, so at first glance it's easy to focus on speed.
+27 But her real strength is her heart and lungs! You've gotta hone that weapon to the max!
+28 ...By the way, just to check, Little Cocon's pretty stoic about things, isn't she?
+29 Yes. She even puts in runs on her own before training with me.
+30 Thought so. I was wondering how she ended up like that with you managing her, Trainer Kashimoto, but now it makes sense.
+31 Little Cocon's body is slightly out of balance.
+32 Out of balance...?
+33 With her, being so stoic means she's been overdoing the running a bit. Her awareness of her upper body has gotten weaker in return.
+34 So how about using that time to have her do full-body exercises instead?
+35 You could also try raising the calories in her meals. She should put a bit more weight on her upper body.
+36 There are cases where small mistakes in training ruin endurance or explosiveness, after all.
+37 I encouraged her to do it since it also served as a warm-up, but to think it was throwing off her balance, even slightly...
+38 Every Umamusume shines in her own way. Treasure that girl's individuality!
+39 Whoa! That one's got a great individuality too!
+40 ...That knowledge, too, must have been drawn from a vast amount of data.
+40> She's really reliable
+41 Honestly... But the trainer has to be the one Umamusume can rely on most.
+42 Using that advice, I'll have to make sure Little Cocon grows properly.
+43 —If you train all the muscles of your body in that way, without strain, there won't be any problems.
+44 Understood. ...Um, thank you for looking after my self-training too.
+45 No, I should have paid more attention as well. I just went along with your enthusiasm.
+46 But thanks to this, it's become clearer. How you'll run from here on.
+47 Let's hone your weapon.
+48 Yes...!
+49 And since I've just finalized your race schedule, let me tell you about it.
+50 First, we'll get you more race experience and continue building up your body.
+51 And next year, we'll take on the big stages. Especially the races where your weapon will shine.
+52 Next year's... big stages...!
+53 We're going together. To the Classic races.
+54 ...! Yes!!
+55 Trainer Kashimoto and Little Cocon, honing her individuality as a team. And Darley Arabian, who treasures individuality.
+56 Watching the three of them, I thought individuality must mean the Umamusume herself.

@@ -1,0 +1,135 @@
+{
+ "title": "グランドライブ、スタート！",
+ "text_block_list": [
+  {
+   "name": "ライトハロー",
+   "text": "……はい、はい。了解です！\nでは各ステージにも中継をつないでください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ライトハロー",
+   "text": "トレーナーさん。\n各所滞りなく大盛況とのことです。\n今から第2部のスタート……そして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ライトハロー",
+   "text": "『GIRLS' LEGEND U』のお披露目と\nなります。",
+   "choice_data_list": [
+    "……ついにですね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ライトハロー",
+   "text": "はい。この曲はここAステージだけでなく、\nBステージ、Cステージ……他ステージでも\n同時に披露されます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ライトハロー",
+   "text": "全ウマ娘が同時に歌い、\nファンと同時に盛り上がる予定です。",
+   "choice_data_list": [
+    "随分と大仕掛けですね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ライトハロー",
+   "text": "ふふっ、技術さんたちに力を総結集\nしてもらいましたから。必ず楽しませますよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ライトハロー",
+   "text": "ウマ娘さんも、ファンの方も。\n――そしてあなたもっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "すごい熱気……！\n歓声で肌がビリビリする……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは～、膝が震えてきました……。\n声、ちゃんと出るかなぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だけど――緊張してる場合じゃないですね。\nわたしの感謝の気持ち、しっかり\nパフォーマンスで伝えてきます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サイレンススズカ",
+   "text": "春も夏も秋も冬も超え、\n願い焦がれ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ミホノブルボン",
+   "text": "……走れ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サイレンススズカ",
+   "text": "ふふっ、面白いわよね、この歌。\nだって最終的に走りに繋がるんだもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "でもそれが私たちウマ娘らしいよね。\n本当に素敵な歌詞になったと思う！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "よーし！\nすぅ～……ふぅ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "いくぞーっ、みんなー！\n全力で歌も想いも届けるよーっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ミホノブルボン",
+   "text": "おー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスタキオン",
+   "text": "このライブで君たちは力を得るだろう！\n己の可能性を広げ、関係の有用性を高め、\n限界をも乗り超えたまえ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サイレンススズカ",
+   "text": "ふふっ、それはタキオンもね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "まだ終われない、終わらない！\nみんなで歌おう！\n『GIRLS' LEGEND U』を！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "後はステージに『GIRLS' LEGEND U』\nが流れるだけだ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

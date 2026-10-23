@@ -1,0 +1,262 @@
+{
+ "title": "有馬記念にむけて",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "憧れのウマ娘たちが集う『有馬記念』……。\n来ましたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしが、この締めくくりまで\n来られたのかって思うと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんか笑っちゃいますよね！",
+   "choice_data_list": [
+    "笑っちゃう？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい。最初は自分を追い込むことなんて\nぜんぜんできなくて～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、最初ってか“今も”かな。\nどこか甘いところはそのまんまで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもっ、来ました！　ここまで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、いってきます！",
+   "choice_data_list": [
+    "ああ、起こしておいで、ミラクルを！",
+    "うん、起こしておいで、ミラクルを！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "小さな夢を引っ提げて、ヒシミラクルは\nパドックへと歩いていく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエスちゃん、タップちゃん、\nロブロイちゃん、デジタルちゃん、\nお待たせ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日も楽しくいこ～！　みんなそれぞれ\n力を出し切れるといいよねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハハッ、お気楽だな。\nオマエは相変わらず……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――？\nAuraが……違う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "ヒシミラクル。\n見えたのか――Missionが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー……ミッションってほど\n大げさでもないけど～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "少しはわかったかも。わたしのしたいこと、\nわたしじゃなきゃできないこと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "Huh？　なんなんだ、それは？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "夢がなくても勝つこと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "No dream, no mission...\nそれで――勝つと？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "思ったんだけどさ。クリスエスちゃんたちは\n立派じゃん。ちゃんと目標立てられて、\nそこに向かってがんばれて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "尊敬はするけど、わたしはできないから。\nやろうとしてもムリだったから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "柄にもなく燃えてムチャしたら、\nケガしちゃったり……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "怠けたい気持ちや甘い誘惑に\n負けちゃったり……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもトレーナーさんや周りに助けられて\nひぃひぃ言いながら、ここまで来たんだよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもさ、それって逆にすごくない？\nだって、この意志の弱さで\nここまで来られたんだよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "できる範囲でがんばって、たくさんの人に\n支えられて。ただ、それだけで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなわたしが、もしこの舞台で勝てたら、\n誰にだってチャンスはあるってことじゃん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "夢とか持ってないわたしが勝つから、\n逆に夢があるのかなって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――なるほど。Puzzling.\n理解しがたいが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "新しい……valuesだな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハハハッ、とぼけてるわりに、\nデケエこと言うじゃないか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゼンノロブロイ",
+   "text": "感動しましたっ！　民草より\n身を起こしてこそ、と言いますものね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "つまりはレベル100の村人的な！？\nあ、新たな属性が……ッ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "言葉はそれぞれ。だが誰もがヒシミラクルを\nより強く意識するようになったようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えぇと、ファンのみなさん、\nそんなわけですから～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "温かく見守ってくれるとうれしいかなって。\nで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もし、なにか意外なことが\n起きるといいなって思った人は……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしに懸けてみてください。\n夢をちょっとだけ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ワアアアアアアアアアア！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "夢にはさまざまな形がある。いいも悪いも\nなく、どれもが等価値。その中で――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――夢なき夢も、また夢。\nたくさんの小さな期待を背負って、\nヒシミラクルは走る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

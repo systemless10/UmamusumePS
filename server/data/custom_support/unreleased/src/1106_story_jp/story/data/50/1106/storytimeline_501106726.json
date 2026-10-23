@@ -1,0 +1,56 @@
+{
+ "title": "クレーンゲームに挑戦！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある日、\nヒシミラクルと出かけた先で――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あっ！　ぱかプチがありますよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルが示すほうを見てみると、\nウマ娘たちをモチーフにしたぬいぐるみが\n入った、クレーンゲームがあった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ころっとしてて、かわいいですよね～。\nクラスでも流行ってるんですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもこれ、難しいんですよね。\n何度も挑戦してるんですけど、\n1個も取れなくて……。",
+   "choice_data_list": [
+    "じゃあ、俺が取ってあげる",
+    "じゃあ、私が取ってあげる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ、いいんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ありがとうございます！\nわたし、全力で応援しますね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――このゲーム、負けられない！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

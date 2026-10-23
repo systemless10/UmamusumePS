@@ -1,0 +1,346 @@
+{
+ "title": "My Precious Memory ♡",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "休日。使い慣れた鞄片手に、\n散歩がてら近くのモールへ足をのばすと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれ、トレっちだ！　やほやほー♡\nトレっちもショッピング中ー？？",
+   "choice_data_list": [
+    "いや、時間をつぶしているだけだよ",
+    "ううん、時間をつぶしているだけだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええ～っ！　せっかくのお休みなのにっ？\nただ歩いてるだけじゃもったいないよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねねっ、それなら私とお買い物デートしよーよ♪\nちょーどこのモール見て回ろうと思ってたの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちがときめくものも、いっしょに探しちゃお♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃーっ♡　このピンキーリング、新作だって！\nダイヤもキラキラで、ちょーセレブだよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーニング中とかにつけたら、願掛けになりそーだし！\nジャージだって、おしゃれになるし♡　トレっち、絶対買いだよ！",
+   "choice_data_list": [
+    "う～ん、ケガのもとになりそうだから……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー！　トレっち似合いそうなのに～。\nあっ、じゃああれは！？　普段使いできるもので――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほらほら！　あのショッキングピンクのニット、海外トレンドだよ！\nあっちのシャツとレイヤードにするとか、どーお？",
+   "choice_data_list": [
+    "き、着こなせる自信が……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーんっ！　新作スマホ、完売しちゃったって。\nちょー最新機能いっぱいで、オススメだったのに～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "その後もいろいろと見て回ったものの、\nなかなかピンとくるものを買うには至らず――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃじゃーーん！！　到着、ストリートマーケット～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "このイベント、面白いんだよ！\n最新トレンド扱ってるお店だけが、出店してるの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ジャンルもいろいろだし、ここなら期待大！\nほら、あそことか！　すごい人集まってる……ときめきの予感！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "てゆーか急いで行かないと、またなくなっちゃうかも！？\nトレっち、急いで急いで～っ！！",
+   "choice_data_list": [
+    "わわっ！？ちょ、待っ――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ぐいっ、ブチィッ！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へ？　……あ～～～～～～！？！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うう～～～っ……ほんとにほんとにごめんね、トレっち……。",
+   "choice_data_list": [
+    "いやいや、気にしないで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "慌てていたヴィブロスが鞄を引っ張り……\nベルトが千切れてしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "長いこと普段使いしていたし、劣化もしていたのだろう。",
+   "choice_data_list": [
+    "新しい鞄、ここで見つけようかな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！　なら私、絶対いいの見つける！\n壊しちゃったお詫びに！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えっと、えっと～～！　……あっ！！　あそこのお店は！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほら、軒先に飾ってあるの！\nアンティーク調で、ちょーすてきじゃない？　どこの新作かな～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "たしかに、雰囲気のいい鞄が置いてある。\nその風合いのよさに心惹かれ、店主に声をかけると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "露店のおじいさん",
+   "text": "――ああ、この鞄……すまないね、これは売り物じゃないんだ。\n私物でね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わっ、ごめんなさい！　すてきな鞄だなって思って……！\n……あの、そしたらブランドだけでも聞いてもいいですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "露店のおじいさん",
+   "text": "ふふ、ブランド物でもないんだ。なんの変哲もない古い鞄さ。\nでも……私にとっては、とても大切な鞄なんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "露店のおじいさん",
+   "text": "まだ若い頃、連れ合いがプレゼントしてくれてね。\n修理しながら、何年も大事に使い続けてるんだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そう言うと……店主は、愛情のこもった眼差しで鞄を撫でる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "露店のおじいさん",
+   "text": "長い時間で色も変わったし、あちこち傷もついてる。\nだが……見る度、あいつとの日々を思い出して心が温かくなるんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "きっと褪せた色も傷もすべて……\n彼にとって、かけがえのない思い出なのだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そっか……\nてっきり、そーいうデザインだと思ったけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、それでも……きゅんってする、鞄だね。",
+   "choice_data_list": [
+    "……ああ、本当に素敵だな",
+    "……うん、本当に素敵だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "露店のおじいさん",
+   "text": "はは、ありがとう。\n君のその鞄も、とても素敵だよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んー……トレっち、どうだった？\nいろいろ見たけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そう言われて、ふと手元の鞄を眺める。\n見慣れたはずのそれが……なんだか、今は違って見える。",
+   "choice_data_list": [
+    "……鞄、買うのはやめようかな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――え？　買わなくていいの……？",
+   "choice_data_list": [
+    "ああ……鞄のこの傷、覚えてる？",
+    "うん……鞄のこの傷、覚えてる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "キズって……その、黒ずんだやつ？\nなにかに挟んだみたいな――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！　もしかして、はじめて遠征したときの……！",
+   "choice_data_list": [
+    "そう、その時についた傷だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『あはははっ！　鞄、ドアに挟んで抜けなくなっちゃうなんて！\n降りられてよかったね～』",
+   "choice_data_list": [
+    "『あ、危うく遅刻するところだった……！』"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そーそー！　手伝ってくれた車掌さんにも、\nい～っぱいお礼言ったよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！　じゃあ、こっちのハートの染み覚えてる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンの子ども",
+   "text": "『ひぐっ、うぅっ……か、かばん……ごめんなさいぃぃ……』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『な、泣かないで大丈夫だよ～っ！\nジュースなんて拭けばOKだから！　それに、えっとえっと！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『あ、見て！？　ほら、鞄の染み！\nハートの形になってる～！　かわいー♡』",
+   "choice_data_list": [
+    "『おしゃれになったよ、ありがとう！』"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "他にも、ちっちゃいキズがたくさん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……すごいね、トレっちの鞄。\n私との思い出が、たくさん残ってるんだ……。",
+   "choice_data_list": [
+    "だからベルト、修理して使い続けたいなって"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "きっと鞄を見る度、彼女と歩んできた日々を思い出す。\nその思い出があれば……なにがあってもまた、歩き出せるだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――そっか……。\n……うん……そうだね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "その鞄こそが……\nトレっちにいっぱい力をくれる、ときめきなんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……よ～し、じゃあ予定変更！　鞄のベルト、探しに行こ！\nトレっちの大事な鞄が、元通りキラキラになって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日の思い出も、いっしょに大事にできるように！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

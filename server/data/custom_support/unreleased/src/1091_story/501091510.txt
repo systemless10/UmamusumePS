@@ -1,0 +1,48 @@
+#title The Fruits of Love♡
+0 Hair and tail care, you said...?
+1 That's right... It's especially bad on rainy days! My hair and tail both get all frizzy.
+2 Ahh～, the kind that puffs out with humidity. Then the stuff I use might not suit you...
+3 What do you do, Flash-senpai?
+4 I order products from my hometown. I use them at the same time, in the same number of grams, with water at the same temperature.
+5 Th-that precisely!? I knew there was a reason for such beautiful hair!
+6 Uuu... But with my sloppy personality, I could never do that...
+7 I see. Then something easy, effective, and suited to your hair type...
+8 Ah, now that I think of it, once in the dorm lobby, Vivlos—
+9 "My, another new treatment? You really do keep finding them."
+10 "Everyone's introducing it on social media♪ You just put it on, super easy! They say it suits any hair! Hey, Onee-chan, let's use it together～♡"
+11 "All right. Then first, shall we read the instructions together? If you use it wrong, it won't work as well."
+12 "That's my Onee-chan! So reliable～♡"
+13 Oh, now that you mention it, I also saw them by the station—
+14 "Thanks for booking the salon, Onee-chan～♡"
+15 "The all-in course with the facial and the head spa was the one you wanted, right?"
+16 "I wanna do aaall of it with you, Onee-chan♡ Once we're silky and shiny, let's go on a date♡"
+17 I see～! Leaving it to the pros is an option too! ...No, wait! But before, right here—
+18 "Hey, they say if you brush with this comb, it gets all shiny and silky!"
+19 "C'mon, Onee-chan, do it, do it!"
+20 ...That's what I saw! Even if they're not a pro, having someone do it for you—
+21 ...No, rather...
+22 Um... It's true she seems to do all kinds of things, but—
+23 Indeed. Her true secret is surely...
+24 Onee-chaaan!
+25 Hey, hey, let's take a bath together today too♡ And I want you to dry my hair after♡
+26 All right. ...Fufu, you're still such a spoiled little thing.
+27 Not with just anyone, only 'cause it's you, Onee-chan♡
+28 When you brush it reeeal gently, and dry it so carefully with the hair dryer...
+29 Everything about you is sooo warm, Onee-chan, and I love it♡
+30 ...You hopeless girl. Fine, come here.
+31 ...Haha. Yeah, I don't think we can really learn from that one～.
+32 As Vivlos walked into the trainer's office, her hair and tail looked especially radiant today—
+33 ...Hm? What's up, Tore-cchi? You're staring at me.
+33> Nothing, you just look sparkly today
+34 ! Riiight?
+35 Onee-chan took care of it for me! I could feel so much of Onee-chan's love♡
+36 She stays with me～, and makes me pretty too～, I loooove Onee-chan too♡
+36> You know how to be spoiled cleverly | You know how to be spoiled cleverly | She's really caring for you, bit by bit | She's really caring for you, bit by bit
+37 She stays with me～, and makes me pretty too～, I loooove Onee-chan too♡
+37> You know how to be spoiled cleverly | You know how to be spoiled cleverly | She's really caring for you, bit by bit | She's really caring for you, bit by bit
+38 Ehehe♪ I'm gonna ask her again today～♡
+39 If I can, I'll catch Chevacchi too～ and we'll be three shiny, silky sisters♪
+40 And so, once again today, a close-knit pair of sisters could be seen in Ritto Dorm.
+41 She's super gentle, right? So, look—
+42 ————Fufu♪
+43 I found myself entranced for a while by her beautifully flowing hair and tail.

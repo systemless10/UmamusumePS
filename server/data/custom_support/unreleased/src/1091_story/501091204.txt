@@ -1,0 +1,72 @@
+#title Toward the Shuka Sho
+0 When we came to Kyoto for the last crown of the Tiara races, the Shuka Sho—
+1 (Waaaaah...!)
+2 Whoa, so many people...!
+3 What's going on? Is some celebrity visiting Japan?
+4 Where? Where?
+4> It's probably you | It's probably you
+5 Huh?
+6 Vivloooooos! Go for iiiit!!
+7 I'll watch your challenge right to the very end...!
+8 ...
+9 You're riiight～!? I'm suuuper glamorous!
+10 That's right, I've gotten more followers too... Haven't I become suuuper-duper glamorous?
+10> (It's really moving)
+11 It was the same Kyoto at her debut race, too, when fans of her family came to greet her. But now—
+12 Vivlos, so cuuute～! We're rooting for you! Win the Shuka Sho!
+13 Thank you, everyone～!
+14 Mmm, mwah♡
+15 Woooooooah!!
+15> (Everyone's completely captivated by her)
+16 Kyaaaa～!! Vivlos sweetie, look over here!
+17 What a fan-service spirit! That's our daughter!!
+17> There are some passionate fans over there too—
+18 Wait, huh?! Everyone's here!?
+19 Appearing among the crowd of fans was Vivlos's family... Verxina, Cheval Grand, and her parents too.
+20 —Ehehe, we came♡ After all, it's Vivlos's big day.
+21 ...Is what we'd like to say, but actually, your trainer invited us.
+22 Tore-cchi did!?
+22> I thought it would give you strength | I thought it would give you strength
+23 Of course, we were planning to come and had arranged our schedules... but the final arrangements just weren't working out.
+24 But your trainer sent us such a passionate message, you know?
+25 "If there's anything I can do, I'll do anything. So please, come to the Shuka Sho no matter what"... like that.
+26 Trainer...
+27 It felt like I got a good kick in the pants! That's how I managed to wrap everything up!
+28 ...Tore-cchi, thank you so much♡
+29 Go get 'em, Vivlos! You'll be fine!
+30 Wait, Papa, that suit! I've seen it before!
+31 Ah, it's the one I wore to Verxina's race too!
+32 ...I told him not to, since it's bad luck.
+33 Nonsense! This suit holds all kinds of feelings.
+34 I'm sure it'll give Vivlos strength. Right, Cheval!
+35 Why me...
+36 Chevacchi, thank you for coming even though you're busy!
+37 ...
+38 It's not like... I'm not rooting for you.
+39 Yeah! Thank you!
+40 Vivlos...
+41 ...Today is the last one, but don't push yourself. Your real dream is in Dubai.
+42 ...
+43 But... I'm cheering for you so much. I'm wishing for your victory.
+44 —Okay.
+45 Vivlooooooos!!
+46 ...—
+47 Huh, that's weird... Ahaha. I'm kinda shaking.
+47> It's okay
+48 ...Is it?
+49 Today will never come again. If I lose, then...
+50 Did I really work hard enough? Will I be okay?
+50> We did everything we could
+51 Yeah. But... I'm getting scared.
+52 What if my tummy starts hurting in the middle? What if it gets hard to breathe...
+52> We prepared as much as we possibly could
+53 ...You never know what'll happen in the real race, huh.
+54 Can I... make everyone smile?
+54> You can!
+55 Tore-cchi...
+55> Your feelings for your family are worthy of victory | Your feelings for your family are worthy of victory
+56 My... feelings.
+56> Let's give your beloved family the best victory
+57 ...Yeah, you're right!
+58 For my own sake... I'll do it for everyone!
+59 —I'm off!

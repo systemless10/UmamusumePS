@@ -1,0 +1,296 @@
+{
+ "title": "7連続ローリング！",
+ "text_block_list": [
+  {
+   "name": "数学の先生",
+   "text": "えー、みなさん。それでは教科書の\n『確率』のページを開いてください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "数学の先生",
+   "text": "みんなで解を求めていきましょう。\n事象Aが起こる確率をPとすると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～う～。\n数学、むずかしすぎる～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『有馬記念』で快勝したヒシミラクルだが、\nトレセン学園に戻れば、ただの一生徒。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "いつも通り、授業についていけず\n悶絶していた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっとちょっとバンブーちゃん、\n答えわかる？　ってかこれ割り切れる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "割り切れないものは、竹刀でズバーンっスよ！\n要は気合いっス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、わたしとおんなじレベルだぁ～。\n誰か頭のいい子、助けて～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "後日、ヒシミラクル、シンボリクリスエスと\n3人で、屋上で話をする機会があった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "ヒシミラクル、結局――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "GⅠで1度も勝てなかったな。\n――お前に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "1度も？　あれ、そうだっけ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "トレーナーは――理解しているな？",
+   "choice_data_list": [
+    "ああ……",
+    "うん……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "シンボリクリスエスの言うとおりだった。\nヒシミラクルは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "クラシック級の『日本ダービー』\n『ジャパンカップ』『有馬記念』。\nそして……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "シニア級の『宝塚記念』『天皇賞（秋）』\n『ジャパンカップ』『有馬記念』。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その全てでシンボリクリスエスに、\n勝利してみせた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そ、そうだったんだ……。あんまり\n気づいてなかったよ～。ってことは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、めちゃ運がいいのかも！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Luck?",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん、だって～。\n誰もが認めるクリスエスちゃんに\nGⅠで7回とも勝てたんだよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "相当、運がよくなきゃできないって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "なるほど。\n……確率は？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ、確率……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "ああ。お前が私に\n7連続で勝利する――確率は？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひぃぃぃ、す、数学～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし数学ダメなんだってば～。\n降参、もう降参～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "レースでは常勝。だが数学となると\nヒシミラクルは一瞬で敗北を認めてしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――トレーナー、何%だ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "言われて考える。\n仮に実力が五分五分として……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "7戦全てに、ヒシミラクルが勝利する確率。\nつまり50%を7回掛けると……。",
+   "choice_data_list": [
+    "0.8％ぐらいかな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、それって……。",
+   "choice_data_list": [
+    "100回に1回もないくらいだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "100回に1回も！？　じゃあわたし、\nやっぱり超運がいいじゃないですか～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "大丈夫かな。そんなに運、\n使い果たしちゃって～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "トレーナー……Incorrectだ。\n間違っている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "I believe.\n7連続勝利の確率は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――100％だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ、ひゃくぱー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "そう――Luckではない。\nだから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Mission変更だ。\nまずは……ヒシミラクルに勝利。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "そこから遂行する\n――では。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "立ち去るシンボリクリスエスの目には、\nかすかな敬意が宿っているように見えた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふえ～……。トレーナーさん、なんか、\nぜんぜんわからなかったですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "7連続の可能性って100%なんですね。\n数学って意外に簡単かも……。",
+   "choice_data_list": [
+    "そうじゃなく！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "対シンボリクリスエス戦で、\n驚異のGⅠ7連続勝利。\nしかし、それは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "強運の証ではなく、強者の証。\nあのシンボリクリスエスも認める力を、\nヒシミラクルは示したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

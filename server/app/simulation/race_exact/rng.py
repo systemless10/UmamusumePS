@@ -1,9 +1,3 @@
-"""The race RNG: Gallop.RaceRandom over .NET System.Random(seed).
-
-The client has one shared instance for runners and skills. Many replay start
-delays match float32(NextDouble()) * 0.1 exactly, but some captures appear to use
-a different effective seed. Complete race draw order is not yet established.
-"""
 
 from __future__ import annotations
 
@@ -15,7 +9,6 @@ _F = struct.Struct('<f')
 
 
 def f32(x: float) -> float:
-    """Round to float32 (exact emulation of a single-precision result)."""
     return _F.unpack(_F.pack(x))[0]
 
 
@@ -24,7 +17,6 @@ def _i32(x: int) -> int:
 
 
 class NetRandom:
-    """System.Random(int) -- Knuth subtractive generator (Mono/.NET Framework)."""
 
     __slots__ = ('_sa', '_inext', '_inextp', 'calls')
 
@@ -83,7 +75,6 @@ class NetRandom:
         rng = hi - lo
         if rng <= _MBIG:
             return int(self.next_double() * rng) + lo
-        # Client Random.Next @ 0x20198f0: large ranges consume TWO samples.
         value = self._internal_sample()
         if self._internal_sample() % 2 == 0:
             value = -value
@@ -92,19 +83,10 @@ class NetRandom:
 
 
 class RaceRandom:
-    """Gallop.RaceRandom: the four IRaceRandomGenerator.GetRandom overloads.
-
-    Decompiled (Global build):
-      GetRandom(int max)            -> Random.Next(0, max)
-      GetRandom(int min, int max)   -> Random.Next(min, max)
-      GetRandom(float max)          -> clamp((float)NextDouble() * |max - 0| + 0, 0, max)
-      GetRandom(float min, float max)-> clamp((float)NextDouble() * |max - min| + min, min, max)
-    All float arithmetic is single precision.
-    """
 
     def __init__(self, seed: int, trace: list | None = None):
         self._r = NetRandom(seed)
-        self.trace = trace   # optional list of (kind, args, value, tag) for debugging
+        self.trace = trace
 
     @property
     def calls(self) -> int:

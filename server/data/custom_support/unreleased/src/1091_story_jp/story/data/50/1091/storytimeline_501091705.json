@@ -1,0 +1,353 @@
+{
+ "title": "最後まで、大好きな時間で",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "『この日はヴィブロスの息抜きをする』\nそう決めた時から、この日は全力で\nヴィブロスを楽しませるプランを組んでいた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "メリーゴーランドにもスムーズに乗れて～、\nウマスタ用のちょーいい写真も撮れて～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ♡\n次はどうするの、トレっち～♪",
+   "choice_data_list": [
+    "もちろん、君のお望みのままに",
+    "もちろん、貴方のお望みのままに"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ今からプール行きたいって\n言っても～、かなえてくれるっ？",
+   "choice_data_list": [
+    "ああ、行こう！",
+    "うん、行こう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "どんな季節でも、ここなら体も冷えない。\n温水プールへとヴィブロスを案内する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わっは～～～♡\nねね、次はあっちのウォータースライダー！\n乗りたい乗りた～い！",
+   "choice_data_list": [
+    "そう言うかと思って予約を入れておいたよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "先回り○～っ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あはははっ。すご～～い。\nすごいよ、トレっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日ぜーんぶ楽しい！\nお出かけに誘われたときからぜーんぶ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんかすっごいセレブ～♡\n全部準備してくれる人がいるーっ♪",
+   "choice_data_list": [
+    "ちっちっち、まだ終わりじゃないよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ？\nうそうそうそー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "黒服の運転手",
+   "text": "ヴィブロス様。トレーナー様。\nお帰り用のお車をご用意しました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーーーっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "天才っ！　トレっち、ちょーすごい！\nピカピカの車が待ってるよっ！\nねっ、ねっ。これで帰るの？",
+   "choice_data_list": [
+    "ああ、いい息抜きになったかな？",
+    "うん、いい息抜きになった？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なった！　なりすぎるっ！\nこんな……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ……セレブみたーい♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスのために用意したプラン、\n最後にとっておいたメインまで、\n無事に成功したみたいだ。",
+   "choice_data_list": [
+    "（懐は寂しくなったけど……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "少年",
+   "text": "うぅぅ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "少年の父親",
+   "text": "大丈夫か？\nお腹はどのくらい痛む？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "少年の母親",
+   "text": "……お父さん。\nどうしよう、道が混んでて\nタクシーが来るまでに50分かかるって……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "少年",
+   "text": "うぅぅぅ……ごめん。おとーさん。\nおかーさん。ぼくのせいで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………ねー。トレっち。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "最後にいっこ、お願いしていい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "少年の母親",
+   "text": "すみません、すみません！\n車、ありがたく乗らせていただきます！\nしかもこんな立派な……あの、代金は……！",
+   "choice_data_list": [
+    "いえいえ、今は急いであげてください"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "にへへっ。\nありがと、トレっち。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お腹痛そうだったあの子、\n『ごめん』って悔しそうだったから。つい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……すっごく楽しかった1日だったのに、\n急にみんなを心配させて悲しくさせるのって、\nその……つらい思い出になっちゃうし。",
+   "choice_data_list": [
+    "……優しいな、ヴィブロスは",
+    "……優しいね、ヴィブロスは",
+    "君にもそういうことがあったのか？",
+    "貴方にもそういうことがあったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……すっごく楽しかった1日だったのに、\n急にみんなを心配させて悲しくさせるのって、\nその……つらい思い出になっちゃうし。",
+   "choice_data_list": [
+    "……優しいな、ヴィブロスは",
+    "……優しいね、ヴィブロスは",
+    "君にもそういうことがあったのか？",
+    "貴方にもそういうことがあったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ、そう～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもー、トレっちのおかげかもよ？\n私はいーっぱい楽しませてもらったから♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょーセレブっぽい車には乗りたいけどー。\n……今日だけならいいかな～って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちなら、\n車がなくても楽しい帰り道を\n用意してくれるもんねっ♡",
+   "choice_data_list": [
+    "……えっ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "さすがにここからの別プランなどは\n用意できていない。ヴィブロスには悪いが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……んふふ♪\n次は私、こーしたいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "その時、細い腕が首元に回され、\n背中には温かい熱と重さが加わった。",
+   "choice_data_list": [
+    "ヴィブロス、これって……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ♡\nおんぶで帰りたーい♪",
+   "choice_data_list": [
+    "……すぐ限界が来るかもよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも限界まではがんばってくれるんでしょー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへっ。\nトレっち、だーい好きっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "結局わずかしか力は持たなかったが……\n……ヴィブロスはニコニコと満足そうに\n笑っていたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ。ばれたー？\nちょっとだけ……よく、あったんだぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "家族との楽しい時間のときばっかにね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いシュヴァル",
+   "text": "『……ヴィブロス、おなかいたいの？\nなら――』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いヴィブロス",
+   "text": "『――！　ダメ、いっちゃダメ！\nだいじょーぶ。ガマンできるっ』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いヴィブロス",
+   "text": "『……だって。きょうのげき、シュヴァちも\nおねえちゃんも、たのしみにしてたもん……』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いシュヴァル",
+   "text": "『…………ヴィブロス』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いシュヴァル",
+   "text": "『でもそれじゃあヴィブロスにとっても、\nたのしい思い出にならないよ。\n……っ、おとーさんっ！　おかーさん！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……家族ってね、\n家族みんなが元気じゃないと\n楽しくなれないっぽいんだよねー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもトレっちには、ごめんね。\nせっかく用意してくれた車だったのに。",
+   "choice_data_list": [
+    "いいよ、君のかっこいい姿が見られたから",
+    "いいよ、貴方のかっこいい姿が見られたから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……わっ。かっこいい？\nかっこよかった～っ！？　えへ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ぴょんぴょんと嬉しそうに跳ねる彼女が、\nその日はいつもよりもさらに立派に\n見えたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+#title Heart-Flutters Lead to Overeating
+0 Tore-cchi! Hurry, hurry～! The food over here is amazing too!
+1 It says it's a domestic-carrot-cream mille crêpe in pyramid style! It's hu～ge!!
+2 This one's French cuisine—or so I thought, but it's got spices in it! And over there—
+3 There you are. Vivlos and co.!
+4 Crown! Diamond! Thanks for inviting us today!
+5 The location's perfect, and the food's perfect too♡ This is fusion cuisine, right?
+6 Yes. It's creative cuisine combining ingredients, seasonings, and techniques from many countries.
+7 Enjoy the cooking of the Satono family's own first-class chefs... as they say!
+8 So that means, that means! If I eat it all, I can take a trip around the world through food!?
+9 My heart's fluttering～♡
+10 I wanna eat aaall of it♡ I wanna eat my way to the ends of the earth♡
+10> All of it is too much | Let's eat it all and go around the world!
+11 Vivlos is a small eater. Eating too much would be a strain on her.
+12 Ehh～? But, but, I wanna feel like I'm going around the world～...
+12> How about a world food tour you enjoy with your eyes?
+13 Ah, I get it! Sightseeing while taking photos.
+14 ! Oh yeah! Traveling isn't just about gourmet food!
+15 Kyaa♡ That's my Tore-cchi♡
+16 Then, let's go♪ Oh, and on the way, let's take a two-shot with the sparkly night view behind us♡
+17 And so Vivlos didn't get swept away by her fluttering heart, and held back from binge eating.
+18 Aha! Tore-cchi's all into it～♪ Let's go, let's go～!
+19 Nobody can stop this heart-flutter♡
+20 And so Vivlos savored the fusion cuisine and fully enjoyed the feeling of going around the world.

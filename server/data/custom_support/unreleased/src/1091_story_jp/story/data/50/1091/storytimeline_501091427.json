@@ -1,0 +1,25 @@
+{
+ "title": "秋華賞の後に・Triple Tiara♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィルシーナの想いを継いだヴィブロスは、\n見事『秋華賞』を制し、\nとうとうトリプルティアラを達成した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ティアラ路線を走り抜いたヴィブロスは、\n両親の用意したパーティーを満喫した後、\nドバイのレースを目指すと改めて決意する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスとトレーナーは、\n夢を叶えるための通過点として\n『中山記念』を次の目標とするのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "中山記念"
+   ]
+  }
+ ]
+}

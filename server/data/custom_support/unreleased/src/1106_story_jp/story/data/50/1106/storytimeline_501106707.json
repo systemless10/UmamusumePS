@@ -1,0 +1,115 @@
+{
+ "title": "神社でお祈り！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "最近調子が上がらないヒシミラクルと\n2人で神社にやって来た。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "鳥居をくぐる前に、一礼。\n参道の中央は避けて進む、っと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ、神さまに失礼がないよう、\n勉強してきたんです。\n次はお参りですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "礼をして……いち、二礼。\n次に、二拍手。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "神さま、わたしが元気になれるよう、\n力を貸してください……！\nなにとぞ、よろしくお願いします……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "困ったときは神頼みですよね。\n神さまがお願い叶えてくれるといいなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、そうだ。おみくじで\n今後の運勢を占いませんか？",
+   "choice_data_list": [
+    "引いてみよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なにが出るかな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、ヒシミラクルと\nおみくじを引いた結果――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "すごい、2人とも大吉なんて！\nさっそくお参りの\nご利益があったんでしょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ、さすが大吉、\nいいことばっかり書かれてましたよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "願い事、努力すれば叶う。\n勝負運、一発を狙える、勝負すべし。\n健康も問題なし、だそうです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしの未来、めちゃ明るいじゃないですか。\nや～、楽しみですねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "おみくじで前向きな気持ちになれたせいか、\nヒシミラクルは調子を取り戻すことができた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ガーン……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしもトレーナーさんも……大凶……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、困ったときだけ頼るなんて、\n現金だぞって思われたのかも……。\nはぁ～～っ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "大凶を引き、へこんでしまったヒシミラクル。\n調子を取り戻すこともできなかったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

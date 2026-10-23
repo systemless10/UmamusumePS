@@ -1,0 +1,35 @@
+{
+ "title": "グロウアップレースの後に・勝利",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "『グロウアップレース』を見事に\n勝利してみせた<chrname>。\nこの結果を、三女神たちも高く評価する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、成長の手ごたえをしっかりと感じ\nジュニア級を締めくくることができた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "いっぽう、樫本トレーナーの担当する\n2人のウマ娘も、これまでの積み重ねの\n成果を『グロウアップレース』で見せた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "桐生院トレーナー担当のハッピーミークは\n出走は叶わなかったものの、\n自分たちのペースでジュニア級を過ごした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "三女神のサポートによる恩恵を\nそれぞれのトレーナーが感じる、\nそんな1年目となったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

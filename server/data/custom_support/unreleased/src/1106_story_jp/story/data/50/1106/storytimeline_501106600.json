@@ -1,0 +1,34 @@
+{
+ "title": "武者震い",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん。なんか今日、調子いい？\nこー……ワクワクするっていうか～。",
+   "choice_data_list": [
+    "それは鬼に金棒だな！",
+    "それは鬼に金棒だね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……そう思います～？",
+   "choice_data_list": [
+    "もちろん！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふっ！　まあ、ゆーていつもより\nちょっとだけ、いけるかもって話ですけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……じゃあその期待に応えられるように、\nちょっと分だけ、がんばってきます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

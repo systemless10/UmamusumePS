@@ -1,25 +1,3 @@
-"""BEYOND DREAMS (scenario 13, JP only) -- Beyond Dreams: 共に前へ、共に光を ("Breeders").
-
-Like every scenario it builds on the URA base (base.Scenario's defaults ARE
-URA); this class is the whole seam between the scenario and the shared career
-code, which only ever calls hooks.
-
-WHAT LIVES WHERE
-    impl.py       the mechanics -- the team, gauges and ranks, Dreams Points,
-                  Reflections, DREAMS training, and the breeders_data_set
-    formula.py    the training numbers (on ramen.formula's machinery)
-    master.py     the single_mode_13_* tables
-    endpoints.py  select_bc_race, team_meeting, team_review, team_sp_training,
-                  finish_team_union_event, bc_race_entry, member_bc_race,
-                  change_dress_option
-    producers.py  the event calendar and its resolvers
-
-docs/JP_BEYOND_DREAMS_SCENARIO.md is the spec: every rule, number and event
-here is traced there to the real server's captures, master.mdb or the client.
-
-JP ONLY BY CONSTRUCTION: Global's master.mdb has no single_mode_13_* tables,
-so the released-and-implemented intersection never advertises it there.
-"""
 
 from __future__ import annotations
 
@@ -36,34 +14,19 @@ class Breeders(Scenario):
     data_set_on_race_start = True
     state_keys = (impl.STATE_KEY,)
 
-    # ------------------------------------------------- shared-content gates --
-    # The Director arrives with 213001 and the Reporter with 213816
-    # (single_mode_events.NPC_UNLOCKS). The career ends on the BC at turn 69:
-    # no URA finals, no URA ending chain, no Happy Meek.
     uses_fixed_schedule = False
     has_versus_npc = False
     debut_reporter_event = 0
     has_director_ending = False
     has_ura_finals = False
     has_ending_chain = False
-    # Goal races pay the scenario's own この調子でいこう！ (and the BC its
-    # ending), not the trainee's 'After the X' (§8).
     replaces_goal_race_event = True
     reserve_arrivals_after_race = True
-    # Every real turn 30/54 finishes its chain (turn held, ps 5) before
-    # 7044/7046 opens turn 31/55.
     inspiration_closes_chain = True
-    # No 3001-3005/3010/3011/6001: the real server plays none of the
-    # trainee's calendar beats here, only the scenario's own (213025/213808
-    # at camp, 213811/213812 at New Year). 3003 on turn 37 left the camp home
-    # screen without its UI.
     plays_calendar_stories = False
-    # Camp keeps 701/801, disabled (every real camp turn, turns 37-40/61-64).
     camp_lists_rest = True
-    # 41 BC selection, 40 meeting, 43 review, 44 BC day, 47 union cut (§1.1).
     playing_states = frozenset({5, 40, 41, 43, 44, 47})
     turn_end_hold_state = 5
-    # Casino as an NPC partner when her card is not in the deck.
     npc_targets = frozenset({M.ADVISOR_TARGET})
 
     LEVELUP_EVENTS = {101: 213801, 102: 213802, 103: 213803, 105: 213804, 106: 213805}
@@ -76,8 +39,6 @@ class Breeders(Scenario):
         return (self.LEVELUP_EVENTS.get(base, 213801), 400000005)
 
     def gated_npc_charas(self) -> frozenset:
-        """Casino's card stays off the training screen until the team forms
-        (213001 flips her row, 7/7 careers)."""
         return frozenset({M.CASINO_CHARA})
 
     def appraisal_events(self):
@@ -85,16 +46,12 @@ class Breeders(Scenario):
                 M.ADVISOR_TARGET: [(90, 213826, 5), (70, 213825, 4), (40, 213824, 3), (0, 213823, 2)]}
 
     def career_route(self, chara_info: dict):
-        """Route 30000: the trainee's own debut goal until the BC is picked
-        (select_bc_race adds the BC's five)."""
         chara = int((chara_info or {}).get("card_id") or 0) // 100
         return impl.ROUTE_ID, [impl.debut_route_row(chara)]
 
-    # ------------------------------------------------------------ endpoints --
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 
-    # ------------------------------------------------------------- response --
     def command_info(self, full_state, chara_info, home_commands):
         if not isinstance(chara_info, dict):
             return None, False
@@ -134,7 +91,6 @@ class Breeders(Scenario):
         return response
 
     def settle(self, full_state, chara_info, endpoint=""):
-        """Casino's dates done so far (for her ending), off her story step."""
         if not isinstance(chara_info, dict):
             return False
         k = impl.casino_card(chara_info)
@@ -149,10 +105,7 @@ class Breeders(Scenario):
             return True
         return False
 
-    # ------------------------------------------------------------- training --
     def final_partners(self, full_state, chara_info, command_id, turn, partners) -> list:
-        """A DREAMS turn: every normal deck card on every facility; the friend
-        card and the NPCs step off (§7.2)."""
         st = impl.state(full_state or {})
         if full_state and impl.dreams_active(st, int(turn or 0)):
             return impl.dreams_partners(chara_info)
@@ -173,9 +126,6 @@ class Breeders(Scenario):
         return impl.preview_bonus(impl.state(full_state), impl.turn_of(chara_info), int(command_id or 0))
 
     def award_training_gains(self, full_state, chara_info, payload) -> None:
-        """A successful action: a training fills (or ranks up) the members
-        standing there; a rest, a normal outing or the infirmary queues the
-        '+1 to the lowest gauge' beat; Casino's date pays when it resolves."""
         st = impl.state(full_state)
         if not st["formed"]:
             return
@@ -188,16 +138,12 @@ class Breeders(Scenario):
         casino = (ctype == 3 and int(payload.get("command_group_id") or 0) == 390
                   and int(payload.get("select_id") or 0) == M.CASINO_CHARA)
         if casino:
-            # Pay exactly the split the outing button previewed (same seed).
             st["outing_due"] = {str(c): n for c, n in impl.outing_split(
                 st, impl.rng_for(full_state, "outing", turn)).items()}
         elif ctype in (3, 7, 8):
             st["plus1_due"].append({"turn": turn, "kind": ctype})
 
     def on_race_result(self, full_state, chara_info, race_ctx, result_rank) -> None:
-        """A goal race queues its reward beat and the '+1'; the BC won ends
-        the career (state 3, §9). A place that misses the goal pays nothing
-        here -- the shared failure path ends the run."""
         st = impl.state(full_state)
         turn = int(race_ctx.get("turn") or impl.turn_of(chara_info))
         from ...handlers import single_mode_team as smt
@@ -221,9 +167,6 @@ class Breeders(Scenario):
         return M.team_rank_effect(impl.team_rank(impl.state(full_state)), M.TEAM_SPECIALTY)
 
     def hint_partners(self, full_state, chara_info, command_id, partners, hinting):
-        """A DREAMS turn shows its tips on every facility; otherwise the team
-        rank's hint rate gives a card that missed its roll a second chance at
-        rate% of its own [INFERRED, as Onsen's spring 5]."""
         st = impl.state(full_state)
         turn = impl.turn_of(chara_info)
         if impl.dreams_active(st, turn):
@@ -262,7 +205,6 @@ class Breeders(Scenario):
                                facility_cards=smt._facility_failure_cards(chara_info, partners))
         return max(0, rate * (100 - min(100, down)) // 100)
 
-    # ----------------------------------------------------------------- flow --
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
         return impl.review_pending(impl.state(full_state), int(turn or 0))
 
@@ -302,7 +244,6 @@ class Breeders(Scenario):
                     impl.add_exp(full_state, st, m, n)
         return {}
 
-    # ------------------------------------------------------------------ run --
     def snapshot(self, full_state) -> dict:
         st = impl.state(full_state)
         return {"breeders_reviews": [dict(r) for r in st["reviews"]],

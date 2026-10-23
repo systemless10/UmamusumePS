@@ -1,0 +1,57 @@
+{
+ "title": "積み重ねられた知識の結晶",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "三女神のサポートを受けつつ、\nトレーニングをしていたある日のこと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "お？　どうやら積み重ねてきた知識の\n集まりを“習得”する時が来たみたいだな。",
+   "choice_data_list": [
+    "“習得”……？"
+   ],
+   "color_text_info_list": [
+    "習得"
+   ]
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "知識とは歴史、そして歴史とは他の歴史へと\n繋がり結びつくもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "点として集まった知識は線で繋がり、\n交わり合って新たな知識を生み出す。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたならもう見えているはずよ。\n知識と知識が結び合った先を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "結晶と知識を、今こそ自分のものにして、\n大事なウマ娘へと伝えてあげて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "たしかに、自分の中で積み重なった知識は、\nそれぞれ結びついて大きな知識になっている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "大きくなった知識を自分の中に落とす――\n今がその時なのかもしれない……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

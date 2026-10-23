@@ -1,0 +1,34 @@
+{
+ "title": "めざめろ、闘争心！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "クラシック三冠目前。しかし一向に\n芽生えない、ヒシミラクルの闘争心。\nそこでトレーナーは……。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クラシック三冠"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "同期の強豪ウマ娘、\n破壊神タニノギムレットと一緒の時間に、\nトレーニングさせることにする。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "破壊神",
+    "タニノギムレット"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかし、とくに競い合うこともなく。\n逆にタニノギムレットの\nあまりに過酷な将来プランを聞き……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ドン引きして、距離を置く。\n闘争心を煽る作戦は失敗に終わったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

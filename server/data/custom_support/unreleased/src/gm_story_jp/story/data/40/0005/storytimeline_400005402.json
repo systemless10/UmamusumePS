@@ -1,0 +1,39 @@
+{
+ "title": "それぞれのスタート",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "この日、担当するウマ娘のデビュー戦を\n無事に終えたトレーナーたちと、\n情報共有が行われていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分と同期の新米トレーナーである\n桐生院葵トレーナーは、その経験の浅さを\n三女神のサポートに救われたと話す。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "桐生院葵"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "すでにトレーナー経験のある\n樫本理子トレーナーもまた、三女神の知識は\n喉から手が出るほど欲しいと話す。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "樫本理子"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "ルーキーであろうと、ベテランであろうと、\nウマ娘の夢を背負う重さは変わらない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "デビュー戦後も、ウマ娘との絆を深めながら\n共に走っていこうと改めて思うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

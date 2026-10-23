@@ -1,0 +1,6 @@
+#title An Invitation to the WBC
+0 One day, a message arrived from the Three Goddesses. It was an invitation to the WBC, held at the end of the year.
+1 In classic year as well, <chrname>'s talent had been recognized by the Three Goddesses. As her trainer, I was genuinely happy.
+2 Meanwhile, though her Umamusume had also been selected for the WBC, Trainer Kashimoto looked troubled.
+3 In a race, Bitter Glasse had been no match at all, even running the way she was best at.
+4 By this time, Umamusume have gained plenty of strength and experience. For her, whose only strength had been her physique, a time of trial had come.

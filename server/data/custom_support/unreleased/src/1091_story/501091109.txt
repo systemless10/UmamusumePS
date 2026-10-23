@@ -1,0 +1,86 @@
+#title Christmas
+0 Today is Christmas. Invited by Vivlos's family...
+1 I was taking part in a family-only party at a vacation villa they own.
+1> Sorry for intruding on your family...
+2 It's fine, we're the ones who invited you. If anything, thanks for coming, okay?
+3 We go all out for Christmas every year, but this year, at Vivlos's request, we're keeping it small!
+4 It's modest, but we've prepared some food! Please, help yourself!
+4> Thank you very much
+5 I look at the food lined up before me. A huge turkey, a mountain of salad, a big pot of soup, buffet-style small plates...
+5> ...Modest?
+6 Huh? Oh, um... It's modest... isn't it...?
+7 Actually... Onee-san, why are you in uniform?
+8 I have some academy business after this.
+9 ...I'm getting ready for my next race. I need to get my own revenge too.
+10 !
+11 ...Me too. I need to train.
+12 Right, everyone's got a lot to do... Maybe we'll wrap up before night?
+12> (It can't be helped, but...)
+13 Vivlos loves her family and was so happy everyone could get together. I worry she'll end up feeling lonely...
+13> By the way, where's Vivlos?
+14 Happy holidays♪ Happy happy holidaaay♪
+15 Suddenly the room goes pitch black. Then, along with Vivlos's singing voice, a faint light draws near...
+15> A cake...?
+16 When the lights come on, a somewhat lopsided Christmas cake sits on the table. Lined up on its pure white cream are...
+17 These doll-like things... could they be us...?
+18 Yep!
+19 The biggest is Papa, the second is Shuva-chi, the third is Onee-chan, the fourth is Mama!
+20 And the little one in the middle is me!
+20> Then the one next to you...?
+21 Tore-cchi, of course! I call it the "Love-You Cake"!
+22 You made it? All by yourself...?
+23 Yep! I got the recipe from a friend.
+24 And I did everything else myself! I messed up a few times, though.
+25 You know, I really, really felt it. That I love all of you!
+26 If we have lots of loving memories, we won't be lonely even when we're apart, right?
+27 I hoped today would be that kind of day! So I'm okay.
+28 'Cause I'm always together with everyone♡
+29 Vivlos...
+30 Waaah, Vivlos-chan. You've grown up sooo much~.
+31 It's selfish, I know it's really selfish, but! I'm a little lonely...!
+32 Keep begging and being selfish, as much as you want! Vivloooos!!
+33 Oh, Papa. Vivlos's growth is...
+34 ...*sniff*.
+35 O-Onee-san...?!
+36 ...Well... I get it, but.
+37 Geez, what's wrong with everyone?! I haven't changed one bit!
+38 There are just more people I can beg and be selfish with!
+39 So it's fine! Right, Tore-cchi♡
+39> ...Me?! | ...Me?!
+40 Tore-cchi will always be with me, right? We're a trainer and an Umamusume!
+41 So don't worry, everyone♡
+42 ...Wh-what is this... feeling? I can feel at ease, but...
+43 Trainer... ...Please... take care of her...
+43> Y-yes...!
+44 And so, the lively family-only Christmas party went on...
+45 Bye, everyone! See you!!
+46 Haah, that was fun♡
+46> ...Not lonely?
+47 Huh? Of course I'm lonely! I wanted to stay together longer, but...
+48 I told you, I'm okay because you're with me, Tore-cchi!
+49 Hey, hey, we still have time, right? Let's play a little more!
+50 And since it's a special day, I wanna play suuuper celebrity-style!
+50> I thought today was "keeping it small"? | I thought today was "keeping it small"?
+51 Hmm, I changed my mind after all♡
+52 Listen, there's this thing trending among celebrities!
+53 They're called ugly sweaters? I have one for you too, Tore-cchi, so let's wear them together♡
+54 Kyahahaha! Tore-cchi, you're totally a tree!
+55 And so, I had a fun time with Vivlos until evening.
+56 Hey, hey, since we're here, let's go out!
+57 And so, transferring from car to train from the villa, we headed to...
+58 Kyaa, it's so lively~♪
+59 Tore-cchi! There's a Christmas market!
+59> Huh, there's all kinds of stuff | Huh, there's all kinds of stuff
+60 Riiight?
+61 Christmas is a big deal in Dubai too, you know!
+62 It's warm there even this time of year, so I heard you can meet Santa in short sleeves♪
+62> Huh...!
+63 Interested? Are you?
+64 Do you wanna spend Christmas in Dubai with me someday?
+64> Sounds tough
+65 The race in Dubai is in March. Christmas is still too early for an expedition.
+66 Then we can just live there♡
+66> Live there?
+67 I haven't given up on my dream of living in Dubai, you know.
+68 It might be hard with everyone... but with a new family, it seems doable, right?
+69 ...Right♡ Tore-cchi~?

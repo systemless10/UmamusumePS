@@ -174,7 +174,7 @@
             "support_card_id": 30010,
             "limit_break_count": 4,
             "exp": 118185,
-            "owner_viewer_id": 900000000054
+            "owner_viewer_id": 507379161379
           }
         ],
         "succession_trained_chara_id_1": 176,
@@ -1137,7 +1137,7 @@
               {
                 "frame_order": 4,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1004,
@@ -1246,7 +1246,7 @@
               {
                 "frame_order": 12,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1009,
@@ -1324,7 +1324,7 @@
               {
                 "frame_order": 11,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1056,
@@ -1406,7 +1406,7 @@
               {
                 "frame_order": 7,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 11,
@@ -2070,7 +2070,7 @@
               {
                 "frame_order": 12,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1032,
@@ -2140,7 +2140,7 @@
               {
                 "frame_order": 2,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1052,
@@ -2193,7 +2193,7 @@
               {
                 "frame_order": 9,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 543,
@@ -2255,7 +2255,7 @@
               {
                 "frame_order": 7,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 565,
@@ -2911,7 +2911,7 @@
               {
                 "frame_order": 5,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1055,
@@ -2985,7 +2985,7 @@
               {
                 "frame_order": 2,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1030,
@@ -3075,7 +3075,7 @@
               {
                 "frame_order": 3,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 330,
@@ -3838,7 +3838,7 @@
               {
                 "frame_order": 6,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1068,
@@ -3924,7 +3924,7 @@
               {
                 "frame_order": 11,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1022,
@@ -3998,7 +3998,7 @@
               {
                 "frame_order": 4,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1006100,
@@ -4092,7 +4092,7 @@
               {
                 "frame_order": 2,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 419,
@@ -4145,7 +4145,7 @@
               {
                 "frame_order": 3,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 58,
@@ -4741,7 +4741,7 @@
               {
                 "frame_order": 2,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1041,
@@ -4827,7 +4827,7 @@
               {
                 "frame_order": 4,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0093",
+                "trainer_name": "Team Carrot",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1010,
@@ -4905,7 +4905,7 @@
               {
                 "frame_order": 3,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 1021100,
@@ -4987,7 +4987,7 @@
               {
                 "frame_order": 5,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 195,
@@ -5049,7 +5049,7 @@
               {
                 "frame_order": 7,
                 "viewer_id": "<redacted>",
-                "trainer_name": "Trainer0094",
+                "trainer_name": "Dazzling Smile",
                 "owner_viewer_id": 0,
                 "owner_trainer_name": "",
                 "single_mode_chara_id": 203,

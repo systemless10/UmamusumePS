@@ -1,4 +1,3 @@
-//! Port of course_data.py.
 
 use std::collections::HashMap;
 use std::sync::OnceLock;
@@ -71,9 +70,6 @@ pub fn phase_end(distance: f64, phase: i32) -> f64 {
     }
 }
 
-/// `speed`/`stamina`/`power`/`guts`/`wisdom` accessed positionally exactly
-/// like the Python port's `[0, stats.speed, stats.stamina, ...]` array
-/// (index 0 unused, ThresholdStat is 1-indexed in course_set_status).
 pub fn course_speed_modifier(course: &CourseData, speed: f64, stamina: f64, power: f64, guts: f64, wisdom: f64) -> f64 {
     let statvalues = [0.0, speed.min(901.0), stamina.min(901.0), power.min(901.0), guts.min(901.0), wisdom.min(901.0)];
     let total: f64 = course
@@ -84,11 +80,6 @@ pub fn course_speed_modifier(course: &CourseData, speed: f64, stamina: f64, powe
     1.0 + total / (course.course_set_status.len().max(1) as f64)
 }
 
-// -- data loading -------------------------------------------------------
-// Populated by main.rs at startup from data/course_data.json (parsed with
-// serde_json), via `init_courses`. Kept separate from this module's pure
-// logic so the latter needed no JSON dependency while the linker was
-// unavailable during development.
 
 static COURSES: OnceLock<HashMap<i32, CourseData>> = OnceLock::new();
 

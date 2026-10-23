@@ -1,18 +1,3 @@
-"""GRAND MASTERS (scenario 5, JP only) -- グランドマスターズ -継ぐ者達へ- -- the mechanics.
-
-docs/JP_GRAND_MASTERS_SCENARIO.md is the spec this implements, section for
-section (7 real careers, the single_mode_venus_* tables, the JP client dump):
-
-    knowledge fragments: the per-command offer, grants, fusion   §3.2-§3.4
-    the Goddess' Wisdom and the goddess levels                     §3.5, §4
-    the bonus line (the preview itself is formula.py)              §5.2-§5.3
-    facility levels                                                §6
-    the special races and the GM final                             §7, §8
-
-and builds the venus_data_set every career response carries (data_set).
-Rules the captures do not settle are tagged [INFERRED] where they are applied;
-§16 of the guide lists them.
-"""
 
 from __future__ import annotations
 
@@ -28,23 +13,16 @@ log = logging.getLogger("uma-server")
 
 SCENARIO_ID = 5
 STATE_KEY = "venus"
-FIRST_OFFER_TURN = 3            # fragments start with the tutorial (400005000)
+FIRST_OFFER_TURN = 3
 SUMMER_TURNS = frozenset({37, 38, 39, 40, 61, 62, 63, 64})
-LATE_LEVELUP_TURN = 73          # 205110 up to turn 72, 205111 from 73
+LATE_LEVELUP_TURN = 73
 
-# The fragment offer (§3.2) -- fitted over 1,828 offers in 6 careers.
-# A training's type favours the facility's own gain targets plus SP, at about
-# 4:1 against the rest [FIT]; outing / rest / race are uniform.
 FAVOURED_TYPES = {101: (1, 3, 6), 105: (2, 4, 6), 102: (2, 3, 6), 103: (1, 3, 4, 6), 106: (1, 5, 6)}
 FAVOURED_WEIGHT = 4
-# x2: a friendship training always (wit only sometimes: 12/21), a goal race
-# always; outing / rest / an optional race at random [FIT].
 WIT_BOOST_CHANCE = 12 / 21
 BOOST_CHANCE = {3: 0.23, 7: 0.18, 4: 0.36}
-# A fused part keeps the LEFT part's type this often [FIT 143/192; wiki 80:20].
 LEFT_TYPE_CHANCE = 0.75
 
-# Facility levels (§6): points per event, a level every 12 [FIT 97.7%].
 POINTS_TRAINING = 2
 POINTS_FRAGMENT = 1
 POINTS_RACE_WIN = 9
@@ -52,9 +30,6 @@ POINTS_RACE_LOSS = 5
 POINTS_PER_LEVEL = 12
 MAX_LEVEL = 5
 
-# The special races (§7): named runners are single_mode_npc's <chara>900 rows
-# times a per-race factor (captured to +-2%: GUR 0.68, WBC 1.19, SWBC 2.02,
-# GM 2.17); the recurring rivals use their own rows. [FIT; §16 #11]
 RACE_FACTOR = {50001: 0.68, 50002: 1.19, 50003: 2.02, 50004: 2.17}
 RACE_JITTER = 0.03
 NAMED_COUNT = {50001: 6, 50002: 15, 50003: 15, 50004: 12}
@@ -64,13 +39,9 @@ RIVAL_ROWS = {50001: {2002: 2002902},
               50004: {2002: 2002903, 2001: 2001904, 2003: 2003903}}
 OPTIONAL_RIVALS = {50002: (2003,), 50003: (2003,), 50004: (2003,)}
 BOSS_ROWS = (9040901, 9041901, 9042901)
-# The category tie order (VIP wiki; 24/24 races): turf short > mile > middle >
-# long > dirt short > mile > middle > long.
 CATEGORY_ORDER = ((1, "short"), (1, "mile"), (1, "middle"), (1, "long"),
                   (2, "short"), (2, "mile"), (2, "middle"), (2, "long"))
 
-# Special-race rewards (§7.4): (all stats, SP) on a win / a loss, and the
-# goddess bonuses a WIN pays at or above the race's target level.
 SPRACE_INDEX = {50001: 1, 50002: 2, 50003: 3}
 WIN_BASE = {1: (10, 50), 2: (15, 60), 3: (20, 70)}
 LOSS_BASE = {1: (5, 40), 2: (10, 50), 3: (15, 60)}
@@ -79,30 +50,28 @@ BYERLEY_STATS = 10
 DARLEY_RACE_MULT = 1.35
 
 
-# ================================================================ state ===
-
 def _blank() -> dict:
     return {
-        "slots": {},                 # "n": [spirit_id, effect_group]
+        "slots": {},
         "levels": {str(g): 0 for g in M.GODDESSES},
-        "active": {},                # this turn's wisdom: {chara_id, group, turn}
-        "uses": [],                  # past tables, one per spirit_use (venus_spirit_history)
+        "active": {},
+        "uses": [],
         "offers": {"turn": 0, "rows": []},
         "points": {str(c): 0 for c in formula.TRAINING_COMMANDS},
-        "shown_levels": {},          # facility -> the level already announced
-        "sprace": {},                # the special race being run
-        "races": [],                 # venus_race_history_array
-        "done_races": [],            # special-race turns already run
-        "due": [],                   # knowledge grants owed (outing / rest / race)
+        "shown_levels": {},
+        "sprace": {},
+        "races": [],
+        "done_races": [],
+        "due": [],
         "wisdom_seen": False,
-        "godolphin": {},             # this turn's 400005106 payout
+        "godolphin": {},
         "hold_turn": 0,
         "preview": {"turn": 0, "bonus": {}},
-        "cleared_turn": 0,           # the table empties on the command after a use
+        "cleared_turn": 0,
         "fragments_total": 0,
         "wisdom_uses": 0,
-        "final": {},                 # the GM final's result
-        "card003_due": 0,            # 三女神の気分転換トレーニング owed after this turn's training
+        "final": {},
+        "card003_due": 0,
     }
 
 
@@ -137,14 +106,11 @@ def _smt():
     return single_mode_team
 
 
-# ============================================================ goddesses ===
-
 def level(st: dict, goddess: int) -> int:
     return int(st["levels"].get(str(goddess), 0))
 
 
 def training_pct(st: dict) -> int:
-    """G: the three goddesses' training effect, summed (§4.1)."""
     return sum(M.passive(g, level(st, g), M.EFF_TRAINING) for g in M.GODDESSES)
 
 
@@ -165,7 +131,6 @@ def chain_rate(st: dict) -> int:
 
 
 def active_goddess(st: dict, turn: int) -> int:
-    """The goddess whose wisdom is in force on `turn`, else 0 (§3.5: one turn)."""
     a = st.get("active") or {}
     return int(a.get("chara_id") or 0) if int(a.get("turn") or 0) == int(turn) else 0
 
@@ -173,8 +138,6 @@ def active_goddess(st: dict, turn: int) -> int:
 def wisdom_on(st: dict, turn: int, goddess: int) -> bool:
     return active_goddess(st, turn) == goddess
 
-
-# ============================================================ fragments ===
 
 def slot(st: dict, n: int):
     v = st["slots"].get(str(n))
@@ -190,14 +153,11 @@ def wisdom_ready(st: dict) -> bool:
 
 
 def offers_blocked(st: dict, turn: int) -> bool:
-    """No fragment is offered on turns 1-2, while a wisdom waits to be used,
-    or on the turn one was used (§3.4)."""
     return (int(turn) < FIRST_OFFER_TURN or wisdom_ready(st)
             or int((st.get("active") or {}).get("turn") or 0) == int(turn))
 
 
 def slot_bonus(st: dict) -> dict:
-    """{type: F_t} -- slots 1-14, fragments and crystals alike (§5.2)."""
     out: dict = {}
     for n in range(1, M.WISDOM_SLOT):
         s = slot(st, n)
@@ -218,7 +178,6 @@ def _fuse(full_state: dict, st: dict, target: int) -> None:
         if a == b:
             goddess = a
         else:
-            # the colour most of the eight fragments carry; a tie is a coin
             count: dict = {}
             for n in M.FRAGMENT_SLOTS:
                 s = slot(st, n)
@@ -241,9 +200,6 @@ def _fuse(full_state: dict, st: dict, target: int) -> None:
 
 
 def add_fragment(full_state: dict, sid: int, count: int = 1) -> int:
-    """Place `count` copies of a fragment in the next free slots and fuse
-    whatever pairs complete (§3.4). Returns how many landed. Each fragment of
-    a stat type is a level point for its facility (§6)."""
     st = state(full_state)
     landed = 0
     for _ in range(int(count)):
@@ -273,8 +229,6 @@ def spirit_info_array(st: dict) -> list:
     return out
 
 
-# =============================================================== offers ===
-
 def _roll_type(rng: random.Random, command_id: int, ctype: int) -> int:
     types = list(range(1, 7))
     if ctype != 1:
@@ -284,9 +238,6 @@ def _roll_type(rng: random.Random, command_id: int, ctype: int) -> int:
 
 
 def roll_offers(full_state: dict, chara_info: dict, turn: int, home_commands) -> list:
-    """This turn's pre-rolled fragment per command (§3.2), once per turn.
-    Rows are [command_type, command_id, spirit_id, is_boost]; the camp's
-    trainings go out under their base ids, and camp rest has none."""
     st = state(full_state)
     if int(st["offers"].get("turn") or 0) == int(turn) and st["offers"].get("rows") is not None:
         return st["offers"]["rows"]
@@ -309,15 +260,16 @@ def roll_offers(full_state: dict, chara_info: dict, turn: int, home_commands) ->
             boost = formula.is_friendship_training(chara_info, served, partners, all_friend)
             if boost and cid == 106:
                 boost = rng.random() < WIT_BOOST_CHANCE
-            rows.append([1, cid, M.spirit_id(goddess, type_), int(boost and not seven)])
-        if not camp:
-            for ctype, cid in ((3, 0), (4, 401), (7, 701)):
-                goddess = rng.choice(M.GODDESSES)
-                type_ = _roll_type(rng, cid, ctype)
-                boost = rng.random() < BOOST_CHANCE.get(ctype, 0)
-                if ctype == 4 and goal:
-                    boost = True
-                rows.append([ctype, cid, M.spirit_id(goddess, type_), int(boost and not seven)])
+            rows.append([1, served, M.spirit_id(goddess, type_), int(boost and not seven)])
+        for ctype, cid in ((3, 0), (4, 401), (7, 701)):
+            if camp and ctype == 7:
+                continue
+            goddess = rng.choice(M.GODDESSES)
+            type_ = _roll_type(rng, cid, ctype)
+            boost = rng.random() < BOOST_CHANCE.get(ctype, 0)
+            if ctype == 4 and goal:
+                boost = True
+            rows.append([ctype, cid, M.spirit_id(goddess, type_), int(boost and not seven)])
     st["offers"] = {"turn": int(turn), "rows": rows}
     return rows
 
@@ -325,19 +277,19 @@ def roll_offers(full_state: dict, chara_info: dict, turn: int, home_commands) ->
 def _is_goal_turn(chara_info: dict, turn: int) -> bool:
     try:
         return int(turn) in _smt()._forced_race_turns(tuple(chara_info.get("route_race_id_array") or ()))
-    except Exception:                                  # noqa: BLE001
+    except Exception:
         return False
 
 
 def offer_for(st: dict, turn: int, ctype: int, command_id: int):
-    """(spirit_id, count) the command taken on `turn` earns, or None."""
     if int(st["offers"].get("turn") or 0) != int(turn):
         return None
     cid = formula.SUMMER_TO_BASE.get(int(command_id or 0), int(command_id or 0))
     if ctype == 3:
         cid = 0
     for row in st["offers"].get("rows") or ():
-        if int(row[0]) == int(ctype) and int(row[1]) == cid:
+        row_cid = formula.SUMMER_TO_BASE.get(int(row[1]), int(row[1]))
+        if int(row[0]) == int(ctype) and row_cid == cid:
             return int(row[2]), 2 if int(row[3]) else 1
     return None
 
@@ -349,15 +301,11 @@ def command_info_rows(st: dict, turn: int) -> list:
             for r in st["offers"].get("rows") or ()]
 
 
-# =============================================================== wisdom ===
-
 class Refused(Exception):
     pass
 
 
 def use_wisdom(full_state: dict, chara_info: dict, turn: int) -> int:
-    """spirit_use (§3.5): the wisdom's goddess levels up, her one-turn effect
-    starts, and Darley's immediate energy +50 / mood to max lands."""
     st = state(full_state)
     if not wisdom_ready(st):
         raise Refused("no wisdom to use")
@@ -373,17 +321,16 @@ def use_wisdom(full_state: dict, chara_info: dict, turn: int) -> int:
     for etype, v1, v2, _v3, _v4 in M.effects(group):
         if etype != M.EFF_INSTANT:
             continue
-        if v1 == 10:        # energy
+        if v1 == 10:
             mv = max(int(chara_info.get("max_vital") or 100), int(chara_info.get("vital") or 0))
             chara_info["vital"] = min(mv, int(chara_info.get("vital") or 0) + v2)
-        elif v1 == 20:      # mood
+        elif v1 == 20:
             chara_info["motivation"] = max(1, min(5, int(chara_info.get("motivation") or 3) + v2))
     log.info("venus: wisdom %s used on turn %s -> levels %s", goddess, turn, st["levels"])
     return goddess
 
 
 def clear_after_use(st: dict, turn: int) -> None:
-    """The table empties with the first command after a use (§3.4)."""
     used = int(st.get("cleared_turn") or 0)
     if used and int(turn) >= used and wisdom_ready(st):
         st["slots"] = {}
@@ -399,11 +346,8 @@ def active_rows(st: dict, turn: int) -> list:
 
 
 def race_mult(st: dict, turn: int) -> float:
-    """Darley's wisdom multiplies race rewards by 1.35, per line (§7.4)."""
     return DARLEY_RACE_MULT if wisdom_on(st, turn, M.DARLEY) else 1.0
 
-
-# ============================================================== levels ===
 
 def facility_level(full_state: dict, command_id: int) -> int:
     smt = _smt()
@@ -412,7 +356,6 @@ def facility_level(full_state: dict, command_id: int) -> int:
 
 
 def owed_levels(full_state: dict) -> list:
-    """[(facility, level)] the points have reached but no banner has shown."""
     st = state(full_state)
     out = []
     for cmd in formula.TRAINING_COMMANDS:
@@ -424,8 +367,6 @@ def owed_levels(full_state: dict) -> list:
 
 
 def raise_facility(full_state: dict, chara_info: dict, command_id: int, lv: int) -> None:
-    """A 400005100 banner resolves: the facility shows its new level in this
-    very reply (§6)."""
     smt = _smt()
     career = (full_state.get(smt.STATE_KEY) or {}).get("data") or {}
     levels = smt._facility_levels(career)
@@ -447,16 +388,11 @@ def add_race_points(full_state: dict, won: bool) -> None:
             POINTS_RACE_WIN if won else POINTS_RACE_LOSS)
 
 
-# ============================================================ previews ===
-
 def preview_flags(st: dict, turn: int) -> dict:
     return {"all_friend": wisdom_on(st, turn, M.BYERLEY), "level6": wisdom_on(st, turn, M.DARLEY)}
 
 
 def refresh_preview(full_state: dict, chara_info: dict, home_info: dict, card_levels=None) -> bool:
-    """Recompute this turn's bonus lines and fragment offers from the
-    facilities about to be served, and remember them: exec_command pays and
-    grants exactly these."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     commands = [c for c in (home_info or {}).get("command_info_array") or ()]
@@ -480,7 +416,6 @@ def refresh_preview(full_state: dict, chara_info: dict, home_info: dict, card_le
 
 
 def preview_partners(st: dict, turn: int, command_id: int) -> list:
-    """Who stood on a facility on the screen the player trained from."""
     pv = st["preview"]
     if int(pv.get("turn") or 0) != int(turn):
         return []
@@ -493,8 +428,6 @@ def preview_bonus(st: dict, turn: int, command_id: int) -> list:
         return []
     return [dict(p) for p in pv["bonus"].get(str(command_id)) or ()]
 
-
-# ====================================================== special races ===
 
 def sprace_group(turn: int) -> int:
     return M.sprace_turns().get(int(turn or 0), 0)
@@ -509,8 +442,6 @@ def _category(distance: int) -> str:
 
 
 def best_category(race_history) -> tuple:
-    """The ground+distance class raced most, ties by CATEGORY_ORDER (§7.1).
-    Only the trainee's ordinary races count; with none, turf middle [INFERRED]."""
     tally: dict = {}
     for h in race_history or ():
         pid = int(h.get("program_id") or 0)
@@ -534,16 +465,12 @@ def pick_program(race_group: int, race_history, rng: random.Random) -> int:
 
 
 def race_num(race_group: int, program_id: int) -> int:
-    """venus_race_history_array.race_num = (race - 1) x 5 + k [OPEN, §7.2]:
-    k taken as the distance class 1 short .. 4 long, 5 dirt."""
     course = M.program_course(program_id) or (1, 2000)
     k = 5 if course[0] == 2 else ("short", "mile", "middle", "long").index(_category(course[1])) + 1
     return (SPRACE_INDEX.get(race_group, 1) - 1) * 5 + k
 
 
 def announce(full_state: dict, chara_info: dict, turn: int) -> dict:
-    """The announcement resolves: the program, weather and ground are drawn
-    and ps 12 follows (§2.3)."""
     st = state(full_state)
     sp = st["sprace"]
     if int(sp.get("turn") or 0) == int(turn) and sp.get("program_id"):
@@ -553,8 +480,6 @@ def announce(full_state: dict, chara_info: dict, turn: int) -> dict:
     history = ((full_state.get(smt.STATE_KEY) or {}).get("data") or {}).get("race_history") or []
     rng = rng_for(full_state, "sprace", turn)
     program = pick_program(group, history, rng)
-    # The race runs in the conditions the shared simulation uses for it, so
-    # the card the client shows and the race agree.
     cond = smt._career_race_conditions(program, chara_info)
     st["sprace"] = {"turn": int(turn), "group": group, "program_id": program,
                     "weather": int(cond["weather"]), "ground_condition": int(cond["ground_condition"]),
@@ -588,8 +513,6 @@ def _npc_row(row_id: int) -> dict | None:
 
 
 def _named_opponent(row: dict, factor: float, rng: random.Random, index: int) -> dict:
-    """A named runner as the real special races serve one: card_id 0, the
-    chara's own dress, stats = its npc row x the race factor."""
     smt = _smt()
     chara = int(row["chara_id"])
     out = {
@@ -614,7 +537,6 @@ def _named_opponent(row: dict, factor: float, rng: random.Random, index: int) ->
 
 
 def race_field(full_state: dict, chara_info: dict, program_id: int, count: int) -> list | None:
-    """The special races' and the GM final's fields (§7.3, §8)."""
     group = next((g for g in (50001, 50002, 50003, 50004)
                   if int(program_id) in {p for p, _g, _d in M.group_programs(g)}), 0)
     if not group or count <= 0:
@@ -651,8 +573,6 @@ def race_field(full_state: dict, chara_info: dict, program_id: int, count: int) 
 
 def reward_effects(full_state: dict, chara_info: dict, race_group: int, won: bool,
                    running_style: int, turn: int) -> list:
-    """The result event's lines (§7.4), each paid floor(line x (1 + RB) x
-    1.35 under Darley's wisdom); the goddess bonuses only on a win."""
     smt = _smt()
     st = state(full_state)
     idx = SPRACE_INDEX.get(race_group, 1)
@@ -683,9 +603,6 @@ _STYLE_TAG = {1: "逃げ", 2: "先行", 3: "差し", 4: "追込"}
 
 
 def style_hints(chara_info: dict, running_style: int, n: int, rng: random.Random) -> list:
-    """n distinct white skills of the running style the race was run with
-    (20262 進出開始 for 差し, §7.4) [INFERRED pool: rarity-1 skills whose
-    condition names the style]."""
     from ... import master_data
     style = int(running_style or 3)
     rows = master_data.query(
@@ -697,19 +614,12 @@ def style_hints(chara_info: dict, running_style: int, n: int, rng: random.Random
     return pool[:n]
 
 
-# =============================================================== final ===
-
 def gm_program(full_state: dict, chara_info: dict, race_history) -> int:
     rng = rng_for(full_state, "gm")
     return pick_program(M.GM_RACE_GROUP, race_history, rng)
 
 
-# ============================================================ envelope ===
-
 def evaluation_array(chara_info: dict) -> list:
-    """venus_data_set.evaluation_info_array: the deck positions (chara 0,
-    member_state 0), then every scenario partner no deck card represents,
-    by partner id (member_state 1)."""
     out = [{"target_id": pos, "chara_id": 0, "member_state": 0}
            for pos in sorted(formula.RF.deck(chara_info))]
     for target, chara in npc_partners(chara_info):
@@ -718,8 +628,6 @@ def evaluation_array(chara_info: dict) -> list:
 
 
 def npc_partners(chara_info: dict) -> list:
-    """[(partner_id, chara_id)] single_mode_unique_chara lists for scenario 5,
-    minus those a deck card carries (§9.4)."""
     from ... import master_data
     deck_charas = {formula.RF.card_meta(sid)[3] for sid in formula.RF.deck(chara_info).values()}
     rows = master_data.query(
@@ -729,8 +637,6 @@ def npc_partners(chara_info: dict) -> list:
             if int(r["chara_id"]) not in deck_charas]
 
 
-# Replies that leave the client on its training screen carry the bonus line;
-# every other one sends null and the client keeps what it has (§2.1).
 _FULL_ENDPOINTS = frozenset({"start", "load", "spirit_use"})
 
 
@@ -747,7 +653,6 @@ def reply_is_full(endpoint: str, data: dict) -> bool:
 
 
 def command_info_array(st: dict, home_info: dict, turn: int) -> list:
-    """The bonus line, per command in home order (non-training ones empty)."""
     rows = []
     for c in (home_info or {}).get("command_info_array") or ():
         ctype, cid = int(c.get("command_type") or 0), int(c.get("command_id") or 0)
@@ -776,10 +681,7 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict, full: bool, *,
     }
 
 
-# ============================================================ the card ===
-
 def link_card(chara_info: dict):
-    """(position, 30137) when the goddesses' group card is in the deck."""
     for pos, sid in formula.RF.deck(chara_info).items():
         if sid == M.LINK_CARD:
             return pos, sid

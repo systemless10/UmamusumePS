@@ -1,0 +1,360 @@
+{
+ "title": "秋華賞の後に・Praise",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "……負けちゃった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "がんばり、きれなかった……。\n……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………ぐすっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うわあぁぁあああああああん……！",
+   "choice_data_list": [
+    "（ヴィブロス……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ひっく、悔しい……っ。\nううっ……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスちゃん……！\nヴィブローーース！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "ヴィブロス…………っ！\nくうううう～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "1番悔しいのはヴィブロスちゃんよ。\n泣いちゃダメ、でも……うううう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "父親＆母親",
+   "text": "うぉおおおおん！\nうぇええええん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……ヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ねえみんな、\nあの子に拍手を送りましょう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "つらいときには……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "誰かの気持ちが、嬉しいものだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "それに、あの子は……強かったわ。\n本当に……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "お疲れさま、ヴィブロス。\nありがとう――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "敗北したヴィブロス。しかし、彼女は\n力いっぱいティアラ路線を駆け抜けてきた。\nそんな彼女のために――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～っ、ちょーパーティー！\nちょ～～～セレブ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "ハハハッ、だろう？\n私たちからのプレゼントだ！\n思う存分楽しんでくれ！",
+   "choice_data_list": [
+    "（す、スケールが大きい……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "トレーナーさんも、ぜひ楽しんでね。\nここのホテルのお料理、\nとっても美味しいのよ！",
+   "choice_data_list": [
+    "ありがとうございます"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ、こんなにすごいの、\n用意してもらって……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……私、負けちゃったのに。\nごめんね、祝勝会にできなくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "君が何着でも、頑張ってティアラ路線を\n走り抜いたことに変わりはない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "私たちが貴方を……みんなを誇りに思う\n気持ちは、ずっと変わらないからね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "改めてお疲れさま、ヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "私も貴方が誇りよ。\n頑張ってくれて、ありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……にへへ♪\nその顔を見られたから……いっか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "なぁに？\nママも笑顔よ～。うふ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "パパもだぞっ！\nにーーっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "さあ、トレーナーさんも！",
+   "choice_data_list": [
+    "……に、にこっ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "みんな",
+   "text": "……じー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ぼ、僕はやらない……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "みんな",
+   "text": "ふふふっ……はははっ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『――あははっ……！\nよーし、次は何を見ようか！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『見て、ヴィブロス！\nとってもきれいよ――』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [
+    "楽しそうだな？",
+    "楽しそうだね？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……伝わっちゃった？\nうん……すっごく、楽しい――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "パーティーが終わり、ヴィブロスの希望で\n先に学園へと戻っていた。",
+   "choice_data_list": [
+    "みんなと一緒じゃなくてよかったのか？",
+    "みんなと一緒じゃなくてよかったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん。\nトレっちとお話したかったから！",
+   "choice_data_list": [
+    "改めてお疲れ様、ヴィブロス"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、ちゃんとがんばれた！\nこれで、先に進めるね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――思いっきり、\nドバイを目指せる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そう、ここからは……彼女のもう1つの夢、\nドバイのレースを目指していくことになる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、今日思ったの。\nやっぱり、ドバイに行きたいって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なにからしよっか？",
+   "choice_data_list": [
+    "そうだな……",
+    "そうだね……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "まずはドバイのレースで、ヴィブロスが\nどう走れるのか情報が欲しい。そのためには、\n国内の条件の近いレースを選ぶ必要がある。",
+   "choice_data_list": [
+    "『中山記念』に進みたい"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お！\n私もそう思ってた！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『中山記念』で結果を出した子が、\nドバイで勝った例もあるもんね。",
+   "choice_data_list": [
+    "調べてたんだ"
+   ],
+   "color_text_info_list": [
+    "中山記念"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ、\nなんてったってドバイマスターだもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『中山記念』から、ドバイへ……\n決まりっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイへ行って、それで……！\nちょーセレブになるぞ～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、ドバイのレースを目指して……\nまずは前哨戦、『中山記念』に挑む！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

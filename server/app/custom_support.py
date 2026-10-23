@@ -1,9 +1,3 @@
-"""Optional, revisioned support cards. Stock requests never open a custom master.
-
-Definitions live separately from viewer saves and the downloaded game master.
-The HTTP adapter establishes a request-local pack capability; game handlers
-continue using their usual master queries. All published artifacts are immutable.
-"""
 from __future__ import annotations
 
 import base64
@@ -73,7 +67,6 @@ def _db(write=False):
     return c
 
 
-
 def _token_hash(token):
     return hashlib.sha256(str(token).encode()).hexdigest()
 
@@ -84,7 +77,6 @@ def _save_capability(db, token, c):
 
 
 def _capability(token):
-    """Plugin readiness by token; persisted so a server reload keeps live clients' careers playable."""
     token = str(token)
     c = _capabilities.get(token)
     if c is None and token:
@@ -163,18 +155,178 @@ def _immutable_manifest(path, digest):
     c = sqlite3.connect(Path(path).as_uri() + "?mode=ro", uri=True)
     try:
         r = c.execute("SELECT manifest FROM revisions WHERE digest=?", (digest,)).fetchone()
-        # Do not cache missing revisions; callers only pass committed digests.
         return json.loads(r[0]) if r else None
     finally:
         c.close()
 
 
+@functools.lru_cache(maxsize=8)
+def _read_unreleased(files):
+    out = []
+    for path, _mtime in files:
+        b = json.loads(Path(path).read_text())
+        b["sha256"] = digest_file(path)
+        out.append(b)
+    return tuple(out)
+
+
+def unreleased_bundles() -> tuple:
+    d = root() / "unreleased"
+    files = tuple((str(p), p.stat().st_mtime) for p in sorted(d.glob("*.json"))) if d.is_dir() else ()
+    return _read_unreleased(files)
+
+
+def _trainee_bundles() -> tuple:
+    return tuple(b for b in unreleased_bundles() if "chara_id" in b)
+
+
+def _scenario_bundles() -> tuple:
+    return tuple(b for b in unreleased_bundles() if "scenario_id" in b)
+
+
+def _support_bundles() -> tuple:
+    return tuple(b for b in unreleased_bundles() if "support_cards" in b)
+
+
+@functools.lru_cache(maxsize=8)
+def _published_unreleased(path, _mtime):
+    c = sqlite3.connect(Path(path).as_uri() + "?mode=ro", uri=True)
+    try:
+        charas, scens, supports = [], set(), set()
+        for (m,) in c.execute("SELECT manifest FROM revisions"):
+            m = json.loads(m)
+            charas += [(x["chara_id"], tuple(x["cards"])) for x in m.get("charas") or []]
+            scens |= {x["scenario_id"] for x in m.get("scenarios") or []}
+            supports |= {i for x in m.get("supports") or [] for i in x["cards"]}
+        return tuple(charas), frozenset(scens), frozenset(supports)
+    finally:
+        c.close()
+
+
+def _published():
+    p = root() / "definitions.sqlite3"
+    return _published_unreleased(str(p), p.stat().st_mtime) if p.exists() else ((), frozenset(), frozenset())
+
+
+def unreleased_ids() -> tuple[set[int], set[int]]:
+    cards, charas = set(), set()
+    for b in _trainee_bundles():
+        cards |= set(b["cards"])
+        charas.add(b["chara_id"])
+    for chara, ids in _published()[0]:
+        cards |= set(ids)
+        charas.add(chara)
+    return cards, charas
+
+
+def unreleased_support_ids() -> set[int]:
+    return {i for b in _support_bundles() for i in b["support_cards"]} | set(_published()[2])
+
+
+def pack_support_ids() -> set[int]:
+    m = manifest(CURRENT_PACK.get()) if CURRENT_PACK.get() else None
+    return {i for x in (m or {}).get("supports") or [] for i in x["cards"]}
+
+
+def visible_ids() -> set[int]:
+    return set(definitions()) | pack_support_ids()
+
+
+def pack_scenarios() -> set[int]:
+    m = manifest(CURRENT_PACK.get()) if CURRENT_PACK.get() else None
+    return {x["scenario_id"] for x in (m or {}).get("scenarios") or []}
+
+
+def hidden_scenarios() -> set[int]:
+    every = {b["scenario_id"] for b in _scenario_bundles()} | _published()[1]
+    if not every:
+        return set()
+    return every - pack_scenarios()
+
+
+def _scenario_ref(node, hidden):
+    if isinstance(node, dict):
+        return node.get("scenario_id") in hidden or any(_scenario_ref(v, hidden) for v in node.values())
+    if isinstance(node, (list, tuple)):
+        return any(_scenario_ref(v, hidden) for v in node)
+    return False
+
+
+def _endpoint_scenario(endpoint) -> int | None:
+    from . import scenarios
+    head = str(endpoint).split("/")[0]
+    return next((s.scenario_id for s in scenarios.all_scenarios() if s.endpoint_prefix == head), None)
+
+
+def _pack_trainees() -> tuple[set[int], set[int]]:
+    m = manifest(CURRENT_PACK.get()) if CURRENT_PACK.get() else None
+    charas = (m or {}).get("charas") or []
+    return {c for x in charas for c in x["cards"]}, {x["chara_id"] for x in charas}
+
+
+def _apply_unreleased(dst, b):
+    for t in b.get("text_overrides") or []:
+        dst.execute("UPDATE text_data SET text=? WHERE category=? AND [index]=? AND text=''",
+                    (t["text"], t["category"], t["index"]))
+    released = (b.get("cards") and dst.execute(
+                    f"SELECT COUNT(*) FROM card_data WHERE id IN ({','.join('?' * len(b['cards']))})",
+                    b["cards"]).fetchone()[0] == len(b["cards"])) or \
+               (b.get("support_cards") and dst.execute(
+                    f"SELECT COUNT(*) FROM support_card_data WHERE id IN ({','.join('?' * len(b['support_cards']))})",
+                    b["support_cards"]).fetchone()[0] == len(b["support_cards"]))
+    if b.get("chara_start_date") and "chara_id" in b:
+        dst.execute("UPDATE chara_data SET start_date=? WHERE id=? AND start_date>?",
+                    (b["chara_start_date"], b["chara_id"],
+                     b["chara_start_date"] if released else 1893456000 - 1))
+    if released:
+        return
+    for cid, date in (b.get("chara_start_dates") or {}).items():
+        dst.execute("UPDATE chara_data SET start_date=? WHERE id=? AND start_date>?", (date, int(cid), date))
+    for table, rows in b["tables"].items():
+        cols = {r[1] for r in dst.execute(f'PRAGMA table_info("{table}")')}
+        for row in rows:
+            row = {k: v for k, v in row.items() if k in cols}
+            if table == "text_data" or ("id" in row and row["id"] is None):
+                row["id"] = _next(dst, table)
+            try:
+                _insert(dst, table, row)
+            except sqlite3.IntegrityError as e:
+                cond = " AND ".join(f'"{k}" IS ?' for k in row if not (table == "text_data" and k == "id"))
+                vals = [v for k, v in row.items() if not (table == "text_data" and k == "id")]
+                if dst.execute(f'SELECT 1 FROM "{table}" WHERE {cond}', vals).fetchone():
+                    continue
+                if table == "text_data" and dst.execute(
+                        'SELECT 1 FROM text_data WHERE category=? AND [index]=?',
+                        (row["category"], row["index"])).fetchone():
+                    continue
+                same = [k for k in row if k not in ("start_date", "end_date", "start_time", "end_time")
+                        and not (table == "text_data" and k == "id")]
+                if same != list(row) and dst.execute(
+                        f'SELECT 1 FROM "{table}" WHERE ' + " AND ".join(f'"{k}" IS ?' for k in same),
+                        [row[k] for k in same]).fetchone():
+                    continue
+                what = (f"chara {b['chara_id']}" if "chara_id" in b else
+                        f"scenario {b['scenario_id']}" if "scenario_id" in b else
+                        "support bundle" if "support_cards" in b else "shared bundle")
+                raise ValueError(f"Unreleased {what}: {table} row collides with base master; "
+                                 "re-port it against the current Global master") from e
+    if "single_mode_story_data" in b["tables"]:
+        for story_id, short in dst.execute(
+                "SELECT story_id, short_story_id FROM single_mode_story_data WHERE short_story_id NOT IN (0, story_id)").fetchall():
+            if dst.execute("SELECT 1 FROM text_data WHERE category=181 AND [index]=?", (short,)).fetchone():
+                continue
+            title = dst.execute("SELECT text FROM text_data WHERE category=181 AND [index]=?", (story_id,)).fetchone()
+            if title:
+                _insert(dst, "text_data", {"id": _next(dst, "text_data"), "category": 181, "index": short, "text": title[0]})
+
+
 def known_ids() -> set[int]:
+    ported = unreleased_support_ids()
     c = _db()
     if c is None:
-        return set()
+        return ported
     try:
-        return {r[0] for r in c.execute("SELECT id FROM cards")}
+        return {r[0] for r in c.execute("SELECT id FROM cards")} | ported
     finally:
         c.close()
 
@@ -236,7 +388,6 @@ def connection():
 
 
 def close_connections():
-    """Release this thread's private master handles (tests and worker teardown)."""
     for c in getattr(_connections, "pool", {}).values():
         c.close()
     _connections.pool = {}
@@ -341,7 +492,6 @@ def validate(d: dict, require_id=False) -> dict:
         if len(skills) > 20:
             raise ValueError("The displayed skill set supports up to 20 skills")
         d["hints"] = hints
-        # Unique effects are cloned from the template, not arbitrary unsupported conditions.
         original = M.query_one("SELECT * FROM support_card_unique_effect WHERE id=?", (d["template"],))
         unique = d.get("unique")
         if unique is not None:
@@ -364,41 +514,27 @@ def validate(d: dict, require_id=False) -> dict:
                 continue
             if not isinstance(focus, dict):
                 raise ValueError("Invalid crop")
-            # Per-mille of the art: top-left corner, and size as a share of
-            # the largest crop of that shape that fits.
             d[key] = {"x": _int(focus.get("x"), 0, 1000, "Crop"),
                       "y": _int(focus.get("y"), 0, 1000, "Crop"),
                       "size": _int(focus.get("size"), 100, 1000, "Crop")}
     return d
 
 
-# Stock support_thumb / support_card_s textures carry their rarity frame (and
-# the icon its rarity badge) baked in; the UI draws nothing over them. These
-# overlays come from tools/gen_support_frames.py. Slot numbers match the
-# plugin's ResourcePath hooks: 2 = thumbnail, 3 = small icon.
 FRAMES_DIR = Path(__file__).resolve().parent.parent / "data" / "support_frames"
 FRAMED_SLOTS = {2: "thumb", 3: "s"}
 
 
-# Crop shapes (width:height). The deck/list card shows its art area at 3:4
-# (measured on screen: 0.742) although the texture stores it near-square, so
-# stock thumbnails hold 3:4 art squeezed sideways; ours is cropped 3:4 and
-# squeezed the same way.
 CROP_ASPECT = {"icon_focus": (1, 1), "card_focus": (3, 4)}
 
 
 def crop_box(width, height, focus, key):
-    """The part of the art a framed slot shows, in pixels. Mirrors the
-    studio's crop editor (custom-support.js), defaults included."""
     aw, ah = CROP_ASPECT[key]
-    # Largest crop of this shape that fits.
     full_w = min(width, height * aw // ah)
     full_h = full_w * ah // aw
     if focus:
         cw, ch = max(1, full_w * focus["size"] // 1000), max(1, full_h * focus["size"] // 1000)
         x, y = width * focus["x"] // 1000, height * focus["y"] // 1000
     elif key == "icon_focus":
-        # Upper middle, where a portrait's face usually sits.
         cw, ch = full_w * 6 // 10, full_h * 6 // 10
         x, y = (width - cw) // 2, height // 20
     else:
@@ -409,8 +545,6 @@ def crop_box(width, height, focus, key):
 
 
 def framed_slot_art(png: bytes, rarity: int, slot: int, focus=None) -> bytes | None:
-    """`focus` is the draft: its icon_focus / card_focus pick the crop."""
-    """Custom art laid into a stock card's frame for one framed slot."""
     import io
     from PIL import Image
     name = FRAMED_SLOTS[slot]
@@ -423,7 +557,6 @@ def framed_slot_art(png: bytes, rarity: int, slot: int, focus=None) -> bytes | N
     key = "icon_focus" if slot == 3 else "card_focus"
     art = art.crop(crop_box(art.width, art.height, (focus or {}).get(key), key))
     box = mask.getbbox() or (0, 0) + frame.size
-    # Stretched, not fitted: the crop already has the shape the game shows.
     fitted = art.resize((box[2] - box[0], box[3] - box[1]), Image.LANCZOS)
     layer = Image.new("RGBA", frame.size, (0, 0, 0, 0))
     layer.paste(fitted, box[:2])
@@ -441,7 +574,6 @@ def validate_png(data: str) -> bytes:
         raise ValueError("Upload a PNG image") from e
     if len(raw) > 8 * 1024 * 1024 or raw[:8] != b"\x89PNG\r\n\x1a\n":
         raise ValueError("Artwork must be a PNG smaller than 8 MB")
-    # Verify chunk boundaries and CRCs; bound dimensions before Unity decodes it.
     pos, dims, end = 8, None, False
     while pos + 12 <= len(raw):
         n = struct.unpack_from(">I", raw, pos)[0]
@@ -518,19 +650,35 @@ def _next(c, table):
     return int(c.execute(f'SELECT COALESCE(MAX(id),0)+1 FROM "{table}"').fetchone()[0])
 
 
-def publish() -> dict:
+def publish(only_charas=None, activate=True, only_scenarios=(), only_supports=(), include_cards=False) -> dict:
     from . import master_data as M
-    from . import event_schedule
+    from . import banner_lineup, date_sync, event_schedule
     with _lock:
         s = status()
-        drafts = [validate(d, True) for d in s["cards"] if not d["retired"]]
+        drafts = [validate(d, True) for d in s["cards"] if not d["retired"]] if only_charas is None or include_cards else []
         events = event_schedule.validate(event_schedule.schedules(), M.get_connection())
-        if not drafts and not events:
+        sync = date_sync.setting()
+        lineup = banner_lineup.validate(banner_lineup.setting(), M.get_connection())
+        bundles = unreleased_bundles()
+        if only_charas is not None:
+            bundles = tuple(b for b in bundles if b.get("chara_id") in only_charas
+                            or b.get("scenario_id") in only_scenarios
+                            or bool(set(b.get("support_cards") or ()) & set(only_supports)) or not ({"chara_id", "scenario_id", "support_cards"} & set(b)))
+        if not drafts and not events and not bundles and not sync and not lineup:
             raise ValueError("Save at least one active card or event schedule before publishing")
-        # Retain old packs for pinned careers; activation only changes new sessions.
+        charas = [{"chara_id": b["chara_id"], "cards": b["cards"], "sha256": b["sha256"]} for b in bundles if "chara_id" in b]
+        scens = [{"scenario_id": b["scenario_id"], "sha256": b["sha256"]} for b in bundles if "scenario_id" in b]
+        supports = [{"cards": b["support_cards"], "gachas": b.get("gachas") or [], "sha256": b["sha256"]}
+                    for b in bundles if "support_cards" in b]
+        shared = sorted(b["sha256"] for b in bundles
+                        if "chara_id" not in b and "scenario_id" not in b and "support_cards" not in b)
         base = digest_file(M.MASTER_MDB_PATH)
         encoded = json.dumps({"protocol": PROTOCOL, "region": region.CURRENT_REGION.get(),
-                              "base_sha256": base, "cards": drafts, "events": events}, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+                              "base_sha256": base, "cards": drafts, "events": events, "charas": charas,
+                              **({"scenarios": scens} if scens else {}), **({"supports": supports} if supports else {}),
+                              **({"shared": shared} if shared else {}), **({"sync": sync} if sync else {}), **({"banners": lineup} if lineup else {}),
+                              **({"events_rev": event_schedule.APPLY_REVISION} if events else {})},
+                             sort_keys=True, separators=(",", ":"), ensure_ascii=False)
         digest = hashlib.sha256(encoded.encode()).hexdigest()
         directory = root() / "packs" / digest
         directory.mkdir(parents=True, exist_ok=True)
@@ -543,7 +691,11 @@ def publish() -> dict:
             dst.row_factory = sqlite3.Row
             try:
                 src.backup(dst)
+                for b in bundles:
+                    _apply_unreleased(dst, b)
+                date_sync.apply(dst, sync)
                 event_schedule.apply(dst, events)
+                banner_lineup.apply(dst, lineup)
                 for d in drafts:
                     row = dict(dst.execute("SELECT * FROM support_card_data WHERE id=?", (d["template"],)).fetchone())
                     if dst.execute("SELECT 1 FROM support_card_data WHERE id=?", (d["id"],)).fetchone():
@@ -606,11 +758,15 @@ def publish() -> dict:
             cards.append(item)
         m = {"protocol": PROTOCOL, "region": region.CURRENT_REGION.get(), "digest": digest,
              "base_sha256": base, "master_sha256": digest_file(path), "cards": cards,
-             "events": events, "created": time.time()}
+             "events": events, "charas": charas, "scenarios": scens, "supports": supports,
+             **({"sync": sync} if sync else {}), **({"banners": lineup} if lineup else {}), "created": time.time()}
         with _writing() as c:
             c.execute("INSERT OR REPLACE INTO revisions VALUES(?,?,?)", (digest, json.dumps(m, ensure_ascii=False), time.time()))
-            c.execute("INSERT OR REPLACE INTO settings VALUES('active',?)", (digest,))
-            _audit(c, "publish", detail={"digest": digest, "cards": [d["id"] for d in drafts]})
+            if activate:
+                c.execute("INSERT OR REPLACE INTO settings VALUES('active',?)", (digest,))
+            _audit(c, "publish", detail={"digest": digest, "cards": [d["id"] for d in drafts],
+                                         "charas": [b["chara_id"] for b in charas],
+                                         "scenarios": [b["scenario_id"] for b in scens]})
         return m
 
 
@@ -716,7 +872,7 @@ def _direct_ref(node, ids):
     if node.get("item_type", node.get("item_category")) == 51 and isinstance(node.get("item_id"), int) and node["item_id"] in ids:
         return True
     if node.get("reward_type") == 51 and isinstance(node.get("reward_id"), int) and node["reward_id"] in ids:
-        return True  # present box rows
+        return True
     return node.get("card_type") == 2 and isinstance(node.get("card_id"), int) and node["card_id"] in ids
 
 
@@ -736,20 +892,62 @@ def _refs(node, ids, key=""):
     return False
 
 
+def _trainee_ref(node, cards, charas):
+    if not isinstance(node, dict) or node.get("card_type") == 2:
+        return False
+    return node.get("card_id") in cards or node.get("chara_id") in charas
+
+
+_SEEN_REPORTS = ("add_voice_data_array", "add_home_story_data_array")
+
+
+def _trainee_refs(node, cards, charas):
+    if isinstance(node, dict):
+        return _trainee_ref(node, cards, charas) or any(
+            _trainee_refs(v, cards, charas) for k, v in node.items() if k not in _SEEN_REPORTS)
+    if isinstance(node, (list, tuple)):
+        return any(_trainee_refs(v, cards, charas) for v in node)
+    return False
+
+
+def _hidden_trainees():
+    cards, charas = unreleased_ids()
+    if not cards:
+        return set(), set()
+    pack_cards, pack_charas = _pack_trainees()
+    from . import master_data
+    stocked = {r[0] for r in master_data.query("SELECT DISTINCT chara_id FROM card_data")}
+    return cards - pack_cards, charas - pack_charas - stocked
+
+
 def preflight(endpoint, payload):
-    """Run inside the account lock, before any handler can mutate a save."""
     from . import state
+    hidden_cards, hidden_charas = _hidden_trainees()
+    if hidden_cards and _trainee_refs(payload, hidden_cards, hidden_charas):
+        log.warning("custom_support: %s refused (payload references an unreleased trainee outside the active pack): %s",
+                    endpoint, {k: v for k, v in payload.items() if k not in ("request_common",)})
+        return False
+    hidden_scens = hidden_scenarios()
+    if hidden_scens and (_endpoint_scenario(endpoint) in hidden_scens or _scenario_ref(payload, hidden_scens)):
+        if not (payload.get("is_force_delete") is True and endpoint.endswith("/finish")):
+            log.warning("custom_support: %s refused (scenario outside the active pack)", endpoint)
+            return False
     ids = known_ids()
     full = state.get_state(payload.get("viewer_id")) or {}
     if endpoint.startswith("single_mode") and full.get("single_mode_team") and full.get("_custom_support_pack"):
         if not (payload.get("is_force_delete") is True and endpoint.endswith("/finish")):
             if full["_custom_support_pack"] != CURRENT_PACK.get():
-                return False
+                career = full["single_mode_team"]
+                if (not CURRENT_PACK.get() or _refs(career, set(definitions())) or _trainee_refs(career, hidden_cards, hidden_charas)
+                        or _scenario_ref(career, hidden_scens) or _refs(career, known_ids() - visible_ids())):
+                    return False
+                log.info("custom_support: career moved from pack %s to %s",
+                         str(full["_custom_support_pack"])[:8], CURRENT_PACK.get()[:8])
+                full["_custom_support_pack"] = CURRENT_PACK.get()
+                state.save_state(payload.get("viewer_id"), full)
     if not ids:
         return True
-    allowed = set(definitions())
-    # Abandoning a career must always work: it only discards the run, so a
-    # pack mismatch or hidden card must never trap the player inside it.
+    allowed = visible_ids()
     if payload.get("is_force_delete") is True and endpoint.endswith("/finish"):
         return True
     if _refs(payload, ids - allowed):
@@ -757,7 +955,6 @@ def preflight(endpoint, payload):
         return False
     full = state.get_state(payload.get("viewer_id")) or {}
     career = full.get("single_mode_team") or {}
-    # Detect actual career storage without depending on scenario-specific key names.
     for k, v in full.items():
         if ("career" in k or "single_mode" in k) and _refs(v, ids):
             career = v
@@ -773,13 +970,11 @@ def preflight(endpoint, payload):
         decks = full.get("support_card_deck_state") or []
         updates = {d.get("deck_id") for d in payload.get("support_card_deck_array", [])}
         if any(d.get("deck_id") in updates and _refs(d, ids - allowed) for d in decks):
-            return False  # stock projection cannot overwrite hidden deck slots
+            return False
     return True
 
 
-
 def pin_career(endpoint, payload, response):
-    # idle_single_mode/start (the auto-run start) creates a career too.
     if not CURRENT_PACK.get() or not endpoint.endswith("/start") or "single_mode" not in endpoint.split("/")[0]:
         return
     if (response.get("data_headers") or {}).get("result_code", 1) != 1:
@@ -787,15 +982,19 @@ def pin_career(endpoint, payload, response):
     from . import state
     full = state.get_state(payload.get("viewer_id")) or {}
     m = manifest(CURRENT_PACK.get()) or {}
-    if m.get("events") or _refs(full.get("single_mode_team", {}), set(definitions())):
+    trainee_cards, _ = _pack_trainees()
+    pack_scens = {x["scenario_id"] for x in m.get("scenarios") or []}
+    if (m.get("events") or _refs(full.get("single_mode_team", {}), visible_ids())
+            or _trainee_refs(payload, trainee_cards, set()) or _scenario_ref(payload, pack_scens)):
         full["_custom_support_pack"] = CURRENT_PACK.get()
         state.save_state(payload["viewer_id"], full)
 
 
 def project(response):
-    """Copy the wire view; never mutate canonical ownership or cached fixtures."""
-    hidden = known_ids() - set(definitions())
-    if not hidden:
+    hidden = known_ids() - visible_ids()
+    hidden_cards, hidden_charas = _hidden_trainees()
+    hidden_scens = hidden_scenarios()
+    if not hidden and not hidden_cards and not hidden_scens:
         return response
     def walk(n, key=""):
         if isinstance(n, list):
@@ -803,7 +1002,7 @@ def project(response):
                 return [0 if isinstance(x, int) and x in hidden else x for x in n]
             out = []
             for x in n:
-                if _direct_ref(x, hidden):
+                if _direct_ref(x, hidden) or _trainee_ref(x, hidden_cards, hidden_charas):
                     continue
                 if isinstance(x, dict) and key in ("summary_user_info_array", "directory_card_array") and _refs(x, hidden):
                     continue
@@ -814,15 +1013,32 @@ def project(response):
             for k, v in n.items():
                 if "support_card_id" in k and isinstance(v, int) and v in hidden:
                     out[k] = 0
-                elif k in ("single_mode_chara_light", "single_mode_start_common", "single_mode_load_common") and _refs(v, hidden):
+                elif k in ("single_mode_chara_light", "single_mode_start_common", "single_mode_load_common") and (
+                        _refs(v, hidden) or _scenario_ref(v, hidden_scens)):
                     out[k] = None
+                elif k == "home_position_info" and isinstance(v, dict) and hidden_charas:
+                    out[k] = dict(v)
+                    for slot in range(1, 5):
+                        if v.get(f"position{slot}_chara_id") in hidden_charas:
+                            out[k][f"position{slot}_chara_id"] = 1001
+                            out[k][f"position{slot}_cloth_id"] = 100101
                 else:
                     out[k] = walk(v, k)
             return out
         return n
     result = walk(response)
-    if _refs(result, hidden):
+    if _refs(result, hidden) or _trainee_refs(result, hidden_cards, hidden_charas):
         from .result_codes import refuse
+        def where(n, path=""):
+            if isinstance(n, dict):
+                if _direct_ref(n, hidden) or _trainee_ref(n, hidden_cards, hidden_charas):
+                    return path or "<root>"
+                return next((w for k, v in n.items() if (w := where(v, f"{path}.{k}"))), None)
+            if isinstance(n, list):
+                return next((w for i, x in enumerate(n) if (w := where(x, f"{path}[{i}]"))), None)
+            return None
+        logging.getLogger("uma-server").warning(
+            "custom_support: hidden content in reply at %s; refusing (205)", where(result))
         refused = refuse()
         refused["data_headers"] = dict(response.get("data_headers") or {}, **refused["data_headers"])
         return refused

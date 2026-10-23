@@ -1,0 +1,220 @@
+{
+ "title": "神戸新聞杯にむけて",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "きましたね、『神戸新聞杯』……。\n今日は、あのクリスエスちゃんが一緒……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "重賞が目標なんて、\nちょっとドキドキしちゃうや……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "やや緊張気味のヒシミラクル。\nだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ふつ～のウマ娘とはいえ\nここを乗り切るだけの力は、\nもう十二分にあるはずだった。",
+   "choice_data_list": [
+    "ドキドキするほどでもないんじゃ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもでも、目標ってあらためて言われると、\nプレッシャーってか。それに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの～、トレーナーさん。もしかして、\nもしかするとなんですけれど～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "このレースを切り抜けられたら『菊花賞』で\nギムレットちゃんやクリスエスちゃんと\n勝負～とか思ってません？",
+   "choice_data_list": [
+    "そこは……まだ未定かな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "レースの内容次第ってことですか？",
+   "choice_data_list": [
+    "ああ",
+    "うん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "正直、考えてはいた。だが今は\n余計なプレッシャーを与えたくはない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "とにかく目の前の\n『神戸新聞杯』に集中させて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え？　ええええっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、友だちから\nびっくりなニュースが！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "テレビテレビ！\nテレビお願いします～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "あわててテレビをつける。\nと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "そうだ、冬眠だ。まだ未熟な俺の脚は、\n下界を踏み抜いたことで灼熱を宿した……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "冷めるまでは――待つしかない。\nそう、神々の黄昏をな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ケガで、しばらくレースはおやすみ……。\n本当なんだ、ギムレットちゃん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "もたらされたのはタニノギムレット休養入り、\n『菊花賞』回避の報だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ギムレットちゃん……。どんなトラブルも\n蹴とばせる……。悪いことなんて\n向こうから逃げ出すって思ってた。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トゥインクル・シリーズで主役を\nやろうとすると、こうなっちゃうんだ……。\nギムレットちゃんほどの娘でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なのに、いまだにビクビクしてる\nわたしみたいなのが踏み入ったら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\nほんとに平気なんでしょうか？\nわたし、どうしたら……。",
+   "choice_data_list": [
+    "とにかく落ち着いて"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、でもでもぉ～……。\nギムレットちゃんも心配だし、それから！\nえとえぇと……。",
+   "choice_data_list": [
+    "レースだけに集中しよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "あまり器用ではないヒシミラクルに\nあれこれ考えさせるのは避けたかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は、はい……。\n落ち着かなきゃ、どうにか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエスちゃん……聞いた？\nギムレットちゃんのこと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――ああ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの～、クリスエスちゃんはどう思って……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "She taught me a lot.\n引き継いだものはある。が――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "使命は変わらない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "為すべきを見定めるのみ。\n――レース後に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエスちゃん……。\n見定めるって……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "このレースで、今までの努力が試される\nヒシミラクル。一方――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "シンボリクリスエスも何か\n特別に秘するものがありそうだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

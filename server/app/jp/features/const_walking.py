@@ -1,50 +1,3 @@
-"""Uma-sanpo (const_walking): JP's permanent form of Global's Character
-Outing (app/handlers/campaign_walking.py). Global's is a limited campaign
-with a gauge; JP's is always open, paid for with a ticket item, and its
-outings visit the locations of every past walking campaign at once.
-
-Ground truth: 64 go_walking/check_result pairs + 2 index replies in
-jp_captures/CarrotJuicer (2026-07-26..09-24), JP dump.cs, JP master.mdb.
-
-  Ticket: item 282 (おさんぽ気分, item_category 189 == dump.cs
-  CONST_WALKING_TICKET), limit_num 10. One ticket = one walk. The only
-  source is the career-finish daily reward: `WIRE` 55 of 690 real finishes
-  carry single_mode_finish_common.daily_reward_info.add_item_list
-  [{item_id 282, number 1}], one per game day (the first finish), and
-  load/index's is_received_daily_walking_ticket flips false -> true exactly
-  across that finish. const_walking/index's is_received_daily_ticket is the
-  same flag.
-
-  Locations: constant_walking_data lists the campaigns whose maps the
-  permanent mode reuses (279, 333, 370, 663); campaign_walking_chara gives
-  each character 3 locations per campaign. `WIRE` go_walking's request
-  {chara_id, location_id, walking_num, campaign_id} is location_id 0 /
-  campaign_id 0 (random) in 63 of 64 walks; the one explicit pick
-  (225 @ 663) had walking_num 1.
-
-  Bond: `WIRE` love gain is exactly 15 x walking_num in all 64 walks
-  (walking_num 1/2/3 -> 15/30/45); campaign_walking_location.love_point
-  (0 or 50) is the campaign mode's number, not this one's.
-
-  check_result's const_walking_release_array lists only memories seen for
-  the first time, grouped by campaign (`WIRE` a 1-walk result with an
-  already-seen location came back []); new_chara_profile_array is the
-  bond-rank profile unlocks (bond.grant).
-
-  const_walking_login_time: `WIRE` index returns the previously stored time
-  and stores now (two index calls a minute apart: 07-22 12:37:21, then the
-  first call's own 08-12 12:47:51); load/index reports the stored value.
-
-  Missions: condition_type 600045 is "go on N walks", cv1 = campaign_id
-  (0 = any). `WIRE` (umacap api-20261003-222052-340) 330510 「KFCさんぽへ1回
-  行こう」 (cv1 663) went 0 -> 1 after go_walking(campaign 663) + check_result.
-  Counted per drawn location at check_result, so a random walk that lands on
-  a campaign's map counts for it too.
-
-Not in any capture: how the random location is drawn. Picks are uniform
-over the character's (campaign, location) pairs, without repeats inside one
-batch -- no real batch ever repeated a location.
-"""
 
 from __future__ import annotations
 
@@ -76,7 +29,6 @@ def _now_str() -> str:
     return time.strftime("%Y-%m-%d %H:%M:%S")
 
 
-# ------------------------------------------------------------------ master.mdb
 def _campaign_ids() -> list[int]:
     if not master_data.has_table("constant_walking_data"):
         return []
@@ -86,7 +38,6 @@ def _campaign_ids() -> list[int]:
 
 
 def _pairs(chara_id: int) -> list[tuple[int, int]]:
-    """Every (campaign_id, location_id) this character can visit."""
     pairs = []
     for cid in _campaign_ids():
         row = master_data.query_one(
@@ -98,14 +49,13 @@ def _pairs(chara_id: int) -> list[tuple[int, int]]:
     return pairs
 
 
-# ----------------------------------------------------------------------- state
 def _state(full_state: dict) -> dict:
     st = full_state.setdefault(STATE_KEY, {})
-    st.setdefault("acts", [])          # [{chara_id, campaign_id, data_id, create_time}]
+    st.setdefault("acts", [])
     st.setdefault("ticket_day", None)
     st.setdefault("login_time", None)
     st.setdefault("pending", None)
-    st.setdefault("walks", {})         # {str(campaign_id): walks taken there}
+    st.setdefault("walks", {})
     return st
 
 
@@ -118,7 +68,6 @@ def _owns(full_state: dict, chara_id: int) -> bool:
                for c in full_state.get(collection.CHARA_LIST_KEY) or [])
 
 
-# ------------------------------------------------------------------- endpoints
 def handle_index(payload: dict) -> dict:
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
@@ -142,8 +91,6 @@ def handle_index(payload: dict) -> dict:
 
 
 def handle_go_walking(payload: dict) -> dict:
-    """Spend walking_num tickets and draw the locations; check_result (played
-    after the walking cutscene) pays out. `WIRE` the reply carries no data."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     st = _state(full_state)
@@ -210,10 +157,7 @@ def handle_check_result(payload: dict) -> dict:
     }})
 
 
-# ------------------------------------------------------ hooks on shared replies
 def after(endpoint: str, payload: dict, resp: dict) -> None:
-    """The daily ticket on a career finish, and the walking fields of
-    load/index, applied to the reply the shared pipeline built."""
     if (resp.get("data_headers") or {}).get("result_code", 1) != 1:
         return
     data = resp.get("data")

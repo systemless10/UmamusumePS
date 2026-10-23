@@ -1,0 +1,80 @@
+#title Valentine's Day
+0 Valentine's Day.
+1 It's the day pretty much everyone gives out chocolate. And then, a month later...
+2 Alright, Ku-chan! What sweets do you want from Dad as a thank-you?
+2{ Ku
+3 Whaaat! Oh, you shouldn't!
+4 Then maybe that muffin over there, and I kinda wanna eat that chocolate sundae from TV before we go home?
+5 Hey now, aren't you a shrewd one... Just this year, okay?
+6 (The chocolate I give on Valentine's comes back to future me as double the reward...!)
+7 Mira-ko! Are you giving chocolate to your trainer?
+8 Huh? My trainer?
+9 Yeah, yeah. Girls with trainers often give them some as a thank-you, right? So I figured maybe you would too.
+10 Ahh, I see, I see. So that's why, to my trainer, huh.
+11 Your dad's a grown-up, you know~ I'll pay you back three times, no, five times what I got!
+12 ...Muhu.
+13 I'll go for it! Chocolate from me, for my grown-up trainer!
+14 First, Dad's share is mandatory. I'll grab the usual one...
+15 And then, while I'm at it, Trainer's share too...
+16 ......
+17 ...Is it okay to get chocolate like Dad's?
+18 Trainer's kinda weird, after all.
+19 (Compared to everyone else's, my trainer's pretty hot-blooded.)
+20 (Sometimes they believe in me so much, it's like they're aiming way too high.)
+21 ...Enough to put me in the Kikuka Sho, of all things.
+22 (And they're probably such a nice person they'd thank me even for some random chocolate.)
+23 (Once it's in your stomach, chocolate is chocolate, no matter which one you eat.)
+24 (...But they have taken care of me. Quite a bit, actually.)
+25 Only one left of our special Valentine's chocolate! A famous chef modeled it after a red rose...
+26 A rose! Ooh... Huh...
+27 ...Ahaha, that'd suit them.
+28 Okay. Excuse me, I'll take o—
+29 ......
+30 ? Is something wrong, miss?
+31 N-no, no. It's nothing.
+32 (Wh-way too expensive! It's five times the price of Dad's chocolate?!)
+33 (No way! No no no no! There's no way I can afford that with this month's allowance!)
+34 (...But...)
+35 Oh my! Could I have that chocolate? And could you add a message card?
+36 Ah...!
+37 ...Heyyy, Trainer. Happy Valentine's Day.
+37> Do you seem kind of down...? | Do you seem kind of down...?
+38 Ahaha. Nope, nope. Not at all.
+39 Well, I brought you some chocolate that fits my station in life. So here you go...
+39> Oh, thank you!
+40 Nah... You're welcome.
+40> Oh, I know, how about I treat you to okonomiyaki as thanks?
+41 Huh, really?
+42 Whoa, yaaay! I caught a sea bream with a shrimp!
+43 (Yay, yay! I knew it, a grown-up pays you back way more than double for chocolate...)
+44 ...Huh?
+45 (Why did I even get so down?)
+46 (When my whole reason for giving chocolate was to get something back.)
+46> Hishi Miracle? What's wrong? | Hishi Miracle? What's wrong?
+47 Whoa... Um.
+48 It's probably nothing.
+49 ......Nnnngh.
+50 ...Ah, hello? Mom? Um, so...
+51 Please let me borrow from next month's allowance!
+52 (Ahh, this is bad! I said it! For chocolate! All for chocolate!)
+53 (Ugh, I've gotta keep this secret from Mom and Dad. They'd definitely say "That's way too expensive." I can hear it without them even saying it...)
+54 (...But...)
+55 (I want to reach a little higher, just this once.)
+56 Trainer, Happy Valentine's Daaay!
+56> Whoa, are you sure?! | Whoa, are you sure?!
+57 Hmhm. Go ahead, go ahead.
+58 When I opened the box Hishi Miracle handed me, a soft, elegant aroma of cacao wafted up.
+58> This is... some good chocolate...!
+59 Hmhmhm. ...You can tell?
+60 Well, it's a fine piece. Please, go ahead and enjoy it.
+60> Thank you. I'll have to think of something to give back. | Thank you. I'll have to think of something to give back.
+61 ...! Oh, yes. Something back? Ooh... That's...
+62 ...Um.
+63 ...This time, I gave it because I wanted to.
+64 You always take care of me, Trainer. So this is a thank-you.
+65 Please enjoy it as a token of my gratitude. You don't need to give anything back, just dig in.
+66 Ehehe... Well then.
+67 Haaah...
+68 Hehe... pfft. Ahaha...!
+69 I totally showed off. Oh, man...
+70 (...Maybe I reached a little too high.)

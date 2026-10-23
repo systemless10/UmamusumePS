@@ -1,21 +1,3 @@
-"""THE TWINKLE LEGENDS (scenario 10, JP only) -- ザ・トゥインクル・レジェンズ -- the mechanics.
-
-docs/JP_TWINKLE_LEGENDS_SCENARIO.md is the spec this implements, section for
-section (7 real careers, the single_mode_10_* tables, the JP client dump):
-
-    instruction gauges and the command colours         §3
-    knowledge buffs and the lottery                     §4, §5
-    the three guidances (super motivation, the zone,
-      Haiseiko's partners)                              §6
-    the bonus line's inputs (formula.py does the maths) §7.3
-    facility level bonuses                              §8
-    the Dream Fests                                     §9
-    fan service and the Legend CM                       §10, §11
-
-and builds the legend_data_set every career response carries (data_set).
-Rules the captures do not settle are tagged [INFERRED] where they are applied;
-§18 of the guide lists them.
-"""
 
 from __future__ import annotations
 
@@ -35,12 +17,8 @@ SUMMER_TURNS = frozenset({37, 38, 39, 40, 61, 62, 63, 64})
 GUIDANCE_TURN = 37
 FINAL_TURN = 72
 LEGEND_ORDER = M.LEGENDS
-# The full_state of the Dream Fest being simulated: Scenario.race_field is
-# handed none, and the field depends on the career (the legend, Almond Eye).
 SIM_STATE: dict = {}
 
-# The lottery's free-slot rank weights (§5.2), by (highest unlocked rank,
-# gauge band 3 or not) [FIT over 75 lotteries].
 RANK_WEIGHTS = {
     (1, False): {1: 1}, (1, True): {1: 1},
     (2, False): {1: 64, 2: 36}, (2, True): {1: 25, 2: 75},
@@ -49,20 +27,15 @@ RANK_WEIGHTS = {
 HINTS_PER_LOTTERY = 2
 GAUGE_TRAINING, GAUGE_FRIENDSHIP = 1, 3
 
-# Super motivation (§6.2)
 SUPER_TURNS = 3
 SUPER_EXTENSIONS = 2
 SUPER_STEPS = 3
-# Challenge Zone (§6.3)
 ZONE_STEPS = 4
-# Haiseiko (§6.4)
 FRIEND_GAUGE_MAX = 20
 FRIEND_LEVEL_MAX = 9
-FRIEND_GAIN = 7                 # the bond a partner gains from a training
-GUEST_PRESENT_CHANCE = 0.8      # a non-full guest stands somewhere [INFERRED]
+FRIEND_GAIN = 7
+GUEST_PRESENT_CHANCE = 0.8
 
-# Dream Fests (§9). Named runners are single_mode_npc <chara>0 rows x the
-# race's per-stat factor; mobs fill the rest [FIT].
 RACE_GROUPS = (100001, 100002, 100003)
 STELLA, PRIDE, LEGEND_RACE = RACE_GROUPS
 RACE_FACTOR = {100001: (0.68, 0.73, 0.68, 0.68, 0.67),
@@ -71,53 +44,47 @@ RACE_FACTOR = {100001: (0.68, 0.73, 0.68, 0.68, 0.67),
 RACE_JITTER = 0.015
 NAMED_COUNT = {100001: 11, 100002: 13, 100003: 14}
 FIELD_SIZE = 16
-LINK_CHARAS = (1115, 1086, 1116, 1070, 1046)   # Orfevre, Ramonu, Gentildonna, Sirius, Falcon
+LINK_CHARAS = (1115, 1086, 1116, 1070, 1046)
 TURF_REGULARS = {1115: 1.0, 1116: 0.6, 1086: 0.6, 1070: 0.6}
 DIRT_REGULARS = {1046: 1.0}
 LEGEND_ROW = {M.ST_LITE: 9046901, M.SPEED: 9047901, M.HAISEIKO: 9048901}
-LEGEND_WEIGHTS = {M.ST_LITE: 1, M.SPEED: 2, M.HAISEIKO: 4}   # 1/2/4 of 7 careers [INFERRED]
+LEGEND_WEIGHTS = {M.ST_LITE: 1, M.SPEED: 2, M.HAISEIKO: 4}
 ALMOND_EYE = 1129
-# Rewards (§9.5): (all stats, SP, energy) by race and result.
 RACE_REWARD = {(100001, True): (30, 125, 25), (100001, False): (20, 75, 15),
                (100002, True): (45, 210, 35), (100002, False): (30, 125, 25),
                (100003, True): (55, 300, 0), (100003, False): (45, 210, 0)}
-ERA_CHANGER = 210352          # 時代を変える者 (the white of 新たな伝説を築く者)
-NEW_LEGEND = 210351           # 新たな伝説を築く者
-TIMELY = 202791               # 時中の妙
-# The race categories (§9.1), in the tie order (shorter first).
+ERA_CHANGER = 210352
+NEW_LEGEND = 210351
+TIMELY = 202791
 CATEGORIES = ("sprint", "mile", "classic", "long", "dirt")
 CATEGORY_REWARD_SET = {"sprint": 910001, "mile": 910002, "classic": 910003,
                        "long": 910004, "dirt": 910005}
-# Fan service (§10): (all stats or speed, SP) of the B event.
 POPULARITY_REWARD = {1: ([{"type": "speed", "value": "+20"}], 20),
                      2: ([{"type": "all_stats", "value": "+5"}], 50),
                      3: ([{"type": "all_stats", "value": "+10"}], 100),
                      4: ([{"type": "all_stats", "value": "+25"}], 125)}
-# Legend CM routes (§11): 1 Classic crowns, 2 Tiara, 3 Dirt, 4 short/mile, 5 senior middle/long
 TRIPLE_CROWN = (163, 166, 168)
 
-
-# ================================================================ state ===
 
 def _blank() -> dict:
     return {
         "gauges": {str(g): 0 for g in M.LEGENDS},
         "colours": {"turn": 0, "rows": {}},
-        "buffs": [],                 # {buff_id, obtained_turn, pending, consumed_turn}
+        "buffs": [],
         "offers": [], "offer_turn": 0, "offer_bands": {},
-        "chosen": {},                # select_buff / exchange_buff, until 400010112 resolves
+        "chosen": {},
         "masterly": 0,
         "s9046": {"remain": 0, "step": 0, "extend": 0, "end_due": False, "start_due": False},
         "s9047": {"zone": 0, "step": 0, "start_due": False, "end": {}},
         "s9048": {"gauges": {}, "guests": {}},
-        "races": [],                 # race_history_array
+        "races": [],
         "sprace": {}, "done_races": [], "hold_turn": 0,
-        "due": [],                   # 400010113/114 owed: {legend, turn, summer}
+        "due": [],
         "preview": {"turn": 0},
         "activated": [], "activated_turn": 0,
         "popularity": {}, "pop_done": [], "pop_due": [],
         "cm": {}, "route_id": 0,
-        "snapshots": {},             # won big races: {"classic": RaceResultInfo, ...}
+        "snapshots": {},
         "advanced_to": 1,
         "goal_due": {},
         "race_legend": 0, "boss": False,
@@ -162,15 +129,11 @@ def live_chara(full_state: dict) -> dict:
     return ((full_state.get(smt.STATE_KEY) or {}).get("data") or {}).get("chara_info") or {}
 
 
-# ============================================================== gauges ===
-
 def gauge(st: dict, legend: int) -> int:
     return int(st["gauges"].get(str(legend), 0))
 
 
 def add_gauge(full_state: dict, legend: int, n: int, *, set_to: int | None = None) -> int:
-    """Raise one gauge (cap 8); a pending lottery re-rolls that legend's offers
-    (§5.1). Returns the amount actually added."""
     st = state(full_state)
     before = gauge(st, legend)
     after = min(M.GAUGE_MAX, max(0, set_to if set_to is not None else before + int(n)))
@@ -185,8 +148,6 @@ def add_all_gauges(full_state: dict, n: int) -> None:
         add_gauge(full_state, g, n)
 
 
-# ============================================================ colours ===
-
 def row_key(ctype: int, cid: int) -> str:
     if ctype == 3:
         return "3:0"
@@ -194,8 +155,6 @@ def row_key(ctype: int, cid: int) -> str:
 
 
 def roll_colours(full_state: dict, turn: int) -> dict:
-    """Every command row's legend for the turn (§3.1): uniform and independent;
-    the two outing rows share one [FIT]."""
     st = state(full_state)
     if int(st["colours"].get("turn") or 0) == int(turn) and st["colours"].get("rows"):
         return st["colours"]["rows"]
@@ -211,8 +170,6 @@ def colour(full_state: dict, turn: int, ctype: int, cid: int) -> int:
     return int(roll_colours(full_state, turn).get(row_key(ctype, cid)) or M.HAISEIKO)
 
 
-# ============================================================== buffs ===
-
 def held(st: dict) -> list:
     return [int(b["buff_id"]) for b in st["buffs"]]
 
@@ -222,8 +179,6 @@ def _buff_entry(st: dict, buff_id: int) -> dict | None:
 
 
 def guidance_live(st: dict, legend: int) -> bool:
-    """A legend's guidance effect is in force right now (super motivation /
-    the zone) -- what an effect row's bonus_value keys to."""
     if legend == M.ST_LITE:
         return int(st["s9046"]["remain"]) > 0
     if legend == M.SPEED:
@@ -240,8 +195,6 @@ def zone_on(st: dict) -> bool:
 
 
 def cool_time(entry: dict, turn: int) -> int:
-    """Cooldown left on `turn` (§5.4): buff_ct from the turn after the effect
-    was consumed, -1 per turn."""
     ct = int(M.buff(entry["buff_id"]).get("buff_ct") or 0)
     used = int(entry.get("consumed_turn") or 0)
     if not ct or not used:
@@ -250,7 +203,6 @@ def cool_time(entry: dict, turn: int) -> int:
 
 
 def _condition_motivation(chara_info: dict, st: dict, group: int) -> bool | None:
-    """True/False for a motivation-gated buff, None for any other."""
     for ctype, v1, *_ in M.conditions(group):
         if ctype == M.COND_MOTIVATION:
             return super_on(st) or int(chara_info.get("motivation") or 3) >= v1
@@ -266,8 +218,6 @@ def is_active(chara_info: dict, st: dict, entry: dict) -> bool:
 
 
 def active_effects(chara_info: dict, st: dict) -> list:
-    """[(effect_type, v1, v2, buff_id)] of every buff in force, with an
-    effect's bonus_value taking over while its legend's guidance is live."""
     out = []
     for b in st["buffs"]:
         if not is_active(chara_info, st, b):
@@ -284,7 +234,6 @@ def effect_total(chara_info: dict, st: dict, effect_type: int) -> int:
 
 
 def _fires(row: dict, chara_info: dict, st: dict, ev: dict) -> bool:
-    """Whether a triggered buff's condition is met by this command (§4)."""
     for ctype, v1, v2, v3, v4 in M.conditions(int(row.get("condition_group_id") or 0)):
         if ctype == M.COND_COMMAND:
             if int(ev["ctype"]) not in {v for v in (v1, v2, v3, v4) if v}:
@@ -306,9 +255,6 @@ def _fires(row: dict, chara_info: dict, st: dict, ev: dict) -> bool:
 
 
 def after_command(full_state: dict, chara_info: dict, turn: int, ev: dict) -> list:
-    """Consume the pending buffs this command used, then fire the triggered
-    buffs it met (§5.4). `ev` = {ctype, success, friendship, supporters,
-    partners}. Returns the buff ids that fired (activated_buff_id_array)."""
     st = state(full_state)
     fired: list = []
     if ev["ctype"] == 1:
@@ -349,7 +295,6 @@ def _bond_partners(chara_info: dict, partners, n: int) -> None:
 
 
 def buff_info_array(chara_info: dict, st: dict, turn: int) -> list:
-    """newest first on the reply that obtained it, otherwise by buff_id (§2.1)."""
     rows = sorted(st["buffs"], key=lambda b: int(b["buff_id"]))
     fresh = [b for b in rows if int(b.get("obtained_turn") or 0) == int(turn)
              and st.get("fresh_buff") == int(b["buff_id"])]
@@ -358,8 +303,6 @@ def buff_info_array(chara_info: dict, st: dict, turn: int) -> list:
              "cool_time": cool_time(b, turn), "obtained_turn": int(b.get("obtained_turn") or 0)}
             for b in rows]
 
-
-# ============================================================= lottery ===
 
 def top_rank(st: dict) -> int:
     n = len(st["buffs"])
@@ -409,7 +352,6 @@ def _legend_offers(full_state: dict, st: dict, legend: int, keep: list, tag) -> 
 
 
 def roll_offers(full_state: dict, turn: int) -> list:
-    """The lottery's offers from the gauges as they stand (§5.2)."""
     st = state(full_state)
     st["offers"] = []
     by_legend = {}
@@ -423,8 +365,6 @@ def roll_offers(full_state: dict, turn: int) -> list:
 
 
 def _reroll(full_state: dict, st: dict, legend: int, before: int, after: int) -> None:
-    """A gauge change while the lottery waits (§5.1): a rise inside bands 1-2
-    appends to the legend's offers; reaching 8 redraws the whole set."""
     old = [b for b in st["offers"] if M.legend_of(b) == legend]
     others = [b for b in st["offers"] if M.legend_of(b) != legend]
     tag = f"{st['offer_turn']}:re{after}"
@@ -458,10 +398,6 @@ def exchange(full_state: dict, before: int, after: int) -> None:
 
 
 def answer_lottery(full_state: dict, chara_info: dict, turn: int) -> int:
-    """400010112 resolves: the chosen buff joins (an exchange drops the old
-    one), two support hints, every gauge back to 0 (§5.3). Without a choice
-    while offers exist (a client that skipped select_buff) the first offer is
-    taken [INFERRED]."""
     st = state(full_state)
     chosen = st.get("chosen") or {}
     got = int(chosen.get("buff_id") or 0)
@@ -484,7 +420,6 @@ def answer_lottery(full_state: dict, chara_info: dict, turn: int) -> int:
 
 
 def grant_support_hints(full_state: dict, chara_info: dict, turn: int) -> list:
-    """Two hints from the deck's normal cards' hint pools (§5.3) [FIT]."""
     from ... import event_engine
     rng = rng_for(full_state, "hints", turn)
     learned = {s.get("skill_id") for s in chara_info.get("skill_array") or ()}
@@ -511,10 +446,7 @@ class Refused(Exception):
     pass
 
 
-# ============================================================ guidance ===
-
 def pick_guidance(full_state: dict) -> int:
-    """T37: the legend with the most held buffs, ties at random (§6.1)."""
     st = state(full_state)
     count = {g: sum(1 for b in held(st) if M.legend_of(b) == g) for g in M.LEGENDS}
     best = max(count.values())
@@ -532,7 +464,6 @@ def grant_guidance(full_state: dict, chara_info: dict, legend: int) -> None:
 
 
 def start_super(full_state: dict, chara_info: dict) -> None:
-    """400010106 resolves: super motivation for 3 turns, 2 extensions, mood +1."""
     st = state(full_state)
     st["s9046"].update(remain=SUPER_TURNS, step=0, extend=SUPER_EXTENSIONS, start_due=False)
     chara_info["motivation"] = min(5, int(chara_info.get("motivation") or 3) + 1)
@@ -544,9 +475,6 @@ def end_super(full_state: dict) -> None:
 
 
 def count_mood_up(full_state: dict, n: int) -> int:
-    """Every mood-up effect while St Lite guides (§6.2): during super
-    motivation it extends it instead (max 2); otherwise it counts a step, even
-    at max mood. Returns the mood that should still land."""
     st = state(full_state)
     if st["masterly"] != M.ST_LITE or n <= 0:
         return n
@@ -564,7 +492,6 @@ def count_mood_up(full_state: dict, n: int) -> int:
 
 
 def mood_up(full_state: dict, chara_info: dict, n: int) -> int:
-    """A scenario mood-up (a buff's immediate +1): counted, then applied."""
     amount = count_mood_up(full_state, n)
     if amount > 0:
         chara_info["motivation"] = min(5, int(chara_info.get("motivation") or 3) + amount)
@@ -577,7 +504,6 @@ def start_zone(full_state: dict) -> None:
 
 
 def end_zone(full_state: dict, end_type: int) -> None:
-    """The zone ends: 400010111 pays by the zone turn n (§6.3)."""
     st = state(full_state)
     z = st["s9047"]
     n = int(z["zone"])
@@ -588,8 +514,6 @@ def end_zone(full_state: dict, end_type: int) -> None:
 
 
 def zone_rates(full_state: dict, chara_info: dict, home_commands) -> list:
-    """One row per training; all 0 outside the zone (U, careers 3 and 6:
-    288/288 such replies)."""
     st = state(full_state)
     n = int(st["s9047"]["zone"])
     out = []
@@ -604,12 +528,7 @@ def zone_rates(full_state: dict, chara_info: dict, home_commands) -> list:
     return out
 
 
-# ------------------------------------------------------------- Haiseiko ---
-
 def recruit_guests(full_state: dict, chara_info: dict) -> dict:
-    """400010109: the deck cards (not the group card) and five drawn guests,
-    one per stat specialty, all level 1 at a full gauge (§6.4). The guests
-    join the evaluation rows like any NPC chara."""
     from ... import master_data
     st = state(full_state)
     s = st["s9048"]
@@ -655,15 +574,12 @@ def guest_facility(st: dict, chara: int) -> int:
 
 
 def friend_gain(chara_info: dict, st: dict) -> int:
-    """What a training adds to a partner's gauge: its bond gain (§6.4)."""
     from ...handlers import conditions
     gain = FRIEND_GAIN + effect_total(chara_info, st, M.EFF_BOND_UP)
     return conditions.bond_gain(chara_info, gain)
 
 
 def forced_cards(chara_info: dict, st: dict) -> dict:
-    """{position: facility} -- full-gauge deck cards stand in their own
-    facility (§6.4: 61/61)."""
     out = {}
     deck = formula.RF.deck(chara_info)
     for pid in st["s9048"]["gauges"]:
@@ -676,8 +592,6 @@ def forced_cards(chara_info: dict, st: dict) -> dict:
 
 
 def train_friends(full_state: dict, chara_info: dict, partners, friendship: bool) -> None:
-    """A successful training: a full partner in a friendship training levels
-    up and empties; everyone else in the facility gains (§6.4)."""
     st = state(full_state)
     gain = friend_gain(chara_info, st)
     for pid in partners or ():
@@ -702,10 +616,7 @@ def full_guests_in(st: dict, partners) -> int:
     return sum(1 for p in partners or () if int(p) >= formula.NPC_MIN and is_full(st, p))
 
 
-# ============================================================ previews ===
-
 def mods_for(full_state: dict, chara_info: dict, partners) -> dict:
-    """The bonus line's inputs for one facility (§7.3)."""
     st = state(full_state)
     out = {"tu": 0.0, "tu_per_sup": 0.0, "mu": 0.0, "mu_per_sup": 0.0, "fb": 0.0,
            "fb_per_friend": 0.0, "nfriend_extra": 0, "super": super_on(st)}
@@ -743,9 +654,6 @@ def energy_down(full_state: dict, chara_info: dict) -> int:
 
 
 def refresh_preview(full_state: dict, chara_info: dict, home_info: dict, card_levels=None) -> bool:
-    """Recompute this turn's bonus lines, gauge previews and zone rates from the
-    facilities about to be served, and remember them: exec_command pays
-    exactly these."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     commands = list((home_info or {}).get("command_info_array") or ())
@@ -795,15 +703,10 @@ def zone_rate_for(st: dict, command_id: int) -> int:
     return 0
 
 
-# ======================================================= facility levels ===
-
 def raise_all_facilities(full_state: dict, chara_info: dict) -> None:
-    """+1 to every facility (§8): Stella / Pride won, and the guidance."""
     RI.raise_all_facilities(full_state, chara_info)
     RI.refresh_home(full_state, chara_info)
 
-
-# ========================================================= Dream Fests ===
 
 def sprace_group(turn: int) -> int:
     return M.sprace_turns().get(int(turn or 0), 0)
@@ -834,8 +737,6 @@ def race_categories(race_history) -> dict:
 
 
 def best_category(race_history, available) -> str:
-    """The category raced most among the ordinary races, ties to the shorter
-    (§9.1, 21/21); one the race does not offer falls to the next [INFERRED]."""
     tally = race_categories(race_history)
     order = sorted(CATEGORIES, key=lambda k: (-tally.get(k, 0), CATEGORIES.index(k)))
     for k in order:
@@ -869,9 +770,6 @@ def g1_wins(race_history) -> int:
 
 
 def boss_due(full_state: dict, chara_info: dict, program_id: int, race_history) -> bool:
-    """Almond Eye replaces the legend (§9.3) [INFERRED from the guides]: not
-    her own career, a turf mile / classic Legend, Stella and Pride won, and the
-    Triple Crown, the Triple Tiara or 9 G1 wins."""
     st = state(full_state)
     if int(chara_info.get("card_id") or 0) // 100 == ALMOND_EYE:
         return False
@@ -887,7 +785,6 @@ def boss_due(full_state: dict, chara_info: dict, program_id: int, race_history) 
 
 
 def race_legend(full_state: dict) -> int:
-    """Who runs the Legend race (§9.3) [OPEN: Haiseiko-weighted random]."""
     st = state(full_state)
     if not st.get("race_legend"):
         rng = rng_for(full_state, "race_legend")
@@ -897,7 +794,6 @@ def race_legend(full_state: dict) -> int:
 
 
 def announce(full_state: dict, chara_info: dict, turn: int) -> dict:
-    """The "にむけて" event resolves: the program is drawn and ps 28 follows."""
     st = state(full_state)
     sp = st["sprace"]
     if int(sp.get("turn") or 0) == int(turn) and sp.get("program_id"):
@@ -948,8 +844,6 @@ def _opponent(row: dict, factors: tuple, rng: random.Random) -> dict:
 
 
 def race_field(full_state: dict, chara_info: dict, program_id: int, count: int) -> list | None:
-    """The Dream Fests' fields (§9.3): named runners off their base rows, the
-    link charas favoured, the Legend race's legend (or Almond Eye)."""
     from ... import master_data
     group = next((g for g in RACE_GROUPS
                   if int(program_id) in {p for p, _g, _d in M.group_programs(g)}), 0)
@@ -996,7 +890,6 @@ def race_field(full_state: dict, chara_info: dict, program_id: int, count: int) 
 
 
 def reward_effects(full_state: dict, chara_info: dict, group: int, won: bool) -> list:
-    """The result event (§9.5): stats and SP x (1 + race bonus), energy as is."""
     smt = _smt()
     stats, sp, energy = RACE_REWARD[(group, won)]
     eff = [{"type": "all_stats", "value": f"+{smt._scale_race_reward(stats, chara_info, full_state)}"},
@@ -1018,10 +911,7 @@ def stella_won(st: dict) -> bool:
     return any(int(r["race_type"]) == 1 and int(r["result_rank"]) == 1 for r in st["races"])
 
 
-# ===================================================== fan service / CM ===
-
 def snapshot_race(full_state: dict, race_ctx: dict, chara_info: dict, rank: int) -> None:
-    """Keep a won G1's replay for the poster and the CM (§10, §11)."""
     if int(rank or 0) != 1:
         return
     rsi = race_ctx.get("race_start_info") or {}
@@ -1052,7 +942,6 @@ _HORSE_DEFAULTS = {"fan_count": 0, "final_grade": 0, "frame_order_change_flag": 
 
 
 def race_result_info(rsi: dict, scenario, instance: int) -> dict:
-    """A RaceResultInfo replay off a race's start info and scenario."""
     horses = []
     for h in rsi.get("race_horse_data") or ():
         row = dict(_HORSE_DEFAULTS)
@@ -1088,9 +977,6 @@ def start_popularity(full_state: dict, ptype: int) -> dict:
 
 
 def cm_route(race_history) -> int:
-    """CmRoute (§11) [INFERRED from the two captured routes]: the Triple Crown
-    races won -> 1, the Tiara -> 2, mostly dirt -> 3, mostly short/mile -> 4,
-    else 5."""
     wins = {int(h.get("program_id") or 0) for h in race_history or () if int(h.get("result_rank") or 0) == 1}
     if wins & set(TRIPLE_CROWN):
         return 1
@@ -1105,8 +991,6 @@ def cm_route(race_history) -> int:
 
 
 def pick_cm(full_state: dict, race_history) -> dict:
-    """The CM detail row: the highest-priority row of the route whose
-    condition holds, else the route's first condition-4 row (§11) [INFERRED]."""
     st = state(full_state)
     route = int(st.get("route_id") or 5)
     rows = [r for r in M.cm_details() if int(r["route_id"]) == route]
@@ -1125,11 +1009,7 @@ def pick_cm(full_state: dict, race_history) -> dict:
     return st["cm"]
 
 
-# ============================================================ envelope ===
-
 def evaluation_array(chara_info: dict) -> list:
-    """legend_data_set.evaluation_info_array: deck positions -> card chara,
-    then every NPC row by partner id (§2.1)."""
     out = []
     deck = formula.RF.deck(chara_info)
     for pos in sorted(deck):
@@ -1166,14 +1046,12 @@ def reply_is_full(endpoint: str, data: dict) -> bool:
 
 
 def command_info_array(full_state: dict, chara_info: dict, home_info: dict, turn: int) -> list:
-    """One row per command on the training screen (§2.1): the trainings, the
-    two outing rows, the race (when listed) and rest."""
     st = state(full_state)
     rows = []
     for c in (home_info or {}).get("command_info_array") or ():
         ctype, cid = int(c.get("command_type") or 0), int(c.get("command_id") or 0)
         if ctype != 1 and cid in (401, 701) and not int(c.get("is_enable", 1) or 0):
-            continue                 # camp's disabled rest / no race: no row (A1 T38)
+            continue
         if ctype == 1:
             fg = preview_of(st, turn, "fgain", cid) if st["masterly"] == M.HAISEIKO else None
             rows.append({"command_type": 1, "command_id": cid,
@@ -1215,7 +1093,6 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict, full: bool, *,
     activated = list(st["activated"]) if int(st.get("activated_turn") or 0) == turn - 1 or \
         int(st.get("activated_turn") or 0) == turn else []
     return {
-        # A list on every real reply, whatever the endpoint (7 careers).
         "command_info_array": command_info_array(full_state, chara_info, home_info, turn),
         "evaluation_info_array": evaluation_array(chara_info),
         "gauge_count_array": [{"legend_id": g, "count": gauge(st, g)} for g in M.LEGENDS],
@@ -1239,10 +1116,7 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict, full: bool, *,
     }
 
 
-# ============================================================ the card ===
-
 def group_card(chara_info: dict):
-    """(position, 30241) when the legends' group card is in the deck."""
     for pos, sid in formula.RF.deck(chara_info).items():
         if sid == M.GROUP_CARD:
             return pos, sid

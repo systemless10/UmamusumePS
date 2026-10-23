@@ -1,12 +1,3 @@
-"""DESIGN YOUR ISLAND (scenario 11) -- the event calendar and its resolvers.
-
-Every beat here is in docs/JP_DESIGN_YOUR_ISLAND_SCENARIO.md §2/§8-§12, read
-off the real careers: the turn it fires on, which response carried it, its
-play_timing, its choice count and what resolving it paid. As in Ramen, two
-turn numbers are in play (career_events.Ctx): `ctx.turn` is the turn just
-PLAYED -- the beats closing a turn (timing 6/10) key off it -- and
-`ctx.advanced_turn` the turn arrived at (timing-1 beats).
-"""
 
 from __future__ import annotations
 
@@ -20,23 +11,23 @@ from .impl import SCENARIO_ID
 
 log = logging.getLogger("uma-server")
 
-OPENING = (211006, 400011000)                  # turn 1, behind Tazuna's tips (1001)
-TUTORIAL = (211029, 400011001)                 # turn 3, no choice
-TEAM = (211079, 400011029)                     # turn 3: the team forms, then the first plan
-REPORTER = (211022, 400000100)                 # 変人記者、登場！？ -- unlocks 103
-STORY_BEATS = {                                # (event, story) closing the played turn, no choice
+OPENING = (211006, 400011000)
+TUTORIAL = (211029, 400011001)
+TEAM = (211079, 400011029)
+REPORTER = (211022, 400000100)
+STORY_BEATS = {
     11: (211030, 400011002), 17: (211031, 400011006), 29: (211032, 400011010),
     41: (211033, 400011014), 47: (211034, 400011015), 53: (211035, 400011019),
     67: (211037, 400011024), 68: (211038, 400011025)}
-SUMMER_BEATS = {35: (211069, 400011104), 59: (211078, 400011104)}   # arrival, no choice
-CAMP_TICKET = (211068, 400011108)              # turn 41: the ticket earned in camp
-FREE_TICKETS = (211023, 400011110)             # closes turn 64: +2 tickets, limit 3
-LINK_BEAT = (211036, 400011023)                # closes turn 65, six choices
+SUMMER_BEATS = {35: (211069, 400011104), 59: (211078, 400011104)}
+CAMP_TICKET = (211068, 400011108)
+FREE_TICKETS = (211023, 400011110)
+LINK_BEAT = (211036, 400011023)
 CHECK_POINT_OPEN = {12: (211001, 400011003), 24: (211002, 400011007), 36: (211003, 400011011),
                     48: (211004, 400011016), 60: (211005, 400011020)}
-LIVE_OPEN = (211039, 400011026)                # closes turn 72
+LIVE_OPEN = (211039, 400011026)
 LIVE_SHOW_CLEAR = 1105
-COMPLETE = (211070, 400011109)                 # pioneer_complete, turn 73
+COMPLETE = (211070, 400011109)
 TICKET_EVENTS = {"train": (211067, 400011107, 6), "event": (211076, 400011107, 10)}
 RACE_POINTS = (211074, 400011105)
 TUCKER_REWARD = (211075, 400011111)
@@ -45,8 +36,6 @@ ENDING = {True: (211040, 400011027), False: (211041, 400011028)}
 ENDING_REWARD = {True: (55, 540, 210361, 1), False: (45, 420, 210362, 3)}
 STORY_ENDING_TRIGGER = 10
 LEVELUP_EVENTS = {101: 211024, 102: 211025, 103: 211026, 105: 211027, 106: 211028}
-# The link characters' own narrative events when she is the trainee (§9).
-# Only Ryan's turns were captured (career 22).
 TRAINEE_LINK_EVENTS = {1027: {13: (211058, 400011316), 46: (211059, 400011317),
                               68: (211060, 400011318), 70: (211061, 400011319)}}
 
@@ -104,7 +93,7 @@ def emit_tickets(full_state: dict, chara_info: dict, crossed, how: str, turn: in
     st = impl.state(full_state)
     for batch in crossed or ():
         if turn in impl.SUMMER_TURNS:
-            continue                     # add_points already built it; 211068 pays later
+            continue
         st["due"] = [d for d in st["due"] if not (d.get("kind") == "ticket" and d.get("batch") == batch)]
         ev = ticket_event(full_state, chara_info, how, batch, impl.current_plan(st), turn)
         if ev:
@@ -112,8 +101,6 @@ def emit_tickets(full_state: dict, chara_info: dict, crossed, how: str, turn: in
 
 
 def link_choices(chara_info: dict) -> list:
-    """211036's six choices: each link chara's hint, the gold one when her
-    card (or the trainee) brings her (§12)."""
     linked = impl.linked_charas(chara_info)
     return [CE.Choice(effects=[{"type": "skill_hint", "skill_id": gold if chara in linked else white,
                                 "value": "+1"}])
@@ -163,8 +150,6 @@ def pioneer_calendar(ctx: CE.Ctx) -> list:
 
 @CE.producer("pioneer_due", priority=CE.PRIO_SPECIAL, scenario=SCENARIO_ID)
 def pioneer_due(ctx: CE.Ctx) -> list:
-    """What this turn's action left owing: a crossed ticket threshold, the
-    race's points, a facility level-up."""
     st = impl.state(ctx.full_state)
     out = []
     due, st["due"] = list(st["due"]), []
@@ -191,16 +176,11 @@ def pioneer_due(ctx: CE.Ctx) -> list:
 
 
 def tucker_reward_event(chara_info: dict, step: int, turn: int) -> CE.Event | None:
-    """211075 after each Tucker date: +80 (Lv41+) / +30 pt, or +0; +3 SP either way.
-    Right behind the date, ahead of an evaluation's beats (real T35: 21166,
-    211075, then the evaluation) -- hence PRIO_SPECIAL, not trailing."""
     sp = {"type": "skill_point", "value": f"+{TUCKER_REWARD_SP}"}
     return _beat(*TUCKER_REWARD, from_endpoint=True, priority=CE.PRIO_SPECIAL,
                  once=f"pioneer:tucker:{step}", resolver="pioneer_tucker",
                  payload={"turn": turn}, choices=[CE.Choice(effects=[sp]), CE.Choice(effects=[sp])])
 
-
-# ============================================================ resolvers ===
 
 def _ps(chara_info: dict, value: int) -> None:
     chara_info["playing_state"] = value
@@ -208,10 +188,6 @@ def _ps(chara_info: dict, value: int) -> None:
 
 @CE.resolver("pioneer_team")
 def _team(full_state, chara_info, event, choice_number, **kw):
-    """211079: the island team forms and the first plan opens -- and NPC
-    Tucker (113) joins training. Its unlock is registered here: a beat that
-    hands the client a screen resolves on the hold-chain path, which skips
-    the shared NPC_UNLOCKS registration."""
     from ...handlers import single_mode_team as smt
     impl.form_team(full_state, chara_info)
     smt._register_npc_unlocks(full_state, chara_info, event.event_id)
@@ -276,9 +252,6 @@ def _check_point_open(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("pioneer_result")
 def _result(full_state, chara_info, event, choice_number, **kw):
-    """An evaluation's result: the plan's points reset, 大好評 at 2 and 4
-    raises every training a level and brings three more islanders, the
-    Director's bond; then the next plan -- or, after the fifth, the turn."""
     st = impl.state(full_state)
     payload = event.payload or {}
     cp, result = int(payload.get("check_point_type") or 0), int(payload.get("result_state") or 0)

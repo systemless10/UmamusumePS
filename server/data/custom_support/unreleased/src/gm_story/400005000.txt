@@ -1,0 +1,68 @@
+#title Tutorial
+0 Good work today. I'm currently giving detailed explanations of the Grandmasters to anyone who'd like one—
+1 Trainer <username>, would you like an explanation?
+1> Yes, please | No, thank you
+2 All right, what would you like me to explain?
+3 When it comes to training in the Grandmasters, what I'd like to know about is...
+3> Goals and special races | Insight Fragments | Insight Crystals | Divine Wisdom | I'm all set
+4 Goals and special races, then.
+5 In the VR software "Mega Dream Supporter," the Three Goddesses will lend generous support to your trainee's training. ♪
+6 Over the course of three years, make the most of the Three Goddesses' support as you take on the Twinkle Series and aim to reach your trainee's goals.
+7 Also, during training, special races are held at the end of each year.
+7{ during training, special races are | held at the end of each year
+8 The Growth Race is held in junior year, the WBC in classic year, and the SWBC in senior year—
+8{ classic year
+9 And at the very end, the Grandmasters is held, where you race against the Three Goddesses directly.
+9{ at the very end, | the Grandmasters is held
+10 They govern an enormous wealth of data—defeat them, and aim for the very top of the Umamusume world!
+11 Even if you lose one of these races, you can still continue as long as your trainee has reached her goals—
+11{ you can still continue as long as | your trainee has reached her goals
+12 But winning helps your trainee grow even more, so try to win them all and head into the Grandmasters in top condition. ♪
+13 That's all for goals and special races. Is there anything else you'd like to know?
+14 Insight Fragments, then.
+15 When you train, rest, and so on, you can obtain pieces of the Three Goddesses' wisdom called Insight Fragments.
+15{ Insight Fragments
+16 There are three kinds of Insight Fragments, one for each Goddess, and they give you all sorts of effects—like increasing the stats you gain from training. ♪
+16{ increasing the stats you gain from training | all sorts of effects
+17 The goddess who appears with each action changes every time, but you'll be shown which fragment you can get where. Act together with the goddess holding the fragment you want.
+18 It also seems you can sometimes obtain two Insight Fragments at once, such as during Friendship Training. If you get the chance, go for it!
+18{ during Friendship Training | two Insight Fragments at once
+19 The Insight Fragments you obtain are gathered in the Insight Tree, one of the Three Goddesses' great support functions.
+19{ Insight Tree
+20 Besides letting you check your Insight Fragments' effects, it links fragments together to create Insight Crystals.
+21 By the way, Insight Fragments activate their effects automatically every turn until you absorb Divine Wisdom, which I'll explain separately.
+21{ Insight Fragments activate their effects | automatically every turn
+22 That's all for Insight Fragments. Is there anything else you'd like to know?
+23 Insight Crystals, then.
+24 When two Insight Fragments line up in the Insight Tree, a new form of wisdom is created—an Insight Crystal.
+24{ Insight Crystal
+25 An Insight Crystal inherits the effect of one of the two Insight Fragments it was made from.
+25{ inherits the effect of one of the two | Insight Fragments it was made from
+26 Just like Insight Fragments, their effects activate automatically every turn while they're in the Insight Tree!
+26{ while they're in the Insight Tree | activate automatically every turn
+27 Even after a crystal is made, the fragments it came from keep their effects, so your training gets even stronger. ♪
+28 That's all for Insight Crystals. Is there anything else you'd like to know?
+29 Divine Wisdom, then.
+30 Once the Insight Tree is full of Insight Fragments, the newly made Insight Crystals link together too, and you'll receive a special form of wisdom—Divine Wisdom.
+30{ Divine Wisdom
+31 You can absorb Divine Wisdom whenever you like, and doing so raises the Divine Insight Lvl of the matching goddess.
+31{ absorb | Divine Insight Lvl
+32 Raising Insight Lvl permanently increases the stats you gain from training. ♪
+32{ permanently increases the stats | you gain from training
+33 What increases depends on the type of Divine Wisdom. Create Divine Wisdom that suits how your training is going, and raise your Umamusume well.
+34 And one more important thing: when you absorb Divine Wisdom, a very powerful special effect activates for that turn only!
+34{ a very powerful special effect activates | for that turn only
+35 This effect also differs by the type of Divine Wisdom, so deciding when to activate which effect is key. ♪
+36 The type of Divine Wisdom is determined by the colors of the Insight Crystals it's made from.
+36{ the colors of the | Insight Crystals it's made from
+37 Also, an Insight Crystal tends to inherit the effect of the left-hand Insight Fragment it's made from, so keep that in mind as you collect fragments. ♪
+37{ an Insight Crystal tends to inherit the effect | of the left-hand Insight Fragment
+38 And when you absorb Divine Wisdom, you'll get a new Insight Tree to gather fragments in again, so keep collecting.
+39 That's all for Divine Wisdom. Is there anything else you'd like to know?
+40 Are you sure you're all set?
+40> Yes | No
+41 Understood. ♪ Just in case, here's a quick summary for you.
+42 You can view this explanation any time by pressing the (i) button in the top left.
+42{ (i) button
+43 Well then, good luck. I'll be cheering you on from behind the scenes.
+44 Understood. Good luck, then! I'll be cheering you on from behind the scenes.

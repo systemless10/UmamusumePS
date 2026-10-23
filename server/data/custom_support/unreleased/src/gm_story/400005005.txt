@@ -1,0 +1,47 @@
+#title Loving Heart: Godolphin Barb
+0 Once again today, I was training with <chrname> in the simulator, when—
+1 Okay, that's the finish.
+2 ...Phew...
+3 Good work. Do one lap to cool down, and then let's take a break.
+4 Let's not rush. One step at a time.
+5 ...Okay. .........I'll go cool off.
+6 Um, thank you for joining us for the pace training.
+7 So, what do you think...? Meek's condition—I feel like her growth is lagging a little...
+8 There's no need to look so worried. First, those watching over her need to stay steady.
+9 —Oh, my.
+10 Ah, Trainer <username>.
+10> Is something wrong?
+11 No, not wrong exactly... It's just that Meek's condition doesn't seem to be improving much.
+12 I was asking whether her training is too light, or if I'm making her do things that don't suit her in the first place...
+13 Hehe, let's start by sorting out our thoughts. Okay, everyone, take a big, deep breath~.
+14 Now, about sweet Meek—there's nothing wrong with the content of her training.
+15 And Meek has talent too. A wealth of data guarantees it.
+16 Phew... That's a relief. But even so, the reason she isn't improving...
+17 ...Does it mean she's a late bloomer after all?
+18 Let's see~. Her current build, how her lap times have changed since she came into her own—
+19 If we group together past Umamusume with similar data, most of them turn out to be late bloomers.
+20 So we can say there's a high chance Meek is a late bloomer too. Your eye was right, you see.
+21 ...! Phew~... I'm so glad...!
+22 I even started to think that maybe I'm not good enough for Meek...
+23 Hehe, you're watching over her just fine.
+24 So for now, let's not rush or hurry her. Let's watch over Meek.
+25 ...Yes! I'll do my best!
+26 Good work, Meek.
+27 ...Yes. .........I'm good-worked.
+28 ...Um, Meek. I'd like to talk about our plans going forward.
+29 ...Ooh. .........How exciting.
+30 First off, a lot of Umamusume are going to start working toward next year's Classic races.
+31 But every Umamusume has her own pace, and you have yours too, Meek.
+32 And I realized it's not something to compare with everyone else. So, um...
+33 ...?
+34 Let's go at your pace, Meek! It'll take time, but slowly, without rushing...!
+35 ... .........Stare.
+36 M-Meek...?
+37 ...Yes, roger that.
+38 A-are you sure? You might not make it in time for the big Classic stages—
+39 ...It's no problem. .........At our pace.
+40 Meek...! I'll support you every step of the way! You're going to bloom, I just know it!
+41 Let's do our best, at our own pace!
+42 ...I'll do my best. .........Hup, hup, hup, hooray.
+43 Trainer Kiryuin, believing Happy Meek will bloom and fired up to keep supporting her.
+44 And Godolphin Barb, giving the two of them a gentle push—I thought she was a truly kind and reassuring presence.

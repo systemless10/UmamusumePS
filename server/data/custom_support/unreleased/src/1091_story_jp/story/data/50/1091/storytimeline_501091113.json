@@ -1,0 +1,533 @@
+{
+ "title": "My Beloved Sister♡　-1-",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "無事メイクデビューを終え、体づくりを\n中心にトレーニングを進めていたある日――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はっ……はっ……！\nやぁあああっ！",
+   "choice_data_list": [
+    "（しなやかでいい走りだ！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "姉ヴィルシーナの力強い走りとはまた違う、\nヴィブロスだけのよさがある。\nきっと彼女は、今後大きく成長するだろう。",
+   "choice_data_list": [
+    "（それも体がしっかりすれば、だけど）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――こんにちは、トレーナーさん。",
+   "choice_data_list": [
+    "ヴィルシーナ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "練習中に失礼します。\n妹の様子を見学させていただいても？",
+   "choice_data_list": [
+    "も、もちろん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "少し緊張してきた。ヴィブロスの前では\n姉の表情を見せる彼女だが、こうして改めて\n向き合うと、凄まじいオーラを感じる。",
+   "choice_data_list": [
+    "（さすがマイル女王……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィルシーナは、ティアラ路線3戦全てを、\nジェンティルドンナに次ぐ2着で終えた。\nその後のレースも、悔しい場面が続いた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "しかし、彼女は諦めなかった。\n刻み込まれた“2着”の影を振り払い、\n『ヴィクトリアマイル』で見事GⅠを勝ち――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ヴィクトリアマイル"
+   ]
+  },
+  {
+   "name": "",
+   "text": "その次の年も、同レースを連覇してみせた。\n見事、敗北の影を拭い去り女王となった\n不屈の姿に、心を揺さぶられたファンも多い。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさんから見て、\n妹の走りはいかがですか？",
+   "choice_data_list": [
+    "かなりいいな",
+    "かなりいいね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "そうですか。\n私も……そう思いますわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "子どもの頃、一緒に走っていたときも……\nあの子には才能を感じていました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あの子はきっと、レベルの高いレースで\n素晴らしい結果を残すでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ティアラ路線でも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィルシーナの話しぶりからは、\nどこか葛藤が見える。きっと何か、\nこちらに伝えたいことがあるのだろうが……。",
+   "choice_data_list": [
+    "ヴィブロスが心配？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……正直、心配はしています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ティアラ路線で走るのであれば、\nあの子は必ず、私に重ねられる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "私が成せなかった分を、\nあの子が背負うことになってしまう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……私が勝っていれば、\nまた違ったのでしょうが。",
+   "choice_data_list": [
+    "ヴィルシーナ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんだ～！\n見に来てくれたの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あ……ええ、\n走りの調子が見たくてね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんかお姉ちゃん、\n顔暗くない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……そうかしら。\nきっと気のせいよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え～っ！？\n絶対変だよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんか暗い気分～、ってときは、\nすぐパーっとしたほうがいいよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえトレっち、今日ってトレーニング、\n午前中だけだよね？",
+   "choice_data_list": [
+    "ああ",
+    "うん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあさ、終わったら……\nみんなでおでかけしよっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "というわけで……\nヴィブロスの突発的なおねだりにより、\n練習終わりにみんなで遊園地にやってきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん！\n私、いっしょにコーヒーカップにのりたーい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "大丈夫？\n目が回っちゃうんじゃない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そんなぐるぐるしないもんっ！\nお願いっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ふふ、わかったわ。\nじゃあ、行きましょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やった！\nはーいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、動画撮っておいてくれる？\nあ、あとウマスタ用のやつも！",
+   "choice_data_list": [
+    "ああ、いいよ",
+    "うん、いいよ"
+   ],
+   "color_text_info_list": [
+    "ウマスタ"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "行こう！\nお姉ちゃんっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ええ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "思いきり甘えるヴィブロスに、\n愛情を見せるヴィルシーナ。\nいつ見ても、彼女たちはとても仲良しだ。",
+   "choice_data_list": [
+    "（大切だから、心配になるんだな――）",
+    "（大切だから、心配になるんだね――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――あら、飲み物が足りてないわね。\n買ってくるわ。",
+   "choice_data_list": [
+    "なら俺が行くよ",
+    "なら私が行くよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "いえ、トレーナーさんは休んでいてください。\nうちの子に散々、振り回されたでしょう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ、そんなにじゃないよ？\n絶叫系がちょこっと！　続いただけだもんね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ジェットコースターを連続で5回は、\nちょこっとかしら？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "行ってくるわ。\nちょっと待っててね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はーい、いってらっしゃい！\n……えへへ♪",
+   "choice_data_list": [
+    "嬉しそうだな",
+    "嬉しそうだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！\nうれしいもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんと、またこーやって\nふつーに遊べるんだな～って。",
+   "choice_data_list": [
+    "今までは違ったのか？",
+    "今までは違ったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だってお姉ちゃん、\nレースでずーっと忙しかったし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それに……\n『遊ぼ～♪』って雰囲気じゃなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "特に、ティアラ路線のとき。\n……お姉ちゃん、しんどそうだったもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――ティアラ路線3戦、全て2着。\nそれだって素晴らしい成績だ。だが……\nヴィルシーナは満足できなかったのだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんね、ほんとにがんばってた。\nだから、ちょー強かった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、ジェンティルドンナさんには、\n勝てなかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "最後の『秋華賞』のあと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『……ごめんね、ヴィブロス。\n私、ダメなお姉ちゃんだわ』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『最後の一冠。せめて、それだけは……\nそれだけは、私のものにしたかった』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『強くて、かっこいいお姉ちゃんじゃなくて、\nごめんね……――』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……お姉ちゃんは、\nかっこよかったのに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そんな姿を見てたら、『じゃあ、私が！』\nってなるのは、ふつーじゃない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私はお姉ちゃんじゃないよ。\nでも、世界で2人しかいない、妹なの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私がトリプルティアラをとったら、\nお姉ちゃん、絶対喜んでくれる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私が、『お姉ちゃんのため』をやりたいの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "どうやらヴィブロスは、\nヴィルシーナが心配していることについて、\nよく理解しているらしい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トリプルティアラを、\nお姉ちゃんに見せてあげたい！\nだから、だから……。",
+   "choice_data_list": [
+    "……来年のために、頑張ろうな！",
+    "……来年のために、頑張ろうね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ、それ！\nがんばる――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぅ。",
+   "choice_data_list": [
+    "どうした？",
+    "どうしたの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんかお腹が……\nちょっとお手洗い～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "大丈夫かしら。",
+   "choice_data_list": [
+    "戻ってたのか",
+    "戻ってたんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あ、はい。\n……ちょうどあの子が、話しているときに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……私のこと、本当に……\nよく見てくれていたんですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロスには、ヴィブロスの考えがある。\nもう、追いかけるだけの子どもじゃないもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさん。\n改めてあの子を、よろしくお願いします――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "や～～だ～～！\nまだ帰りたくない～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "でも、お腹が痛いんでしょう？\nだったら帰ってゆっくり休んだほうがいいわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、せっかく……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……またすぐ、遊びに来ればいいわ。\n今度はシュヴァルも一緒に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "これから貴方は、忙しくなると思うけれど……\nいつでも誘ってちょうだい。すぐに行くわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ。\nお姉ちゃん、だーいすき♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

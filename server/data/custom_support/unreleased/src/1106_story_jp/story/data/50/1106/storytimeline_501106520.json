@@ -1,0 +1,312 @@
+{
+ "title": "ミラクル×ミラクル",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "廊下を歩いていると、\nヒシミラクルたちにある活動に誘われた。",
+   "choice_data_list": [
+    "『小さな癒し見つけ隊』？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そですそです～。校内を散歩しながら、\n『小さくて癒される』ものを探すんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ケイエスミラクル",
+   "text": "ほっこりして、心が癒されますよ。\n今日もおれ、すごく楽しみで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、最近忙しくしてたし。\n気晴らしにどうです～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ちょうど大きな仕事は片付いているので、\n喜んで2人の活動に参加することにした。\nのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じゃ～まずは校門のほうからで。\nなにかあるといいな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "――ちょ、見てみて！\n割りばしエグ綺麗に割れたんだけど～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "やば！　やっぱこれアレじゃない！？\nあのご利益！",
+   "choice_data_list": [
+    "……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おーい。トレーナーさん～？",
+   "choice_data_list": [
+    "あ、ごめん！今行く！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ケイエスミラクル",
+   "text": "あっ……ふふ、見て、あそこのベンチ。\nスズメが3匹団子になってるよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、ほんとだ～。スズメ団子かわい～。\nやっぱり小動物は癒しポイント高めだねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――……これは……。",
+   "choice_data_list": [
+    "……ん？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Mistake――soy milkではなく、\n私は……水が……買いたかった――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ネオユニヴァース",
+   "text": "ネオユニヴァースは……\nこのH2O――『水』……ではなく\n『豆乳』を『購入する』をしたかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "クリスエス＆ネオユニ",
+   "text": "………………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "クリスエス＆ネオユニ",
+   "text": "――It's a miracle.\n……“ビッグバン”。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ここ見て見て～ピコって芽ぇ出てる。\n双葉ってなんか癒されますよねぇ。",
+   "choice_data_list": [
+    "ちょっとわかるかも"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（キーンコーンカーンコーン）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ケイエスミラクル",
+   "text": "そろそろ、ひと息いれようか。\nカフェテリアでお茶でもどうかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん賛成～。\n小腹も空いたし、なにか食べちゃおうかな～？",
+   "choice_data_list": [
+    "（本当にいい気晴らしになっ――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――あ、あれは……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "うわぁあああやっぱりそうだ！！！\nなくしたと思って三日三晩泣きわめいた\n推しグッズ！　お前こんなところにいたんか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "これもすべては、あの方々のご加護……！！\nありがたや～ありがたや～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――『小さな癒し見つけ隊』の活動、\nちょっとは気晴らしになりました？",
+   "choice_data_list": [
+    "ああ、すごくなったよ！ただ……",
+    "うん、すごくなったよ！ただ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ひとつ、気になることがあるとすれば――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "よ、お嬢ちゃんたち！\nアンタらの“ロマン”に乗りに来たぜ！",
+   "choice_data_list": [
+    "……“ロマン”に乗るって？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "アハハッ！　なんだアンタ知らないのか？\nいいか？　このお嬢ちゃんたちの近くでは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "“ミラクル”が起こるのさ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "今日も聞いたぞ？　クリスエスと\nユニヴァースが以心伝心を成功させたとか。\n家宝が見つかっただとかな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "というわけで、アタシも“ロマン”ある\nミラクルをいただきにきたわけだ。",
+   "choice_data_list": [
+    "あれってそういうことだったんだ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "行く先々で目にした小さな騒ぎは、\nその“ミラクル”が起きた瞬間だったようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ケイエスミラクル",
+   "text": "ふふっ、ただの偶然かもしれないけど……\nみんなの役に立ってるなら嬉しいな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フツーに偶然だと思うけどなぁ……。\nもし本当なら、わたしにも起きてほしいよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『明日の数学のテスト、サイコロ鉛筆でも\nいい点がとれる』“ミラクル”とかさ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～、100点満点とは言わないから、\n“ミラクル”で80点とか取れないかなぁ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "80点？　ハッ、そこはperfectだろう！\nせっかくの“ミラクル”だ。\nもっとでっかく“ロマン”を見な！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……80点はじゅうぶん\n“ロマン”だと思うけどなぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "100点までいったら“ミラクル”どころか、\n“ファンタジー”だよ～。",
+   "choice_data_list": [
+    "“ミラクル”より、早めの試験対策しようか",
+    "“ミラクル”なスキル、磨こう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぇ～～～いいですよぉ。\n赤点取らなきゃいいですし……。",
+   "choice_data_list": [
+    "ミラクルに頼らなくても君ならできる！",
+    "ミラクルに頼らなくても貴方ならできる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "……さてと、アタシは行くかな。\nロマンある金稼ぎは、また今度だ――じゃ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、タップちゃん逃げるのずるいよ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ケイエスミラクル",
+   "text": "あはは……えっと、おれにできることが\nあったら、言ってね。精いっぱい手伝うよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あーあ、トレーナーさんってば、\nまたそんなこと言って～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "――いーや、ミラ子のトレーナー、\nアタシはアンタの船に乗るぜっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "夢見る限り可能性はゼロじゃあない。\nムリをひっくり返してこそ“ロマン”だ……。\n――待ってろよ、なんちゃら埋蔵金！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えーなんか変な話になってきた～。\n本当に宝物探しにいきそうなんだけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ケイエスミラクル",
+   "text": "あはは！　今度の『小さな癒し見つけ隊』は、\n出張編になるかもね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

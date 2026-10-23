@@ -1,0 +1,35 @@
+{
+ "title": "夜ふかし気味で……",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "わ、この人メイクうまー！　ちょーかわいー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "解説動画……――あるっ！\nえ～、ぜったい覚えた～い！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふわぁ……。ん～……、\nアイラインにじむー……リップもイマイチ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よ～し、ベースからやり直して\n完璧にマスターしちゃうんだから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "夢中で練習するあまり、\n夜更かししてしまうヴィブロスなのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

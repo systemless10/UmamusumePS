@@ -1,17 +1,3 @@
-//! Port of activation_sample_policy.py -- turns a RegionList (where a
-//! skill's condition can statically hold) into one concrete trigger Region
-//! per race sample, plus the double-dispatch `reconcile*` logic used when an
-//! `&` (AndOperator) combines two conditions with different sample
-//! policies.
-//!
-//! Python's caching of Uniform/LogNormal/Erlang policy *objects*
-//! (`_erlang_cache` etc.) existed only to avoid allocating many identical
-//! Python objects; since these are plain Rust value types here, no
-//! interning is needed for correctness -- only Python's `reconcile*`
-//! *dispatch table* has to be reproduced exactly (see `reconcile` below),
-//! since which of the two operand policies survives an `&` combination is
-//! behaviorally significant (a right-hand LogNormal(3,1) beats a left-hand
-//! Erlang(2,4), for example, and that choice changes trigger placement).
 
 use crate::region::{union, Region};
 
@@ -46,12 +32,6 @@ impl SamplePolicy {
         }
     }
 
-    /// Transcribed from the double-dispatch `reconcile`/`reconcile_*`
-    /// methods on each concrete Python policy class. Traced out by hand
-    /// into a direct table below (see the module the port was written
-    /// against for the derivation) -- `self` is the left operand of `&`,
-    /// `other` the right. Returns Err on the one combination Python raises
-    /// ValueError for (Straight combined with AllCorner, in either order).
     pub fn reconcile(&self, other: &SamplePolicy) -> Result<SamplePolicy, String> {
         use Kind::*;
         let a = self.kind();
@@ -205,8 +185,6 @@ fn place_all_corner_triggers(regions: &[Region], rng: &mut crate::random_gen::Ru
     place_all_corner_trigger_list(regions, rng)[0]
 }
 
-/// All (up to 4) all_corner_random triggers, in course order: with a
-/// cooldown the skill can activate again on a later one.
 pub fn place_all_corner_trigger_list(regions: &[Region], rng: &mut crate::random_gen::Rule30CARng) -> Vec<Region> {
     let mut triggers: Vec<f64> = Vec::new();
     let mut candidates: Vec<Region> = regions.to_vec();
@@ -226,8 +204,6 @@ pub fn place_all_corner_trigger_list(regions: &[Region], rng: &mut crate::random
     triggers.into_iter().map(|t| Region::new(t, t + 10.0)).collect()
 }
 
-/// Exposed for callers (e.g. AndOperator/OrOperator over static regions)
-/// that need plain region-set union outside the sample-policy machinery.
 pub fn union_regions(a: &[Region], b: &[Region]) -> Vec<Region> {
     union(a, b)
 }

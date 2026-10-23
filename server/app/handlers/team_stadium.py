@@ -1,12 +1,10 @@
-"""Team Trials: authoritative, persisted five-race matches.
-
-Capture-backed protocol and known approximation boundaries are documented in
- docs/TEAM_TRIALS_IMPLEMENTATION.md and TEAM_TRIALS_RESEARCH_2026-10-04.md.
-"""
 
 from __future__ import annotations
 
+import bisect
 import copy
+import gzip
+import json
 import math
 from fractions import Fraction
 import secrets
@@ -15,6 +13,7 @@ import logging
 import random
 from datetime import datetime, timezone
 from datetime import time as _dt_time
+from pathlib import Path
 
 log = logging.getLogger("uma-server")
 
@@ -55,23 +54,15 @@ def _team_stadium_state(full_state: dict) -> dict:
         "team_evaluation_point": 0,
         "evaluation_peak": 0,
         "rank": 0,
-        "granted_rank": 0,   # highest team_stadium_rank.id already rewarded --
-                             # id 0 exists below every real row (min id is 1),
-                             # so nothing reads as pre-granted on a fresh account
+        "granted_rank": 0,
         "consecutive_win_count": 0,
-        "current_match": None,   # in-progress match: opponent + frame orders +
-                                  # round results, cleared by all_race_end
+        "current_match": None,
     }
     full_state[TEAM_STADIUM_STATE_KEY] = st
     return st
 
 
 def _rank_for(evaluation_point: int):
-    """Highest team_stadium_rank row this evaluation point reaches, or None
-    below every tier's team_min_value (real rows start at 1). This is the
-    roster-strength tier (team_evaluation_point / evaluation_peak) -- NOT
-    the weekly TT score (best_point), a completely different number on the
-    real client (user-corrected 2026-08-25)."""
     return master_data.query_one(
         "SELECT * FROM team_stadium_rank WHERE team_min_value <= ? "
         "ORDER BY team_min_value DESC LIMIT 1", (evaluation_point,))
@@ -79,53 +70,17 @@ def _rank_for(evaluation_point: int):
 
 @functools.lru_cache(maxsize=1)
 def _rank_table_ceiling() -> int:
-    """Largest evaluation point the team_stadium_rank table has a band for
-    (the top row's team_max_value -- 99,999,999 on the shipped master.mdb)."""
     row = master_data.query_one("SELECT MAX(team_max_value) AS m FROM team_stadium_rank")
     return int(row["m"]) if row and row["m"] else 0
 
 
 def rank_display_point(st: dict) -> int:
-    """The number load/index must put in user_info.best_team_evaluation_point.
-
-    Two things this gets right that feeding it best_point straight did not:
-
-    1. It is the ROSTER-STRENGTH peak (evaluation_peak), not the weekly Team
-       Trial score (best_point) -- see _team_stadium_state for why those are
-       two unrelated numbers. Only the former has a team_stadium_rank band.
-
-    2. It is CLAMPED to the rank table's top band. TeamStadiumUtil.GetTeamRank
-       (dump.cs 565066) resolves a point to a rank by scanning
-       team_stadium_rank for a row with team_min_value <= point <=
-       team_max_value -- a point ABOVE the last row's team_max_value matches
-       nothing and comes back as TeamRank 0, i.e. BELOW rank 1. That is what
-       relocked "Daily Program" (need_team_rank_play_daily_race = 2 = Team
-       Rank E, PartsHomeDailyProgramButton.IsLockContentDailyProgram) on an
-       account whose roster is strong enough to sit at the top of the ladder:
-       225,193,828 > 99,999,999, so the client read it as no rank at all.
-       _rank_for's own server-side lookup never hit this because it filters on
-       team_min_value alone."""
     ceiling = _rank_table_ceiling()
     peak = int(st.get("evaluation_peak") or 0)
     return min(peak, ceiling) if ceiling else peak
 
 
 def _grant_rank_rewards(full_state: dict, st: dict) -> list:
-    """MAIL every team_stadium_rank tier newly reached by evaluation_peak (the
-    roster-strength peak, NOT the weekly best_point score) to the present box.
-
-    CHANGED 2026-09-03 (user request). This REVERSES the 2026-08-19 correction
-    that credited these directly -- that note was about the Team Trials WIN
-    boxes, which still pay out directly; only this roster-strength tier payout
-    moves to mail.
-
-    Returns the crossed tiers as `reward_info_array` entries anyway: that
-    array is what drives the client's rank-up reward (carrot) animation, and
-    the real game both animates them AND delivers them to the present box
-    (user-confirmed 2026-09-26). Returning [] here silently killed the
-    animation.
-
-    NB presents.send (not admin_send): the callers own full_state and save it."""
     granted = st.get("granted_rank") or 0
     best_row = _rank_for(st.get("evaluation_peak") or 0)
     target = best_row["id"] if best_row else 0
@@ -138,7 +93,6 @@ def _grant_rank_rewards(full_state: dict, st: dict) -> list:
         cat, iid, num = row["item_category"] or 0, row["item_id"] or 0, row["item_num"] or 0
         if not num:
             continue
-        # "Reward for your Team Trials Class." -- param-less, as captured
         presents.send(full_state, cat, iid, num, message_id=44)
         rewards.append({"item_type": cat, "item_id": iid, "item_num": num})
     st["granted_rank"] = target
@@ -155,7 +109,6 @@ _WIN_BOX_CONTENTS = {
 
 
 def _credit(full_state: dict, category: int, item_id: int, num: int) -> None:
-    """Carats go to the wallet, everything else to the item list."""
     if not num:
         return
     if category == 90:
@@ -174,7 +127,6 @@ def _credit(full_state: dict, category: int, item_id: int, num: int) -> None:
 
 
 def _roll_win_boxes(rounds: list, rng: random.Random, guaranteed=False) -> list:
-    """Persist probabilistic boxes at start; guarantees apply only to wins."""
     boxes = []
     for r in rounds:
         if r.get("win_type") != 1:
@@ -187,7 +139,6 @@ def _roll_win_boxes(rounds: list, rng: random.Random, guaranteed=False) -> list:
 
 
 def _open_win_boxes(full_state: dict, boxes: list, team_class: int) -> list:
-    """Credit each box and return its TeamStadiumWinningRewardContent rows."""
     contents = []
     scale = max(1, team_class)
     for box in boxes:
@@ -201,7 +152,6 @@ def _open_win_boxes(full_state: dict, boxes: list, team_class: int) -> list:
 
 
 def _class_change_rewards(full_state: dict, new_class: int, class_reward_type: int) -> list:
-    """Master class rewards, credited once during weekly settlement."""
     row = master_data.query_one(
         "SELECT * FROM team_stadium_class_reward WHERE team_class=? AND class_reward_type=? LIMIT 1",
         (new_class, class_reward_type))
@@ -215,8 +165,6 @@ def _class_change_rewards(full_state: dict, new_class: int, class_reward_type: i
         if not num:
             continue
         _credit(full_state, category, item_id, num)
-        # box_color_type stays a real RewardBoxColorType -- Gold for a
-        # promotion, Red for a relegation consolation.
         out.append({"round": 0, "item_category": category, "item_id": item_id,
                     "item_num": num,
                     "box_color_type": _BOX_GOLD if class_reward_type != 4 else _BOX_RED})
@@ -230,7 +178,6 @@ def _parse_hms(value: str) -> _dt_time:
 
 def _schedule_now():
     from zoneinfo import ZoneInfo
-    # Global schedule values align with UTC capture terms; JP values are JST.
     name = config.get("team_trials_timezone", "Asia/Tokyo" if region.PROCESS_REGION == "jp" else "UTC")
     return datetime.fromtimestamp(patch._servertime(), ZoneInfo(name))
 
@@ -301,22 +248,15 @@ def _border_line(viewer_id, st):
     entries = _leaderboard(viewer_id, st)
     row = _team_class_row(st.get("team_class", 1))
     n = len(entries)
-    # Local settlement policy: ceil promotion count, floor demotion count,
-    # equal scores share rank. Live tie/minimum-population rules are unknown.
-    up = math.ceil(n * row["class_up_range"] / 100) if row else 0
-    down = math.floor(n * row["class_down_range"] / 100) if row else 0
-    keep = n - down
-    def point(rank):
-        return entries[rank - 1]["best_point"] if 0 < rank <= n else 0
-    return {"promotion_rank": up, "demotion_rank": keep + 1 if down else 0,
-            "keep_rank": keep, "promotion_point": point(up),
-            "demotion_point": point(keep + 1) if down else 0, "keep_point": point(keep)}
+    promotes = bool(row and row["class_up_range"])
+    return {"promotion_rank": n if promotes else 0, "demotion_rank": 0,
+            "keep_rank": n, "promotion_point": 1 if promotes else 0,
+            "demotion_point": 0, "keep_point": 1 if n else 0}
 
 
 def _ensure_week(viewer_id, full_state, st):
     current = _term_id()
     if "term_id" not in st:
-        # Existing unscoped best scores migrate into the first tracked term.
         st["term_id"] = current
         return []
     if st["term_id"] == current or (st.get("current_match") or {}).get("rounds"):
@@ -352,8 +292,6 @@ def _consume_start_items(full_state, item_ids):
     ids = item_ids or []
     if any(type(i) is not int for i in ids) or len(ids) != len(set(ids)):
         return None
-    # Only measured race effect 116 and RP recovery are enabled. Unsupported
-    # effects are rejected before any charge, rather than silently consumed.
     for item in ids:
         row = master_data.query_one("SELECT item_category FROM item_data WHERE id=?", (item,))
         if not row or (item != 116 and row["item_category"] != 21) or shop.item_count(full_state, item) < 1:
@@ -366,7 +304,6 @@ def _consume_start_items(full_state, item_ids):
 
 
 def _fill_race_npcs(horses, team_ids, ris, rng):
-    """Master NPC templates rescaled against this field (local approximation)."""
     pool = _race_npc_pool()
     if not pool:
         raise RuntimeError("No NPC templates for Team Trials")
@@ -398,14 +335,12 @@ _PROPER_TYPE_STYLE = 3
 _DISTANCE_TYPE_COLUMN = {
     1: "proper_distance_short", 2: "proper_distance_mile",
     3: "proper_distance_middle", 4: "proper_distance_long",
-    # Dirt (5) has no distance-aptitude column of its own in chara_info --
-    # Captured Dirt courses are mile-distance races.
     5: "proper_distance_mile",
 }
 _STYLE_COLUMN = {
     1: "proper_running_style_nige", 2: "proper_running_style_senko",
     3: "proper_running_style_sashi", 4: "proper_running_style_oikomi",
-    5: "proper_running_style_oikomi",   # Oonige shares Oikomi's aptitude column
+    5: "proper_running_style_oikomi",
 }
 _GROUND_COLUMN = {
     1: "proper_ground_turf", 2: "proper_ground_turf", 3: "proper_ground_turf",
@@ -422,11 +357,6 @@ def _evaluation_rate(proper_type: int, proper_rank: int) -> Fraction:
 
 
 def _slot_evaluation_point(chara: dict, distance_type: int, running_style: int) -> int:
-    """Stored career rating times aptitude rates, truncated once per slot.
-
-    This reproduces all six captured opponent evaluations exactly. The stored
-    rating is server-owned; a missing rating uses the existing rating formula.
-    """
     stats = [chara.get(s, 0) or 0 for s in ("speed", "stamina", "power", "wiz", "guts")]
     base = chara.get("rank_score") or (rating_formula.get_rating(stats) + rating_formula.get_skill_score(chara.get("skill_array")))
     rate = _evaluation_rate(_PROPER_TYPE_DISTANCE,
@@ -439,7 +369,6 @@ def _slot_evaluation_point(chara: dict, distance_type: int, running_style: int) 
 
 
 def _team_evaluation_point(team_data_array: list, roster_by_id: dict) -> int:
-    """Roster evaluation, separate from weekly best match score."""
     total = 0
     for slot in team_data_array or ():
         tcid = slot.get("trained_chara_id")
@@ -453,18 +382,6 @@ def _team_evaluation_point(team_data_array: list, roster_by_id: dict) -> int:
 
 
 def _index_roster(roster) -> dict:
-    """dict | list -> {trained_chara_id: chara}. A roster snapshot stored in
-    persisted match state MUST round-trip as a plain list, never a dict --
-    JSON (this project's whole state-storage format, see app/state.py) only
-    has string object keys, so a dict keyed by the real INTEGER
-    trained_chara_id silently comes back with STRING keys after a
-    save/reload, and every `.get(trained_chara_id)` lookup against it then
-    misses. BUG FIXED 2026-08-24 (caught in this feature's own smoke test,
-    before ship: an opponent's runners were silently vanishing from
-    chara_result_array because handle_start's roster lookup, done after a
-    save/reload cycle, could never find them). Call this immediately after
-    reading a roster back out of persisted state, before doing any
-    trained_chara_id lookups against it."""
     if isinstance(roster, dict):
         return roster
     return {c.get("trained_chara_id"): c for c in roster or ()}
@@ -474,8 +391,7 @@ def _roster_by_id(viewer_id) -> dict:
     return {c.get("trained_chara_id"): c for c in trained_chara._get_or_seed_roster(viewer_id)}
 
 
-# ============================================================== opponents ===
-_OPPONENT_OFFER_SIZE = 3   # All captured offer lists contain three entries.
+_OPPONENT_OFFER_SIZE = 3
 
 
 _OPPONENT_EP_BAND = 2.5
@@ -483,7 +399,6 @@ _OPPONENT_EP_BAND = 2.5
 
 def _real_opponent_candidates(viewer_id, my_evaluation_point: int, my_team_class: int = 1,
                               limit: int = _OPPONENT_OFFER_SIZE) -> list:
-    """Sample eligible real accounts; bands and class policy remain configurable."""
     me = str(viewer_id)
     scored = []
     candidates = state_store.all_states_for_key(TEAM_STADIUM_STATE_KEY)
@@ -495,7 +410,7 @@ def _real_opponent_candidates(viewer_id, my_evaluation_point: int, my_team_class
         if not isinstance(st, dict) or not st.get("team_data_array"):
             continue
         if config.get("team_trials_same_class", True) and (st.get("team_class") or 1) != my_team_class:
-            continue          # configurable local eligibility policy
+            continue
         eligible.append((other_id, st))
 
     ids = [oid for oid, _ in eligible]
@@ -526,18 +441,16 @@ def _real_opponent_candidates(viewer_id, my_evaluation_point: int, my_team_class
                 return True
         return False
 
-    take(above)                                    # the strong pick
-    take(sorted(scored, key=lambda c: c[0]))       # the even one
-    take(below)                                    # the weak one
-    # Short pool: backfill with whatever is nearest and still unused, so a
-    # server with only one or two eligible accounts still offers them.
+    take(above)
+    take(sorted(scored, key=lambda c: c[0]))
+    take(below)
     for cand in sorted(scored, key=lambda c: c[0]):
         if len(picked) >= limit:
             break
         if cand[1] not in seen:
             seen.add(cand[1])
             picked.append(cand)
-    picked.sort(key=lambda c: c[4], reverse=True)  # descending rating
+    picked.sort(key=lambda c: c[4], reverse=True)
     return picked[:limit]
 
 
@@ -553,8 +466,6 @@ def _user_info_at_friend(viewer_id):
 
 
 def _wire_item_info(full_state: dict, used_item_ids: list) -> list:
-    """UserItem[] for whatever the match just consumed -- the client uses this
-    to correct its own cached stock rather than re-reading load/index."""
     from . import shop
     return [{"item_id": item_id, "number": shop.item_count(full_state, item_id)}
             for item_id in dict.fromkeys(used_item_ids or ())]
@@ -568,9 +479,6 @@ def _wire_team_data_array(team_data_array: list) -> list:
 
 
 def _wire_trained_chara_array(team_data_array: list, roster) -> list:
-    """roster may be a dict OR a list (see _index_roster) -- accepts either
-    so callers never need to remember which form a given roster is
-    currently in."""
     roster = _index_roster(roster)
     seen = set()
     out = []
@@ -587,29 +495,8 @@ def _wire_trained_chara_array(team_data_array: list, roster) -> list:
 
 def _build_opponent(opponent_viewer_id, st: dict, roster: dict, evaluation_point: int,
                     strength: int = 2) -> dict:
-    """strength is the offer's POSITION in the list (1 = the strong pick,
-    2 = the even one, 3 = the weak one), NOT a rating bucket.
-
-    BUG FIXED 2026-08-28: this used to be computed as
-    `1 + evaluation_point // 200000` clamped to 1-5, a rating scale invented
-    here. Four real opponent_list captures all show exactly `strength` 1, 2,
-    3 -- one per offer, in descending evaluation_point order -- and never any
-    other value:
-      captures/20260825_192658/0010: 338672 / 333452 / 328455
-      captures/20260825_192658/0015: 338383 / 332317 / 329631
-      captures/20260825_094909/0049: 339037 / 334721 / 328490
-      captures/20260816_202505/0045:   4171 /   2516 /   1152
-    In all four the MIDDLE offer sits on the player's own team_evaluation_point
-    (the same session's team_edit capture 0034 puts it at 333531 against that
-    first list's 333452; the 0816 session's own roster was the 2516 the second
-    offer matches exactly), which is what makes the list read as
-    "+about 5k / yours / -about 5k"."""
     team_data_array = st["team_data_array"]
     user_info = _user_info_at_friend(opponent_viewer_id)
-    # Generated accounts have no load_index/profile record. The opponent card
-    # uses the trainer's leader character and dress for its large portrait;
-    # zero defaults here render as the solid red missing-asset panel even when
-    # every selectable trained character has a valid card_id.
     if _MOB_OPPONENT_VIEWER_BASE <= int(opponent_viewer_id) < _MOB_OPPONENT_VIEWER_BASE + 1000:
         roster_by_id = _index_roster(roster)
         leader_slot = next((slot for slot in team_data_array or ()
@@ -639,23 +526,11 @@ def _build_opponent(opponent_viewer_id, st: dict, roster: dict, evaluation_point
 
 _MOB_CHARA_ID_BASE = 700_000
 _MOB_CHARA_ID_STRIDE = 100
-# Real opponents in the capture are fully limit-broken; rarity itself comes off
-# the card (card_data.default_rarity) since that is real data.
 _MOB_TALENT_LEVEL = 5
 
 
 @functools.lru_cache(maxsize=512)
 def _card_for_chara(chara_id: int) -> int:
-    """A real card_id for this character, or 0 if she has none.
-
-    0 is what made the opponent-select screen draw RED BLOCKS (live-reported
-    2026-09-03): every mob chara went out with card_id 0, and the client builds
-    a trained-chara card from card_id -- with nothing to resolve it drew the
-    missing-asset placeholder. single_mode_npc is mostly the ANONYMOUS mob band
-    (chara_id 1, the 8xxx mob_ids), which has no card_data row at all and so can
-    never render as an uma; those rows drop out of the pool by way of this
-    returning 0 for them.
-    """
     if not chara_id:
         return 0
     row = master_data.query_one(
@@ -666,14 +541,11 @@ def _card_for_chara(chara_id: int) -> int:
 
 @functools.lru_cache(maxsize=1)
 def _race_npc_pool() -> tuple:
-    """Anonymous field runners, distinct from named fallback opponent rosters."""
     return tuple(dict(r) for r in master_data.query("SELECT * FROM single_mode_npc WHERE mob_id>0"))
 
 
 @functools.lru_cache(maxsize=1)
 def _npc_pool() -> tuple:
-    """single_mode_npc rows that are a REAL character (one with a card), each
-    already carrying the card_id and rarity the wire needs."""
     out = []
     for r in master_data.query(
             "SELECT id, chara_id, mob_id, speed, stamina, pow, guts, wiz, skill_set_id, "
@@ -695,17 +567,6 @@ def _npc_pool() -> tuple:
 
 def _mob_opponent_team(chara_info_like: dict, evaluation_point: int,
                        viewer_id: int = 0, offer_index: int = 0, team_class: int = 6) -> tuple:
-    """Fallback when too few real accounts have an eligible roster: build a
-    synthetic 15-slot roster from single_mode_npc, rescaled to land near the
-    target evaluation_point ("comparable strength"). Returns (team_data_array,
-    roster_by_id) in the SAME shape a real account's would be.
-
-    Each member is a FULL trained-chara record, not the 23-field stub this used
-    to emit. The opponent-select screen renders these exactly like a real
-    player's team, so everything it draws -- card art, rarity stars, rank badge,
-    fan count, racing silks -- has to be present and resolvable; see
-    _card_for_chara for the red-block bug that came of leaving card_id at 0.
-    The stat/aptitude/skill fields the race sim reads are unchanged."""
     rows = _npc_pool()
     if not rows:
         return [], {}
@@ -721,9 +582,6 @@ def _mob_opponent_team(chara_info_like: dict, evaluation_point: int,
             row = dict(rng.choice([r for r in rows if r["chara_id"] not in used_charas] or rows))
             used_charas.add(row["chara_id"])
             total = row["speed"] + row["stamina"] + row["pow"] + row["guts"] + row["wiz"]
-            # Target: this slot alone should roughly reproduce evaluation_point
-            # when run back through _slot_evaluation_point -- close enough for a
-            # fallback pool, not claimed to be exact.
             target = max(1, evaluation_point / (5 * members))
             scale = target / max(total, 1)
             stats = {"speed": int(row["speed"] * scale),
@@ -758,7 +616,6 @@ def _mob_opponent_team(chara_info_like: dict, evaluation_point: int,
                 "proper_ground_turf": row["proper_ground_turf"],
                 "proper_ground_dirt": row["proper_ground_dirt"],
                 "skill_array": single_mode_team._npc_skills(row),
-                # --- everything below is what the CARD itself is drawn from ---
                 "rarity": row["rarity"],
                 "talent_level": _MOB_TALENT_LEVEL,
                 "rank_score": rank_score,
@@ -773,9 +630,6 @@ def _mob_opponent_team(chara_info_like: dict, evaluation_point: int,
                 "is_saved": 1, "is_locked": 0,
                 "nickname_id": 0, "wins": 0,
                 "register_time": now, "create_time": now,
-                # Present-and-empty, not absent: the capture carries all of
-                # these on every opponent chara, and a missing array is a null
-                # the client would have to defend against.
                 "support_card_list": [], "race_result_list": [],
                 "win_saddle_id_array": [], "nickname_id_array": [],
                 "factor_info_array": [], "factor_extend_array": [],
@@ -787,8 +641,6 @@ def _mob_opponent_team(chara_info_like: dict, evaluation_point: int,
                                     "trained_chara_id": next_id,
                                     "running_style": chara["running_style"]})
             next_id += 1
-    # Fit the same nonlinear evaluation used for real accounts, rather than
-    # equating raw stat totals to rating points.
     original = {cid: {k: c[k] for k in _STATS} for cid, c in roster.items()}
     lo, hi = 0.0, 2.0
     for _ in range(18):
@@ -807,10 +659,7 @@ def _mob_opponent_team(chara_info_like: dict, evaluation_point: int,
     return team_data_array, roster
 
 
-_MOB_OPPONENT_VIEWER_BASE = 900_000_600_000  # sentinel range, mirrors
-                                              # single_mode_team's own
-                                              # _FRIEND_SENTINEL_VIEWER_BASE
-                                              # convention for fabricated ids
+_MOB_OPPONENT_VIEWER_BASE = 900_000_600_000
 
 
 _MOB_OFFER_SPREAD = (0.015, 0.0, -0.015)
@@ -818,8 +667,6 @@ _MOB_OFFER_MIN_DELTA = 250
 
 
 def _mob_offer_targets(my_evaluation_point: int, count: int, start_index: int) -> list:
-    """Target evaluation_points for `count` mob offers filling positions
-    start_index.. of the list, strongest first."""
     targets = []
     for i in range(start_index, start_index + count):
         frac = _MOB_OFFER_SPREAD[min(i, len(_MOB_OFFER_SPREAD) - 1)]
@@ -830,8 +677,102 @@ def _mob_offer_targets(my_evaluation_point: int, count: int, start_index: int) -
     return targets
 
 
+_CORPUS_PATH = Path(__file__).resolve().parents[2] / "data" / "tt_opponents" / "tt_teams.jsonl.gz"
+_CORPUS_BANDS_LOW = ((5250, 6000), (1000, 2000), (-3750, -3000))
+_CORPUS_BANDS_CLASS6 = ((2408, 5386), (-2340, 1398), (-6195, -3616))
+_APT_LETTERS = " GFEDCBAS"
+_APT_COLUMNS = ("proper_ground_turf", "proper_ground_dirt", "proper_running_style_nige",
+                "proper_running_style_senko", "proper_running_style_sashi",
+                "proper_running_style_oikomi", "proper_distance_short", "proper_distance_mile",
+                "proper_distance_middle", "proper_distance_long")
+
+
+@functools.lru_cache(maxsize=1)
+def _corpus() -> tuple:
+    if not _CORPUS_PATH.exists():
+        return ()
+    with gzip.open(_CORPUS_PATH, "rt", encoding="utf-8") as f:
+        teams = [json.loads(line) for line in f]
+    teams.sort(key=lambda t: t["score"])
+    return tuple(teams)
+
+
+def _corpus_pick(lo: int, hi: int, taken: set, rng: random.Random):
+    teams = _corpus()
+    scores = [t["score"] for t in teams]
+    i, j = bisect.bisect_left(scores, lo), bisect.bisect_right(scores, hi)
+    pool = [k for k in range(i, j) if k not in taken]
+    if pool:
+        return rng.choice(pool)
+    mid = (lo + hi) // 2
+    near = sorted((k for k in range(len(teams)) if k not in taken),
+                  key=lambda k: abs(scores[k] - mid))
+    return near[0] if near else None
+
+
+def _corpus_offer_indices(my_evaluation_point: int, my_team_class: int, count: int,
+                          start_index: int, rng: random.Random) -> list:
+    teams = _corpus()
+    if not teams:
+        return []
+    bands = _CORPUS_BANDS_CLASS6 if my_team_class >= 6 else _CORPUS_BANDS_LOW
+    if my_evaluation_point + bands[-1][0] > teams[-1]["score"]:
+        top = list(range(len(teams) - 1, max(-1, len(teams) - 1 - _OPPONENT_OFFER_SIZE), -1))
+        return top[start_index:start_index + count]
+    out, taken = [], set()
+    for pos in range(start_index, start_index + count):
+        lo, hi = bands[min(pos, len(bands) - 1)]
+        k = _corpus_pick(my_evaluation_point + lo, my_evaluation_point + hi, taken, rng)
+        if k is not None:
+            taken.add(k)
+            out.append(k)
+    return out
+
+
+def _corpus_opponent_team(team: dict, viewer_id: int, offer_index: int) -> tuple:
+    rng = random.Random(secrets.randbits(64))
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    team_data_array, roster = [], {}
+    next_id = _MOB_CHARA_ID_BASE + offer_index * _MOB_CHARA_ID_STRIDE
+    for m in team["members"]:
+        card_id = int(m["card"])
+        chara_id = card_id // 100
+        speed, stamina, power, wiz, guts = (int(v or 0) for v in m["stats"])
+        skills = [{"skill_id": s, "level": lv} for s, lv in m.get("skills") or ()]
+        rank_score = m.get("rank_score") or (
+            rating_formula.get_rating([speed, stamina, power, wiz, guts])
+            + rating_formula.get_skill_score(skills))
+        fans = rng.randint(100_000, 600_000)
+        chara = {
+            "trained_chara_id": next_id, "viewer_id": int(viewer_id),
+            "owner_viewer_id": 0, "owner_trained_chara_id": 0,
+            "single_mode_chara_id": next_id, "card_id": card_id,
+            "running_style": m["style"],
+            "speed": speed, "stamina": stamina, "power": power, "guts": guts, "wiz": wiz,
+            **{col: max(1, _APT_LETTERS.find(ch)) for col, ch in zip(_APT_COLUMNS, m["apt"])},
+            "skill_array": skills,
+            "rarity": m.get("rarity") or 3, "talent_level": m.get("talent") or 1,
+            "rank_score": rank_score, "rank": trained_chara._rank_for_score(rank_score),
+            "fans": fans, "chara_grade": trained_chara._chara_grade_for(fans),
+            "race_cloth_id": trained_chara.dress_for_card(card_id, chara_id),
+            "scenario_id": 1, "succession_num": 0,
+            "succession_trained_chara_id_1": 0, "succession_trained_chara_id_2": 0,
+            "is_saved": 1, "is_locked": 0, "nickname_id": 0, "wins": 0,
+            "register_time": now, "create_time": now,
+            "support_card_list": [{"position": i, "support_card_id": sid, "limit_break_count": lb,
+                                   "exp": 0} for i, (sid, lb) in enumerate(m.get("deck") or (), 1)],
+            "race_result_list": [], "win_saddle_id_array": [], "nickname_id_array": [],
+            "factor_info_array": [{"factor_id": fid, "level": 0} for fid in m.get("factors") or ()],
+            "factor_extend_array": [], "succession_chara_array": [],
+        }
+        roster[next_id] = chara
+        team_data_array.append({"distance_type": m["dist"], "member_id": m["slot"],
+                                "trained_chara_id": next_id, "running_style": m["style"]})
+        next_id += 1
+    return team_data_array, roster
+
+
 def _opponent_offers(viewer_id, my_evaluation_point: int, my_team_class: int = 1) -> list:
-    """Three authoritative offer snapshots in descending rating order."""
     offers = []
     for _dist, other_id, st, roster, ep in _real_opponent_candidates(
             viewer_id, my_evaluation_point, my_team_class):
@@ -839,17 +780,27 @@ def _opponent_offers(viewer_id, my_evaluation_point: int, my_team_class: int = 1
                        st.get("team_class", 1), ep, roster, st))
     missing = max(0, _OPPONENT_OFFER_SIZE - len(offers))
     real_only = config.get("team_trials_real_opponents_only", False) is True
-    if not real_only:
-        for i, target in enumerate(_mob_offer_targets(
-                my_evaluation_point, missing, _OPPONENT_OFFER_SIZE - missing)):
-            mob_viewer = _MOB_OPPONENT_VIEWER_BASE + i
-            team_data_array, roster = _mob_opponent_team(
-                {}, target, viewer_id=mob_viewer, offer_index=i, team_class=my_team_class)
+    if missing and not real_only and config.get("team_trials_corpus_opponents", True) is not False:
+        start = _OPPONENT_OFFER_SIZE - missing
+        for i, k in enumerate(_corpus_offer_indices(
+                my_evaluation_point, my_team_class, missing, start, random.Random(secrets.randbits(64)))):
+            mob_viewer = _MOB_OPPONENT_VIEWER_BASE + start + i
+            team_data_array, roster = _corpus_opponent_team(_corpus()[k], mob_viewer, start + i)
             offers.append((str(mob_viewer), team_data_array, list(roster.values()),
                            my_team_class, _team_evaluation_point(team_data_array, roster),
                            roster, {"team_data_array": team_data_array,
                                     "team_class": my_team_class}))
-    # Descending rating, strength = position (1 strong / 2 even / 3 weak).
+        missing = max(0, _OPPONENT_OFFER_SIZE - len(offers))
+    if missing and not real_only:
+        start = _OPPONENT_OFFER_SIZE - missing
+        for i, target in enumerate(_mob_offer_targets(my_evaluation_point, missing, start)):
+            mob_viewer = _MOB_OPPONENT_VIEWER_BASE + start + i
+            team_data_array, roster = _mob_opponent_team(
+                {}, target, viewer_id=mob_viewer, offer_index=start + i, team_class=my_team_class)
+            offers.append((str(mob_viewer), team_data_array, list(roster.values()),
+                           my_team_class, _team_evaluation_point(team_data_array, roster),
+                           roster, {"team_data_array": team_data_array,
+                                    "team_class": my_team_class}))
     offers.sort(key=lambda o: o[4], reverse=True)
     return [(key, _build_opponent(int(key), st, roster, ep, strength=pos),
              tda, roster_list, team_class, ep)
@@ -857,10 +808,8 @@ def _opponent_offers(viewer_id, my_evaluation_point: int, my_team_class: int = 1
             in enumerate(offers, start=1)]
 
 
-# ============================================================== courses ====
 @functools.lru_cache(maxsize=1)
 def _course_pools_by_distance_type() -> dict:
-    """Dedicated group-9, grade-100, twelve-runner pool, split by surface."""
     course_data = race_simulator._course_data()
     pools = {i: [] for i in range(1, 6)}
     for row in master_data.query(
@@ -879,14 +828,11 @@ def _pick_course(distance_type: int, seed_rng: random.Random) -> int | None:
     return seed_rng.choice(pool) if pool else None
 
 
-
-
 NO_SCORE = (0, 0)
 
 
 @functools.lru_cache(maxsize=None)
 def _raw_score_row(condition_type: int, value1: int, value2: int = 0) -> tuple:
-    """(team_stadium_raw_score.id, score) for one condition, or NO_SCORE."""
     row = master_data.query_one(
         "SELECT id, score FROM team_stadium_raw_score WHERE condition_type=? "
         "AND condition_value_1=? AND condition_value_2=? ORDER BY priority LIMIT 1",
@@ -896,7 +842,6 @@ def _raw_score_row(condition_type: int, value1: int, value2: int = 0) -> tuple:
 
 @functools.lru_cache(maxsize=1)
 def _placement_scores() -> dict:
-    """{finish place (1-based) -> (row id, score)} -- condition_type=3."""
     return {r["condition_value_1"]: (r["id"], r["score"]) for r in master_data.query(
         "SELECT id, condition_value_1, score FROM team_stadium_raw_score WHERE condition_type=3")}
 
@@ -918,15 +863,6 @@ _MARGIN_LADDER = [
 
 
 def _margin_index(length: float) -> int:
-    """length (in body lengths) -> team_stadium_raw_score condition_type=1's
-    condition_value_1 (0=Nose..20=Distance). INFERRED bucketing -- the
-    article names Nose/Head/Neck/1/2..10-length/Distance as categories but
-    never gives the meter/length thresholds that separate them, and no
-    other source here does either. Sub-1/2-length space is split into three
-    equal thirds for Nose/Head/Neck; the numeric ladder above is matched to
-    its nearest entry by midpoint; anything past the last defined length (10)
-    reads as Distance. The SCORE for whichever bucket this lands in is exact
-    (team_stadium_raw_score) even though the boundary itself is a guess."""
     if length < 0:
         length = 0.0
     if length < 0.5:
@@ -961,7 +897,7 @@ def _beat_target_time_score(beat_seconds: float) -> tuple:
     return (row["id"], row["score"]) if row else NO_SCORE
 
 
-_STRONG_START_THRESHOLD = 0.02   # bottom 20% of the engine's [0, 0.1] start-
+_STRONG_START_THRESHOLD = 0.02
 
 
 def _strong_start_score(start_delay: float) -> tuple:
@@ -990,25 +926,17 @@ def _positioning_score(is_mid_phase: bool) -> tuple:
 
 
 def _team_result_score(places: list, team_size: int) -> tuple:
-    """places: this team's fielded members' finish positions in ONE race.
-    Trio (5000, all 3 top-3) beats All-Placed (4000, all 3 top-5) beats
-    nothing -- team_stadium_raw_score's own `priority` column encodes that
-    exclusivity (checked highest-priority-first), matching the article's
-    explicit "you can get Top 3 or Top 5, not both". Quinella (3000, both
-    top-2) only exists for a 2-member team, itself gated by
-    team_stadium_class.unit_max_num."""
     if not places:
         return NO_SCORE
     if team_size >= 3 and all(p <= 3 for p in places):
-        return _raw_score_row(11, 3, 3)      # Trio
+        return _raw_score_row(11, 3, 3)
     if team_size >= 3 and all(p <= 5 for p in places):
-        return _raw_score_row(11, 3, 5)      # All Members Placed
+        return _raw_score_row(11, 3, 5)
     if team_size == 2 and all(p <= 2 for p in places):
-        return _raw_score_row(11, 2, 2)      # Quinella
+        return _raw_score_row(11, 2, 2)
     return NO_SCORE
 
 
-# ==================================================== score modifiers ====
 @functools.lru_cache(maxsize=None)
 def _score_bonus_rate_raw(condition_type: int, value1: int) -> int:
     row = master_data.query_one(
@@ -1021,10 +949,9 @@ def _ace_bonus_rate() -> float:
     return Fraction(_score_bonus_rate_raw(1, 1), 10000)
 
 
-def _opponent_bonus_rate(opponent_evaluation_point: int) -> float:
-    """Configurable approximation; capture-derived exact formula is unresolved."""
-    divisor = config.get_int("team_trials_opponent_bonus_divisor", _score_bonus_rate_raw(3, 0))
-    return Fraction(opponent_evaluation_point, divisor) if divisor else 0
+def _opponent_bonus_rate(opponent_evaluation_point: int, own_evaluation_point: int) -> float:
+    divisor = _score_bonus_rate_raw(3, 0) + own_evaluation_point - opponent_evaluation_point
+    return Fraction(opponent_evaluation_point, divisor) if divisor > 0 else 0
 
 
 def _consecutive_bonus_rate(count: int) -> float:
@@ -1034,7 +961,6 @@ def _consecutive_bonus_rate(count: int) -> float:
 
 
 def _support_bonus_raw(full_state: dict) -> int:
-    """Global cumulative milestones; JP dated per-card rows (master-derived)."""
     cards = full_state.get("support_card_collection") or []
     rows = [dict(r) for r in master_data.query("SELECT * FROM support_card_team_score_bonus")]
     total = 0
@@ -1059,9 +985,6 @@ def _support_bonus_raw(full_state: dict) -> int:
 
 @functools.lru_cache(maxsize=None)
 def _score_bonus_id(condition_type: int, value1: int) -> int:
-    """team_stadium_score_bonus.id -- what TeamStadiumBonusData.score_bonus_id
-    carries (ScoreBonusData.BonusName resolves the row's display name from
-    it), same primary-key convention as raw_score_id above."""
     row = master_data.query_one(
         "SELECT id FROM team_stadium_score_bonus WHERE condition_type=? AND condition_value_1=?",
         (condition_type, value1))
@@ -1069,11 +992,10 @@ def _score_bonus_id(condition_type: int, value1: int) -> int:
 
 
 def _apply_line_bonuses(lines: list, specs: list) -> int:
-    """Add itemized ceiling modifiers to raw lines; penalties remain unmodified."""
     total = 0
     for line in lines:
         raw = line["score"]
-        if raw <= 0:            # the Rushed penalty is not scaled by bonuses
+        if raw <= 0:
             line["bonus_array"] = []
             line["bonus_num"] = 0
             total += raw
@@ -1097,10 +1019,7 @@ def _apply_line_bonuses(lines: list, specs: list) -> int:
     return total
 
 
-
 def _position_at(frames: list, horse_idx: int, t: float) -> float:
-    """Linear-interpolated position of horse_idx at time t, from run_simulation's
-    raw {"t":..., "horses":[{"pos":...}]} frames."""
     prev = frames[0]
     for f in frames:
         if f["t"] >= t:
@@ -1115,12 +1034,6 @@ def _position_at(frames: list, horse_idx: int, t: float) -> float:
 
 
 def _phase_leaders(frames: list, running_styles: list, boundary: float) -> set:
-    """Horse indices that are ranked 1st among same-running_style horses at
-    the moment THEY cross `boundary` distance -- the real "Good Positioning"
-    condition (dump.cs/master.mdb give no more detail than the article's own
-    plain-language description; phase_start()'s 1/6 and 2/3 course-distance
-    boundaries are the SAME ones race_solver.py's own phase transitions use,
-    so at least the boundary itself is not a guess)."""
     n = len(running_styles)
     crossing_t = [None] * n
     for i in range(n):
@@ -1142,10 +1055,6 @@ def _phase_leaders(frames: list, running_styles: list, boundary: float) -> set:
 
 
 def _favorite_ranks(horses: list) -> list:
-    """1 = strongest (most favored), matching Dark Horse's "Nth favorite"
-    condition. No real popularity/odds system exists on this server -- ranks
-    by raw stat total, the same proxy _mob_opponent_team/_slot_evaluation_point
-    already use elsewhere in this module."""
     totals = [sum(h.get(s, 0) or 0 for s in _STATS) for h in horses]
     order = sorted(range(len(horses)), key=lambda i: -totals[i])
     ranks = [0] * len(horses)
@@ -1155,11 +1064,6 @@ def _favorite_ranks(horses: list) -> list:
 
 
 def _standard_course_time(course: dict) -> float:
-    """"Standard Course Time" / reference time the article describes --
-    course_data.json gives finishTimeMin/finishTimeMax (in 1e-4s units,
-    matching this codebase's own race_horse wire encoding elsewhere) for the
-    course but no single named "standard" value; the midpoint is used as a
-    working proxy. INFERRED -- no capture confirms the real reference time."""
     reference = config.get("team_trials_target_times", {}).get(str(course.get("id")))
     if reference is not None:
         return float(reference)
@@ -1177,7 +1081,6 @@ def _skill_level_for(chara: dict, skill_id: int) -> int:
 
 
 def _team_race_horse_array(horses: list, ris: list) -> list:
-    """Wire horses sorted in the same gate order as replay horse/event indices."""
     def _rank_by(key):
         order = sorted(range(len(horses)), key=key)
         return {idx: rank + 1 for rank, idx in enumerate(order)}
@@ -1207,18 +1110,23 @@ def _unit_max_num(team_class: int) -> int:
     return row["unit_max_num"] if row else 3
 
 
-# ============================================================= endpoints ====
-
 @registry.endpoint("team_stadium/index")
 def handle_index(payload: dict) -> dict:
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     st = _team_stadium_state(full_state)
+    match = st.get("current_match") or {}
+    rounds = match.get("rounds") or []
+    if rounds and (match.get("term_id", st.get("term_id")) != _term_id()
+                   or match.get("last_checked_round", 0) >= len(rounds)):
+        handle_all_race_end({"viewer_id": viewer_id})
+        full_state = state_store.get_state(viewer_id) or {}
+        st = _team_stadium_state(full_state)
     _ensure_week(viewer_id, full_state, st)
     rewards = st.pop("pending_weekly_rewards", []) + _grant_rank_rewards(full_state, st)
+    class_change_state = st.pop("team_class_change_state", 0)
     state_store.save_state(viewer_id, full_state)
     match = st.get("current_match")
-    # RaceStatusType (dump.cs TeamStadiumDefine): 0=None, 1=Decide, 2=Race.
     race_status = 0
     if match:
         race_status = 2 if match.get("rounds") else 1
@@ -1230,7 +1138,7 @@ def handle_index(payload: dict) -> dict:
         },
         "ranking": _ranking_entry(viewer_id, st),
         "border_line": _border_line(viewer_id, st),
-        "team_class_change_state": st.get("team_class_change_state", 0),
+        "team_class_change_state": class_change_state,
         "reward_info_array": rewards,
         "race_status": race_status,
         "term_state": _current_term_state(),
@@ -1260,15 +1168,15 @@ def handle_team_edit(payload: dict) -> dict:
         if dtype not in _VALID_DISTANCE_TYPES or member not in _VALID_MEMBER_IDS:
             return _refuse()
         if (dtype, member) in seen_slots:
-            return _refuse()             # duplicate slot in one request
+            return _refuse()
         seen_slots.add((dtype, member))
         if tcid:
             if not isinstance(style, int) or style not in _VALID_RUNNING_STYLES:
                 return _refuse()
             if tcid not in owned:
-                return _refuse()         # can only field a horse you actually own
+                return _refuse()
         elif style != 0:
-            return _refuse()             # empty slot must pair tcid=0 with style=0
+            return _refuse()
         cleaned.append({"distance_type": dtype, "member_id": member,
                         "trained_chara_id": tcid or 0, "running_style": style})
 
@@ -1309,7 +1217,7 @@ def handle_opponent_list(payload: dict) -> dict:
     full_state = state_store.get_state(viewer_id) or {}
     st = _team_stadium_state(full_state)
     if not st.get("team_data_array"):
-        return _refuse(ResultCode.TEAM_STADIUM_NOT_FOUND_TEAM)   # nothing to matchmake with -- must team_edit first
+        return _refuse(ResultCode.TEAM_STADIUM_NOT_FOUND_TEAM)
 
     if (st.get("current_match") or {}).get("rounds"):
         return _ok({"opponent_info_array": st["current_match"].get("offers", [])})
@@ -1366,7 +1274,7 @@ def handle_decide_frame_order(payload: dict) -> dict:
             return _refuse()
 
     chosen = match["candidates"][key]
-    opp_roster = _index_roster(chosen["roster"])   # see _index_roster's docstring
+    opp_roster = _index_roster(chosen["roster"])
     opp_team_class = chosen.get("team_class", 1)
     opp_evaluation_point = chosen.get("evaluation_point") or 0
     opponent_info = copy.deepcopy(next(o for o in match["offers"] if str(o["opponent_viewer_id"]) == key))
@@ -1376,9 +1284,6 @@ def handle_decide_frame_order(payload: dict) -> dict:
                        "evaluation_point": opp_evaluation_point}
 
     my_roster = _roster_by_id(viewer_id)
-    # Same runner count on both sides -- see handle_start's own note. Sizing
-    # the opponent from THEIR class let a higher-class player field more
-    # horses than the opponent could and win every race on headcount.
     my_unit_max = opp_unit_max = _unit_max_num(st.get("team_class", 1))
     frame_orders = []
     per_distance_seed = random.Random(match.setdefault("seed", secrets.randbits(63)))
@@ -1421,7 +1326,6 @@ def handle_decide_frame_order(payload: dict) -> dict:
 def _score_horse(i, horse, ri, place, sim, course, mid_leaders, final_leaders,
                   favorite_ranks, standard_time, winner_idx, margin_len, n,
                   skill_events_by_horse, kakari_by_horse) -> tuple[list, int]:
-    """Aggregate master award quantities from simulation events and placements."""
     result = sim["results"][i]
     lines = []
 
@@ -1439,7 +1343,7 @@ def _score_horse(i, horse, ri, place, sim, course, mid_leaders, final_leaders,
     add(_dark_horse_score(favorite_ranks[i], place))
 
     if standard_time:
-        beat = standard_time - result["finishTimeRaw"]
+        beat = standard_time - result.get("finishTimeDisplay", result["finishTimeRaw"])
         if beat > 0:
             add(_beat_target_time_score(beat))
 
@@ -1478,17 +1382,16 @@ def handle_start(payload: dict) -> dict:
     chosen = match.get("chosen")
     frame_orders = match.get("frame_orders")
     if not chosen or not frame_orders:
-        return _refuse()   # must decide_frame_order first
+        return _refuse()
 
     if match.get("start_response"):
         response = copy.deepcopy(match["start_response"])
         response["last_checked_round"] = match.get("last_checked_round", 0)
         return _ok(response)
     if match.get("rounds"):
-        return _refuse()  # Legacy completed rounds must be settled, never charged again.
+        return _refuse()
     if _current_term_state() != 1:
         return _refuse()
-    # Work on an isolated state; charge and outcomes commit together only on success.
     full_state = copy.deepcopy(full_state)
     st = _team_stadium_state(full_state)
     match = st["current_match"]
@@ -1507,8 +1410,8 @@ def handle_start(payload: dict) -> dict:
     ace_rate = _ace_bonus_rate()
     support_raw = _support_bonus_raw(full_state)
     support_rate = Fraction(support_raw, 10000)
-    opponent_bonus_for_me = _opponent_bonus_rate(opponent_ep)
-    opponent_bonus_for_them = _opponent_bonus_rate(my_ep)
+    opponent_bonus_for_me = _opponent_bonus_rate(opponent_ep, my_ep)
+    opponent_bonus_for_them = _opponent_bonus_rate(my_ep, opponent_ep)
     my_unit_max = opp_unit_max = _unit_max_num(st.get("team_class", 1))
 
     race_start_params_array = []
@@ -1602,9 +1505,7 @@ def handle_start(payload: dict) -> dict:
             else:
                 skill_events_by_horse.setdefault(hi, []).append(ev)
 
-        # Pass 1: raw score + Ace/Opponent/Support modifiers (NOT Consecutive
-        # -- that depends on THIS round's own win/loss, decided below).
-        provisional = []   # per-horse: [lines, raw_subtotal, bonus_specs, rush_row]
+        provisional = []
         for i, (horse, team_id, ri) in enumerate(zip(horses, team_ids, ris)):
             place = place_of[i]
             lines, raw_subtotal = _score_horse(
@@ -1613,8 +1514,6 @@ def handle_start(payload: dict) -> dict:
                 skill_events_by_horse, kakari_by_horse)
             is_mine = team_id == 1
             ace_set = ace_ids if is_mine else opp_ace_ids
-            # (score_bonus_id, rate) pairs, so each modifier can be itemised
-            # into every line's own bonus_array -- see _apply_line_bonuses.
             specs = []
             if support_rate:
                 specs.append((_score_bonus_id(5, 0), support_rate))
@@ -1628,8 +1527,6 @@ def handle_start(payload: dict) -> dict:
         winning_team = team_ids[winner_idx]
         win_type = winning_team if winning_team in (1, 2) else 3
 
-        # Pass 2: Consecutive Win Bonus -- only the winning side, only once
-        # win/loss for THIS round is known.
         if win_type == 1:
             consecutive += 1
             bonus_rate = _consecutive_bonus_rate(consecutive)
@@ -1711,10 +1608,6 @@ def handle_start(payload: dict) -> dict:
 
 @registry.endpoint("team_stadium/replay_check")
 def handle_replay_check(payload: dict) -> dict:
-    """Mirrors daily_races.py's own replay_check pattern: a per-round
-    "finished watching this animation" pacing echo, not a gate we enforce
-    (nothing here blocks all_race_end on it -- no capture shows the real
-    server ever refusing an early all_race_end call)."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     st = _team_stadium_state(full_state)
@@ -1737,7 +1630,7 @@ def handle_all_race_end(payload: dict) -> dict:
     if not rounds and st.get("last_end_response"):
         return _ok(copy.deepcopy(st["last_end_response"]))
     if not rounds:
-        return _refuse()   # must start (and actually run the races) first
+        return _refuse()
 
     wins = sum(1 for r in rounds if r["win_type"] == 1)
     losses = sum(r["win_type"] == 2 for r in rounds)
@@ -1745,7 +1638,8 @@ def handle_all_race_end(payload: dict) -> dict:
     bonus = 0
     if wins >= 3:
         chosen = match.get("chosen") or {}
-        opponent_bonus = _opponent_bonus_rate(chosen.get("evaluation_point") or 0)
+        params = ((match.get("start_response") or {}).get("race_start_params_array") or [{}])[0]
+        opponent_bonus = _opponent_bonus_rate(chosen.get("evaluation_point") or 0, params.get("self_evaluate") or 0)
         raw = _raw_score(10, 1, 1)
         bonus = raw + math.ceil(raw * opponent_bonus)
     final_total = sum(r["team_total_score"] for r in rounds) + bonus
@@ -1776,7 +1670,7 @@ def handle_all_race_end(payload: dict) -> dict:
                     best_score, mvp_chara_id = total_line, cr["trained_chara_id"]
 
     st["last_completed_start_response"] = copy.deepcopy(match.get("start_response"))
-    st["current_match"] = None   # match closed -- opponent_list must run again
+    st["current_match"] = None
 
     add_love_point = 2 if match_won else 1
     my_roster = _roster_by_id(viewer_id)
@@ -1795,8 +1689,11 @@ def handle_all_race_end(payload: dict) -> dict:
 
     from . import campaign_walking
     walk_gauge_info = campaign_walking.gauge_info(full_state, "teamstadium")
+    from . import factor_research
+    research_gauge = factor_research.add_gauge(full_state, 30)
+    from . import map_event
+    map_gauge = map_event.gauge_info(full_state, "teamstadium")
 
-    # Local progression policy, configurable until exact formulas are recovered.
     fan_info = []
     fielded = []
     selected_roster = _index_roster(match.get("user_roster") or list(my_roster.values()))
@@ -1834,8 +1731,10 @@ def handle_all_race_end(payload: dict) -> dict:
                    "best_point": st["best_point"], "rank": rank},
         "border_line": _border_line(viewer_id, st),
         "campaign_id_array": [], "limited_shop_info": None,
-        **({"add_trainer_medal": 0, "map_event_gauge_info": None, "factor_research_gauge_info": None}
-           if region.PROCESS_REGION == "jp" else {}),
+        **({"add_trainer_medal": 0, "map_event_gauge_info": None, "factor_research_gauge_info": research_gauge}
+           if region.PROCESS_REGION == "jp" else
+           {"factor_research_gauge_info": research_gauge} if research_gauge is not None else {}),
+        **({"map_event_gauge_info": map_gauge} if map_gauge is not None else {}),
     }
     state_store.save_state(viewer_id, full_state)
     return _ok(copy.deepcopy(st["last_end_response"]))
@@ -1879,7 +1778,6 @@ def handle_ranking(payload: dict) -> dict:
 
 @registry.endpoint("team_stadium/skip_race_skip")
 def handle_skip_race_skip(payload: dict) -> dict:
-    """JP client-declared combined skip flow; timing/cost remain unmeasured."""
     full_state = state_store.get_state(payload["viewer_id"]) or {}
     st = _team_stadium_state(full_state)
     if st.get("last_end_response") and st.get("last_completed_start_response"):

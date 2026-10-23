@@ -1,4 +1,3 @@
-"""Definition authoring is separate from the panel's viewer-save undo history."""
 from app import custom_support as C, master_data as M
 from . import op
 from .common import OpError

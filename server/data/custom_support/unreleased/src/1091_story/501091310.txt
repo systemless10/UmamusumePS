@@ -1,0 +1,30 @@
+#title After the Shion Stakes: Next!
+0 Huff... Huff...
+1 ...Yeah.
+2 After the race, Vivlos seemed brimming with confidence.
+2> How was it?
+3 Hmm, how do I put it! It's like, kinda—
+4 Suuuper! Good♡
+5 After I finished running, it didn't hurt that much! I feel like I got stronger!
+6 What about you, Tore-cchi? What do you think!?
+6> It looked great!
+7 Ehehe. Then it's true!
+8 Yeah, the me right now... will be fine.
+9 Wait for me, Onee-chan...
+10 I'll be the one to—
+11 I'm definitely gonna win the Shuka Sho! Yeah!
+11> Yeah!
+12 Okay, I'm gonna go change.
+13 The Shuka Sho... Of all the Tiara races, it should be an especially important race for her.
+13> (I want to be her support)
+14 I'm surely not the only one who feels that way. In that case...—
+15 Huff... Huff...
+16 Huff...!
+17 ...Cold. It's really autumn now.
+18 ...The Shuka Sho is almost here, huh.
+19 Vivlos will surely...
+20 ...This is no time to rest. I... I'm also—
+21 Cheval...
+22 ...Do your best, both of you. If you have the will... a path will open.
+23 —Please, let all of my sisters' dreams come true.
+24 The last crown, the Shuka Sho... is almost here.

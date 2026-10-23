@@ -1,0 +1,17 @@
+{
+ "title": "桜花賞にむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "レース前――今のところ、\nヴィブロスの体調に大きな不安はなく、\nあとは本番を頑張るのみとなった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ファンの期待、トレーナーからの信頼、\nそして姉ヴィルシーナの願いを背負い、\nヴィブロスは『桜花賞』へ向かう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "title": "オークスの後に・Revenge",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『オークス』で敗れたヴィブロスだが、\n姉のリベンジを果たすべく\n残る一冠に気持ちを切り替える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ティアラ獲得のため、周囲の期待に応える\nためにも、夏合宿に加えてもう1つ自信を\n持てるすべが欲しいと願い出るヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ティアラへ向けて弾みをつけるべく、\nヴィブロスとトレーナーは次の目標を\n『紫苑ステークス』に定めるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "紫苑ステークス"
+   ]
+  }
+ ]
+}

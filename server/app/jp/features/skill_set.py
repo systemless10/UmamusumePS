@@ -1,19 +1,3 @@
-"""スキルセット: the ten per-account skill-priority decks, their policy, and
-deck sharing by code.
-
-`WIRE` umacap api-20261011-014732-344 (index, change_deck_skill x3, share,
-get_share_info x2). Names/enums from the JP client (dump.cs):
-DeckSkillChangeType Edit=1 Share=2 RaceFitAssistance=3 TrainingRoadmap=4
-TrainedChara=5 TrialCharacter=6 (only says where the list came from -- the
-server stores the list the same way whatever it is); SkillPriorityType
-VeryPreference=1 Preference=2 Other=3; SKILL_SET_SKILL_COUNT_MAX 200.
-
-Shares are server-wide (another player imports by code), so they live in their
-own region-suffixed table, not in the sharer's state. A share is a snapshot of
-the deck at share time: get_share_info answered the shared list even though
-the deck was edited afterwards, and the edit reply carries share_id 0 -- so an
-edit detaches the deck from its share, it does not change the shared copy.
-"""
 
 from __future__ import annotations
 
@@ -31,16 +15,15 @@ from ...result_codes import ResultCode, refuse
 
 STATE_KEY = "jp_skill_set"
 DECKS = 10
-SKILL_COUNT_MAX = 200                       # GameDefine.SKILL_SET_SKILL_COUNT_MAX
-SHARES_PER_DAY = 100                        # `WIRE` num_of_share_on_the_day 100 -> 99
-SHARE_DAYS = 120                            # `WIRE` 2026-10-11 10:52:55 -> 2027-02-08 10:52:55
-TRAINING_ROADMAP_DECK_ID = 101              # GameDefine.TRAINING_ROADMAP_DECK_ID
+SKILL_COUNT_MAX = 200
+SHARES_PER_DAY = 100
+SHARE_DAYS = 120
+TRAINING_ROADMAP_DECK_ID = 101
 JST = datetime.timezone(datetime.timedelta(hours=9))
-_RESET_HOUR_JST = 5                         # the game's daily reset
+_RESET_HOUR_JST = 5
 NO_TIME = "0000-00-00 00:00:00"
 
 _DEFAULT_POLICY = {
-    # `WIRE` untouched policy: every *_type is 1, every threshold 0, flag false.
     "skill_point_allocate_priority_type": 1,
     "super_priority_allocate_priority_type": 1,
     "super_priority_min_hint_lv_required_to_skill_get": 0,
@@ -68,7 +51,6 @@ def _game_day(ts: float) -> str:
 
 def default_info() -> dict:
     return {
-        # `WIRE` every account has ten decks named スキルセット1..10.
         "skill_set_deck_array": [
             {"skill_set_deck_id": i, "deck_name": f"スキルセット{i}", "share_id": 0,
              "expiration_time": NO_TIME, "skill_set_skill_array": []}
@@ -80,12 +62,9 @@ def default_info() -> dict:
 
 
 def info(full_state: dict) -> dict:
-    """This account's skill-set block, created on first touch and brought up
-    to the current shape (saves from before a field existed)."""
     blob = full_state.setdefault(STATE_KEY, default_info())
     for k, v in _DEFAULT_POLICY.items():
         blob.setdefault("skill_set_policy_get_skill", {}).setdefault(k, v)
-    # The daily share allowance refills at the 05:00 JST reset.
     today = _game_day(time.time())
     if blob.get("share_day") != today:
         blob["share_day"] = today
@@ -103,8 +82,6 @@ def _deck(blob: dict, deck_id) -> dict | None:
 
 
 def _clean_skills(raw) -> list | None:
-    """The request list as stored, or None if it is not one the client could
-    have built (it enforces all of this in its editor)."""
     if not isinstance(raw, list) or len(raw) > SKILL_COUNT_MAX:
         return None
     out, seen = [], set()
@@ -125,7 +102,6 @@ def _clean_skills(raw) -> list | None:
 
 
 def _deck_reply(deck: dict) -> dict:
-    # `WIRE` the reply's skills carry skill_set_deck_id first, in request order.
     return {"skill_set_deck": {
         "skill_set_deck_id": deck["skill_set_deck_id"], "deck_name": deck["deck_name"],
         "share_id": deck["share_id"], "expiration_time": deck["expiration_time"],
@@ -134,11 +110,9 @@ def _deck_reply(deck: dict) -> dict:
 
 
 def _stored(deck: dict) -> dict:
-    """The deck as index sends it (skills carry their deck id there too)."""
     return _deck_reply(deck)["skill_set_deck"]
 
 
-# --------------------------------------------------------------- share table
 _lock = threading.Lock()
 _conns: dict = {}
 
@@ -160,7 +134,6 @@ def _db() -> sqlite3.Connection:
 
 
 def _new_share_id(conn) -> int:
-    # `WIRE` 206983734 / 321452341: nine digits, no visible structure.
     while True:
         sid = random.randint(100_000_000, 999_999_999)
         if not conn.execute("SELECT 1 FROM skill_set_share WHERE share_id=?", (sid,)).fetchone():
@@ -175,7 +148,6 @@ def _live_share(conn, share_id):
     return row
 
 
-# ------------------------------------------------------------------ handlers
 def handle_index(payload: dict) -> dict:
     full_state = state_store.get_state(payload["viewer_id"]) or {}
     blob = info(full_state)
@@ -231,7 +203,7 @@ def handle_change_policy_get_skill(payload: dict) -> dict:
         if k in policy:
             cur[k] = bool(policy[k]) if isinstance(_DEFAULT_POLICY[k], bool) else int(policy[k])
     state_store.save_state(payload["viewer_id"], full_state)
-    return _ok({})          # the client's response class has no fields
+    return _ok({})
 
 
 def handle_change_auto_call_deck_id(payload: dict) -> dict:
@@ -251,7 +223,7 @@ def handle_share(payload: dict) -> dict:
     blob = info(full_state)
     deck = _deck(blob, payload.get("skill_set_deck_id"))
     if deck is None or blob["num_of_share_on_the_day"] <= 0:
-        return refuse()       # the client greys the button out at 0 itself
+        return refuse()
     now = time.time()
     expire = int(now) + SHARE_DAYS * 86400
     with _lock:
@@ -273,13 +245,10 @@ def handle_get_share_info(payload: dict) -> dict:
         row = _live_share(_db(), payload.get("share_id"))
     if row is None:
         return refuse(ResultCode.SKILL_SET_SHARE_ID_NOT_EXIST)
-    # `WIRE` the shared skills come without skill_set_deck_id.
     return _ok({"deck_name": row[1], "skill_set_skill_array": json.loads(row[2])})
 
 
 def handle_get_extension_period(payload: dict) -> dict:
-    """How far an extension would push the share's expiry: another full
-    period from now (the only rule a fixed SHARE_DAYS share admits)."""
     with _lock:
         row = _live_share(_db(), payload.get("share_id"))
     if row is None or row[0] != str(payload["viewer_id"]):

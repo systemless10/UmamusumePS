@@ -1,0 +1,211 @@
+{
+ "title": "夏合宿（2年目）終了",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "夏合宿の最終日。最後の仕上げとして、\nヴィブロスの全力の走りを確認していた――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やああああああっっっ！！",
+   "choice_data_list": [
+    "（うん、よく伸びてるな！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "体の懸念もあり、ここまで控えていた\n彼女の本気が爆発する――\nヴィブロスはこの夏で確実に成長した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ドサッ……）",
+   "choice_data_list": [
+    "ん？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あ、ごめんなさい。\n差し入れ、落としちゃって……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁっ……はぁっ……！\nひゃ～～～……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん！\n見てた、今の走りっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ええ。\nすごいわね、ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "びっくりしちゃった。\n……こんなに強くなっていたのね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ～っ、でしょでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちも\nそー思う？",
+   "choice_data_list": [
+    "君は間違いなく強くなった！",
+    "貴方は間違いなく強くなった！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やったーーーー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんっ。\n私、きっと勝つから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『秋華賞』……\n楽しみにしててねっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ええ！\n応援しているわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……変ね、私――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――あの子の走りが、\n“あの人”と重なるなんて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "夏合宿中、無茶はせずに\n一生懸命頑張ったヴィブロス。",
+   "choice_data_list": [
+    "最後に確認するけど、体調は？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、大丈夫！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お腹も喉も、変な感じしないよ。\nちょーいい感じ！",
+   "choice_data_list": [
+    "よし、本当にお疲れ様！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！\nトレっち、ほんとにありがとうっ！",
+   "choice_data_list": [
+    "お礼を言われることはしてないよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううん。トレっちがたくさん私のこと、\n考えてくれたからがんばれたんだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから……\nやっぱり、ありがとっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これで『紫苑S』勝って、\n『秋華賞』も勝って、それで……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ティアラ路線が終われば、すぐにシニア級だ。\n3月に、そのレースは行われる――",
+   "choice_data_list": [
+    "いよいよドバイ、だな",
+    "いよいよドバイ、だね"
+   ],
+   "color_text_info_list": [
+    "シニア級"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そう、それ～～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ティアラ路線に集中してるから、\n今はちょこっとよそだけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どっちもがんばるって、\n決めたもんね！",
+   "choice_data_list": [
+    "まずは『紫苑S』、頑張ろう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『秋華賞』の前哨戦――\n『紫苑S』の準備はばっちりだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

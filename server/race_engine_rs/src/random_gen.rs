@@ -1,13 +1,3 @@
-//! Bit-exact port of random_gen.py's Rule30CARng (itself a port of
-//! uma-skill-tools' Random.ts): a 64-bit two-lane elementary-cellular-
-//! automaton PRNG (Wolfram Rule 30). Every race result downstream depends
-//! on this reproducing the Python/JS bit manipulation exactly, so this file
-//! must not "clean up" any operation -- only translate it.
-//!
-//! Python needs explicit `& 0xFFFFFFFF` masks after every shift because its
-//! ints are arbitrary-precision; here every lane is a native `u32`, whose
-//! fixed-width `<<`/`>>` already truncate to 32 bits the same way, so those
-//! masks simply disappear rather than needing an explicit equivalent.
 
 pub struct Rule30CARng {
     pub hi: u32,
@@ -19,9 +9,6 @@ impl Rule30CARng {
         Rule30CARng { hi: seed_hi, lo: seed_lo }
     }
 
-    /// A generator whose state is `seed` run through splitmix64 -- see
-    /// random_gen.py's `seeded` for why raw (lo=seed, hi=0) seeding is broken
-    /// (near-constant first draws: every horse shared one solver rng).
     pub fn seeded(seed: u64) -> Self {
         let mut z = seed.wrapping_add(0x9E3779B97F4A7C15);
         z = (z ^ (z >> 30)).wrapping_mul(0xBF58476D1CE4E5B9);
@@ -63,26 +50,15 @@ impl Rule30CARng {
         const MASK_HI: u64 = 0x03FF_FFFF;
         const MASK_LO: u64 = 0x07FF_FFFF;
         const EXP: u64 = 0x0800_0000;
-        const MANT: f64 = 9_007_199_254_740_992.0; // 0x20000000000000 == 2^53
+        const MANT: f64 = 9_007_199_254_740_992.0;
         let (hi, lo) = self.pair();
         (((hi as u64) & MASK_HI) * EXP + ((lo as u64) & MASK_LO)) as f64 / MANT
     }
 
-    /// Port of `uniform()`. `upper` is sometimes non-integer (e.g. a region
-    /// length derived from a course distance); JS's `|` operator
-    /// ToInt32-truncates before the bitwise op, which is why the Python
-    /// port (and this one) truncates `upper - 1` toward zero explicitly.
-    ///
-    /// Returns a signed value on purpose: JS's `&` yields a signed int32
-    /// and the retry condition compares against that signed value. This
-    /// only matters in the degenerate `upper <= 0` case (confirmed to occur
-    /// via `AllCornerRandomPolicy` on a region exactly 10 units long); for
-    /// every ordinary call `mask` never reaches bit 31 and the sign
-    /// reinterpretation is a no-op, exactly as in the Python port.
     pub fn uniform(&mut self, upper: f64) -> i32 {
         let v = (upper - 1.0) as i64;
-        let ored = (v | 1) as u32; // low 32 bits of the (possibly negative) two's-complement value
-        let clz = ored.leading_zeros(); // matches _clz32: 32 for ored == 0
+        let ored = (v | 1) as u32;
+        let clz = ored.leading_zeros();
         let mask: u32 = 0xFFFF_FFFFu32 >> clz;
         loop {
             let n_u32 = self.int32() & mask;

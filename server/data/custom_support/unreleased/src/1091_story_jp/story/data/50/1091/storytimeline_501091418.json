@@ -1,0 +1,23 @@
+{
+ "title": "ジャパンCにむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『ジャパンC』当日、観客たちの期待は\nキタサンブラックやサトノクラウンに。だが、\nヴィブロスの家族の信じる心は揺るがない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスとシュヴァルグランも、\n互いの実力を信じ、心から認め合う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスはトレーナーから心のこもった\n激励を受け、自信に満ち溢れながら\n『ジャパンカップ』に挑むのだった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

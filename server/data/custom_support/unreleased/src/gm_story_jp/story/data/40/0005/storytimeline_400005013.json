@@ -1,0 +1,205 @@
+{
+ "title": "夏の実り",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "合宿期間も残りわずかとなり、ウマ娘たちは\nスパートをかけるように汗を流していた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "それでは、砂浜往復を5本いきましょう。\nタイムよりも、走り切ることを優先にね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……はい。\n…………行ってきます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そうそう、メニューをやり遂げることが大事。\nがんばり過ぎて、後半が疎かになったら\nメニューそのもののバランスが崩れるわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "そうですよね……！\n今後もよく気をつけて参りますっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……あのっ、それで、よろしければ\n次のトレーニングについても\nご意見をお伺いしたいのですが……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その日のトレーニングを終えた後、\nトレーナー同士で意見交換を行っていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "まもなく合宿も終わり……\nそうしたらすぐ、秋のレース本番ですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ええ。ビターグラッセもリトルココンも、\n充実した合宿生活を送ることができました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "そういえば桐生院トレーナーも、\nずいぶんと張り切っておられましたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ご覧になっていたんですか！？\nあはは……ややテンションを上げすぎて\nしまったかなと、少し反省しています……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "でも、ここ最近のミークの成長ぶりには、\n本当に手ごたえを感じているんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "周りと比べれば小さな歩みかもしれませんが、\n前に進んでいることがお互い嬉しくて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "本当の芽吹きは、きっとこれから。\nこの調子でもっと一緒に頑張りましょう、と\n誓い合って――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "それで、実は2人で目標も立ててみたんです！",
+   "choice_data_list": [
+    "どんな目標を？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "はいっ、それはですね――\n『年内に重賞レース制覇』ですっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "もちろん急ぐつもりはありませんが、\n目標があると気持ちも前向きになりますし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "それに……三女神の支援もありますので、\n無理な目標でもないかなと思いまして！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ポロロン♪）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "失礼……\nああ、ダーレーアラビアンさんからです。\nメニューについて聞いていたところでして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "『坂路による心肺機能強化』、適合89％……\n『プールでの総合強化』、適合33％……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "リトルココンさんの\nトレーニングメニューですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ええ、秋初戦に向けて、\n最善のメニューを出してもらいました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ウマ娘たちが月日を重ねるたび、\nデータが更新され、サポートの精度も上がる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……本当に、三女神は我々を\n目標へと近づけてくれますね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ですね……！\nよしっ、私もまたゴドルフィンバルブさんに\nミークのこと聞いてみよう……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "三女神の知識により、このうえない結果を\n得ることができているトレーナー陣。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女たちのサポートは、福音と言うにも\n都合がよすぎるほど、頼りになるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………。\n……ふふ、今日もタイム縮んだ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "ゴぉールっ！！　タイムは……\n85秒ジャスト！　ラスト12.5！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "ふへぇ～……あたしはラスト1ハロンで\n力尽きた～！　85.8～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……大丈夫。\n…………自分のペース、自分のペース。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

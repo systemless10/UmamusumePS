@@ -1,0 +1,324 @@
+{
+ "title": "いろいろ癒しツアーズ",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん～、この間話してた、\n『癒しトレーニング』のことなんですけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "天気もいいですし、この後とかどうです？",
+   "choice_data_list": [
+    "……！ぜひお願いします！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "前回判明した自分の『癒され下手』のことを、\nヒシミラクルは覚えていてくれたらしい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "せっかく教えてくれるのだ……。\n今日でしっかりものにして、\n今後に活かせるようにしたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じゃあ、レジャーシートも敷けたので、\nしばらくここでゴロゴロしましょ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルに案内された丘の上。\nさっそくレジャーシートに寝転んで\n空を見上げる。",
+   "choice_data_list": [
+    "（いいトレーニング日和だなぁ……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――じゃない！\n今日は癒されに来ているのだ。\nトレーニングのことは忘れて休まなければ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（～～～♪）",
+   "choice_data_list": [
+    "……音楽？いったいどこから――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "実はここ、少し離れた場所に\nフェスの会場があるんですよね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "遠くからほどよく聞こえてくるBGM。\nって感じで、これが結構いいんですよ～。",
+   "choice_data_list": [
+    "たしかにこの感じは癒されるな～"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おぉ、ナイスキャッチ～。\nワンちゃんたち走るの速いな～。",
+   "choice_data_list": [
+    "ドッグランもある公園なんだな",
+    "ドッグランもある公園なんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イヌ",
+   "text": "ワンワン！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "犬の飼い主",
+   "text": "あっ、こらこら！　もう、すみません。\nこの子、一緒に遊びたいみたいで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、いえいえー。\nせっかくだし、腹ごなしに遊んでもらえます？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イヌ",
+   "text": "ワンワン！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ま、待って！　ボール、今投げるから！\nお……追いかけてこないで～！",
+   "choice_data_list": [
+    "追い込まれた時のあの加速……いいな！",
+    "追い込まれた時のあの加速……いいね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふぁ～、涼しかったぁ。\n運動後の『足湯カフェ』、最高だなぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……トレーナーさん的にはどうでした？\n最後の癒しスポット、『足湯カフェ』は～。",
+   "choice_data_list": [
+    "今度から休養日はここに来よう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "脚の疲れも取れるし、オシャレな料理で\n気分もアガる！　まさに一石二鳥の場所だ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――ふふっ、さすがは\nミラ子ちゃんの『癒しツアー』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "奇遇ですね！　私たちも\nミラ子ちゃん直伝の『癒しツアー』中で。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "ところで、本日の『テーマ』は？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～と、今日のテーマは……。\n『がんばりすぎなあの人もついダラけちゃう！\n魔性の癒しスポット！』かな～。",
+   "choice_data_list": [
+    "魔性の癒し？……あ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そうだ、『癒しトレーニング』中だった！\n途中からすっかり忘れて、\n仕事のことを考えてしまっていた。",
+   "choice_data_list": [
+    "（あれ？でも――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "なるほど！　ミラ子ちゃんのトレーナーさん、\nすっごい頑張り屋さんですもんね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうそう～結構ツボはつけたと思うけど。\nトレーナーさん的にはどうです？　疲れとか。",
+   "choice_data_list": [
+    "それが、全然なくて……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "音楽に耳を傾けながら、\n仕事のことを考えたり……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "犬と戯れながらも、\nトレーニングのヒントを見つけたり。",
+   "choice_data_list": [
+    "仕事もしてたのに、疲れてない……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "私のテーマ『脚は休むも手は休まず』も、\n作業と休息が両立できる最適なテーマでした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "おかげで、レースの脚を止めることなく\nここまで走っていられます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "『脚も心も裸足が1番！』も、\nオーバーワーク気味な私にぴったりでしたね！",
+   "choice_data_list": [
+    "『癒され方』にもそんなに種類が……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうですよ～？\n合う合わないがありますから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "リフレッシュできたなら、\n今日の感じがトレーナーさんには\n合ってるのかもですね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "実は、それを見抜くことに関しては、\n普通より少～しだけ、自信があるんです。",
+   "choice_data_list": [
+    "ものすごい有能トレーナーだ！",
+    "ものすごい有能トレーナーだね！",
+    "いろいろ考えてくれたんだな",
+    "いろいろ考えてくれたんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "実は、それを見抜くことに関しては、\n普通より少～しだけ、自信があるんです。",
+   "choice_data_list": [
+    "ものすごい有能トレーナーだ！",
+    "ものすごい有能トレーナーだね！",
+    "いろいろ考えてくれたんだな",
+    "いろいろ考えてくれたんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "トプロ＆イクノ",
+   "text": "有能トレーナー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～えっとぉ……、トレーナーっていうのは、\nトレーナーさんが勝手に言ってることで～。",
+   "choice_data_list": [
+    "俺の『癒し』トレーナーなんだ",
+    "私の『癒し』トレーナーなの"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "いいですね！　私もすごくすごい\n有能なトレーナーさんだと思います！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "も、もー！\nおだててもなにも出ないよ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とか言って、なんとな～く\n決めてるだけですけどねー。",
+   "choice_data_list": [
+    "足湯、もう1回入りたいな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "彼女が懸命に考えてくれた癒しを\nもう少し味わっておきたい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いいですね～。\nせっかくだし、2人も一緒にどー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ちゃぽん……♪）",
+   "choice_data_list": [
+    "あ～幸せ～～～"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "幸せですねぇ～～～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ふふふ！\nああいう関係、なんだか憧れちゃいますね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "ええ。……見ているこちらが癒される、\nという効果もあるかもしれません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,288 @@
+{
+ "title": "愛を感じて♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスとおでかけした帰り、\n一緒に観劇へとやってきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "リッチなセレブって、\nこーゆー芸術系も詳しくないとでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、いつもはただ楽しく観ちゃうから――\n今日もせんせーをお呼びしました♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "你好！　お誘いありがとう、ヴィブロス♪\nこの劇、かなり話題になってるわよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ちょうど拝見したかったんです！\n素敵な機会を、ありがとうございます♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こっちこそありがとー！\nあはっ、みんなで観るってわくわくするね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "語り部",
+   "text": "『こうして翼を持つそのウマ娘は、\n7つの冠を天へと捧げ……』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "語り部",
+   "text": "『大空の彼方へと、\n駆け去っていったのでした――』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――うええええ、ちょーよかったー！\nめちゃ感動しちゃった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのあとって、どうなったのかな？\n主人公が空の向こうに走って行ったあと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "解釈は自由でいいと思いますよ。\nヴィブロスさんの受け止めたままで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そっか……！　じゃあ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『主人公に憧れた子が、\nいつか同じ夢を見てくれるといいな……』\n――っと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "ふふっ、素敵な感想♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "感じたものを、\nすぐシェアできるっていいわよね。\nSNSならではって感じで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！　はいはいはーい♡\nじゃあ今感じたこと、シェアしていいかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "感動しあったみんなで、写真撮りたーいっ！",
+   "choice_data_list": [
+    "じゃあ俺が撮影を――",
+    "じゃあ私が撮影を――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ダメダメ！　トレっちも入って～！\nセルフィーで……イエーイっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "サトノクラウンたちと別れたあとも、\nヴィブロスはずっと嬉しそうな様子だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "も～～～、ちょー楽しかった！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぜーったい、また行きたい♪\n他に話題になってるやつ探して～――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "って、……え、えええっ！？",
+   "choice_data_list": [
+    "どうかした？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "さっきあげたウマスタ、ちょーバズってるの！\nやっぱり話題の劇だったから……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほら――！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『みんななかよし～、かわいい♡』\n『ヴィブロスちゃんが観劇って、意外かも！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『みんながどんな話するか気になる……』\n『また遊んだ写真アップしてほしいな！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれ……？\nけどみんな、劇について話してないかも？？",
+   "choice_data_list": [
+    "ヴィブロスのことばかりだな",
+    "ヴィブロスのことばかりだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんでだろ？　展望台に行ったときは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『楽しそう』とか『一緒に行きたい』とか\nたくさん言ってくれてて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "も……もしかしてだけどさ、トレっち。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのときも、今も……\nみんな、話題のスポットとかより――",
+   "choice_data_list": [
+    "みんな、君自身のことが知りたいんだな",
+    "みんな、貴方自身のことが知りたいんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええええ～～～っ！！\n映えスポットや、すっごい劇よりも！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……な、なんか、なんかそれって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょー愛じゃんっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなのラブ、ちょー感じちゃった♡\nだって、私に“憧れ”てるってことでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私も、私自身のこと\nみんなにも～～っと知ってもらいたーいっ♡",
+   "choice_data_list": [
+    "そういう投稿、目指してみようか！",
+    "俺も手助けするよ！",
+    "私も手助けするよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私も、私自身のこと\nみんなにも～～っと知ってもらいたーいっ♡",
+   "choice_data_list": [
+    "そういう投稿、目指してみようか！",
+    "俺も手助けするよ！",
+    "私も手助けするよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ、ぜったいそうする！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "誰となかよしとか～、なにが楽しいかとか～♡\nあはっ、書くこといっぱい♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『なにから書こっかな～』と、\nさっそく計画を始めるヴィブロスなのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やった～！　頼りにしてるね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちなら私のこと、\nい～っぱいわかってくれてるもんね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "この信頼を損なわないよう、\n力を尽くそうと思うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

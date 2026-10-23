@@ -1,0 +1,105 @@
+#title Keep Going
+0 Entering her classic year, Vivlos was gradually raising the intensity of her training for the Tiara races.
+1 Haaaaaa～...
+1> Want to take a short break?
+2 Nuh-uh, I'm fine... One more～...!
+3 When training intensity goes up, fatigue naturally goes up too. I thought that was the reason Vivlos was tired.
+4 But...—
+5 —...Ugh... Nnn... *wheeze, wheeze*...
+5> (...Huh?)
+6 Vivlos doesn't seem to realize it, but she's rubbing her stomach, and her breathing sounds different than usual.
+7 ...*wheeze*... Hah...
+8 Hah... Hey, Tore-cchi, maybe I should take a little break after all...?
+8> No, that's it for today | No, that's it for today
+9 Huh?
+9> Let's get you checked at the infirmary
+10 ...I'm fine, you know? If I just rest a little.
+10> Let's make sure you're fine
+11 But—
+11> Will you do this for me? | Will you do this for me?
+12 ...—
+13 Hmm... It might be best to have her examined thoroughly at a hospital.
+13> !
+14 Repeated stomachaches, abnormal breathing sounds... She may be suffering from multiple conditions.
+15 It would be best to keep an eye on her for a while. This is just my impression, but... a full recovery would take about six months.
+16 Six months... Then, I really...
+16> ...Vivlos, I'm sorry!
+17 Huh...
+17> I'm sorry I didn't notice something was wrong
+18 My carelessness in brushing off the signs, and my failure to be someone Vivlos felt she could talk to... This happened because of me.
+18> I'm truly sorry
+19 ...That's not it. Listen, Trainer—
+20 —Vivlos!
+21 Onee-chan? Why are you...
+22 Your trainer contacted me. More importantly, are you all right?!
+23 Yeah, I'm okay now. I'm fine...
+24 I see, thank goodness... ...Say, Vivlos.
+25 You... knew all along, didn't you? That you weren't feeling well.
+25> !
+26 You're a smart girl. There's no way you didn't notice.
+27 ...'Cause I really thought I was fine.
+28 ...I see.
+29 Trainer, a moment, please.
+30 —Trainer, do you understand? Why she was hiding it...
+30> Maybe she wanted to run the Tiara races
+31 Vivlos's feelings toward the Tiara races had been growing deeper by the day. She must have known that if she said anything, she wouldn't make it in time.
+32 ...To think it had grown that heavy for her.
+33 ...As a senior racer, please allow me to share my view.
+33> Go ahead | Go ahead
+34 It might be best not to let Vivlos race.
+34> !
+35 The Twinkle Series is grueling. I'm not sure she could endure it right now...
+36 Running while undergoing treatment is unrealistic, too. I think it would be best for her to rest until she's fully recovered.
+36> ...That's one path, too | ...That's one path, too
+37 I'd been thinking something similar myself. Skip the upcoming Oka Sho and Japanese Oaks, and depending on how things go, even the Shuka Sho—
+37> To move toward her biggest dream, Dubai—
+38 No way!
+39 ! Listen to me—
+40 I'm definitely! Running the Tiara races!!
+41 Ah!
+41> Let's go after her!
+42 ...
+43 No way.
+44 No way! I'm definitely not resting!
+45 ...I'm sorry for talking it over without you. But I meant to discuss it with you properly so you'd be convinced—
+46 No! I don't wanna hear it～!
+47 Vivlos was always so open... but right now she was stubborn.
+47> Vivlos...
+48 Listen, just for a moment—
+49 No!! I wanna win the Triple Tiara!
+50 'Cause! 'Cause you... can't anymore, Onee-chan.
+51 What...—
+52 I was watching too, you know? Watching you all this time...
+53 How much you wanted the Tiara... How hard you tried!
+54 To me... you were always number one! You were the coolest!!
+55 ! Vivlos...
+56 ...I'm not you, Onee-chan. But I'm probably the only one who can become you.
+57 Everyone who loves you is counting on me too!
+58 I'm gonna make your dream come true! Otherwise—
+59 Otherwise, I can't just make my own dream come true!
+60 Vivlos...
+61 It was the first time I'd seen the passion deep in Vivlos's heart. "Get revenge for my sister"... Those words held real love for her sister.
+62 Hey, Trainer... you understand, right?
+62> ...You're prepared, then | ...You're prepared, then
+63 Even in her current condition, she can still enter races. But what she's aiming for is the Triple Tiara... Winning it will take tremendous effort.
+64 Managing her health, getting stronger without overloading her body... It'll demand more focus than ever. It might even affect her future.
+64> And you'll still do it? | And you'll still do it?
+65 ...! Yeah! I'll do it!
+66 Wait a moment, Trainer...!
+66> Please let us work hard together
+67 ...How am I supposed to trust the word of someone with no track record?
+67> What about your sister?
+68 What?
+68> Can't you trust Vivlos? | Can't you trust Vivlos?
+69 Onee-chan...! I definitely won't overdo it!
+70 I won't give up on the Triple Tiara or Dubai! So...!
+71 ..................
+72 ...That's unfair. If I say no now, it'll look like I don't trust you.
+73 Onee-chan...!
+74 Trainer. If anything happens to her... I will never forgive you.
+74> ...Right! | ...Right!
+75 Vivlos. You listen carefully to your trainer, too.
+76 They bear all the responsibility. ...That's what a trainer contract is. Understood?
+77 Yeah!
+78 Trainer! ...I'm counting on you!
+79 The next day—Vivlos officially announced she'd run the Tiara races as planned. Her fans were overjoyed—

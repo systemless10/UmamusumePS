@@ -283,19 +283,38 @@ def find_game(info: dict) -> Path | None:
 RACE_ASSETS = {"global": ("race_param_define_global.json", "Global"), "jp": ("race_param_define.json", "JP")}
 
 
+def _persistent_dir(guess: Path | None) -> Path | None:
+    """The game's Persistent folder (the one holding meta, dat/ and master/).
+    --persistent wins; else the install's own; else the folder --mdb sits in
+    (Persistent/master/master.mdb), for installs that keep data elsewhere."""
+    cands = []
+    if os.environ.get("UMA_PERSISTENT_DIR"):
+        cands.append(Path(os.environ["UMA_PERSISTENT_DIR"]))
+    if guess:
+        cands.append(guess)
+    if os.environ.get("MASTER_MDB_PATH"):
+        cands.append(Path(os.environ["MASTER_MDB_PATH"]).resolve().parent.parent)
+    for c in cands:
+        if (c / "meta").exists():
+            return c
+    return guess
+
+
 def ensure_race_assets(region: str, persistent: Path | None) -> None:
     """Course tables + lane curves for the race engine, extracted from the
     user's own install (tools/extract_race_assets.py). Re-extracted after a
     game update changes the asset index."""
     name, label = RACE_ASSETS[region]
     out = SERVER / "data" / name
+    persistent = _persistent_dir(persistent)
     meta = persistent / "meta" if persistent else None
     if out.exists() and not (meta and meta.exists() and meta.stat().st_mtime > out.stat().st_mtime):
         say("  race assets: up to date")
         return
     if not (meta and meta.exists()):
         die(f"server/data/{name} is missing and the game's data folder wasn't found to extract it. "
-            "Use --game-dir so the launcher can find the game.")
+            "Pass --persistent with the folder that holds the game's 'meta' file and 'dat' folder "
+            "(usually ...\\Persistent, next to master\\master.mdb).")
     say("  extracting race course data from your game install ...")
     run([VENV_PY, ROOT / "tools" / "extract_race_assets.py", "--region", label,
          "--persistent", persistent, "--output", out])
@@ -401,6 +420,8 @@ def main() -> None:
     ap.add_argument("--reset-venv", action="store_true", help="recreate server/.venv from scratch")
     ap.add_argument("--reload", action="store_true", help="dev only: restart on code edits")
     ap.add_argument("--mdb", metavar="FILE", help="use this master.mdb instead of the game install's")
+    ap.add_argument("--persistent", metavar="DIR",
+                    help="the game's Persistent folder (holds meta, dat/, master/), if not next to --mdb or the game")
     ap.add_argument("--game-dir", metavar="DIR", help="game folder (the one with the .exe), if not auto-detected")
     ap.add_argument("--yes", "-y", action="store_true", help="answer yes to every prompt")
     args = ap.parse_args()
@@ -412,6 +433,8 @@ def main() -> None:
         os.environ["MASTER_MDB_PATH"] = str(mdb)
     if args.game_dir:
         os.environ["UMA_GAME_DIR"] = str(Path(args.game_dir).expanduser().resolve())
+    if args.persistent:
+        os.environ["UMA_PERSISTENT_DIR"] = str(Path(args.persistent).expanduser().resolve())
     info = REGIONS[args.region]
 
     if not in_venv():

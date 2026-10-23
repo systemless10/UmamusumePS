@@ -1,19 +1,3 @@
-"""THE TWINKLE LEGENDS (scenario 10) -- the endpoints only this scenario has.
-
-    single_mode_legend/select_buff          {buff_id, current_turn}               no data
-    single_mode_legend/exchange_buff        {before_buff_id, after_buff_id, ...}  no data
-    single_mode_legend/legend_race_entry    {current_turn}          ps 28 -> 29, the field
-    single_mode_legend/legend_race_start    {is_short, current_turn} ps 29 -> 30, the race
-    single_mode_legend/legend_race_end      {current_turn}          ps 30 -> 31, result + rewards
-    single_mode_legend/legend_race_out      {current_turn}          ps 31 -> 5, the result event
-    single_mode_legend/legend_race_continue {continue_type, current_turn}  retry a lost Dream Fest
-    single_mode_legend/popularity_end       {current_turn}          ps 33 -> 5
-    single_mode_legend/cm_end               {current_turn}          ps 32 -> 5, the ending
-
-Their fields sit at the top level of the request. Shapes are dump.cs's and the
-captures' (docs/JP_TWINKLE_LEGENDS_SCENARIO.md §2). The legend_data_set every
-reply carries is attached at the response chokepoint (Legend.attach).
-"""
 
 from __future__ import annotations
 
@@ -52,7 +36,6 @@ def _refused(where: str, why) -> dict:
 
 
 def _no_data() -> dict:
-    """select_buff / exchange_buff: the real reply has no `data` key at all."""
     return {"response_code": 1, "data_headers": {"result_code": 1, "notifications": {}}}
 
 
@@ -67,8 +50,6 @@ def _simulate(full_state: dict, viewer_id, chara_info: dict, sp: dict) -> None:
     finally:
         impl.SIM_STATE.clear()
 
-
-# ------------------------------------------------------------- lottery ---
 
 def handle_select_buff(payload: dict) -> dict:
     got = _career(payload)
@@ -97,11 +78,7 @@ def handle_exchange_buff(payload: dict) -> dict:
     return _no_data()
 
 
-# --------------------------------------------------------- Dream Fests ---
-
 def handle_race_entry(payload: dict) -> dict:
-    """ps 28 -> 29: the field is drawn and the race simulated here, so the
-    paddock shows the race that is run."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -139,8 +116,6 @@ def handle_race_start(payload: dict) -> dict:
 
 
 def handle_race_end(payload: dict) -> dict:
-    """ps 30 -> 31: the result, fans, race_history, the trophy (§9.4). The
-    Legend race ends the career (state 3) and sets the CM route."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -189,7 +164,6 @@ def handle_race_end(payload: dict) -> dict:
 
 
 def handle_race_out(payload: dict) -> dict:
-    """ps 31 -> 5 with the result event (timing 18 / 19)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -214,8 +188,6 @@ def handle_race_out(payload: dict) -> dict:
 
 
 def handle_race_continue(payload: dict) -> dict:
-    """Retry a lost Dream Fest [INFERRED, §18 #15]: the shared continue
-    budgets, then back to the paddock with a fresh simulation."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -260,8 +232,6 @@ def handle_race_continue(payload: dict) -> dict:
     return _finish(viewer_id, full_state, career, chara_info, response)
 
 
-# ------------------------------------------------------ fan service / CM ---
-
 def _screen_end(payload: dict, where: str, want_ps: int, home: bool) -> dict:
     got = _career(payload)
     if got is None:
@@ -272,11 +242,9 @@ def _screen_end(payload: dict, where: str, want_ps: int, home: bool) -> dict:
         return _refused(where, f"playing_state {ps}")
     chara_info["playing_state"] = 5
     if where == "popularity_end":
-        impl.state(full_state)["popularity"] = {}     # [] on the real reply already
+        impl.state(full_state)["popularity"] = {}
     keys = ("chara_info", "unchecked_event_array") + (("home_info",) if home else ())
     response = _envelope(career, chara_info, keys)
-    # The pending event (fan service's reward, the ending) already went out on
-    # the reply that opened the screen: it is the ACTIVE one, served again.
     pending = CE.active(full_state)
     wire = pending.wire_entry() if pending else CE.serve_next(full_state, where)[0]
     response["data"]["unchecked_event_array"] = [wire] if wire else []
@@ -284,12 +252,10 @@ def _screen_end(payload: dict, where: str, want_ps: int, home: bool) -> dict:
 
 
 def handle_popularity_end(payload: dict) -> dict:
-    """ps 33 -> 5; the reward event (B) is still pending (§10)."""
     return _screen_end(payload, "popularity_end", 33, home=True)
 
 
 def handle_cm_end(payload: dict) -> dict:
-    """ps 32 -> 5; the ending event is still pending (§11)."""
     return _screen_end(payload, "cm_end", 32, home=False)
 
 

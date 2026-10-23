@@ -1,0 +1,311 @@
+{
+ "title": "たまには『お姉ちゃん』みたいに",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "そういえば以前、ゲームセンターで\nヴィブロスとウインバリアシオンの\nぬいぐるみを手に入れていたことを思い出す。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "渡そうと思い、\nバッグに入れたままだったはず……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふぅっ。やっぱりここ、\n金糸にしてよかったぁ。\nキラキラしてて、かっわいい～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ。\nせっかくトレっちがくれたんだもん。\nかわいくてセレブな衣装を作らなくちゃ☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "机には美しい刺繍が施された生地が\n置かれている。完成はまだ先のようだが、\nヴィブロスの作業の進みは順調だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シオンさん、そろそろ休憩――……ん？\nどうしたの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ウインバリアシオンの前に置かれた刺繍。\n大きく崩れてはいないものの、\n苦労しているのが見てとれる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "ほつれとか、繕うくらいは\nやったことあるんすけど、\n本格的な刺繍は経験があまりなくて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃーん。\nあのね、お願いがあるんだ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ふふ、なぁに？\n私にできることなら、\nなんでも言ってちょうだい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っ。\nだったら、私に任せて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "え……任せる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、私が教えてあげるから。\n心配しないで、\nきっとすぐにできるようになっちゃうよ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "なんか、ぺったりとしているというか、\nすごく平面な気が……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、そうしたら、\nまずは下縫いで土台を作るといいかも。\nそれから、ストレートステッチで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "な、なるほど……？\nやってみるっす……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "花の部分の曲線が、\nなんだかカクカクしてる……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ、ごめんね！　そこのやり方は\n最初に伝えておかなくちゃ\nいけなかったところだった……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "い、いえ！\n自分が気づかなかったせいっす。\nでも、この場合はどうすれば……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "（んっと、んっと。\nお姉ちゃんは、こういうとき……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ、そっか！\n実際に見せたほうが……\nや、やってみるねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それで、次はここの針目に\n別糸を通すんだけど、\n巻きつけないといけないから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "あ、あの、すみません。\n今のところをもう一度……！\n正面からだと、方向がわかりにくくて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そ、そうだよねっ。\nこういうときは、いつも……あ！\nシオンさん、抱っこしてもらってもいい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "何故！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――その後も練習は続いていたが、\n満足のいく結果は、\n得られなかったようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "上手に教えてあげられなかったよぉぉお……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんから教わったら、\nすぐできるようになるのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――それは、大抵のことを\n器用にこなしてしまう、\nヴィブロスだからだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "一朝一夕ではなく、何度も繰り返し練習を\nしてできるようになるのが一般的なのだが……\n本人は気づいていないようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ぐす。シオンさん、\nイヤになっていないかなぁ……。\nもうやりたくな～いってなってない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うう、トレっち～！　どうしよう～！",
+   "choice_data_list": [
+    "よしよし。大丈夫、大丈夫"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "ヴィブロスさん、見てください！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わっ、シオンさん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "昨日、部屋に戻ってからも\nずっとやってたんすよ。\nそうしたら……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ウインバリアシオンが、\n広げて見せてくれた生地には、\n見事な刺繍が輝いていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わあ……！　すごいすごいっ。\nこれをひとりでずっと？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "はい！　ヴィブロスさんのおかげっすね。\nコツを教えてくれたから、\nあとは繰り返し練習しまくったっす。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "へへ……ありがとうございます。\n完璧とは呼べないかもしれないですけど、\nおかげで残りも楽しくできそうっす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っ。\nど、どういたしましてっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへ。",
+   "choice_data_list": [
+    "せっかくだし――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "もっと難しい刺繍にも挑戦してみる？\nやる気を出しているふたりに、\nそんな提案をしてみた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "え！？　……い、いえ！　大歓迎ですよっ。\nここまできたら、とことんやるっす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あはは！　うんうん、やっちゃおう☆\nどんなに大変でも、また私が教えてあげるね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへ。",
+   "choice_data_list": [
+    "一晩中してたなら――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ちょっと休憩したら？\nと、声をかけ、お茶を淹れることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "あ、ありがとうございます！\n……はぁ。まだ完成してないのに、\nすごい達成感っす。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウインバリアシオン",
+   "text": "ヴィブロスさん。\n本当に、ありがとうございます！\n頼りになるっす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――ふふっ！\n完成まで、いっしょにがんばろうね♡\nきっと、最高にすてきな衣装になるから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

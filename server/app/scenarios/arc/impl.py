@@ -1,19 +1,3 @@
-"""PROJECT L'ARC (scenario 6, JP only) -- the mechanics.
-
-docs/JP_LARC_SCENARIO.md is the spec this implements, section for section; its
-§22 register says which parts are exact and which are measured server-side
-rolls (marked MEASURED here, each with its register id):
-
-    the members: roster, slots, growth, points        §4    (create_roster, upkeep)
-    the star gauge                                    §5    (on_training)
-    the SS match                                      §6    (build_lineup, run_match)
-    supporter points and expectation                  §7    (approval_rate, ranks)
-    the scenario line and overseas points             §8-9  (refresh_preview)
-    the aptitudes                                     §9    (progress, level_up)
-    races: fields, runner stats, points               §11   (race_field, race_stats)
-
-and builds the arc_data_set every career response carries (data_set).
-"""
 
 from __future__ import annotations
 
@@ -30,44 +14,31 @@ log = logging.getLogger("uma-server")
 
 SCENARIO_ID = M.SCENARIO_ID
 STATE_KEY = "arc"
-# What the shared code reads off chara_info without the scenario state: the
-# trainee's own points (the type-11 goals) and aptitude levels (race stats).
-# Persisted on the career's chara_info, stripped from every served copy.
 MIRROR_KEY = "_arc"
 
-GAUGE_MAX = 3                   # RIVAL_GAUGE_MAX
+GAUGE_MAX = 3
 LINEUP_MAX = 5
-ROSTER_TURN = 3                 # the members appear with 206002's reply (§4.1)
-SP_TAG_BOOST_TYPE = 3           # every capture (§5)
-TRAINEE_SLOT_BASE = 2007900     # members race as 2007900 + slot (§4.2)
+ROSTER_TURN = 3
+SP_TAG_BOOST_TYPE = 3
+TRAINEE_SLOT_BASE = 2007900
 
-# MEASURED (M7): a member's stat growth per turn, and a co-trainer's extra on
-# the trained stat.
 GROWTH = (3, 8)
 CO_TRAIN = (18, 27)
-# MEASURED (M8): the per-turn share's spread around the rank mean, and its clip.
 SHARE_SPREAD, SHARE_MAX = 7, 28
-# MEASURED (M10): SSS odds at 0 and 5-7 members beaten since the last SSS.
 SSS_ODDS = {0: 0.03, 5: 0.42, 6: 0.42, 7: 0.42}
 SSS_SURE = 8
-# MEASURED (M11): mark by energy and the loss chance per mark.
 MARK_CUTS = ((19, 1), (7, 2), (1, 3), (0, 4))
 LOSS_ODDS = {1: 0.0, 2: 0.10, 3: 0.20, 4: 1.0}
-# MEASURED (M14): a member's race skills before the Niel.
 EARLY_SKILL_KEEP = 0.7
 FULL_SKILLS_TURN = 41
-# MEASURED (M4): a member's initial stats around the slot's ratio.
 STAT_JITTER = 0.05
-# MEASURED (M12): members entered in a non-goal G1-G3 turf race.
 RIVAL_RACE_MEMBERS = (1, 3)
-MIN_DISTANCE_APT = 5            # C or better
+MIN_DISTANCE_APT = 5
 
 THRESHOLD_EVENTS = ((200, 206126, 2, 2000, True), (400, 206127, 3, 2000, False),
                     (600, 206128, 4, 4000, True), (800, 206129, 5, 6000, False),
-                    (1000, 206130, 5, 8000, True))      # §7: (rate, event, stats, fans, facilities)
+                    (1000, 206130, 5, 8000, True))
 
-
-# ================================================================ state ===
 
 def _blank() -> dict:
     return {
@@ -105,7 +76,6 @@ def served_turn(full_state: dict, chara_info: dict) -> int:
 
 
 def flag(st: dict, name: str, value=None):
-    """A one-shot response flag: set with a value, read-and-clear without."""
     if value is not None:
         st["flags"][name] = value
         return value
@@ -122,8 +92,6 @@ def live_chara(full_state: dict) -> dict:
 
 
 def mirror(full_state: dict, chara_info: dict | None = None) -> None:
-    """Copy the trainee's points and aptitude levels onto the career's
-    chara_info (MIRROR_KEY), for the shared goal check and race stats."""
     st = state(full_state)
     for ci in (chara_info, live_chara(full_state)):
         if isinstance(ci, dict):
@@ -139,8 +107,6 @@ def strip_mirror(chara_info) -> None:
         chara_info.pop(MIRROR_KEY, None)
 
 
-# ============================================================== members ===
-
 def member(st: dict, chara_id: int) -> dict | None:
     for m in st["members"]:
         if int(m["chara"]) == int(chara_id):
@@ -153,7 +119,6 @@ def is_expedition(turn: int) -> bool:
 
 
 def deck_charas(chara_info: dict) -> dict:
-    """{chara: (position, support_card_id)} of the deck's NORMAL cards."""
     out = {}
     for pos, sid in RF.deck(chara_info).items():
         kind, _cmd, _r, chara = RF.card_meta(sid)
@@ -167,8 +132,6 @@ def deck_all_charas(chara_info: dict) -> set:
 
 
 def _initial_points(rng: random.Random) -> list:
-    """MEASURED (M3): each slot in its observed range, steps of 4, adjusted
-    to the exact 12400 total."""
     pts = [lo + 4 * rng.randint(0, (hi - lo) // 4) for lo, hi in M.INITIAL_POINTS]
     diff = M.INITIAL_POINTS_TOTAL - sum(pts)
     order = list(range(len(pts)))
@@ -191,7 +154,6 @@ def _initial_points(rng: random.Random) -> list:
 
 
 def _peff_block(rng: random.Random, x_groups) -> list:
-    """One block of three bonuses: a shuffle of {1 hint, 11 stat, X} (§4.4)."""
     block = [1, 11, rng.choice(x_groups) if isinstance(x_groups, tuple) else x_groups]
     rng.shuffle(block)
     return block
@@ -213,10 +175,6 @@ def _extend_peff(m: dict, rng: random.Random) -> None:
 
 
 def create_roster(full_state: dict, chara_info: dict) -> list:
-    """The fifteen members (§4.1-§4.2, §4.1a): the deck's normal cards on
-    their own scout rows, the link charas the trainee and the deck do not
-    bring on their R cards; MEASURED (M1/M2) which links drop / which charas
-    fill, and who takes which slot (links on top)."""
     st = state(full_state)
     if st["roster"]:
         return st["members"]
@@ -276,16 +234,12 @@ def create_roster(full_state: dict, chara_info: dict) -> list:
 
 
 def npc_members(st: dict, chara_info: dict) -> list:
-    """Members who stand on facilities by chara id: everyone but the deck's
-    own cards (those stand by deck position)."""
     if not st["roster"]:
         return []
     return [m["chara"] for m in st["members"] if not m["pos"]]
 
 
 def partner_member(st: dict, chara_info: dict, partner: int) -> dict | None:
-    """The member a training partner id stands for: a deck slot whose normal
-    card is a member, or a chara id."""
     p = int(partner)
     if p >= RF.NPC_BODY_MIN_ID:
         return member(st, p)
@@ -295,30 +249,23 @@ def partner_member(st: dict, chara_info: dict, partner: int) -> dict | None:
     return None
 
 
-# ============================================================ points ===
-
 def all_rows(st: dict) -> list:
-    """[(chara, points)] of the sixteen rows."""
     rows = [(m["chara"], int(m["points"])) for m in st["members"]]
     rows.append((int(st["trainee"]), int(st["tpoints"])))
     return rows
 
 
 def wire_ranks(st: dict) -> dict:
-    """`rank` on the wire: a competition rank on the points (ties share)."""
     rows = all_rows(st)
     return {c: 1 + sum(1 for _o, q in rows if q > p) for c, p in rows}
 
 
 def strict_ranks(st: dict) -> dict:
-    """The order the SS points use: ties broken by the lower chara id (§6.4)."""
     order = sorted(all_rows(st), key=lambda r: (-r[1], r[0]))
     return {c: i + 1 for i, (c, _p) in enumerate(order)}
 
 
 def approval_rate(st: dict) -> int:
-    """§7: round(sum of all 16 rows / 170), tenths of a percent; 1 before
-    the roster (every T1-T2 reply)."""
     if not st["roster"]:
         return 1
     return int(sum(p for _c, p in all_rows(st)) / 170 + 0.5)
@@ -338,8 +285,6 @@ def pool_for(turn: int) -> int:
 
 
 def _grow_points(full_state: dict, st: dict, turn: int) -> None:
-    """§4.3: the fifteen share the turn's pool in units of pool/200, by rank
-    (MEASURED split, M8)."""
     rng = rng_for(full_state, "pool", turn)
     ranks = strict_ranks(st)
     raw = []
@@ -363,8 +308,6 @@ def _grow_points(full_state: dict, st: dict, turn: int) -> None:
 
 
 def _grow_stats(full_state: dict, st: dict, turn: int) -> None:
-    """MEASURED (M7): +3..8 a stat a turn; the members who trained beside the
-    trainee last turn get a co-training gain on that facility's stat."""
     rng = rng_for(full_state, "growth", turn)
     co = st.get("co_train") or {}
     co_charas = {int(c) for c in co.get("charas") or ()} if int(co.get("turn") or 0) == turn - 1 else set()
@@ -386,16 +329,12 @@ def M_scout(m: dict) -> dict | None:
 
 
 def _member_potentials(st: dict, turn: int) -> None:
-    """§4.1a: the slot group's fixed schedule (23/23)."""
     for m in st["members"]:
         for pid, lv in M.MEMBER_SCHEDULE[m["group"]].get(int(turn), ()):
             m["pot"][str(pid)] = max(int(m["pot"].get(str(pid), 0)), lv)
 
 
 def upkeep(full_state: dict, chara_info: dict, target: int | None = None) -> bool:
-    """Every turn from the last one done up to the served turn: the
-    members' growth, aptitudes and points, then the turn's SS lineup and its
-    scheduled race entries. True when anything ran (persist)."""
     st = state(full_state)
     if not st["roster"]:
         return False
@@ -414,8 +353,6 @@ def upkeep(full_state: dict, chara_info: dict, target: int | None = None) -> boo
 
 
 def start_roster_turn(full_state: dict, chara_info: dict) -> None:
-    """206002 resolved: the roster joins at T3 with its first lineup (none:
-    every gauge is 0) and the board re-drawn with the members on it."""
     st = state(full_state)
     create_roster(full_state, chara_info)
     st["upkeep_turn"] = ROSTER_TURN
@@ -424,13 +361,8 @@ def start_roster_turn(full_state: dict, chara_info: dict) -> None:
     mirror(full_state, chara_info)
 
 
-# ======================================================== star gauges ===
-
 def on_training(full_state: dict, chara_info: dict, command_id: int, partners, turn: int,
                 failed: bool) -> None:
-    """§5: every member on the trained facility gets +1 + the rainbows there,
-    capped at 3; nothing on the expedition or on a failure. The ones already
-    full are listed in not_up_arc_parameter_info."""
     st = state(full_state)
     if not st["roster"]:
         return
@@ -453,7 +385,6 @@ def on_training(full_state: dict, chara_info: dict, command_id: int, partners, t
 
 
 def raise_gauges(st: dict, charas, n: int = 1) -> list:
-    """+n to these members' gauges; the ones already full are returned."""
     full = []
     for c in charas:
         m = member(st, c)
@@ -465,15 +396,7 @@ def raise_gauges(st: dict, charas, n: int = 1) -> list:
     return full
 
 
-# ================================================== Satake Mei (§13) ===
-
 def mei_roll(full_state: dict, chara_info: dict, card_id: int, command_id, shared_chance: float):
-    """Scenario.pal_training_roll for Mei's cards: her L'Arc version of
-    809043003 in Japan (guts +3, SP +3, bond +7, five gauges at resolution) and
-    400006115 on the expedition (the same + 50 overseas points). Every capture
-    (17 firings) paid guts +3 / SP +3 with no mood; bond +7, +9 under 愛嬌○
-    (9 checkable). 400006115's bond only showed a capped 92 -> 100 [INFERRED:
-    the Japan +7]."""
     if int(card_id) not in (M.MEI_SSR, M.MEI_R):
         return None
     exped = formula.is_exped(int(command_id or 0))
@@ -492,10 +415,6 @@ def mei_roll(full_state: dict, chara_info: dict, card_id: int, command_id, share
 
 
 def mei_resolved(full_state: dict, story_id: int) -> None:
-    """Mei's scenario payout when her event resolves: 809043003 raises five
-    gauges by 1, first the co-trainers of the training that brought her whose
-    gauge is not full, then random other non-full members (§5, 3/3 checkable
-    in C7 plus every later capture); 400006115 adds 50 overseas points."""
     st = state(full_state)
     if story_id == M.MEI_EXPED_STORY:
         st["gexp"] = int(st["gexp"]) + M.MEI_EXPED_GEXP
@@ -513,8 +432,6 @@ def mei_resolved(full_state: dict, story_id: int) -> None:
     raise_gauges(st, pick)
 
 
-# =========================================================== SS match ===
-
 def mark_for(vital: int) -> int:
     for floor, mark in MARK_CUTS:
         if int(vital) >= floor:
@@ -523,8 +440,6 @@ def mark_for(vital: int) -> int:
 
 
 def lineup_open(chara_info: dict, turn: int) -> bool:
-    """SS matches (§6.1): from T3, never on the expedition, never on a turn
-    whose only command is the goal race."""
     from ...handlers import single_mode_team as smt
     if turn < ROSTER_TURN or is_expedition(turn):
         return False
@@ -532,9 +447,6 @@ def lineup_open(chara_info: dict, turn: int) -> bool:
 
 
 def build_lineup(full_state: dict, chara_info: dict, turn: int) -> dict:
-    """§6.1-§6.2: the full gauges, at most five (MEASURED draw, M9), the SSS
-    flag off the members beaten since the last SSS (≥ 8 always, 1-4 never,
-    MEASURED odds otherwise, M10), priced at the turn's ranks (§6.4)."""
     st = state(full_state)
     if not lineup_open(chara_info, turn):
         st["lineup"] = {"turn": int(turn), "members": [], "special": 0}
@@ -570,10 +482,6 @@ def price_lineup(st: dict, charas, special: int) -> dict:
 
 
 def ss_preview(st: dict, chara_info: dict, charas, special: int) -> list:
-    """§6.3 (527/527 + 29/29): per member 1 + a step per threshold its own
-    stat reaches (300 / 450 / 600), its specialty +4 (+6 for a link chara on a
-    deck card); an SSS +15 everywhere; SP 5 a member (10 in an SSS). Shown
-    after the 1200 halving."""
     out = [0] * 5
     for c in charas:
         m = member(st, c)
@@ -594,8 +502,6 @@ def current_peff(m: dict) -> list:
 
 
 def bonus_line(st: dict, chara_info: dict, charas) -> list:
-    """selection_info.bonus_params_inc_dec_info_array: the current group 11
-    (specialty stat +10 / +15) and 12 (SP +20) bonuses of the lineup."""
     add = {}
     for c in charas:
         m = member(st, c)
@@ -637,8 +543,6 @@ class Refused(Exception):
 
 
 def run_match(full_state: dict, chara_info: dict, turn: int) -> dict:
-    """The selection_exec call (§6.4-§6.5). Returns {"results", "bonus",
-    "not_up"} for the reply."""
     st = state(full_state)
     lu = st.get("lineup") or {}
     charas = [int(c) for c in lu.get("members") or ()]
@@ -663,12 +567,6 @@ def run_match(full_state: dict, chara_info: dict, turn: int) -> dict:
             st["tpoints"] = int(st["tpoints"]) + int(lose)
             m["points"] = int(m["points"]) + int(win)
         results.append({"chara_id": c, "result": 1 if won else 2})
-    # The stat preview lands in full, won or lost (§6.4), and the beaten
-    # members' bonus line on top: both are handed to the shared exec_command
-    # applier by Arc.scenario_command.
-    # The beaten members' bonus line (groups 11 / 12), read before their
-    # bonuses are consumed, is what result_bonus_params_inc_dec_info_array shows
-    # and what lands on top of the preview (23/23).
     won_bonus = bonus_line(st, chara_info, beaten)
     kept = set()
     for c in beaten:
@@ -694,7 +592,6 @@ def run_match(full_state: dict, chara_info: dict, turn: int) -> dict:
 
 
 def _apply_peff(full_state: dict, chara_info: dict, m: dict, turn: int, not_up: list) -> int:
-    """The beaten member's current bonus (§4.4), then the next one queued."""
     from ... import event_engine
     st = state(full_state)
     num, grp, _value = current_peff(m)
@@ -725,9 +622,6 @@ def _apply_peff(full_state: dict, chara_info: dict, m: dict, turn: int, not_up: 
 
 
 def member_hint(chara_info: dict, m: dict, rng: random.Random) -> list:
-    """Group 1 (§4.4): a deck member hints a skill of its deck card at 1 + the
-    card's hint-level effect (MEASURED for link cards, M18); anyone else a
-    skill of its scout card at +1 (U7, flagged)."""
     learned = {s.get("skill_id") for s in chara_info.get("skill_array") or ()}
     if m["pos"]:
         sid = int(m["card"])
@@ -741,7 +635,6 @@ def member_hint(chara_info: dict, m: dict, rng: random.Random) -> list:
 
 
 def _bond_from_match(chara_info: dict, st: dict, beaten, turn: int) -> None:
-    """U8 (flagged): a beaten deck member's card +7 bond before T25, +9 after."""
     gain = 7 if int(turn) < 25 else 9
     for c in beaten:
         m = member(st, c)
@@ -752,12 +645,7 @@ def _bond_from_match(chara_info: dict, st: dict, beaten, turn: int) -> None:
                 row["evaluation"] = min(100, int(row.get("evaluation") or 0) + gain)
 
 
-# ========================================================== aptitudes ===
-
 def cond_count(st: dict, cond: tuple, chara_info: dict, race_history) -> int:
-    """How far one unlock condition is (§9.2): 142 members beaten, 24 an
-    event (the expedition start / a Trust), 60 G1 wins, 144 the Niel run,
-    57 the classic Arc won."""
     cid, _num, ctype, v1, v2, v3, total = cond
     if ctype == 142:
         return min(total, int(st["ss_wins"]))
@@ -783,7 +671,6 @@ def _history(full_state: dict) -> list:
 
 
 def unlockable(full_state: dict, chara_info: dict) -> list:
-    """Aptitudes still at Lv0 whose every condition is met."""
     st = state(full_state)
     hist = _history(full_state)
     out = []
@@ -796,8 +683,6 @@ def unlockable(full_state: dict, chara_info: dict) -> list:
 
 
 def unlock(full_state: dict, chara_info: dict, pids) -> None:
-    """課題の克服 resolves: those aptitudes go to Lv1, and their Lv1 effect
-    lands (10: the three Arc hints, §9.3)."""
     from ... import event_engine
     st = state(full_state)
     for pid in pids:
@@ -811,9 +696,6 @@ def unlock(full_state: dict, chara_info: dict, pids) -> None:
 
 
 def level_up(full_state: dict, chara_info: dict, requests) -> None:
-    """potential_level_up (§9.2): `level` is the NEW level; a jump costs the
-    sum of its steps. Refusals as the real server: Lv0, the points short, the
-    current level again -> 205 (Refused); past the table -> 102 (Invalid)."""
     st = state(full_state)
     plan, cost = {}, 0
     for r in requests or ():
@@ -858,12 +740,8 @@ def level_sum(st: dict) -> int:
     return sum(int(v) for v in st["pot"].values())
 
 
-# ======================================================= the scenario line ===
-
 def refresh_preview(full_state: dict, chara_info: dict, commands, card_levels=None,
                     turn: int | None = None) -> bool:
-    """This turn's scenario line and overseas points per facility, from the
-    board about to be served. exec_command pays exactly what it said."""
     st = state(full_state)
     turn = int(turn or turn_of(chara_info))
     rate = approval_rate(st)
@@ -892,17 +770,11 @@ def preview_row(st: dict, command_id, turn: int) -> dict:
     return pv["rows"].get(str(int(command_id or 0))) or {}
 
 
-# ============================================================== races ===
-
 def cap_bonus(slot: int) -> int:
-    """A member's race-stat cap over its scout *_limit, by slot (§11.3)."""
     return 110 - 10 * slot if slot <= 6 else 80 - 5 * slot
 
 
 def race_stats(stats: list, levels: dict, race_instance_id: int, caps: list):
-    """§9.4: every resolved aptitude's buff, plus the race's unresolved
-    debuffs; turf / middle raised to at least A, or set to G. Returns
-    (stats, turf, middle) -- None where the aptitude is untouched."""
     add = [0] * 5
     turf = mid = None
     for (pid, plv), bv in M.potential_buff().items():
@@ -920,8 +792,6 @@ def race_stats(stats: list, levels: dict, race_instance_id: int, caps: list):
 
 
 def apply_player_race_stats(chara_info: dict, player: dict, program_id: int) -> None:
-    """§11.3: the trainee runs at min(max, stat + buffs + the race's
-    unresolved debuffs) (161/161), in every race of the career."""
     levels = mirrored_levels(chara_info)
     inst = M.program_instance(program_id)
     keys = ("speed", "stamina", "power", "guts", "wiz")
@@ -941,9 +811,6 @@ def apply_player_race_stats(chara_info: dict, player: dict, program_id: int) -> 
 
 
 def member_runner(full_state: dict, m: dict, program_id: int, turn: int) -> dict:
-    """A member as a runner (§11.2-§11.3): its table stats + its own buffs /
-    debuffs under its cap; skills off its scout card (MEASURED subset before
-    the Niel, M14); style the scout row's best (M19)."""
     from ...handlers import single_mode_team as smt
     row = M_scout(m) or {}
     inst = M.program_instance(program_id)
@@ -978,8 +845,6 @@ def member_runner(full_state: dict, m: dict, program_id: int, turn: int) -> dict
 
 
 def npc_runner(full_state: dict, row: dict, program_id: int, index: int) -> dict:
-    """An overseas NPC or mob (§11.3): master stats x a MEASURED band per
-    race and stat (M13); turf / middle A; a mob in its own dress."""
     from ...handlers import race_mobs
     from ...handlers import single_mode_team as smt
     bands = M.NPC_BANDS.get(int(program_id)) or ((1.0, 1.0),) * 5
@@ -1013,10 +878,6 @@ def top_members(st: dict, n: int) -> list:
 
 
 def overseas_field(full_state: dict, chara_info: dict, program_id: int, count: int) -> list:
-    """§11.2: the exhibitions (top N + Venus Park in 3/4 + mobs), the Niel /
-    Foy (top 3 + 5 mobs), the classic Arc (Park + top 3 + mobs), the senior
-    Arc (Park + Rigantona + top 3 + mobs; Montjeu in a mob's place after a
-    classic win)."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     program_id = int(program_id)
@@ -1054,9 +915,6 @@ def scheduled_members(st: dict, program_id: int, turn: int) -> list:
 
 
 def schedule_rival_races(full_state: dict, chara_info: dict, turn: int) -> None:
-    """rival_race_info_array (§11.2): the overseas races' runners, the Derby
-    and Takarazuka's top 3, and MEASURED (M12) 1-3 eligible members in each
-    of the turn's other G1-G3 turf races."""
     from ...handlers import single_mode_team as smt
     st = state(full_state)
     rows = []
@@ -1085,8 +943,6 @@ def schedule_rival_races(full_state: dict, chara_info: dict, turn: int) -> None:
 
 
 def _graded_turf_programs(turn: int) -> list:
-    """The G1-G3 turf programs on this turn's calendar slot (scenario 6's turn
-    set; race_permission 1 junior, 2 classic, 3 senior, 4 classic or senior)."""
     from ... import master_data
     row = master_data.query_one("SELECT year, month, half FROM single_mode_turn WHERE turn_set_id=? AND turn=?",
                                 (M.SCENARIO_ID, int(turn)))
@@ -1120,8 +976,6 @@ def _distance_ok(m: dict, program_id: int) -> bool:
 
 
 def race_points(program_id: int, place: int) -> int:
-    """master single_mode_arc_win_pt (§11.1): the race's own rows, else the
-    grade's; 0 below 5th and for OP and lower."""
     rows = M.win_points()
     inst = M.program_instance(program_id)
     table = rows.get((inst, 0)) or rows.get((0, M.program_grade(program_id))) or []
@@ -1129,7 +983,6 @@ def race_points(program_id: int, place: int) -> int:
 
 
 def pay_race_points(full_state: dict, program_id: int, trainee_place: int, member_places: dict) -> None:
-    """The trainee and every member in the field, by placing (§11.1)."""
     st = state(full_state)
     st["tpoints"] = int(st["tpoints"]) + race_points(program_id, trainee_place)
     for c, place in (member_places or {}).items():
@@ -1139,12 +992,7 @@ def pay_race_points(full_state: dict, program_id: int, trainee_place: int, membe
     mirror(full_state)
 
 
-# ============================================================ envelope ===
-
 def rival_array(st: dict) -> list:
-    """arc_rival_array: all sixteen rows by points (the trainee's own row,
-    with its three keys, at its place; ties: lower chara id first) (§2.3,
-    §4.1a; 4368/4368 replies)."""
     ranks = wire_ranks(st)
     trainee = int(st["trainee"])
     rows = [(int(m["points"]), int(m["chara"]), m) for m in st["members"]]
@@ -1188,8 +1036,6 @@ def command_rows(st: dict, commands, turn: int) -> list:
 
 
 def evaluation_array(full_state: dict, chara_info: dict) -> list:
-    """arc_data_set.evaluation_info_array: every bond row's chara (deck
-    slots, NPCs 101-115, the members by chara id)."""
     st = state(full_state)
     by_pos = RF.deck(chara_info)
     npc = dict(M.npc_partners())

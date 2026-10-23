@@ -1,5 +1,3 @@
-//! Global's dispatched FMA math kernels, transcribed from 0x4fb970 / 0x4fe0e6.
-//! No native code is executed; tables preserve the client's stored bit patterns.
 #[path = "math_tables.rs"]
 mod tables;
 use tables::*;
@@ -8,9 +6,6 @@ pub fn approximately(a: f32, b: f32) -> bool {
     (b - a).abs() < (0.000001 * a.abs().max(b.abs())).max(f32::from_bits(8))
 }
 
-/// The Global server preserves the gate-exit fraction through multiplication.
-/// Inferred from real replay opening distances, independently of client code.
-/// `movement` and the already-subtracted delay retain their float32 rounding.
 pub fn gate_movement(movement: f32, remaining_delay: f32, dt: f32) -> f32 {
     (movement as f64 * (remaining_delay.abs() as f64 / dt as f64)) as f32
 }
@@ -57,8 +52,6 @@ pub fn log10(x: f32) -> f32 {
 pub fn pow(x: f32, y: f32) -> f32 {
     if y == 0.0 || x == 1.0 { return 1.0; }
     if y == 1.0 { return x; }
-    // Race callers use positive, finite normal arguments. Other domains are
-    // deliberately separated; their CRT error-reporting paths are not ported.
     if x <= 0.0 || !x.is_finite() || !y.is_finite() || x.is_subnormal() {
         return x.powf(y);
     }

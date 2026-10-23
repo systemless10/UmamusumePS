@@ -1,0 +1,16 @@
+#title After the SWBC: Victory
+0 —A great roar of cheers washes over us. <chrname> has claimed a splendid victory.
+1 Seeing our three-legged race together take shape like this filled me with an indescribable joy and pride.
+2 That was a wonderful race, little lamb! ...No, maybe it'd be rude to keep calling you that now?
+3 Trainer <username>, you're without a doubt her best partner!
+4 You've carved out yet another great achievement.
+5 In time, the hoofprints you've left will surely support other travelers.
+6 Hehe, I'd love to see it. The running of those who draw on your history.
+7 ...But the two of you aren't done racing yet.
+8 The Three Goddesses wish for Umamusume to flourish and fulfill their dreams. And precisely because we wish it, we want to test you.
+9 A stage to learn whether the Umamusume you've raised, step by step together, has reached the very peak of running—
+9> ...The Grandmasters!
+10 From how she's run until now, and how she runs today, we'll judge whether <chrname> is worthy of standing on that grand stage.
+11 Should we meet there, face us as opponents you must defeat.
+11> Yes!
+12 And so, <chrname> had firmly proven her growth, and the SWBC came to a close.

@@ -1,4 +1,3 @@
-"""Provisional loss-event penalties; revisit docs/NEGATIVE_SKILL_RESEARCH_2026-10-10.md."""
 import random
 
 from . import master_data, race_conditions
@@ -12,7 +11,6 @@ _COURSES = dict(zip(
 
 
 def effect(chara_info, program_id, *, hidden=False, full_state=None):
-    """Freeze race conditions in the queued event; do not roll or grant yet."""
     row = master_data.query_one(
         'SELECT cs.race_track_id, cs.distance, cs.turn, r.grade, ri.time, r.is_dirtgrade '
         'FROM single_mode_program p JOIN race_instance ri ON ri.id=p.race_instance_id '
@@ -24,7 +22,6 @@ def effect(chara_info, program_id, *, hidden=False, full_state=None):
     ctx = (full_state or {}).get('active_race_ctx') or {}
     if ctx.get('program_id') == program_id:
         info = ctx.get('race_start_info') or {}
-        # Missing actual fields stay unknown; do not reroll conditions after a race.
         for key in ('season', 'weather', 'ground_condition'):
             if info.get(key) is not None:
                 context[key] = info[key]
@@ -40,14 +37,12 @@ def effect(chara_info, program_id, *, hidden=False, full_state=None):
             context['running_style_count_same_rate'] = (
                 100 * sum(h['running_style'] == style for h in horses) / len(horses))
     elif full_state is None:
-        # Standalone callers without a running race retain deterministic conditions.
         context.update(race_conditions.career_conditions(chara_info, program_id))
     return {'type': 'negative_race_skill', 'context': context,
             'display_id': 8, 'hidden': hidden}
 
 
 def candidates(chara_info, context):
-    """One matching skill per validated type, filtered against regional master."""
     ids = [_COURSES.get(context.get('race_track_id'))]
     if context.get('distance'):
         ids.append(200133 if context['distance'] % 400 == 0 else 200143)
@@ -62,7 +57,6 @@ def candidates(chara_info, context):
         ids.append(200153 if ground == 1 else 200163)
     if context.get('grade') == 100:
         ids.append(200311)
-    # Conditional types enter the SAME uniform draw, only with confirmed facts.
     if context.get('weather') == 3:
         ids.append(200233)
     if context.get('popularity') == 1:
@@ -92,12 +86,12 @@ def _negative_group(skill_id):
 
 def apply(chara_info, context):
     pool = candidates(chara_info, context)
-    if not pool or random.random() >= GRANT_CHANCE:
+    from . import tuning
+    if not pool or random.random() >= tuning.bad(GRANT_CHANCE):
         return None
     skill_id = random.choice(pool)
     group = _negative_group(skill_id)
     skills = chara_info.setdefault('skill_array', [])
-    # Captures show the penalty replacing an owned positive group counterpart.
     skills[:] = [s for s in skills if master_data.skill_tip_key(s.get('skill_id'))[0] != group]
     skills.append({'skill_id': skill_id, 'level': 1})
     return skill_id

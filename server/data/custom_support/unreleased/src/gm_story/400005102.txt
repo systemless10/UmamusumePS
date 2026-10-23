@@ -1,0 +1,4 @@
+#title Embraced by a Sea of Knowledge
+0 Hehe, it seems you're working hard for your Umamusume again today.
+1 Just as you support <chrname>, I'll support the two of you.
+2 I'll wrap you gently in countless knowledge, so you can rest easy.

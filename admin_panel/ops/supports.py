@@ -1,7 +1,3 @@
-"""Support cards: give / remove / set uncap, level, copies and favourite, for
-any selection. Levels are stored as cumulative exp (support_card_level), and a
-level is clamped to what the card's rarity allows at its uncap
-(support_card_limit) -- the same caps support_card/strengthen enforces."""
 
 from __future__ import annotations
 
@@ -93,7 +89,7 @@ def apply(viewer, args):
             by_id[sid] = e
             added += 1
         elif action == "give":
-            continue                                   # give never touches owned cards
+            continue
         rarity = known[sid]["rarity"]
         if lb is not None:
             e["limit_break_count"] = lb
@@ -101,7 +97,6 @@ def apply(viewer, args):
         if level not in (None, ""):
             e["exp"] = _exp_for(rarity, cur_lb, level)
         elif lb is not None:
-            # A lower uncap can't keep a level above its cap.
             e["exp"] = min(int(e.get("exp") or 0), _exp_for(rarity, cur_lb, "max"))
         if stock is not None:
             e["stock"] = stock

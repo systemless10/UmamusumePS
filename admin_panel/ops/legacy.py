@@ -1,10 +1,3 @@
-"""Legacy umas (the trained_chara roster, state key legacy_roster): list,
-edit any record in full, bulk max / lock / delete, add new ones.
-
-New veterans get ids in trained_chara.py's manual-inject band
-[INJECT_ID_BASE, HOUSE_ID_BASE), which a house re-seed preserves. Ids at or
-above HOUSE_ID_BASE are generated house veterans the server REPLACES on a
-roster version bump, so edits to those are flagged in the UI."""
 
 from __future__ import annotations
 
@@ -56,7 +49,27 @@ def _summary(rec: dict) -> dict:
         "skill_ids": [s.get("skill_id") for s in rec.get("skill_array") or [] if isinstance(s, dict)],
         "factors": _factors(rec.get("factor_info_array")), "parents": parents,
         "band": _band(tid),
+        "p1": rec.get("succession_trained_chara_id_1") or 0,
+        "p2": rec.get("succession_trained_chara_id_2") or 0,
     }
+
+
+def _relink(roster: list[dict], tid: int) -> None:
+    seen, queue = set(), [tid]
+    while queue:
+        cur = queue.pop(0)
+        if cur in seen:
+            continue
+        seen.add(cur)
+        rec = next((r for r in roster if r.get("trained_chara_id") == cur), None)
+        if rec is None:
+            continue
+        real = TC._real_ancestry(roster, rec.get("succession_trained_chara_id_1") or 0,
+                                 rec.get("succession_trained_chara_id_2") or 0)
+        if real is not None:
+            rec["succession_chara_array"] = real
+        queue += [r.get("trained_chara_id") for r in roster
+                  if cur in ((r.get("succession_trained_chara_id_1") or 0), (r.get("succession_trained_chara_id_2") or 0))]
 
 
 def _roster(viewer, seed: bool):
@@ -117,7 +130,13 @@ def save_one(viewer, args):
             new[a] = max(1, min(8, int(new[a] or 1)))
     if args.get("auto_rank"):
         new["rank"] = TC._rank_for_score(int(new.get("rank_score") or 0))
+    ids = {r.get("trained_chara_id") for r in roster}
+    for k in ("succession_trained_chara_id_1", "succession_trained_chara_id_2"):
+        pid = int(new.get(k) or 0)
+        if pid == tid or (pid and pid not in ids):
+            raise OpError(f"Parent {pid} is not another veteran in this roster.")
     roster[idx] = new
+    _relink(roster, tid)
     full_state[KEY] = roster
     save(viewer, full_state)
     return {"id": tid, "rank": new.get("rank"), "rank_label": rank_label(new.get("rank") or 1)}

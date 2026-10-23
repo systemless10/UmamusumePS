@@ -1,0 +1,16 @@
+#title After the SWBC: Defeat
+0 —A great roar of cheers washes over us.
+1 She narrowly missed out on victory, but the experience of a race full of powerhouses will be a great asset.
+2 That was a wonderful race! You two were shining even brighter than before!
+3 Someday you might shine like broad daylight—haha, I hope I get to see that up close.
+4 Well done today. Your footsteps were good—like the rumbling of the earth.
+5 Show me that dignified figure again.
+6 Darley Arabian and Byerley Turk both seem even happier than usual.
+7 ...But you mustn't be satisfied with this. Of course, we aren't satisfied either.
+8 The Three Goddesses wish for Umamusume to flourish and fulfill their dreams. And precisely because we wish it, we want to test you.
+9 A stage to learn whether the Umamusume you've raised, step by step together, has reached the very peak of running—
+9> ...The Grandmasters!
+10 From how she's run until now, and how she runs today, we'll judge whether <chrname> is worthy of standing on that grand stage.
+11 Should we meet there, face us as opponents you must defeat.
+11> Yes!
+12 And so, I felt <chrname>'s growth for myself, and the SWBC came to a close.

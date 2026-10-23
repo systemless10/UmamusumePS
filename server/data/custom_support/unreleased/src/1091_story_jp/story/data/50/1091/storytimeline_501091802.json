@@ -1,0 +1,308 @@
+{
+ "title": "あの頃みたいに",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "…………。\n……あれぇ……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……シュヴァち……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、いた！\nシューヴァーちー！\n今度こそ、捕まえるからねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ま、また……？\n朝からずっとじゃないか……。\nい、いま、忙しいから……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！　ああ～！　待ってよ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "も～また逃げちゃった……。",
+   "choice_data_list": [
+    "何してるんだ？",
+    "何してるの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "朝からずっとシュヴァルグランを\n追いかけているヴィブロス。\nさすがに気になり、その理由を聞いてみる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちが、夢に出てきてくれたから！",
+   "choice_data_list": [
+    "……うん？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ～子どものころみたいに、\n頭撫でてくれたんだよ～♡",
+   "choice_data_list": [
+    "あ、もしかして、それで……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！　シュヴァちに、\n甘えたい気分になっちゃった☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもすぐに逃げちゃって……\nねっ。どうしたら昔みたいに、\n撫でたりしてくれるかなぁ？",
+   "choice_data_list": [
+    "うーん、お願いするしか……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だよね。他に方法なんてないよね？\nよぉし……シュヴァち、つっかまえるぞ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わわっ、足元に小石がっ。\n転ぶ～！　助けて～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "え！？　だいじょ……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "転んでないじゃないか……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ああっ、待ってー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おいしい肉まんがあるんだけどな～。\n他にも中華料理のフルコースを\n用意してあるんだけどな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちらっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "さすがに、つられないから……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "それからも、あの手この手で\nシュヴァルグランを捕まえようとするが、\n上手くはいかず……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううぅ……\nシュヴァち、手強いよぉ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスは疲れて、\nへなへなとその場で眠ってしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……はぁ。\n本当に、いったいなんだっていうんだ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "こんなところで、寝ちゃってるし……。\n風邪ひいたら、どうするんだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "シュヴァルグランがヴィブロスの髪に触れる。\n何かを意識したわけではなく、\nただ寝息を確かめながら、頭を撫でる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "（……シュヴァちが、頭撫でてくれてる……\nわぁ、わぁあ……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ぐっすりだ……起きそうにないかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……はぁ。\n少し離れてから、スマホ鳴らすか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへ。\nえへへへへ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "撫でられた喜びに、\n笑みを止められないヴィブロスだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスは疲れて、\nへなへなとその場で眠ってしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "こんなところで、寝ちゃってるし……。\n風邪ひいたら、どうするんだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "シュヴァルグランがヴィブロスの髪に触れる。\n何かを意識したわけではなく、\nただ寝息を確かめながら、頭を撫でる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んー……シュヴァちぃ……。\nえへ……えへへ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……ぷっ。\nまったくもう……\nなんの夢を見てるんだか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "よしよし。いい子、いい子。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今度は、ぎゅーっ！\nハグして、シュヴァちっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ……。\nいっぱい、いーっぱい……甘えさせてね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスは疲れて、\nへなへなとその場で眠ってしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "こんなところで、寝ちゃってるし……。\n風邪ひいたら、どうす――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァち、捕まえた～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "わぁ！？\nね、寝たふりなんて……卑怯だっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "寝たふりじゃないよぉ。\nたったいま目が覚めたの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ。覚悟してね。\nもう逃がさないんだからっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

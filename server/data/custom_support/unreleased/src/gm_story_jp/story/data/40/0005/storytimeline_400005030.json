@@ -1,0 +1,181 @@
+{
+ "title": "ウマ娘とトレーナーの蹄跡",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "三女神――そして強豪たちと\n頂点をかけて競い合った<chrname>。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "頂点こそ掴むことはできなかったが、\n堂々たる走りは出会った時とは\nまるで見違える姿で、彼女の成長を感じた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "ふっ、落ち込んでいるものかと思ったが、\nどうやら胸中は我々と同じようだな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "よくこの舞台にたどり着き、走り切った。\nお前たちの走りは、我々の期待を\n充分に満たすものだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ウマ娘たちの成長は、わたしたちの願い――\nそれをしっかりと見せてもらったわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "けど、まだまだ走るつもりだろ？\n今度は見せてくれよ、頂点に立つ姿をな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして『グランドマスターズ』の激戦は\n見る者に大きな印象を与え、幕を閉じた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そして、ウマ娘たちは今日も変わらず\n日々のトレーニングに励んでいる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ビターグラッセも、リトルココンも、\n以前に増して気持ちの充実を感じます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "かくいう私も、ウマ娘たちが\n好調なのを受けて充実していますが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ふふっ、私もミークにとって唯一無二の\nトレーナーになろうと、毎日を励んでいます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "こうした1日1日が、\nやがてウマ娘とトレーナーの\n歩んだ蹄跡――歴史となるんですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "<username>トレーナーの歴史は\nよい形で刻まれていますか？",
+   "choice_data_list": [
+    "もちろん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ですが、まだ私たちのレースは終わりません。\n彼女たちは今も駆けているのですから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "私たちも置いていかれないように\n気を引き締めないとですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……そう、それともう1つ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "2人の走りに刺激を受ける子たちを\n見かけるようになりまして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "私たちがそうであったように、ウマ娘の\n走りは繋がっていくものなのですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "いずれは私とミークの走りも、\n他の子に影響を与えていくのでしょうか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "もしかしたら、そんな子を自分が\n担当することになるかもしれませんよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "なんだかそれって、\nすごくドラマティックですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（コンコンコンッ！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "樫本トレーナー、トレーニングの時間ですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "シミュレーターの競争率、高いんですから\n急いで向かった方がいいですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……トレーナー。\n…………のんびりしていられないかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "今日も準備万全のようですね。\nわかりました、行きましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "さあ、<username>トレーナー！\n私たちも行きましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "今日もまた、走りたい気持ちを膨らませて\nウマ娘たちが駆ける――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "知識という歴史で紡がれた彼女たちは、\n今日も新しい歴史を刻み続けるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,17 +1,3 @@
-"""JP-only game modes: what each one's index screen says for this account, and
-a clean refusal for the actions not built yet.
-
-Index screens are answered from master.mdb (which event is running or ran
-last) plus the account's own progress, which starts empty -- the state a new
-account has on the real server. app/jp/schema.py completes the remaining
-fields to the real reply's shape.
-
-ACTIONS that are not implemented REFUSE (result_code 205), never succeed
-empty: a fake success makes the client believe it entered a race, started a
-job or claimed a reward, and its local state diverges from the server's --
-the same reason Global refuses career starts for scenarios it does not serve.
-Status polls and replays of things that cannot change state are acknowledged.
-"""
 
 from __future__ import annotations
 
@@ -33,7 +19,6 @@ def _ok(data=None) -> dict:
 
 
 def _latest(table: str, id_col: str, start_col: str = "start_date"):
-    """The newest row that has started -- the running event, or the last one."""
     if not master_data.has_table(table):
         return None
     return master_data.query_one(
@@ -41,36 +26,21 @@ def _latest(table: str, id_col: str, start_col: str = "start_date"):
         (int(time.time()),))
 
 
-# ---------------------------------------------------------------------- heroes
 def handle_heroes_index(payload: dict) -> dict:
     row = _latest("heroes_data", "heroes_id")
     return _ok({"heroes_id": int(row["heroes_id"]) if row else 0})
 
 
-# ---------------------------------------------------------------- ultimate race
 def handle_ultimate_race_index(payload: dict) -> dict:
-    """No records yet: every array empty."""
     return _ok({"ultimate_race_record_array": [], "ultimate_race_archive_record_array": [],
                 "ultimate_race_top_cutin_info_array": []})
 
 
-# ------------------------------------------------------------- factor research
-def handle_factor_research_index(payload: dict) -> dict:
-    row = _latest("factor_research_data", "factor_research_event_id")
-    return _ok({"factor_research_event_id": int(row["factor_research_event_id"]) if row else 0,
-                "special_event_type": int(row["special_event_type"]) if row else 0})
-
-
-# ---------------------------------------------------------------- collect raid
 def handle_collect_raid_index(payload: dict) -> dict:
-    # `WIRE` the client polls at this interval.
     return _ok({"raid_polling_interval": 5})
 
 
-# ------------------------------------------------------------------- transfer
 def handle_transfer_rotation_index(payload: dict) -> dict:
-    """The current weekly rotation: schedule rows cycle through their
-    transfer_rotation_data ids once a week from base_date."""
     sched = _latest("transfer_rotation_schedule", "id")
     rotation_id = 0
     if sched is not None:
@@ -82,10 +52,7 @@ def handle_transfer_rotation_index(payload: dict) -> dict:
     return _ok({"transfer_rotation_id": rotation_id, "transfer_rotation_detail_array": None})
 
 
-# ------------------------------------------------------------- training report
 def handle_training_report_index(payload: dict) -> dict:
-    """The running season (training_report_pass dates are master TEXT, so
-    _latest's integer compare cannot pick it) and the points jobs earned."""
     row = jobs.training_report_season()
     season_id = int(row["season_id"]) if row else 0
     full_state = state_store.get_state(payload["viewer_id"]) or {}
@@ -108,16 +75,12 @@ def _not_built(payload: dict) -> dict:
 _INDEX = {
     "heroes/index": handle_heroes_index,
     "ultimate_race/index": handle_ultimate_race_index,
-    "factor_research/index": handle_factor_research_index,
     "collect_raid/index": handle_collect_raid_index,
     "transfer/rotation_index": handle_transfer_rotation_index,
     "training_report/index": handle_training_report_index,
-    # schema.py serves these the real reply's shape, empty: nothing to add.
     "champions/index": lambda p: _ok({}),
 }
 
-# Polls and a concert replay: nothing to change, `WIRE` nothing (or only
-# status) in the real reply.
 _ACKS = ("champions/poll", "champions_stamp/poll", "collect_raid/polling",
          "collect_raid/get_event_info", "live/live_start")
 
@@ -136,7 +99,6 @@ _NOT_BUILT = (
     "ultimate_race/race_entry", "ultimate_race/race_start", "ultimate_race/reflect_item_effect",
     "ultimate_race/replay_check",
     "collect_raid/receive_individual_reward", "collect_raid/story_clear",
-    "factor_research/factor_update",
     "transfer/rotation_detail", "transfer/rotation_exec_multi",
     "schedule_book/start",
     "training_roadmap/get_share_info", "training_roadmap/import_share_for_tutorial",
@@ -144,7 +106,6 @@ _NOT_BUILT = (
     "generate_succession/index", "generate_succession/change_support_card_deck",
     "generate_succession/exec", "generate_succession/factor_select",
     "generate_succession/finish", "generate_succession/priority_factor",
-    "daily_legend_race_skip/race_skip",
 )
 
 HANDLERS = {**_INDEX,

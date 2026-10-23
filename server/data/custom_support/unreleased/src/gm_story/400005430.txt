@@ -1,0 +1,29 @@
+#title The Forebears of Those Who Run Today
+0 The Grandmasters was drawing near. A race to stand alongside the Three Goddesses and go even further beyond. A race for the very peak of Umamusume.
+1 Its knowledge aside, the Three Goddesses had taught me what's important for running alongside an Umamusume as a trainer.
+2 Then I want the Three Goddesses who supported us to see for themselves how much we've grown. And for that, the goddess with the knowledge we need most is—
+2> Darley Arabian | Darley Arabian | Godolphin Barb | Godolphin Barb | Byerley Turk | Byerley Turk
+3 Inheriting Darley Arabian's feelings, <chrname> will surely race through the Grandmasters believing in her own weapon.
+4 Obtained <itemname>.
+4{ <itemname>
+5 I'll prove for sure that we've taken their feelings to heart!
+6 Inheriting Darley Arabian's feelings, <chrname> will surely race through the Grandmasters believing in her own weapon.
+7 Obtained <itemname>.
+7{ <itemname>
+8 I'll prove for sure that we've taken their feelings to heart!
+9 Inheriting Godolphin Barb's feelings, <chrname> will surely race through the Grandmasters, feeling the presence of those beside her.
+10 Obtained <itemname>.
+10{ <itemname>
+11 I'll prove for sure that we've taken their feelings to heart!
+12 Inheriting Godolphin Barb's feelings, <chrname> will surely race through the Grandmasters, feeling the presence of those beside her.
+13 Obtained <itemname>.
+13{ <itemname>
+14 I'll prove for sure that we've taken their feelings to heart!
+15 Inheriting Byerley Turk's feelings, <chrname> will surely race through the Grandmasters as if carving her mark into the earth.
+16 Obtained <itemname>.
+16{ <itemname>
+17 I'll prove for sure that we've taken their feelings to heart!
+18 Inheriting Byerley Turk's feelings, <chrname> will surely race through the Grandmasters as if carving her mark into the earth.
+19 Obtained <itemname>.
+19{ <itemname>
+20 I'll prove for sure that we've taken their feelings to heart!

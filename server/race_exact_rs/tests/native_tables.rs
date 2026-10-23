@@ -1,8 +1,6 @@
 use race_exact_rs::{netsort,simulator::post_number};
 #[test]
 fn native_post_number_arrays() {
-    // These arrays' little-endian int32 SHA256 hashes match the field names in
-    // Global's HorsePostNumberCalculator..cctor at 0x405d900 (Aug 11 build).
     assert_eq!((0..9).map(|i|post_number(i,9)).collect::<Vec<_>>(),[1,2,3,4,5,6,7,8,8]);
     assert_eq!((0..18).map(|i|post_number(i,18)).collect::<Vec<_>>(),[1,1,2,2,3,3,4,4,5,5,6,6,7,7,7,8,8,8]);
 }

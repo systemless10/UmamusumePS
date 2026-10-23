@@ -1,43 +1,3 @@
-"""Trainee-card and support-card upgrades -- the "make my cards better"
-endpoints, self-registered (registry.autoload imports this module).
-
-  card/rarity_upgrade      -> star-up a trainee card with PIECES
-  card/talent_strengthen   -> raise talent (awakening) level with items + money
-  card/skill_upgrade       -> level up a skill hint on a trainee card
-  card/sell_piece          -> convert unneeded trainee-card pieces into Clovers
-  support_card/limit_break -> raise a support card's uncap 0..4
-  support_card/strengthen  -> level a support card with Support Pt + money
-  support_card/sell        -> convert spare dupes into Cleats (R/SR/SSR)
-
-Costs come live from master.mdb:
-  need_piece_num_data     : pieces per star, keyed by the card's DEFAULT rarity
-                            (1/2/3 -> 25/50/150 per step; the table has no rows
-                            past rarity 3, so the target rarity can't be the key)
-  card_talent_upgrade     : talent materials, keyed talent_group_id+talent_level
-                            (levels 2..5, six item slots). NO money column --
-                            the money cost lives nowhere in master; the ladder
-                            below is pinned by the capture (lvl 4 = 150,000).
-                            JP replaces it with card_talent_level_upgrade_item
-                            + _money, keyed by the whole jump, up to Lv7.
-  card_talent_hint_upgrade: hint materials, keyed by SKILL rarity + level
-                            (JP adds per-card hint Lv4/5 rows).
-  support_card_limit_break: uncap ITEM per rarity (2 -> 145, 3 -> 144). The
-                            capture shows dupes (stock) are the other route:
-                            request carries material_support_card_num.
-  support_card_limit      : level cap per rarity+uncap (30/35/40/45/50 for SSR)
-  support_card_level      : exp curve (rarity, level, total_exp)
-
-Currencies: "money" (Monies) is ITEM 59 in item_list -- NOT coin_info, which is
-carats (verified: the strengthen capture returns item 59 = old money - use_money).
-Support Pt (global exp) is item 110. All balances are validated against OUR
-state, never the client's claimed current_* values, and every change persists
-into the collection containers load/index serves (see collection.py), so the
-client's next refetch sees them without a restart.
-
-Capture ground truth: UmaDumpy 20260717_180912 ops 0016-0019 (label-lag: the
-request NAMED op N belongs to op N+1; e.g. the limit_break request is the data
-in the file named circle_item_request_receive).
-"""
 
 from __future__ import annotations
 
@@ -52,31 +12,17 @@ from . import collection, note_archive, registry, shop
 from .stories import _grant_reward
 from ..result_codes import ResultCode, refuse
 
-_MONEY_ITEM_ID = 59        # Monies (item_category 91)
-_GLOBAL_EXP_ITEM_ID = 110  # Support Pt (item_category 30)
-# Cleats (item_data id, item_category 160 -- "amulet in the shape of a cleat,
-# exchanged at the shop for various items", text_data cat 23 #48-50): the
-# real currency support_card/sell converts unwanted cards into. Keyed by the
-# card's rarity (1=R/2=SR/3=SSR, support_card_data.rarity).
-_CLEAT_ITEM_BY_RARITY = {1: 48, 2: 49, 3: 50}   # Silver / Gold / Rainbow Cleat
+_MONEY_ITEM_ID = 59
+_GLOBAL_EXP_ITEM_ID = 110
+_CLEAT_ITEM_BY_RARITY = {1: 48, 2: 49, 3: 50}
 _CLEAT_ITEM_CATEGORY = 160
-_CLEATS_PER_CARD = 10  # user-supplied 2026-08-24: 10 cleats of its own rarity, per copy sold
-# Clover (item 57, item_category 99, text_data cat 23/24 #57 -- "a lucky
-# four-leaf clover... exchanged at the shop for various items"): what "Star
-# Piece Storage" converts unneeded trainee-card pieces into (text_data cat 69
-# #8040: "You can trade in unneeded Star Pieces for Clovers"). No master.mdb
-# rate table and no real capture exist for this exchange -- user-supplied
-# 2026-08-24 rate: 1 piece = 1 Clover, any card's piece, no rarity weighting.
+_CLEATS_PER_CARD = 10
 _CLOVER_ITEM_ID = 57
 _CLOVER_ITEM_CATEGORY = 99
 _CLOVERS_PER_PIECE = 1
 _MAX_LIMIT_BREAK = 4
-_MAX_DECK_NAME_LEN = 30   # server-defined; nothing in master or any capture
-                          # pins a deck-name cap.
+_MAX_DECK_NAME_LEN = 30
 
-# Talent (awakening) money cost per NEW level. master.mdb card_talent_upgrade
-# has no money column; level 4 = 150,000 is pinned by the capture (money item
-# 59 dropped exactly 150,000), the rest is the known awakening ladder.
 _TALENT_MONEY = {2: 10000, 3: 50000, 4: 150000, 5: 500000}
 
 
@@ -91,20 +37,6 @@ def _refuse(code: int = ResultCode.PARAM_ERROR) -> dict:
 
 @registry.endpoint("card/get_release_card_array")
 def handle_get_release_card_array(payload: dict) -> dict:
-    """card/get_release_card_array -- the gacha/scout screen's "can this card
-    be piece-exchanged" list. Had NO handler at all (not in HANDLERS, not
-    registered) so it fell through to main.py's NOOP_SUCCESS, whose empty
-    `data: {}` leaves data.release_card_array completely absent. Live-
-    reported 2026-08-25 (softlock right after tapping Scout): Player.log
-    showed ArgumentNullException in List<T>..ctor, from Gallop.WorkCardData.
-    UpdateReleaseCardWithHavingPiece -- the client builds a List<int> straight
-    from this field with no null check, and a MISSING key deserializes to a
-    null array, not an empty one. Real capture (captures/20260818_081331/
-    0017_card_get_release_card_array.json) confirms both the field name (note
-    the trailing _array the endpoint path also carries -- easy to mistarget)
-    and the shape (a flat int[] of card_ids); note_archive._release_card_
-    array() already reconstructs this exact list from master.mdb for the
-    Uma Archive screen, so reuse it here rather than duplicating the query."""
     return _ok({"release_card_array": note_archive._release_card_array()})
 
 
@@ -113,9 +45,6 @@ def _find(entries: list, key: str, value) -> dict | None:
 
 
 def _card_entry(full_state: dict, card_id: int) -> dict | None:
-    """The owned trainee-card entry ({card_id, rarity, talent_level,
-    create_time, skill_data_array} -- exactly the card_data the client expects
-    back)."""
     return _find(full_state.setdefault(collection.CARD_LIST_KEY, []), "card_id", card_id)
 
 
@@ -124,16 +53,8 @@ def _support_entry(full_state: dict, support_card_id: int) -> dict | None:
                  "support_card_id", support_card_id)
 
 
-# ---------------------------------------------------------------- trainee card
-
 @registry.endpoint("card/rarity_upgrade")
 def handle_rarity_upgrade(payload: dict) -> dict:
-    """card/rarity_upgrade: {card_id, now_rarity, new_rarity} -- star-up with
-    pieces. Cost per step is need_piece_num_data keyed by the card's
-    default_rarity; the piece id is card_data.get_piece_id. Response (capture):
-    card_data + piece_data (remaining pieces) + reward_result_info (empty for
-    the captured 3->4; newly unlocked dresses from card_rarity_data land in
-    add_cloth_list)."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     card_id = payload.get("card_id")
@@ -146,8 +67,7 @@ def handle_rarity_upgrade(payload: dict) -> dict:
     if entry is None or master is None:
         return _refuse()
     if entry.get("rarity") != now_rarity or not new_rarity or new_rarity <= now_rarity:
-        return _refuse()  # server state is the authority on the current rarity
-    # target star must actually exist for this card
+        return _refuse()
     if not master_data.query_one(
             "SELECT id FROM card_rarity_data WHERE card_id=? AND rarity=?",
             (card_id, new_rarity)):
@@ -168,8 +88,6 @@ def handle_rarity_upgrade(payload: dict) -> dict:
     piece["piece_num"] -= cost
     entry["rarity"] = new_rarity
 
-    # dresses unlocked by the newly reached star(s) -- 3* grants the alternate
-    # outfit (get_dress_id_2); the captured 3->4 granted nothing (all empty).
     summary = shop._empty_summary()
     cloth = full_state.setdefault("cloth_list_state", [])
     for r in range(now_rarity + 1, new_rarity + 1):
@@ -191,23 +109,6 @@ def handle_rarity_upgrade(payload: dict) -> dict:
 
 
 def _jp_talent_bill(talent_group_id: int, now_level: int, new_level: int):
-    """JP's awakening bill, or None when the jump is not on sale.
-
-    JP master drops card_talent_upgrade for two tables keyed by the JUMP, not
-    the step: card_talent_level_upgrade_item (talent_group_id, talent_level ->
-    upgrade_talent_level, 13 item slots, start_date) and
-    card_talent_level_upgrade_money (talent_level -> upgrade_talent_level).
-    A 1->5 row is the sum of its steps, so a jump is ONE row. Levels 6 and 7
-    exist only for the talent groups whose start_date has passed (5 as of
-    2026-09: 100101, 100301, 100201, 101401, 104901) -- the client's
-    MasterCardData.GetMaxTalentLevel(checkTime) reads the same rows.
-    Lv6/7 cost 絆のロゼットリボン (item 319) and Lv7 栄誉のメダリオン (268).
-
-    Verified on 161 real talent_strengthen replies (CarrotJuicer, account
-    953434236): item_data_array is this row's items in slot order then money
-    (item 59) in every one, and the money drop equals money_num wherever two
-    replies are back to back -- including both real Lv7 jumps (100201 4->7,
-    104901 1->7)."""
     row = master_data.query_one(
         "SELECT * FROM card_talent_level_upgrade_item WHERE talent_group_id=? "
         "AND talent_level=? AND upgrade_talent_level=?",
@@ -228,8 +129,6 @@ def _jp_talent_bill(talent_group_id: int, now_level: int, new_level: int):
 
 
 def _global_talent_bill(talent_group_id: int, now_level: int, new_level: int):
-    """Global's awakening bill: one card_talent_upgrade row per NEW level 2..5
-    (six item slots) plus the _TALENT_MONEY ladder, or None."""
     if new_level > 5:
         return None
     costs: dict[int, int] = {}
@@ -250,12 +149,6 @@ def _global_talent_bill(talent_group_id: int, now_level: int, new_level: int):
 
 @registry.endpoint("card/talent_strengthen")
 def handle_talent_strengthen(payload: dict) -> dict:
-    """card/talent_strengthen: {card_id, talent_level, new_talent_level} --
-    awakening. The bill comes from whichever table this master.mdb has (JP's
-    per-jump tables, which also carry Lv6/7, or Global's per-level ones; see
-    the two _*_talent_bill helpers). Response (capture): card_data +
-    item_data_array with the new counts of everything consumed, money (item
-    59) last."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     card_id = payload.get("card_id")
@@ -276,7 +169,7 @@ def handle_talent_strengthen(payload: dict) -> dict:
     bill = bill_for(master["talent_group_id"], now_level, new_level)
     if bill is None:
         return _refuse()
-    costs, money = bill        # costs: item_id -> total (insertion = display order)
+    costs, money = bill
     costs[_MONEY_ITEM_ID] = costs.get(_MONEY_ITEM_ID, 0) + money
 
     if any(shop._item_count(full_state, iid) < num for iid, num in costs.items()):
@@ -292,12 +185,34 @@ def handle_talent_strengthen(payload: dict) -> dict:
                 "item_data_array": item_data_array})
 
 
-# Highest card hint level (ヒントLv) per awakening level: the real JP
-# load/index common_define.skill_upgrade_max_level_unlock_info_array is
-# [{1: 3}, {6: 4}, {7: 5}] (unlock_talent_level: skill_upgrade_max_level), and
-# our JP seed serves the same array to the client. Global never passes Lv5, so
-# it stays at 3, which is also where Global's cost table ends.
 _HINT_LEVEL_UNLOCK = ((7, 5), (6, 4), (1, 3))
+
+
+def card_max_talent(card_id: int) -> int:
+    row = master_data.query_one("SELECT talent_group_id FROM card_data WHERE id=?", (card_id,))
+    if row is None or not master_data.has_table("card_talent_level_upgrade_item"):
+        return 5
+    top = master_data.query_one(
+        "SELECT MAX(upgrade_talent_level) AS m FROM card_talent_level_upgrade_item "
+        "WHERE talent_group_id=? AND COALESCE(start_date, 0) <= ?",
+        (row["talent_group_id"], int(time.time())))
+    return max(5, int(top["m"])) if top and top["m"] else 5
+
+
+def clamp_card_talents(entries: list) -> int:
+    fixed = 0
+    for e in entries:
+        if not isinstance(e, dict) or int(e.get("talent_level") or 1) <= 5:
+            continue
+        cap = card_max_talent(int(e.get("card_id") or 0))
+        if e["talent_level"] > cap:
+            e["talent_level"] = cap
+            hint_cap = _max_hint_level(cap)
+            for s in e.get("skill_data_array") or []:
+                if isinstance(s, dict) and int(s.get("level") or 0) > hint_cap:
+                    s["level"] = hint_cap
+            fixed += 1
+    return fixed
 
 
 def _max_hint_level(talent_level: int) -> int:
@@ -305,17 +220,6 @@ def _max_hint_level(talent_level: int) -> int:
 
 
 def _hint_upgrade_row(card_id: int, skill_rarity: int, level: int):
-    """card_talent_hint_upgrade row for raising one hint to `level`.
-
-    `rarity` here is the SKILL's rarity (1 white, 2 gold), not the card's:
-    rarity 1 rows cost ヒント本/ヒント専門書 (160/161) and rarity 2 rows
-    レアヒント本/レアヒント専門書 (162/163). Proven on real JP replies --
-    default-rarity-3 card 101102 paid row 1001 (5x item 44, 10,000 money) for
-    white 201062, and card 102003 paid 162 for gold 204541 but 160 for white
-    203392. JP adds a card_id column: card_id 0 is the generic row, and the
-    Lv7-eligible cards carry their own hint Lv4/5 rows (which cost item 319).
-    The client looks those up the same way (GetWithCardIdAndRarityAndTalentLevel,
-    then GetWithRarityAndTalentLevel)."""
     if master_data.has_column("card_talent_hint_upgrade", "card_id"):
         return master_data.query_one(
             "SELECT * FROM card_talent_hint_upgrade WHERE card_id IN (?, 0) "
@@ -328,18 +232,6 @@ def _hint_upgrade_row(card_id: int, skill_rarity: int, level: int):
 
 @registry.endpoint("card/skill_upgrade")
 def handle_skill_upgrade(payload: dict) -> dict:
-    """card/skill_upgrade: {card_id, skill_id, skill_level, new_skill_level} --
-    level up a skill hint (ヒントLv) on an owned trainee card. Costs are
-    card_talent_hint_upgrade rows keyed by the SKILL's rarity (see
-    _hint_upgrade_row), one row per new level, every item slot tallied in
-    slot order then money -- the order of the real reply (card 100601 gold
-    201351 0->3 answered [162, 44, 163, 59]). Global's first capture is
-    captures/20260817_093008/0009_card_skill_upgrade.json; JP's 34 are in the
-    CarrotJuicer corpus and all match this bill. The level is capped by the
-    card's awakening level (_max_hint_level): 3, or 4/5 at awakening Lv6/7.
-
-    The hint level is what a career starts this skill's hint at -- see
-    single_mode_team._build_start_chara_info."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     card_id = payload.get("card_id")
@@ -360,15 +252,15 @@ def handle_skill_upgrade(payload: dict) -> dict:
     skills = entry.setdefault("skill_data_array", [])
     current = next((s for s in skills if s.get("skill_id") == skill_id), None)
     if (current.get("level") if current else 0) != now_level:
-        return _refuse()   # server state is the authority on the current level
+        return _refuse()
 
-    costs: dict[int, int] = {}       # item_id -> total needed (insertion = display order)
+    costs: dict[int, int] = {}
     money = 0
     for level in range(now_level + 1, new_level + 1):
         row = _hint_upgrade_row(card_id, skill["rarity"], level)
         if row is None:
             return _refuse()
-        for i in range(1, 7):        # JP has six item slots, Global two
+        for i in range(1, 7):
             if f"item_category_{i}" in row.keys() and row[f"item_category_{i}"]:
                 iid = row[f"item_id_{i}"]
                 costs[iid] = costs.get(iid, 0) + row[f"item_num_{i}"]
@@ -391,19 +283,11 @@ def handle_skill_upgrade(payload: dict) -> dict:
     return _ok({"card_data": copy.deepcopy(entry), "item_data_array": item_data_array})
 
 
-# ---------------------------------------------------------------- support card
-
 _EVENT_TITLE_CATEGORY = 181
 _SUPPORT_STORY_BASE = 800000000
 
 
 def _event_story_ids(support_card_id: int) -> dict:
-    """{normalized event title -> story_id} for every event this card shows.
-
-    story_id = 800000000 + owner*1000 + index, and a card's events are split
-    across TWO owners: its CHARA id and its own CARD id. Capture-proven (card
-    20008 -> 801025002 under chara 1025 AND 820008002 under card 20008).
-    Looking at only one range is what made this table seem almost empty."""
     row = master_data.query_one(
         "SELECT chara_id FROM support_card_data WHERE id=?", (support_card_id,))
     owners = [support_card_id]
@@ -424,19 +308,6 @@ def _event_story_ids(support_card_id: int) -> dict:
 
 @registry.endpoint("support_card/get_support_card_event_skill")
 def handle_get_support_card_event_skill(payload: dict) -> dict:
-    """support_card/get_support_card_event_skill -- the card detail screen's
-    career-events tab (live-reported: every event showed "no outcome").
-
-    Wire shape from the Il2Cpp dump, confirmed against a real capture:
-      Request  { int support_card_id }
-      Response { EventSkill[] event_skill_list }, EventSkill { story_id, skill_id_array }
-
-    The tab only wants the SKILLS each event can teach, keyed by story_id. The
-    skill_hint effects are already vendored in data/events/gametora; the
-    story_id keying comes from master.mdb (see _event_story_ids).
-
-    Validated against both real captures: card 20008 -> [{801025002,[200142]},
-    {820008002,[201432]}], card 20011 -> [{801029002,[200342]}]."""
     support_card_id = payload.get("support_card_id") or 0
     events = gametora.load_cached("support", support_card_id) or {}
     story_ids = _event_story_ids(support_card_id)
@@ -464,12 +335,6 @@ def handle_get_support_card_event_skill(payload: dict) -> dict:
 
 @registry.endpoint("support_card/limit_break")
 def handle_limit_break(payload: dict) -> dict:
-    """support_card/limit_break: {support_card_id, material_support_card_num}.
-    Two routes: material_support_card_num > 0 burns that many DUPES from stock
-    (the capture: an SR with stock 1 sent 1, stock -> 0, uncap -> 1); otherwise
-    the uncap item from support_card_limit_break (rarity 2 -> 145, 3 -> 144;
-    rarity 1 has no row -- R cards only uncap with dupes). Response (capture):
-    just the updated support_card_data."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     support_card_id = payload.get("support_card_id")
@@ -482,12 +347,12 @@ def handle_limit_break(payload: dict) -> dict:
         return _refuse()
 
     materials = int(payload.get("material_support_card_num") or 0)
-    if materials > 0:                              # dupe route: +1 uncap each
+    if materials > 0:
         if lb + materials > _MAX_LIMIT_BREAK or (entry.get("stock") or 0) < materials:
             return _refuse()
         entry["stock"] = entry["stock"] - materials
         entry["limit_break_count"] = lb + materials
-    else:                                          # item route: +1 uncap
+    else:
         rarity = master_data.query_one(
             "SELECT rarity FROM support_card_data WHERE id=?", (support_card_id,))
         if rarity is None:
@@ -495,7 +360,7 @@ def handle_limit_break(payload: dict) -> dict:
         row = master_data.query_one(
             "SELECT item_id, item_num FROM support_card_limit_break WHERE rarity=?",
             (rarity["rarity"],))
-        if row is None:                            # rarity 1: no item exists
+        if row is None:
             return _refuse()
         if shop._item_count(full_state, row["item_id"]) < row["item_num"]:
             return _refuse()
@@ -507,7 +372,6 @@ def handle_limit_break(payload: dict) -> dict:
 
 
 def _support_level_cap(support_card_id: int, limit_break_count: int):
-    """(cap_level, cap_total_exp) for this card at this uncap, or None."""
     rarity = master_data.query_one(
         "SELECT rarity FROM support_card_data WHERE id=?", (support_card_id,))
     if rarity is None:
@@ -525,13 +389,6 @@ def _support_level_cap(support_card_id: int, limit_break_count: int):
 
 @registry.endpoint("support_card/strengthen")
 def handle_support_strengthen(payload: dict) -> dict:
-    """support_card/strengthen: {support_card_id, use_global_exp, use_money,
-    current_*}. Pours Support Pt (item 110) into the card's exp, money (item
-    59) alongside (the client bills 2 Monies per 1 Pt). The exp may not pass
-    the uncap's level cap (support_card_limit x support_card_level); the
-    captured spend lands EXACTLY on the SSR-uncap-0 cap of 23,885 = level 30.
-    current_* are the client's claimed balances -- ignored, our state decides.
-    Response (capture): support_card_data + item_data_array [Pt, money]."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     support_card_id = payload.get("support_card_id")
@@ -562,47 +419,19 @@ def handle_support_strengthen(payload: dict) -> dict:
 
 @registry.endpoint("support_card/sell")
 def handle_support_card_sell(payload: dict) -> dict:
-    """support_card/sell: {sell_support_card_info_array: [{support_card_id,
-    stock, client_own_stock}]} -- dump.cs SupportCardSellRequest/
-    SellSupportCardInfo. Converts spare DUPLICATE copies of owned support
-    cards into Cleats (item 48/49/50 -- Silver/Gold/Rainbow, matching R/SR/
-    SSR), the real currency the shop's Cleat Exchange takes. USER-SUPPLIED
-    yield (2026-08-24): 10 Cleats of the card's own rarity, per copy sold.
-
-    `stock` here is the request's HOW-MANY-TO-SELL count (dump.cs field name,
-    confusingly the same name as the OWNED entry's own stock counter --
-    handle_limit_break's spare-dupes field). This only ever spends that same
-    stock counter, exactly like limit_break's material_support_card_num route
-    already does -- selling can never remove the base owned copy, so a card
-    already equipped in an active career's deck (which references the base
-    copy, not a specific dupe) is never affected. client_own_stock is the
-    client's claimed balance -- accepted but not trusted, same as every other
-    current_*/claimed value in this module; our own entry['stock'] decides.
-
-    Every line is validated BEFORE any state changes: a partial sell (some
-    cards convert, one silently fails) would short the player on cleats with
-    no way to tell which line was skipped.
-
-    Response (dump.cs SupportCardSellResponse.CommonResponse): reward_summary_info
-    + reward_info_array only -- no support_card_data, since selling changes
-    nothing about the card itself (uncap/exp/level), only its stock, which
-    the client re-reads via its next load/index."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     requests = payload.get("sell_support_card_info_array") or []
     if not requests:
         return _refuse()
 
-    plan = []   # (entry, sell_count, cleat_item_id)
+    plan = []
     for req in requests:
         support_card_id = req.get("support_card_id")
         sell_count = int(req.get("stock") or 0)
         entry = _support_entry(full_state, support_card_id)
         if entry is None or sell_count <= 0 or (entry.get("stock") or 0) < sell_count:
             return _refuse()
-        # The padlock support_card/change_lock sets. Without this check that
-        # endpoint would be decorative -- a lock the player sets and the one
-        # destructive path ignores.
         if entry.get("is_locked"):
             return _refuse()
         rarity = master_data.query_one(
@@ -629,21 +458,6 @@ def handle_support_card_sell(payload: dict) -> dict:
 
 @registry.endpoint("card/sell_piece")
 def handle_sell_piece(payload: dict) -> dict:
-    """card/sell_piece: {sell_piece_data_array: [{piece_id, piece_num}]} --
-    dump.cs CardSellPieceRequest/PieceData. "Star Piece Storage": converts
-    unneeded trainee-card pieces into Clovers (item 57), the real currency
-    the shop exchanges for other items (text_data cat 69 #8040: "You can
-    trade in unneeded Star Pieces for Clovers"). USER-SUPPLIED rate
-    (2026-08-24, no master.mdb table or real capture exists for this
-    exchange): 1 Clover per piece, any card's piece, no rarity weighting.
-
-    Every line is validated against our own piece_list_state BEFORE any
-    state changes -- same partial-sell protection as support_card/sell.
-
-    Response (dump.cs CardSellPieceResponse.CommonResponse): reward_summary_info
-    + piece_data (the REMAINING balance of every piece sold, unlike
-    support_card/sell's reward_info_array-only shape -- this endpoint's real
-    response explicitly echoes piece_data back)."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     requests = payload.get("sell_piece_data_array") or []
@@ -651,7 +465,7 @@ def handle_sell_piece(payload: dict) -> dict:
         return _refuse()
 
     pieces = full_state.setdefault("piece_list_state", [])
-    plan = []   # (piece_entry, sell_count)
+    plan = []
     for req in requests:
         piece_id = req.get("piece_id")
         sell_count = int(req.get("piece_num") or 0)
@@ -674,33 +488,10 @@ def handle_sell_piece(payload: dict) -> dict:
     return _ok({"reward_summary_info": summary, "piece_data": piece_data})
 
 
-# --------------------------------------------------------------------------
-# Card-screen extras. dump.cs shapes (never captured on this project, so the
-# request fields are exact and the responses carry exactly what is declared):
-#   CardUnlockRequest             {card_id}
-#     -> {reward_summary_info, piece_data}
-#   CardGetCardEventSkillRequest  {card_id}    -> {event_skill_list}
-#   SupportCardChangeLockRequest  {support_card_id, lock_flag}
-#     -> {support_card_id, is_locked}
-#   SupportCardLimitBreakItemRequest {support_card_id, limit_break_item_id,
-#                                     limit_break_count}
-#     -> {support_card_data, item_data_array}
-#   SupportCardDeckChangeNameRequest {deck_id, name} -> {support_card_deck}
-
-_TRAINEE_STORY_BASE = 500000000   # chara-story band; the support band is
-                                  # _SUPPORT_STORY_BASE above. Same
-                                  # base + owner*1000 + index scheme.
+_TRAINEE_STORY_BASE = 500000000
 
 
 def _chara_event_story_ids(card_id: int) -> dict:
-    """{normalized event title -> story_id} for a TRAINEE card's career events.
-
-    The support-card twin (_event_story_ids) has to search two owner bands
-    because a support card's events are split between its chara id and its own
-    card id. A trainee card's are not: they all live under the CHARA, which is
-    also what gametora.py's own dumper assumes for kind="chara" (its `bands`
-    helper: 500000000 + (card_id // 100) * 1000). Verified against the cache --
-    card 100101 resolves 26 of its 27 dumped events to real story ids."""
     row = master_data.query_one("SELECT chara_id FROM card_data WHERE id=?", (card_id,))
     chara_id = (row["chara_id"] if row and row["chara_id"] else card_id // 100)
     lo = _TRAINEE_STORY_BASE + chara_id * 1000
@@ -717,16 +508,6 @@ def _chara_event_story_ids(card_id: int) -> dict:
 
 @registry.endpoint("card/get_card_event_skill")
 def handle_get_card_event_skill(payload: dict) -> dict:
-    """card/get_card_event_skill -- the TRAINEE card's career-events tab,
-    the exact counterpart of support_card/get_support_card_event_skill above
-    (same EventSkill{story_id, skill_id_array} rows, same "which skills can
-    this card's events teach" question). Everything but the story-id band is
-    shared with that handler; see _chara_event_story_ids for the difference.
-
-    A card with no cached gametora page, or whose events teach no skills,
-    serves an EMPTY list rather than refusing: the tab is legitimately empty
-    for plenty of cards, and 205 here would break the whole detail screen
-    instead of showing "no skills"."""
     card_id = payload.get("card_id") or 0
     events = gametora.load_cached("chara", card_id) or {}
     story_ids = _chara_event_story_ids(card_id)
@@ -752,25 +533,6 @@ def handle_get_card_event_skill(payload: dict) -> dict:
 
 @registry.endpoint("card/unlock")
 def handle_card_unlock(payload: dict) -> dict:
-    """card/unlock -- spend Star Pieces to obtain a trainee card outright,
-    the "Piece Exchange" half of the scout screen that
-    card/get_release_card_array above builds the eligibility list for.
-
-    Cost source: need_piece_num_data, keyed by the card's DEFAULT rarity --
-    the same table and the same keying handle_rarity_upgrade already uses
-    (1/2/3 -> 25/50/150). That this is the unlock price as well as the
-    per-star price is SERVER-DEFINED: no capture of this endpoint exists and
-    master has no separate unlock-cost table, so the one real piece-cost
-    table in the game is used rather than inventing a second number.
-
-    Granting goes through shop._grant with a synthetic exchange row so the
-    card arrives exactly the way a shop purchase of the same card does --
-    card_collection entry at its minimum rarity, the chara row, the outfit,
-    and every add_* list the client needs to show it without a restart. Doing
-    it by hand here is how the two paths would drift.
-
-    Refuses on an unknown card, a card outside the piece-exchange list, a card
-    already owned, or not enough pieces."""
     viewer_id = payload["viewer_id"]
     card_id = payload.get("card_id")
     if not isinstance(card_id, int) or isinstance(card_id, bool):
@@ -782,7 +544,7 @@ def handle_card_unlock(payload: dict) -> dict:
 
     full_state = state_store.get_state(viewer_id) or {}
     if _card_entry(full_state, card_id) is not None:
-        return _refuse()        # already owned -- rarity_upgrade is that path
+        return _refuse()
 
     need = master_data.query_one(
         "SELECT piece_num FROM need_piece_num_data WHERE rarity=?",
@@ -810,17 +572,8 @@ def handle_card_unlock(payload: dict) -> dict:
     })
 
 
-# ------------------------------------------------------------ support cards
-
 @registry.endpoint("support_card/change_lock")
 def handle_support_card_change_lock(payload: dict) -> dict:
-    """support_card/change_lock -- the padlock that keeps a support card out
-    of support_card/sell. Response echoes {support_card_id, is_locked}, the
-    two fields the dumped class declares.
-
-    NOTE the field-name shift across the wire: the REQUEST says `lock_flag`
-    and the RESPONSE says `is_locked`. They are the same flag; the stored
-    entry uses the response spelling so load/index and sell read one name."""
     viewer_id = payload["viewer_id"]
     support_card_id = payload.get("support_card_id")
     lock_flag = payload.get("lock_flag")
@@ -841,20 +594,6 @@ def handle_support_card_change_lock(payload: dict) -> dict:
 
 @registry.endpoint("support_card/limit_break_item")
 def handle_limit_break_item(payload: dict) -> dict:
-    """support_card/limit_break_item -- uncap a support card with ITEMS, the
-    named-item sibling of support_card/limit_break above.
-
-    limit_break has two routes in one endpoint (burn dupes, or spend the one
-    uncap item for that rarity, +1 each call). This one is the item route
-    made explicit: the client names WHICH item and HOW MANY uncaps to buy in
-    a single call. The item is validated against support_card_limit_break for
-    this card's rarity -- naming a different item id is refused rather than
-    quietly charged, since that row is the only thing that makes an item an
-    uncap item.
-
-    Response carries item_data_array (the remaining balance of what was
-    spent) as well as the card, matching the same pay-then-report shape
-    handle_talent_strengthen uses."""
     viewer_id = payload["viewer_id"]
     support_card_id = payload.get("support_card_id")
     item_id = payload.get("limit_break_item_id")
@@ -882,9 +621,9 @@ def handle_limit_break_item(payload: dict) -> dict:
         "SELECT item_id, item_num FROM support_card_limit_break WHERE rarity=?",
         (rarity["rarity"],))
     if row is None:
-        return _refuse()        # rarity 1 has no uncap item -- dupes only
+        return _refuse()
     if item_id is not None and item_id != row["item_id"]:
-        return _refuse()        # not THIS card's uncap item
+        return _refuse()
 
     total = row["item_num"] * count
     if shop._item_count(full_state, row["item_id"]) < total:
@@ -900,13 +639,6 @@ def handle_limit_break_item(payload: dict) -> dict:
 
 @registry.endpoint("support_card_deck/change_name")
 def handle_deck_change_name(payload: dict) -> dict:
-    """support_card_deck/change_name -- rename one support-card deck.
-
-    Response is a SINGLE UserSupportCardDeck, not the whole array that
-    support_card_deck/change_party returns -- the dumped field is
-    `support_card_deck`, singular. The deck state is seeded through
-    collection.get_or_seed first so a rename before the first change_party
-    still lands on a real deck rather than materialising a stray one."""
     viewer_id = payload["viewer_id"]
     deck_id = payload.get("deck_id")
     name = payload.get("name")
@@ -921,12 +653,6 @@ def handle_deck_change_name(payload: dict) -> dict:
     decks = full_state.get(collection.SUPPORT_DECK_KEY) or []
     deck = _find(decks, "deck_id", deck_id)
     if deck is None:
-        # Materialize, exactly as change_party does for a deck_id it has not
-        # seen. The seed is genuinely EMPTY on this server (the load blob it
-        # comes from carries no support_card_deck_array), so deck state only
-        # starts existing once the client touches a deck -- and renaming is a
-        # legitimate first touch. Refusing here would 205 a rename of a deck
-        # the client is already showing.
         deck = {"deck_id": deck_id, "name": "", "support_card_id_array": []}
         decks.append(deck)
     deck["name"] = name.strip()

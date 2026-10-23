@@ -1,10 +1,8 @@
-// Raw save: every top-level state key of the account, a navigator into any
-// path inside one, and a JSON editor for whatever is open.
 
 import { REGION_NAME, act, bytes, call, esc, icon, keepScroll, reportError, store } from "./core.js";
 import { ask, download, empty, pickFile, targetPicker } from "./widgets.js";
 
-const BIG = 1_500_000;           // above this, the editor waits for an explicit "load"
+const BIG = 1_500_000;
 
 const preview = (v) => {
   if (v === null) return `<span class="jt-x">null</span>`;
@@ -17,7 +15,7 @@ const preview = (v) => {
 const joinPath = (path, k) => (path ? `${path}.${k}` : String(k));
 
 export const saveWin = {
-  title: "Raw save", icon: "database", size: [760, 520], place: [0.2, 0.04, 0.78, 0.92], key: "2",
+  title: "Raw save", icon: "database", size: [760, 520], place: [0.2, 0.04, 0.78, 0.92], key: "8",
   tools(win) { return [targetPicker(win)]; },
   mount(body, win) {
     let keys = [], cur = null, value = undefined, text = "", dirty = false, forced = false;

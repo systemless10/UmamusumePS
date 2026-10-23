@@ -1,0 +1,71 @@
+#title New Year's Resolution
+0 The New Year. I finish my light first day of work and take a breather. From the hallway, I can hear Umamusume exchanging New Year's greetings.
+0> (I wonder what Hishi Miracle is up to.)
+1 ...I can kind of guess. With that thought, I tidy up my desk and decide to head out.
+2 ...Huh? Trainer? Whoa, what a coincidence.
+3 Happy New Year.
+4 I ran into Hishi Miracle in the shopping district. We exchanged New Year's greetings, but I never expected to see her here, so I can't help saying it.
+4> I thought you'd be lazing around at home... | I thought you'd be lazing around at home...
+5 Hey, how mean! Like I'm some kind of lazy monster!
+6 I don't just laze around forever. This year's me is a little different, you know.
+7 See, I wanted to get some exercise, so I came out for a walk all on my own. Isn't that amazing?
+7> Then how about more exercise? | Then why not move a little more?
+8 By that... do you maybe mean, like, training...
+9 Nope, no way. Not happening! It's New Year's, you know? It's bright red on the calendar! A holiday of holidays!
+10 We should enjoy our precious time off. You're off work today too, Trainer! Right?
+10> Fair enough. | You've got a point.
+11 Huh... You backed down pretty easily.
+11> Well, you worked hard last year. | Well, you worked hard last year.
+12 Ever since her debut was decided, Hishi Miracle had applied herself to training every day. I think she kept working hard in her own way.
+13 ...... Ehehe... Hearing you say that...
+14 Yeah, I think I did a good job last year too. Compared to before my debut, I really tried.
+15 "I can do it if I try." ...Something like that.
+16 So this year too... I wanna do my best. Well, a reasonable amount of best.
+17 That said, that starts after the holidays. Today, I'm gonna play!
+18 By the way, what would you do for fun, Trainer? I'm kinda curious.
+18> Conquer every ride at the amusement park | Relax at a café | Test my luck with lucky bags!
+19 I see, so you wanna have fun to the max. Nice! I wanna play with everything I've got too!
+20 And so I came to the amusement park with Hishi Miracle. At the entrance, we met a familiar duo.
+21 Mira-ko, Happy Mar-velous New Year☆★☆ What a crazy coincidence! Statistically super-duper rare! I'm so grateful for this marvelous connection★
+21{ Mira-ko
+22 Yeah, yeah! This makes me so happy! Hey, hey, wanna go on the rides together?
+23 Oh, sounds good! Trainer, I bet those two know the tricks to hitting all the rides efficiently!
+24 Then leave it to Mayano and Marvelous! We'll take you on a route where you can ride everything, easy!
+24> Please do, we're counting on you!
+25 Ahahahaha! Mar-ve-lous☆ Roller coaster zoom zoom zoooom★
+26 Kyaaaaah! ...Ah, ahaha, ahahaha!
+27 Ah! Mayano figured it out! The escape room puzzle, solved! Everyone, this way!
+28 I finally caught up... W-we're running again?! Waaait!
+29 Yaaay, we conquered all the rides☆ Marvelous★☆ Next, let's conquer the souvenir shops!
+29> Those two never run out of energy... | Those two never run out of energy...
+30 Whoa... So this is the infamous "boot camp"... It's 50 times harder than I imagined...!
+31 And so, without meaning to, Hishi Miracle ended up spending a tough New Year's.
+32 Chilling at a café? I love that too. Wanna go right now?
+33 I enter a café with a nice atmosphere with Hishi Miracle. A familiar face comes over to serve us.
+34 Welcome! Hey, Hishi Miracle. Happy New Year!
+35 Huh, Ryan? You surprised me. Is this a part-time job?
+36 This place belongs to someone I know. They helped me out a lot before, so I'm lending a hand to thank them!
+37 Whoa, I see. Thanks for your hard work, even on New Year's.
+38 Ahaha, I'm having fun with it! Well, call me when you're ready to order.
+39 ...Did you hear that? She's helping out, so that means it's unpaid. That's so like Ryan.
+40 On a precious day off... I could never do that. She's seriously amazing.
+41 U-um... Ryan! Could I have a handshake?!
+42 Sure, I'd be glad to! Now then, may I have your hand?
+43 She's even doing fan service. And she's so used to handling it.
+44 We really live in different worlds. Ahh, this café latte is so good.
+45 Hishi Miracle admired the diligent Mejiro Ryan, yet spent her time leisurely without a care.
+46 Lucky bags! I wanna see what's inside. Trainer, can I tag along?
+47 Ah, isn't that... Nakayama in front of the lucky bag cart?
+48 Amid the crowd at the special venue, there was Nakayama Festa, carefully examining lucky bags at the very front.
+49 You're guaranteed more items than the price... but the question is whether I can actually use them.
+50 Last year I misjudged that and drew a dud. This year, I'll see through it!
+51 Naturally, I'm aiming for the high-price ones! High risk, high return—that's the thrill of a gamble!
+52 The size of the bag, the color, the placement... The bet I've arrived at is... this one!!
+53 ...That's kind of amazing.
+54 How can she take on such expensive lucky bags? I failed once before, so I'm too scared to buy the pricey ones.
+54> You don't buy lucky bags anymore?
+55 No, I just don't make reckless bets. I still buy the popular ones every year that are guaranteed to be a good deal.
+56 Around here, I recommend the imported food shop's lucky bag. Wanna try it?
+56> Yeah, maybe I'll buy that one too. | Yeah, maybe I'll buy that one too.
+57 Okie dokie, let's go test our luck the safe, secure, and reliable way.
+58 If possible, I'd rather not fail. And so, Hishi Miracle and I set off to test our luck with a lucky bag that was guaranteed to win.

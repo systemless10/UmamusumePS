@@ -1,4 +1,3 @@
-// Constants from Global GameAssembly.mem; SHA256 1d0d2908c1f950d8acfe82489e237ffd219f6f3ae38ac4f73153682f105b954a
 pub const LOG_HI: [f32; 129] = [
     f32::from_bits(0x00000000),
     f32::from_bits(0x3b5d4000),

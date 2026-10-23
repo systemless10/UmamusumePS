@@ -1,0 +1,23 @@
+{
+ "title": "トレーニングLvアップ",
+ "text_block_list": [
+  {
+   "name": "ダーレーアラビアン",
+   "text": "トレーニング、見させてもらったよ。\nいいね、知識をしっかりものにしてる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "ゆえに、以後トレーニングの強化を図る。\n遅れをとらぬよう、ウマ娘に伝えておけ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "この調子でがんばってね。\nわたしたちはいつでも見守ってるわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

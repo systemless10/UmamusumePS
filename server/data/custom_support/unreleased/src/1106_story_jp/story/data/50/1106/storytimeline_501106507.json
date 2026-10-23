@@ -1,0 +1,133 @@
+{
+ "title": "ファンレター",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ある日、ヒシミラクルは彼女宛てに届いた\nファンレターを読んでいた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よかった～。\nちゃんと受かったんだ！",
+   "choice_data_list": [
+    "受かった？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええ。試験に合格したそうです！\n実はこの手紙をくれた方、\nちょっと前に町で会ったんですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "あのー、ヒシミラクルさんですよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は、はい。そうですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "私、ファンなんです！\nいつもレース観てます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……ありがとうございます！\nえ、ほんとに？　わたしなんて特別\n目立つ走りでもないのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "そんなことないですよ！\nヒシミラクルさんの走りから、\nたくさん勇気をもらいました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "つい最近も。私、資格試験が近くて……\nでも、やる気が出なくて悩んでたんです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "そんな時にヒシミラクルさんのレースを観て！\n諦めず食らいついていく様子や、ゴール間際\nでの必死な表情に、勇気をもらえたんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしの走りに……勇気を？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……え、や。めちゃくちゃ嬉しい。\nわああ……こちらこそありがとうございます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの、試験がんばってくださいね！\nわたしも、レースがんばりますのでっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ってことがあって。そのときの方が試験に\n合格できたって手紙で報告してくれたんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ……こういう報告って、\nほんとに嬉しいですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしのがんばる姿を見て、\nダイエットに成功したとか。\n絵画コンクールで受賞したとか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そう言ってもらえることが、よくあって……\nわたしもがんばらなきゃって、思えるんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしとファンとで……お互いに\n励まし合いながらがんばっている感じです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし1人はふつーの力しかなくても、\nみんなの想いがわたしを強くしてくれる……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふっ、みんなのためにも、\nもっとがんばらないとですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ファンレターを受け、\nやる気に満ちるヒシミラクルなのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

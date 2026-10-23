@@ -1,0 +1,65 @@
+#title A World with the Three Goddesses
+0 The Mega Dream Supporter, brought in as an ally for Umamusume and trainers.
+1 A briefing on it was being held, and trainers and Umamusume had been gathered inside the VR world.
+2 Ah, Trainer <username>! We ended up in the same briefing session!
+3 ...Hi. .........Hello.
+4 This Umamusume, with her unique sense of timing, is Happy Meek, Trainer Kiryuin's trainee. We've met before.
+5 Last time was just a quick introduction, so I'm grateful they've set up a session like this.
+6 I need to learn exactly how it differs from the VR Umalator!
+7 Welcome to the world of VR, trainers. Today, we'll be your guides!
+8 It largely follows the VR Umalator's functions, but I'll explain everything without omission as a review.
+9 If you have questions, ask them without hesitation. Moving forward without understanding is what fools do.
+10 Okaaay, then let's start looking around right away~.
+11 And so, the trainers and Umamusume were led by the Three Goddesses on a tour of the facilities.
+12 A gym, a pool, and a training course. It has everything the VR Umalator had.
+13 Yes. Thanks to the feedback function, it also puts strain on your real bodies, just the same.
+14 Even when training in VR, we have to keep a close eye on our Umamusume's condition... Right! I could never let Meek get hurt!
+15 ...From what we've seen so far, the only difference from the VR Umalator is whether or not the Three Goddesses are here.
+16 Hehe, that is a big difference, but there's one more thing you'll only find here.
+17 Now then, to finish, shall I show you somewhere very special?
+18 Somewhere special... A racecourse? But the VR Umalator has those too...
+19 I didn't bring you here to show you the place, but to introduce the races held here.
+19> Races...?
+20 That's right. We Three Goddesses are here to support Umamusume and trainers. Your growth is what we wish for.
+21 And precisely because we wish for it, we'd like you to show us that growth—
+22 So we've prepared "special races" as a place to measure Umamusume's abilities.
+22{ special races
+23 "Special races" to measure Umamusume's abilities...!
+24 From junior year to senior year, once a year, a grand stage to which we invite only those whose talent the Three Goddesses recognize.
+24{ junior year | senior year
+25 There are three special races—the Growth Race, the WBC, and the SWBC. Only a handful of Umamusume can enter any of them, but—
+25{ Growth Race | SWBC | WBC
+26 Only the Umamusume whose talent we recognize there will ascend to even greater heights—the Grandmasters.
+26{ Grandmasters
+27 ...And on that stage, your opponents will be us, the Three Goddesses.
+28 The Three Goddesses as opponents...?!
+29 We get to race the Three Goddesses...?! Amazing...! That would never happen normally!
+30 ...The Three Goddesses... from my picture books... ...Racing them... I'm getting all antsy...
+31 Well, that's the races explained, but it'd be unfair if you didn't know how strong we actually are.
+32 That's why we went to the trouble of bringing you all to the racecourse!
+33 Now then, we'll hold a practice race.
+34 Burn into your memory the strength of those you'll face in the Grandmasters.
+35 A race with the Three Goddesses, right now...?! Whaaat?! Can even we run in it...?!
+36 Participation is optional. Just watching should be plenty to get a feel for how we run.
+37 Go ahead and experience the running of the Three Goddesses you're all aiming for!
+38 I never imagined we'd race the Three Goddesses... But it really could be a valuable experience.
+39 ...What about you, Meek? You haven't debuted yet, but do you want to try running?
+40 ...The Three Goddesses... ...Hmm... I want to try running...
+41 Then let's give it a try while we have the chance!
+42 A stage where we'd compete directly against the Three Goddesses, our supporters, awaited us—
+43 In that case, even though <chrname> hadn't debuted yet either, we decided we should learn how strong our opponents were...!
+44 Good, the participants are decided. Then let's begin the race at once.
+45 And so, a practice race against the Three Goddesses was suddenly held. But—
+46 It was simply overwhelming.
+47 The Three Goddesses' running left every single person there speechless—
+48 ...Huff... Huff... ...I couldn't... catch up at all...
+49 It wasn't just girls who haven't debuted. Some of them even run in graded races...
+49{ graded races
+50 Hehe, this is how we run.
+50> Th-that's amazing...!
+51 After all, our running is the ultimate running, derived through countless trials based on an enormous amount of data—
+52 In other words, it's the running at the very peak of Umamusume!
+52> The very peak of Umamusume...!
+53 Now you know how high the mountain you must climb is. All that's left is to climb it and claim the summit.
+54 Our real racing with <chrname> was about to begin—
+55 And in a racing life you only get once, I couldn't help but want to stand atop that far-off summit.

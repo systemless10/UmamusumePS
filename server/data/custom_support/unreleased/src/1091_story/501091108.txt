@@ -1,0 +1,98 @@
+#title Fan Appreciation Festival
+0 The Fan Appreciation Festival has arrived! To entertain the fans who always cheer them on, the Umamusume show off all sorts of competitions.
+1 And the competition Vivlos chose was...
+2 Tore-cchi, I'm gonna go do my best!
+3 Watch only me, okaaay? And cheer for me!
+4 And now, the final is finally about to begin! The "My Little Sister Championship"!
+5 The Umamusume of Tracen Academy all have a wide variety of personalities. And this competition focuses on the "little sister"...
+6 The number one little sister is about to be decided!
+6> (What kind of competition is this?)
+7 Now then, will the little sisters who advanced to the final please take the stage!
+8 I just knew it would turn out like this♪
+9 Can a little sister really be this perfect?! Reigning with dignified cuteness, the first-ever little sister champion, Curren Chan!
+9{ Curren Chan
+10 And the one challenging Curren is... the girl on a hot streak right now, you♪
+10{ Curren
+11 Curren-san! I'm suuuper honored.
+12 Taking on the undisputed champ is Vivlos! The ultimate little sister, the youngest with two big sisters. Will she finally break through this wall of cuteness?!
+13 You know, I've been working hard up to today, aiming for this competition!
+13> (Was she?)
+14 As my Onee-chans' little sister! I definitely won't lose!
+15 Go easy on me, 'kay? Curren-san♡
+16 Likewise♡ Nice to meet you, Vivlos-chan?
+17 *Staaare*...
+18 *Stare*...
+19 Neither one is backing down an inch...! It seems the competition has already begun!
+20 It's all right, Vivlos. You can surely win!
+21 After all, without a doubt, you and Cheval are the cutest little sisters there are.
+22 ...Curren-san is still undefeated in this tournament, though.
+23 ...Oh? Are you here to cheer for Curren-san, Ayabe-san?
+23{ Ayabe
+24 I just happened to be passing by.
+25 Hmm... Then you won't mind, will you? If our Vivlos defeats Curren-san.
+26 ...Go ahead, suit yourself.
+27 Looks like everything is ready! Now then, let's announce the theme of the final!
+28 It's... "Begging"! The charm that makes you want to grant any wish is truly a weapon befitting a little sister!
+29 Whoever gets the louder screams from the audience wins! And becomes this year's number one little sister!
+30 First up, the undisputed champion, Curren Chan!
+31 Okaaay.
+32 Hmm, let's see. Since I'm up against Vivlos-chan...
+33 Oh, Verxina-saaan! Could you come here for a sec?
+34 ...Huh?! Wh-why—
+35 Onee-chan.
+36 !?
+37 I know you already have precious little sisters, Onee-chan.
+38 But, you know... Curren wants to be your little sister too.
+39 Is that... not okay? Onee-chan?
+40 Wh-what's this...?! Curren Chan is challenging her head-on, on her opponent's home turf! Even as the champion, what a greedy soul!
+41 Cute Curren Chan!!!!
+42 The audience's screams have come in too! We're measuring the volume now!
+43 Mmmmmgh! Begging my Onee-chan...!
+44 No way! She's MY Onee-chan!
+44> (She's jealous...)
+45 Vivlos is extremely worked up right now. At this rate, she can't calmly do her usual "begging"...
+46 Onee-chan, no!
+46> Ah!
+47 Onee-chan is my Onee-chan!
+48 ...Oh, Vivlos. That goes without saying.
+49 But maybe you shouldn't have stepped off the stage.
+50 Huh?
+51 Unfortunately, since Vivlos left the stage, she loses by forfeit.
+52 Whaaat?! Was that a rule?
+53 Never leaving the stage on your own. Always being the star... That's also the mark of a little sister!
+54 I don't get iiit!
+55 ...But whatever. As long as Onee-chan loves me♡
+56 Yes, of course.
+57 ...Though one more little sister wouldn't hurt.
+58 Onee-chan?!
+59 Fufu, just kidding.
+60 ...In the end, I never really figured out what that competition was... but Vivlos looks satisfied, so I'll call it good.
+61 Onee-chaaan!
+61> Wait, Vivlos | Wait, Vivlos
+62 Tore-cchi! But Onee-chan is—!
+62> You're going to be the number one little sister, right? | You're going to be the number one little sister, right?
+63 I don't really get it, but apparently Vivlos has been working hard for this day. Then I need to keep calm and find a way to win.
+63> When it comes to "begging," you're the strongest | When it comes to "begging," you're the strongest
+64 Tore-cchi...
+64> (What am I even saying...) | (What am I even saying...)
+65 That's right. I've begged for anything and everything until now!
+66 Thanks, Tore-cchi! I'm totally fine now!
+67 Vivlos is now the one to answer back! Just what kind of begging will she show us?!
+68 ...Um, you know.
+69 I'm...
+70 Gonna pretend everyone's my Onee-chan and beg!
+71 Onee-chan! I wanna be your number one!
+72 Will you love me lots...?
+73 ...! WOOOOOOOOH!
+74 I'm... I'm...! Vivlos's Onee-chan!!
+75 Vivlos, what an orthodox approach! That's begging, all right! She's the strongest, ultimate little sisteeer!
+76 What are these people saying? Vivlos's only big sisters are Cheval and me.
+77 ...Curren-san. Your pride got the better of you.
+78 We're measuring the cheers now! And the winner is...?!
+79 It's Vivlos! It's Vivlos! She's defeated the undisputed champion and become the nation's little sister!
+80 Yaaaay!
+81 Aww, I lost! But you know, I'm happy♪
+82 Cuteness shines brighter when you have a strong rival. Let me get my revenge next year, okay?
+83 Of course! But I definitely won't lose, okay?
+84 *Staaare*...
+85 And so, Vivlos became the number one little sister for the who-knows-how-manyth time...?

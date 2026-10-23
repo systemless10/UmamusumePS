@@ -1,0 +1,458 @@
+{
+ "title": "クリスマス",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "今日はクリスマス。\nヴィブロスのご家族に招かれて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "所有している別荘で、\n家族だけのパーティーに参加していた。",
+   "choice_data_list": [
+    "すみません、ご家族の中に……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "いいのよ、誘ったのはこっちだもの。\nむしろ来てくれてありがとね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "クリスマスは毎年豪勢にやるんですが、\n今年はヴィブロスのお願いでこぢんまりと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "ささやかですが、\n料理も用意してありますので！\nぜひ召し上がってください！",
+   "choice_data_list": [
+    "ありがとうございます"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "目の前に並べられた料理を見る。\n大きな七面鳥に、山盛りのサラダ、\n大鍋のスープ、ビュッフェスタイルの小皿――",
+   "choice_data_list": [
+    "……ささやか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "え？　あ、ええと……\nささやか、ですけど……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ていうか……\n姉さん、なんで制服なの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "この後、\n学園の用事があるのよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……次のレースの準備を進めているの。\n私自身でも、リベンジをしなくちゃね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……僕も。\nトレーニング、しなくちゃ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "そうね、みんなやることも多いし……\n夜になる前に解散かな？",
+   "choice_data_list": [
+    "（仕方ないことだけど……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "家族のことが大好きで、みんなが\n集まれることを喜んでいたヴィブロス。\n彼女が寂しがってしまうのではないか――",
+   "choice_data_list": [
+    "そういえば、ヴィブロスは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ハッピーホリデー♪\nはっぴはっぴホリデ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "突然、部屋が真っ暗になる。\nするとヴィブロスの歌声とともに、\nほのかな光が近づいてくる……。",
+   "choice_data_list": [
+    "ケーキ……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "照明がつくと、どこか不格好な\nクリスマスケーキがテーブルに置かれていた。\n真っ白いクリームの上に並べられたのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "この人形みたいなの……\nもしかして、僕たち……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "1番おっきいのがパパ、2番目がシュヴァち、\n3番目がお姉ちゃん、4番目がママ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "で、真ん中の小さいのが私！",
+   "choice_data_list": [
+    "じゃあ、その隣は……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もちろん、トレっちだよ！\n名づけて、『大好きケーキ』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "貴方が作ったの？\n全部、1人で……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだよ！\nお友だちからレシピ聞いてー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あとは全部、自分でやった！\n何回か失敗しちゃったけどねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんかね、私……すっごい思ったの。\nみんなのこと、大好きだなって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "大好きの思い出がいっぱいあれば、\n離ればなれでも寂しくないでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日がそんな日になればいいなって！\nだから私、大丈夫だよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だってみんなと、いつもいっしょだもん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "うううっ、ヴィブロスちゃんっ。\nほんとーーーにおっきくなったねぇ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "勝手なんだが、すごく勝手なんだが！\n寂しさもある……っっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "おねだりもわがままも、まだまだしてくれ！\nヴィブロス～っ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "もう、パパったら。\nヴィブロスの成長を……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ぐす。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ね、姉さん……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……まあ……わかる、けど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もーっ、みんなどーしたの！？\n私はなーんにも変わってないよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おねだりもわがままも、\nできる人が増えただけ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから大丈夫なの！\nねートレっち♡",
+   "choice_data_list": [
+    "……俺！？",
+    "……私！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちがずっといっしょにいてくれるし？\nトレーナーとウマ娘だもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だからみんな、\n安心してね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……な、なんだろう……この気持ち。\n安心、できるのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさん……。\n……よろしく、お願いしますね……っ。",
+   "choice_data_list": [
+    "は、はい……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、賑やかに家族だけの\nクリスマスパーティーは進み――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――みんなー！\nまたねー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はー、\n楽しかった♡",
+   "choice_data_list": [
+    "……寂しくない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー、もちろん寂しいよ！\nもっといっしょにいたかったけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "言ったじゃん、\nトレっちがいっしょだから大丈夫って！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、まだ時間あるでしょ？\nもーちょっと遊んでこ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "せっかくだから、\nちょーセレブに遊びたいし！",
+   "choice_data_list": [
+    "今日は“こぢんまり”じゃないのか？",
+    "今日は“こぢんまり”じゃないの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んー、\nやっぱり気分変わっちゃった♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのね、\nセレブの間で流行ってるのがあって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "アグリーセーターってやつ？\nトレっちの分もあるから、いっしょに着よ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――きゃはははっ！\nトレっち、ちょーツリー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、夕方まで\nヴィブロスと楽しく過ごしたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、せっかくだし、\nおでかけしよーよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "というわけで、別荘から車や電車を乗り継ぎ、\n向かったのは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃーっ、\n盛り上がってる～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち！\nクリスマスマーケット、やってるよ！",
+   "choice_data_list": [
+    "へえ、色々出てるんだな",
+    "へえ、色々出てるんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねーっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイでもね、\nクリスマスは盛り上がるんだよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっちは今の時期もあったかいから、\n半袖でサンタと会えたりするんだって♪",
+   "choice_data_list": [
+    "へえ……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "興味出た？\n出ちゃった？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いつか、いっしょに\nドバイでクリスマスを過ごしたい？",
+   "choice_data_list": [
+    "難しそうだなぁ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ドバイのレースは3月にある。\nクリスマスの時期は、遠征にはまだ早い。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ、住んじゃえばいいじゃん♡",
+   "choice_data_list": [
+    "住む？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイに住みたいって夢も、\nまだ諦めてないからねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなで、は難しいかもだけど……\n新しい家族となら、叶いそうでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ねっ♡\nトレっち～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

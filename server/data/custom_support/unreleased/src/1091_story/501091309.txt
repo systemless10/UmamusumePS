@@ -1,0 +1,45 @@
+#title After the Japanese Oaks: Revenge
+0 Huff...! Huff...!!
+1 ...I lost.
+2 ...Maybe it really is impossible.
+3 ...But—
+4 The last crown. At least that one... I wanted that one, at least, to be mine.
+5 I'm sorry I'm not a strong, cool big sister...—
+6 ...No, I don't want that. I wanna win...!
+7 The Shuka Sho... no matter what!
+8 Vivlos... Revenge sure is hard...
+9 ...There's still the last one, the Shuka Sho! Let's cheer her on!
+10 ...!
+11 Vivlos... I know you can—
+12 Vivloooo!! You've gotta win the Shuka Sho!!
+13 ...For the sake of the girl who fell just one step short, too! Please...!
+14 !
+15 ...—
+16 ...Yeah, I promise.
+17 I've gotta win. No matter what!
+18 —Trainer!
+18> Vivlos! Today—
+19 Yeah! I'm fine! So, so!
+20 The Shuka Sho! What should I do to win for sure!?
+21 Back from the track, Vivlos barely stopped to be frustrated—her eyes were filled with strong determination.
+22 I know there's no such thing, but... now that I've come this far!
+23 I wanna live up to everyone's expectations. The Shuka Sho... I definitely wanna win it!
+24 Of course I'll work hard at training! There's summer camp, right?
+24> Yeah | Yeah
+25 Summer camp, where Umamusume aim to improve their abilities... There, they grow beyond recognition.
+26 But that's the same for everyone, right? So, one more thing!
+27 I want extra confidence! One more thing, to win...!
+27> Then, should we add a race?
+28 Camp certainly helps you grow, but your race sense gets a little dull. So, to be fully prepared, she'd run a prep race for the Shuka Sho—
+28> Like the Shion Stakes
+29 I see...
+30 Having a race would definitely make me feel better.
+30> Can you run while keeping an eye on your health?
+31 Ahh～! Suddenly you're treating me like a little kid!
+32 I am a kid, but I'm not THAT much of a kid. So it's fine!
+33 Plus, you'll be watching me too, right, Tore-cchi?
+33> Of course
+34 Then it's fine! Let's run the Shion Stakes?
+34{ Shion Stakes
+35 And then the Shuka Sho... I'll win it for sure and get my revenge!
+36 And so, our next goal race was set: the Shion Stakes, after summer camp.

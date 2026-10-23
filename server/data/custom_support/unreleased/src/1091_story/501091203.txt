@@ -1,0 +1,8 @@
+#title Toward the Shion Stakes
+0 To make sure of winning the last crown, the Shuka Sho, Vivlos decided to take on the Shion Stakes after summer camp.
+1 Umamusume who run well in the Shion Stakes often do well in the Shuka Sho too. In that race, we'd confirm her current ability—
+2 If I can do well here, then the Shuka Sho will surely...
+3 ...Okay.
+3> You've grown, so you'll be fine | You've grown, so you'll be fine
+4 Right. I worked super hard at camp!
+5 —I'm off!

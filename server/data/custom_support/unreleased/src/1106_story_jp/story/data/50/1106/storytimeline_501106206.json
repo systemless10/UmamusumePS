@@ -1,0 +1,197 @@
+{
+ "title": "宝塚記念にむけて",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "今日、わたしは――走る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自分のためなんて、\nかっこいいことは言えない。でも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしに懸けてくれる人、\nみんなのために！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "さあ、やってきました『宝塚記念』！\n今年は史上最高レベルの超豪華メンバーです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "まずはシンボリの仕事人。\n実力最強とも噂される、シンボリクリスエス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "春のグランプリ奪取――遂行するのみ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "昨年末からグングンと頭角を現してきた、\nロマンの探求者、タップダンスシチー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハハッ、踊ろうぜ！\n最後まで踊り続けられたヤツが勝者さ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "クラシック級からの来訪者。二冠を\n成し遂げた未確認疾走体、ネオユニヴァース！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ネオユニヴァース",
+   "text": "『未知』との遭遇……。\n『ワクワク』だね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "そしてウマ娘マニア！　芝ダートを問わず\n推しを追うオールラウンダー、\nアグネスデジタル！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "むっひょ～、この中でもみくちゃにされて\n走れるなんて～っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "見ているだけで圧倒される\n豪華布陣だったが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "エビイカホタテ、ズワイガニ……。\nエビイカホタテ、ズワイガニ……。",
+   "choice_data_list": [
+    "それ、何かのおまじない……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おまじないっていうより……\nこう思うことにしたんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日のライバルはみんな、\n『お好み焼きの具』って。",
+   "choice_data_list": [
+    "お好み焼きの……具？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい。ウマ娘と思うとこわいですけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "具と思えば、おいしそう！",
+   "choice_data_list": [
+    "なるほど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしだって、おいしい思いしたい。\nううん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "誰だって、おいしい思いしたい！\n最初から注目されてなくても！\nだから……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "そしてヒシミラクル！　ヒシミラクルです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "『天皇賞（春）』の覇者！\nそのステイヤーとしての才能は、\n中距離の夢舞台でも通じるのか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客のおじさん",
+   "text": "おお、ヒシミラクル……。\n俺、今日アイツを応援してるんだよな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "別の観客",
+   "text": "え？　でも勝てるか？\nこの距離、このメンツで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客のおじさん",
+   "text": "勝てないかもしれねえ。\nだけどさ、勝てたっていいじゃねえか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客のおじさん",
+   "text": "最初から日の当たってないウマ娘が\n勝ったって。だってさ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客のおじさん",
+   "text": "――夢、見たいじゃねえか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうだ、夢舞台は……\n特別な誰かの場所じゃない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "誰でも主役になれる。\nデビュー前は9連敗のわたしでも。\nわたしみたいな誰かでも！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "みんなみんな、夢を見たい！\nその期待に応えるために！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "全部入りお好み焼き、いただきます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

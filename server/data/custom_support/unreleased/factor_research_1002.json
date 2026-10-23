@@ -1,0 +1,535 @@
+{
+ "factor_research_event_id": 1002,
+ "tables": {
+  "factor_research_data": [
+   {
+    "factor_research_event_id": 1002,
+    "consume_tp_ratio": 20000,
+    "bonus_reward_ratio": 20000,
+    "result_type": 2,
+    "chara_id": 1032,
+    "dress_id": 103201,
+    "in_motion": 800001,
+    "stand_motion": 1,
+    "prize_motion1": 800002,
+    "prize_motion2": 800003,
+    "notice_date": 1687057200,
+    "start_date": 1687143600,
+    "ending_date": 1688007599,
+    "end_date": 1688266799
+   }
+  ],
+  "factor_research_box": [
+   {
+    "box_id": 2,
+    "factor_research_event_id": 1002,
+    "box_step": 1
+   }
+  ],
+  "factor_research_top": [
+   {
+    "id": 3,
+    "factor_research_event_id": 1002,
+    "ending_flag": 0,
+    "character_id": 1032,
+    "dress_id": 103201,
+    "menu_bg_id": 140,
+    "menu_bg_sub_id": 110,
+    "bgm_cue_name": "snd_bgm_GM285_sys",
+    "bgm_cuesheet_name": "snd_bgm_GM285",
+    "env_cue_name": "snd_sfx_atmos_room_d_noext",
+    "env_cuesheet_name": "snd_sfx_atmos_room_d_noext"
+   },
+   {
+    "id": 4,
+    "factor_research_event_id": 1002,
+    "ending_flag": 1,
+    "character_id": 1032,
+    "dress_id": 103201,
+    "menu_bg_id": 140,
+    "menu_bg_sub_id": 110,
+    "bgm_cue_name": "snd_bgm_GM285_sys",
+    "bgm_cuesheet_name": "snd_bgm_GM285",
+    "env_cue_name": "snd_sfx_atmos_room_d_noext",
+    "env_cuesheet_name": "snd_sfx_atmos_room_d_noext"
+   }
+  ],
+  "factor_research_box_reward": [
+   {
+    "id": 15,
+    "box_id": 2,
+    "box_num": 3,
+    "item_category": 174,
+    "item_id": 203,
+    "item_num": 1,
+    "rate": 3,
+    "prize_type": 1
+   },
+   {
+    "id": 16,
+    "box_id": 2,
+    "box_num": 3,
+    "item_category": 90,
+    "item_id": 43,
+    "item_num": 300,
+    "rate": 3,
+    "prize_type": 1
+   },
+   {
+    "id": 17,
+    "box_id": 2,
+    "box_num": 1,
+    "item_category": 164,
+    "item_id": 149,
+    "item_num": 1,
+    "rate": 1,
+    "prize_type": 1
+   },
+   {
+    "id": 18,
+    "box_id": 2,
+    "box_num": 1,
+    "item_category": 164,
+    "item_id": 150,
+    "item_num": 1,
+    "rate": 1,
+    "prize_type": 1
+   },
+   {
+    "id": 19,
+    "box_id": 2,
+    "box_num": 1,
+    "item_category": 11,
+    "item_id": 163,
+    "item_num": 1,
+    "rate": 1,
+    "prize_type": 1
+   },
+   {
+    "id": 20,
+    "box_id": 2,
+    "box_num": 2,
+    "item_category": 11,
+    "item_id": 162,
+    "item_num": 1,
+    "rate": 2,
+    "prize_type": 1
+   },
+   {
+    "id": 21,
+    "box_id": 2,
+    "box_num": 4,
+    "item_category": 11,
+    "item_id": 161,
+    "item_num": 1,
+    "rate": 4,
+    "prize_type": 2
+   },
+   {
+    "id": 22,
+    "box_id": 2,
+    "box_num": 8,
+    "item_category": 11,
+    "item_id": 160,
+    "item_num": 1,
+    "rate": 8,
+    "prize_type": 2
+   },
+   {
+    "id": 23,
+    "box_id": 2,
+    "box_num": 1,
+    "item_category": 97,
+    "item_id": 115,
+    "item_num": 5,
+    "rate": 1,
+    "prize_type": 2
+   },
+   {
+    "id": 24,
+    "box_id": 2,
+    "box_num": 5,
+    "item_category": 34,
+    "item_id": 95,
+    "item_num": 1,
+    "rate": 5,
+    "prize_type": 2
+   },
+   {
+    "id": 25,
+    "box_id": 2,
+    "box_num": 5,
+    "item_category": 150,
+    "item_id": 116,
+    "item_num": 1,
+    "rate": 5,
+    "prize_type": 2
+   },
+   {
+    "id": 26,
+    "box_id": 2,
+    "box_num": 10,
+    "item_category": 91,
+    "item_id": 59,
+    "item_num": 30000,
+    "rate": 10,
+    "prize_type": 2
+   },
+   {
+    "id": 27,
+    "box_id": 2,
+    "box_num": 10,
+    "item_category": 30,
+    "item_id": 110,
+    "item_num": 15000,
+    "rate": 10,
+    "prize_type": 2
+   },
+   {
+    "id": 28,
+    "box_id": 2,
+    "box_num": 3,
+    "item_category": 103,
+    "item_id": 98,
+    "item_num": 1000,
+    "rate": 3,
+    "prize_type": 2
+   }
+  ],
+  "factor_research_factor_upgrade": [
+   {
+    "id": 1,
+    "factor_type": 1,
+    "is_upgradable": 1,
+    "factor_rarity": 2,
+    "use_item_num": 1
+   },
+   {
+    "id": 2,
+    "factor_type": 1,
+    "is_upgradable": 1,
+    "factor_rarity": 3,
+    "use_item_num": 1
+   },
+   {
+    "id": 3,
+    "factor_type": 2,
+    "is_upgradable": 1,
+    "factor_rarity": 2,
+    "use_item_num": 1
+   },
+   {
+    "id": 4,
+    "factor_type": 2,
+    "is_upgradable": 1,
+    "factor_rarity": 3,
+    "use_item_num": 1
+   },
+   {
+    "id": 5,
+    "factor_type": 3,
+    "is_upgradable": 1,
+    "factor_rarity": 2,
+    "use_item_num": 1
+   },
+   {
+    "id": 6,
+    "factor_type": 3,
+    "is_upgradable": 1,
+    "factor_rarity": 3,
+    "use_item_num": 1
+   },
+   {
+    "id": 7,
+    "factor_type": 4,
+    "is_upgradable": 0,
+    "factor_rarity": 2,
+    "use_item_num": 9999
+   },
+   {
+    "id": 8,
+    "factor_type": 4,
+    "is_upgradable": 0,
+    "factor_rarity": 3,
+    "use_item_num": 9999
+   },
+   {
+    "id": 9,
+    "factor_type": 5,
+    "is_upgradable": 0,
+    "factor_rarity": 2,
+    "use_item_num": 9999
+   },
+   {
+    "id": 10,
+    "factor_type": 5,
+    "is_upgradable": 0,
+    "factor_rarity": 3,
+    "use_item_num": 9999
+   },
+   {
+    "id": 11,
+    "factor_type": 6,
+    "is_upgradable": 0,
+    "factor_rarity": 2,
+    "use_item_num": 9999
+   },
+   {
+    "id": 12,
+    "factor_type": 6,
+    "is_upgradable": 0,
+    "factor_rarity": 3,
+    "use_item_num": 9999
+   },
+   {
+    "id": 13,
+    "factor_type": 7,
+    "is_upgradable": 0,
+    "factor_rarity": 2,
+    "use_item_num": 9999
+   },
+   {
+    "id": 14,
+    "factor_type": 7,
+    "is_upgradable": 0,
+    "factor_rarity": 3,
+    "use_item_num": 9999
+   }
+  ],
+  "item_data": [
+   {
+    "id": 203,
+    "item_category": 174,
+    "group_id": 0,
+    "effect_type_1": 1002,
+    "effect_target_1": 0,
+    "effect_value_1": 0,
+    "effect_type_2": 0,
+    "effect_target_2": 0,
+    "effect_value_2": 0,
+    "add_value_1": 0,
+    "add_value_2": 0,
+    "add_value_3": 0,
+    "limit_num": 9999,
+    "sort": 5006801,
+    "rare": 1,
+    "enable_request": 0,
+    "request_reward": 0,
+    "item_place_id": 0,
+    "sell_item_id": 0,
+    "sell_price": 0,
+    "start_date": "2023/06/19 03:00:00",
+    "end_date": "2023/07/02 02:59:59"
+   }
+  ],
+  "mini_motion_set": [
+   {
+    "id": 800001,
+    "label": "FactorResearch01",
+    "body_motion": "near06",
+    "body_motion_type": 3,
+    "body_motion_play_type": 2,
+    "body_motion_scene_type": 0,
+    "scene_sub_folder": "",
+    "chara_type_target": 0,
+    "add_layer_index": 0,
+    "is_mirror": 0,
+    "facial_motion": "near06",
+    "chara_face_type": "",
+    "transition_time": 0,
+    "ear_motion": "near06",
+    "is_enable_randome_ear": 0,
+    "tail_motion": "",
+    "tail_motion_type": 0,
+    "is_enable_randome_tail": 1,
+    "prop_id": 0,
+    "prop_motion": "",
+    "prop_motion_scene_type": 0,
+    "prop_attach_node_name_type": 0,
+    "is_prop_require_motion_end": 0
+   },
+   {
+    "id": 800002,
+    "label": "FactorResearch02",
+    "body_motion": "mot03",
+    "body_motion_type": 2,
+    "body_motion_play_type": 2,
+    "body_motion_scene_type": 0,
+    "scene_sub_folder": "",
+    "chara_type_target": 0,
+    "add_layer_index": 0,
+    "is_mirror": 0,
+    "facial_motion": "mot03",
+    "chara_face_type": "",
+    "transition_time": 0,
+    "ear_motion": "mot03",
+    "is_enable_randome_ear": 0,
+    "tail_motion": "",
+    "tail_motion_type": 0,
+    "is_enable_randome_tail": 1,
+    "prop_id": 0,
+    "prop_motion": "",
+    "prop_motion_scene_type": 0,
+    "prop_attach_node_name_type": 0,
+    "is_prop_require_motion_end": 0
+   },
+   {
+    "id": 800003,
+    "label": "FactorResearch03",
+    "body_motion": "pdk02",
+    "body_motion_type": 2,
+    "body_motion_play_type": 2,
+    "body_motion_scene_type": 0,
+    "scene_sub_folder": "",
+    "chara_type_target": 0,
+    "add_layer_index": 0,
+    "is_mirror": 0,
+    "facial_motion": "pdk02",
+    "chara_face_type": "",
+    "transition_time": 0,
+    "ear_motion": "pdk02",
+    "is_enable_randome_ear": 0,
+    "tail_motion": "",
+    "tail_motion_type": 0,
+    "is_enable_randome_tail": 1,
+    "prop_id": 0,
+    "prop_motion": "",
+    "prop_motion_scene_type": 0,
+    "prop_attach_node_name_type": 0,
+    "is_prop_require_motion_end": 0
+   }
+  ],
+  "tutorial_guide_data": [
+   {
+    "id": 176,
+    "group_id": 150001,
+    "page_index": 1,
+    "image_index": 1
+   },
+   {
+    "id": 184,
+    "group_id": 150001,
+    "page_index": 2,
+    "image_index": 2
+   },
+   {
+    "id": 185,
+    "group_id": 150001,
+    "page_index": 3,
+    "image_index": 3
+   }
+  ],
+  "character_system_text": [
+   {
+    "character_id": 1032,
+    "voice_id": 900000,
+    "text": "Well, well, so glad you could make it! Now then, let's get right to the experiment!",
+    "cue_sheet": "snd_voi_factorresearch_103200",
+    "cue_id": 0,
+    "motion_set": 1032021,
+    "scene": 7,
+    "use_gallery": 1,
+    "card_id": 0,
+    "lip_sync_data": "snd_voi_factorresearch_103200_0000",
+    "gender": 0,
+    "motion_second_set": 0,
+    "motion_second_start": 0,
+    "start_date": 1613228400
+   },
+   {
+    "character_id": 1032,
+    "voice_id": 900001,
+    "text": "Splendid! We've gathered more than enough results this time.",
+    "cue_sheet": "snd_voi_factorresearch_103200",
+    "cue_id": 1,
+    "motion_set": 1032015,
+    "scene": 7,
+    "use_gallery": 1,
+    "card_id": 0,
+    "lip_sync_data": "snd_voi_factorresearch_103200_0001",
+    "gender": 0,
+    "motion_second_set": 0,
+    "motion_second_start": 0,
+    "start_date": 1613228400
+   },
+   {
+    "character_id": 1032,
+    "voice_id": 900002,
+    "text": "That was a most productive session. I'll be counting on your help again!",
+    "cue_sheet": "snd_voi_factorresearch_103200",
+    "cue_id": 2,
+    "motion_set": 1032000,
+    "scene": 7,
+    "use_gallery": 1,
+    "card_id": 0,
+    "lip_sync_data": "snd_voi_factorresearch_103200_0002",
+    "gender": 0,
+    "motion_second_set": 0,
+    "motion_second_start": 0,
+    "start_date": 1613228400
+   },
+   {
+    "character_id": 1032,
+    "voice_id": 900003,
+    "text": "Do put those research reports to good use, won't you?",
+    "cue_sheet": "snd_voi_factorresearch_103200",
+    "cue_id": 3,
+    "motion_set": 1032001,
+    "scene": 7,
+    "use_gallery": 1,
+    "card_id": 0,
+    "lip_sync_data": "snd_voi_factorresearch_103200_0003",
+    "gender": 0,
+    "motion_second_set": 0,
+    "motion_second_start": 0,
+    "start_date": 1613228400
+   }
+  ],
+  "character_system_lottery": [
+   {
+    "id": 6013,
+    "chara_id": 0,
+    "card_id": 0,
+    "card_rarity_id": 0,
+    "trigger": 80000,
+    "param1": 0,
+    "per": 100,
+    "priority": 0,
+    "sys_text_id": 900000
+   },
+   {
+    "id": 6014,
+    "chara_id": 0,
+    "card_id": 0,
+    "card_rarity_id": 0,
+    "trigger": 80001,
+    "param1": 0,
+    "per": 100,
+    "priority": 0,
+    "sys_text_id": 900001
+   },
+   {
+    "id": 6015,
+    "chara_id": 0,
+    "card_id": 0,
+    "card_rarity_id": 0,
+    "trigger": 80002,
+    "param1": 0,
+    "per": 100,
+    "priority": 0,
+    "sys_text_id": 900002
+   },
+   {
+    "id": 6016,
+    "chara_id": 0,
+    "card_id": 0,
+    "card_rarity_id": 0,
+    "trigger": 80003,
+    "param1": 0,
+    "per": 100,
+    "priority": 0,
+    "sys_text_id": 900003
+   }
+  ]
+ }
+}

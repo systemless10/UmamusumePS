@@ -1,0 +1,46 @@
+#title Dubai Master Vivlos
+0 Then how about this property? A tower apartment with a full view of a pretty turquoise-blue sea!!
+1 Hmm...
+2 I know about Dubai's races, but properties... I don't know.
+3 Ehh～!? But where you live is important～!
+4 You refresh at an elegant mosaic-tiled spa～.
+5 Then you sleep all snug in a fluffy bed at a designer hotel～.
+6 —And when you run in the race! First place, guaranteed!
+7 I see... It certainly seems to have a big effect on performance.
+8 Ehehe, right～? You think so too, Duramente-san～?
+9 Like, Duramente-san, how about lining up horseshoes in a whole room?
+10 Hmm... A room just for horseshoes.
+11 Hey, let's display golden horseshoes! I wonder if they sell them at the Gold Souk～?
+12 Considering the weight of gold, wouldn't that raise the chance of throwing a shoe?
+13 But doesn't it get you hyped? If you could pick horseshoes like picking an outfit for going out, it'd be fun!
+14 Hmm... Keeping options to match your condition... That's one way of thinking.
+15 Right? When I live in Dubai, maybe I'll make one room a horseshoe room too～♪
+16 Then which property would be good～. ...Oh, how about this one?
+17 It has a pool on the terrace, and it's close to the Gold Souk too～♪
+18 Oh, the Gold Souk sells tons of pretty goldwork, and it's not glare-y, it's more sparkly～, like—
+19 ...Isn't this rent unrealistic? I don't think it's a useful reference.
+20 It's fine, it's fine, first you pick your favorite dream. Then you just work hard toward it!
+21 I see. You have a strong sense of your goals.
+22 I saw Vivlos chatting happily with Duramente. They must be talking about Dubai.
+22> Looks fun. Talking about Dubai? | Looks fun. Talking about Dubai?
+23 Yup～♪ Hey, hey, Tore-cchi, if you lived in Dubai, what kind of place would you want?
+24 You'd wanna think about stuff like being close to the station, the floor plan, the interior～♪
+25 Oh! But dream big, okay? No "being realistic" for now!
+25> Let's pick the best location! | Maybe build it ourselves?
+26 Then I want one close to the sky～, close to the sky～♪
+27 Close to the sky? ...Like close to the station? You mean a property near the airport?
+28 Nooo, I mean it literally! It's close to the sky, so close to the sky～♪
+28> What kind of property is it? | What kind of property is it?
+29 This one, this one, the room closest to the sky in the whole world♪
+30 The property Vivlos showed me was a room on the top floor of a super-ultra-tall skyscraper.
+30> That's unrealistic (rent)... | That's unrealistic (rent)...
+31 Like I said, that's a no for nooooow!
+32 "It's like a castle above the clouds! I wanna live there someday～♪ Okay, I'll work hard to make it happen!"
+33 That's all it needs to be! Hey, let's do our best, Tore-cchi♪
+34 Ehh, what's that! Nice, nice!? Tore-cchi, your dreams are top quality～!
+35 Dubai builds big artificial islands, and builds houses with 3D printers, and does all kinds of interesting things♪
+36 So I bet any dream can come true! Like, there are mansions with pools, so—
+37 Maybe you could even build a mansion with a racetrack!
+38 A home with a racetrack. That sounds good...!
+39 Right, right? Being able to dream all kinds of dreams is what's great about Dubai♪ Like, there's also—
+40 It looked like their Dubai talk was going to go on for a while.

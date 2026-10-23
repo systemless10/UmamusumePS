@@ -1,0 +1,443 @@
+{
+ "title": "ウマ娘を見守るもの",
+ "text_block_list": [
+  {
+   "name": "桐生院トレーナー",
+   "text": "……坂路はまだこのままにしておいて、\n月曜と木曜にプールトレーニングをっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ふふっ、本当にクラシック級の頃とは\nメニューも変わりましたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ようやく周りのウマ娘たちに追いついた。\n2勝3勝している子や、重賞を勝った子に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……長かったですね、ミーク。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘たち",
+   "text": "――いっちに！　いっちに！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "（トレーナーの心得、ウマ娘をよく見よ！\n共に走るパートナーと忘るべからず！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "（ウマ娘と共に……走る。彼女たちの\n夢に向け……走れるようでなければならない。\nどんなに未熟でも……不安でも……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……あ。あの子、また――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "教官",
+   "text": "……あら？\nハッピーミークさん、体調でも悪いの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……。\n…………いえ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "教官",
+   "text": "なら、どうしたの？\nもうみんな、次のメニューに入ってるわよ？\nそれとも他のメニューがしたいとか……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……乗り遅れました……。\n…………行ってきます……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "（いつも、ワンテンポ遅れてる……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "（でも……途中で投げ出したりは、しない。\nゆっくりだけど、最後まで必ずやり遂げてる。\n置いていかれても……居残りしてでも……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……うん。私も、頑張らないと！\nあの子みたいに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "は……は……ふぅ。\n……んっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……あ……ない……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……あのっ。\nハッピーミーク、さん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "これ……よかったら、どうぞ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "突然すみません。どうしても、少しだけ……\n貴方と話がしたくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………私と、ですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "はい。……私、貴方にたくさん、\nたくさんたくさん、励まされましたから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "やると決めたことは、投げ出さない。\n辛抱強く、自分にできるペースでやり抜く……\nそんな、貴方の姿に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ですからっ、……その、えっと。\n……貴方は、素晴らしいウマ娘です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "もし、もしも許してもらえるのなら……！\n私は、貴方と共に走りたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ハッピーミーク、さんっ。……私の、\n担当ウマ娘に……なっていただけませんか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "（覚えてる。ミークの笑顔を初めて見たのは、\nたしか、あの時だった――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……と、メール？\nこんな時間に、誰から……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "…………。\n……！？　ミークっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "保健室の先生",
+   "text": "コースの脇で倒れていたそうです。\nずいぶんと疲労を溜めていたみたいですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "保健室の先生",
+   "text": "ただ、大きな問題はないようですから\nひとまずは安心してください。\nそれでは、お大事に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "はい……ありがとうございました……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "疲労……。\n……もしかして、私がトレーニングを\nしっかり考えきれてなかったから……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "違い、ます……！\n……違います。\nトレーナー……ごめんなさい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……私のペースでって……言われたのに……。\n……自主トレ……してたから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "えっ……自主トレ？\nど、どうして……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "………………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……ココンや、グラッセたち……樫本さん……\n喜んで、ました。……一緒に……たくさん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "勝って。……一緒に、喜んで。\n……一緒に……幸せに、なって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "私も、って、……思いました。\n……喜びたかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "一緒に……幸せに、なりたかった。\n……トレーナーと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "私のこと……見てくれてた。\n私のこと……わかってくれてた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "私の……トレーナーと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "勝ちたかった、です。だから。\n……でも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………ごめんなさい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ミーク……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "――それがミークちゃんの急成長の理由。\nそれほどまでに隠れて努力を重ねていたのね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……ちゃんと見ていなければ、と、\n気をつけているつもりでした。誰よりも、\nあの子を知っている人間でなければと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……でも全然、見えていなかった。\n私は、あの子の成長ぶりに浮かれてばかりで。\n忠告までしていただいていたのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……ゴドルフィンバルブさんは冷静に、\n起こりうるリスクもしっかりわかってました。\n最善なトレーニングもすべて知ってる……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ミークにとって1番のトレーナーは、\n私なんかじゃなく――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "それは違うわ。\nミークちゃんがここまでがんばったのは、\nわたしの見守りや知識があったからじゃない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……ミークちゃんががんばったのは、\nあなたがトレーナーだったからよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……私が……トレーナーだったから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……かつてね、こんなウマ娘がいたの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "誰からも期待を受けず、\n両親ですら走ることを諦めていた子――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "体つきが弱々しくて、成績を残せそうにない。\nだからまともな練習もしてもらえない。\n初勝利には20戦近くもかかったわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "勝ちたいと思ういっぽうで、\n勝てるはずもないトレーニングの日々。\n次第にその子も気持ちが荒んでしまったの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "だけど、そんな彼女の元に\n1人のトレーナーが訪れた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そのトレーナーは、荒んでしまったその子に\nずっと寄り添い、支え続けたわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "その根気が伝わったのか、次第にその子は\n心を開き、レースの結果も変わっていった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "やがて、最強と呼ばれたウマ娘にまで勝利し、\n2人は唯一無二の絆を築き上げ、\n歴史にその名を刻んだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ウマ娘の気持ちも、未来も変えるのが\nトレーナーという存在よ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そして、ミークちゃんはあなたを信頼し、\n心を寄せてくれている。……見て、わかって\nくれてるって、言っていたんでしょう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "なら迷うことなどない。\nミークちゃんにとって1番のトレーナーは、\nあなたよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……ミークにとって、1番の……\n…………っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……私は、ミークの想いに応えたいです……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "頑張りたい――早く勝ちたいというのならば、\nそれを全力で支えてあげたいです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ええ、あなたならできるわ。\n唯一無二のトレーナーとして共に走ることが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "…………。\n……ハッピーミークが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（過剰なトレーニングによるリスク……。\nそれはやはり、起こるべくして起きるもの）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（……限界を探るようなトレーニングは、\n選ぶことはできない……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

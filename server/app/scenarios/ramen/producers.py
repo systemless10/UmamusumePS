@@ -1,17 +1,3 @@
-"""RAMEN (scenario 14) -- the event calendar and its resolvers.
-
-Every beat here is on docs/JP_RAMEN_SCENARIO.md §11's calendar, which was read
-off 62 complete real careers: the turn it fires on, which response carried it,
-its play_timing, its choice count and what resolving it paid. Two turn numbers
-are in play (see career_events.Ctx): `ctx.turn` is the turn just PLAYED -- the
-beats that close a turn (timing 6, "after the action") key off it -- and
-`ctx.advanced_turn` the turn being arrived at, which the turn-start beats
-(timing 1) key off.
-
-Payouts ride on each Event's choices wherever they are plain numbers; the
-resolvers below do only what the effect vocabulary cannot (playing_state,
-tricks, secret ingredients, facility levels, the Ultimate Ramen pick).
-"""
 
 from __future__ import annotations
 
@@ -25,39 +11,34 @@ from .impl import SCENARIO_ID
 
 log = logging.getLogger("uma-server")
 
-# ------------------------------------------------------------ the beats ---
-# (event_id, story_id, choices) -- master single_mode_story_data, choice counts
-# as captured.
-OPENING = (214001, 400014000)                  # turn 1, behind Tazuna's tips
-REGION_OPEN = (214002, 400014001)              # turn 3: the first selection
+OPENING = (214001, 400014000)
+REGION_OPEN = (214002, 400014001)
 REGION_FOLLOW = {1: (214017, 400014102), 2: (214018, 400014102), 3: (214019, 400014102)}
-REPORTER = (214048, 400000100)                 # turn 13, 変人記者、登場！？
+REPORTER = (214048, 400000100)
 STORY_BEATS = {16: (214032, 400014003), 20: (214033, 400014004),
                32: (214034, 400014007), 43: (214035, 400014010),
-               52: (214036, 400014013)}        # "1杯目" .. "5杯目", no choice
+               52: (214036, 400014013)}
 JAMBOREE_OPEN = {24: (214003, 400014005), 48: (214004, 400014011),
                  72: (214005, 400014018)}
-ULTIMATE = (214026, 400014017)                 # turn 72, three choices
+ULTIMATE = (214026, 400014017)
 SUMMER_START = {37: (214020, 400014008), 61: (214021, 400014014)}
 SUMMER_DAYS = {38: (214024, 400014103), 39: (214024, 400014103), 40: (214024, 400014103),
                62: (214025, 400014103), 63: (214025, 400014103), 64: (214025, 400014103)}
 SUMMER_END = {40: (214022, 400014009), 64: (214023, 400014015)}
-LINK_BEAT = (214030, 400014016)                # turn 65, one choice per link chara
-TRAINING_TIPS = (214029, 400014101)            # 成長のヒント
-ENDING = (214037, 400014022)                   # turn 78, behind event 10
+LINK_BEAT = (214030, 400014016)
+TRAINING_TIPS = (214029, 400014101)
+ENDING = (214037, 400014022)
 GAUGE_EVENTS = {"rest": 214012, "outing": 214013, "race": 214014, "infirmary": 214015,
                 "summer": 214074, "summer_race": 214075}
-GAUGE_STORY = 400014100                        # その一、ラーメンを知るべし
+GAUGE_STORY = 400014100
 
 SUMMER_START_ENERGY, SUMMER_START_SECRETS = 15, 2
 SUMMER_DAY_ENERGY, SUMMER_DAY_SECRETS = 10, 1
 REGION_SECRETS = 2
-# Tricks 214017/18/19 hand out: two of each with SSR Tazuna, one of each with
-# no link card (both captured). An older link card's is INFERRED as one of each.
 REGION_TRICKS = {2: (1, 2, 3, 1, 2, 3), 1: (1, 2, 3), 0: (1, 2, 3)}
 ENDING_STATS, ENDING_SP = 40, 200
-ENDING_HINT = (210391, 2)                      # 極上の感謝を！ +2
-STORY_ENDING_TRIGGER = 10                      # "Twinkle Monthly Special Issue"
+ENDING_HINT = (210391, 2)
+STORY_ENDING_TRIGGER = 10
 
 JAMBOREE_OPEN_EVENTS = frozenset(e for e, _s in JAMBOREE_OPEN.values())
 RESULT_EVENTS = frozenset(impl.RESULT_STORIES)
@@ -101,8 +82,6 @@ def ending_event() -> CE.Event | None:
 
 
 def link_choices(chara_info: dict) -> list:
-    """214030's six choices: each teaches its chara's hint, the gold one when
-    that chara is linked (§12)."""
     linked = impl.linked_charas(chara_info)
     out = []
     for charas, normal, upgraded in impl.LINK_HINTS:
@@ -150,15 +129,12 @@ def ramen_calendar(ctx: CE.Ctx) -> list:
 
 
 def _held(st: dict, turn: int) -> bool:
-    """This turn's Jamboree already happened."""
     cp = M.check_point_for_turn(turn)
     return any(r["check_point_type"] == cp for r in st["results"])
 
 
 @CE.producer("ramen_gauge", priority=CE.PRIO_SPECIAL, scenario=SCENARIO_ID)
 def ramen_gauge(ctx: CE.Ctx) -> list:
-    """The gauge event a rest, outing, infirmary visit or race queues (§3.4):
-    the gauge moves when it RESOLVES, not on the action's own response."""
     st = impl.state(ctx.full_state)
     kind = st.get("gauge_due") or ""
     if not kind:
@@ -171,8 +147,6 @@ def ramen_gauge(ctx: CE.Ctx) -> list:
         kind = "summer_race" if kind == "race" else "summer"
     event_id = GAUGE_EVENTS[kind]
     race = kind in ("race", "summer_race")
-    # A race's gauge event rides the race chain at timing 3 (608/608
-    # captured); the others take the timing of the response serving them.
     return [_beat(event_id, GAUGE_STORY, from_endpoint=not race, timing=3 if race else 6,
                   once=f"ramen:gauge:{played}:{event_id}", priority=CE.PRIO_SPECIAL,
                   resolver="ramen_gauge", payload={"turn": played})]
@@ -180,8 +154,6 @@ def ramen_gauge(ctx: CE.Ctx) -> list:
 
 @CE.producer("ramen_training_tips", priority=CE.PRIO_SPECIAL, scenario=SCENARIO_ID)
 def ramen_training_tips(ctx: CE.Ctx) -> list:
-    """成長のヒント (§5.3, effect 17): on a turn a senior tasting is in force,
-    training a facility plays every hint of the normal cards standing in it."""
     st = impl.state(ctx.full_state)
     played = int(ctx.turn or 0)
     trained = st["marks"].get("trained") or {}
@@ -203,17 +175,12 @@ def ramen_training_tips(ctx: CE.Ctx) -> list:
                   priority=CE.PRIO_SPECIAL, choices=[CE.Choice(effects=effects)])]
 
 
-# ============================================================ resolvers ===
-
 def _set_playing_state(chara_info: dict, value: int) -> None:
     chara_info["playing_state"] = value
 
 
 @CE.resolver("ramen_region_open")
 def _region_open(full_state, chara_info, event, choice_number, **kw):
-    """214002: the NPC charas join, Tazuna is revealed (NPC_UNLOCKS), the
-    region selection screen opens -- and its follow-up already rides this
-    response, exactly as the real server serves it."""
     impl.recruit_npcs(full_state, chara_info)
     _set_playing_state(chara_info, 45)
     ev = region_follow_event(1)
@@ -244,7 +211,6 @@ def _jamboree_open(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("ramen_ultimate")
 def _ultimate(full_state, chara_info, event, choice_number, **kw):
-    """214026: the choice IS the Ultimate Ramen (1 top / 2 middle / 3 bottom)."""
     kind = max(1, min(3, int(choice_number or 1)))
     impl.state(full_state)["uraf"]["type"] = kind
     log.info("ramen: Ultimate Ramen %s chosen", kind)
@@ -253,9 +219,6 @@ def _ultimate(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("ramen_result")
 def _result(full_state, chara_info, event, choice_number, **kw):
-    """A Jamboree's result: facilities +1 on 大盛況 and up, the tricks are
-    served, and the screen moves on -- back to region selection after the
-    first two, to the ending live after the third."""
     payload = event.payload or {}
     cp, result = int(payload.get("check_point_type") or 0), int(payload.get("result_state") or 0)
     st = impl.state(full_state)

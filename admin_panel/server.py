@@ -1,33 +1,21 @@
-"""The panel's local web server: the static desktop UI, game icons, and one
-JSON endpoint that forwards an operation to a region's worker.
-
-    GET  /                               the desktop
-    GET  /icons/<kind>/<id>              game art (icons.py)
-    GET  /api/status                     worker status per region
-    POST /api/<region>/<op>              {viewer?, args?} -> {result, log, history}
-    POST /api/<region>/_restart          restart that region's worker
-
-Errors come back as {error, detail} with HTTP 400 (refusals) or 500.
-
-Binds to 127.0.0.1 only and refuses foreign Host / Origin headers (the same
-guard VivloToolkit uses), so other websites can't drive it through your
-browser. This panel edits saves directly: never expose it to a network.
-"""
 
 from __future__ import annotations
 
 import json
+import os
 import mimetypes
 import traceback
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 from . import icons
+from . import settings as S
+from .jobs import Jobs
 from .workers import Pool, WorkerError
 
 STATIC = (Path(__file__).resolve().parent / "static").resolve()
-MAX_BODY = 128 * 1024 * 1024        # whole-save imports can be tens of MB
+MAX_BODY = 128 * 1024 * 1024
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -58,9 +46,20 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         if not self._allowed():
             return self._send(403, b"forbidden", "text/plain")
-        path = urlsplit(self.path).path
+        url = urlsplit(self.path)
+        path = url.path
+        if path == "/api/_setup":
+            return self._json(200, {"result": self.server.setup_view()})
         if path == "/api/status":
             return self._json(200, self.server.pool.status())
+        if path == "/api/_jobs":
+            return self._json(200, {"result": self.server.jobs.list()})
+        if path.startswith("/api/_jobs/"):
+            try:
+                off = int((parse_qs(url.query).get("from") or ["0"])[0])
+                return self._json(200, {"result": self.server.jobs.get(int(path.rsplit("/", 1)[1]), off)})
+            except (KeyError, ValueError):
+                return self._json(404, {"error": "No such job."})
         if path.startswith("/custom-icons/"):
             import base64
             parts = path.strip("/").split("/")
@@ -80,8 +79,6 @@ class Handler(BaseHTTPRequestHandler):
             except ValueError:
                 body = None
             if body is None:
-                # Not cached: icons.py remembers real misses, and a transient miss
-                # must not stick in the browser after the icon becomes available.
                 return self._send(404, b"no icon", "text/plain", "no-store")
             return self._send(200, body, "image/png", "max-age=604800")
         if path == "/":
@@ -99,6 +96,10 @@ class Handler(BaseHTTPRequestHandler):
         if not self._allowed():
             return self._send(403, b"forbidden", "text/plain")
         parts = urlsplit(self.path).path.strip("/").split("/")
+        if parts[:2] == ["api", "_jobs"]:
+            return self._jobs_post(parts[2:])
+        if parts[:2] == ["api", "_setup"]:
+            return self._setup_post(parts[2:])
         if len(parts) != 3 or parts[0] != "api":
             return self._json(404, {"error": "No such endpoint."})
         region, op = parts[1], parts[2]
@@ -115,8 +116,58 @@ class Handler(BaseHTTPRequestHandler):
                              "history": msg.get("history") or []})
         except WorkerError as ex:
             self._json(400, {"error": str(ex), "detail": ex.detail})
-        except Exception as ex:  # noqa: BLE001
+        except Exception as ex:
             self._json(500, {"error": f"{type(ex).__name__}: {ex}", "detail": traceback.format_exc()})
+
+    def _jobs_post(self, rest):
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+            body = json.loads(self.rfile.read(n) or b"{}") if 0 < n <= MAX_BODY else {}
+            if rest == ["start"]:
+                region = body.get("region") or "global"
+                plan = self.server.pool.call(region, "jobs.command", None,
+                                             {"recipe": body.get("recipe"), "params": body.get("params") or {}})["result"]
+                return self._json(200, {"result": self.server.jobs.start(region, body.get("recipe"), plan)})
+            if len(rest) == 2 and rest[1] == "cancel":
+                return self._json(200, {"result": self.server.jobs.cancel(int(rest[0]))})
+            return self._json(404, {"error": "No such endpoint."})
+        except WorkerError as ex:
+            self._json(400, {"error": str(ex), "detail": ex.detail})
+        except (KeyError, ValueError) as ex:
+            self._json(400, {"error": str(ex) or "Bad job request."})
+
+
+    def _setup_post(self, rest):
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+            body = json.loads(self.rfile.read(n) or b"{}") if 0 < n <= MAX_BODY else {}
+            srv = self.server
+            if rest == []:
+                srv.save_settings(body.get("settings") or {})
+                return self._json(200, {"result": srv.setup_view()})
+            if rest == ["check"]:
+                region = body.get("region")
+                if region not in S.REGIONS:
+                    raise ValueError("Unknown region.")
+                path = str(body.get("path") or "").strip()
+                if not path:
+                    raise ValueError("Enter a path.")
+                fn = S.check_master if body.get("kind") == "master" else S.check_game_dir
+                return self._json(200, {"result": fn(path, region)})
+            if rest == ["finish"]:
+                eff = S.resolve()
+                required = getattr(srv, "required_region", None)
+                if required and required not in eff["usable"]:
+                    raise ValueError(f"Enable {required.upper()} and select its valid master.mdb before starting this server.")
+                if not eff["usable"]:
+                    raise ValueError("Turn on at least one region with a valid master.mdb first.")
+                if not S.exists():
+                    S.save(S.load())
+                srv.pool.setup_mode = False
+                return self._json(200, {"result": srv.setup_view()})
+            return self._json(404, {"error": "No such endpoint."})
+        except (KeyError, TypeError, ValueError) as ex:
+            self._json(400, {"error": str(ex) or "Bad setup request."})
 
 
 class PanelServer(ThreadingHTTPServer):
@@ -127,3 +178,35 @@ class PanelServer(ThreadingHTTPServer):
         self.port = self.server_address[1]
         self.extra_hosts = frozenset(extra_hosts)
         self.pool = Pool()
+        self.jobs = Jobs()
+        self.pool.usable = set(S.apply()["usable"])
+        self.pool.setup_mode = not self.pool.usable
+
+    def setup_view(self) -> dict:
+        eff = S.resolve()
+        return {"settings": S.load(), "saved": S.exists(), "setup_mode": self.pool.setup_mode, **eff,
+                "file": str(S.FILE),
+                "dev": os.environ.get("UMA_ADMIN_DEV") == "1"}
+
+    def save_settings(self, raw: dict) -> None:
+        s = S.load()
+        if "game_install" in raw:
+            s["game_install"] = bool(raw["game_install"])
+        for r in S.REGIONS:
+            got = (raw.get("regions") or {}).get(r)
+            if got is None:
+                continue
+            cur = s["regions"][r]
+            if "enabled" in got:
+                cur["enabled"] = bool(got["enabled"])
+            for k in ("game_dir", "master"):
+                if k in got:
+                    cur[k] = str(got[k] or "").strip()
+        for r in S.REGIONS:
+            cur = s["regions"][r]
+            if cur["master"] and not (c := S.check_master(cur["master"], r))["ok"]:
+                raise ValueError(f"{r.upper()} master.mdb: {c['error']}")
+            if cur["game_dir"] and s["game_install"] and not (c := S.check_game_dir(cur["game_dir"], r))["ok"]:
+                raise ValueError(f"{r.upper()} game folder: {c['error']}")
+        S.save(s)
+        self.pool.configure(S.apply(s)["usable"])

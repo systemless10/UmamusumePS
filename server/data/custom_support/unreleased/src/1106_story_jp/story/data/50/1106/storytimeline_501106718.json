@@ -1,0 +1,35 @@
+{
+ "title": "リフレッシュ完了",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん！\nお休みありがとうございました～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "行きつけの岩盤浴で\n1日中ゆったりしてきました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おかげで、体も軽くなったし、\nお肌もしっとりもっちもち～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いいお休みでした～！\n今度トレーナーさんにもお店教えますね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは休日に\nしっかり休養できたようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

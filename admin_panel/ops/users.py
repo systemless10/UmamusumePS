@@ -1,5 +1,3 @@
-"""Users: every viewer with a save in this region, their details, and the
-account-level actions (profile, password, delete, copy)."""
 
 from __future__ import annotations
 
@@ -15,7 +13,8 @@ from app import state as state_store
 from .. import history
 from . import op
 from .catalog import rank_label
-from .common import DEFAULT_VIEWERS, OpError, card_name, load, region_name, save
+from app import default_viewer
+from .common import OpError, card_name, load, region_name, save
 
 
 def _q(sql, params=()):
@@ -59,6 +58,7 @@ def users_list(viewer, args):
         " json_extract(value, '$.data.chara_info.turn'), json_extract(value, '$.data.chara_info.scenario_id')"
         " FROM viewer_state_kv WHERE key='single_mode_team'")}
     acct = _account_rows()
+    default = default_viewer.get()
     out = []
     for vid in present:
         a = acct.get(vid, {})
@@ -73,10 +73,10 @@ def users_list(viewer, args):
             "keys": sizes.get(vid, (0, 0))[0], "bytes": sizes.get(vid, (0, 0))[1] or 0,
             "created_at": a.get("created_at"), "last_seen": a.get("last_seen"),
             "has_password": a.get("has_password", False), "pending_deletion_at": a.get("pending_deletion_at"),
-            "account": bool(a), "default": vid == DEFAULT_VIEWERS[region_name()],
+            "account": bool(a), "default": vid == default,
         })
     out.sort(key=lambda u: -(u["last_seen"] or 0))
-    return {"region": region_name(), "default": DEFAULT_VIEWERS[region_name()], "users": out}
+    return {"region": region_name(), "default": default, "chosen": bool(default_viewer.chosen()), "users": out}
 
 
 def _user_info(full_state) -> dict:
@@ -181,6 +181,12 @@ def users_cancel_deletion(viewer, args):
     return {"ok": True}
 
 
+@op("users.set_default")
+def users_set_default(viewer, args):
+    default_viewer.set(viewer if args.get("on", True) else None)
+    return {"default": default_viewer.get(), "chosen": bool(default_viewer.chosen())}
+
+
 @op("users.delete", label="Delete account")
 def users_delete(viewer, args):
     if str(args.get("confirm")) != viewer:
@@ -193,7 +199,6 @@ def users_delete(viewer, args):
 
 @op("users.copy", label="Copy save from {source}")
 def users_copy(viewer, args):
-    """Copy another viewer's whole save onto this one (same region)."""
     source = "".join(str(args.get("source") or "").split())
     if not source or source == viewer:
         raise OpError("Pick a different source viewer.")
@@ -215,7 +220,6 @@ def users_copy(viewer, args):
 
 
 def _retarget(data: dict, viewer: str) -> None:
-    """Fields that name the owning viewer inside a copied save."""
     try:
         vid_int = int(viewer)
     except ValueError:
@@ -233,8 +237,6 @@ def _retarget(data: dict, viewer: str) -> None:
 
 @op("users.new", label="Create save")
 def users_new(viewer, args):
-    """An empty save row for a fresh viewer id; the server seeds the rest on
-    its first load/index."""
     if state_store.get_state(viewer) is not None:
         raise OpError("That viewer already has a save.")
     save(viewer, {})

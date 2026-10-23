@@ -1,11 +1,3 @@
-"""THE TWINKLE LEGENDS (scenario 10) -- the event calendar and its resolvers.
-
-Every beat here is on docs/JP_TWINKLE_LEGENDS_SCENARIO.md §15's calendar, read
-off 7 real careers: the turn it fires on, the response that carried it, its
-play_timing, its choices and what resolving it paid. `ctx.turn` is the turn
-just PLAYED (the beats closing a turn) and `ctx.advanced_turn` the turn
-arrived at (timing 1).
-"""
 
 from __future__ import annotations
 
@@ -19,11 +11,9 @@ from .impl import SCENARIO_ID
 
 log = logging.getLogger("uma-server")
 
-# (event_id, story_id) -- the wire ids of §15.
 OPENING = ((210034, 400010000), (210053, 400010001), (210054, 400010002))
-APPEAR_LEGEND = 210053                 # its reply carries is_appear_legend
-REPORTER = (210071, 400000100)         # closes turn 13
-# Story beats closing the played turn: (event, story, choices).
+APPEAR_LEGEND = 210053
+REPORTER = (210071, 400000100)
 STORY_BEATS = {12: (210037, 400010003, 0), 16: (210038, 400010004, 0), 20: (210039, 400010005, 0),
                29: (210003, 400010008, 0), 32: (210040, 400010009, 1), 45: (210042, 400010011, 0),
                51: (210043, 400010014, 0), 58: (210044, 400010015, 0), 66: (210046, 400010017, 0)}
@@ -55,13 +45,11 @@ POPULARITY = {1: ((210063, 400010115), (210064, 400010116), 3),
               3: ((210067, 400010119), (210068, 400010120), 3),
               4: ((210069, 400010121), (210070, 400010122), 6)}
 GOAL_WIN, GOAL_LOSS = (210059, 400010200), (210060, 400010201)
-LINK_RACE = (210047, 400010018)        # T67, 6 choices
-# gain_select_id_index -> (chara whose card / trainee makes it gold, gold, white) (§13)
+LINK_RACE = (210047, 400010018)
 LINK_SKILLS = {1: (1115, 202901, 202902), 2: (1086, 202501, 202502), 3: (1116, 201103, 201102),
                4: (1070, 202471, 202472), 5: (1046, 203101, 203103), 7: (0, 202801, 202802)}
-# The group card's own beats the scenario serves (§12).
-CARD_TRAINING = (21151, 21159, 830241003)   # (no passion, passion, story)
-CARD_TRAINING_CHANCE = 0.25                 # ~4-6 per career [INFERRED]
+CARD_TRAINING = (21151, 21159, 830241003)
+CARD_TRAINING_CHANCE = 0.25
 CARD_NEW_YEAR = (21157, 830241032)
 CARD_DATE_EVENTS = {21149: "first", 21152: "date", 21153: "date", 21154: "date", 21156: "date"}
 CARD_DATE4 = 21155
@@ -69,7 +57,6 @@ CARD_ENDING_PAY = {True: (14, 14), False: (8, 0)}
 DIRECTOR_APPRAISAL = [(90, 210101, 5), (70, 210100, 4), (40, 210099, 3), (0, 210098, 2)]
 LEVEL_UP_EVENTS = {101: 210012, 102: 210013, 103: 210014, 105: 210015, 106: 210016}
 
-# Events that open a screen: the served chain must be empty behind them.
 SCREEN_EVENTS = frozenset(e for e, _s in ANNOUNCE.values()) | {BOSS_ANNOUNCE[0]}
 PRIO_GAUGE = CE.PRIO_TRAILING + 20
 PRIO_LOTTERY = CE.PRIO_TRAILING + 25
@@ -100,8 +87,6 @@ def beat(event_id, story_id, *, choices=None, timing=1, from_endpoint=False, onc
 def _n(choices: int) -> list:
     return [] if not choices else _ack(choices)
 
-
-# ============================================================ builders ===
 
 def opening_events() -> list:
     out = []
@@ -141,9 +126,6 @@ def result_event(full_state: dict, chara_info: dict, turn: int, won: bool) -> CE
 
 def popularity_open(ptype: int, played: int) -> CE.Event | None:
     (a_eid, a_sid), _b, timing = POPULARITY[ptype]
-    # After a goal race (1, 3) the pair follows the goal beat at once, ahead of
-    # the race's +1 and the turn's story; the poster and the ad (2, 4) close
-    # the turn behind them (A1 T29/T54, U T31/T59/T72).
     prio = CE.PRIO_FRONT + 1 if ptype in (1, 3) else PRIO_POP
     return beat(a_eid, a_sid, timing=timing, priority=prio, resolver="legend_pop_open",
                 once=f"legend:pop:{ptype}", payload={"type": ptype})
@@ -159,8 +141,6 @@ def popularity_close(ptype: int) -> CE.Event | None:
 
 
 def goal_event(full_state: dict, chara_info: dict, goal: dict) -> CE.Event | None:
-    """目標レース勝利！ / 敗北…… -- a cleared goal race's beat with the shared goal
-    reward (§15)."""
     from ...handlers import single_mode_team as smt
     rank = int(goal.get("rank") or 1)
     ev = smt._goal_race_reward(chara_info, int(goal.get("program_id") or 0), None, rank)
@@ -172,7 +152,6 @@ def goal_event(full_state: dict, chara_info: dict, goal: dict) -> CE.Event | Non
 
 
 def card_training_event(full_state: dict, chara_info: dict, turn: int) -> CE.Event | None:
-    """伝説級のお食事会！？ (§12): a legend each, +1 to her gauge."""
     if not impl.group_card(chara_info):
         return None
     passion = M.PASSION in set(chara_info.get("chara_effect_id_array") or ())
@@ -190,8 +169,6 @@ def card_training_event(full_state: dict, chara_info: dict, turn: int) -> CE.Eve
 
 
 def card_new_year_event(full_state: dict, chara_info: dict) -> CE.Event | None:
-    """新たな年に、祈りを (§12, T25): all +4, SP +6, max energy +4, the card's
-    white gold-skill hint +3, every gauge +2 (LB4 numbers)."""
     from ...handlers import single_mode_team as smt
     if not impl.group_card(chara_info):
         return None
@@ -207,7 +184,6 @@ def card_new_year_event(full_state: dict, chara_info: dict) -> CE.Event | None:
 
 
 def link_race_entry_and_event(chara_info: dict) -> CE.Event | None:
-    """"私の"レースのこと (§13): six choices, gain_select_id_index 1-5 and 7."""
     if not story_playable(LINK_RACE[1]):
         return None
     choices = [{"select_index": i, "receive_item_id": 0, "target_race_id": 0,
@@ -234,7 +210,6 @@ def link_effects(chara_info: dict, gain_index: int) -> list:
 
 
 def ending_events(full_state: dict, chara_info: dict) -> list:
-    """After cm_end (§14): the ending, then the group card's farewell."""
     from ...handlers import single_mode_team as smt
     st = impl.state(full_state)
     boss_won = st.get("boss") and any(int(r["race_type"]) == 3 and int(r["result_rank"]) == 1
@@ -268,10 +243,7 @@ def ending_events(full_state: dict, chara_info: dict) -> list:
     return [e for e in out if e]
 
 
-# ============================================================ calendar ===
-
 def _turn_start(full_state: dict, chara_info: dict, turn: int) -> list:
-    """What arriving on `turn` does to the guidances (§6.2, §6.3)."""
     st = impl.state(full_state)
     out = []
     s46, s47 = st["s9046"], st["s9047"]
@@ -301,8 +273,7 @@ def legend_calendar(ctx: CE.Ctx) -> list:
     out: list = []
     if int(ci.get("state") or 0) == 2:
         st["due"] = []
-        return out                   # a failed career plays only its fail chain
-    # ---- the turn just played (timing from the response)
+        return out
     if played in STORY_BEATS and arrived > played:
         eid, sid, n = STORY_BEATS[played]
         out.append(beat(eid, sid, choices=_n(n), from_endpoint=True, priority=CE.PRIO_TRAILING))
@@ -345,7 +316,6 @@ def legend_calendar(ctx: CE.Ctx) -> list:
         out.append(lottery_event(full_state, played))
     if impl.sprace_pending(st, played) and arrived > played:
         out.append(announce_event(full_state, played))
-    # ---- the turn arrived at (timing 1), behind every beat closing the played one
     if arrived > int(st.get("advanced_to") or 1) and arrived <= impl.FINAL_TURN:
         for t in range(int(st.get("advanced_to") or 1) + 1, arrived + 1):
             out += _turn_start(full_state, ci, t)
@@ -358,8 +328,6 @@ def legend_calendar(ctx: CE.Ctx) -> list:
         out.append(card_new_year_event(full_state, ci))
     return [e for e in out if e is not None]
 
-
-# ============================================================ resolvers ===
 
 @CE.resolver("legend_gauge")
 def _gauge(full_state, chara_info, event, choice_number, **kw):
@@ -375,8 +343,6 @@ def _lottery(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("legend_camp_open")
 def _camp_open(full_state, chara_info, event, choice_number, **kw):
-    """夏合宿、開始！ (T37): the guidance is decided now, after the T36 lottery
-    has been answered, and its event follows (§6.1)."""
     st = impl.state(full_state)
     if st["masterly"]:
         return {}
@@ -390,7 +356,6 @@ def _camp_open(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("legend_guidance")
 def _guidance(full_state, chara_info, event, choice_number, **kw):
-    """〈legend〉の導き: +1 to every facility, then the guidance's own start (§6.1)."""
     legend = int((event.payload or {}).get("legend") or 0)
     impl.grant_guidance(full_state, chara_info, legend)
     impl.raise_all_facilities(full_state, chara_info)
@@ -450,8 +415,6 @@ def _announce(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("legend_result")
 def _result(full_state, chara_info, event, choice_number, **kw):
-    """The Dream Fest's result resolves (§9.5): a won Stella / Pride raises
-    every facility; T24/T48 release the held turn; T72 owes the magazine."""
     st = impl.state(full_state)
     p = event.payload or {}
     turn, won = int(p.get("turn") or 0), bool(p.get("won"))
@@ -474,14 +437,12 @@ def _result(full_state, chara_info, event, choice_number, **kw):
     return {}
 
 
-
 def _smt():
     from ...handlers import single_mode_team as smt
     return smt
 
 @CE.resolver("legend_magazine")
 def _magazine(full_state, chara_info, event, choice_number, **kw):
-    """月刊トゥインクル増刊号 -> ps 32, the CM, with the ending already pending (§11)."""
     from ...handlers import single_mode_team as smt
     history = ((full_state.get(smt.STATE_KEY) or {}).get("data") or {}).get("race_history") or []
     impl.pick_cm(full_state, history)

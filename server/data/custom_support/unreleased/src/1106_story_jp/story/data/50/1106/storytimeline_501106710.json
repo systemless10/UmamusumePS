@@ -1,0 +1,68 @@
+{
+ "title": "レース敗北",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "……いや～、まいりましたね～。\n面目ないです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあ、最初から厳しいとは\n思っていましたが……。",
+   "choice_data_list": [
+    "うまくいったところもあったよ！",
+    "早急に課題を克服しよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そ、そうですか？\n……でも――",
+   "choice_data_list": [
+    "何か不安なことがあるのか？",
+    "何か不安なことがあるの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "不安というか……。\n今日のレース、手ごたえがなさすぎて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "後で一緒に、振り返りをしてもらっても\nいいですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日のレース、なにがよくて、\nなにがダメだったのか、\nちゃんと知っておきたいです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そう、ですね……。\n無駄に負けただけには、したくありませんし。",
+   "choice_data_list": [
+    "今日を糧に、君を絶対に強くする！",
+    "今日を糧に、貴方を絶対に強くするよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはっ、絶対ですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……その自信、信じちゃいますからね？\nわたしも精一杯、がんばります……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

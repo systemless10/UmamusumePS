@@ -1,16 +1,3 @@
-"""UAF Ready GO! (scenario 7) -- the training numbers: sport-rank gains, the
-home preview and the scenario's own bonus line (sport_data_set.command_info_array).
-
-Every rule is docs/JP_UAF_SCENARIO.md §4-§6, checked against every real reply in
-the headless captures (jp_docs/UAF/research_scripts/*_parity.py):
-
-    rank gain   = min(100 - rank, (3 + (k ? k//2 + 1 : 0)) x (2 if friendship) + 3 after rest/outing/race)
-                  k = card partners (+ the UAF NPC 111); 102/103 do not count       11,022/11,022
-    home        = Ramen's home formula on the per-level bases below                 15,503/15,515
-    bonus line  = link training (+1 base per linked sport's main stat, SP base +k, main x 1.1/1.2/1.25/1.3,
-                  card stat bonuses only on the facility's own stats) x (1 + sum of competition training-bonus %)
-                  minus home                                                        see §6
-"""
 
 from __future__ import annotations
 
@@ -18,21 +5,17 @@ import math
 
 from ..ramen import formula as RF
 
-SPORTS = tuple(g * 100 + 2000 + s for g in (1, 2, 3) for s in (1, 2, 3, 4, 5))   # 2101..2305
-STATCMD = {1: 101, 2: 105, 3: 102, 4: 103, 5: 106}     # sport % 100 -> its stat facility
+SPORTS = tuple(g * 100 + 2000 + s for g in (1, 2, 3) for s in (1, 2, 3, 4, 5))
+STATCMD = {1: 101, 2: 105, 3: 102, 4: 103, 5: 106}
 TARGET_SP = 30
 MAX_RANK = 100
-REST_BONUS_COMMANDS = frozenset({701, 304, 390})       # the +3 rank after these (and races); not 801
-NPC_RANK_PARTNER = 111                                 # counts toward k like a card; 102/103 do not
-LINK_MAIN_MULT = {0: 1.0, 1: 1.1, 2: 1.2, 3: 1.25, 4: 1.3}   # trained main stat x, by link count
-LINK_MAIN_MULT_SUMMER = {0: 1.0, 1: 1.2, 2: 1.3, 3: 1.35, 4: 1.4}   # summer camp T37-40/61-64; 4 not captured
-# Martial-arts Heat-Up (stance 2xx, effect type 10): + value_2 % on the link multiplier by link count
+REST_BONUS_COMMANDS = frozenset({701, 304, 390})
+NPC_RANK_PARTNER = 111
+LINK_MAIN_MULT = {0: 1.0, 1: 1.1, 2: 1.2, 3: 1.25, 4: 1.3}
+LINK_MAIN_MULT_SUMMER = {0: 1.0, 1: 1.2, 2: 1.3, 3: 1.35, 4: 1.4}
 FIGHT_STANCE_PCT = {1: 30, 2: 45, 3: 54, 4: 60}
 SUMMER_TURNS = frozenset(range(37, 41)) | frozenset(range(61, 65))
 
-# {sport: {level: {target_type: base}}}: level 1 = master single_mode_training_effect scenario 7;
-# levels 2-5 fitted cell by cell (every cell reproduces all its previews): main +1 per level,
-# the first secondary stat +1 at level 5.
 BASE = {
     2101: {1: {1: 12, 3: 1}, 2: {1: 13, 3: 1}, 3: {1: 14, 3: 1}, 4: {1: 15, 3: 1}, 5: {1: 16, 3: 2}},
     2102: {1: {2: 11, 4: 2}, 2: {2: 12, 4: 2}, 3: {2: 13, 4: 2}, 4: {2: 14, 4: 2}, 5: {2: 15, 4: 3}},
@@ -57,18 +40,14 @@ BASE = {
 }
 SP = {2101: 6, 2102: 6, 2103: 6, 2104: 6, 2105: 6, 2201: 10, 2202: 10, 2203: 10, 2204: 10, 2205: 10,
       2301: 4, 2302: 6, 2303: 6, 2304: 5, 2305: 5}
-ENERGY = -15                                            # every sport, every level (master target 10)
-# The extra energy cost, rolled per (turn, sport), stable within the turn. NOT EXACT: the
-# weights are the captures' counts (0:841 1:1696 2:1688 3:31); no master table.
+ENERGY = -15
 ENERGY_EXTRA_WEIGHTS = ((0, 841), (1, 1696), (2, 1688), (3, 31))
-SPHERE_STANCE_SP = 20                                   # ball-game Heat-Up (1xx): SP +20 after the multipliers
-# single_mode_sport_link: a linked sport adds this to its own main stat's base by ITS training
-# level (every sport the same), plus 1 SP.
+SPHERE_STANCE_SP = 20
 LINK_ADD = {1: 1, 2: 1, 3: 2, 4: 2, 5: 3}
 
 
 def genre(sport: int) -> int:
-    return sport // 100 - 20                            # 1 ball game, 2 martial arts, 3 variety
+    return sport // 100 - 20
 
 
 def main_stat(sport: int) -> int:
@@ -76,7 +55,6 @@ def main_stat(sport: int) -> int:
 
 
 def level_of(rank: int) -> int:
-    """The facility level shown for a sport rank (§5)."""
     return 1 if rank < 20 else 2 if rank < 30 else 3 if rank < 40 else 4 if rank < 50 else 5
 
 
@@ -85,9 +63,7 @@ def friend_fn(sport: int):
     return lambda sid, kind, cmd, bond: kind == 1 and cmd == stat_cmd and bond >= RF.FRIENDSHIP_BOND
 
 
-# ----------------------------------------------------------------- sport rank
 def self_rank_gain(chara_info: dict, sport: int, partners, after_rest: bool) -> int:
-    """This sport's own rank gain when trained (before the 100 cap)."""
     by_pos, bond = RF.deck(chara_info), RF.bonds(chara_info)
     k = 0
     friendship = False
@@ -105,9 +81,6 @@ def self_rank_gain(chara_info: dict, sport: int, partners, after_rest: bool) -> 
 
 
 def gain_sport_rank_array(chara_info: dict, sport: int, offered: dict, ranks: dict, after_rest: bool) -> list:
-    """[{command_id, gain_rank}] for training `sport`: itself and every other
-    offered sport of its genre (link training), each at its own gain, capped
-    at rank 100 (a capped sport still listed with 0). `offered` = {sport: partners}."""
     out = []
     for s in [sport] + [o for o in offered if o != sport and genre(o) == genre(sport)]:
         g = self_rank_gain(chara_info, s, offered[s], after_rest)
@@ -115,7 +88,6 @@ def gain_sport_rank_array(chara_info: dict, sport: int, offered: dict, ranks: di
     return out
 
 
-# ----------------------------------------------------------------- stat gains
 def home_raw(chara_info: dict, sport: int, level: int, partners, card_levels=None) -> dict:
     return RF.home_raw(chara_info, sport, level, partners, card_levels, table=BASE, sp=SP[sport],
                        friend_fn=friend_fn(sport))
@@ -133,8 +105,6 @@ def roll_energy_extra(rng) -> int:
 
 def home_params(chara_info: dict, sport: int, level: int, partners, card_levels=None,
                 energy: int = ENERGY) -> list:
-    """home_info params_inc_dec_info_array for a sport (stats, SP, energy).
-    `energy` is the rolled cost (ENERGY - extra) before cost-down cards."""
     raw = home_raw(chara_info, sport, level, partners, card_levels)
     out = []
     for tt in (1, 2, 3, 4, 5, TARGET_SP):
@@ -148,12 +118,6 @@ def home_params(chara_info: dict, sport: int, level: int, partners, card_levels=
 
 
 def link_raw(chara_info: dict, sport: int, level: int, partners, linked, card_levels=None) -> dict:
-    """The facility's raw gains with link training folded in (§6.2): each linked
-    sport (sport, its level) adds LINK_ADD[level] to the base of its own main
-    stat, SP base + 1 per link. A stat
-    already in the facility's base takes the extra points through the home
-    formula as-is; a stat the link adds gets every multiplier but no card flat
-    bonus."""
     if not linked:
         return home_raw(chara_info, sport, level, partners, card_levels)
     adds: dict = {}
@@ -173,9 +137,6 @@ def link_raw(chara_info: dict, sport: int, level: int, partners, linked, card_le
 
 
 def _per_point(chara_info, sport, level, partners, tt, card_levels=None) -> float:
-    """One point of base for target tt on this facility through every home
-    multiplier, the card flat bonus excluded: raw is (base + bonus) x M, so
-    M = raw(2) - raw(1)."""
     def raw(v):
         return RF.home_raw(chara_info, sport, level, partners, card_levels, table={sport: {level: {tt: v}}},
                            sp=0, friend_fn=friend_fn(sport)).get(tt, 0.0)
@@ -184,7 +145,6 @@ def _per_point(chara_info, sport, level, partners, tt, card_levels=None) -> floa
 
 def bonus_params(chara_info: dict, sport: int, level: int, partners, linked, compe_pct: int,
                  card_levels=None, summer: bool | None = None, stances=()) -> list:
-    """sport_data_set.command_info_array params_inc_dec_info_array: total minus home."""
     home_pre_raw = home_raw(chara_info, sport, level, partners, card_levels)
     raw = link_raw(chara_info, sport, level, partners, linked, card_levels)
     if summer is None:
@@ -196,7 +156,6 @@ def bonus_params(chara_info: dict, sport: int, level: int, partners, linked, com
     sphere = any(st // 100 == 1 for st in stances)
     own = BASE[sport][level]
     added = {main_stat(s) for s, _lv in linked} - set(own)
-    # Wire order: the facility's own stats, SP, then the stats only links add (always listed).
     order = sorted(t for t in raw if t not in added and t != TARGET_SP) + \
         ([TARGET_SP] if TARGET_SP in raw else []) + sorted(t for t in raw if t in added)
     out = []

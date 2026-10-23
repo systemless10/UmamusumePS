@@ -1,17 +1,3 @@
-"""Game icons (VivloToolkit's icon cache, same sources and layout).
-
-    item/<item_id>        item_icon_00032.png
-    chara/<chara_id>      chr_icon_1001.png
-    card/<card_id>        the trained (outfit) icon of an uma card
-    support/<card_id>     support_card_s_30028.png
-    supportart/<card_id>  tex_support_card_30028.png (full 3:4 card art)
-    skill/<icon_id>       utx_ico_skill_10011.png (local only)
-
-Local first: uma-tools' extracted icon set (UMA_TOOLS_ICONS, default
-~/Documents/Projects/uma-tools-master/icons), then VivloToolkit's own cache if
-it is installed next door, then GameTora's image mirror -- fetched once and
-cached under admin_panel/cache/icons/. A miss is remembered too.
-"""
 
 from __future__ import annotations
 
@@ -27,7 +13,7 @@ CACHE = Path(__file__).resolve().parent / "cache" / "icons"
 VIVLO_CACHE = Path.home() / "Documents/VivloBot/cache/icons"
 LOCAL = Path(os.environ.get("UMA_TOOLS_ICONS", Path.home() / "Documents/Projects/uma-tools-master/icons"))
 REMOTE = "https://gametora.com/images/umamusume/"
-KINDS = ("item", "chara", "card", "support", "supportart", "skill")
+KINDS = ("item", "chara", "card", "support", "supportart", "skill", "banner", "bannerjp")
 _locks: dict[str, threading.Lock] = {}
 _guard = threading.Lock()
 
@@ -53,14 +39,16 @@ def _sources(kind: str, ident: int) -> list:
         return [LOCAL / "skill" / f"utx_ico_skill_{ident}.png", f"{REMOTE}skill_icons/utx_ico_skill_{ident}.png"]
     if kind == "support":
         return [LOCAL / "support" / f"support_card_s_{ident}.png", f"{REMOTE}supports/support_card_s_{ident}.png"]
+    if kind == "banner":
+        return [f"{REMOTE}en/gacha/img_bnr_gacha_{ident}.png"] + _sources("bannerjp", ident)
+    if kind == "bannerjp":
+        return [f"{REMOTE}gacha/img_bnr_gacha_{ident}.png"]
     if kind == "supportart":
         return [f"{REMOTE}supports/tex_support_card_{ident}.png"] + _sources("support", ident)
     return []
 
 
 def _fetch(url: str) -> bytes | None | bool:
-    """The PNG, None when the source definitely has no icon, or False when the
-    fetch failed for a reason worth retrying later (offline, timeout, 5xx)."""
     req = urllib.request.Request(url, headers={"User-Agent": "UmaPS Admin Panel (personal icon cache)"})
     try:
         with urllib.request.urlopen(req, timeout=10) as r:
@@ -68,7 +56,7 @@ def _fetch(url: str) -> bytes | None | bool:
             return body if body[:4] == b"\x89PNG" else None
     except urllib.error.HTTPError as e:
         return None if e.code in (403, 404, 410) else False
-    except Exception:  # noqa: BLE001 - offline / timeout: try again next time
+    except Exception:
         return False
 
 
@@ -101,7 +89,7 @@ def get(kind: str, ident: int) -> bytes | None:
                 cached.write_bytes(body)
                 return body
             transient |= body is False
-        if not transient:      # remember only a definite miss
+        if not transient:
             miss.parent.mkdir(parents=True, exist_ok=True)
             miss.touch()
         return None

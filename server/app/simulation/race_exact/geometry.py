@@ -1,21 +1,3 @@
-"""Course lane geometry: world position of (distance, lane).
-
-Ported from the Global client:
-  CourseLaneAnim.Sample/GetPosition  -- 1001 keys over the course, t = d/D*1000,
-                                        position lerp, rotation Quaternion.Lerp
-  CourseLane.GetLaneTransform        -- rotation = sample * rotationFix; past the
-                                        goal: goalPos + goalDir*(d-D), goalRot
-  CourseLane.Init/_InitRotationFix   -- rotationFix = Euler(ROTATION_FIX_RIGHT
-                                        (0,180,0)) if the flag is set, else
-                                        ROTATION_FIX_LEFT (0,0,0)
-  CourseLane._InitGoal               -- goalDir = (P(D) - P(D-10)) * 0.1
-  RaceUtil.CalcWorldTransform        -- pos = origin + rot * (lane*11.25, 0, 0)
-  RaceManager._InitCourseDistance2World -- |pos(1,0) - pos(0,0)|
-
-The geometry matters to the simulation: HorseRaceInfoSimulate.Update scales a
-tick's movement down when the horizontal world displacement exceeds
-move * courseDistance2World (outside lanes on corners lose ground).
-"""
 
 from __future__ import annotations
 
@@ -34,7 +16,6 @@ def _arr(lst):
 
 
 def _qmul(a, b):
-    """Unity Quaternion * Quaternion, (x, y, z, w), float32."""
     ax, ay, az, aw = a
     bx, by, bz, bw = b
     return (aw * bx + ax * bw + ay * bz - az * by,
@@ -44,7 +25,6 @@ def _qmul(a, b):
 
 
 def _qlerp(a, b, t):
-    """UnityEngine.Quaternion.Lerp (native): clamp t, shortest arc, normalize."""
     t = F(min(max(t, F(0)), F(1)))
     dot = a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3]
     if dot < 0:
@@ -56,7 +36,6 @@ def _qlerp(a, b, t):
 
 
 def _euler_y_quat(deg: float):
-    # Quaternion.Internal_FromEulerRad for (0, y, 0)
     h = F(F(deg) * F(0.01745329)) * F(0.5)
     return (F(0), F(np.sin(h)), F(0), F(np.cos(h)))
 
@@ -72,7 +51,7 @@ class LaneAnim:
 
     def sample(self, t):
         t = F(t)
-        i = int(t)                     # cvttss2si
+        i = int(t)
         n = len(self.x)
         if 0 <= i < n - 1:
             fr = F(t - F(i))
@@ -112,7 +91,6 @@ class CourseLane:
         return tuple(self.goal_dir[i] * e + self.goal_pos[i] for i in range(3)), self.goal_rot
 
     def world(self, d, lane):
-        """RaceUtil.CalcWorldTransform -> world position."""
         o, (x, y, z, w) = self.lane_transform(d)
         L = F(F(lane) * LANE_TO_WORLD)
         x2, y2, z2 = x + x, y + y, z + z

@@ -1,0 +1,101 @@
+{
+ "title": "ダイエット成功！",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "――うっ。体重が、結構まずいことに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ううっ、さすがに絞らないと……！\n間食や糖分はなるべく控えて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、でも、明日はイクノちゃんと\nスイーツバイキングに行く約束だっけ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じゃ、ダイエットは明後日からってことで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "ふぅ……満腹です。話題になるだけあって、\nどれも美味しかったですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うんうん。あーお腹いっぱいで苦しい～！\nケーキの種類多すぎて、\n制覇できなかったんだよね。また来なきゃ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じゃ、帰ろっか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "すみません、私はここで失礼いたします。\n摂取した分のカロリーを消費するため、\n帰りは走ろうと思っているのです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ！？　走るの？\nかなり距離あるのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "はい。むしろ帰りを走っても、\n消費しきれない計算です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そ、そうなんだ。\n今日のカロリー、そんなに……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……えっと、わたしも\n走って帰ろうかな～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "よろしければ今日だけでなく、\n明日以降もご一緒にどうですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "イクノディクタス",
+   "text": "私はすでに、本日の摂取カロリーを\n消化しきるトレーニング計画を\n立てておりますので。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "イクノちゃんの計画……それ絶対完璧なやつ！\nぜひ一緒にトレーニングさせてほしいな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてヒシミラクルはイクノディクタスの\n助けを借り、ダイエットに成功したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

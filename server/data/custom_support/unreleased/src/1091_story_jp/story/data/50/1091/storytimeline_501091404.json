@@ -1,0 +1,29 @@
+{
+ "title": "Reminiscing",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "トレーニング中、突如倒れるヴィブロス。\nドバイへの遠征に暗雲が垂れ込め、\n遠征の判断は次のレースの結果に委ねられた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "一方、彼女の姉・シュヴァルグランも\nレースで結果を出せず苦しんでいた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その後、トレーナーが息抜きに誘った場で、\nヴィブロスは改めてドバイ出走への強い想い、\nティアラ路線出走に後悔はないことを告げる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "なお苦しむシュヴァルグランを気にかけつつ、\nヴィブロスは『中山記念』へ向け\n気持ちを固めることができたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "title": "プロローグ",
+ "text_block_list": [
+  {
+   "name": "サトノダイヤモンド",
+   "text": "――準備は、よろしいですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "そんなに緊張しなくても大丈夫よ。\nVR世界には頼りになる先生方が\nいるんだもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "ウマ娘の祖と言われる――\n三女神の方々がね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "WBCは厳しいレースに\nなることと思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "けれどきっとやり遂げられます！\n見事レースを勝ち抜き、\nグランドマスターズを制しましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、\n未知の世界への旅が始まった――！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "陽は昇り、沈みゆく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "遥か彼方の地平へと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "けれど必ずまた昇る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "幾度も、幾度も、巡り合う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "強き意志が途絶えぬ限り、\n想いは循環する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "これまで生まれてきた者たちへ。\nこれから生まれる者たちへ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "全ての出逢いと、別れに贈ろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "永久に続く幸福を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "長きに亘る栄光を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "彩りに溢れた未来を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "三女神",
+   "text": "グランドマスターズ　～継ぐ者達へ～",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

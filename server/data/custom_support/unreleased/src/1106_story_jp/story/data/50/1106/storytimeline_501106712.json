@@ -1,0 +1,59 @@
+{
+ "title": "不在の理由は……",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "トレーニングの時間にヒシミラクルが現れず、\n心配になって捜し回っていると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん……どうしよう……。\nリップはまだあるしな……。",
+   "choice_data_list": [
+    "ヒシミラクル"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――あ、トレーナーさん。",
+   "choice_data_list": [
+    "トレーニングの時間なんだけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え……あっ、トレーニング！\nや、すっかり忘れてました……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "すみません……\n今日中にクーポン使わなきゃ～って、\n頭の中それだけでいっぱいだったんです……。",
+   "choice_data_list": [
+    "クーポン？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ここの割引クーポン、今日が使用期限でして。\nでも、なかなか買いたいものが\n見つからなくて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "本当にすみませんでした……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは深く反省しているようなので、\n次からは気をつけるよう注意したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

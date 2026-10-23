@@ -1,0 +1,261 @@
+{
+ "title": "ナチュラルボーン♡アイドル！？",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ある日の移動中。\nライブをしているらしい歓声が聞こえてきた。\n気になって覗いてみると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "3人",
+   "text": "うーーー……Fight♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな～～、聞いてくれてありがとーー♡♡♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘たち",
+   "text": "きゃ～～～～！！！！",
+   "choice_data_list": [
+    "（なんでヴィブロスがっ！？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "集まったウマ娘たちの視線の先には、なぜか\n先輩たちとまざってヴィブロスの姿があった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ライブの予定があるとは聞いていなかったが、\n一体、どういう事情だろうか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "ヴィブロスちゃん、ライブ楽しかったよ～！\nヴィブロスちゃんの歌、すごくいいね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やったーー♡\n今ので私、もっとがんばれちゃうかも♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、レースも応援にきてね？\nウイニングライブで、\nセンターからあなたのこと見つけるから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "ヴィブロスちゃんのセンター……！\nぜ……ぜったい行くぅ～～～～♡♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "ヴィブロス、やるじゃん！\nダンス、すげー上手くなってたよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えっ、ほんとにっ？\n先輩に褒めてもらえるなんて、うれしい♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "練習して次はもっと上手になるね♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "ふはっ。いいじゃん。\nならまた見に来てやんねーとな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わーい、ありがと♡　先輩だいすき♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "さすがですね、ヴィブロスちゃん！\nアイドルには不可欠の愛され力に\n満ちあふれてます……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "1人ずつ狙い撃ちするファンサもすごいよ！\nやっぱりあの子には、\nとんでもないアイドルの素質が――",
+   "choice_data_list": [
+    "（一体、何が起きているんだ……）",
+    "（一体、何が起きているの……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あーー！　トレっち発見っ♡\nうれしー、見に来てくれたの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今ね、ファル子さんたちに\nアイドルの心得を教えてもらってたんだよ♪",
+   "choice_data_list": [
+    "アイドルの、心得……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そう！　だってアイドルってすごいんだもん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなの憧れで、すっごくキラキラしてて！\nそれってセレブにとっても大切なことでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから、お試しでやらせてもらってたんだ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "急に教えてってお願いされた時は、\n私たちも少し驚いたんですが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "もともと注目はしてたんだよね！\nヴィブロスちゃんにはきっと、\n私たちとは違うアイドル力があるって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "それを知るためにも、\n一緒のステージに立ちたい……ううん。\n立たなきゃダメって思ったんだよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "たしかに！　いっしょのステージにいたら、\nすっごく伝わってきたよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "2人がみんなにもらったラブを、\nも～っとおっきなラブで返してるってこと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなとそーしそーあいなんだね♡\nだからみんな、2人を応援してる♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね？　アイドルってすっごくかっこいーよね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ズキューーーーン！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "ヴィブロスちゃん……っ！\nたった1度のステージで、すでに真理を……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "輝く理由を見つけられる聡明さ……、\nそれをすぐ実行できる器用さ……。\nそしてなにより――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "愛を、真っ直ぐ伝えられる素直さ！\nまさに――天性の愛され力！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "ねぇねぇ、お試しなんかじゃないっ！\n本格的にアイドル――ううんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スマートファルコン",
+   "text": "私とウマドル……やってみない！？",
+   "choice_data_list": [
+    "まさか全力スカウトされるほどとは……！",
+    "ちょ、ちょっと待ったーー！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うれしいけど、ごめんなさーい！\nそーゆー系のスカウトは、全部断ってて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それよりも……\n最高のセレブとして、隣に立ちたいな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "最高のアイドルたちの隣に、ね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスの夢は、セレブになること。\nその夢を守らなければ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへっ♡　2人ともありがとう！\n褒めてくれて、すっごくうれしいけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ごめんなさい！\nこの人と叶えたい夢があるから、ね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

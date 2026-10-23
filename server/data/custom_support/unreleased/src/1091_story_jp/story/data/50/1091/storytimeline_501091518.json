@@ -1,0 +1,35 @@
+{
+ "title": "あきらめないもん！",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "――え～～、このMVのダンスかわいーー！\n私もやりた～い！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "かわいーく踊って～。\nトレっちに、えらいえらいしてもらおーっと♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほっ――はっ、よっと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……むうう、納得できない……。\nもっとかわいく踊れるはずなのに～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "しかし何度踊っても、納得できる\nレベルには達することができず……。\n身も心もぐったり疲れてしまうのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+#title At the Infirmary
+0 Vivlos seemed unwell, so I brought her to the infirmary.
+1 ...Hey, Tore-cchi. You have to stay with me until I fall asleep, okay?
+1> It's okay. Rest easy and sleep well
+2 —...Huh? I should have been sleeping in the infirmary...
+3 —I found you, Vivlos.
+4 Running away is no good. Come on, accept the mark of our comrades quickly, too.
+5 Huh, Crown, Diamond...? What's wrong? You're acting kinda...
+6 Good girl, Vivlos... Now, put on these sunglasses—
+7 Wear the mark of the "Anti-Communication Black Glasses Party"!
+8 N... no way, even Onee-chan...!
+9 N-nooo～～～!
+10 "Sunglasses are justice! Sunglasses are salvation!" "Sunglasses mandatory for all living things...!"
+11 Huff, huff... Did I manage to get away? What on earth was that—
+12 Fufufu, everything is going according to my plan...!
+13 —Huh... that voice...!
+14 Now put on the sunglasses, Vivlos. For my utopia, where no one ever makes eye contact!
+15 I've always thought... Getting involved with people is scary. Making eye contact and getting talked to is scary...
+16 So I decided—I'll force sunglasses on everyone in the world and create an ideal world where no one ever makes eye contact—
+17 Sunglasses on everyone in the world...? No... that's—
+18 Isn't that super awesome!?
+19 You never wanna match with me, Chevacchi, so I'm so happy～! Let's all go on a sunglasses date♡
+20 Huh... W-wait a sec...! That's not... what I meant—
+21 Ehehe♡ I love you, Chevacchi♡ You promised to go on a date with me♪
+22 Tore-cchi, listen, listen～! I had a dream with a super cute Chevacchi♡
+23 And I'm full of energy! I'm gonna go on a date with Chevacchi♡
+24 Vivlos sprang out of bed full of energy. It seems her body got plenty of rest!

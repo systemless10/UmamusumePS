@@ -1,21 +1,3 @@
-"""THE TWINKLE LEGENDS (scenario 10) -- the training numbers: the home preview,
-its energy, the scenario's bonus line and the Challenge Zone's end rate.
-
-Fitted to the real JP server (docs/JP_TWINKLE_LEGENDS_SCENARIO.md §7; the
-research scripts tlform.py / tlcheck.py are the reference this ports):
-
-    home   = Ramen's formula on this scenario's per-level base values (base SP
-             7, wit 5); super motivation makes the mood term 55; the group
-             card 30241 rainbows anywhere under its passion zone (condition
-             104) with no bond gate                         2,557/2,560 previews
-    bonus  = the same product with the buffs' training effect / mood effect /
-             friendship bonus, the zone's +30 and Haiseiko's levels, minus the
-             home line, halved above 1200                   2,556/2,560
-    energy = speed -20..-26, the rest -21..-27 by level, wit +5; the zone's
-             -50% and the HpConsumeDown buffs on top of the cards' cost-down
-                                                            2,550/2,560
-    zone end rate = min(100, failure without 練習上手 + 0/30/60/100)  355/355
-"""
 
 from __future__ import annotations
 
@@ -35,9 +17,6 @@ FRIENDSHIP_BOND = RF.FRIENDSHIP_BOND
 GROUP_TYPE = 3
 NPC_MIN = RF.NPC_BODY_MIN_ID
 
-# FACILITY BASE VALUES PER LEVEL {command: {level: {target_type: value}}} (§7.1).
-# Level 1 and level 5 (= summer 601-605) are master's single_mode_training_effect
-# rows for scenario 10; levels 2-4 fitted (every cell 100%).
 BASE = {
     101: {1: {1: 11, 3: 2}, 2: {1: 12, 3: 2}, 3: {1: 13, 3: 2}, 4: {1: 14, 3: 3}, 5: {1: 15, 3: 4}},
     105: {1: {2: 8, 4: 6}, 2: {2: 9, 4: 6}, 3: {2: 10, 4: 6}, 4: {2: 11, 4: 7}, 5: {2: 12, 4: 8}},
@@ -50,11 +29,11 @@ ENERGY = {101: {1: -20, 2: -21, 3: -22, 4: -24, 5: -26}}
 ENERGY_DEFAULT = {1: -21, 2: -22, 3: -23, 4: -25, 5: -27}
 SUMMER_ENERGY = {601: -26, 602: -27, 603: -27, 604: -27}
 WIT_ENERGY = 5
-SUPER_MOOD = 55                 # St Lite's guidance: the mood term (§6.2)
-ZONE_TRAINING = 30              # Speed Symboli's guidance (§6.3)
+SUPER_MOOD = 55
+ZONE_TRAINING = 30
 ZONE_ENERGY_DOWN = 50
-ZONE_END_STEP = {5: 30, 6: 60}  # T(n); n >= 7 -> 100
-PRACTICE_PERFECT = {10: 2, 11: 4}   # the bias the zone rate leaves out
+ZONE_END_STEP = {5: 30, 6: 60}
+PRACTICE_PERFECT = {10: 2, 11: 4}
 
 
 def sp_of(command_id: int) -> int:
@@ -66,9 +45,6 @@ def level_of(command_id: int, level: int) -> int:
 
 
 def friend_fn(chara_info: dict, command_id: int):
-    """A normal card of the facility's own type at bond 80; the group card
-    anywhere while its passion zone is on, regardless of bond (§7.1:
-    364/365 with no gate, 352/365 with GM's)."""
     base = SUMMER_TO_BASE.get(command_id, command_id)
     passion = M.PASSION in set(chara_info.get("chara_effect_id_array") or ())
 
@@ -80,7 +56,6 @@ def friend_fn(chara_info: dict, command_id: int):
 
 
 def parts(chara_info: dict, command_id: int, level: int, partners, card_levels=None) -> dict:
-    """The pieces of the product, per facility (tlform.parts)."""
     base_cmd = SUMMER_TO_BASE.get(command_id, command_id)
     base = RF.base_values(command_id, level, BASE, sp_of(command_id))
     training = mood_up = 0.0
@@ -117,8 +92,6 @@ def parts(chara_info: dict, command_id: int, level: int, partners, card_levels=N
 
 def product(chara_info: dict, p: dict, *, mood_val=None, tu: float = 0.0, mu: float = 0.0,
             fb: float = 0.0) -> dict:
-    """{target_type: unfloored gain} (tlform.raw): the buffs' training effect
-    `tu`, mood effect `mu` and friendship bonus `fb` (a separate factor)."""
     mot = int(chara_info.get("motivation") or 3)
     mv = RF.MOOD.get(mot, 0) if mood_val is None else mood_val
     mood = 1 + mv * (1 + (p["mood_up"] + mu) / 100) / 100
@@ -135,7 +108,6 @@ def product(chara_info: dict, p: dict, *, mood_val=None, tu: float = 0.0, mu: fl
 
 def home_line(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
               *, super_mood: bool = False) -> dict:
-    """{target_type: home_pre} -- floored, capped at 100, before the halving."""
     p = parts(chara_info, command_id, level, partners, card_levels)
     raw = product(chara_info, p, mood_val=SUPER_MOOD if super_mood else None)
     return {tt: RF.capped(v) for tt, v in raw.items()}
@@ -165,7 +137,6 @@ def base_energy(command_id: int, level: int) -> int:
 
 def energy(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
            down: int = 0) -> int:
-    """§7.2: cost = -floor(|base| x prod(1 - card cost-down) x (1 - D/100))."""
     base = base_energy(command_id, level)
     if base < 0:
         mult = 1.0
@@ -185,7 +156,6 @@ def energy(chara_info: dict, command_id: int, level: int, partners, card_levels=
 
 def home_gains(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
                *, super_mood: bool = False, energy_down: int = 0) -> dict | None:
-    """The home preview in calculate_training_gain's shape."""
     line = home_line(chara_info, command_id, level, partners, card_levels, super_mood=super_mood)
     if not line:
         return None
@@ -199,11 +169,6 @@ def home_gains(chara_info: dict, command_id: int, level: int, partners, card_lev
 
 def bonus_params(chara_info: dict, command_id: int, level: int, partners, card_levels=None, *,
                  mods: dict) -> list:
-    """legend_data_set.command_info_array[].params_inc_dec_info_array (§7.3).
-
-    `mods` = {"tu", "mu", "fb", "nfriend_extra", "super"} from impl.mods: the
-    additive training effect, mood effect, friendship bonus (applied only to
-    a friendship training) and full guests counted as friendship partners."""
     p = parts(chara_info, command_id, level, partners, card_levels)
     super_mood = bool(mods.get("super"))
     home = product(chara_info, p, mood_val=SUPER_MOOD if super_mood else None)
@@ -228,8 +193,6 @@ def bonus_params(chara_info: dict, command_id: int, level: int, partners, card_l
 
 
 def guests_in(partners) -> int:
-    """Haiseiko's guests standing in a facility: they count as supporters for
-    the per-member buffs (§7.3, 370/370 with them, 338/370 without)."""
     return sum(1 for q in partners or () if int(q) >= NPC_MIN)
 
 
@@ -246,7 +209,6 @@ def is_friendship_training(chara_info: dict, command_id: int, partners,
 
 
 def plain_failure_rate(chara_info: dict, command_id: int, level: int, partners) -> int:
-    """The shared failure rate with the 練習上手 ○/◎ bias taken back out (§6.3)."""
     from ...handlers import single_mode_team as smt
     conds = [c for c in chara_info.get("chara_effect_id_array") or () if c not in PRACTICE_PERFECT]
     return tf.failure_rate(int(chara_info.get("vital") or 0), command_id=command_id,

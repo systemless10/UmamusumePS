@@ -1,0 +1,54 @@
+#title Changeable Weather
+0 Huff... Huff... No good... I couldn't save enough stamina for the spurt again...
+1 Accelerating to get position... Boxing in opponents so they can't get out from the inside... If I'm battling, saving my own legs instead...
+2 Running while watching your opponents means you've gotta control your own running this much, huh...
+3 ...Think properly, me... .........Okay, one more time...!
+4 .........
+5 Now, for the next part of the regimen—Little Cocon, three easy laps on the dirt course.
+6 Yes, understood.
+7 ...And Bitter Glasse, starting today, let's actively work in more pace training with Little Cocon.
+8 With Little Cocon...?
+9 The pace management you're trying to learn is something Little Cocon excels at. There should be a lot you can learn from her.
+10 ......... Yes, understood.
+11 ...Huff... Huff...
+12 ...Hey, hasn't your training changed lately?
+13 Yeah, well... So I can win for real.
+14 ...For such a positive reason, you don't look like you're having fun. Usually you're so loud it's annoying.
+15 ...Are you actually okay with what you're doing now?
+16 ...It's not about being okay with it or not. I wanna be able to win.
+17 Everyone around me keeps getting stronger. So much that I can't keep up with strength alone... So I can't just do nothing.
+18 So that's why you're changing how you run?
+19 ...Trainer Kashimoto thought it through for me. Because she wants me to win. So I wanna give it everything I've got too...!
+20 ...I get what you're saying, but you still miss the way you used to run, don't you?
+21 This whole time, it just sounds like you're trying to convince yourself.
+22 .........
+23 Then just tell her, once. What you really want to do.
+24 You know Trainer Kashimoto well. She's someone who really pays attention to her Umamusume.
+25 It's only natural that every Umamusume is different. It would be wrong for you to be the one adjusting.
+26 I'll revise your regimen right away. In exchange, from now on, don't hesitate to tell me.
+27 She really pays attention...
+28 ......... ...Okay, I'll talk to her.
+29 Good.
+30 That's it, Meek! Use your legs right to the end!
+31 Good work! You did it, another new record!
+32 ...Huff... Huff... Phew...
+33 You've been setting new records over and over lately—it's the result of building up step by step! The result of your hard work, Meek!
+34 ...Phew... V...
+35 ...She seems to be in good shape, sweet Meek.
+36 Ah, Godolphin Barb! Yes! She set another new record!
+37 She's really on the rise—it's like everything she's been storing up for the two years since her debut is pouring out all at once...!
+38 ...I've always thought "at our own pace." But day after day, all we could do was watch the Umamusume around us grow—
+39 I think I made Meek feel so, so frustrated.
+40 But that's exactly why we're here now, right...! All that patience is blooming more and more...!
+41 ...I held back... .........So now, I'm working hard... Hmph.
+42 That's right, Meek! You've bloomed so wonderfully... This year, winning a graded race isn't just a dream!
+43 ...Even so, growth like hers in such a short time is almost unheard of.
+44 Which is exactly why it's important to be careful. Don't suddenly increase her training, and don't overlook even the slightest change in her condition.
+45 Right. I won't slack on management, and I'll take her training one step at a time...!
+46 And in senior year, Meek and I are going to do all the things we couldn't do before!
+47 .........
+48 ...Stronger... .........More and more...
+49 ...Win races... ......Then both me and my trainer will be happy...
+50 ......... ...Hehe, my trainer... is too happy...
+51 .........Okay.
+52 ...Work harder... .........More and more...

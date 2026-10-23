@@ -1,0 +1,44 @@
+#title Toward the Japan Cup
+0 On the day of the Japan Cup, the packed stands overflowed with all kinds of voices.
+1 —Who'd have thought Vivlos would run in the Japan Cup!
+2 She won the Takarazuka Kinen, but I wonder how she'll do today?
+3 Kitasan Black's the obvious pick! She's a head above the rest.
+4 You can't count out Satono Crown either! She knows racing overseas, after all.
+5 Cheval Grand and Vivlos... Another sister showdown after the Victoria Mile. But...
+6 Cheval Grand hasn't really stood out, and I wonder how Vivlos will do in this lineup.
+7 —Alongside their great brilliance, there were people who doubted them.
+8 But—
+9 Vivlos sweetie, Cheval sweetie! Both of you, give it everything you've got～!
+10 I'm proud of you both for pushing each other! Whichever of you wins—I'm proud of you both!
+11 —I believe in you. In you two... my proud little sisters!
+12 There was a great love that believed in the two of them more than anyone. And—that love was in the two of them as well.
+13 —Vivlos.
+14 Chevacchi? What's up?
+15 ...Today, maybe...
+16 There might not be that many people who truly believe in us.
+17 ...But I know how amazing you are.
+18 So... let's run all-out. In our own way.
+19 Chevacchi...
+20 ...That's all.
+21 Me too! I know you're really strong, Chevacchi!
+22 I've known it for a long time. Getting to run against you when you're serious—
+23 My heart's pounding just as much as it did with Onee-chan!
+24 !
+25 ...I see.
+26 Hey, let's show them? Everyone, the whole world!
+27 That we're a suuuper amazing family♡
+28 ...Mm.
+28> ...Hm?
+29 Give me some too, Tore-cchi?
+30 ...
+31 Vivlos said nothing more, just gazing at me. It's her signature way of asking for something.
+31> ...Take back your request | ...Take back your request
+32 Huh.
+33 W-why? ...Did you not want to?
+33> Because then I'd only be saying it because you asked
+34 Huh...
+34> I believe in you with all my heart | I believe in you with all my heart
+35 ...!
+35> Win today, and let's go to Dubai next year!
+36 Yeah!
+37 Have the best reward ready for me, okay♡

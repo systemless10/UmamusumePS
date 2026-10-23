@@ -1,0 +1,136 @@
+{
+ "title": "ときめきは食べ過ぎのもと",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち！　早く早く～！\nこっちの料理もすっごいよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "国産にんじんクリームのミルクレープ\nピラミッド仕立てだって！　おっき～い！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こっちはフランス料理、かと思いきや\nスパイス効かせてるんだって！　あっちは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "いたいた。ヴィブロスたち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "クラウン！　ダイヤ！\n今日は招待してくれてありがとね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ロケーションも最高だし、料理も最高♡\nこれって、無国籍料理だよねっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "はい。様々な国の食材、調味料、技法を\n組み合わせた創作料理です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "サトノお抱えの一流料理人たちの料理を\nご堪能あれ……ってね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ってことはてことは！　全部食べたら、\n料理で世界一周旅行できちゃう！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ときめく～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぜーんぶ食べたい♡\n世界の果てまで食べつくしたーいっ♡",
+   "choice_data_list": [
+    "全部は食べ過ぎだよ",
+    "全部食べて世界一周しよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "食が細いほうのヴィブロス。\n食べ過ぎは負担になってしまうだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え～？　でもでも、\n世界一周気分味わいたいよ～……。",
+   "choice_data_list": [
+    "目で楽しむ、お料理世界一周観光は？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "ああ、なるほど！\n写真を撮りながら観光するってわけね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！　そっか！\n旅行ってグルメだけじゃないもんねっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃー♡　さっすがトレっち♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ、いこ♪　あ、途中で\nキラキラ夜景バックで2ショットも撮ろーね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうしてヴィブロスはときめきに流されず、\n爆食するのを我慢したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あは！　トレっちノリノリ～♪\nいっちゃおいっちゃお～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "このときめき、\n誰にも止められなーーいっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうしてヴィブロスは無国籍料理を堪能し、\n世界一周気分を満喫したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,436 @@
+{
+ "title": "温泉旅行",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヴィブロスと駆け抜けた3年間も、\nようやく落ち着いたある日のこと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今なんじゃない！？\nねえねえ！",
+   "choice_data_list": [
+    "何が？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ごほうびだよ、\nごほうび！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ごほうびの日、今しかなくないっ？\n温泉旅行、行こ～？",
+   "choice_data_list": [
+    "温泉旅行……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そういえば、シニア級に入った頃、\nヴィブロスは福引で温泉旅行を当てていた。\n確かあの時――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから温泉は、\n私と……トレっちのごほうびにしよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちも、いっぱいがんばってるし。\nほんとのごほうび、もらってほしい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――そんな思いやりを彼女からもらい、\nスケジュール帳に温泉旅行券を\nそっと挟んだのだった。",
+   "choice_data_list": [
+    "（俺があげたいくらいなのに）",
+    "（私があげたいくらいなのに）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "色んなことがあっても、\nヴィブロスはよく頑張ってくれた。\n褒めるだけでは足りない。",
+   "choice_data_list": [
+    "（何か別でご褒美をあげたいな）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち？",
+   "choice_data_list": [
+    "！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから、次のお休み！\n温泉に行こうねっ。",
+   "choice_data_list": [
+    "ああ",
+    "うん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "……そうだ、旅行にご家族を招くのは\nどうだろうか。彼女は家族が大好きだし、\nサプライズで喜んでくれそうだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "パパたちには、\nもうトレっちと行くこと伝えてあるから！",
+   "choice_data_list": [
+    "そうなのか？",
+    "そうなの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちとお話したいから、\nパパたちは呼べないけど、楽しんでくるって♪",
+   "choice_data_list": [
+    "そ、そう……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん？\nどしたの？",
+   "choice_data_list": [
+    "いや……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そ？\nじゃあ、よろしくねっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょ～～～……\n楽しみに、しててね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……よしっ。\nやるぞ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "別のことで、彼女へのご褒美を\n考えなければ。普通に発想すれば、\n彼女の大好きなセレブなものになる――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『えーっ、いいのトレっち！？\nこのカバン……』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『XXX万もするのに♡\nありがと～っ』",
+   "choice_data_list": [
+    "（……絶対違うよな）",
+    "（……絶対違うよね）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "確かに喜ばれるだろう。\nだが、自分の立場では不適切な行動だ。\n……その時、ふと思い出した――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ、ハグして！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『1つだけおねだりを聞く』……\nその答えに、彼女はハグを選んだ。\nもちろん今もできないが――",
+   "choice_data_list": [
+    "（もう1つのほうなら……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ついた～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー、なんかちょー雰囲気いい♡\nウマスタでも人気だったんだよ、ここ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、トレっち！\nかわいく撮って――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃなくてっ。\n撮ってあげる！",
+   "choice_data_list": [
+    "俺だけ？",
+    "私だけ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ。\nアプリちゃんと使うし～。",
+   "choice_data_list": [
+    "それなら一緒に撮ろうよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そう？\nトレっちがそうしたいなら♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、ひとしきり写真を撮った後、\nそれぞれ温泉へと向かった――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "入浴中……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はにゃ～……。",
+   "choice_data_list": [
+    "いい湯だった？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん～……。\nちょーよかった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、髪の毛乾かして？\nまだ毛先がちょっと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……じゃなかった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、\n髪乾かしてあげる！",
+   "choice_data_list": [
+    "え、もう乾いてるけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあじゃあ、\nヘアオイルつけてあげよっか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドライヤーのあとにつけると、\n髪の毛守ってくれるんだって！",
+   "choice_data_list": [
+    "じゃあ自分で――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ダメっ！\n私にやらせて？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日はトレっちのこと、\nとことん甘やかすって決めたんだもん！",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ、言っちゃった！\nヒミツのつもりだったのに～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ごほうびだよ、ごほうびっ。\nトレっちにもあげたいって言ったでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どうせなら温泉だけじゃなくて、\n私からもあげたいなって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちはほんとに、\n私のこといっぱいがんばってくれたもん。",
+   "choice_data_list": [
+    "ヴィブロス……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから……\nいいよ、トレっち？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いっぱい甘えて？",
+   "choice_data_list": [
+    "……先を越された！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へ？",
+   "choice_data_list": [
+    "俺も君にご褒美をあげたいんだ",
+    "私も貴方にご褒美をあげたいの"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私に……？",
+   "choice_data_list": [
+    "……頭、触ってもいい？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん。\nいいよ……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――ひゃっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ぽんぽんと頭を撫でる。\n『なでなで』……それは彼女の、\nもう1つのおねだりだった。",
+   "choice_data_list": [
+    "よく頑張ったな",
+    "よく頑張ったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "甘やかすこと……奇しくも同じご褒美を、\n考えていたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……な、なんか……\nドキドキする……でも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとう、トレーナーさん。\n――うれしい……。",
+   "choice_data_list": [
+    "全然セレブっぽくはないけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんで？\nちょーセレブじゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だってこんな気持ち……\n他の誰も、味わえないでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスとの間に、\nかけがえのない絆を感じた\nひとときだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

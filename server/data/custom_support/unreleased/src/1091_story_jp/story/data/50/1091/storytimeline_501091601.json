@@ -1,0 +1,35 @@
+{
+ "title": "今度こそ！",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "ふっ、ふっ、ふっ、ほっ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねぇねぇ、出走時間まだかなっ？\n早く走りた～～～いっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "この前は思いどおりに走れなかったけど、\n今日の私は違うもんね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちがびっくりする走り見せるから！\nゴールの瞬間、見逃しちゃダメだからね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それと～……勝ったときのお祝い、\n考えておいてよねっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

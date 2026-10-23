@@ -1,0 +1,56 @@
+#title Racing Dream
+0 Her first three years in the Twinkle Series. Hishi Miracle accomplished miracle after miracle.
+1 Since nobody considered her a contender at first, her journey was truly a miracle.
+2 And her future is bright. We decided to talk about how we'll go forward from here.
+3 Alright, Trainer, it's okonomiyaki time. Okonomiyaki!
+3> Yeah, today's our rally! | Yeah, today's our rally!
+4 Yep. It's a rally, so we need surf clams. Adding scallops is a must, of course.
+5 Let's eat lots. Leave the grilling to me!
+6 And so Hishi Miracle's homemade okonomiyaki came off the griddle one after another...
+6> From here on, why not aim to win every G1 you enter? | From here on, why not aim to win every G1 you enter?
+7 Ooh, I like that. Sounds rewarding.
+7> Racing overseas might be nice, too. | Racing overseas might be nice, too.
+8 Overseas... That's a seriously huge scale.
+9 But it sounds hard. Just hearing about it, I can't really picture it.
+9> What do you want to do, Hishi Miracle?
+10 Huh, me...?
+10> Yeah, what's your biggest wish? | Yeah, what's your biggest wish?
+11 That's what matters most. What Hishi Miracle, after so many great achievements, wants to do most is...
+12 Um, to be honest, my biggest wish is...
+13 For you to eat this okonomiyaki before it gets cold! Or something like that.
+14 I'm proud of this one, you know? It's delicious, you know? So please, please.
+15 ...It seems racing wasn't really on her mind.
+15> Are you maybe not that motivated?
+16 That's not true. Of course I am. It's just...
+17 My motivation doesn't change no matter what the goal is.
+18 As long as I'm chasing it with you, Trainer, I think any goal can become a dream.
+19 Hishi Miracle let her thoughts drift to the days that would surely continue from here...
+20 Anyway, I just want the two of us to keep getting along and having fun.
+21 I'll probably still lean on you a lot, but I wanna keep being in your care, I guess.
+22 And I wanna eat yummy food in all sorts of places.
+23 Okonomiyaki's great, but there's lots of other stuff, too.
+24 And my allowance! I want Mom to recognize my hard work a little more! And raise it!
+25 And I wanna run lots of races, too. Winning would be the best, if I can.
+26 Even if I don't win, I wanna give it everything I've got.
+27 Ehehe, when I think about it like this, even though I said I don't have a dream...
+28 Don't I actually have lots of dreams?
+28> Everything you just said is a dream?
+29 Yep. Each one is small, but if you put them all together into one...
+30 It becomes an impressive dream with everything in it! Just like okonomiyaki!
+30> I see...
+31 What Hishi Miracle said was exactly right.
+32 No matter how small, a dream is a dream. They come together to color Hishi Miracle's future...
+33 Trainer. You know what I think?
+34 I bet everyone who comes to watch at the racetrack is the same.
+34> The same?
+35 Their wishes are the same as mine. Basically...
+36 "I hope something a little nice happens. I hope a little nice stuff keeps happening."
+37 I think the Umamusume you're cheering for winning is one of those "little nice things."
+38 So I'm gonna run! From now on, too!
+39 So that everyone and I can feel just a little bit happier.
+40 What I want to eat with you every day, Trainer, is...!
+41 Okonomiyaki with every little bit of fun mixed in!
+42 That's right, there are always little joys at the racetrack. Everyone is chasing them.
+43 They may not be grand things like conquering the world or rising to fame. But...
+44 That very joy is the dream Hishi Miracle sees. And...
+45 The dream everyone saw in Hishi Miracle's running that day.

@@ -1,0 +1,48 @@
+#title Still Just a Fairy Tale
+0 Today I came to the sea with Vivlos for a magazine photo shoot. Why the sea, you ask—
+1 'Cause, 'cause! I reeeally wanted to be shot with a pretty sea and a beach like a desert!
+2 Ehehe～, thanks for bringing me, Tore-cchi♪
+3 And thank you, Mr. Photographer. Please make me look cute♡
+4 Yes, of course. Let's get some good shots!
+5 The shoot went smoothly. Strangely, her racewear seemed to suit this scenery.
+5> The blue really stands out | The blue really stands out
+6 Riiight? It's the same color as my Onee-chans'!
+7 If I recall, her sisters' racewear—Verxina's and Cheval Grand's—also uses a beautiful blue color scheme.
+8 Oh, but each one means something different. My blue is—
+9 Dubai's blue sky and blue sea! That's why I wanted to be shot at the sea!
+10 And actually, there's one more thing that matches my Onee-chans.
+11 These gold ear ornaments match too♡
+11> What do your ear ornaments mean? | What do your ear ornaments mean?
+12 Ehehe, it's still a secret～♪
+13 That expression is great! One more!
+14 Frolicking at the water's edge and running around the beach, Vivlos looked like an energetic desert princess.
+15 The whole shoot finished without a hitch. The sky was fading to crimson and purple, and sunset wasn't far off.
+16 Thanks for your hard work! I'll send the article over later, so—
+17 Um, um! Could you keep shooting just a liiittle longer...?
+18 I want to be shot with the sky this color too!
+19 Ah, the magic hour. The time of day you can take magical photos. Yeah... sounds good, let's do it!
+19> Then, we're in your hands!
+20 We're in your hands～!
+21 Unlike in the daytime, Vivlos poses with a quiet air.
+22 The beach looks like a desert, the sea like an endless southern ocean, and Vivlos's gold hair ornament glitters like magic in the twilight.
+22> (I feel like I've seen this sight somewhere...)
+23 Look, look, Tore-cchi! It's a photo from the first time I went to Dubai! I took it from the plane! Pretty, right～♪
+24 It was when the sun was setting into the desert, and Dubai's already-pretty buildings started sparkling and shining—
+25 They looked like a fairy castle with gold stars on top!
+26 It's like a magic kingdom!
+27 Vivlos must have wanted to express Dubai's magical sparkle with her racewear.
+28 Thanks for your hard work! We got the best shots. I'm excited to see how readers react.
+29 I'm excited too～♡ Mr. Photographer, thank you for granting all my wishes!
+30 Hey, hey, Tore-cchi, how was my shoot?
+30> You shone just as bright as Dubai
+31 Ehe... Ehehehe!
+32 Then, then, which me do you like better, Tore-cchi? Daytime me or evening me?
+32> In the bright daytime, you were like a princess | You were mysterious in the evening | You were mysterious in the evening
+33 Then, then, which me do you like better, Tore-cchi? Daytime me or evening me?
+33> In the bright daytime, you were like a princess | You were mysterious in the evening | You were mysterious in the evening
+34 A princess!? That's super glamorous, right!
+35 Geez, Tore-cchi, you're so good at compliments～!
+36 Then let's come back in the daytime again someday. I'll show you an even prettier, more glamorous me!
+37 Right, right, Dubai is gorgeous, and mysterious too!
+38 I put that image of Dubai into my racewear too. See these ear ornaments? I was really particular about them～♪
+39 So they can shine not all glare-y, but sparkly～♪!

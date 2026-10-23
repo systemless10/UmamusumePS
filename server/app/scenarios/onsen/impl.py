@@ -1,20 +1,3 @@
-"""ONSEN (scenario 12, JP only) -- ごくらく♪ゆこま温泉郷 -- the mechanics.
-
-docs/JP_ONSEN_SCENARIO.md is the spec this implements, section for section; it
-records where every rule and number came from (617 real careers, the
-single_mode_12_* master tables, the JP client dump). This module holds the
-career state and the rules that move it:
-
-    springs, selection, completion     §3   (select, dig_*, complete_*)
-    the dig and its bonus              §4-6 (dig.py does the arithmetic)
-    tickets                            §8   (add_tickets, ticket_num)
-    bathing and super recovery         §9   (bathe, track_energy)
-    PR activity                        §10  (assistants, assistant_preview)
-    bathing parties, ryokan rank       §11  (rank, commit_party)
-
-and builds the onsen_data_set every career response carries (data_set).
-Where the captures do not settle a rule it says so where it is applied.
-"""
 
 from __future__ import annotations
 
@@ -32,44 +15,34 @@ log = logging.getLogger("uma-server")
 SCENARIO_ID = 12
 STATE_KEY = "onsen"
 
-TICKET_CAP = 3                  # MAX_BATHING_TICKET_NUM
-FIRST_PICK_TICKETS = 2          # 212003, the first spring pick (fixed, §8)
-ASSISTANT_TICKETS = 1           # ASSISTANT_COMMAND_BATHING_TICKET_NUM
-BUFF_TURNS = 2                  # ONSEN_EFFECT_TURN_NUM: the bath turn and the next
-SUPERIOR_ENERGY_CAP = 150       # group 99's type-108 row
+TICKET_CAP = 3
+FIRST_PICK_TICKETS = 2
+ASSISTANT_TICKETS = 1
+BUFF_TURNS = 2
+SUPERIOR_ENERGY_CAP = 150
 LAST_DIG_TURN = 72
 SUMMER_TURNS = frozenset({37, 38, 39, 40, 61, 62, 63, 64})
-FIRST_TURNS = frozenset({1, 2})                 # before 212003: PR off, no digging
+FIRST_TURNS = frozenset({1, 2})
 SPRINGS_OPENED_BY = {3: (2, 3, 4), 24: (5, 6, 7, 8), 48: (9,), 65: (10,)}
 BATH_BOND_CARDS, BATH_BOND = 3, 10
 COPY_MIN_TYPES = 5
-# Super recovery's hidden gauge (§9.2): energy spent while no super recovery
-# is ready, against a threshold drawn anew at every reset. Weights (per mille)
-# of the threshold falling in (floor, floor + 10]: the maximum-likelihood fit
-# over 4,631 captured gauge cycles. It beats a flat per-step chance by 400
-# log-likelihood: a -3 dig step rarely crosses it, a training often does.
 SUPERIOR_THRESHOLD = ((50, 3), (60, 16), (70, 119), (80, 10), (90, 49), (100, 27),
                       (110, 69), (120, 44), (130, 50), (140, 45), (150, 36), (160, 77),
                       (170, 67), (180, 45), (190, 49), (200, 50), (210, 42), (220, 50),
                       (230, 32), (240, 28), (250, 26), (260, 41), (270, 19), (290, 3),
                       (300, 6))
-# PR assistants per turn: count weights (0..4), never 5 (§10). 10/20/45/20/5
-# over 36k turns once turn 3 is left out: it always has none (602/602).
 ASSISTANT_COUNT_WEIGHTS = (10, 20, 45, 20, 5)
 NO_ASSISTANT_TURNS = frozenset({3})
 
-# Party results (§11).
 RESULT_EVENTS = {1: {2: 212022, 1: 212023}, 2: {2: 212024, 1: 212025},
                  3: {3: 212026, 2: 212027, 1: 212028}}
 RESULT_STORIES = {212022: 400012005, 212023: 400012006, 212024: 400012011,
                   212025: 400012012, 212026: 400012017, 212027: 400012018,
                   212028: 400012019}
 RESULT_TIMING = 21
-# (all stats, SP, hints [(skill_id, levels)]) by (schedule, result). Captured
-# except 212023, which never happened: INFERRED as half of 212022 (§16).
-SKILL_KISEN = 202801            # 機先の勝負
-SKILL_JICHU = 202791            # 時中の妙
-SKILL_HOYO = 210371             # 保養が導く奇跡, the scenario skill
+SKILL_KISEN = 202801
+SKILL_JICHU = 202791
+SKILL_HOYO = 210371
 PARTY_REWARD = {
     (1, 2): (10, 150, ()),
     (1, 1): (5, 100, ()),
@@ -80,8 +53,6 @@ PARTY_REWARD = {
     (3, 1): (20, 150, ((SKILL_HOYO, 1),)),
 }
 
-
-# ================================================================ state ===
 
 def _blank() -> dict:
     return {
@@ -123,7 +94,6 @@ def served_turn(full_state: dict, chara_info: dict) -> int:
 
 
 def flag(st: dict, name: str, value=None):
-    """A one-shot response flag: set with a value, read-and-clear without."""
     if value is not None:
         st["flags"][name] = value
         return value
@@ -134,8 +104,6 @@ def rng_for(full_state: dict, *parts) -> random.Random:
     return random.Random(":".join(["onsen", str(CE.career_salt(full_state))] + [str(p) for p in parts]))
 
 
-# ========================================================== the deck ===
-
 def deck(chara_info: dict) -> dict:
     return formula.RF.deck(chara_info)
 
@@ -145,7 +113,6 @@ def linked_charas(chara_info: dict) -> set:
 
 
 def kiyoko_card(chara_info: dict):
-    """(position, support_card_id, rarity) of the deck's Kiyoko card, or None."""
     for pos, sid in deck(chara_info).items():
         _kind, _cmd, rarity, chara = formula.RF.card_meta(sid)
         if chara == M.KIYOKO_CHARA:
@@ -156,8 +123,6 @@ def kiyoko_card(chara_info: dict):
 def deck_type_count(chara_info: dict) -> int:
     return RI.deck_type_count(chara_info)
 
-
-# ============================================================ springs ===
 
 def spring_state(st: dict, onsen_id: int) -> int:
     if int(onsen_id) == int(st["selected"]):
@@ -175,7 +140,6 @@ def spring_done(st: dict, onsen_id: int) -> bool:
 
 
 def rank(st: dict) -> int:
-    """Ryokan rank from the springs dug, spring 1 included (§11.1)."""
     dug = set(int(x) for x in st["dug"])
     best = 1
     for r, need, required, _group in M.ryokan_ranks():
@@ -201,17 +165,11 @@ def open_springs(st: dict, onsen_ids) -> None:
 
 
 def dig_active(st: dict, turn: int) -> bool:
-    """Whether actions dig this turn (§4): after the first pick, never in the
-    summer camps or after turn 72, and only while the selected spring is
-    unfinished."""
     return (bool(st["enabled"]) and turn <= LAST_DIG_TURN and turn not in SUMMER_TURNS
             and int(st["selected"]) != M.BASE_ONSEN and not spring_done(st, st["selected"]))
 
 
-# ============================================================== tools ===
-
 def tools(st: dict, chara_info: dict, level_up: bool = False) -> list:
-    """dig_effect_info_array (or its level-up preview)."""
     out = []
     for kind in (D.SAND, D.SOIL, D.ROCK):
         item = M.item_for_stratum().get(kind, kind)
@@ -225,7 +183,6 @@ def tools(st: dict, chara_info: dict, level_up: bool = False) -> list:
 
 
 def dig_layers(st: dict, chara_info: dict) -> list:
-    """[(stratum_id, rest, multiplier)] of the selected spring still to dig."""
     linked = linked_charas(chara_info)
     tool = {t["stratum_type"]: t["dig_effect_value"] for t in tools(st, chara_info)}
     return [(sid, rest, D.multiplier(tool[kind], D.link_power(linked, kind)))
@@ -250,9 +207,6 @@ def plan_bonus(st: dict, digs: list) -> dict:
 
 
 def apply_dig(full_state: dict, chara_info: dict, digs: list, pay: bool) -> dict:
-    """Take a dig: lower the layers' rests and, when `pay`, grant its bonus
-    stats and energy now (a dig event; training and PR are paid by their own
-    previews). Returns the bonus."""
     st = state(full_state)
     bonus = plan_bonus(st, digs)
     for sid, amount in digs:
@@ -272,12 +226,7 @@ def completed_now(st: dict) -> bool:
     return sel != M.BASE_ONSEN and sel not in st["dug"] and spring_done(st, sel)
 
 
-# ============================================================ tickets ===
-
 def ticket_num(chara_info: dict, type_id: int) -> int:
-    """Tickets a ticket source pays (§8; client OnsenBathingTicketService):
-    the deck's Kiyoko row when she is in the deck, else the default row --
-    never both (disassembly + 1,332 captured 0 -> 2 completions)."""
     k = kiyoko_card(chara_info)
     if k:
         n = M.spa_tickets().get((type_id, M.KIYOKO_CHARA, k[2]), 0)
@@ -287,8 +236,6 @@ def ticket_num(chara_info: dict, type_id: int) -> int:
 
 
 def add_tickets(st: dict, n: int) -> None:
-    """Capped at 3; a grant refused because the stock was ALREADY full sets
-    not_gain_ticket (a partial fill does not, §8)."""
     if n <= 0:
         return
     have = int(st["tickets"])
@@ -296,8 +243,6 @@ def add_tickets(st: dict, n: int) -> None:
         st["flags"]["not_gain_ticket"] = True
     st["tickets"] = min(TICKET_CAP, have + n)
 
-
-# =============================================================== buff ===
 
 def remain(st: dict, turn: int) -> int:
     bt = int(st["bath_turn"] or 0)
@@ -311,9 +256,6 @@ def buff_active(st: dict, turn: int) -> bool:
 
 
 def effected(st: dict, turn: int) -> list:
-    """effected_onsen_id_array: the base spring and every spring dug WHEN THE
-    BATH WAS TAKEN, while its buff runs -- a spring finished mid-buff joins the
-    next bath, not this one (captures: dug [1, 2], effected [1])."""
     if not buff_active(st, turn):
         return []
     return [int(o) for o in (st.get("bath_springs") or [M.BASE_ONSEN])]
@@ -357,7 +299,6 @@ def specialty(st: dict) -> int:
 
 
 def copies_due(st: dict, chara_info: dict, turn: int) -> int:
-    """Spring 9's extra copies this turn (§9.3)."""
     for t, _v1, v2, v3, _v4 in buff_rows(st, turn):
         if t == M.EFFECT_SUB_PARTNER and deck_type_count(chara_info) >= (v3 or COPY_MIN_TYPES):
             return v2
@@ -366,12 +307,6 @@ def copies_due(st: dict, chara_info: dict, turn: int) -> int:
 
 def place_copies(full_state: dict, chara_info: dict, turn: int, occupied=None,
                  standing=None) -> dict:
-    """{command_id: [position]} -- 3 random normal deck cards, each placed in a
-    random facility it is not already standing in. Rolled once per turn.
-
-    `standing` is this turn's fresh board. The stored home_info is the one
-    served LAST turn, so checking it let a copy land beside the card itself
-    (training_partner_array [4, 5, 5]), which hangs the client's training cut."""
     st = state(full_state)
     n = copies_due(st, chara_info, turn)
     if not n:
@@ -382,9 +317,6 @@ def place_copies(full_state: dict, chara_info: dict, turn: int, occupied=None,
         picks = rng.sample(normal, min(n, len(normal)))
         placed: dict = {}
         for pos in picks:
-            # `occupied` is {command_id: bodies already there} (a COUNT, see
-            # Scenario.partner_placements); who stands there comes off the
-            # stored board, so a card is never copied into its own facility.
             cmds = []
             for c in formula.TRAINING_COMMANDS:
                 here = occupied.get(c, 0) if isinstance(occupied, dict) else 0
@@ -399,15 +331,11 @@ def place_copies(full_state: dict, chara_info: dict, turn: int, occupied=None,
     return {int(k): list(v) for k, v in st["copies"].get("map", {}).items()}
 
 
-# ============================================================= bathing ===
-
 class Refused(Exception):
     pass
 
 
 def bathe(full_state: dict, chara_info: dict, turn: int) -> list:
-    """A bath (§9): instant effects, the two-turn buff, super recovery.
-    Returns the not_up codes the instant part hit."""
     st = state(full_state)
     if int(st["tickets"]) < 1:
         raise Refused("no ticket")
@@ -446,7 +374,6 @@ def bathe(full_state: dict, chara_info: dict, turn: int) -> list:
     _bath_bonds(full_state, chara_info, turn)
     if superior:
         _superior(full_state, chara_info, turn)
-    # The gauge keeps what it has: only a TRIGGER resets it (§9.2 threshold fit).
     st["superior"] = 0
     st["last_vital"] = int(chara_info.get("vital") or 0)
     log.info("onsen: bath on turn %s (superior %s), %s tickets left", turn, superior, st["tickets"])
@@ -463,8 +390,6 @@ def _cure(chara_info: dict) -> None:
 
 
 def _bath_bonds(full_state: dict, chara_info: dict, turn: int) -> None:
-    """+10 bond to the three lowest-bond deck cards under 100; a tie for the
-    last place is broken at random (97.6% lowest-first, every miss a tie)."""
     by_pos = deck(chara_info)
     rows = [e for e in chara_info.get("evaluation_info_array") or ()
             if isinstance(e, dict) and e.get("target_id") in by_pos
@@ -476,7 +401,6 @@ def _bath_bonds(full_state: dict, chara_info: dict, turn: int) -> None:
 
 
 def _superior(full_state: dict, chara_info: dict, turn: int) -> None:
-    """Super recovery's SP and hint events (group 99 + the rank's type 16)."""
     sp = hints = 0
     for t, v1, v2, _v3, _v4 in M.effects().get(M.SUPERIOR_GROUP, []):
         if t == M.EFFECT_PARAM and v1 == 30:
@@ -494,7 +418,6 @@ def _superior(full_state: dict, chara_info: dict, turn: int) -> None:
 
 
 def superior_threshold(full_state: dict, *key) -> int:
-    """A fresh gauge threshold (SUPERIOR_THRESHOLD), uniform within its bin."""
     rng = rng_for(full_state, "superior-threshold", *key)
     floor = rng.choices([f for f, _w in SUPERIOR_THRESHOLD],
                         weights=[w for _f, w in SUPERIOR_THRESHOLD])[0]
@@ -502,12 +425,10 @@ def superior_threshold(full_state: dict, *key) -> int:
 
 
 def track_energy(full_state: dict, chara_info: dict) -> bool:
-    """The super-recovery gauge (§9.2): energy spent since the last trigger
-    reaches the cycle's threshold. True when state changed."""
     st = state(full_state)
     vital = int(chara_info.get("vital") or 0)
     if st.get("energy_cap") and vital <= int(chara_info.get("max_vital") or 100):
-        st["energy_cap"] = 0          # back under the ordinary cap: the 150 is spent
+        st["energy_cap"] = 0
     last = st.get("last_vital")
     st["last_vital"] = vital
     if last is None or vital >= last or int(st["superior"]) or not st["enabled"]:
@@ -523,15 +444,11 @@ def track_energy(full_state: dict, chara_info: dict) -> bool:
     return True
 
 
-# ================================================================== PR ===
-
 def pr_enabled(turn: int) -> bool:
     return turn not in FIRST_TURNS and turn not in SUMMER_TURNS
 
 
 def link_targets(chara_info: dict) -> list:
-    """The five link charas as evaluation targets: a linked deck card by its
-    position, the others by chara id (§13.1)."""
     by_chara = {}
     for pos, sid in deck(chara_info).items():
         by_chara.setdefault(formula.RF.card_meta(sid)[3], pos)
@@ -539,7 +456,6 @@ def link_targets(chara_info: dict) -> list:
 
 
 def assistants(full_state: dict, chara_info: dict, turn: int) -> list:
-    """This turn's PR assistants, rolled once per turn (§10)."""
     st = state(full_state)
     if not pr_enabled(turn) or turn in NO_ASSISTANT_TURNS:
         return []
@@ -552,7 +468,6 @@ def assistants(full_state: dict, chara_info: dict, turn: int) -> list:
 
 
 def assistant_preview(full_state: dict, chara_info: dict, turn: int) -> tuple:
-    """(params, bonus_params, digs) the PR button shows and pays."""
     st = state(full_state)
     digs = dig_plan(full_state, chara_info, D.BASE_ASSISTANT + len(assistants(full_state, chara_info, turn)), turn)
     bonus = plan_bonus(st, digs)
@@ -561,18 +476,14 @@ def assistant_preview(full_state: dict, chara_info: dict, turn: int) -> tuple:
         if tt == formula.TARGET_ENERGY:
             v += int(bonus.get(D.THRESHOLD_ENERGY, 0))
         elif 1 <= tt <= 5:
-            v = formula.displayed(chara_info, tt, v)        # +6 shows +3 above 1200
+            v = formula.displayed(chara_info, tt, v)
         params.append({"target_type": tt, "value": v})
     bonus_params = formula.flat_params(chara_info, {tt: v for tt, v in bonus.items()
                                                     if tt != D.THRESHOLD_ENERGY})
     return params, bonus_params, digs
 
 
-# ============================================================ previews ===
-
 def refresh_preview(full_state: dict, chara_info: dict, home_info: dict, card_levels=None) -> bool:
-    """Recompute this turn's bonus line and dig previews from the facilities
-    about to be served, and remember them: exec_command pays exactly these."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     bonus, digs = {}, {}
@@ -603,15 +514,12 @@ def stored_dig(st: dict, command_id: int, turn: int) -> list:
     return []
 
 
-# ============================================================ parties ===
-
 def party_pending(st: dict, turn: int) -> bool:
     sched = M.schedules().get(int(turn or 0))
     return bool(sched) and not any(r["schedule_id"] == sched for r in st["results"])
 
 
 def commit_party(full_state: dict, chara_info: dict, turn: int):
-    """Hold the bathing party of `turn`: its result, and the result Event."""
     st = state(full_state)
     sched = M.schedules()[int(turn)]
     result = M.dug_result(sched, rank(st))
@@ -644,8 +552,6 @@ def last_result(st: dict, schedule_id: int) -> int:
     return next((r["result_type"] for r in st["results"] if r["schedule_id"] == schedule_id), 0)
 
 
-# ============================================================ envelope ===
-
 def outing_dig(full_state: dict, chara_info: dict, turn: int, kiyoko: bool) -> list:
     return dig_plan(full_state, chara_info, D.BASE_KIYOKO_OUTING if kiyoko else D.BASE_REST, turn)
 
@@ -654,7 +560,7 @@ def race_base(chara_info: dict, turn: int) -> int:
     from ...handlers import single_mode_team as smt
     try:
         forced = smt._forced_race_turns(tuple(chara_info.get("route_race_id_array") or ()))
-    except Exception:                                  # noqa: BLE001
+    except Exception:
         forced = frozenset()
     return D.BASE_GOAL_RACE if turn in forced else D.BASE_RACE
 
@@ -672,7 +578,6 @@ def _dig_rows(digs) -> list:
 
 
 def data_set(full_state: dict, chara_info: dict, home_info: dict) -> dict:
-    """onsen_data_set -- always complete (§1.1)."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     commands = [c for c in (home_info or {}).get("command_info_array") or ()
@@ -685,8 +590,6 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict) -> dict:
                      "params_inc_dec_info_array": list(preview["bonus"].get(str(cmd)) or []),
                      "dig_info_array": _dig_rows(preview["dig"].get(str(cmd)) or [])})
     active = dig_active(st, turn)
-    # A goal-race turn: only the race row previews a dig; the training rows keep
-    # their bonus line but show no dig_info (captures, every goal turn).
     race_only = race_base(chara_info, turn) == D.BASE_GOAL_RACE
     if race_only:
         for row in rows:
@@ -696,8 +599,6 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict) -> dict:
     race_dig = _dig_rows(dig_plan(full_state, chara_info, race_base(chara_info, turn), turn)) if active else []
     rows += [
         {"command_type": 3, "command_id": 301, "params_inc_dec_info_array": [], "dig_info_array": rest_dig},
-        # The 390 row reads like any outing (base 15); only outing_effect_array's
-        # Kiyoko entry shows her date's base 25 (captures: 28 vs 47 at T3).
         {"command_type": 3, "command_id": 390, "params_inc_dec_info_array": [], "dig_info_array": rest_dig},
         {"command_type": 4, "command_id": 401, "params_inc_dec_info_array": [], "dig_info_array": race_dig},
         {"command_type": 7, "command_id": 701, "params_inc_dec_info_array": [], "dig_info_array": rest_dig},

@@ -1,0 +1,208 @@
+{
+ "title": "My Source of Energy ♡",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヴィブロスとトレーニングをしていたある日――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁ……はぁ……あれれ～？",
+   "choice_data_list": [
+    "どうかしたか？",
+    "どうかした？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んー……なんか今日イマイチかも？\n体重いし。あんまノれなかった感じ～。",
+   "choice_data_list": [
+    "じゃあ、今日はこれで終わりにしようか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "調子が悪いなら、無理はしないほうがいいだろう。\n気になるのは、その原因についてだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ、体調悪～いって感じじゃないよ！\nこういうときはね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "アレしかないっ♡　ほら、トレっちいこいこー！",
+   "choice_data_list": [
+    "え！？行くって、どこに――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～っ、かわいー！\nまた新しいの出たんですねっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ブランド店の店員",
+   "text": "はい♪　こちらのイヤーカフはリングとしてもお使いいただける他、\n同じシリーズのものと重ねづけもできるんですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うそうそっ、そんなのぜったいかわいいっ！\nお姉さん、どっちも包んでくださーい♪",
+   "choice_data_list": [
+    "（まさかの、ブランドショップ！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちも、似合うのいっしょに選んでー！\nいいのばっかで悩んじゃうんだよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃー次はお洋服！　どっちがいいと思う？\nあの白いショートパンツと～、あっちのピンクのタックミニ♪",
+   "choice_data_list": [
+    "う、うーん？どっちも似合いそうだけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ブランド店の店員",
+   "text": "そちらのタックミニスカートは、本日入荷品ですよ！\nしっかりした生地ですので、秋口までお使いいただけます♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わあ、そうなんですね！　じゃあこっちにします♪\nとなると、トップスもほしーなーっ！　新作ってどれですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "は～～、ちょー楽しかった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "新作ばっちり買えたしー。\nうんっ、これで明日元気いっぱいだっ♪",
+   "choice_data_list": [
+    "そういえば、最新のものばっかり見てたな",
+    "そういえば、最新のものばっかり見てたね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって、ときめくもんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ときめきはね、私をすてきにしてくれるの！\nなんでもできちゃうかも♡　って気持ちになるっていうか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ♡　ときめきの力、明日トレっちにも見せてあげるね♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はあっ――はあっ――！\n……まだ、まだまだいっちゃうよ～～～～～～！！",
+   "choice_data_list": [
+    "！？すごい加速……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――ふぃ～～～！　見た見た？　トレっち！",
+   "choice_data_list": [
+    "今のが、『ときめき』の力……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そのとーり♡　ときめきでいっぱいだから、\nぎゅんぎゅーんって走れちゃった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ！　こうやっていっぱいときめいて、\nいつか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぜーったい、ドバイに行っちゃうんだから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "キラキラで！　ちょーセレブで！\nまぶしくてさめない夢みたいな……あの世界に！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そのためにも、いっぱい……い～～～っぱい！\nときめきながら、がんばらないとっ！",
+   "choice_data_list": [
+    "そのときめきが、原動力なんだな",
+    "そのときめきが、原動力なんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そゆことっ！\nだからトレっちにも、い～っぱいときめかせて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほよっ？　なんか通知……って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ああーー！　たいへんっ！！\n昨日行ったお店、また新作入荷してるー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日のトレーニングってあとどのくらい？\nがんばるから、終わったら買い物付き合ってね！　ね、お願いっ！",
+   "choice_data_list": [
+    "もちろん、喜んで！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "全てはヴィブロスの夢のため、やる気のため。\n彼女の『ときめき』も大切にしてあげたいと、思うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

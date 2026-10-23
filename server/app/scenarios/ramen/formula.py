@@ -1,26 +1,3 @@
-"""RAMEN (scenario 14) -- the training numbers: the home preview, the
-scenario's own bonus line on top of it, and the learning-gauge preview.
-
-All three are fitted to the real JP server, not guessed; docs/JP_RAMEN_SCENARIO.md
-§3 and §6 carry the derivations and match rates. In short:
-
-    home   = min(100, floor((base + card bonuses) x friendship x mood
-                            x training effect x (1 + 0.05 x bodies) x growth))
-             then the 1200 halving                                 15,375/15,378
-    bonus  = floor(home_pre x (1 + S) x (1 + F)), halved, minus home,
-             capped at 100 + this turn's limit break                 ~99% (§6.2)
-    gauge  = base split, +2 on a friendship training, the bubble adding
-             1 + cards + NPCs/2 (7 at most)                            76k/76k
-
-Where this differs from training_formula.calculate_training_gain, and why the
-scenario computes its own number instead of feeding that one:
-  * the facility base values are per LEVEL (master only has level 1 and the
-    summer rows); the shared ~9%/level multiplier is not what JP does;
-  * NPC charas (partner id >= 1000) are bodies, +5% each; 101-103 are not;
-  * cards are read from master at their real level, including JP-only ones and
-    unique effect type 101 (bond-gated) that cards.json does not know;
-  * a stat or SP gain is capped at 100 per training before the halving.
-"""
 
 from __future__ import annotations
 
@@ -37,11 +14,6 @@ STATS = ("speed", "stamina", "power", "guts", "wiz")
 TARGET_SP = 30
 TARGET_ENERGY = 10
 
-# FACILITY BASE VALUES PER LEVEL {command: {level: {target_type: value}}}.
-# master.mdb's single_mode_training_effect holds scenario 14's level-1 rows and
-# the summer (601-605 = level 5) rows only; levels 2-4 are fitted from 15,378
-# real previews, and every level reproduces them exactly. Guts Lv4 speed (3) is
-# the one cell never observed: it sits between Lv3's 2 and Lv5's 3.
 BASE = {
     101: {1: {1: 11, 3: 2}, 2: {1: 12, 3: 2}, 3: {1: 13, 3: 2}, 4: {1: 14, 3: 3}, 5: {1: 15, 3: 4}},
     105: {1: {2: 10, 4: 3}, 2: {2: 11, 4: 4}, 3: {2: 12, 4: 4}, 4: {2: 13, 4: 5}, 5: {2: 14, 4: 6}},
@@ -50,8 +22,7 @@ BASE = {
           4: {1: 3, 3: 3, 4: 14}, 5: {1: 3, 3: 3, 4: 15}},
     106: {1: {1: 3, 5: 7}, 2: {1: 3, 5: 8}, 3: {1: 3, 5: 9}, 4: {1: 4, 5: 10}, 5: {1: 5, 5: 11}},
 }
-BASE_SP = 7                  # every facility, every level
-# Energy by level, fitted the same way; the summer ids use master's own rows.
+BASE_SP = 7
 ENERGY = {
     101: {1: -20, 2: -21, 3: -22, 4: -24, 5: -26},
     105: {1: -20, 2: -21, 3: -22, 4: -24, 5: -26},
@@ -60,9 +31,9 @@ ENERGY = {
     106: {1: 5, 2: 5, 3: 5, 4: 5, 5: 5},
 }
 SUMMER_ENERGY = {601: -25, 602: -26, 603: -27, 604: -27, 605: 5}
-PREVIEW_CAP = 100            # a stat or SP gain per training, before halving
+PREVIEW_CAP = 100
 MOOD = {1: -20, 2: -10, 3: 0, 4: 10, 5: 20}
-NPC_BODY_MIN_ID = 1000       # partner ids at or above this are NPC charas
+NPC_BODY_MIN_ID = 1000
 FRIENDSHIP_BOND = 80
 
 _EFFECT_COLUMNS = tf._EFFECT_LEVEL_COLUMNS
@@ -70,7 +41,6 @@ _EFFECT_COLUMNS = tf._EFFECT_LEVEL_COLUMNS
 
 @functools.lru_cache(maxsize=1024)
 def card_meta(support_card_id: int) -> tuple:
-    """(support_card_type, facility command_id, rarity, chara_id)."""
     row = master_data.query_one(
         "SELECT support_card_type, command_id, rarity, chara_id FROM support_card_data "
         "WHERE id=?", (int(support_card_id or 0),))
@@ -81,7 +51,6 @@ def card_meta(support_card_id: int) -> tuple:
 
 
 def is_normal_card(support_card_id) -> bool:
-    """A normal (stat-type) card, as opposed to a friend (2) or group (3) one."""
     return card_meta(support_card_id)[0] == 1
 
 
@@ -91,15 +60,11 @@ def max_level(support_card_id) -> int:
 
 @functools.lru_cache(maxsize=8192)
 def card_effect(support_card_id: int, effect_type: int, level: int) -> float:
-    """support_card_effect_table at the card's level (-1 = not defined yet)."""
     return tf.master_effect(support_card_id, effect_type, level)
 
 
 def unique_effect(support_card_id: int, effect_type: int, bond: int, level: int,
                   chara_info: dict | None = None) -> float:
-    """support_card_unique_effect, once the card's level unlocks it -- the
-    shared lookup, bond-gated half (type 101: 30304 Meisho Doto is stamina +1
-    and guts +1 at bond 80) and run-scaled 116/117 included."""
     total = tf.unique_effect(support_card_id, effect_type, level=level, bond=bond)
     if chara_info is not None:
         skills = [x.get("skill_id") for x in chara_info.get("skill_array") or ()]
@@ -107,10 +72,6 @@ def unique_effect(support_card_id: int, effect_type: int, bond: int, level: int,
                         for x in chara_info.get("training_level_info_array") or ())
         total += tf.situational_unique(support_card_id, effect_type, level,
                                        skills, level_sum)
-        # Type 103, "N+ card types in the deck -> training effect +X%" (30088
-        # Satono Diamond SSR): every L'Arc home-line miss was a 30088 deck, and
-        # this gives 2640/2640 (docs/JP_LARC_SCENARIO.md §17.1). Types counted
-        # off JP master: a normal card by its facility, friend, group.
         if effect_type == tf.EFFECT_TRAINING:
             total += tf._unique_conditional_training_bonus(
                 support_card_id, tf.EFFECT_TRAINING_IF_DECK_TYPE_COUNT, level,
@@ -129,7 +90,6 @@ def deck_type_count(chara_info: dict) -> int:
 
 @functools.lru_cache(maxsize=512)
 def growth(card_id: int) -> tuple:
-    """The trainee's talent_* growth rates, in stat order."""
     row = master_data.query_one(
         "SELECT talent_speed, talent_stamina, talent_pow, talent_guts, talent_wiz "
         "FROM card_data WHERE id=?", (int(card_id or 0),))
@@ -138,9 +98,6 @@ def growth(card_id: int) -> tuple:
 
 def base_values(command_id: int, level: int, table: dict | None = None,
                 sp: int | None = None) -> dict:
-    """{target_type: base} for a facility at a level; summer ids are level 5.
-    `table` / `sp` let another scenario run this formula on its own per-level
-    values (Onsen); None is this scenario's."""
     base = SUMMER_TO_BASE.get(command_id, command_id)
     lv = 5 if command_id in SUMMER_TO_BASE else max(1, min(5, int(level or 1)))
     out = dict((BASE if table is None else table).get(base, {}).get(lv, {}))
@@ -156,7 +113,6 @@ def energy_base(command_id: int, level: int) -> int:
 
 
 def deck(chara_info: dict) -> dict:
-    """{position: support_card_id}."""
     return {int(c.get("position") or 0): int(c.get("support_card_id") or 0)
             for c in chara_info.get("support_card_array") or () if c.get("position")}
 
@@ -167,8 +123,6 @@ def bonds(chara_info: dict) -> dict:
 
 
 def facility_cards(chara_info: dict, partners) -> list:
-    """[(support_card_id, bond)] of the deck cards standing in a facility,
-    copies placed by a region effect included."""
     by_pos, bond = deck(chara_info), bonds(chara_info)
     return [(by_pos[p], bond.get(p, 0)) for p in partners or () if p in by_pos]
 
@@ -178,8 +132,6 @@ def npc_bodies(partners) -> int:
 
 
 def is_friendship_training(chara_info: dict, command_id: int, partners) -> bool:
-    """A normal card of this facility's own type at bond >= 80 is standing in
-    it (a friend or group card never counts)."""
     base = SUMMER_TO_BASE.get(command_id, command_id)
     for sid, bond in facility_cards(chara_info, partners):
         kind, cmd, _r, _c = card_meta(sid)
@@ -191,11 +143,6 @@ def is_friendship_training(chara_info: dict, command_id: int, partners) -> bool:
 def home_raw(chara_info: dict, command_id: int, level: int, partners,
              card_levels: dict | None = None, table: dict | None = None,
              sp: int | None = None, friend_fn=None) -> dict:
-    """{target_type: unfloored gain} for one facility, before the cap and the
-    1200 halving (§6.1). `table` / `sp`: see base_values. `friend_fn(sid,
-    kind, cmd, bond)` replaces the friendship test for a scenario that widens
-    it (Grand Masters' group card and Byerley's wisdom); None is the normal
-    rule."""
     base_cmd = SUMMER_TO_BASE.get(command_id, command_id)
     base = base_values(command_id, level, table, sp)
     if not base:
@@ -215,7 +162,6 @@ def home_raw(chara_info: dict, command_id: int, level: int, partners,
         for tt in bonus:
             etype = tf.EFFECT_SKILL_POINT if tt == TARGET_SP else tf.EFFECT_STAT_BONUS_BASE + tt - 1
             bonus[tt] += eff(etype)
-        # 120: this card's bonus from the deck's composition.
         deck_stats, deck_sp = tf.deck_type_stat_bonus(sid, bond, list(deck(chara_info).values()), lv)
         for tt in bonus:
             bonus[tt] += deck_sp if tt == TARGET_SP else deck_stats[tt - 1]
@@ -223,7 +169,6 @@ def home_raw(chara_info: dict, command_id: int, level: int, partners,
         rainbow = (friend_fn(sid, kind, cmd, bond) if friend_fn is not None
                    else kind == 1 and cmd == base_cmd and bond >= FRIENDSHIP_BOND)
         if rainbow:
-            # a unique friendship bonus multiplies the base one (20062: 1.2 × 1.1)
             friendship *= ((1 + card_effect(sid, tf.EFFECT_FRIENDSHIP, lv) / 100)
                            * (1 + unique_effect(sid, tf.EFFECT_FRIENDSHIP, bond, lv, chara_info) / 100))
     bodies = len(cards) + npc_bodies(partners)
@@ -241,14 +186,10 @@ def home_raw(chara_info: dict, command_id: int, level: int, partners,
 
 
 def capped(raw: float) -> int:
-    """floor, then the 100-per-training cap. The epsilon keeps a product that
-    lands exactly on an integer from flooring one below it."""
     return min(PREVIEW_CAP, int(math.floor(raw + 1e-9)))
 
 
 def displayed(chara_info: dict, target_type: int, gain: int) -> int:
-    """A gain as the trainee actually receives it: 1200 halving and the stat
-    cap for stats, unchanged for SP."""
     if target_type > 5:
         return gain
     stat = STATS[target_type - 1]
@@ -258,11 +199,6 @@ def displayed(chara_info: dict, target_type: int, gain: int) -> int:
 
 
 def facility_energy(base_energy: int, command_id: int, cards, card_levels=None) -> int:
-    """A training's energy cost from the cards in its facility: type 28 at
-    each card's REAL level, floored (Light Hello 30052 is 5% at level 30, not
-    its max-level 10%), then her 113 -- a further 30% when any card's
-    friendship training triggers in this facility (sweep 2026-10-11, 482
-    real costs)."""
     levels = {sid: int((card_levels or {}).get(sid) or max_level(sid)) for sid, _b, _n in cards}
     cost = tf.energy_cost(base_energy, [sid for sid, _b, _n in cards],
                           {sid: b for sid, b, _n in cards}, levels)
@@ -276,7 +212,6 @@ def facility_energy(base_energy: int, command_id: int, cards, card_levels=None) 
 
 def home_gains(chara_info: dict, command_id: int, level: int, partners,
                card_levels: dict | None = None) -> dict | None:
-    """The home preview in calculate_training_gain's shape."""
     raw = home_raw(chara_info, command_id, level, partners, card_levels)
     if not raw:
         return None
@@ -300,11 +235,6 @@ def home_gains(chara_info: dict, command_id: int, level: int, partners,
 def bonus_params(chara_info: dict, command_id: int, level: int, partners,
                  s_pct: float, s_sp_pct: float, f_pct: float, limits: dict,
                  card_levels: dict | None = None) -> list:
-    """ramen_data_set.command_info_array's params for one facility (§6.2).
-
-    A target is listed only when the multipliers lift it at all; its value is
-    what that lift is worth after the halving and the stat cap, so a capped
-    stat is listed at 0 -- both exactly as the real server serves them."""
     out = []
     raw = home_raw(chara_info, command_id, level, partners, card_levels)
     for tt in sorted(raw):
@@ -315,9 +245,6 @@ def bonus_params(chara_info: dict, command_id: int, level: int, partners,
         total_pre = int(math.floor(home_pre * (1 + s / 100) * (1 + f_pct / 100) + 1e-9))
         if total_pre <= home_pre:
             continue
-        # The per-training limit (100 + this turn's limit break) caps the RAW
-        # difference, before any halving: 93 -> 257 under a +40 limit break
-        # shows 70, i.e. 140 halved (senior summer, SP and stats alike).
         delta = min(total_pre - home_pre, PREVIEW_CAP + int(limits.get(tt, 0)))
         out.append({"target_type": tt,
                     "value": _shown_bonus(chara_info, tt, home_pre, delta)})
@@ -325,16 +252,6 @@ def bonus_params(chara_info: dict, command_id: int, level: int, partners,
 
 
 def _shown_bonus(chara_info: dict, target_type: int, home_pre: int, delta: int) -> int:
-    """The bonus line as displayed. Below 1200 it is the difference itself.
-    At or above 1200 it is HALF the difference, floored but never below 1 --
-    the real server halves the bonus on its own rather than halving the two
-    totals and subtracting (6 -> 7 shows 1, 59 -> 70 shows 5). A gain that
-    crosses 1200 pays its part below the line whole and the rest halved --
-    and that halved rest is at least 1 (a total landing on 1201 shows the full
-    line: Mecha 1128 + 39 + 34, 1133 + 22 + 46, 1180 + 16 + 5, 1195 + 4 + 2,
-    and Twinkle Legends' one bonus miss; rounding the rest up instead breaks
-    13 other Mecha rows -- docs/JP_MECHA_SCENARIO.md §5.2). The stat cap then
-    clamps what is left after the home gain."""
     if target_type > 5:
         return delta
     stat = STATS[target_type - 1]

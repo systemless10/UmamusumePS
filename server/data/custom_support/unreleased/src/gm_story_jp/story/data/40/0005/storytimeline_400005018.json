@@ -1,0 +1,281 @@
+{
+ "title": "知識が示す確率",
+ "text_block_list": [
+  {
+   "name": "バイアリーターク",
+   "text": "――なるほど、それがビターグラッセの\n置かれている状況か。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "初めこそ十分過ぎるほどに通用していました。\nいかなるペース、いかなる相手であろうと\n定位置から最後は抜けだし相手をねじ伏せる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ですが、周りのウマ娘が成長してきた今、\nこれまでの走りでは脚を残せなかったり\n逆に後ろから差されたりしてしまいます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "持ち味をより鍛えるか、いかなる状況にも\n対処できる応用力を鍛えるか――\n舵を切る判断材料が欲しいところなのです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "それで訪ねてきたわけだな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "……強いウマ娘とは、ひと口に言っても\n様々な形があるが、もっとも単純なのは\nどのようなレースでも勝つ者だろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "そこに必要なのは、展開を冷静に読み\n最適解を導き出す柔軟性と、\nそれを実際に行える対応力。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "もし、より多くの勝利をものにしたくば、\nフィジカルだけでなくタクティクスを\n高めるトレーニングが最善と言える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……やはり、そうなりますか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "……ただし、その選択は今の走りを\n変えるという意味にもなるが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……もちろん……承知しています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "…………。ありがとうございました。\nあとはこちらで考えてみます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "……強くあらねばならないのは\nウマ娘だけではない。\nそれをゆめゆめ、忘れるなよ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（今でもビターグラッセのトレーニングは、\n負荷が他と比べても多い……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（そのうえでさらに周囲を押し切れるほどの\nフィジカルを手に入れようとするならば、\n相応のトレーニングを要することになる……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（彼女なら、それでもやり抜こうとするはず。\n強くなるためなら、もっともっと、と……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（しかし――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "…………。こうしていても、\n時間が過ぎてしまうだけですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "お疲れ様です、ビターグラッセ。\n貴方に話があります。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "え……？　はい、なんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "先日、苦戦が続く今の状況について\n貴方の想いは聞かせてもらいました。\nもっと強くなり、そして勝ちたいと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "そこで、明日からのトレーニングですが……\n貴方のトレーニングメニューを\n変更しようと思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "変更……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "これまでは貴方の武器であるフィジカルを\n基盤にしてきました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ですが、今の武器では相手の強さに\n対抗できていないのが実情です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "そのため、フィジカルとは違う角度から\n貴方の強化を図れないものかと\n考えているのです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "それはつまり……今までみたいに\n鍛えて鍛えて、鍛えまくるのではなく……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "たとえば今の貴方の走りは、レース中に\n作戦が崩れても無理やりに押し通しています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ですが、相手も力を付けてきている今、\n強引にねじ伏せることは、もはやできません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "であるのなら、レースの展開に合わせて\n臨機応変に対応できる走り――より高度な\nタクティクスを身につけたいのです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ペースの速い時、遅い時。他のウマ娘が\nどこに位置取り、どう仕掛けてくるか……。\nその時々で対応できる、そんな走りを。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "今の状況を打破するために、\n策を講じる必要があるのであれば、\nより勝率の高い策を講じるべきでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "勝率の高い策……でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "1度考えてみてはもらえませんか。\n勝利するということを。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "これまでどおりフィジカルで勝とうとすると、\nどうしてもリスクが付きまとうのです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "私は貴方を潰したいのではない……\n貴方を勝たせたいのです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "私を、勝たせたい……。\n…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "樫本トレーナーは厳しいとか噂されるけど、\nむしろ逆！　私たちをよく見てくれてるよな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……うん、そうだね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……わかりました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "やってみます、その新しいメニューで。\n勝ちたいのは、本当ですから……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……ありがとうございます。\n私も最善を尽くし、貴方を支えてみせます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "はいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（大丈夫、貴方はきっと勝てるようになる）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（それを必ず可能とする叡智という味方が\n我々にはいるのですから……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

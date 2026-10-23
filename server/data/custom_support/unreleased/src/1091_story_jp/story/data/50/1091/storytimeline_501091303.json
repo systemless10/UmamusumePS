@@ -1,0 +1,337 @@
+{
+ "title": "デビュー戦の後に・Make Debut♡",
+ "text_block_list": [
+  {
+   "name": "観客A",
+   "text": "おお～……！\nヴィブロス、そつがない走り！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A",
+   "text": "さすが、ヴィルシーナの妹！\nこの先もっと伸びていきそうだな……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁっ……はぁっ……。\nはーー……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やば、\nこんな疲れるの……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……でも、みんな、\n私を見てるっぽい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こほんっ、\nアピールどきっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな～っ、応援ありがとうっ！\nあのね、私ヴィブロスは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ティアラ路線に進みまーす♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンたち",
+   "text": "おお～～～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客A",
+   "text": "そうかぁ、そうか～……！\nヴィルシーナの後に続いてくれるのか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客B",
+   "text": "シュヴァルグランはクラシック三冠路線だろ？\nってことは、\nヴィルシーナのリベンジを果たすのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "……それって。つまり……\n期待しちゃうよ、ヴィブロス……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "――あの子の叶わなかった夢を、\nヴィブロスが……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ト・レ・っち～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ヴィブロス、\nただいま戻りましたっ。",
+   "choice_data_list": [
+    "ああ、お疲れ様",
+    "うん、お疲れ様"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれっ、\nそれだけ～？",
+   "choice_data_list": [
+    "……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのね、私、レースがんばったよ！\nだから……もーちょっと、褒めてほしいな？",
+   "choice_data_list": [
+    "……えらいな！",
+    "……えらいね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……トレっちって、\n甘やかしベタ？",
+   "choice_data_list": [
+    "えっ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あははっ、\nこれからもーっと上手になってね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、ちょーえらい？\nこのままティアラ路線もいけちゃいそ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ドバイ以外の彼女のもう1つの目標である\nティアラ路線のレースは、翌年の\nクラシック級の春から秋にかけて行われる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、ふつーはレースとか挟むんだっけ？\nお姉ちゃんも重賞とか出てたもんね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ、次の目標レース、\n決めちゃう？",
+   "choice_data_list": [
+    "それなんだけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスの体はまだ充実しきっていない。\n今日もレース直後、\n他の子よりも激しい消耗を見せていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "であれば、まずは体を完成させることに\n集中して、熾烈なレースを軸にしない――",
+   "choice_data_list": [
+    "来年の春先まではトレーニングに集中したい"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へぇ、そういうのありなんだ！\nそれでもいいよ？",
+   "choice_data_list": [
+    "春が終わったらまたレースを決めよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん？\n最初の『桜花賞』でしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……まさか、ティアラ路線にも\n間に合わないかもって、思ってる！？",
+   "choice_data_list": [
+    "基本的には問題ないと思うけど"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "基本的には～！？\n絶対大丈夫って言ってよ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トリプルティアラをとって、\nお姉ちゃんのリベンジして～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それでちゃーんとキラキラしてから、\nドバイに行くんだもんっ。",
+   "choice_data_list": [
+    "ああ、そうだな",
+    "うん、そうだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、\nちゃんとわかってくれてる♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、じゃあ大丈夫！\nトレーニングがんばる～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、それだけだとなぁ……。",
+   "choice_data_list": [
+    "目標が欲しい？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、そうだ！　お姉ちゃんたちみたいに、\nセレブ感あげてくっていうのは？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ファンをいっぱい増やしてくの！\nセレブにはフォロワーがいるものでしょ？",
+   "choice_data_list": [
+    "（そうなのか？）",
+    "（そうなのかな？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、よくない？\nママのファンも、お姉ちゃんのファンも、\nそれ以外の人も……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな、私のファンになってもらお♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "今後について話した後、\n控室を出ると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "ヴィブロスちゃん～！\nとってもかっこよかった～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ、みんな！\nありがとう～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "本当にお疲れ様！　素晴らしかったぞ！\nそれで、次のレースはいつだ？　応援に行く！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "パパもママも、お仕事があるでしょう。\n今日だって、すごく無理を通したって、\nマネージャーさん疲れきってたわよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……そうだよね。\n2人とも、忙しいもんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "ああっ、ヴィブロス！\nいや、これからもなんとか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "大丈夫よ。\nママとパパ、それにシュヴァルの分も、\n私がたくさん応援にいくから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんとっ！？\nありがとう、お姉ちゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "パパもママも、今日はありがとっ！\n私、トレっちとがんばるねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして無事デビューを終えたヴィブロス。\nトレーニングに集中しつつ、フォロワー……\nもといファンを増やしていくことが決まった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

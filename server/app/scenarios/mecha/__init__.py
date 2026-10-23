@@ -1,30 +1,3 @@
-"""RUN! MECHA UMAMUSUME (scenario 9, JP only) -- 走れ！メカウマ娘 ("Mecha").
-
-Built on the URA base (base.Scenario's defaults ARE URA, URA finals included);
-this class is the whole seam between the scenario and the shared career code,
-which only ever calls hooks.
-
-WHAT LIVES WHERE
-    impl.py       the mechanics -- research levels, gears, the overdrive gauge,
-                  tuning, the UGE, research members, and the mecha_data_set
-    formula.py    the training numbers (home, scenario line, research points)
-    master.py     the single_mode_09_* tables
-    endpoints.py  overdrive, tuning, upgrade_race, mecha_live, and exec_command's
-                  facility-id translation
-    producers.py  the event calendar and its resolvers
-
-docs/JP_MECHA_SCENARIO.md is the spec: every rule, number and event here is
-traced there to the real server's captures, master.mdb or the client.
-
-THE FACILITY IDS. Mecha serves speed / power / wit as 901 / 902 / 906 (stamina
-105, guts 103, the camp 601-605 unchanged; master single_mode_training gives
-901-906 the same failure bases as 101-106). The server runs on the shared
-101-106 throughout and renames at the wire: outgoing in attach(), incoming in
-endpoints.handle_exec_command.
-
-JP ONLY BY CONSTRUCTION: Global's master.mdb has no single_mode_09_* tables,
-so the released-and-implemented intersection never advertises it there.
-"""
 
 from __future__ import annotations
 
@@ -40,20 +13,15 @@ class Mecha(Scenario):
     name = "Mecha"
     endpoint_prefix = "single_mode_mecha"
     data_set_key = "mecha_data_set"
-    data_set_on_race_start = True       # every real race_start carries mecha_data_set
+    data_set_on_race_start = True
     state_keys = (impl.STATE_KEY,)
 
-    # ------------------------------------------------- shared-content gates --
-    # The Director trains from 209026 (T1) and the Reporter from 209035 (T13):
-    # single_mode_events.NPC_UNLOCKS. The real turn-78 chain is 101006 -> 10 ->
-    # 209041 -> mecha_live -> 6: URA's finals and wrap-up without the
-    # Director's "Super Successful Event!".
     uses_fixed_schedule = False
     has_versus_npc = False
     debut_reporter_event = 0
     has_director_ending = False
     has_reporter_ending = False
-    camp_lists_rest = True              # the camp lists 701 / 801 disabled (78/78 camp screens)
+    camp_lists_rest = True
     finals_events = {
         1: {"pre": (101001, 400000101, False), "post": (101002, 400000104, 12)},
         2: {"pre": (101003, 400000102, False), "post": (101004, 400000105, 13)},
@@ -61,8 +29,6 @@ class Mecha(Scenario):
     }
     _FINALS_POST = {101002: 74, 101004: 76, 101006: 78}
 
-    # 25 the UGE intro, 26 tuning, 27 the mecha concert (MechaRaceTop /
-    # MechaTuning / MechaLive, §2.4).
     playing_states = frozenset({5, 25, 26, 27})
     turn_end_hold_state = 5
     locked_npc_rows = M.partner_rows()
@@ -78,20 +44,13 @@ class Mecha(Scenario):
                 103: [(90, 1010, 5), (70, 1009, 4), (40, 1008, 3), (0, 1007, 2)]}
 
     def npc_supporters(self, full_state, chara_info) -> list:
-        """The NPC research members train alongside from 209026 on (§9): bodies
-        with no bond, no events -- Ramen's NPC charas."""
         st = impl.state(full_state)
         return list(st["members"]) if st["roster"] else []
 
-    # ------------------------------------------------------------ endpoints --
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 
-    # ------------------------------------------------------------- response --
     def command_info(self, full_state, chara_info, home_commands):
-        """Recompute the turn's overlay (gears, scenario line, research) from
-        the facilities about to be served. Persist when a roll was made or a
-        one-shot flag is waiting for attach()."""
         if not isinstance(chara_info, dict):
             return None, False
         from ...handlers import single_mode_team as smt
@@ -132,8 +91,6 @@ class Mecha(Scenario):
         for holder in (data.get("single_mode_start_common"), data.get("single_mode_load_common")):
             if isinstance(holder, dict):
                 holder.pop("mecha_data_set", None)
-        # Mid-chain the real home_info carries null previews, as the data set
-        # does (1,490 check_event / 488 exec_command replies: always together).
         if not full and isinstance(data.get("home_info"), dict):
             data["home_info"] = dict(data["home_info"])
             data["home_info"]["command_info_array"] = [
@@ -149,10 +106,6 @@ class Mecha(Scenario):
 
     @staticmethod
     def _reply_is_full(call: str, data: dict, chara_info: dict) -> bool:
-        """The command rows ride only the reply that leaves the client on its
-        training screen: start, load, overdrive, and a check_event /
-        exec_command / tuning / race_out ending the chain at playing_state 1
-        (1,948/1,948 replies of the seven careers, §2.3)."""
         if call in ("start", "load", "overdrive"):
             return True
         if call not in ("check_event", "exec_command", "tuning", "race_out"):
@@ -162,9 +115,6 @@ class Mecha(Scenario):
                 and not impl.career_over(chara_info))
 
     def _served_turn(self, full_state: dict, chara_info: dict, data: dict) -> int:
-        """The turn the client is shown: a UGE's hold, else the turn-end hold
-        the response chokepoint is about to apply (served only), else the
-        run's turn. Read without side effects."""
         from ...handlers import single_mode_team as smt
         st = impl.state(full_state)
         if int(st.get("hold_turn") or 0):
@@ -178,8 +128,6 @@ class Mecha(Scenario):
         return turn
 
     def _to_wire(self, data: dict) -> None:
-        """101 / 102 / 106 -> 901 / 902 / 906 on everything the client reads,
-        in new containers (the served dicts may share the persisted ones)."""
         def rename(cid):
             return formula.WIRE_ID.get(int(cid), int(cid)) if isinstance(cid, int) else cid
 
@@ -202,7 +150,6 @@ class Mecha(Scenario):
                 (dict(e, command_id=rename(e.get("command_id"))) for e in c["training_level_info_array"]),
                 key=lambda e: int(e.get("command_id") or 0))
             self._drop_carried_partners(c)
-            # target_id order, as the real rows come (deck, 1xx, the members)
             c["evaluation_info_array"] = sorted(
                 c.get("evaluation_info_array") or (),
                 key=lambda e: int(e.get("target_id") or 0) if isinstance(e, dict) else 0)
@@ -225,8 +172,6 @@ class Mecha(Scenario):
 
     @staticmethod
     def _drop_carried_partners(chara_info: dict) -> None:
-        """A partner a deck card carries has no row of its own (101 with a
-        Tazuna card: careers 2-7 serve no 101 row)."""
         deck_charas = {formula.RF.card_meta(sid)[3] for sid in formula.RF.deck(chara_info).values()}
         carried = {t for t, c in M.partner_rows() if c in deck_charas}
         if carried:
@@ -234,7 +179,6 @@ class Mecha(Scenario):
                 e for e in chara_info.get("evaluation_info_array") or ()
                 if not (isinstance(e, dict) and e.get("target_id") in carried)]
 
-    # ------------------------------------------------------------- training --
     def training_gains(self, full_state, chara_info, command_id, facility_level, camp, partners):
         from ...handlers import single_mode_team as smt
         served = formula.BASE_TO_SUMMER.get(command_id, command_id) if camp else command_id
@@ -242,15 +186,10 @@ class Mecha(Scenario):
                                   smt._support_card_levels(full_state))
 
     def training_award_bonus(self, full_state, chara_info, command_id) -> list:
-        """The scenario line the client saw on this facility (§5.2), paid on
-        top of home_info's -- with Head 12's energy refund."""
         row = impl.preview_row(impl.state(full_state), command_id, impl.turn_of(chara_info))
         return [dict(p) for p in row.get("line") or ()]
 
     def award_training_gains(self, full_state, chara_info, payload) -> None:
-        """A successful command (§4, §6, §7, §11.1): a training's research and
-        gear energy and Head 15's hint event; a rest / outing / infirmary its
-        maintenance beat. A failure lands nothing (career 5 T46, career 7 T57)."""
         st = impl.state(full_state)
         turn = int(payload.get("current_turn") or impl.turn_of(chara_info))
         ctype = int(payload.get("command_type") or 0)
@@ -262,9 +201,6 @@ class Mecha(Scenario):
             if row.get("gear"):
                 impl.add_energy(st, 1)
             if impl.overdrive_on(st, turn) and impl.has_effect(st, M.EFF_HINTS_TAKE_EFFECT):
-                # Emitted here, ahead of the appraisal / level-up / support beats
-                # the shared exec_command queues next: the real reply leads with
-                # it (35/35 209040, 26/26 209084).
                 from ... import career_events as CE
                 ev = producers.head_hint_event(full_state, chara_info, {
                     "turn": turn, "command_id": cmd, "partners": list(row.get("partners") or ())})
@@ -285,8 +221,6 @@ class Mecha(Scenario):
         return bool(impl.flag(impl.state(full_state), "lead"))
 
     def on_race_result(self, full_state, chara_info, race_ctx, result_rank) -> None:
-        """Every race but the finals owes 400009101 (§12): +7 research, +1
-        gauge, whatever the placing."""
         if race_ctx.get("finals_round"):
             return
         st = impl.state(full_state)
@@ -294,24 +228,18 @@ class Mecha(Scenario):
         st["due"].append({"kind": "race", "turn": turn, "goal": bool(race_ctx.get("is_goal"))})
 
     def training_bond_bonus(self, full_state, chara_info) -> int:
-        """Leg 3: bond +3 in the boosted training (§7.3, 11/11 uncapped)."""
         st = impl.state(full_state)
         if not impl.overdrive_on(st, impl.turn_of(chara_info)):
             return 0
         return impl.effect_sum(st, M.EFF_BOND)
 
     def specialty_rate_pct(self, full_state) -> int:
-        """Chip 1007's 得意率 +15..75 multiplies the own-facility weight, as
-        Onsen's ryokan rank does [INFERRED, §8.1]."""
         st = impl.state(full_state)
         return sum(v2 for t, _v1, v2, _v3, _v4 in M.chip_effect(M.CHIP_SPECIALTY,
                                                                 int(st["chips"].get(str(M.CHIP_SPECIALTY), 0)))
                    if t == M.EFF_SPECIALTY)
 
     def hint_partners(self, full_state, chara_info, command_id, partners, hinting):
-        """Head 15 in overdrive: every normal card shows its hint (230/230
-        facilities). Otherwise chip 1006's hint rate gives a card that missed
-        its roll a second chance at rate% of its own [INFERRED, as Ramen]."""
         st = impl.state(full_state)
         turn = impl.turn_of(chara_info)
         by_pos = formula.RF.deck(chara_info)
@@ -333,27 +261,18 @@ class Mecha(Scenario):
         return out
 
     def hint_reveals(self, full_state, chara_info, command_id, reveals):
-        """Head 15 pays every card's hint through 209040 / 209084 alone (§7.3)."""
         st = impl.state(full_state)
         if impl.overdrive_on(st, impl.turn_of(chara_info)) and impl.has_effect(st, M.EFF_HINTS_TAKE_EFFECT):
             return []
         return reveals
 
-    # ----------------------------------------------------------------- flow --
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
-        """A UGE turn, or a turn with a closing scenario story still to play:
-        the shared code then keeps the next turn's opening beats (the
-        trainee's calendar story, New Year's...) out of the display slot, so
-        the turn closes first, as every real chain does (209049 before T55's
-        beats, 209045 / 209035 before T14's)."""
         turn = int(turn or 0)
         if impl.uge_pending(impl.state(full_state), turn):
             return True
         return producers.closing_pending(full_state, turn)
 
     def begin_hold(self, full_state, turn) -> None:
-        """Only a UGE holds the served turn (until its tuning); a closing story
-        rides the shared turn-end hold."""
         st = impl.state(full_state)
         if impl.uge_pending(st, int(turn or 0)):
             st["hold_turn"] = int(turn or 0)
@@ -385,7 +304,6 @@ class Mecha(Scenario):
                 CE.emit(full_state, ev)
         return {}
 
-    # ------------------------------------------------------------------ run --
     def snapshot(self, full_state) -> dict:
         st = impl.state(full_state)
         return {"mecha_results": [dict(r) for r in st["results"]],

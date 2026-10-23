@@ -1,0 +1,154 @@
+{
+ "title": "無茶は厳禁！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ケガを負ったヴィブロスを保健室へ運んだ。\nひとまずの手当てを終える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あはは……トレっち、ごめん。\n運んでくれてありがとね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもほらっ、お休みとかはしないからねっ。\n他のトレーニングメニューもあるし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、じっとしてるの苦手だしー！\nそれに何日も休んだら鈍っちゃうでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私はドバイのレースに出るんだもん。\nそれは簡単なことじゃないって知ってる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから休んでる暇なんてないし！\nいっぱい練習して、強くならなきゃ！",
+   "choice_data_list": [
+    "その夢のためにも、今は休んでほしい",
+    "わかった。でも危険だと思ったら中止するよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女の夢に懸ける想いを知っているからこそ、\nそれが絶たれるリスクは冒せない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも休んだら……\n遠のいちゃうんじゃ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ケガさえ長引かなければきっと辿り着ける。\nそれだけの力はあると信じていると伝える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、わかった。ガマンする。\n私もトレっちのこと、信じてるから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあお休み中はドバイのこと勉強しよっと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは安静にして、\nケガの治療に専念したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "心配しないでっ！\n自分のことは自分でわかってるから♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……痛っ……た……！",
+   "choice_data_list": [
+    "ヴィブロス……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんで反対の脚まで……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ケガを庇う動きはそのぶん別の部位に負担を\nかけやすい。それで逆の脚も痛めたのだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ごめんね、トレっち。\nやっぱりちゃんと治してからにする。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "走れなくなったらドバイにも行けない……\nそんなのイヤだもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスもなんとか納得してくれた。\nしばらくは安静が必要なようだ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うんっ、大丈夫！\nこれなら全然平気だよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よかった～！　治るまで待ってられないもん。\nできることはいっぱいあるしっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "目指せドバーイっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスの体に負担がかからないように、\nしばらく軽めの練習にシフトしたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,20 +1,9 @@
-//! Port of hp_policy.py.
-//!
-//! Python's `RaceSolver.hp` is a duck-typed field holding either policy and
-//! `self.hp.tick(self, dt)` passes the *whole solver* in. That aliases
-//! `self` (immutable read) with `self.hp` (mutable) at the same time, which
-//! Rust's borrow checker forbids when `hp` is itself a field of the solver.
-//! Every method here that needs live solver state takes a small `Copy`
-//! context struct of just the fields it reads instead of a solver
-//! reference, which sidesteps the aliasing entirely and needs no unsafe.
 
 use crate::course_data::{phase_start, CourseData};
 use crate::horse_types::HorseParameters;
 use crate::random_gen::Rule30CARng;
 
 const HP_STRATEGY_COEFFICIENT: [f64; 6] = [0.0, 0.95, 0.89, 1.0, 0.995, 0.86];
-// [surface][ground]; index 0 unused (surfaces are 1-indexed), mirroring the
-// Python port's ragged nested list.
 const HP_CONSUMPTION_GROUND_MODIFIER: [[f64; 5]; 3] = [
     [0.0, 0.0, 0.0, 0.0, 0.0],
     [0.0, 1.0, 1.0, 1.02, 1.02],
@@ -26,8 +15,6 @@ pub struct HpTickCtx {
     pub is_pace_down: bool,
     pub is_downhill_mode: bool,
     pub is_kakari: bool,
-    /// A spot struggle's own HP multiplier (0 = not in one); replaces the
-    /// plain rushed 1.6x rather than stacking on it.
     pub compete_top_hp_coef: f64,
     pub phase: i32,
     pub current_speed: f64,
@@ -52,10 +39,6 @@ impl GameHpState {
             base_speed: 20.0 - (course.distance - 2000.0) / 1000.0,
             ground_modifier: HP_CONSUMPTION_GROUND_MODIFIER[course.surface as usize][ground as usize],
             rng,
-            // Placeholder until init(): the first round of skill activations
-            // happens before init() is called, but some conditions access HP
-            // methods during that round (e.g. is_hp_empty_onetime), so this
-            // must be "initialized enough" not to blow up.
             max_hp: 1.0,
             hp: 1.0,
             guts_modifier: 1.0,
@@ -78,9 +61,6 @@ impl GameHpState {
         if ctx.is_downhill_mode {
             modifier *= 0.4;
         }
-        // A spot struggle has its OWN rushed multiplier (Front Runner 1.4x,
-        // 3.6x if also rushed; Oonige 3.5x / 7.7x) rather than stacking on
-        // top of the plain rushed 1.6x -- 1.4 * 1.6 would only be 2.24.
         if ctx.compete_top_hp_coef != 0.0 {
             modifier *= ctx.compete_top_hp_coef;
         } else if ctx.is_kakari {
@@ -98,8 +78,6 @@ impl GameHpState {
     }
 
     pub fn tick(&mut self, ctx: HpTickCtx, dt: f64) {
-        // NOTE unsure whether hp is consumed by `amount*dt` per frame or
-        // `amount` once every second; believed to be the former (a rate).
         self.hp -= self.hp_per_second(ctx, ctx.current_speed) * dt;
     }
 
@@ -115,10 +93,6 @@ impl GameHpState {
         self.hp = self.max_hp.min(self.hp + self.max_hp * modifier);
     }
 
-    /// Returns (transition_pos, speed). `pos` is the live solver's current
-    /// position; everything else needed is captured in `self` or the fixed
-    /// synthetic "last leg" context below (phase 2, no pace-down/downhill/
-    /// kakari), matching the Python port's `_LastLegState` literal exactly.
     pub fn get_last_spurt_pair(&mut self, pos: f64, max_speed: f64, base_target_speed2: f64) -> (f64, f64) {
         let lastleg = HpTickCtx { is_pace_down: false, is_downhill_mode: false, is_kakari: false, compete_top_hp_coef: 0.0, phase: 2, current_speed: 0.0, start_dash: false };
         let max_dist = self.distance - phase_start(self.distance, 2);
@@ -142,9 +116,6 @@ impl GameHpState {
         }
 
         if candidates.is_empty() {
-            // maxSpeed - 0.1 < baseTargetSpeed2 (can happen with very low
-            // speed, e.g. 1). Not clear what's "correct"; opt for never
-            // starting spurt, matching the TS engine.
             return (self.distance, max_speed);
         }
 
@@ -158,9 +129,6 @@ impl GameHpState {
         candidates[candidates.len() - 1]
     }
 
-    /// HP it would take to run from `pos` to the goal: the rest of the
-    /// early/mid race at `mid_speed`, the late race at `spurt_speed` under
-    /// the guts multiplier. Stamina Keep compares this against the HP left.
     pub fn hp_needed_to_finish(&self, pos: f64, mid_speed: f64, spurt_speed: f64) -> f64 {
         let spurt_start = phase_start(self.distance, 2);
         let mid = HpTickCtx { is_pace_down: false, is_downhill_mode: false, is_kakari: false, compete_top_hp_coef: 0.0, phase: 1, current_speed: 0.0, start_dash: false };
@@ -220,9 +188,6 @@ impl HpPolicy {
         }
     }
 
-    /// Mirrors Python's `hasattr(self.hp, "hp")` direct-field pokes in
-    /// RaceSolver's competition-mechanics methods (a no-op for the pacer's
-    /// NoopHpPolicy, which has no `hp` field at all).
     pub fn hp_mut(&mut self) -> Option<&mut f64> {
         match self {
             HpPolicy::Noop => None,
@@ -230,8 +195,6 @@ impl HpPolicy {
         }
     }
 
-    /// Read-only counterpart of `hp_mut`, for frame recording (`max(0.0,
-    /// s.hp.hp) if hasattr(s.hp, "hp") else 0.0` in Python).
     pub fn hp_value(&self) -> Option<f64> {
         match self {
             HpPolicy::Noop => None,

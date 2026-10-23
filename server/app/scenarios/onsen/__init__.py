@@ -1,25 +1,3 @@
-"""ONSEN (scenario 12, JP only) -- ごくらく♪ゆこま温泉郷 (Yukoma Hot Springs).
-
-Like every scenario it builds on the URA base (base.Scenario's defaults ARE
-URA); this class is the whole seam between the scenario and the shared career
-code, which only ever calls hooks.
-
-WHAT LIVES WHERE
-    impl.py       the mechanics -- springs, tickets, bathing, super recovery,
-                  PR, the bathing parties, and the onsen_data_set envelope
-    dig.py        tool power, the dig budget, the dig bonus
-    formula.py    the training numbers (on ramen.formula's machinery)
-    master.py     the single_mode_12_* tables
-    endpoints.py  select_dig_onsen, bathing, assistant_exec, check_dug_result,
-                  onsen_live
-    producers.py  the event calendar and its resolvers
-
-docs/JP_ONSEN_SCENARIO.md is the spec: every rule, number and event here is
-traced there to the real server's captures, master.mdb or the client.
-
-JP ONLY BY CONSTRUCTION: Global's master.mdb has no single_mode_12_* tables,
-so the released-and-implemented intersection never advertises it there.
-"""
 
 from __future__ import annotations
 
@@ -36,13 +14,9 @@ class Onsen(Scenario):
     data_set_on_race_start = True
     state_keys = (impl.STATE_KEY,)
 
-    # ------------------------------------------------- shared-content gates --
-    # The Director arrives with 212002 and the Reporter with 212016
-    # (single_mode_events.NPC_UNLOCKS); none of URA's own chain or Happy Meek.
     uses_fixed_schedule = False
     has_versus_npc = False
     debut_reporter_event = 0
-    # The real turn-78 chain: 101006 -> 2 -> 212039 -> onsen_live -> 37 -> 6.
     has_director_ending = False
     finals_events = {
         1: {"pre": (101001, 400000101, False), "post": (101002, 400000104, 12)},
@@ -51,7 +25,6 @@ class Onsen(Scenario):
     }
     _FINALS_POST = {101002: 74, 101004: 76, 101006: 78}
 
-    # 36 spring selection, 37 bathing party, 42 the ending live (§1.3).
     playing_states = frozenset({5, 36, 37, 42})
     turn_end_hold_state = 5
 
@@ -62,29 +35,19 @@ class Onsen(Scenario):
         return (self.LEVELUP_EVENTS.get(base, 212007), 400000005)
 
     def gated_npc_charas(self) -> frozenset:
-        """Kiyoko's card stays off the training screen until 212003 (turn 3,
-        the first spring pick) -- 200/200 real careers flip her row there."""
         return frozenset({M.KIYOKO_CHARA})
 
-    # NPC Kiyoko (114, no link card): her own evaluation row, and she praises
-    # in SP.
     npc_targets = frozenset({114})
     sp_appraisers = frozenset({102, 114})
 
     def appraisal_events(self):
-        """The Director's tiers and NPC Kiyoko's (114): SP +2 below bond 40,
-        +3 from it, bond +5 (9 real); the 70/90 tiers' +4/+5 follow the
-        Director's series on master's 0/40/70/90 thresholds (not captured)."""
         return {102: [(90, 212015, 5), (70, 212014, 4), (40, 212013, 3), (0, 212012, 2)],
                 114: [(90, 212066, 5), (70, 212065, 4), (40, 212064, 3), (0, 212063, 2)]}
 
-    # ------------------------------------------------------------ endpoints --
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 
     def scenario_command(self, full_state, chara_info, payload):
-        """PR (command_type 12, §10): its gains as params for the shared
-        exec_command to apply, and its dig, ticket and completion banked."""
         if int(payload.get("command_type") or 0) != endpoints.PR_COMMAND_TYPE:
             return None
         st = impl.state(full_state)
@@ -100,7 +63,6 @@ class Onsen(Scenario):
             merged[p["target_type"]] = merged.get(p["target_type"], 0) + int(p["value"])
         return [{"target_type": tt, "value": v} for tt, v in sorted(merged.items())]
 
-    # ------------------------------------------------------------- response --
     def command_info(self, full_state, chara_info, home_commands):
         if not isinstance(chara_info, dict):
             return None, False
@@ -122,9 +84,6 @@ class Onsen(Scenario):
             for ci in (chara_info, (data.get("single_mode_load_common") or {}).get("chara_info")):
                 if isinstance(ci, dict) and int(ci.get("playing_state") or 1) == 1:
                     ci["playing_state"] = 5
-        # A held turn (party, in-chain selection) serves its pending beats with
-        # playing_state 5, as the turn-end hold does elsewhere: a 1 there reads
-        # as the next turn's home screen mid-chain.
         served_ci = data.get("chara_info")
         if (isinstance(served_ci, dict) and impl.state(full_state).get("hold_turn")
                 and data.get("unchecked_event_array")
@@ -138,10 +97,6 @@ class Onsen(Scenario):
         st = impl.state(full_state)
         turn = impl.served_turn(full_state, chara_info)
         copies = st["copies"].get("map", {}) if st["copies"].get("turn") == turn else {}
-        # Spring 9's copies stand only in a facility the player can train in: a
-        # race-only turn (goal race, URA finals) serves [] on every command even
-        # with the buff up (463/463 real replies). Copies on the finals' disabled
-        # buttons left the client on an empty home screen (T74, 2026-09-26).
         for h in (data.get("home_info"),):
             if isinstance(h, dict):
                 for c in h.get("command_info_array") or ():
@@ -157,8 +112,6 @@ class Onsen(Scenario):
         return response
 
     def settle(self, full_state, chara_info, endpoint=""):
-        """The super-recovery gauge on every response, and Kiyoko's dates: each
-        step pays tickets and readies a super recovery (§8, §13.3)."""
         if not isinstance(chara_info, dict):
             return False
         st = impl.state(full_state)
@@ -180,7 +133,6 @@ class Onsen(Scenario):
                 changed = True
         return changed
 
-    # ------------------------------------------------------------- training --
     def training_gains(self, full_state, chara_info, command_id, facility_level, camp, partners):
         from ...handlers import single_mode_team as smt
         st = impl.state(full_state)
@@ -200,8 +152,6 @@ class Onsen(Scenario):
         return [dict(p) for p in preview["bonus"].get(str(command_id)) or ()]
 
     def award_training_gains(self, full_state, chara_info, payload) -> None:
-        """A successful action: a training digs in its own response; a rest or
-        an outing queues its dig event (§4, §12.2)."""
         st = impl.state(full_state)
         st["flags"].pop("not_gain_ticket", None)
         turn = int(payload.get("current_turn") or impl.turn_of(chara_info))
@@ -234,14 +184,9 @@ class Onsen(Scenario):
                          "base": D.BASE_GOAL_RACE if race_ctx.get("is_goal") else D.BASE_RACE}
 
     def specialty_rate_pct(self, full_state) -> int:
-        """Ryokan rank's specialty rate scales the whole own-facility weight:
-        rank 1/2/3 weigh 205/290/350 in the captures, x1.4 / x1.7 (§11.1)."""
         return impl.specialty(impl.state(full_state))
 
     def hint_partners(self, full_state, chara_info, command_id, partners, hinting):
-        """Spring 5's hint rate +100% while the buff runs: each card's hint
-        chance p becomes p x (1 + rate/100), exactly x2 in the captures (§2).
-        A card the shared roll missed gets the top-up p*rate/100 / (1 - p)."""
         st = impl.state(full_state)
         turn = impl.turn_of(chara_info)
         rate = impl.hint_rate(st, turn)
@@ -279,7 +224,6 @@ class Onsen(Scenario):
                                facility_cards=smt._facility_failure_cards(chara_info, partners), extra_down_pct=down)
         return rate
 
-    # ----------------------------------------------------------------- flow --
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
         return impl.party_pending(impl.state(full_state), int(turn or 0))
 
@@ -315,7 +259,6 @@ class Onsen(Scenario):
             CE.emit(full_state, ev)
         return {}
 
-    # ------------------------------------------------------------------ run --
     def snapshot(self, full_state) -> dict:
         st = impl.state(full_state)
         return {"onsen_results": [dict(r) for r in st["results"]],

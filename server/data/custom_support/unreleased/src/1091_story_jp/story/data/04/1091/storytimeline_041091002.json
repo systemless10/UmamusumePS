@@ -1,0 +1,332 @@
+{
+ "title": "強いのって、ちょーよくない？",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『あなたとドバイに行く』……衝撃の一言から数週間後。\nある模擬レースを観るため、コースに来ていた。その理由は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――トレーナーさん、私と契約しよ？\nそれで、ドバイまで連れてって♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "うーん……あのね、ヴィブロス？\nまさかとは思うけど、思いつきで言ってたりしないわよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "も～！　違うんだってば！\nだってトレーナーさんって、すっごくいい人だよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ずーっと買い物に付き合ってくれたしー。\n私、トレーナーさんみたいな優しい人、だーいすき♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "すみませんトレーナーさん、よく言っておきますので……。\nあのねヴィブロス、トレーナーっていうのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だいじょーぶ、わかってるから！\nトレーナーさん、私はあなたがいいなって思うの！",
+   "choice_data_list": [
+    "どうして……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今言ったよ？\nあなたがいい人だから！",
+   "choice_data_list": [
+    "それだけ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私にはちょー大事なことなの！\nいいでしょ？　判断基準はそれぞれで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもね、あなたはまだ私がいいってわかんないよね。\nだから模擬レース、観に来てくれるかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私がいいって、絶対思わせちゃうっ。\n今日はばいばい、またすぐ遊んでね？　お姉ちゃん、ご飯食べよー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――ウマ娘から観戦に誘われて、足を運ばないわけにはいかない。\n彼女の実力も気になるし、1番知りたいのは……。",
+   "choice_data_list": [
+    "（ドバイに行きたいって、まさか――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ドバイといえば、国際GⅠの開催国だ。世界でも指折りの\nウマ娘たちが集まる、ハイレベルなレースが行われている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "近年では、数年ぶりに日本のウマ娘が優勝したレースもあり、\n国内でもドバイのレースへの注目度はますます高まっている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスがドバイのレースを志しているのならば、\n一緒に挑戦できるのはトレーナーとして光栄なことだ。しかし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！　やっぱり来てくれた！\nおーい、トレっち～♪",
+   "choice_data_list": [
+    "（トレっち……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……この間よりもなぜか距離が縮まっている。幼さを感じさせる\nこの子が、もうドバイを見据えている理由……何かあるのだろうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、けっこーがんばっちゃうから！\n目を離しちゃダメだよ？　私だけ、見ててね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、ヴィブロスの出走する模擬レースが始まったのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふふーんっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "スタートから快調に飛ばし、先行集団についたヴィブロス。\n自分に有利な位置をわかっている動きで、レース勘はよさそうだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ、見てる見てる……♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあもっと、いいとこ見せちゃおっかなー！？\nやぁあああああっ♪",
+   "choice_data_list": [
+    "（お、いい末脚……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ、トレっち～～～～！\n私、すごいでしょーーーー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "直線で他のウマ娘を突き放すと、最後は彼女の独擅場だった。\n流して走る余裕さえ見せて、見事1着をとった――",
+   "choice_data_list": [
+    "（才能のある子だな……！）",
+    "（才能のある子だね……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女は指導次第でいくらでも伸びていくだろう。\nそう考えると、トレーナーとして心がわくわくする――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "――昔からこうなんだ、ヴィブロスは。",
+   "choice_data_list": [
+    "（この子は……シュヴァルグラン！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ふと気づくと、隣にヴィルシーナの妹――\nつまりヴィブロスのもう1人の姉、シュヴァルグランがいた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女は現在、トゥインクル・シリーズを現役で走っている。\nまだ目立った成果はないが、その脚には光るものがある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "生まれ持ったセンスでなんでもこなせる。\n不器用な僕とは、全然違う……。",
+   "choice_data_list": [
+    "……なあ――",
+    "……ねえ――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……っ！\nあ、す、すみません……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……ヴィブロスについて少し話を聞きたかったのだが、\n怖がらせてしまったようだ。と、そこに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～～～～！\nねね、今シュヴァちと話してたでしょ！？",
+   "choice_data_list": [
+    "（トレっちにシュヴァち……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私のこと、なんか言ってた？　話してた！？\n褒めてくれてたっ？",
+   "choice_data_list": [
+    "まあ、一応……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っっ。シュヴァちが……。\n……えへへっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それでそれで、トレっちは？\n私の走り、よかったでしょ？",
+   "choice_data_list": [
+    "ああ！",
+    "うん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だよね～♪\nじゃあじゃあ、トレーナーになってくれるよね？",
+   "choice_data_list": [
+    "えーっと……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まだダメ？　トレーナーって、ウマ娘を勝たせるのがお仕事でしょ？\nどんな走りをするのかわかってたら、もーよくない？",
+   "choice_data_list": [
+    "でも君がどんな子なのかわかってない",
+    "でも貴方がどんな子なのかわかってない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふむ～……。\nトレっちはなにを知りたいの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "実力が見えてきた今、他に知りたいのは彼女の“夢”のことだ。\n何を目指し、なぜ走るのか。気になるキーワードは……。",
+   "choice_data_list": [
+    "君はドバイのレースを目指してるのか？",
+    "貴方はドバイのレースを目指してるの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、そうなの！\n私、あのレースで走るのが夢なんだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイのレースって、見たことあるでしょ？\nちょーキラキラで、ちょーセレブじゃない？　最高だよね～。",
+   "choice_data_list": [
+    "……それだけ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……え、うん！\nそれだけ、だけど……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……トレーナーさん、もっと知りたいことあるでしょ？\nなんでも聞いていいよ！　あ、でも好きな人とかは～、ヒミツ♡",
+   "choice_data_list": [
+    "（夢はわかった、だったら後は……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "才能は感じるが、素質だけではドバイには行けない。自分が彼女を\n導くとしたらどうするのか、考えないと現時点では契約はできない。",
+   "choice_data_list": [
+    "ごめん、持ち帰って考えさせて！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "………………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええっ！？\nなんでぇ～～～～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

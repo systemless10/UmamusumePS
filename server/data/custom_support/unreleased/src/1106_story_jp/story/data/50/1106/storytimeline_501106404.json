@@ -1,0 +1,29 @@
+{
+ "title": "Bet It All on You",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "相変わらず、やる気満々で自分を追い込む\nヒシミラクル。ついにオーバーワークになる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "やる気の原動力は、前向きなものかと\n思っていたが、実はその正体は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "全力を見せた結果、能力不足だったら\n見捨てられるのでは？という恐怖心だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "トレーナーから、ダメでもかまわない。\n共に勝ち、共に負けようと言われ、\nようやく自然体の自分を取り戻すのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

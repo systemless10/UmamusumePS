@@ -1,35 +1,3 @@
-"""トレーナースキル: spend トレーナースキルコイン (item 333,
-GameDefine.TRAINER_SKILL_COIN_ITEM_ID) to switch on timed account buffs that
-careers started while they run carry.
-
-`WIRE` umacap api-20261011-014732-344 seq 69-71: skills 1 + 5 with 2800 coins
--> 2770 (need_item_num 10 + 20) and active_end_time = servertime +
-active_time*60 - 1 for both. master trainer_skill holds cost, minutes, the
-content flags (enable_single_mode / _idle_single_mode / _generate_succession)
-and start_date.
-
-activate_num > 1 was never sent: it buys that many periods back to back. An
-already-running skill is extended from its current end, not restarted.
-Maintenance (current_maintenance_id_array, 9951) is the real operator's
-switch -- this server has none, so the list is always empty.
-
-In a career (`WIRE` the Ramen run right after that activation): start sends
-start_chara.request_trainer_skill_id_array [1, 5] and answers it back as
-effected_trainer_skill_id_array; a requested skill that is not running is
-2515 SINGLE_MODE_TRAINER_SKILL_MISS_MATCH_ERROR. What each does is master text
-471 (the client's own description):
-  1 メンタルガード x2 (chara effects 41, 42) -- `WIRE` on turn 1's first
-    check_event, then spent by conditions.py like Positive Thinker's 25
-  2 リカバリー精神 x1 (43) -- 1's twin, conditions.py's bad-condition guard
-  3 +10 alarm-clock retries per race
-  4 at the spark roll, up to 3 missed generic candidates also land
-  5 at the spark roll, up to 5 random 1-2 star sparks become 3 star
-    (`WIRE` factor_select: 5 upgraded, each before_factor_id + [5])
-  6 +10 compatibility with every lineage member
-  7 senior-year inspiration: up to 1 unique spark that did not proc fires
-  8 勉強家 x1 (40) -- Fast Learner's group-7 twin: skill purchases cost 4%
-    less (single_mode_team._skill_purchase_cost); Fast Learner replaces it
-"""
 
 from __future__ import annotations
 
@@ -46,11 +14,10 @@ from ...result_codes import ResultCode, refuse
 
 STATE_KEY = "jp_trainer_skills"
 CHECK_KEY = "jp_trainer_skill_check_time"
-CAREER_KEY = "jp_career_trainer_skills"          # what the current career carries
-GRANT_KEY = "jp_career_trainer_skill_grants"     # condition grants still owed
+CAREER_KEY = "jp_career_trainer_skills"
+GRANT_KEY = "jp_career_trainer_skill_grants"
 COIN_ITEM_ID = 333
 
-# TrainerSkillDefine.TrainerSkillId
 MOTIVATION_GUARD = 1
 CONDITION_GUARD = 2
 RACE_CONTINUE_COUNT_UP = 3
@@ -71,7 +38,6 @@ def master() -> dict:
 
 
 def active(full_state: dict, now: float | None = None) -> list:
-    """[{trainer_skill_id, active_end_time}] still running at `now`."""
     now = time.time() if now is None else now
     return [dict(s) for s in full_state.get(STATE_KEY) or [] if s.get("active_end_time", 0) >= now]
 
@@ -85,8 +51,6 @@ def handle_index(payload: dict) -> dict:
     full_state = state_store.get_state(payload["viewer_id"]) or {}
     return _ok({"trainer_skill_info": {"trainer_skill_array": active(full_state)},
                 "last_activate_id_array": [],
-                # `WIRE` a stored time (2026-09-21 on the capture account), not
-                # now: the "new trainer skill" badge compares against it.
                 "new_trainer_skill_last_check_time": int(full_state.get(CHECK_KEY) or 0)})
 
 
@@ -137,7 +101,6 @@ def _ack(payload: dict) -> dict:
     return _ok({})
 
 
-# ------------------------------------------------------------------- careers
 _START = re.compile(r"^single_mode(_[a-z]+)?/start$")
 _CHECK_EVENT = re.compile(r"^single_mode(_[a-z]+)?/check_event$")
 _GRANTS = {MOTIVATION_GUARD: (41, 42), CONDITION_GUARD: (43,), SKILL_POINT_DISCOUNT: (40,)}
@@ -148,7 +111,6 @@ def _carried(full_state: dict) -> set:
 
 
 def before(endpoint: str, payload: dict) -> dict | None:
-    """A career start asking for a skill that is not running is refused."""
     if not _START.match(endpoint):
         return None
     want = (payload.get("start_chara") or {}).get("request_trainer_skill_id_array") or []

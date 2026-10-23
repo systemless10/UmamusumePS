@@ -1,0 +1,102 @@
+#title Let's Gorgeous Party♪
+0 For these three years, Vivlos pushed forward through the Tiara races... and achieved splendid results.
+0> (I want to celebrate with her)
+1 To make her—who loves all things flashy—happy, I decided to rent out a venue, invite guests, and throw a glamorous party—
+2 Everyone, thank you for coming today!
+3 Cheeeers!
+4 Cheers♪
+5 The invitations went to Umamusume who, like Vivlos, had shone in the Tiara races.
+6 Congratulations on your three years, Vivlos!
+7 I'm sure you'll shine wonderfully in races in any country♪
+8 Nishino Flower, who brought big victories with her small body. Fine Motion, who came from Ireland and left a powerful impression.
+8{ Nishino Flower | Fine Motion
+9 Hey, what kind of magic did you use? ...I wouldn't mind trading secrets with you, you know!
+10 Sweep Tosho, who willfully piled up victory after victory and was even chosen as Best Senior Queen Umamusume.
+10{ Sweep Tosho
+11 Magic? Hmm, what could it be～?
+12 ...Maybe it's love? Ehe♡
+13 Surrounded by glamorous friends, Vivlos was chatting happily. The party was going smoothly so far. All that was left was—
+13> (To answer that "request"...!)
+14 Oh, that's right, Tore-cchi!
+14> (...Here it comes!)
+15 Hey, hey, Tore-cchi～?
+15> Yes, my lady
+16 !
+16> Please, ask me anything
+17 Kyaa～♡ Tore-cchi, so good～! Suuuper! So professional!
+17> (...Phew)
+18 "Treat me like a young lady"—that was Vivlos's request when I told her about throwing the party.
+19 Hey, hey, isn't this suit nice?! The silk has just the right sheen, so it's classy～, and that vivid blue is gorgeous～!
+19> ...Isn't it a little too flashy?
+20 It's fine. It'll totally look good on you, okay?
+21 After working suuuper hard in the Tiara races, I'm suuuper glamorous, right?
+22 Soooo, I want you to protect me looking all cool, Tore-cchi♡
+23 Go try it on, okay? I'll be waiting～♡
+24 I couldn't shake the feeling she was having a bit of fun at my expense, but if it's what Vivlos wanted, I went along with it and got everything ready—
+25 Oh, right! Fine's a real-deal celeb, so how does Tore-cchi look?!
+25> Huh
+25{ Fine
+26 Given her background, Fine Motion has likely seen all sorts of people. Being judged by her is a heavy burden, but—
+26> (For Vivlos, I'll look sharp!)
+27 ...Hehe.
+28 Let's see, I'd say you make a truly wonderful attendant♪
+29 Kyaa～, right?
+29> ...Really?
+30 Mm-hm. After all, I can feel how much you care for your "young lady."
+31 Just from how you've conducted yourself today, I can tell how the two of you walked the road to glory♪
+32 Ehehe... You can tell?
+33 Yep! My Tore-cchi cares about me suuuper much, and is suuuper kind♡
+34 Okay, Tore-cchi! Could you serve our guests～?
+35 Show everyone how sharp you look♡
+35> Certainly, my lady
+36 And so, the party went on lively and bright.
+37 As I was remembering all that—
+38 Sorry, we're late...!
+39 Argh, late to the ball! What kind of princess am I～!
+39> It's a casual party, so it's fine
+40 The new arrivals were Mejiro Dober, Kawakami Princess, and Daiwa Scarlet—
+40{ Mejiro Dober | Kawakami Princess | Daiwa Scarlet
+41 Every one of them had achieved great results as a two-crown Tiara Umamusume.
+42 You all came too! I'm suuuper happy♡
+43 Of course. Winning so many Tiara races—and G1s, at that! That's amazing!
+44 I ran the same path, so I know. You're the number one of "now."
+45 Scarlet...
+45{ Scarlet
+46 ...The way you said that, are you kinda fired up?
+47 Oh, you noticed?
+48 I just can't stand that there's a number one other than me!
+49 Exactly! Our celebration gift is... a showdown! A race～!
+50 Getting it ready is why we were a little late... Only if you're up for it, of course, Vivlos.
+51 But... I'd like to race someone who won this many Tiara races too.
+52 Everyone...
+53 ...Chasing after Onee-chan was how it started, but...
+54 The Tiara races really are cool, huh♡
+54> Then shall we prepare, my lady?
+55 That's my Tore-cchi! Yeah, I'll accept everyone's celebration♪
+56 And so, the party moved to a new location... and stayed glamorous right to the end.
+57 And then—
+58 —Is this where the party is?
+58> (Mejiro Ramonu...!)
+59 She's Mejiro Ramonu... the first in history to win the Triple Tiara, a "bewitching" Umamusume who captivates everyone—
+59{ Mejiro Ramonu
+60 Tore-cchi, you invited Ramonu too?!
+60> No...
+60{ Ramonu
+61 I was curious. —About you.
+62 Seven G1 wins in the Tiara races... An achievement for the history books.
+63 You've reached such distant heights... Might I uncover your secret?
+64 Uhhh...? ...Tore-cchi～?
+65 Vivlos looked to me for help, and I thought about it. She'd undoubtedly accomplished something great. And the reason was simply—
+65> Because Vivlos worked so hard, I think
+66 ! Tore-cchi...
+67 ...If that's how it is, then I think Tore-cchi is the secret!
+68 Because you listened to all my selfish requests... and worked hard together with me! That's why I—
+69 —...Ah, I see.
+70 Huh?
+71 So it was a crystallization born of "the two of you."
+72 Then I'll take my leave. —Next time, on the turf.
+73 ...Ramonu's really mysterious, huh?
+73> Yeah... I mean, yes, she is | Yeah... I mean, yes, she is
+74 ...You know, Tore-cchi. I'm done playing celebrity.
+75 Sorry for being selfish? But...
+76 I like the usual Tore-cchi best after all♡

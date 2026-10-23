@@ -1,0 +1,83 @@
+#title At Summer Camp (Year 2)
+0 The "work hard, but not too hard" summer camp with Vivlos was going very smoothly...
+1 Hah... hah...! Wheeze...
+1> Okay, let's take a break.
+2 Okay!
+3 Phew...
+3> How are you feeling?
+4 Hmm... It's a little hard to breathe, but I think I'll be okay if I rest and take deep breaths!
+4> Then we'll resume once it settles down.
+5 Got it! I'll tell you when I feel okay.
+5> Rest under the parasol. | Rest under the parasol.
+6 Yeah! Thanks for setting it up!
+7 Vivlos listens well and tells me right away about even the slightest change. Thanks to that, there's nothing to worry about so far.
+8 You're working hard, Vivlos.
+9 ...Good work.
+10 Onee-chan, Chevacchi! Oh, is that juice?
+10{ Chevacchi
+11 Yes. It's orange juice.
+11> Why not rest inside while you're at it?
+12 Yeah, I'll do that!
+13 Pwah! So good!
+14 Thank you, both of you! Especially you, Chevacchi...
+15 You're in the middle of training too, right? Thanks for going out of your way!
+16 ...It was Onee-san who... ...No, never mind.
+16> (Cheval Grand seems a little down?)
+17 This year she won the G2 Hanshin Daishoten splendidly, but in her most recent race she finished off the board.
+17{ G2 | Hanshin Daishoten
+18 ......
+19 Still, I was surprised earlier.
+20 Your conversation with your trainer. You can talk so properly.
+21 Properly? I'm always proper, you know?
+22 That's true. But your whole demeanor was serious. It felt somehow fresh.
+22> Fresh?
+23 She's the youngest, you see? So she always watched us closely.
+24 She picked up everything quickly, knew how to get her way, was clever... She was always smiling.
+25 She didn't struggle at all to get into Tracen Academy, either.
+25{ Tracen Academy
+26 So... I worried that if she ever ran into serious hardship, she might break.
+27 But it seems you're perfectly fine. I never knew you had such strength in you.
+28 Ehehe. Well, I'm your little sister, after all.
+29 Onee-chan... and Chevacchi too. My guts are just like you two, right?
+30 !
+31 ...Well, maybe Onee-san's like that. But me...
+32 You're plenty amazing, Chevacchi. Suuuper amazing!
+33 I really understood that once I started running in the Twinkle Series.
+33{ Twinkle Series
+34 You two give me the courage to think, "I wanna be like them!"
+35 Vivlos...
+36 ...You've grown.
+37 !
+37> Good for you, Vivlos. | Good for you, Vivlos.
+38 Ehehe. Yeah!
+39 Hey, I'll show you how much more I've grown!
+40 Tore-cchi, can the two of them train me?
+40> Of course.
+41 Load-wise, being taught by both of them seems like too much. If I have to choose one, considering their strengths...
+41> Have Cheval Grand build her power | Have Verxina teach her tenacity
+42 Huh. Me?!
+43 No, I... There's nothing I can teach Vivlos.
+44 Why? There's lots!
+45 'Cause your running feels so powerful, Chevacchi.
+46 And you look so cool when you run♡ And when you close in at the end, it's all fierce!
+47 ...!
+48 Th-that's not... true at all!
+49 Ah! Why are you running away?!
+50 ...Sorry for the noise. Those two are always like that.
+50> It's nice that they're so close. | It's nice that they're so close.
+51 ...Yes, it is.
+52 Wait, Chevacchi♪
+53 Vivlos chased Cheval Grand around for quite a while. She's surely gained some power.
+54 Oh, as expected of Tore-cchi!
+55 Onee-chan's running has this "pure guts!" feel that's so cool♡
+56 ...Are you saying I'm very clumsy and gritty?
+57 Uh-oh!
+58 T-Tore-cchi! We have to get back now, right?
+58> ?
+59 Don't look so confused! Come on, let's g—
+60 Trainer, please leave this girl to me.
+61 I'll teach her what grit is, thoroughly.
+62 Nooo, Onee-chan, I can't anymore!!
+63 No. 100 more squats.
+64 You demon!!
+65 Verxina is usually gentle when she's with Vivlos... but today she showed the ferocity of a "queen."

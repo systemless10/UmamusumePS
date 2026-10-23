@@ -1,6 +1,3 @@
-// Items & wallet: every item in the region's master with counts you can type
-// straight into (saved together), bulk give / set / clear per group, the
-// wallet (carats, money, TP, RP), star pieces and the character collection.
 
 import { act, call, esc, fmt, gameIcon, icon, keepScroll, loadCatalog, store } from "./core.js";
 import { ask, empty, opts, targetPicker } from "./widgets.js";
@@ -9,7 +6,7 @@ const GROUPS = ["Recovery", "Training", "Race", "Scouting", "Currency", "Other"]
 const TABS = [["items", "Items"], ["wallet", "Wallet"], ["pieces", "Star pieces"], ["charas", "Characters"]];
 
 export const itemsWin = {
-  title: "Items & wallet", icon: "box", size: [640, 480], place: [0.2, 0.05, 0.7, 0.9], key: "7",
+  title: "Items", icon: "box", size: [640, 480], place: [0.2, 0.05, 0.7, 0.9], key: "2",
   tools(win) { return [targetPicker(win)]; },
   mount(body, win) {
     win.state.tab ??= "items";
@@ -39,7 +36,6 @@ export const itemsWin = {
       return renderCharas();
     }
 
-    // ------------------------------------------------------------ items
     function renderItems() {
       const q = f.q.trim().toLowerCase();
       const list = cat.items.filter((i) => i.id !== 43 && (!f.group || i.group === f.group)
@@ -67,7 +63,6 @@ export const itemsWin = {
       });
     }
 
-    // ------------------------------------------------------------ wallet
     function renderWallet() {
       const w = data.wallet, tp = data.tp, rp = data.rp;
       const field = (k, label, v) => `<label>${label}<input type="number" class="num wide" data-w="${k}" value="${v ?? 0}" min="0"></label>`;
@@ -82,7 +77,6 @@ export const itemsWin = {
         <div class="row"><button class="btn primary" data-a="wallet">${icon("save")} Save wallet</button></div></div></div>`;
     }
 
-    // ------------------------------------------------------------ pieces
     function renderPieces() {
       const q = f.q.trim().toLowerCase();
       const seen = new Set();
@@ -101,7 +95,6 @@ export const itemsWin = {
       });
     }
 
-    // ------------------------------------------------------------ characters
     function renderCharas() {
       const rows = new Map(charas.charas.map((c) => [c.chara_id, c]));
       const ids = Object.keys(cat.misc.charas).map(Number).sort((a, b) => cat.misc.charas[a].localeCompare(cat.misc.charas[b]));

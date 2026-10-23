@@ -1,0 +1,16 @@
+#title Victory!
+0 Tore-cchi～, I'm back～♪
+1 Ehehe～, first place! Crossing the finish line in the lead feels so good!
+2 And the stands were super hyped too! I couldn't help waving like crazy～♪
+3 Oh, Monthly Twinkle came for an interview too. I wonder if they'll run an article on me～?
+3> I think you can look forward to it | We'll have to work hard enough to get a special issue! | We'll have to work hard enough to get a special issue!
+4 Oh, Monthly Twinkle came for an interview too. I wonder if they'll run an article on me～?
+4> I think you can look forward to it | We'll have to work hard enough to get a special issue! | We'll have to work hard enough to get a special issue!
+5 Right, right! You think so too, Tore-cchi?
+6 I'm already super excited～♪ I'll get to show off to everyone～!
+7 Will they run photos too!? If they do, I'm gonna show Onee-chan～♪
+8 Check it out as soon as it comes out, okay!
+9 That's super great! A special issue would be way too cool～!
+10 It'd have tons of pages for sure! I've gotta win sooo many races～♪
+11 Oh, do I need clothes for the interview? What should I wear～! This is way too exciting!
+12 Okaaay, I'm gonna win races big enough to get a Vivlos special edition～!

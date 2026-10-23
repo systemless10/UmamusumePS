@@ -1,0 +1,249 @@
+{
+ "title": "♡甘えんぼチートデー♡",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ある日の朝、ヴィブロスから\n『寮まで迎えに来てほしい』と\n連絡があった――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃ～ん……♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～～♡\nお・ね・え・ちゃんっ♡　好き♡",
+   "choice_data_list": [
+    "……どういう状況？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ご覧の通り、\n『甘えんぼチートデー』です。",
+   "choice_data_list": [
+    "『甘えんぼチートデー』！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロスは賢い子なので、\nこう見えて普段は甘え方も相手も\nよく見極めているのですが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "根がとっても甘えたがりなので、\nその気持ちが爆発すると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん♡\nお姉ちゃ～～ん、なでなでして♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……こんなふうに、いつも以上に\n甘えんぼになることが稀にあるんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "家ではこのことを、二重の意味で\n『甘えんぼチートデー』と呼んでいます。",
+   "choice_data_list": [
+    "二重の意味で……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "だって、そうでしょう？\nヴィブロスはいつも以上に甘えられて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "私たちも、ヴィブロスを\nたくさん甘やかしてあげられますから。",
+   "choice_data_list": [
+    "な、なるほど？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ですが……残念なことに、\n私はこの後外せない用事がありまして。\nシュヴァルは逃げてしまったし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさんしか、頼れないんです。\nヴィブロスを少し預かっていただけませんか？",
+   "choice_data_list": [
+    "……えっ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "……ヴィルシーナの話によれば、\nまる1日たっぷり甘やかせば\n元のヴィブロスに戻るようなのだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～……♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じ～……♡",
+   "choice_data_list": [
+    "……ふ、フラッペでも飲む？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えっ、いいの～！？\nありがと～♡",
+   "choice_data_list": [
+    "じゃあ、買ってくる――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やだっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちと、\n離れたくないな～……？",
+   "choice_data_list": [
+    "……なら、一緒に行く？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、\n腕貸して～？",
+   "choice_data_list": [
+    "それはちょっと……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……トレっち、\n私のこと、嫌い……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "触られるの、\nイヤ～……？",
+   "choice_data_list": [
+    "…………………………"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んふふ～～♪\nおいち～♪",
+   "choice_data_list": [
+    "（なんとか腕組みは逃げ切ったけど……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちのぶん、\nひとくちちょーだい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あーん♡",
+   "choice_data_list": [
+    "いや、自分で飲んで――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "………………トレっちぃ？",
+   "choice_data_list": [
+    "（こうだもんなぁ！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……わかった。\nトレっちは、そーゆー気分じゃないんだね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ、ガマンする……\nほんとは、いっぱい甘えたいけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちのこと、大事だから……\n私、ガマンできるよ？",
+   "choice_data_list": [
+    "……………………………………"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、トレっち～……。\n私、いいこでしょ……？",
+   "choice_data_list": [
+    "……わかった、俺の負け！！",
+    "……わかった、私の負け！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふぇ？",
+   "choice_data_list": [
+    "今日だけだからな",
+    "今日だけだからね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "？？？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ、\nなんか勝っちゃった♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、ヴィルシーナが迎えにくるまで……\nヴィブロスをただただ\n甘やかし続けたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

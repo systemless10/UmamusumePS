@@ -1,19 +1,3 @@
-"""RAMEN (scenario 14) -- the endpoints only this scenario has.
-
-    single_mode_ramen/region_select_check   {current_turn, region_id_array}  preview a split
-    single_mode_ramen/select_region         {current_turn, region_id_array}  commit a selection
-    single_mode_ramen/tasting               {current_turn, used_feeling_array}
-    single_mode_ramen/check_point           {current_turn, twinkle_text_id_array}  the Jamboree
-    single_mode_ramen/ramen_live            {current_turn}  the ending live, turn 72 -> 73
-    single_mode_ramen/uraf_effect_apply     {current_turn}  the Ultimate Ramen's turn
-    single_mode_ramen/uraf_effect_select_event_check, default_auto_select_save,
-    auto_select_set_save, auto_select_set_name_save   (never captured)
-
-Request and response shapes are dump.cs's (see docs/JP_RAMEN_SCENARIO.md §1).
-The ramen_data_set every response carries is not built here: the response
-chokepoint attaches it (Ramen.attach), the same as on every shared endpoint,
-so these handlers only move state and hand back the envelope's other keys.
-"""
 
 from __future__ import annotations
 
@@ -33,8 +17,6 @@ def _smt():
 
 
 def _career(payload: dict):
-    """(viewer_id, full_state, career, chara_info), or None when no ramen
-    career is running."""
     smt = _smt()
     viewer_id = payload["viewer_id"]
     full_state = smt.state_store.get_state(viewer_id) or {}
@@ -48,7 +30,6 @@ def _career(payload: dict):
 
 
 def _envelope(career: dict, keys) -> dict:
-    """A training-state response carrying only `keys`."""
     smt = _smt()
     response = smt._load_ura_race_seed("train_check_event")
     data = response["data"]
@@ -64,7 +45,6 @@ def _envelope(career: dict, keys) -> dict:
 
 
 def _next_events(full_state: dict, chara_info: dict) -> list:
-    """Whatever the turn has queued, as check_event would serve it."""
     smt = _smt()
     return smt._drain_pending(full_state, None, int(chara_info.get("card_id") or 0) // 100)
 
@@ -74,10 +54,7 @@ def _refused(where: str, why) -> dict:
     return refuse()
 
 
-# ----------------------------------------------------------- regions ---
-
 def handle_region_select_check(payload: dict) -> dict:
-    """The split a proposed selection would give -- no state changes."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -92,8 +69,6 @@ def handle_region_select_check(payload: dict) -> dict:
 
 
 def handle_select_region(payload: dict) -> dict:
-    """Commit the selection and leave the selection screen. On turns 24/48 this
-    is also where the Jamboree turn ends: the served turn moves on here."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -107,8 +82,6 @@ def handle_select_region(payload: dict) -> dict:
     st = impl.state(full_state)
     st["hold_turn"] = 0
     if kind > 1:
-        # The first selection's follow-up was queued by 214002 and is already
-        # on screen; the later ones are queued here.
         ev = _producers().region_follow_event(kind)
         if ev:
             CE.emit(full_state, ev)
@@ -134,8 +107,6 @@ def _producers():
     from . import producers
     return producers
 
-
-# ----------------------------------------------------------- tasting ---
 
 def handle_tasting(payload: dict) -> dict:
     got = _career(payload)
@@ -163,8 +134,6 @@ def handle_tasting(payload: dict) -> dict:
     _smt().state_store.save_state(viewer_id, full_state)
     return response
 
-
-# ---------------------------------------------------------- jamboree ---
 
 def handle_check_point(payload: dict) -> dict:
     got = _career(payload)
@@ -196,7 +165,6 @@ def handle_check_point(payload: dict) -> dict:
 
 
 def handle_ramen_live(payload: dict) -> dict:
-    """The ending live after the last Jamboree: turn 72 -> 73."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -217,7 +185,6 @@ def handle_ramen_live(payload: dict) -> dict:
 
 
 def handle_uraf_effect_apply(payload: dict) -> dict:
-    """The Ultimate Ramen's turn, T73-T78, before the turn's action."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -237,11 +204,7 @@ def handle_uraf_effect_apply(payload: dict) -> dict:
     return response
 
 
-# ---------------------------------------------- never captured, stored ---
-
 def handle_uraf_effect_select_event_check(payload: dict) -> dict:
-    """dump.cs names the call and nothing in 27k real requests ever made it;
-    answered with the bare success the client needs to move on."""
     return {"response_code": 1, "data_headers": {"result_code": 1}, "data": {}}
 
 

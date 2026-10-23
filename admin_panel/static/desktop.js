@@ -1,9 +1,6 @@
-// The desktop: dock on the left, draggable / resizable glass windows
-// (VivloToolkit's desktop.js; the dock's account list is a region switch +
-// the account being edited).
 
-import { REGION_NAME, color, esc, gameIcon, icon, loadCatalog, loadUsers, prefs, store, ui, userName } from "./core.js";
-import { WINDOWS, drag } from "./windows.js";
+import { REGION_NAME, color, esc, gameIcon, icon, loadCatalog, loadSetup, loadUsers, prefs, setup, store, toast, ui, unavailable, userName } from "./core.js";
+import { GROUPS, WINDOWS, drag } from "./windows.js";
 
 const desktop = document.getElementById("desktop");
 const dockApps = document.getElementById("dock-apps");
@@ -50,6 +47,11 @@ function focus(win) {
 function openWindow(kind, opts = {}) {
   const def = WINDOWS[kind];
   if (!def) return;
+  const why = unavailable(def);
+  if (why && !open.has(kind)) {
+    if (!opts.quiet) toast(`${def.title}: ${why}`);
+    return;
+  }
   let win = open.get(kind);
   if (win) {
     win.reveal?.(opts);
@@ -140,16 +142,24 @@ function toggle(kind) {
   else openWindow(kind);
 }
 
-// ------------------------------------------------------------ dock
-dockApps.innerHTML = Object.entries(WINDOWS).filter(([, d]) => d.dock !== false).map(([kind, d]) =>
-  `<button class="dock-btn" data-kind="${kind}">${icon(d.icon)}<span class="tip">${esc(d.title)}<kbd>Alt+${d.key}</kbd></span></button>`).join("");
+function renderDock() {
+  const setupMode = setup.info?.setup_mode;
+  dockApps.innerHTML = GROUPS.map((grp) => {
+    const btns = Object.entries(WINDOWS).filter(([kind, d]) => d.dock !== false && d.group === grp && (!setupMode || kind === "setup")).map(([kind, d]) => {
+      const why = unavailable(d);
+      return `<button class="dock-btn ${why ? "off" : ""}" data-kind="${kind}" ${why ? 'aria-disabled="true"' : ""}>${icon(d.icon)}<span class="tip">${esc(d.title)}${why ? `<small>${esc(why)}</small>` : d.key ? `<kbd>Alt+${d.key}</kbd>` : ""}</span></button>`;
+    }).join("");
+    return btns && `<div class="dock-group"><span>${esc(grp)}</span></div>${btns}`;
+  }).join("");
+  syncDock();
+}
 dockApps.addEventListener("click", (e) => {
   const b = e.target.closest("[data-kind]");
   if (b) toggle(b.dataset.kind);
 });
 
 function syncDock() {
-  for (const b of dockApps.children) {
+  for (const b of dockApps.querySelectorAll(".dock-btn")) {
     const win = open.get(b.dataset.kind);
     b.classList.toggle("open", !!win);
     b.classList.toggle("focused", !!win && win === focused);
@@ -158,7 +168,8 @@ function syncDock() {
 }
 
 function renderRegion() {
-  dockRegion.innerHTML = ["global", "jp"].map((r) =>
+  const usable = setup.info && !setup.info.setup_mode ? setup.info.usable : [];
+  dockRegion.innerHTML = ["global", "jp"].filter((r) => usable.includes(r)).map((r) =>
     `<button class="reg-btn ${store.region === r ? "on" : ""}" data-region="${r}" title="Edit ${REGION_NAME[r]} saves">${r === "global" ? "GL" : "JP"}</button>`).join("");
 }
 dockRegion.addEventListener("click", (e) => {
@@ -181,6 +192,8 @@ store.on((kind) => {
     conn.title = store.connected ? "Connected" : "Lost the admin panel server";
   }
   if (kind === "target" || kind === "users") { renderRegion(); renderTarget(); }
+  if (kind === "target" || kind === "setup") renderDock();
+  if (kind === "setup") renderRegion();
 });
 
 const keys = Object.fromEntries(Object.entries(WINDOWS).filter(([, d]) => d.key).map(([k, d]) => [d.key, k]));
@@ -190,18 +203,23 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && focused && !typing && !focused.el.querySelector(".modal")) closeWindow(focused.kind);
 });
 
-// ------------------------------------------------------------ start
 const languageLabel = "Prefer English names when available (including JP); otherwise use the original name. Changing this refreshes the panel.";
 dockLanguage.innerHTML = `<button class="reg-btn ${store.preferEnglish ? "on" : ""}" aria-label="${languageLabel}" aria-pressed="${store.preferEnglish}" title="${languageLabel}">EN</button>`;
 dockLanguage.querySelector("button").addEventListener("click", () => {
   prefs.set("preferEnglish", !store.preferEnglish);
-  // Rebuild all open pickers and cached names using the saved preference.
-  // The existing desktop session restores the same windows after reload.
   location.reload();
 });
 ui.open = openWindow;
+try { await loadSetup(); } catch {   }
+renderDock();
 renderRegion();
-renderTarget();
-loadUsers(store.region);
-loadCatalog(store.region).catch(() => {});
-for (const kind of prefs.get("open", null) ?? ["users"]) openWindow(kind);
+if (setup.info?.setup_mode) {
+  openWindow("setup");
+} else {
+  renderTarget();
+  if (!setup.info || setup.info.usable.includes(store.region)) {
+    loadUsers(store.region);
+    loadCatalog(store.region).catch(() => {});
+  }
+  for (const kind of prefs.get("open", null) ?? ["users"]) openWindow(kind, { quiet: true });
+}

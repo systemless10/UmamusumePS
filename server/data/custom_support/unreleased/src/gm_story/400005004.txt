@@ -1,0 +1,64 @@
+#title Strong Heart: Byerley Turk
+0 I came to the gymnasium to get ready for training in the simulator, and—
+1 Why, Trainer <username>.
+2 Oh, you're that trainer who was in the break room before! Um... Hello!
+3 Greeting me cheerfully is Bitter Glasse, Trainer Kashimoto's trainee.
+3{ Bitter Glasse
+4 She showed what she's capable of from her very first race, and she's already being talked about as a promising prospect.
+4> Are you about to start training?
+5 Yes. Based on the results of her debut, we're about to begin her full regimen.
+6 I wonder what kind of training it'll be. Hope it's a tough one.
+6> You want it to be tough? | You want it tough?
+7 Obviously. Training that isn't tough won't make me stronger.
+8 Bitter Glasse is aiming to win on the big stage, after all.
+9 Not just any win—a win in a heated battle...!
+10 Against any powerhouse, even against my seniors—winning on a big stage that gets my blood pumping. That's my dream.
+11 And Bitter Glasse's resolve isn't just talk. She's shown it in her results.
+12 That's why I decided to ask Byerley Turk to help with her training.
+13 What would it mean to ask Byerley Turk for help in pursuing strength?
+13> Mind if I watch?
+14 Yes, I don't mind.
+15 Raaaaaaah!!
+16 Bitter Glasse gleefully powers through her grueling regimen.
+17 Huff...! Huff...! So tough~! But it's the best!
+18 It certainly seems to be working. Still, I judged that this level is right for you.
+19 That's Trainer Kashimoto for you! I'm off to the next set, then!
+20 Even after keeping up a regimen like this, her body doesn't waver, and she maintains the power of her stride.
+21 Physically, she stands out even among the Umamusume who have debuted.
+22 Never giving in... Those words describe her perfectly.
+23 Her toughness is evident from her build as well.
+24 Which means you can give her even more options in her regimen.
+25 It would also be good to deliberately run her current regimen on dirt or deep turf, and build an even tougher body.
+25> Even harsher conditions than now...?!
+26 Many overseas Umamusume are of this type. If you have your sights set on overseas races too, it's not an option to dismiss.
+27 ...I see. So she can be trained further without forcibly increasing her workload.
+28 What do you think? This is why I asked Byerley Turk for help.
+28> Sounds rough...
+29 Hehe. As you can see, Bitter Glasse is eager to push herself.
+30 And Byerley Turk, too, holds strong Umamusume as her ideal, guided by her "Discipline" disposition.
+31 When it comes to Bitter Glasse's training in particular, she offers knowledge from perspectives I wouldn't have thought of.
+32 Byerley Turk, let's incorporate that training. But not into the regimens that require speed.
+33 So you'll focus on building her foundation first. That should be no problem. Next, then—
+34 Trainer Kashimoto, thank you for today!
+35 Good work. How was today's training?
+36 The best! The way it pushed my body just enough, and still spread out the fatigue so well!
+37 ...Heh, I bet I got way stronger just today.
+38 After training that was plainly grueling, it wasn't fatigue she was showing, but joy.
+38> Looks like it's going well for you | Looks like you're really enjoying it
+39 Especially since Trainer Kashimoto started training me!
+40 Having a trainer makes you stronger, but I kinda figured you'd also be held back a bit—
+41 But Trainer Kashimoto actually cheers on what I wanna do and pushes me forward. She backs me up so I can get even stronger!
+42 She looks after my regimen, my health, all kinds of stuff. So I'm really getting a lot out of it!
+43 Hehe. Thanks to you responding so well, I'm getting a lot out of it too.
+44 If we keep this up, the heated battles you're aiming for will surely become reality.
+45 With that in mind, I've already put together your upcoming race schedule.
+46 Whoa?! You picked the races I'm running in?!
+47 Success in the Classic races is a major mark of prestige for an Umamusume, after all.
+47{ Classic races
+48 So let's first aim for the spring races that will serve as a stepping stone.
+49 The Classic races...! Heh! Got it!
+50 Um, I'm gonna run one last lap! I was feeling so nicely worn out, and now that's gone!
+51 Ah...?!
+52 ...It can't be helped. Get properly stronger, then.
+53 Bitter Glasse, who wants to grow stronger, and Trainer Kashimoto, who supports her. And Byerley Turk, who lends them her knowledge.
+54 I could feel that the three of them were all clearly focused on their goals.

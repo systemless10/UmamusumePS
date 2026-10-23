@@ -1,0 +1,360 @@
+{
+ "title": "三女神のいる世界",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ウマ娘とトレーナーの味方として導入された、\n『メガドリームサポーター』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "その説明会が行われることとなり、VR内に\nトレーナーとウマ娘たちが集められていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "あ、<username>トレーナー！\n説明会、同じ時間帯だったんですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……どうも。\n…………こんにちは。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "前にも会った、独特の間を持つこのウマ娘は、\n桐生院トレーナー担当のハッピーミークだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "この前は簡単な紹介だけでしたから、\nこうした機会を用意してもらうのは\nありがたいですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "VRウマレーターとは具体的にどう違うのか、\nしっかり覚えていかないと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ようこそVRの世界へ、トレーナー諸君。\n今日は俺たちが案内役をさせてもらうな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "基本的にはVRウマレーターの機能を\n踏襲しているが復習を兼ねて省かず説明する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "質問があれば遠慮なくするように。\n理解なく先へ進むのは愚か者のそれだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "は～い、それではさっそく\nまわっていきましょうね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、トレーナーとウマ娘たち一行は\n三女神に連れられ施設を見て回った。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ジムにプール、そしてトレーニングコース。\nVRウマレーターにあったのは揃ってますね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ええ、フィードバック機能によって\n現実の肉体に負荷がかかるのも同じよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "VR内のトレーニングであっても、\nウマ娘の体調管理はしっかりと……ですね！\nミークにケガなんて、絶対させられません！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……と、ここまで見たところですと、\n三女神がいるかいないかという点くらいしか\nVRウマレーターとの違いがないですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふっ、たしかにそこが大きな違いだけど、\nもうひとつ、ここにしかないものがあるわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "さあ、それでは最後に\nとっておきの場所に案内しましょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "とっておきの場所って……レース場？\nこれもVRウマレーターにありますけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ここに連れてきたのは、場所ではなくて\nそこで行われるレースを紹介するためよ。",
+   "choice_data_list": [
+    "レース……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そう、わたしたち三女神は\nウマ娘とトレーナーをサポートする役目。\nあなたたちの成長こそが願いなの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そして、願うからこそ\nその成長をわたしたちに見せてほしい――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "だから、ウマ娘の実力を測る場として\n“特別レース”を用意させてもらうわ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "特別レース"
+   ]
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ウマ娘の実力を測る“特別レース”……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ジュニア級からシニア級まで、1年に1度\n三女神がその素質を認めた者のみ\n招待させてもらう大舞台。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ジュニア級",
+    "シニア級"
+   ]
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "『グロウアップレース』に『WBC』、そして\n『SWBC』と3つの特別なレースがあって、\nいずれも出走できるウマ娘は一握りだけど――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "グロウアップレース",
+    "SWBC",
+    "WBC"
+   ]
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そこで素質を認めたウマ娘たちだけに、\n更なる高み――『グランドマスターズ』へ\n上がってもらうわ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "グランドマスターズ"
+   ]
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……そして、その舞台で相手になるのは\n三女神であるわたしたち。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "三女神が相手……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘たち",
+   "text": "三女神さまと走るの……！？\nすごい……！　普通じゃありえないっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……絵本で見た……\n…………三女神さまと……うずうず……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "と、レースのことは説明したけど、\n実際に俺たちの実力がどれほどか、\n知っておかないと不公平だよな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "だから、こうしてわざわざ\n諸君らをレース場まで連れてきたってわけだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "では、これから模擬レースを行う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "『グランドマスターズ』で相手となる\n我々の実力を、しっかりと焼き付けておけ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "トレーナーとウマ娘",
+   "text": "今から三女神とのレースを……！？\nええっ！？　私たちでも走れるの……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "参加は自由だ。見ているだけでも十分に\n俺たちの走りは感じられるだろうからな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "君たちの目指す、三女神の走りを\nぜひとも味わってくれ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "まさか、三女神とレースをするなんて……。\nでも、たしかに貴重な経験になるのかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……ミークはどうですか？\nデビュー前ですけど、走ってみたいですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……三女神さま……\n…………むう……走ってみたいです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "じゃあ、せっかくですし参加してみましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "サポート役である三女神と直々に競う舞台が\nこの先で待っている――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "であれば、<chrname>もまだ\nデビュー前だが、相手の実力を知っておこう\nという話に決まった……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "よし、参加者は決まったな。\nそれではさっそく、レースを始めるぞ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして急遽、三女神との模擬レースが\n行われることとなったのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "それは、あまりにも圧巻だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "三女神の走りは、\nここにいた全員が言葉を失うほどで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……ふぅ……ふぅ……。\n……全然……追いつけなかったです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "デビュー前の子だけじゃなく、\n重賞に出ている子だっていたのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "重賞"
+   ]
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふっ、これがわたしたちの走りよ。",
+   "choice_data_list": [
+    "す、すごい……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "なにせ俺たちの走りは膨大なデータをもとに\n幾度も試行を重ねて導き出した究極の走り――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "つまりは、ウマ娘の頂点たる走りだからな。",
+   "choice_data_list": [
+    "ウマ娘の頂点たる走り……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "お前たちは、目指すべき山の高さを知った。\nあとは登ってくるだけだ、頂を取るために。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "これから<chrname>との\n本格的なレースが始まる――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "1度しかないレース人生において\nこの遥かに高い山の頂へ立ちたいと\n思わずにはいられないのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,185 @@
+{
+ "title": "これからを駆ける者たちへ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『グランドマスターズ』の激戦は\n見る者に大きな印象を与え、幕を閉じた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして今日も、シミュレーターの中では――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "よーし、次は君の武器を聞かせてくれ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "私はプレッシャーに弱くて……そうしたら\nトレーナーが一緒に悩んでくれて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "それで、プレッシャーを感じないほどに\n引き離す大逃げか！　いいね、磨いていこう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "内ラチを走るのが怖くて、でも外を周るのも\n不利だから、トレーナーと悩んでまして……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "お前は強くなる必要がある。\nただし、強くなるべきは心の方だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "克服ではなく新たな道を拓く。\nそれは逃げではなく前進だ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "は……はいっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ここまで、よくがんばってきたわ。\n明日はいよいよレースね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘C",
+   "text": "ここの結果で、路線を決めていこうって\nトレーナーと話したんですけど……その……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……岐路に立つことは、不安もあるわよね。\n知らない道への入り口だもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "でも、あなたのトレーナーは\n間違いなく1番の味方……安心して大丈夫よ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘C",
+   "text": "あ、ありがとうございます！\n不安よりもまず、レースを全力で走ります！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "VRを活用するトレーナーとウマ娘が、\nますます増えましたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "先の『グランドマスターズ』、そこでの\n戦いに感化された者も多いのでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "なにせ、あの舞台を走ったウマ娘たちは\n三女神から知識以上のものを\n受け取っているのですから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……そうですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "お待たせしました、樫本トレーナー！\nトレーニングの準備、オッケーです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……私も万全。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "今日のメニューって、\nもう三女神さんと決めてあるんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ええ、互いに意見を出し合って決めています。\n貴方たちが最高の走りをできるようにと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "よしっ、それじゃあ行ってきます。\n今日もよろしくお願いします！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ふふっ、どの子も気持ちが充実していますね。\n走りたくてウズウズしているのが伝わります！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "よーし、みんな集まったな！\n今日も思い切り、自分を信じて走れ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "まずは基礎となる筋力を鍛える。\nその中で自信も磨いていけ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "どんなときでも見守っているから、\n振り返らず前だけを見て走りましょう～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘の始祖と言われる三女神は、\nかつてのウマ娘とトレーナーの歴史を通し、\n今を走るウマ娘とトレーナーを支える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分と<chrname>の辿った蹄跡も、\nやがて他のウマ娘へと伝っていくのだろうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そうあるために今を思い切り走れと心の中で\n<chrname>を激励するのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

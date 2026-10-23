@@ -1,12 +1,3 @@
-"""Port of ActivationConditions.ts -- the skill trigger-condition table.
-
-Two-phase system per condition: a static `filter_*` method restricts a
-RegionList to where the condition could possibly hold (computed once at
-build time), optionally paired with a `DynamicCondition` (a per-tick
-predicate over `RaceState`, checked once `pos` enters the statically
-filtered trigger region). See ConditionParser.py for how these compose via
-`&`/`@` into a full skill condition expression.
-"""
 
 from __future__ import annotations
 
@@ -118,9 +109,6 @@ class OrOperator(Operator):
     def apply(self, regions, course, horse, extra):
         leftval, leftcond = self.left.apply(regions, course, horse, extra)
         rightval, rightcond = self.right.apply(regions, course, horse, extra)
-        # See OrOperator.apply in ActivationConditions.ts for the caveat this
-        # inherits verbatim: technically unsound if both static AND dynamic
-        # conditions differ between branches. No skill in practice does that.
         return leftval.union(rightval), (lambda s: leftcond(s) or rightcond(s))
 
 
@@ -260,16 +248,6 @@ def _value_filter(get_value: Callable) -> Condition:
     return immediate(filter_eq=feq, filter_neq=fneq, filter_lt=flt, filter_lte=flte, filter_gt=fgt, filter_gte=fgte)
 
 
-# ---------------------------------------------------------------------------
-# Live-field-aware conditions (order, gaps, overtakes). NOT part of the
-# original TS engine: that library has no notion of other horses at all, so
-# these all used to be either static "assumed order-range" checks (which our
-# race harness never sets, making them permanent pass-throughs) or, for the
-# gap/overtake ones, distance-based RNG approximations. Now that
-# `race_field.RaceField` gives every solver a live per-tick snapshot of the
-# rest of the field, these become genuinely dynamic per-tick checks -- the
-# real mechanic, not an approximation of it.
-
 _CMP_OPS = {
     "eq": lambda v, a: v == a, "neq": lambda v, a: v != a,
     "lt": lambda v, a: v < a, "lte": lambda v, a: v <= a,
@@ -278,15 +256,6 @@ _CMP_OPS = {
 
 
 def _live_condition(get_value, transform_arg=None, static_filter=None) -> Condition:
-    """Build a full six-comparator Condition whose runtime value comes from
-    `get_value(state)` each tick (state.field is None -> condition is
-    "not yet determinable", i.e. false, matching the pre-race gate-skill
-    activation round where no field exists yet). `transform_arg(arg, state)`
-    lets e.g. order_rate convert its percentage argument into a live
-    absolute-order threshold using the field's actual horse count.
-    `static_filter(regions, arg, course, horse, extra)` optionally still
-    restricts the static trigger region (e.g. "only in the final corner
-    onward"); defaults to no restriction."""
     if transform_arg is None:
         transform_arg = lambda arg, state: arg
     if static_filter is None:
@@ -313,13 +282,6 @@ def _order_filter(get_threshold: Callable[[float, int], float]) -> Condition:
 
 
 def _continuous_band_check(state_key: str, in_band: Callable):
-    """`order_rate_inXX_continue` / `_outXX_continue`: true once the horse
-    has been continuously in/out of the band since at least accumulatetime
-    t=5s (the doc: "the first 5 seconds of the race don't count toward this
-    continuity"). Tracks a per-solver "in-streak-since" timestamp under
-    `state_key` (unique per band definition so multiple such conditions on
-    the same horse don't collide), reset to None the instant the horse
-    leaves the band."""
     def check(s):
         if s.field is None:
             return False
@@ -357,10 +319,6 @@ def _order_out_filter(rate: float) -> Condition:
     return immediate(filter_eq=feq)
 
 
-# ---------------------------------------------------------------------------
-# accumulatetime: skill ids for which the "estimate where it can't activate"
-# static-region optimization is skipped (transcribed verbatim from
-# ActivationConditions.ts; see that file's comment for why).
 _ACCUMULATETIME_FULL_COURSE_SKILLS = frozenset([
     '100302211', '100403111', '100501111', '101001211', '101002111', '101021', '101802111', '101901111', '102002211', '102302111',
     '103103211', '103203211', '103301111', '103501111', '103801211', '103802111', '103802121', '104002111', '104201211', '105201111',
@@ -488,12 +446,6 @@ def _is_activate_any_skill_filter_eq(regions, one, course, horse, extra):
 
 
 def _is_activate_heal_skill_filter_eq(regions, flag, course, horse, extra):
-    """Has THIS horse activated a recovery (effect type 9) skill yet?
-
-    ADDED 2026-09-03 -- was unregistered (a silent always-true no-op). The
-    solver already keeps the count this needs (activate_count_heal, bumped on
-    every SELF recovery activation); nothing was reading it for the boolean
-    form."""
     return regions, (lambda s: (s.activate_count_heal > 0) == (flag == 1))
 
 
@@ -526,8 +478,6 @@ def _is_dirtgrade_filter_neq(regions, flag, course, horse, extra):
     return regions if course.race_track_id not in _DIRT_GRADE_TRACK_IDS else RegionList()
 
 
-# Doc: tight-corner tracks -- Sapporo, Hakodate, Fukushima, Kokura, Kawasaki,
-# Funabashi (track_id, not course_set_id).
 _TIGHT_TRACK_IDS = (10001, 10002, 10004, 10010, 10103, 10104)
 
 
@@ -883,15 +833,6 @@ def _activate_count_heal_filter_gte(regions, n, course, horse, extra):
 
 
 def _activate_count_later_half_filter_gte(regions, n, course, horse, extra):
-    """Skills THIS horse has activated past the halfway mark of the course.
-
-    ADDED 2026-09-03 -- was unregistered (a silent always-true no-op). Its one
-    real user is 210131 "Racing Spirit: Wit", whose Global text is "Slightly
-    increase velocity upon activating 2 skills during the second half of the
-    race", so "later half" here is the DISTANCE half (the same 50% split
-    distance_rate>=50 uses elsewhere in this data), not a race phase -- the
-    per-phase counters are the separate activate_count_start/middle/end_after
-    family right above."""
     return regions, (lambda s: s.activate_count_later_half >= n)
 
 
@@ -909,17 +850,6 @@ def _running_style_count_helper(strategy: int):
     return fn
 
 
-# temptation_count_behind/infront and running_style_temptation_count_* used
-# to be _noop_section_random(2, 9) stubs (always-true at a random point in
-# sections 2-9, ignoring the actual argument and any real rushing state) --
-# a leftover from before race_field.RaceField existed. Real per-tick checks
-# now that every solver has live field awareness, same reasoning as
-# near_count/is_surrounded/etc above. "Opponent" variants: this engine has
-# no notion of team affiliation anywhere (every horse in the field is just
-# another horse), so they're implemented identically to the plain (self-
-# inclusive-count) versions -- correct for the vast majority of races (no
-# teammates present); in a genuine team race this over-counts teammates as
-# opponents rather than silently dropping the skill.
 def _temptation_count_behind_live() -> Condition:
     return _live_condition(lambda s: s.field.temptation_count_behind(s))
 
@@ -966,7 +896,7 @@ def _field_condition(name):
     def value(state):
         field = state.field
         if name == "is_used_skill_id_with_detail_one":
-            return 0  # handled by the argument-aware predicate below
+            return 0
         if name == "activate_count_param_skill":
             return sum(any(ef.type in (1, 2, 3, 4, 5, 32) for ef in entry[2]) for entry in state.activation_log)
         if name == "is_goodstart":
@@ -982,8 +912,6 @@ def _field_condition(name):
         if name == "is_behind_in":
             return int(any(0 < state.pos-h.pos < 2.5 and h.lane < state.lane for h in field._others(state)))
         if name == "lane_type":
-            # Client lane enum: inner, middle, outer, far outer. Prefer an
-            # explicit value when supplied; physical boundaries remain tunable.
             return state.context.get("laneType", min(3, int(state.lane / (4 * field.HORSE_LANE))))
         if name == "overtake_target_time":
             return state.overtake_target_timer
@@ -1022,29 +950,16 @@ def _build_conditions() -> dict:
     c["base_stamina"] = _value_filter(lambda course, horse, extra: horse.stamina)
     c["base_guts"] = _value_filter(lambda course, horse, extra: horse.guts)
     c["base_wiz"] = _value_filter(lambda course, horse, extra: horse.wisdom)
-    # 1 Bashin = 2.5m (doc). Now that RaceField gives real per-tick gaps,
-    # these are genuine live checks rather than the original engine's
-    # Erlang-distribution timing approximation (which existed only because
-    # real position data wasn't available). No horse behind/ahead (last /
-    # leading) is treated as an infinite gap.
     c["bashin_diff_behind"] = _live_condition(
         lambda s: (lambda d: float("inf") if d is None else d / 2.5)(s.field.distance_to_behind(s)))
     c["bashin_diff_infront"] = _live_condition(
         lambda s: (lambda d: float("inf") if d is None else d / 2.5)(s.field.distance_to_ahead(s)))
-    # Blocking/near-lane timers are now real (RaceSolver._update_blocking /
-    # _update_near_lane_timers, backed by RaceField -- see Phase 4 of the
-    # race-engine accuracy pass). Not part of the original TS engine, which
-    # approximated all of these with a plain Erlang-distributed trigger
-    # placement since it had no notion of other horses' positions at all.
     c["behind_near_lane_time"] = _live_condition(lambda s: s._behind_near_lane_timer)
     c["behind_near_lane_time_set1"] = _live_condition(lambda s: s._behind_near_lane_timer)
     c["blocked_all_continuetime"] = _live_condition(lambda s: s._blocked_all_timer)
     c["blocked_front"] = _live_condition(lambda s: int(s.field.front_blocker(s) is not None))
     c["blocked_front_continuetime"] = _live_condition(lambda s: s._blocked_front_timer)
     c["blocked_side_continuetime"] = _live_condition(lambda s: s._blocked_side_timer)
-    # "did this horse's order improve this tick" -- inferred trigger
-    # definition (the doc doesn't spell these out precisely by name), but
-    # matches the plain reading of "change order up" against real live rank.
     c["change_order_onetime"] = _live_condition(_did_overtake_value)
     c["change_order_up_end_after"] = _live_condition(_did_overtake_value, static_filter=_change_order_up_end_after_static)
     c["change_order_up_finalcorner_after"] = _live_condition(_did_overtake_value, static_filter=_change_order_up_finalcorner_after_static)
@@ -1054,9 +969,6 @@ def _build_conditions() -> dict:
     c["corner_count"] = _value_filter(lambda course, horse, extra: len(course.corners))
     c["corner_random"] = random(filter_eq=_corner_random_filter_eq)
     c["course_distance"] = _value_filter(lambda course, horse, extra: course.distance)
-    # distance_diff_rate has no explicit formula in the doc; inferred here as
-    # gap-to-leader expressed as a percentage of course distance (consistent
-    # with how every other "_rate" condition in this table is a percentage).
     c["distance_diff_rate"] = _live_condition(
         lambda s: (s.field.distance_to_leader(s) / s.course.distance * 100) if s.course.distance else 0.0)
     c["distance_diff_top"] = _live_condition(lambda s: round(s.field.distance_to_leader(s)))
@@ -1079,16 +991,10 @@ def _build_conditions() -> dict:
     c["is_behind_in"] = noop_immediate()
     c["is_dirtgrade"] = immediate(filter_eq=_is_dirtgrade_filter_eq, filter_neq=_is_dirtgrade_filter_neq)
     c["is_exist_skill_id"] = immediate(filter_eq=_skill_exists)
-    # a runner with this character id is in the race (Silence Suzuka's
-    # friends' skills) -- the roster is known before the race, so static
     c["is_exist_chara_id"] = immediate(
         filter_eq=lambda regions, cid, course, horse, extra: regions if cid in extra.chara_ids else RegionList(),
         filter_neq=lambda regions, cid, course, horse, extra: regions if cid not in extra.chara_ids else RegionList())
-    # the remaining distance of the VIEWER's own horse (the player's), not
-    # the skill user's
     c["remain_distance_viewer_id"] = _live_condition(lambda s: s.field.viewer_remain_distance())
-    # another runner activated a skill carrying this (positive) ability type
-    # on the previous frame -- "==9": someone used a recovery skill
     c["is_other_character_activate_advantage_skill"] = immediate(
         filter_eq=_other_advantage_filter_eq)
     c["is_finalcorner"] = immediate(filter_eq=_is_finalcorner_filter_eq)
@@ -1118,10 +1024,6 @@ def _build_conditions() -> dict:
     c["order_rate_out40_continue"] = _order_out_filter(0.4)
     c["order_rate_out50_continue"] = _order_out_filter(0.5)
     c["order_rate_out70_continue"] = _order_out_filter(0.7)
-    # Left as the original engine's distribution approximation: these need
-    # the doc's full Overtake-mode target-selection (which horse this one is
-    # actively chasing), which this pass's simplified lane-selection doesn't
-    # model -- see RaceSolver._update_lane_target's docstring.
     c["overtake_target_no_order_up_time"] = noop_erlang_random(3, 2.0)
     c["overtake_target_time"] = noop_erlang_random(3, 2.0)
     c["phase"] = Condition(
@@ -1154,8 +1056,6 @@ def _build_conditions() -> dict:
     c["running_style_temptation_count_senko"] = _running_style_temptation_count_live(Strategy.SENKOU)
     c["running_style_temptation_count_sashi"] = _running_style_temptation_count_live(Strategy.SASI)
     c["running_style_temptation_count_oikomi"] = _running_style_temptation_count_live(Strategy.OIKOMI)
-    # "opponent" variants: no team concept exists in this engine -- see the
-    # comment on _temptation_count_behind_live above.
     c["running_style_temptation_opponent_count_nige"] = _running_style_temptation_count_live(Strategy.NIGE, opponents=True)
     c["running_style_temptation_opponent_count_senko"] = _running_style_temptation_count_live(Strategy.SENKOU, opponents=True)
     c["running_style_temptation_opponent_count_sashi"] = _running_style_temptation_count_live(Strategy.SASI, opponents=True)
@@ -1228,9 +1128,6 @@ def _acr_activate_count_start_filter_gte(regions, n, course, horse, extra):
 
 
 def _build_conditions_with_activate_counts_as_random() -> dict:
-    """Port of RaceSolverBuilder.ts's `conditionsWithActivateCountsAsRandom`
-    (used via `.withActivateCountsAsRandom()`, an alternate condition table
-    used for probabilistic activation-count skills)."""
     c = dict(Conditions)
     c["activate_count_all"] = random(filter_gte=activate_count_all_random_filter_gte, filter_lte=activate_count_all_random_filter_lte)
     c["activate_count_end_after"] = random(filter_gte=_acr_activate_count_end_after_filter_gte)

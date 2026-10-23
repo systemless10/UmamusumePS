@@ -1,0 +1,519 @@
+{
+ "title": "Let's Gorgeous Party♪",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスはこの3年間、\nティアラ路線を邁進し……\n素晴らしい結果を残してきた。",
+   "choice_data_list": [
+    "（お祝いをしてあげたいな）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "派手好みな彼女に喜んでもらうため、\nお店を貸し切り、ゲストを招いて\nセレブなパーティーを開くことにした――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな、\n今日は集まってくれてありがとうっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "かんぱーいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "みんな",
+   "text": "かんぱいっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "招待状を出した先は、ヴィブロスと同じく\nティアラ路線で活躍したウマ娘たちだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ニシノフラワー",
+   "text": "3年間、お疲れさまでした、\nヴィブロスさんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "貴方なら、どこの国のレースでも、\nきっと素晴らしい活躍ができるよ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "小さな体で大きな勝利をもたらした\nニシノフラワー。アイルランドから来て、\n強烈な印象を残したファインモーション。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ニシノフラワー",
+    "ファインモーション"
+   ]
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "ねえ、どんな魔法を使ったのよ？\n……教え合いっこ、してあげてもいいわよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "最優秀シニア級クイーンウマ娘に\n選ばれたこともある、\nわがままに勝利を重ねたスイープトウショウ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "スイープトウショウ"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "魔法っ？\nえー、なんだろ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ラブだったりするかもっ？\nえへっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "華やかな友人に囲まれ、ヴィブロスも\n嬉しそうに話している。パーティーは\n今のところ順調だ。あとは――",
+   "choice_data_list": [
+    "（あの“おねだり”に……応える！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、そうだトレっち！",
+   "choice_data_list": [
+    "（……きた！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえねえ、\nトレっち～？",
+   "choice_data_list": [
+    "はい、お嬢様"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [
+    "なんでも仰ってくださいませ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～っ♡　トレっち、いい～！\nちょー！　しごできな感じ！",
+   "choice_data_list": [
+    "（……ホッ）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『お嬢様扱いしてほしい』――\nそれがパーティーを開く話をした時、\nヴィブロスからされたおねだりだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、このスーツよくない！？\nシルクの光沢もほどほどでリッチだし～、\n鮮やかなブルーがすてき～！",
+   "choice_data_list": [
+    "……ちょっと派手すぎない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいじゃんっ。\n絶対、似合うよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ティアラ路線でちょーがんばった私って、\nちょーセレブでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だからー、トレっちには\nかっこよく私を守ってほしいの♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "試着、よろしくね？\n待ってるね～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "若干遊ばれている感じがないでもなかったが、\nヴィブロスのやりたいことならばと、\n付き合いつつ準備を進めたのだった――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そだ！　ファインさんってガチセレブだしー、\nトレっちの完成度、どう！？",
+   "choice_data_list": [
+    "えっ"
+   ],
+   "color_text_info_list": [
+    "ファイン"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "ファインモーションは、その出自ゆえに、\n様々な人物を見てきていると考えられる。\nそんな彼女に評価されるのは荷が重い、が――",
+   "choice_data_list": [
+    "（ヴィブロスのために、ビシッと！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "……ふふ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "そうだね、とても素敵な\n従者さんになっているのではないかな♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～っ、やっぱり？",
+   "choice_data_list": [
+    "……本当に？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "うんっ。だって、\n“お嬢様”を想う心が伝わるもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "今日の振る舞いだけで、2人が\nどんな風に栄光までの道を歩んできたのか……\nわかったよ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ……わかっちゃう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そう！　私のトレっちは、\nちょー私想いで、ちょー優しいの♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃ、トレっち！\nゲストの方々にお給仕お願いできる～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ビシッと決まってるところ、\nみんなに見せちゃえ♡",
+   "choice_data_list": [
+    "かしこまりました、お嬢様"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、賑やかにパーティーは\n過ぎていったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そんなことを思い出していると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "すみません、遅れました……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カワカミプリンセス",
+   "text": "くっ、舞踏会に遅刻するとは！\nプリンセス失格ですわ～！",
+   "choice_data_list": [
+    "気軽な会だから、大丈夫だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "新しくやってきたのは、メジロドーベル、\nカワカミプリンセス、ダイワスカーレット――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "メジロドーベル",
+    "カワカミプリンセス",
+    "ダイワスカーレット"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "いずれもティアラ二冠ウマ娘という、\n偉大な結果を残した子たちだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなも来てくれたんだ！\nちょーうれしい♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダイワスカーレット",
+   "text": "もちろんよ。ティアラ路線の、それもGⅠで！\nたくさん勝つって、すごいことじゃない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダイワスカーレット",
+   "text": "同じ道を走っていたから、わかるわ。\nアナタが“今”の、1番なのね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "スカーレットさん……。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "スカーレット"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……その言い方だと、\nけっこーメラメラだったり？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダイワスカーレット",
+   "text": "あら、わかっちゃった？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダイワスカーレット",
+   "text": "1番がアタシの他にもいる、っていうのは……\nイヤなのよねっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カワカミプリンセス",
+   "text": "そうっ！　私たちからのお祝いは……\nずばり、ステゴロ！　レースですわ～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "その準備で、ちょっと遅れちゃって……。\nもちろん、ヴィブロスがよければ、だけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "ただ……ティアラ路線でこんなに勝った子と、\n戦ってみたいとは……アタシも思ってる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……お姉ちゃんを追いかけたのが、\n始まりだったけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やっぱり、\nティアラ路線ってかっこいいね♡",
+   "choice_data_list": [
+    "では準備いたしましょうか、お嬢様？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "さすがトレっち！\nうん、みんなのお祝い、受け取っちゃう♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、パーティーは場所を移し……\n最後まで華やかに進んでいった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "と、そこへ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロラモーヌ",
+   "text": "――パーティー会場は、こちらかしら？",
+   "choice_data_list": [
+    "（メジロラモーヌ……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女はメジロラモーヌ……\n史上初のトリプルティアラを達成した、\n誰もが目を奪われる“魔性”のウマ娘――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "メジロラモーヌ"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、\nラモーヌさんまで招待したの！？",
+   "choice_data_list": [
+    "いや……"
+   ],
+   "color_text_info_list": [
+    "ラモーヌ"
+   ]
+  },
+  {
+   "name": "メジロラモーヌ",
+   "text": "興味がありましたの。\n――貴方に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロラモーヌ",
+   "text": "ティアラ路線で、GⅠを7勝……\n歴史に残る功績ですわね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロラモーヌ",
+   "text": "遥かなる高みに至った……\nその秘密を、暴いても？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええっとぉ……？\n……トレっち～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスに助けを求められて考える。\n彼女は間違いなく偉業を果たした。\nその理由は、ただひとえに――",
+   "choice_data_list": [
+    "ヴィブロスがたくさん頑張ったから、かな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！\nトレっち……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……そーゆーことなら、\n私はトレっちが秘密だと思う！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私のわがまま、いっぱい聞いてくれて……\nいっしょにがんばってくれたから！\nだから、私――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロラモーヌ",
+   "text": "――……ああ、そう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロラモーヌ",
+   "text": "“貴方がた”故の、\n結晶だったのね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロラモーヌ",
+   "text": "では、失礼いたしますわ。\n――今度は、ターフで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ラモーヌさんって、\nほんと不思議だね？",
+   "choice_data_list": [
+    "ああ……いや、そうですね",
+    "うん……いや、そうですね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あのね、トレっち。\nセレブごっこ、もういいやっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わがままでごめんね？\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やっぱり、\nいつものトレっちが1番好きだから♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

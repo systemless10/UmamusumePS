@@ -45,9 +45,6 @@ impl Course {
                 c.events.push(e);
             }
         }
-        // CourseEventParam._CacheFirstMoveLanePoint (Global 0x33faf20): the first
-        // MoveLanePoint with exactly one value sets the point; IsEmptyInMove =
-        // value == 1. Global course 10301 (straight 1000 m) carries [2].
         if let Some(e) = c.events.iter().find(|e| e.kind == 7).filter(|e| e.values.len() == 1) {
             c.first_move = e.distance; c.empty_in_move = e.values[0] == 1;
         } else if let Some(e) = c.events.iter().find(|e| e.kind == 7 && e.values.first() == Some(&1)) {
@@ -55,8 +52,6 @@ impl Course {
         } else if let Some(corner) = c.corners.first().filter(|x| x.start > 0.0) {
             c.first_move = corner.start; c.empty_in_move = true;
         }
-        // InitCourseEvent sorts the cached event list by distance with List.Sort.
-        // Equal-distance event order therefore follows .NET's unstable introsort.
         crate::netsort::sort(&mut c.events, &|a,b| {
             if a.distance < b.distance { -1 } else if a.distance > b.distance { 1 } else { 0 }
         });

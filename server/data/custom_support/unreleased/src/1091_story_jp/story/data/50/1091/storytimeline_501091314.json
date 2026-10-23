@@ -1,0 +1,334 @@
+{
+ "title": "中山記念の後に・Choice",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "ふぅっ……ふぅっ……――\nはぁぁあああ……！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスは、『中山記念』で\n見事な結果を出した。ドバイでも必ず\n通用する、素晴らしい走りだ……。",
+   "choice_data_list": [
+    "（でも……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぜえっ……ぜえっ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はっ、はっ……\nはぁっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "レース直後、ヴィブロスは座り込んで\nしばらく動けなくなってしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "激しく消耗したその姿を見れば、\n導くべき決断は1つだった。",
+   "choice_data_list": [
+    "今年のドバイは断念しよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……本当に、ダメ？",
+   "choice_data_list": [
+    "ごめん、でもダメだ",
+    "ごめん、でもダメ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "病院の先生の説明にもあったように、\n海外遠征とはとても過酷なものだ。\n今の状態のヴィブロスには大きな負担になる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、もしかすると、\n本当は大丈夫なのかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "海外の環境のほうが、\n合ってる可能性だってあるし。",
+   "choice_data_list": [
+    "そうかもしれない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！\nじゃあ――",
+   "choice_data_list": [
+    "でも今回は俺のわがままを聞いてくれ",
+    "でも今回は私のわがままを聞いて"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え……。",
+   "choice_data_list": [
+    "可能性に賭けるより、君を大事にしたい",
+    "可能性に賭けるより、貴方を大事にしたい"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……そんな優しいの、\nわがままじゃないよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ほんとはね、自分でわかってるんだ。\nあ、これ諦めないとだ……って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やっぱり、\n全部なんて……無理なんだよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……本当に欲しいものって、\nいつだって遠いものだもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス、\nお疲れさま。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あのね、私――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "大丈夫よ、ヴィブロス。\n……顔を見れば、わかるわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そっか。\n……さすがお姉ちゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "大丈夫だよ、\nお姉ちゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だってよく考えてみて！\nドバイは逃げないもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちゃーんと体を治して、\n来年目指せばいいんだよっ。ね？",
+   "choice_data_list": [
+    "ああ",
+    "うん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうそう！\nうん……。",
+   "choice_data_list": [
+    "……代わりの目標を考えないとな！",
+    "……代わりの目標を考えないとね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ！　そうじゃん！\nなにがいいんだろ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだな～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "え、なぁに……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！\nいいこと考えた♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『ヴィクトリアマイル』はどうかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『ヴィクトリアマイル』は、その名の通り\n1600mのマイルGⅠレース。特色は2つ、\nティアラ路線出走者の活躍が多いことと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんが連覇したレースだもん！\n私も走りたいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "同じ1600mの『桜花賞』でも結果を出し、\nティアラ路線で存在感を示した彼女。\n何よりも本人に意欲がある。ならば……。",
+   "choice_data_list": [
+    "『ヴィクトリアマイル』に進もうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん、楽しみにしててね。\nきっとワクワクさせてあげる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ワクワク……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって、私も勝てたら、\nちょーすごいことでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイで走る姿は見せてあげられないけど……\nティアラ路線みたいに、また笑わせちゃうよ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "！\n……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ええ、楽しみにしているわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……あの子は私のために、\n頑張ってくれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "お礼をしなくちゃ。\nあの子の大好きな……お姉ちゃんとして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――私自身のためにも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "次の目標レースは、『ヴィクトリアマイル』\nドバイは翌年に繰り越し、\nヴィブロスの国内での新たな挑戦が始まる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

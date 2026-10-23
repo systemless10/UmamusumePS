@@ -1,4 +1,3 @@
-// Shared state, the server API and small helpers (VivloToolkit's core.js, adapted).
 
 export const icons = {
   users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
@@ -8,6 +7,7 @@ export const icons = {
   medal: '<circle cx="12" cy="15" r="6"/><path d="M8.5 10.2 6 2h4l2 5 2-5h4l-2.5 8.2"/><path d="m12 12.5 1 2 2 .3-1.5 1.4.4 2-1.9-1-1.9 1 .4-2-1.5-1.4 2-.3z"/>',
   flag: '<path d="M4 22V4"/><path d="M4 4h12l-2 4 2 4H4"/>',
   box: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/>',
+  chevron: '<path d="m6 9 6 6 6-6"/>',
   sparkle: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6 6 2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   alert: '<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>',
@@ -31,10 +31,16 @@ export const icons = {
   pause: '<path d="M8 5v14M16 5v14"/>',
   restart: '<path d="M5 5v14"/><path d="M19 5 9 12l10 7z"/>',
   map: '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+  server: '<rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/>',
+  package: '<path d="M16.5 9.4 7.5 4.2"/><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/>',
+  swords: '<path d="M14.5 17.5 3 6V3h3l11.5 11.5"/><path d="m13 19 6-6M16 16l4 4M19 21l2-2"/><path d="M14.5 6.5 18 3h3v3l-3.5 3.5"/><path d="m5 14 4 4M7 17l-3 3M3 19l2 2"/>',
+  wand: '<path d="m15 4 5 5L9 20l-5-5z"/><path d="M14 3v2M20 9h2M19 4l1.5-1.5M5 3l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/>',
+  terminal: '<path d="m4 17 6-5-6-5"/><path d="M12 19h8"/>',
+  phone: '<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/>',
+  settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
 };
 export const icon = (name) => `<svg class="i" viewBox="0 0 24 24">${icons[name] || ""}</svg>`;
 
-// Bump to skip icon 404s browsers cached under the old one-day policy.
 export const ICON_VERSION = 2;
 const FALLBACK = { supportart: "support", card: "chara" };
 export const gameIcon = (kind, id, cls = "") => {
@@ -61,7 +67,6 @@ export function ago(ts) {
 }
 export const dateTime = (ts) => ts ? new Date(ts * 1000).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) : "–";
 
-// Keep scroll positions and the focused text field across a re-render.
 export function keepScroll(el, fn) {
   const key = (n) => n.tagName + [...n.classList].map((c) => "." + c).join("");
   const scrolled = [...el.querySelectorAll("*")].filter((n) => n.scrollTop > 0).map((n) => [key(n), n.scrollTop]);
@@ -74,15 +79,14 @@ export function keepScroll(el, fn) {
     if (n) n.scrollTop = top;
   }
   const nf = fi >= 0 && fields()[fi];
-  if (nf) { nf.focus(); try { nf.setSelectionRange(...caret); } catch { /* number etc. */ } }
+  if (nf) { nf.focus(); try { nf.setSelectionRange(...caret); } catch {   } }
 }
 
 export const prefs = {
   get(key, fallback) { try { return JSON.parse(localStorage.getItem("umaps." + key)) ?? fallback; } catch { return fallback; } },
-  set(key, value) { try { localStorage.setItem("umaps." + key, JSON.stringify(value)); } catch { /* private mode */ } },
+  set(key, value) { try { localStorage.setItem("umaps." + key, JSON.stringify(value)); } catch {   } },
 };
 
-// ------------------------------------------------------------ colours
 const PALETTE = ["#d8b98a", "#8fb7c9", "#a99bd1", "#8fc9a4", "#e0a39a", "#c9c08f"];
 export function color(id) {
   let h = 0;
@@ -91,17 +95,14 @@ export function color(id) {
 }
 export const REGION_NAME = { global: "Global", jp: "JP" };
 
-// ------------------------------------------------------------ store
-// The target (region + viewer) every window edits, the users of each region,
-// and each region's master-data catalogue.
 const saved = prefs.get("target", {});
 export const store = {
   preferEnglish: prefs.get("preferEnglish", true),
   region: saved.region || "global",
-  viewers: saved.viewers || {},           // region -> viewer id
-  users: {},                              // region -> {default, users: [...]}
-  catalogs: {},                           // region -> catalog.core
-  extra: {},                              // region -> {skills, factors, programs}
+  viewers: saved.viewers || {},
+  users: {},
+  catalogs: {},
+  extra: {},
   connected: true,
   errors: [],
   listeners: new Set(),
@@ -120,15 +121,40 @@ export const store = {
   },
 };
 
+export const setup = { info: null };
+export async function loadSetup() {
+  const res = await fetch("/api/_setup");
+  setup.info = (await res.json()).result;
+  const usable = setup.info.usable;
+  if (usable.length && !usable.includes(store.region)) store.region = usable[0];
+  store.emit("setup", setup.info);
+  return setup.info;
+}
+export async function setupPost(path, body) {
+  const res = await fetch(`/api/_setup${path}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { detail: data.detail || "" });
+  return data.result;
+}
+export function unavailable(def, region = store.region) {
+  const s = setup.info;
+  if (!s) return null;
+  if (s.setup_mode) return def.worker === false ? null : "Finish Setup first.";
+  if (def.worker !== false && !s.usable.includes(region)) return `${REGION_NAME[region]} is off in Setup.`;
+  for (const n of def.needs || []) {
+    if ((n === "global" || n === "jp") && !s.usable.includes(n)) return `Needs ${REGION_NAME[n]} (off in Setup).`;
+    if (n === "both" && !s.both_masters) return "Needs both the Global and JP master.mdb (Setup).";
+    if (n === "game" && !(s.game_install && s.regions[region]?.game)) return `Needs the ${REGION_NAME[region]} game install (Setup).`;
+  }
+  return null;
+}
+
 export const userName = (u) => u ? (u.name || `Viewer ${u.id}`) : "–";
 
-// ------------------------------------------------------------ api
-// call(op, args) runs one worker operation for the current target.
 export async function call(op, args = {}, target = {}) {
   return (await callFull(op, args, target)).result;
 }
 
-// The same, returning {result, log} (log = what admin.py / career.py printed).
 export async function callFull(op, args = {}, { region = store.region, viewer = store.viewer } = {}) {
   let res;
   try {
@@ -186,7 +212,6 @@ export function loadCatalog(region = store.region) {
   return catalogLoading[region];
 }
 
-// Bigger catalogues, fetched the first time a window needs them.
 const extraLoading = {};
 export function loadExtra(kind, region = store.region) {
   const key = `${region}:${kind}`;
@@ -200,7 +225,6 @@ export function loadExtra(kind, region = store.region) {
   return extraLoading[key];
 }
 
-// ------------------------------------------------------------ notifications
 export function toast(text) {
   const el = document.createElement("div");
   el.className = "toast";
@@ -224,7 +248,6 @@ export function reportError(title, ex) {
   document.getElementById("toasts").append(el);
 }
 
-// Run an action with a busy button and error reporting; returns the result or undefined.
 export async function act(btn, title, fn, done) {
   if (btn) btn.disabled = true;
   try {

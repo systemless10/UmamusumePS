@@ -415,7 +415,7 @@
       {
         "type": "special",
         "subtype": "energy_to_training",
-        "desc": "More current energy → more Training Effectiveness"
+        "desc": "More current energy \u2192 more Training Effectiveness"
       }
     ]
   },
@@ -483,7 +483,7 @@
       {
         "type": "special",
         "subtype": "total_bond_to_training",
-        "desc": "Higher total bond of all supports → more Training Effectiveness"
+        "desc": "Higher total bond of all supports \u2192 more Training Effectiveness"
       }
     ]
   },
@@ -787,7 +787,7 @@
         "type": "special",
         "subtype": "combined_facility_training",
         "max": 20,
-        "desc": "Combined facility level → Training Effectiveness (up to 20)"
+        "desc": "Combined facility level \u2192 Training Effectiveness (up to 20)"
       }
     ]
   },
@@ -838,7 +838,7 @@
       {
         "type": "special",
         "subtype": "max_energy_to_training",
-        "desc": "More max energy → more Training Effectiveness"
+        "desc": "More max energy \u2192 more Training Effectiveness"
       }
     ]
   },
@@ -959,7 +959,7 @@
       {
         "type": "special",
         "subtype": "low_energy_to_friendship",
-        "desc": "Less energy → more Friendship Bonus"
+        "desc": "Less energy \u2192 more Friendship Bonus"
       }
     ]
   },
@@ -1134,7 +1134,7 @@
         "subtype": "out_of_type_bonus",
         "bond_min": 80,
         "training_bonus": 20,
-        "desc": "Bond>=80 + different facility from type → +20 Training"
+        "desc": "Bond>=80 + different facility from type \u2192 +20 Training"
       }
     ]
   },

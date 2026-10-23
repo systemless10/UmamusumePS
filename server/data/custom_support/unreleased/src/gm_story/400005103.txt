@@ -1,0 +1,4 @@
+#title Knowledge Carved into the Earth
+0 Hm... It seems both <chrname> and you are growing steadily.
+1 But everyone is putting in effort. You will not be permitted to stop at your own satisfaction.
+2 Grow stronger. Keep pursuing a strength that could gouge the earth... strong enough to carve your hoofprints into it.

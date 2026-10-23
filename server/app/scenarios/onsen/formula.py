@@ -1,19 +1,3 @@
-"""ONSEN (scenario 12) -- the training numbers: the home preview, its energy,
-and the scenario's bonus line on top of it.
-
-All fitted to the real JP server (docs/JP_ONSEN_SCENARIO.md §7):
-
-    home   = Ramen's formula (ramen.formula.home_raw) on this scenario's own
-             per-level base values; a gain of 1 above 1200 still shows 1   99.84%
-    energy = -trunc(|base| x each cost-down factor separately) + dig energy;
-             wit = +5 + wit recovery + dig energy, clamped to the room left  99.95% / 97%
-    bonus  = floor(home_pre x (1+S) x (1+F)) - home_pre + the dig stats,
-             halved TOGETHER above 1200                                       99.9%
-
-The only scenario-specific machinery is here; everything shared with Ramen
-(card effects at real level, friendship, mood, bodies, growth, the 1200
-halving of a bonus) is reused from ramen.formula rather than copied.
-"""
 
 from __future__ import annotations
 
@@ -29,10 +13,6 @@ STATS = RF.STATS
 TARGET_SP = RF.TARGET_SP
 TARGET_ENERGY = RF.TARGET_ENERGY
 
-# FACILITY BASE VALUES PER LEVEL {command: {level: {target_type: value}}}.
-# master's single_mode_training_effect holds scenario 12's level 1 and summer
-# (= level 5) rows only; levels 2-4 are fitted from 846k real previews (§7.1).
-# Guts Lv4 (3/3/21) is the one cell never observed -- interpolated.
 BASE = {
     101: {1: {1: 12, 3: 2}, 2: {1: 14, 3: 3}, 3: {1: 17, 3: 4}, 4: {1: 20, 3: 5}, 5: {1: 23, 3: 6}},
     105: {1: {2: 11, 4: 3}, 2: {2: 14, 4: 4}, 3: {2: 17, 4: 5}, 4: {2: 20, 4: 6}, 5: {2: 23, 4: 8}},
@@ -42,8 +22,6 @@ BASE = {
     106: {1: {1: 2, 5: 11}, 2: {1: 2, 5: 12}, 3: {1: 2, 5: 13}, 4: {1: 3, 5: 14}, 5: {1: 3, 5: 15}},
 }
 BASE_SP = 7
-# Energy by level: 5 more per level, far steeper than any other scenario (§7.2).
-# Level 5 is master's summer row.
 ENERGY = {
     101: {1: -20, 2: -25, 3: -30, 4: -35, 5: -40},
     105: {1: -22, 2: -27, 3: -32, 4: -37, 5: -42},
@@ -63,9 +41,6 @@ def home_raw(chara_info: dict, command_id: int, level: int, partners, card_level
 
 
 def displayed(chara_info: dict, target_type: int, gain: int) -> int:
-    """A gain as received: Ramen's 1200 halving and stat cap, except that a
-    gain of at least 1 never shows 0 below the cap (5,400 of the 6,800 raw
-    misses before this rule, §7.1)."""
     shown = RF.displayed(chara_info, target_type, gain)
     if target_type <= 5 and shown == 0 and gain > 0:
         stat = STATS[target_type - 1]
@@ -77,10 +52,6 @@ def displayed(chara_info: dict, target_type: int, gain: int) -> int:
 
 def energy_down_factors(chara_info: dict, partners, card_levels=None,
                         extra_pct: int = 0) -> list:
-    """Every energy-cost-down source in this facility as its own multiplier:
-    a card's type-28 effect, its bond-gated type-28 add-on (Kiyoko 30276:
-    25%, then 5% more at bond >= 60), and the spring-7 buff. They multiply
-    separately -- one summed percentage cannot produce the captured costs."""
     out = []
     for sid, bond in RF.facility_cards(chara_info, partners):
         lv = int((card_levels or {}).get(sid) or RF.max_level(sid))
@@ -97,7 +68,6 @@ def energy_down_factors(chara_info: dict, partners, card_levels=None,
 
 def energy(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
            dig_energy: int = 0, extra_down_pct: int = 0, cap: int | None = None) -> int:
-    """The facility's energy preview (§7.2)."""
     base_cmd = SUMMER_TO_BASE.get(command_id, command_id)
     base = ENERGY.get(base_cmd, {}).get(level_of(command_id, level), -20)
     if base < 0:
@@ -116,7 +86,6 @@ def energy(chara_info: dict, command_id: int, level: int, partners, card_levels=
 
 def home_gains(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
                dig_energy: int = 0, extra_down_pct: int = 0, cap: int | None = None) -> dict | None:
-    """The home preview in calculate_training_gain's shape."""
     raw = home_raw(chara_info, command_id, level, partners, card_levels)
     if not raw:
         return None
@@ -131,8 +100,6 @@ def home_gains(chara_info: dict, command_id: int, level: int, partners, card_lev
 
 def bonus_params(chara_info: dict, command_id: int, level: int, partners,
                  s_pct: int, f_pct: int, dig_stats: dict, card_levels=None) -> list:
-    """onsen_data_set.command_info_array's params for one facility (§7.3): the
-    bath's lift and the dig's stats as ONE delta, halved together above 1200."""
     raw = home_raw(chara_info, command_id, level, partners, card_levels)
     out = []
     for tt in sorted(set(raw) | {t for t in dig_stats if t != TARGET_ENERGY}):
@@ -152,8 +119,6 @@ def bonus_params(chara_info: dict, command_id: int, level: int, partners,
 
 
 def flat_params(chara_info: dict, gains: dict) -> list:
-    """{target_type: amount} as a params_inc_dec_info_array, stats halved above
-    1200 and capped (PR's base gains, a dig event's stats)."""
     out = []
     for tt in sorted(gains):
         v = int(gains[tt])

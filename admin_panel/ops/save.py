@@ -1,5 +1,3 @@
-"""Raw save editing: every top-level state key, a dotted-path editor for the
-inside of big keys, and whole-save export/import."""
 
 from __future__ import annotations
 

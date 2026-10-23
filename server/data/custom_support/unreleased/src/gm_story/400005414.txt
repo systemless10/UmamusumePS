@@ -1,0 +1,7 @@
+#title After the WBC: Victory
+0 <chrname> conquered the WBC splendidly. The Three Goddesses simply praised her talent.
+1 Meanwhile, Bitter Glasse, who hadn't won a race since the fall, couldn't run a race she was satisfied with in the WBC either.
+2 As Bitter Glasse vowed that next year would be different, Trainer Kashimoto was quietly resolving that she was the one who needed to work harder.
+3 Trainer Kiryuin and Happy Meek also couldn't achieve the goal they'd set during camp: win a graded race by the end of the year.
+3{ graded race
+4 It was only a goal to keep them positive, but it made the frustration of her talent refusing to bloom smolder even more.

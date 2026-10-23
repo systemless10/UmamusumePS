@@ -1,0 +1,63 @@
+#title After the Debut Race: Make Debut♡
+0 Ooh～...! Vivlos, a flawless run!
+1 As expected of Verxina's little sister! She's gonna keep growing from here...!
+2 Huff... Huff... Haaa...!
+3 Whoa, I didn't know it'd be this tiring...!
+4 ...But it looks like everyone's watching me?
+5 Ahem, time to make my pitch!
+6 Everyone～, thank you for cheering! So, me, Vivlos—
+7 I'm going for the Tiara races♡
+8 Ooooooooh!!
+9 I see, I see～...! She's following in Verxina's footsteps!
+10 Cheval Grand's on the Classic Triple Crown path, right? So the one who'll get revenge for Verxina is—
+11 ...That means... I can't help but get my hopes up, Vivlos...!
+12 —The dream she couldn't achieve, Vivlos will...!
+13 ...—
+14 Tore-cchiii～♡
+15 Vivlos, reporting back!
+15> Yeah, good work | Yeah, good work
+16 Huh, that's it～?
+16> ...?
+17 Listen, I worked hard in the race! So... I want you to praise me a little more?
+17> ...Good job! | ...Good job!
+18 ...Tore-cchi, are you bad at spoiling people?
+18> Huh
+19 Ahaha, you'd better get way better at it from now on♡
+20 Am I suuuper amazing? Can I go straight to the Tiara races like this?
+21 The Tiara races—her other goal besides Dubai—are held from spring to fall of next year, her classic year.
+22 Oh, normally you run other races in between, right? Onee-chan ran graded races and stuff too!
+23 Then, should we decide on my next goal race?
+23> About that...
+24 Vivlos's body still isn't fully developed. Even today, right after the race, she showed much heavier exhaustion than the other girls.
+25 In that case, we'll focus on completing her body first, and not build around grueling races—
+25> I want to focus on training until early next spring
+26 Huh, you can do that? That's fine with me?
+26> We'll decide on races again after spring
+27 Hm? The first one's the Oka Sho, right?
+28 ...Don't tell me you think I might not even make it in time for the Tiara races!?
+28> I don't think it'll be a problem, basically
+29 Basically～!? Tell me it'll definitely be fine～!
+30 I'm gonna win the Triple Tiara, get Onee-chan's revenge～.
+31 And then once I'm all properly sparkly, I'm going to Dubai.
+31> Right, you are | Right, you are
+32 Oh, you get it♡
+33 Okay, then it's fine! I'll work hard at training～.
+34 But just that, though...
+34> You want a goal?
+35 Yeaaah～...
+36 Oh, I know! How about raising my celebrity vibe, like my sisters?
+37 Getting lots and lots of fans! Celebrities have followers, right?
+37> (Is that how it works?) | (Is that how it works?)
+38 Hey, hey, isn't that great? Mama's fans, Onee-chan's fans, and everyone else too...
+39 Let's get everyone to become my fans♪
+40 After we talked about what's next, we left the waiting room, and...
+41 Vivlos sweetie～! You were so cool～♡
+42 Oh, everyone! Thank youuu～!
+43 Great work, really! That was wonderful! So, when's your next race? We'll come cheer!
+44 Papa and Mama, you both have work, don't you? Even today, you pushed through so much that your managers were completely worn out.
+45 ...Right. You're both so busy.
+46 Ah, Vivlos! No, we'll manage somehow from here on—
+47 It's all right. I'll come cheer for you plenty, for Mama and Papa, and for Cheval too.
+48 Really!? Thank you, Onee-chan!
+49 Papa and Mama, thanks for today! I'll work hard with Tore-cchi.
+50 And so, Vivlos safely made her debut. We decided to focus on training while growing her followers... er, her fans.

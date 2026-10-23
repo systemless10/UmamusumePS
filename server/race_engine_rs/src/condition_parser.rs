@@ -1,19 +1,3 @@
-//! Port of condition_parser.py.
-//!
-//! The original is a Pratt (TDOP) parser purely because the upstream
-//! TypeScript engine was written that way; the grammar it implements has no
-//! parentheses and only three precedence levels, which a plain recursive
-//! descent parser expresses directly and equivalently:
-//!
-//!   Or  ::= And '@' Or | And
-//!   And ::= Cmp '&' And | Cmp
-//!   Cmp ::= condition Op integer
-//!
-//! Every Parser this codebase ever constructs uses the stock And/Or/
-//! comparison operators (only the *condition table* is ever swapped, for
-//! `.withActivateCountsAsRandom()`), so unlike the Python port this file
-//! does not reproduce the swappable-operator-class machinery -- there is
-//! nothing here that would ever exercise it.
 
 use crate::activation_conditions::{make_and, make_or, CmpKind, CondResult, Condition, Op};
 use std::collections::HashMap;
@@ -162,9 +146,6 @@ fn parse_cmp(ts: &mut TokStream, conditions: &'static HashMap<String, Condition>
     Ok(Op::Cmp { cond, kind, arg })
 }
 
-/// Parses one condition-expression string (e.g. `"phase==2&distance_rate>=50"`)
-/// against the given condition table (`Conditions` or
-/// `ConditionsWithActivateCountsAsRandom`).
 pub fn parse(conditions: &'static HashMap<String, Condition>, s: &str) -> CondResult<Op> {
     let toks = tokenize(s)?;
     if toks.is_empty() {

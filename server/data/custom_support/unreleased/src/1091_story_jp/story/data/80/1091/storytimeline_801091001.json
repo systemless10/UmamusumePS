@@ -1,0 +1,218 @@
+{
+ "title": "いつの間にかあまーい時間♪",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "ん～！　マカロンおいしっ♡\nアフタヌーンティーはやっぱここ～♪",
+   "choice_data_list": [
+    "（なんでここでお茶してるんだっけ……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "遡ること数十分前。通りで困っている様子の\n彼女に声をかけて、気づいたら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "付き合ってくれてありがとね！\nトレーナーさん♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "友だち来られなくなっちゃうし。\nさみしいしどうしよ～！？　って思ったけど！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーナーさんのおかげで\n楽しいティータイムになったよ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その笑顔を見ていると、\n付き合えてよかったと思えてくる。",
+   "choice_data_list": [
+    "よかった！じゃあ、そろそろ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、待って～！　もう少し時間ある？\nお買い物も付き合ってほしくて～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "1人じゃ選ぶの時間かかっちゃうもん……\nおねが～～い！",
+   "choice_data_list": [
+    "う……す、少しだけなら……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ♡　いっぱい買っちゃった！\nこのブランドの限定コスメずっと欲しくて～！",
+   "choice_data_list": [
+    "力になれてよかった！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねねっ♡　このまま戻るのももったいないし、\nちょっとお散歩して帰ろ？",
+   "choice_data_list": [
+    "せっかくだし、そうしようか！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んん～おいしぃ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁ～～おいしくって、楽しくって、\n大満足の放課後になっちゃった！",
+   "choice_data_list": [
+    "うん、俺も！！",
+    "うん、私も！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "あれよあれよと、\n気づけばすっかり楽しんでいたが……\n実際とてもいい気分転換になった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれ……あそこにいるの……\nお姉ちゃ～ん！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "え？　トレーナーさんと2人で行ったの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！　はちみーもいっしょに飲んで♡\nとってもハッピーな時間だったのーっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "すみません、妹が……。\nご予定とか大丈夫でしたか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ！　そっか！\nどうしよう……私、迷惑だった……？",
+   "choice_data_list": [
+    "全然、すっごく楽しかったよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんと！？　よかったぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ♡　トレーナーさん、\n今日はハッピーな放課後をありがとねっ♡",
+   "choice_data_list": [
+    "俺の力にもなったよ！",
+    "私の力にもなったよ！",
+    "どんな頼み事もどんと来いだよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ♡　トレーナーさん、\n今日はハッピーな放課後をありがとねっ♡",
+   "choice_data_list": [
+    "俺の力にもなったよ！",
+    "私の力にもなったよ！",
+    "どんな頼み事もどんと来いだよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんうんっ♡\nきゅーけーって大事だよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ、トレーナーさん！\nばいばい～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "もう、あの子ったら。\nあんな笑顔見たら、叱るどころか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "楽しめたみたいでよかった、なんて。\nつい、甘やかしてしまうんですよね……。",
+   "choice_data_list": [
+    "その気持ち、よくわかる……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "無邪気な笑顔に釣られ、気づけば\n甘やかしていた自分を思い返しながら、\n姉妹の背中を見送った……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんと？　じゃあ、次もお買い物\n付き合ってもらっちゃおうかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあまたね、トレーナーさん。\nばいばい～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "もう、あの子ったら。\nあんな笑顔見たら、叱るどころか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "楽しめたみたいでよかった、なんて。\nつい、甘やかしてしまうんですよね……。",
+   "choice_data_list": [
+    "その気持ち、よくわかる……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "無邪気な笑顔に釣られ、気づけば\n甘やかしていた自分を思い返しながら、\n姉妹の背中を見送った……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

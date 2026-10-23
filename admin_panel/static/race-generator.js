@@ -1,5 +1,3 @@
-// Race workshop: fill a field (up to 120 runners) with generated racers,
-// roster veterans or copies of one runner.
 
 import { esc, prefs } from './core.js';
 import { APT_FIELDS, STATS, modal } from './widgets.js';
@@ -17,7 +15,6 @@ function shuffle(list) {
   return out;
 }
 
-// Ordinary race skills: white/gold general skills, without the negative × ones.
 const skillPool = (skills) => skills.filter((s) => s.id >= 200000 && s.id < 300000 && s.rarity <= 2 && !/×$/.test(s.name));
 
 function generated(o, cards, skills, course, count) {
@@ -44,7 +41,6 @@ function generated(o, cards, skills, course, count) {
   return out;
 }
 
-// ctx: {runners, selected, cards, skills, roster, course, apply(runners)}
 export function openAutoFill(win, ctx) {
   const o = { ...DEFAULTS, ...prefs.get('raceAutoFill', {}) };
   o.size = Math.max(1, Math.min(MAX_RUNNERS, ctx.course?.gates && !prefs.get('raceAutoFill', null) ? ctx.course.gates : o.size));

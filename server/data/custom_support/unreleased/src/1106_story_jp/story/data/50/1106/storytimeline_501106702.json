@@ -1,0 +1,330 @@
+{
+ "title": "たまには仕事を忘れて",
+ "text_block_list": [
+  {
+   "name": "駅前広告",
+   "text": "『――頑張る自分に癒しのひと時を……\n“リラクゼーションフェア”開催中♪』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～！　今そんなのやってたんだ。\nいいな～なにか新作グッズ出てるかなぁ？",
+   "choice_data_list": [
+    "せっかくだし少し寄っていく？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "！　え、いいんですかぁ！？\n普通にお言葉に甘えちゃいますけど～。",
+   "choice_data_list": [
+    "俺も見ていきたいから",
+    "私も見ていきたいから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ここ最近、仕事の疲れを取ろうとしても\n上手くできずに困っていた。\nこれはいい機会になるかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そう思っていたのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――あ、むちむちクッション！\nこれも気になってたんですよね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルが気にしているクッションを\n手に取ってみる……なるほど、これは。",
+   "choice_data_list": [
+    "これ、トレーニングで使えそうだな",
+    "これ、トレーニングで使えそうだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、たし……かに？\n筋トレとかで使い勝手はよさそうかも～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、まずは普通に癒されません？\nこれ癒しグッズですし～。",
+   "choice_data_list": [
+    "あ、そうだった"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『癒しの時間』って、結構大事ですから。\n今日ぐらい、仕事を忘れてのんびりしても～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "たしかに、疲れを癒すために来ていたのに、\nこれでは本末転倒だ。\n気を取り直して、次の店に向かう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、このフットケアストーンいいですよ～。\n座りながら足裏マッサージができるんです。",
+   "choice_data_list": [
+    "これ！体幹トレ――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……？",
+   "choice_data_list": [
+    "……ニングのあと休むのに使えそうだな！",
+    "……ニングのあと休むのに使えそうだね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん？　普通にデスクワーク中とかに\n使うのがいいと思いますけどぉ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ウォーターベッド、いいなぁ。\n寝るときすっごい楽らしいんですよねー。",
+   "choice_data_list": [
+    "よし！寝転がってみようかなっ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "お店のスタッフA",
+   "text": "あ、あの～お客様、大変申し訳ございません。\nこちら完全展示品でして……。",
+   "choice_data_list": [
+    "わぁ！すみません！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふっ、トレーナーさんも\nそんなうっかりするんですね～。結構レア？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "どうにも空回りしてばかりだ。\nというか、自分を癒すつもりが……。",
+   "choice_data_list": [
+    "（むしろ疲れが……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こんな自分が隣にいては、\nヒシミラクルも気が休まらないだろう。\nそう思い、様子をうかがうと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、『バターになるクッション』。\n欲しいけど買えないからな～。\nここで癒してもらお～っと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、この全身がどんどん溶けてく感じ～。\nこれ～ダメだぁ……フツーに眠くなる……。",
+   "choice_data_list": [
+    "（……フツーに癒されてる）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "インテリアが全部まん丸ですね、ここ。\nぽってりしてるのかわい～な～、癒されるー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そう溶けた声で話すヒシミラクル。\n心身ともにしっかりリラックスしている\n姿を見て、しみじみと思う。",
+   "choice_data_list": [
+    "君は『自分を癒す』のが上手だな",
+    "貴方は『自分を癒す』のが上手だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え？　なんですか突然～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……まぁ、元々好きですからね～こういうの。\nグッズとかもいろいろ持ってますし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "逆にトレーナーさんは……苦手っぽい？",
+   "choice_data_list": [
+    "そうだな……",
+    "そうだね……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはははっ。\nトレーナーさん、すっごい真面目ですしね。\nここはひとつ、わたしを見習ってもらって～。",
+   "choice_data_list": [
+    "……それだ！！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぇっ！？　な、なにが……？",
+   "choice_data_list": [
+    "ヒシミラクルさん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は、はい？？？",
+   "choice_data_list": [
+    "――俺の癒しトレーナーになってください！",
+    "――私の癒しトレーナーになってください！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………えぇ？",
+   "choice_data_list": [
+    "『癒しの時間』の取り方を知りたいんだ",
+    "『癒しの時間』の取り方を知りたいの"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "今日1日を通して確信した。\n彼女は『息抜き』がとても上手い。\n師事するにはピッタリの相手だろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "い、いやぁ……普通にネットとかで\n調べたほうが……？　自分に合うのとか……。",
+   "choice_data_list": [
+    "ネットより君のほうが信用できる！",
+    "ネットより貴方のほうが信用できる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "！",
+   "choice_data_list": [
+    "ネットより君のほうが俺に詳しい、はず！",
+    "ネットより貴方のほうが私に詳しい、はず！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え……えー？　そう、かなぁ。",
+   "choice_data_list": [
+    "俺のトレーナーは君しかいない！！",
+    "私のトレーナーは貴方しかいない！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたししか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……わたししか、かぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うーん……そこまで言われちゃったら、\n断るのもアレですし～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ま～癒しに関してだけなら、普通より？\nちょっとだけ？　詳しいかもですし？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だから、まぁ――少しやってみましょうか？",
+   "choice_data_list": [
+    "ありがとう……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あれ？　この流れ、\nなんか身に覚えがあるような……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――まぁいっか。とりあえず、\n次出かけたときに癒しスポットを\nダラ～っと巡ってみましょうか～。",
+   "choice_data_list": [
+    "よろしくお願いします！トレーナーさん！",
+    "それまでの間はどうしていましょう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わ～変な感じ！\nトレーナーさんがトレーナーさんって……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふ、せっかくだしビシバシやってみます～？\nいつものトレーナーさんみたいに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん、自分で勉強、とか？\nでも必要以上に熱中しそうだしなぁ～。",
+   "choice_data_list": [
+    "よくおわかりで……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふっ、もう結構一緒にいますからね～。\n『独学禁止！』とかにしちゃおうかなぁ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

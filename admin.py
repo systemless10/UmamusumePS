@@ -1,136 +1,35 @@
-"""Admin/cheat CLI for the private Umamusume server.
-
-Edits the live per-viewer state (server/data/state.sqlite3) directly -- the
-server re-reads state from SQLite on every request, so changes apply on the
-client's NEXT action (train once / reopen career mode), no server restart.
-
-Usage (run from anywhere):
-    python admin.py show
-    python admin.py set-turn 22
-    python admin.py set-stat speed 800        # speed|stamina|power|guts|wiz
-    python admin.py set-stat speed 1600 --max # the stat's CAP instead
-    python admin.py set-sp 9999
-    python admin.py set-fans 100000
-    python admin.py set-vital 100
-    python admin.py set-mood 5                # 1-5
-    python admin.py set-grade 4               # class (1 maiden .. 10)
-    python admin.py set-bond 3 80             # support position 1-6, bond 0-100
-    python admin.py add-skill 200011 [--level 2]
-    python admin.py items                     # list owned items
-    python admin.py give-item 45 10           # ADD 10 of item 45
-    python admin.py set-item 45 99            # SET item 45 count to 99
-    python admin.py clear-mail                # delete every UNCLAIMED present in
-                                              # the viewer's present box
-                                              # (--all also drops the claimed
-                                              # ledger rows)
-    python admin.py set-fcoin 999999 | set-coin N | set-tp N | set-rp N
-    python admin.py give-paid-carats 1500     # like set-fcoin but actually
-                                              # spent last (free carats go
-                                              # first) -- see shop.py
-    python admin.py idle-career-complete      # instantly max + finish the
-                                              # ACTIVE career (Independent
-                                              # Career Training's cheat-
-                                              # complete path from the CLI)
-    python admin.py add-friend-card 30052     # add a borrowable "friend"
-                                              # lending support card 30052
-                                              # [--level N] [--limit-break N]
-                                              # [--name NAME] (defaults: max
-                                              # level, max limit break)
-    python admin.py reset-password            # let this account be logged
-                                              # into (via the real account-
-                                              # link flow) with ANY password;
-                                              # whatever password is used
-                                              # becomes the new real one
-    python admin.py give-all-cards            # add every uma card + support
-                                              # card in master.mdb that isn't
-                                              # already owned (new, not maxed
-                                              # -- run max-all after for that)
-    python admin.py max-support-cards         # max exp + limit break on every
-                                              # OWNED support card (real
-                                              # per-card/rarity caps from
-                                              # master.mdb, not a guess)
-    python admin.py max-cards                 # max every OWNED uma card
-                                              # (card_collection): talent_level
-                                              # -> 5, skill_data_array hint
-                                              # levels -> 5 (existing entries
-                                              # only, none added)
-    python admin.py max-roster                # max every veteran in the
-                                              # finished-career roster box
-                                              # (stats/aptitudes/rank/skills,
-                                              # NOT the active in-progress
-                                              # career)
-    python admin.py max-all                   # max-support-cards + max-cards
-                                              # + max-roster
-    python admin.py paid-features             # list held subscriptions/passes
-    python admin.py give-paid-feature umaplan # grant a paid feature for 30
-                                              # days [--days N]; one of
-                                              # umasuku | umaplan (pick-two
-                                              # inspiration) | reroll_pass
-                                              # (free spark re-rolls) |
-                                              # order_pass (free spark
-                                              # orders) | all
-    python admin.py revoke-paid-feature all   # take one (or all) away
-    python admin.py give-item 260 5           # 因子再獲得チケット (re-roll
-                                              # ticket); 262 = 因子指定チケット
-                                              # (spark order ticket)
-    python admin.py --viewer 12345 show       # different account (default: the
-                                              # Steam client's viewer id)
-    python admin.py --region jp give-all-cards  # JP server's data (default
-                                              # viewer there: 900000000002)
-
-IMPORTANT invariant (learned the hard way): whenever chara_info.turn or the
-career's progress changes, the persisted home_info (the training screen's
-command lock state) MUST be recomputed for the new turn -- it is only ever
-rebuilt as a side effect of exec_command/race_out, so a raw turn edit leaves
-a stale locked/unlocked screen (e.g. everything locked on a normal turn).
-Every career-mutating command here ends with _refresh_career() which does
-that recompute exactly like the server's own turn-advance path.
-
-For anything beyond a raw turn write -- moving a run to a turn AND reconciling
-the goal banner, class, race history, the fired-event ledger and the
-in-flight contexts with it, plus editing any career property by path -- use
-career.py (`python career.py show` / `set-turn 45 --fill-races` / `set speed
-900`). set-turn here stays the minimal version it always was."""
 
 import argparse
 import os
 import sys
 from datetime import datetime
 
-_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"   # matches load.py's TIME_FORMAT / gacha.py's _TIME_FORMAT
+_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 
 def _now_str():
     return datetime.now().strftime(_TIME_FORMAT)
 
-# The server package lives next to this file. This used to be hardcoded to a
-# Windows checkout, which made admin.py unusable anywhere else (ModuleNotFound:
-# app). Derive it from this file's own location instead, keeping the old path
-# as a fallback so a Windows checkout still works.
 _HERE = os.path.dirname(os.path.abspath(__file__))
 for _candidate in (os.path.join(_HERE, "server"),
-                   r"C:\\Users\\USER\Documents\private server\server"):
+                   r"c:\Users\Trainer\Documents\private server\server"):
     if os.path.isdir(_candidate):
         sys.path.insert(0, _candidate)
         break
 
-# The region has to be known before `app` is imported (app.region fixes the
-# process region from UMA_REGION at import, and master_data picks that
-# region's master.mdb), so --region is read ahead of argparse.
 for _i, _arg in enumerate(sys.argv):
     if _arg == "--region" and _i + 1 < len(sys.argv):
         os.environ["UMA_REGION"] = sys.argv[_i + 1]
     elif _arg.startswith("--region="):
         os.environ["UMA_REGION"] = _arg.split("=", 1)[1]
 
-from app import region  # noqa: E402
-from app import state as state_store  # noqa: E402
-from app.handlers import single_mode_team as T  # noqa: E402
-from app.handlers import single_mode_events  # noqa: E402
+from app import region
+from app import state as state_store
+from app.handlers import single_mode_team as T
+from app.handlers import single_mode_events
 
-# Each region's own default account (Global: the Steam client's viewer id).
-DEFAULT_VIEWERS = {"global": "900000000001", "jp": "900000000002"}
-DEFAULT_VIEWER = DEFAULT_VIEWERS[region.PROCESS_REGION]
+from app import default_viewer as _default_viewer
+DEFAULT_VIEWER = _default_viewer.get()
 STATS = ("speed", "stamina", "power", "guts", "wiz")
 
 
@@ -149,8 +48,6 @@ def _career(full_state):
 
 
 def _refresh_career(viewer, full_state, career):
-    """Recompute home_info lock/preview state for the (possibly new) turn and
-    persist -- the same recompute the server's own turn-advance does."""
     ci = career["data"]["chara_info"]
     home = career["data"].get("home_info")
     if isinstance(home, dict):
@@ -186,13 +83,9 @@ def cmd_set_turn(viewer, args):
     ci = career["data"]["chara_info"]
     ci["turn"] = int(args.value)
     ci["playing_state"] = 1
-    full_state.pop(T.RACE_CTX_KEY, None)  # a stale race ctx would hijack check_event
+    full_state.pop(T.RACE_CTX_KEY, None)
     _refresh_career(viewer, full_state, career)
     print(f"turn -> {ci['turn']} (training screen recomputed)")
-    # The running client is still holding its OWN cached career at the old
-    # turn, and the server now REFUSES any action stamped with it rather
-    # than rewinding the run to match (single_mode_team._client_turn_conflict).
-    # So say it out loud: without a reload the next training just errors.
     print("   reload the career in the client (title -> Continue) before "
           "acting -- its cached turn is now stale and will be refused")
 
@@ -284,11 +177,6 @@ def _wallet_setter(state_key, field):
 
 
 def cmd_give_paid_carats(viewer, args):
-    """Grant carats to the PAID bucket specifically (coin_info_state.coin) --
-    a genuinely separate wire field the client displays on its own (real
-    screenshot, 2026-08-21: "PAID 0 / FREE N" as two distinct numbers), not
-    a combined total. set-fcoin/set-coin already do this directly; this just
-    matches the give-item-style "add" convention instead of set-coin's "set"."""
     from app.handlers import shop as S
     full_state = _load(viewer)
     wallet = S.grant_carats(full_state, int(args.value), paid=True)
@@ -319,10 +207,6 @@ def cmd_paid_features(viewer, args):
 
 
 def cmd_give_paid_feature(viewer, args):
-    """Paid features are held until an end time, as the real client expects
-    (a pass or subscription with pass_end_time/subscription_end_date). The
-    client re-reads them at load/index, so restart the game (or return to the
-    title screen) to see a change."""
     from app import paid_features as PF
     full_state = _load(viewer)
     for name in _paid_names(args.name):
@@ -344,11 +228,8 @@ CAREER_SLOTS_KEY = "career_save_slots"
 
 
 def cmd_career_park(viewer, args):
-    """Move the ACTIVE career into a named save slot (career leaves the
-    account; the client sees 'no career running'). All 42 per-career state
-    keys travel together -- career_state_keys() is the single source."""
     full_state = _load(viewer)
-    _career(full_state)                       # refuses when nothing to park
+    _career(full_state)
     slot = str(args.name)
     slots = full_state.setdefault(CAREER_SLOTS_KEY, {})
     if slot in slots and not getattr(args, "force", False):
@@ -364,8 +245,6 @@ def cmd_career_park(viewer, args):
 
 
 def cmd_career_resume(viewer, args):
-    """Restore a parked career into the active position. Refuses when a career
-    is already active (park it first) so two runs can never merge."""
     full_state = _load(viewer)
     if isinstance(full_state.get(T.STATE_KEY), dict):
         sys.exit("a career is already active -- park it first")
@@ -393,19 +272,10 @@ def cmd_career_slots(viewer, args):
               f"({len(blob)} keys)")
 
 
-_CARAT_ITEM_ID = 43  # category 90 (carats) ALWAYS uses item_id 43 in every real
-                     # capture (captures/20260818_081331/0010_present_index.json)
-                     # -- reward_id is ignored server-side for this category
-                     # (presents.py's _grant credits fcoin regardless), but the
-                     # CLIENT apparently needs a real item_data id to render the
-                     # present's icon/label; item_id 0 silently failed to show
-                     # in-game (found live 2026-08-18).
+_CARAT_ITEM_ID = 43
 
 
 def cmd_send_mail(viewer, args):
-    """Compose a present-box mail: item + amount (+ message id). The present
-    lands unclaimed; the client's mailbox shows and redeems it. The present
-    handlers own the shape -- this only appends to their inbox key."""
     from app.handlers import presents as P
     category = int(args.category)
     item = int(args.item)
@@ -420,11 +290,6 @@ def cmd_send_mail(viewer, args):
 
 
 def cmd_clear_mail(viewer, args):
-    """Empty the present box: drop every UNCLAIMED present (what the client's
-    mailbox actually shows), or with --all every row including the claimed
-    ledger entries. Claimed rows are kept by default because presents.py's
-    _receive uses them as the already-redeemed ledger -- deleting one only
-    reclaims list space, it can never un-grant the reward."""
     from app.handlers import presents as P
     full_state = _load(viewer)
     box = full_state.get(P.PRESENT_BOX_KEY) or {}
@@ -448,16 +313,6 @@ def cmd_clear_mail(viewer, args):
 
 
 def cmd_idle_career_complete(viewer, args):
-    """CLI shortcut for idle_single_mode's cheat-complete path (see server/
-    app/handlers/idle_single_mode.py): maxes every stat to 9999, skill_point
-    to 999999, and gives a max-level hint for every skill the active
-    trainee can learn, then marks the run COMPLETE (turn 78, state 2) --
-    reusing the SAME _max_out_career/_apply_hints/_persist_card_hints
-    functions idle_single_mode/end runs, so this and "start Independent
-    Career Training and wait ~10s in-game" produce identical results.
-    Does NOT itself call single_mode_live/finish -- the client still needs
-    to make that call (or you resume the client) to bank it as a roster
-    trained_chara; this only prepares the career for that."""
     from app.handlers import idle_single_mode as I
     full_state = _load(viewer)
     career = _career(full_state)
@@ -472,13 +327,6 @@ def cmd_idle_career_complete(viewer, args):
 
 
 def cmd_max_support_cards(viewer, args):
-    """Max every OWNED support card (collection.SUPPORT_CARD_KEY): limit_break
-    to the real max uncap (cards.py's _MAX_LIMIT_BREAK, 4) and exp to that
-    card's real cumulative-exp cap AT that uncap (cards.py's
-    _support_level_cap, sourced from master.mdb support_card_limit x
-    support_card_level -- the exact same lookup support_card/strengthen
-    itself enforces as a ceiling), not a guessed number. Does not touch
-    stock/favorite_flag/possess_time."""
     from app.handlers import cards as C
     from app.handlers import collection
     full_state = _load(viewer)
@@ -489,7 +337,7 @@ def cmd_max_support_cards(viewer, args):
     for e in entries:
         cap = C._support_level_cap(e.get("support_card_id"), C._MAX_LIMIT_BREAK)
         if cap is None:
-            continue  # card_id not in master data -- leave alone rather than guess
+            continue
         e["limit_break_count"] = C._MAX_LIMIT_BREAK
         e["exp"] = cap[1]
         changed += 1
@@ -499,20 +347,6 @@ def cmd_max_support_cards(viewer, args):
 
 
 def cmd_max_cards(viewer, args):
-    """Max every OWNED uma card (collection.CARD_LIST_KEY, state key
-    "card_collection" -- the trainable cards, NOT the finished-career
-    veteran roster max-roster handles): talent_level -> 5 (trained_chara.
-    py's own established max-veteran ceiling, build_maxed_veteran's
-    rec["talent_level"] = 5), rarity -> 5 (same convention --
-    build_maxed_veteran's rec["rarity"] = 5 -- and confirmed every real
-    card_id's card_rarity_data progression tops out at rarity 5, none lower,
-    so this is never overshooting a card's real ceiling), and every EXISTING
-    skill_data_array[].level -> 5 (single_mode_team.py's _MAX_HINT_LEVEL, the
-    real per-career hint ladder's ceiling -- corroborated by real level-5
-    entries in captured finished careers). Mirrors idle_single_mode.py's
-    _persist_card_hints mutation shape ({skill_id, level} dicts) but only
-    raises levels on entries already present -- never adds new skill hints
-    that weren't already there."""
     from app.handlers import collection
     from app.handlers import single_mode_team as ST
     full_state = _load(viewer)
@@ -534,16 +368,8 @@ def cmd_max_cards(viewer, args):
 
 
 def cmd_max_roster(viewer, args):
-    """Max every veteran in the finished-career roster box (trained_chara.
-    ROSTER_KEY -- NOT the active in-progress career): reuses trained_chara.
-    _max_out_veteran_fields, the SAME "fully maxed" convention
-    build_maxed_veteran already established for its single synthetic cheat
-    veteran (9999/stat, S=8 every aptitude, rank/chara_grade/fans/rank_score
-    pinned to this codebase's real ceilings, every non-negative skill in the
-    game at its real max level) -- applied in place to every REAL roster
-    entry instead of building a new synthetic one."""
     from app.handlers import trained_chara as TC
-    TC._get_or_seed_roster(viewer)  # ensure seeded/up-to-date before we mutate it
+    TC._get_or_seed_roster(viewer)
     full_state = _load(viewer)
     roster = full_state.get(TC.ROSTER_KEY) or []
     if not roster:
@@ -557,15 +383,6 @@ def cmd_max_roster(viewer, args):
 
 
 def cmd_give_all_cards(viewer, args):
-    """Add every uma card (master.mdb card_data) and every support card
-    (master.mdb support_card_data) that isn't already owned, using the exact
-    same real entry shape gacha.py's _grant builds for a freshly-drawn new
-    card: uma cards land at talent_level 1 with no skill hints yet, support
-    cards at exp 0 / limit_break_count 0 -- not maxed, just owned. Also
-    seeds a chara_collection entry for any character newly unlocked by an
-    added uma card (same as a real gacha pull), so new cards show up without
-    a client restart. Existing owned cards are left untouched. Run max-all
-    afterward if you want everything this adds fully maxed too."""
     from app.handlers import collection
     from app import master_data
     full_state = _load(viewer)
@@ -579,15 +396,6 @@ def cmd_give_all_cards(viewer, args):
         if row["id"] in owned_card_ids:
             continue
         if not row["default_rarity"]:
-            # default_rarity 0 (live-confirmed: ids 9100101 / 9101101, both
-            # all-zero stats/talent_group_id/get_piece_id) are unplayable
-            # system placeholders, not real ownable cards -- the client's own
-            # WorkCardData.CalcStatus NullRef's trying to resolve a talent
-            # group for one (Footer.UpdateStatus -> HasTalentUpgradeEnableCard
-            # / HasHintLvUpEnableCard, right on the post-login home screen,
-            # aborting every in-flight request and surfacing as a bare
-            # "connection error" -- confirmed live via Player.log after
-            # give-all-cards put one of these in a card_collection).
             continue
         cards.append({"card_id": row["id"], "rarity": row["default_rarity"],
                       "talent_level": 1, "create_time": _now_str(),
@@ -616,24 +424,12 @@ def cmd_give_all_cards(viewer, args):
 
 
 def cmd_max_all(viewer, args):
-    """max-support-cards + max-cards + max-roster in one call."""
     cmd_max_support_cards(viewer, args)
     cmd_max_cards(viewer, args)
     cmd_max_roster(viewer, args)
 
 
 def cmd_reset_password(viewer, args):
-    """Puts an account into the 'accept any password' state for the real
-    account-linking flow (account/publish_transition_code -> .../get_by_ or
-    chain_by_transition_code -- the game's own 'log back into my account'
-    mechanism). For a player who forgot their transition password (or never
-    set one): from ANY other account (even a fresh throwaway signup), call
-    account/chain_by_transition_code with {input_viewer_id: this viewer,
-    password: <anything non-empty>} and it succeeds -- and whatever password
-    was actually typed there is automatically saved as this account's new
-    real password (accounts.claim_reset_password), so the window closes
-    after that first successful login and only that password works from
-    then on."""
     from app import accounts
     accounts.reset_transition_password(viewer)
     print(f"viewer {viewer}: transition password reset -- next successful "
@@ -642,13 +438,6 @@ def cmd_reset_password(viewer, args):
 
 
 def cmd_add_friend_card(viewer, args):
-    """CLI for single_mode_team.inject_friend_support_card -- adds one
-    always-borrowable synthetic "friend" lending a specific support card,
-    for the pre-career "Borrow Card" screen when there are no real friends
-    to borrow from (user-reported 2026-08-18: a required support-deck slot
-    blocked career start entirely, "There are no Support Cards to
-    borrow"). --level defaults to that card's own max; --limit-break
-    defaults to 4 (max break)."""
     level = int(args.level) if args.level is not None else None
     limit_break = int(args.limit_break) if args.limit_break is not None else None
     entry = T.inject_friend_support_card(
@@ -722,13 +511,6 @@ def main():
     add("revoke-paid-feature", cmd_revoke_paid_feature, "name")
 
     args = p.parse_args()
-    # Viewer ids are pure digits, but a trainer id copy-pasted from the game's
-    # own UI (which displays it grouped, e.g. "802 445 340 143") carries
-    # spaces along -- strip ALL whitespace so that still resolves to the real
-    # account instead of silently minting a brand-new bogus row keyed on the
-    # space-containing string (live-hit 2026-08-20: reset-password --viewer
-    # "802 445 340 143" created a phantom account instead of touching the
-    # real 900000000001, so the reset never took effect where it was needed).
     viewer = "".join(str(args.viewer).split())
     args.fn(viewer, args)
 

@@ -1,0 +1,31 @@
+#title To Those Who Run Onward
+0 The fierce battle of the Grandmasters left a deep impression on all who watched, and came to a close.
+1 And today, too, inside the simulator—
+2 All right, next, tell me about your weapon!
+3 I'm weak under pressure... So my trainer worried about it together with me, and—
+4 And so you went with a runaway lead so big you can't feel the pressure! Love it, let's hone it!
+5 I'm scared of running along the inside rail, but going around the outside is a disadvantage too, so my trainer and I have been struggling...
+6 You need to become stronger. But it's your heart that must become stronger.
+7 Don't overcome it—carve out a new path. That isn't running away. It's moving forward!
+8 Y... Yes!!
+9 You've worked so hard to get here. Tomorrow's finally your race.
+10 My trainer and I talked about deciding my path based on the result, but... um...
+11 ...Standing at a crossroads can be scary, can't it? It's the entrance to a road you don't know.
+12 But your trainer is without a doubt your greatest ally... You can rest easy.
+13 Th-thank you! Instead of worrying, first I'll run the race with everything I've got!
+14 More and more trainers and Umamusume are using VR now.
+15 Many of them must have been inspired by the battle at the recent Grandmasters.
+16 After all, the Umamusume who ran on that stage received something more than knowledge from the Three Goddesses.
+17 ...That's true.
+18 Sorry to keep you waiting, Trainer Kashimoto! We're all set for training!
+19 ...I'm all set too.
+20 Have you already decided today's regimen with the Three Goddesses?
+21 Yes, we decided it by exchanging ideas with each other. So that you can all run your best.
+22 All right, then we're off. Thanks for working with us again today!
+23 Hehe, every one of them is so motivated. I can tell they're itching to run!
+24 All right, everyone's here! Today, too, believe in yourselves and run all-out!
+25 First, we build your foundational strength. Hone your confidence along the way!
+26 We'll always be watching over you, so don't look back—let's just look ahead and run~.
+27 The Three Goddesses, said to be the forebears of Umamusume, support the Umamusume and trainers of today through the history of those who came before.
+28 Will the hoofprints <chrname> and I left behind someday be passed on to other Umamusume too?
+29 So that they would be, I silently cheered <chrname> on to run with all her heart in the here and now.

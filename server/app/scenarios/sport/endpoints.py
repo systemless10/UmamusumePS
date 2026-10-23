@@ -1,14 +1,3 @@
-"""UAF Ready GO! (scenario 7) -- the endpoints only this scenario has.
-
-    single_mode_sport/competition       {current_turn}                       the competition (ps 21)
-    single_mode_sport/competition_live  {current_turn}                       the T72 live (ps 22)
-    single_mode_sport/use_item          {item_id, select_id_1, select_id_2,
-                                         select_id_3, current_num,
-                                         current_turn}                       item 6 (ps 1)
-
-Shapes are the captures' (docs/JP_UAF_SCENARIO.md §1). The sport_data_set
-every reply carries is attached at the response chokepoint (Sport.attach).
-"""
 
 from __future__ import annotations
 
@@ -46,8 +35,6 @@ def _refused(where: str, why) -> dict:
 
 
 def handle_competition(payload: dict) -> dict:
-    """§8: wins off the sport ranks; the result event (timing 15) on this
-    reply, its rewards on its check_event. Nothing in chara_info moves here."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -77,8 +64,6 @@ def handle_competition(payload: dict) -> dict:
 
 
 def handle_competition_live(payload: dict) -> dict:
-    """The T72 live: back to the training screen on turn 73; add_music 1088
-    the account's first time."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -103,8 +88,6 @@ def handle_competition_live(payload: dict) -> dict:
 
 
 def handle_use_item(payload: dict) -> dict:
-    """§9: item 6 turns every facility of genre select_id_1 into select_id_2,
-    partners kept; any number of uses a turn."""
     got = _career(payload)
     if got is None:
         return refuse()

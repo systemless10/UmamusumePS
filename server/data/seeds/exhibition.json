@@ -1,9 +1,5 @@
 {
  "_source": "practice_race/get_preset_array from the real Global server (UmaDumpy dumps/20260717_180912 request 0004): 10 empty presets named Team Slot N. No Global capture of room_match/get_preset_array, so room presets are not seeded.",
- "preset_slots": {
-  "practice_race": 10
- },
- "preset_name": {
-  "practice_race": "Team Slot {n}"
- }
+ "preset_slots": {"practice_race": 10},
+ "preset_name": {"practice_race": "Team Slot {n}"}
 }

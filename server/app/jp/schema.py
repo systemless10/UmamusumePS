@@ -1,20 +1,3 @@
-"""Complete a JP reply to the shape the real JP server sends.
-
-The JP client's deserializers expect the fields of ITS build; Global's
-handlers were written for an older one. conform() walks a reply's `data`
-against data/jp/response_schema.json (tools/build_jp_schema.py) and:
-
-    - adds every field the real reply has and ours lacks, as an EMPTY value
-      of the right type (0, "", false, [], a map of empty fields);
-    - turns an empty array where the real reply has a map into that map, and
-      an empty map where it has an array into [] (JP changed a few types --
-      e.g. support_card_deck_array[].friend_support_card_info became a map);
-    - never touches a value a handler set, and never adds a real value.
-
-So a handler's output always wins, and what JP adds is only structure. A
-non-empty value of the wrong type is left alone and reported, because
-coercing it would hide a real handler bug.
-"""
 
 from __future__ import annotations
 
@@ -44,12 +27,6 @@ def has_schema(endpoint: str) -> bool:
     return endpoint in _schemas()
 
 
-# The JP captures hold careers of two scenarios only (Onsen, Ramen), so the
-# career families this server plays -- single_mode (URA), single_mode_team,
-# single_mode_live, single_mode_free -- have no schema of their own. Every
-# scenario's calls share one envelope (Onsen's and Ramen's agree field for
-# field outside their own *_data_set), so such a call is completed against the
-# same call of a captured scenario, without that scenario's data set.
 _CAREER_DONORS = ("single_mode_onsen", "single_mode_ramen")
 
 
@@ -71,12 +48,6 @@ def schema_for(endpoint: str) -> dict | None:
 
 
 def jp_choices(node) -> None:
-    """Global's event choice names the story branch it plays with a bare
-    `select_index`; JP's names it in `select_index_info_array` (`WIRE` 2.31.0,
-    13,022 real events: always one {branch_number: 1, select_index: <the same
-    value>} per choice, and no bare select_index). Rewrite every choice in a
-    reply into JP's form -- the client finds no branch otherwise, and the event
-    it has just played never hands back control."""
     if isinstance(node, dict):
         for key, value in node.items():
             if key == "choice_array" and isinstance(value, list):
@@ -109,9 +80,6 @@ _SCALARS = ("int", "float", "str", "bool")
 def _conform(value, schema: dict, path: str, added: list, clashes: list):
     t = schema.get("t")
     if value is None and t in _SCALARS:
-        # Global's handlers send nil for a few scalars JP always sends typed
-        # (`WIRE` unchecked_event_array[].event_contents_info.tips_training_
-        # partner_id: Global nil, JP 0).
         added.append(path.rstrip(".") or "<data>")
         return copy.copy(schema.get("d"))
     if t == "map":
@@ -147,7 +115,7 @@ def _conform(value, schema: dict, path: str, added: list, clashes: list):
 
 def conform(endpoint: str, resp: dict, handled: bool) -> dict:
     if (resp.get("data_headers") or {}).get("result_code", 1) != 1:
-        return resp            # `WIRE` JP error replies carry no data at all
+        return resp
     jp_choices(resp.get("data"))
     schema = schema_for(endpoint)
     if not schema:

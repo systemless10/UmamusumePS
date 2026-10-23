@@ -1,0 +1,5 @@
+#title The Hoofprints of Umamusume and Trainers
+0 The fierce battle of the Grandmasters left a deep impression on all who watched, and came to a close.
+1 <chrname> and the other Umamusume running today will surely support the Umamusume who run in the future.
+2 My journey side by side with <chrname> will go on for a long while yet.
+3 For the Umamusume to come—and above all, I wanted to leave even more of our hoofprints behind.

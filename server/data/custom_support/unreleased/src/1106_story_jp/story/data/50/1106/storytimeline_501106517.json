@@ -1,0 +1,41 @@
+{
+ "title": "うっかりハーブティー",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "ふあ～……ねむー。ハーブティーでも飲んで\nお昼寝しようかな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "マグカップを温めて～、茶葉いれて～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あとはタイマーのアプリを――\nあ、ウマチューブの通知来てる～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、今日の配信も癒されたぁ～。\n自然のASMRって、時間忘れちゃう――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……って、あ！\nハーブティー！！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その後、渋～くなったハーブティーを飲み\n気分が落ち込んでしまう\nヒシミラクルなのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

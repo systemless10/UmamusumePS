@@ -1,0 +1,312 @@
+{
+ "title": "それぞれのパーティーモード",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある休日、サトノダイヤモンドが出席する\nパーティーに、ヴィブロスもお呼ばれ……\nもとい、ついてきていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "パーティー参列者A",
+   "text": "ダイヤさん、先ほどのスピーチ、\nとてもご立派でしたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "お褒めに与り光栄でございます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "サトノ家の代表として、今後の展望を\nお話しする重要な場でしたから……\n無事責務を果たせて、安心いたしました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "パーティー参列者A",
+   "text": "今後の皆様のご繁栄が、\nますます待ち遠しくなりました。\nところで先日、お父様と――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "すごいね、サトノ。\nあんなに大人なひととふつーに喋ってる！",
+   "choice_data_list": [
+    "対等な扱いを受けてるな",
+    "対等な扱いを受けてるね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こんなちょーセレブなパーティーで、\n真ん中にいて……ちょーかっこいい～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "確かに、各界の著名人や関係者の中で、\nサトノダイヤモンドは上手に立ち回っていた。\nそんな彼女を見守っていたところ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノの関係者A",
+   "text": "――あら、貴方は……\nヴィブロスさん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノの関係者A",
+   "text": "ダイヤさんと、同世代の！\nお噂はかねがね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はじめまして～！\n知ってもらえてて、うれしいです♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！　そのネックレス、\nアラビア語……ですよね！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノの関係者A",
+   "text": "あら、そうなのよ！\nご存じ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はいっ！　オーダーして、自分だけの\nオリジナルジュエリーができるんですよねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私もいつかドバイに行ったら、\nお願いしたくて～。\nえ～、やっぱちょーかわいい♡　いいな～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノの関係者A",
+   "text": "ふふ、でしょう。\n私もこのデザイン、お気に入りですの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わかりますっ！　だって、ちょーすてき♡\nオーダーの仕方がよっぽどよかったんですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私がお願いするときも、\nいっしょについてきてほしいくらい♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノの関係者A",
+   "text": "あら、でしたら……今度、デザイナーの方が\n来日されるの。一緒にいらっしゃる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええっ、いいんですか！？\n行きたい行きたーい♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとうございますっ♡\nきゃ～、めっちゃうれしい♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノの関係者A",
+   "text": "ふふ、貴方かわいらしい方ねぇ。\nドバイがお好きなら、今日はあちらで\n駐在されている方も確かいらしてますわよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんとですかっ？\n紹介してほしいです～っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、ちょっと行ってくるね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてヴィブロスは、あっという間に\n人だかりの中に消えていき――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――えっ、あのホテルへ！？\nいいな～、いつかご招待してください♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "いつの間にか、パーティー参加者の\n中心となって話していたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――今日は参加させてくれてありがとね、\nサトノ！　ちょー楽しかったよ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ふふ、色んな方とお話しされてましたね。\nみなさま、とても喜んでいらっしゃいました。",
+   "choice_data_list": [
+    "喜んでた？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "はい。こういったパーティーは、\n形式ばった会話になりがちで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ヴィブロスさんの華やかな振る舞いに、\nみなさま目も心も癒されたようです。\nさすがですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ、そう？\nサトノのほうがすごいよ～！",
+   "choice_data_list": [
+    "尊敬しあえる同期がいてよかったな",
+    "尊敬しあえる同期がいてよかったね",
+    "次はもっと寄せてみる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ、そう？\nサトノのほうがすごいよ～！",
+   "choice_data_list": [
+    "尊敬しあえる同期がいてよかったな",
+    "尊敬しあえる同期がいてよかったね",
+    "次はもっと寄せてみる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんうんっ。\nサトノもかっこよくて、私もえらい♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私たち、\n自慢の同期だね～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "はい、そうですね！\n同じ世代で走っているのも、ご縁ですから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "この先も自慢でいられるように、\n頑張りますねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！\nじゃ～、がんばろーのぎゅーしよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "きゃっ……ふふ、\nお返しします、えいっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～♡\nじゃあ私ももっと、えーい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして2人は、少しの間\n仲良く抱きしめ合っていたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "寄せるっていうと、\n私がサトノっぽく？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいよ、私お姉ちゃんの真似っこ\n上手だし～、サトノもいけるいける！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こほん。……みなさま、こんにちは。\n先ほどご紹介に与りました、\nサトノダイヤモンドです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "このよき日に、みなさまの前で\nお話しする機会をいただけましたこと、\n大変に光栄に思います。さて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "それ、私のさっきのスピーチ……！\n1回聞いて、覚えたんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ。なんか音で～？\nあともーちょいだけいけるかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "す、すごい……！　ヴィブロスさんって、\nやっぱり……聡明な方ですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "天才肌な一面をのぞかせた\nヴィブロスだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+#title Encouragement! A Gift for Summer Camp
+0 Summer camp was finally beginning. As I was getting fired up for training—
+1 Caution! It's heavy, so don't hurt yourselves!
+2 Gratitude! Now, please carry it into that building over there!
+3 Looking toward the voice, I saw people carrying large crates under Director Akikawa's instructions.
+3{ Akikawa
+4 Oh, Trainer <username>! Good news for all trainers preparing for summer camp!
+5 So that you may have an even more fulfilling training camp, I have set up the VR Umalator at the camp lodgings as well!
+6 By all means! Make use of training with the Three Goddesses, just as you would at the academy!
+7 Thanks to Director Akikawa's unexpected gift, we'd be able to train with the Three Goddesses during camp too!

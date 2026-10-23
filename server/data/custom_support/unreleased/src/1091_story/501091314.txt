@@ -1,0 +1,61 @@
+#title After the Nakayama Kinen: Choice
+0 Huff... Huff...— Haaaaaa...!!
+1 Vivlos got splendid results in the Nakayama Kinen. A wonderful run—one that would surely hold up in Dubai...
+1> (But...)
+2 *gasp*... *gasp*...!
+3 Hah, hah... Haaah...
+4 Right after the race, Vivlos sat down and couldn't move for a while.
+5 Seeing how drained she was, there was only one decision I could make.
+5> Let's give up on Dubai this year
+6 ...
+7 ...Really, no way?
+7> I'm sorry, but no | I'm sorry, but no
+8 As the doctor at the hospital explained, an overseas expedition is extremely grueling. It would be a huge burden on Vivlos in her current state.
+9 But...
+10 But, maybe I'd actually be fine.
+11 There's a chance the environment overseas might suit me better, too.
+11> That might be true
+12 ! Then—
+12> But this time, please indulge my selfishness | But this time, please indulge my selfishness
+13 Huh...
+13> I'd rather take care of you than bet on a chance | I'd rather take care of you than bet on a chance
+14 ...!
+15 ...
+16 ...Something that kind isn't selfish.
+17 ...Honestly, I already knew. Like, "ah, I have to give this up."
+18 I guess wanting everything really is... impossible.
+19 ...The things you really want are always far away.
+20 Good work, Vivlos.
+21 Onee-chan...
+22 ...Listen, I—
+23 It's all right, Vivlos. ...I can tell just by looking at you.
+24 I see. ...That's Onee-chan for you!
+25 ...Vivlos.
+26 It's okay, Onee-chan!
+27 I mean, think about it! Dubai isn't going anywhere!
+28 I just have to get my body properly healed and aim for it next year. Right?
+28> Right | Right
+29 Exactly! Yeah...
+29> ...We'll need to think of a different goal! | ...We'll need to think of a different goal!
+30 Oh! That's right! What would be good～?
+31 Let's see～...
+32 ...
+33 Huh, what is it...?
+34 Oh! I've got a great idea♡
+35 How about the Victoria Mile?
+36 !
+37 The Victoria Mile is, as the name says, a 1600-meter mile G1 race. It's known for two things: lots of success from Umamusume who ran the Tiara races, and—
+38 It's the race Onee-chan won twice in a row! I wanna run it too!
+39 She got results in the Oka Sho, also 1600 meters, and made her presence felt in the Tiara races. Above all, she herself is eager. Then...
+39> Let's go for the Victoria Mile
+40 Yeah!
+41 Onee-chan, look forward to it. I'll get you all excited for sure!
+42 Excited...?
+43 I mean, if I win too, that'd be suuuper amazing, right?
+44 I can't show you me running in Dubai... but I'll make you smile again, like in the Tiara races♡
+45 ! ...—
+46 ...Yes, I'm looking forward to it.
+47 ...She worked so hard for me.
+48 I have to repay her. As the big sister she loves so much.
+49 —And for my own sake as well.
+50 The next goal race: the Victoria Mile. Dubai was carried over to next year, and Vivlos's new challenge at home began.

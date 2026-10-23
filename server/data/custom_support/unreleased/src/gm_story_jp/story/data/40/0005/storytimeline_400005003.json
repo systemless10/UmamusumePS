@@ -1,0 +1,171 @@
+{
+ "title": "それぞれのスタート",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "この日、デビュー戦を終えたトレーナー陣で\n打ち上げを行っていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "担当ウマ娘が無事デビューしたということで。\nまずはみなさん、お疲れ様です！",
+   "choice_data_list": [
+    "お疲れ様です！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "デビューはもう少し先かと思ったんですが、\nミークが本当に頑張ってくれて……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "こちらも、万全かつ無理のない状態で\nデビューを果たすことができました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "この人は、樫本理子トレーナー。\n以前にもウマ娘を担当した経験があり、\n我々にとっては先輩トレーナーだ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "樫本理子"
+   ]
+  },
+  {
+   "name": "樫本理子",
+   "text": "これからが本番とはわかっていますが、\n今はまず、ひとつの山を越えましたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "樫本トレーナーのトレーニング、\n拝見したことがありますけど――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "樫本"
+   ]
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ペースや負荷まで緻密に考えられていて、\n本当に徹底されていますよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "今日と同じ日がないように、\nウマ娘も日々変わります。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "彼女たちの微妙な変化を監視し、\nその都度トレーニングに反映する。\n……それが私のやり方です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "樫本トレーナーは、\n徹底した管理で知られるトレーナーだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その鋭い眼光に、近寄りがたいものを\n感じさせることも多いようだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "とはいえ、別にウマ娘を\n縛り付けたいわけではありません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "させたいことは極力させる。そのうえで\n状態を判断するのが、私の仕事かと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "管理にしても、判断にしても、\n私はまだまだ遠く及ばないです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "だからと言ってはなんですが、\n三女神の存在は本当にありがたくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "未熟な経験を補うためにも、\n知識をたくさん吸収していかないと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "私も同じです。経験を積んでいたとしても、\n知識は喉から手が出るほど欲しいものです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ルーキーであろうと、ベテランであろうと、\nウマ娘の夢を背負う重さは変わりませんから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "あ、いたいたっ！\n樫本トレーナー、お疲れ様ですっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "すみません、トレーニング開始には\nちょっと早いんですが……\n少し相談があって。いいですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ええ、構いません。\nすぐ行きます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……それでは。担当ウマ娘たちのため、\n引き続き尽力して参りましょう。",
+   "choice_data_list": [
+    "はい……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "はいっ、頑張りましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘のために、\n自身も走り続けるトレーナーたち。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "桐生院トレーナーや樫本トレーナーのように、\n自分もウマ娘との信頼関係を築いて\n共に走っていこうと改めて思うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "桐生院"
+   ]
+  }
+ ]
+}

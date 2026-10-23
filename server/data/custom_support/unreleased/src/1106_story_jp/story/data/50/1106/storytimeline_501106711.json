@@ -1,0 +1,83 @@
+{
+ "title": "今度こそ負けない！",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは、また負けちゃいました……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱり、他の子たちは\n強さの次元が違いますね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしなりに、ずっと\nがんばってきたつもりなんですが……。",
+   "choice_data_list": [
+    "君なら絶対に勝てる！",
+    "貴方なら絶対に勝てる！",
+    "気持ちを切り替えて、次走に備えよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしなりに、ずっと\nがんばってきたつもりなんですが……。",
+   "choice_data_list": [
+    "君なら絶対に勝てる！",
+    "貴方なら絶対に勝てる！",
+    "気持ちを切り替えて、次走に備えよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……そう、ですかね……。",
+   "choice_data_list": [
+    "いつか絶対、努力は報われるよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。",
+   "choice_data_list": [
+    "今日からまた、積み重ねていこう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……そうですね。\nや、すぐに結果に表れるものじゃ\nないですもんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん、がんばるかぁ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……そう、ですね。\nぐずぐず悩んでても、結果は覆りませんし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "悩むだけ時間のムダ、体力のムダ、\nメンタル削られるだけでいいことない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん、切り替えました。\nこれからのこと、考えていきましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

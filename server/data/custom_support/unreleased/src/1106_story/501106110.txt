@@ -1,0 +1,46 @@
+#title Ending (Normal)
+0 Hishi Miracle dashed through her first three years in the Twinkle Series.
+1 The many miracles she achieved. Some things changed because of them, but...
+2 Whaaat, after working so hard in races, I have to study for tests again?
+3 Hey, hey, wouldn't it be nice if we got exempted a little? It's kinda unfair, like.
+4 If anything, it's fair.
+5 Races are races, and schoolwork is schoolwork. That's Tracen Academy's policy.
+6 Mira-ko, your running's improved a ton, but your studying hasn't changed one bit, huh?
+7 Ughhh, don't say that. It's not like my brain's gonna get any faster.
+8 Hasn't it gotten worse, if anything?
+9 So mean! It has not! I've been studying as much as I can while busy, and keeping it steady!
+10 Her life at Tracen Academy hadn't changed at all from before.
+11 But, man. Who would've thought Mira-ko would become a G1 Umamusume?
+12 Ah, about that. I'm the one who thinks that the most.
+13 I used to joke about being a future G1 Umamusume, but I never knew I had this kind of talent.
+14 Hm, wait. Did I have talent?
+15 You didn't?
+16 Well, whether you have talent or not, or whether you worked hard enough, in the end you can't really know, y'know?
+17 All of us...
+18 Probably can't understand ourselves on our own.
+19 And it's the same from other people's view. Nobody has the answer.
+20 So, like. Instead of overthinking things, you just gotta do it. You just gotta try and find out.
+21 That's what I can tell you, I guess.
+22 Hmhm~ Well? Are you impressed with me?
+23 I see, I see. But, Mira-ko, you're talking all big, but...
+24 You only realized it because your trainer kept pushing you, right? It's not like you did it on your own, is it?
+25 Gulp... Well, about that... I guess I was lucky.
+26 Nothing starts unless someone first believes "there might be something there."
+27 I just had that kind of special person.
+28 Oh, are you bragging about your trainer? Ooh, look at you!
+29 N-no, it's not like that! I'm totally serious!
+30 Because I seriously, seriously had someone like that...
+31 Oh, it's from my trainer. Right, it's already training time...!
+32 Sorry, gotta go, see ya.
+33 Okaaay, good luck. Be happy, you two.
+34 (That's right, I have someone who believes in me. So...)
+35 (Let's do my best today too. Just a tiny bit beyond what I think my limit is.)
+36 Wait, all of this?! Isn't this way too much?
+37 There's no way I can do this much.
+37> You can do it! I'm counting on you! | You can do it! I'm counting on you!
+38 That again? Trainer, you demon, you devil.
+39 Fine! I'll do it, I'll do it, okay...?
+40 When I finish, praise me a lot, okay? And buy me a juice, too.
+41 Here goes!
+42 Though she grumbled the whole way, Hishi Miracle ran off looking somehow happy.
+43 An unchanging daily life. But one that's just a little more fulfilling than before.

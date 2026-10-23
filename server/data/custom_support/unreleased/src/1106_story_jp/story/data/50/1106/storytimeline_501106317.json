@@ -1,0 +1,355 @@
+{
+ "title": "有馬記念の後に・誰かによく似たウマ娘",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "（みんな、すごいっ！　みんな、めちゃ強！\nハートの強さじゃかなわないっ！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、それでも～～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（長々とがんばってれば、\nいいことがあるって思いたい！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしにも、誰にでも、だからぁぁぁ！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁああああああああああああ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "またまたミラクル、大ミラクル！\nこの娘が走れば奇跡が起きる！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "ヒシミラクル優勝ー！！\n追って追って追いかけ続けて、ついに\nすべてのウマ娘の先頭に立ちました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やったやったぁぁぁ！\n会場のみなさん、やりましたよぉぉぉ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ウオオオオオッ！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それからトレーナーさん、やりましたぁぁぁ！\nこっちこっち、はよっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "呼ばれてコースの中に飛び入り、駆け寄る。",
+   "choice_data_list": [
+    "おめでとう、最高のミラクルだ！",
+    "おめでとう、最高のミラクルだよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ですよね～。もうねっ、わたしも勝ったけど、\nトレーナーさんの大勝ちですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "こんなウマ娘に人生賭けて、なんて見る目の\nない人って思ってました。最初は～。",
+   "choice_data_list": [
+    "おいおい……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもでも、見る目がなかったのは\nわたしのほうでした～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "開けてみれば、わたしそこそこ！\nいや、かなり！　もう大当たりですよねっ。",
+   "choice_data_list": [
+    "ああ、最高のウマ娘だ！",
+    "うん、最高のウマ娘だよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "こうなったらお好み！\n今晩はもうめっちゃお好み焼き！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "メニューの端から端まで食べましょう！\nウルトラスペシャル・ミラクルMIXで！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "大喜びのヒシミラクル。\nそれを見ながら――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "I don't understand.",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "あ？　何が解せないんだ、クリスエス？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "実力は――十分。\n今までも多くのGⅠを勝ってきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "なのに――初めてGⅠに勝利したような。\nなぜ、あそこまで喜べる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハハハ、そういうもんさ。\n最高の仲間同士ってのは！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "デカい獲物をしとめるには、時には\n必要なのさ。ああいうノリの大波がな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "……ふむ。それがLoseにつながった。\nならば――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "……Restartだ。\nまた――使命に向けて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えええっ……この大勢の前で\nコメントですか～？\nなんかキャラじゃないってか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもまあ、せっかくですから、\n少しだけ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは腰が引けたまま、\nウイナーズ・サークルの中心に立ち――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～、わたしに夢を懸けてくれたみなさん、\nおめでとうございました～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "正直えらそうなことは\nなにも言えないんですけど、でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日のメンバーの中に入っても、\nたったひとつだけ自慢できることが\nあります。それは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしだけがミラクルってことです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "考えてみてくださいっ。他のウマ娘は\nちゃんと頭から尻尾まで努力できる娘！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝ってもミラクルちゃう！\nぜんぜんちゃう！　でもわたしは\nここまで来られただけでミラクルです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "尊敬なんてできるもんじゃありません。\nしちゃダメ。わたしもしてないっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、そんなウマ娘だって勝てたら\n嬉しいじゃないですか。\n希望が持てるじゃないですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そして勝てたのはきっと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝ってほしいと願ってくれた誰かの\nおかげです。顔もわかりませんけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしとよく似た誰かの期待が……\n勝たせてくれたのかなって思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "いいわよー、ヒシミラクルー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンB",
+   "text": "他人の気がしねぇ。\n俺ぁ、アンタが1番好きだぁぁぁ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ども……どもどもっ。よかったぁ、\nそう言ってくれる人がレース場にもいて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これでもクラスではわりと人気なんですよ。\n『あんた、いても気にならない』って\nみんなに言われてて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（あははははは！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "会場から飛ぶ温かい笑い声。\nそれもまた――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "誰からも愛される\nヒシミラクルの魅力ゆえだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゼンノロブロイ",
+   "text": "いい……演説ですね。\n英雄とは時に風変わりなもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゼンノロブロイ",
+   "text": "こんなふうに語れるのは\nヒシミラクルさんだけだと思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "ですね。この距離感……！\nまさしくファンサの鏡。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "あたしたちには醸し出せない親しみやすさ。\nそこにシビれる憧れるゥ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "両英雄も温かな拍手を送り――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ってわけで、みなさんもちょっとだけ\nミラクルを信じてみてください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "大丈夫。自分がダメでも、そのときは\n声をかけてくれる誰かを信じるってことで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "大切な誰かと出会い、やれるだけやれば、\nきっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "誰にでも起きます、ミラクル！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ありがとうございました～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "title": "天皇賞（春）にむけて",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "――『天皇賞（春）』。\n予想通り、出走表に\nシンボリクリスエスの名はなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こわいものは何もない。\n何もないはずだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうだ、わたしにはステイヤーの才能がある。\n『覚悟』だって、少しは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トップロードちゃんもそう言ってくれた！\nでも……。",
+   "choice_data_list": [
+    "でも……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あるかな？　ある？　ほんとに～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どうも、んなわけあるか～い？　って気が、\nだんだんと……。",
+   "choice_data_list": [
+    "ある！あるから！",
+    "あるよ！あるから！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "落ちそうになるテンションを、必死に\nスライディングキャッチする。そう――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルの常人マインドは\n鼓舞し続けないと、だんだんヘタれる。\nそれは今も変わらない。",
+   "choice_data_list": [
+    "今日はクリスエスはいないし！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあ、それは……確かですね。",
+   "choice_data_list": [
+    "なんとなく、いけそうだし"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんとなく！　それ大切ですよねっ。",
+   "choice_data_list": [
+    "いける、絶対勝てるぞ！",
+    "いける、絶対勝てるよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おー、だんだんそんな気になってきました！\nこの距離なら、エンジンのかかり遅くても\nいけるし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やります、いきます、\nわたし、できる娘っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "ヒシミラクル！　ヒシミラクルです！\nさあ期待にどこまで応えられるか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（期待？　そういえばわたし\n今日、なん番人気なんだろ……？）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（1番？　2番？　それとも7番くらい？）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（まあ、いっかな。なん番人気でも。\nだって……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（そうだ、『菊花賞』が終わった、\nあのときに……決めたんだ）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしがぁぁぁ！\n目指すのはぁぁぁぁぁ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『天皇賞（春）』～～～！！！！！！\nそこで勝ぁぁぁぁつ！！！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんに背中を押されて、\n自分で決めたんだ。『勝つ』って。\nだから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なん番人気でも関係ない！\n1番人気より――1着！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

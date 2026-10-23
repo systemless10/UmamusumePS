@@ -1,0 +1,190 @@
+{
+ "title": "デビュー戦にむけて",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "メイクデビュー……。ついにこの日が……。\nふ、ふ、震えが～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんか時間の感覚まで、おかしくなってて。\n移動バス、ずいぶん長く走ってませんでした？",
+   "choice_data_list": [
+    "ああ、小倉レース場だからな",
+    "うん、小倉レース場だからね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "小倉……。九州の……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そういえばっ！　九州遠征って\n言ってましたよね。あわわ～っ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "すっかり忘れている……。メイクデビューは、\nたまたま小倉に距離2000mのレースが\nあったため、そこに出すことにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルはズブいところがあるため、\nスタートから忙しい短距離レースは向かない。\n――それが判断理由だった。",
+   "choice_data_list": [
+    "さあ、そろそろ時間だ",
+    "さあ、そろそろ時間だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は、はい～。\nいきますよ……。いきます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "大丈夫。イメトレだってしてきたし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ワアアアアアアアアア！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ワアアアアアアアアア！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ワアアアアアアアアア！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ええ……？",
+   "choice_data_list": [
+    "出ないのか、パドック？",
+    "出ないの、パドック？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "出ますよぉ。\n出ますけどもぉ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うー、胃が痛っ。\nやっぱイメトレとはぜんぜん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱガチのレースとか、\nわたしにはムリってか～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "じわじわと尻込みするヒシミラクル。\nリアルデビューの壁にたじろいでいるようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ここは例により、ハッパをかけてあげないと\n進めない局面かもしれない。ならば――",
+   "choice_data_list": [
+    "君にピッタリの場所だな！",
+    "貴方にピッタリの場所だね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～……またまた……。",
+   "choice_data_list": [
+    "トレーニングしてきたもんな",
+    "トレーニングしてきたもんね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それは……少しは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、やってきた……？\nたま～に怠けたことも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、やったかな、わたしにしては。\nうんうん……。",
+   "choice_data_list": [
+    "期待してるから！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "たっは～……。\n思ってます、ほんとに？　も～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも……そうですね。よくしてくれた分、\n期待してくれる分だけでも……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわぁ、周り中、みんな本気……。\n目がこわいや。けど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うう～、がんばれわたし。\n物は考えよう、だよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うんっ、デビューできるだけでもミラクル！\nこれもきちょ～な思い出なんだからっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

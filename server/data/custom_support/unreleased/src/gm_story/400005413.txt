@@ -1,0 +1,3 @@
+#title Toward the WBC
+0 At the end of the year, the WBC was finally held. The last race of classic year for <chrname>, who had proven her ability.
+1 Seen off by the Three Goddesses, we stepped onto the grand stage to show the results of everything we'd done together...!

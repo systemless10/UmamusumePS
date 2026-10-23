@@ -1,0 +1,263 @@
+{
+ "title": "宝塚記念にむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "海外を知る子たちに、胸を借りるつもりで\n挑む『宝塚記念』の出走前――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あははっ！\nそれってちょーうける！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "控室の中は、ヴィブロスの楽しげな\n笑い声が響き渡っていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "いやいや、笑いごとじゃないぞ！\nあの時は大変だったんだから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "そうよ～、ヴィブロスちゃんてば、\nこーんなにちいちゃいのに好奇心旺盛で……\nどこにでも行っちゃって～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "でもね、姉2人が呼ぶとすぐに出てきてね。\nかわいかったわ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "たしかに～！\nちっちゃい私、かわいい♡",
+   "choice_data_list": [
+    "（ご家族のおかげでリラックスできてる）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "とは言っても緊張感がないわけではなく、\n野球選手としてスポーツの厳しさを知る\n父親が主導で、うまく空気を作れている。",
+   "choice_data_list": [
+    "（ご家族が来てくれてよかった）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今日の『宝塚記念』はサトノクラウンたちを\n始め、実力の確かなウマ娘たちが揃う。\nクラシック三冠路線出身の子も多いだろう。",
+   "choice_data_list": [
+    "（でも実力を発揮できたら――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――ねえ、トレっち！",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、トレっちもそう思うでしょ？",
+   "choice_data_list": [
+    "あ、ああ……？",
+    "う、うん……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～～っ♡\nもう、トレっちってばぁ♡",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "トレーナーさん……貴方って、\n意外と大胆なのね～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "……いやぁ、これはこれは。\n今度じっっくり！　お話ししたいですな！",
+   "choice_data_list": [
+    "…………なんの話！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……もう、\n貴方が緊張してどうするんですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今の言葉、\n絶対忘れないからねっ♡",
+   "choice_data_list": [
+    "（何に頷いてしまったんだ……！？）",
+    "（何に頷いてしまったの……！？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃ、そろそろ準備しよっか！\nたくさん元気もらったし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな、私……\n今日のレース、勝つからね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなの応援に、\n絶対応えるから！",
+   "choice_data_list": [
+    "頑張れ、ヴィブロス！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はーいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "你好、ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ヴィブロスさん、\n今日はよろしくお願いしますっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いーえっ！\nこちらこそよろしくです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日はね、\n2人からたくさんもらうつもり！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "聞いてるわよ。\nドバイを目指しているんでしょう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "確かに私と走ることは、\nあなたにとってよい経験になる。でも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "苦い記憶のほうが残ってしまうかも。\n本気で、食らいつくす気持ちがないと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ううん、食べたりしないよ！\n私、知ってるもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "本気で楽しむことだって、\nたくさんのことを教えてくれるって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "……ふふっ、そう。\nそれがあなたの美学なのね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "私も私の誇りを貫くわ。\nダイヤ、あなたもそうでしょう？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ダイヤ"
+   ]
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "うんっ。\n私はまだ、海外経験はないけれど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "――悲願のための、準備はしてきました。\n誰にも負けないくらい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ですから、私も本気で狙います。\nクラちゃんの経験、そして――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クラ"
+   ]
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ヴィブロスさんの輝く夢への想い！\n私の糧にします！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！\n輝く、夢……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私の夢のこと、\nおっきく考えてくれてありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなのキラキラで、\nちょーすっごいレースしようね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

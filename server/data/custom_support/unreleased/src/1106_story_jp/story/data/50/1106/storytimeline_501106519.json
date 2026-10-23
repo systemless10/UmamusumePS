@@ -1,0 +1,41 @@
+{
+ "title": "時よ止まれ！",
+ "text_block_list": [
+  {
+   "name": "友人A",
+   "text": "く～～～！\n遊びつくしたね～～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ね～。あ、お土産も買ってこー。\nクッキー缶かわいいの探したいし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "友人B",
+   "text": "だねー……帰ったらまたいつもの日常だし。\nせめてお土産でテンションあげないと～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっと～、ヤな事思い出させないでよ～。\nせっかく忘れてたのにぃ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～～現実に戻りたくないよ～～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "暮れゆく夕日に\n憂鬱になるヒシミラクルだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+#title Party Modes of Every Kind
+0 One day off, Vivlos was invited to... or rather, tagged along to a party Satono Diamond was attending.
+1 Diamond-san, your speech earlier was simply splendid.
+2 I'm honored by your praise.
+3 It was an important occasion to speak about the future as a representative of the Satono family... I'm relieved I fulfilled my duty without incident.
+4 I'm looking forward to all of your prosperity even more now. By the way, the other day, with your father—
+5 Satono's amazing. She's talking so normally with such a grown-up person!
+5> She's being treated as an equal | She's being treated as an equal
+6 Right in the middle of such a super-glamorous party... She's super cool～♡
+7 It's true—among famous figures and associates from every field, Satono Diamond was handling herself skillfully. As I was watching her—
+8 —Oh, and you are... Vivlos-san?
+9 Diamond-san's peer! I've heard so much about you!
+10 Nice to meet you～! I'm so happy you know about me♡
+11 Oh! That necklace, it's Arabic... isn't it!?
+12 Why, yes it is! You know of it?
+13 Yes! You can order one and get your very own original jewelry, right?
+14 When I go to Dubai someday, I wanna get one too～. Ehh～, it's super cute after all♡ I'm so jealous～♡
+15 Fufu, isn't it? This design is one of my favorites as well.
+16 I totally get it! It's super lovely♡ You must have ordered it really well!
+17 I'd almost want you to come with me when I order mine♡
+18 Oh, in that case... the designer is coming to Japan soon. Would you like to come along?
+19 Ehh, really!? I wanna go, I wanna gooo♪
+20 Thank you so much♡ Kyaa～, I'm sooo happy♡
+21 Fufu, you're such an adorable girl. If you like Dubai, I believe someone stationed over there is here today too.
+22 Really? I'd love an introduction～!
+23 Tore-cchi, I'll be right back～!
+24 And so Vivlos vanished into the crowd in no time—
+25 —Huh, at that hotel!? So jealous～, please invite me someday♡
+26 Before I knew it, she was talking at the center of the party guests.
+27 —Thanks for letting me come today, Satono! It was super fun～♡
+28 Fufu, you talked with all sorts of people. Everyone was very pleased.
+28> They were pleased?
+29 Yes. Conversations at parties like this tend to be very formal...
+30 It seems everyone's eyes and hearts were soothed by your vibrant manner, Vivlos-san. Impressive as always!
+31 Ehehe, really? You're the amazing one, Satono～!
+31> It's great to have a peer you both respect | It's great to have a peer you both respect | Want to imitate her more next time?
+32 Ehehe, really? You're the amazing one, Satono～!
+32> It's great to have a peer you both respect | It's great to have a peer you both respect | Want to imitate her more next time?
+33 Yup, yup. Satono's cool, and I'm great too♪
+34 We're peers to be proud of～♡
+35 Yes, indeed! Running in the same generation is a kind of fate, after all.
+36 I'll do my best so we can stay something to be proud of.
+37 Yeah! Then～, let's do a do-our-best hug!
+38 Kya... Fufu, here's one back, hup.
+39 Kyaa～♡ Then me too, even more, hup!
+40 And so the two hugged each other warmly for a little while.
+41 Imitate her, like, me acting like Satono?
+42 Sure, I'm good at copying Onee-chan～, so I can totally do Satono too!
+43 Ahem. ...Hello, everyone. I am Satono Diamond, whom you've just heard introduced.
+44 I am deeply honored to be given the opportunity to speak before you all on this fine day. Now then—
+45 That's my speech from earlier...! You memorized it after hearing it once?
+46 Yeah. Kinda by the sound of it～? Maybe I can do a little more?
+47 Th-that's amazing...! Vivlos-san, you really are... a brilliant person.
+48 Vivlos had shown a glimpse of her natural genius.

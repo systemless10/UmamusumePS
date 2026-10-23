@@ -1,0 +1,29 @@
+{
+ "title": "クレーンゲーム成功！",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "すご～い！　取れましたね！\nありがとうございます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ……見れば見るほどかわいいなぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "手触りもいいし、\nわたしの癒しグッズに追加決定です！\nバッグにつけちゃおっと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――それなりの結果だった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

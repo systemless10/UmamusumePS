@@ -1,0 +1,43 @@
+{
+ "title": "クレーンゲーム失敗……",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "むぅ～！　くやしー！\nもーちょっとで獲れそうだったのにぃ～。",
+   "choice_data_list": [
+    "ごめん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん……だから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よおしっ、今度は私がやる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちががんばった分まで\n根こそぎ獲っちゃうんだから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほらほら、応援してトレっち！\nがんばれがんばれ～って♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "残念な結果に終わった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}
