@@ -1,0 +1,19 @@
+{
+ "title": "桜花賞の後に・Never Again!",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『桜花賞』勝利を逃したヴィブロスだったが、\nリベンジの機会は残されていると、\n次のティアラに気持ちを向ける。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "レース後の体調に大きな問題はなさそうだが、\n油断はできない。体を休めつつ、\n次の『オークス』を目指すのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "オークス"
+   ]
+  }
+ ]
+}

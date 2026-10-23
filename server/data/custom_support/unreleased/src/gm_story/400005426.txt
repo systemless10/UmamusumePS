@@ -1,0 +1,4 @@
+#title Grandmasters: Victory
+0 Glory and fulfillment to every Umamusume—in the Grandmasters, the embodiment of the Three Goddesses' wish, <chrname> won splendidly.
+1 With the knowledge of the Umamusume who ran before to help her, <chrname> shone at the very top of the Umamusume running today.
+2 The Three Goddesses praised her achievement and smiled in satisfaction.

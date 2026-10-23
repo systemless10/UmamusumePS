@@ -1,0 +1,12 @@
+#title A World with the Three Goddesses
+0 A briefing on the support AI introduced at Tracen Academy, the Mega Dream Supporter, was held that day.
+0{ Tracen Academy
+1 Guided by the Three Goddesses, we learned that even in VR, the strain on the body and the resulting fatigue are no different from reality.
+2 From what we'd heard so far, it wasn't very different from the simulator Tracen Academy already had—
+3 But then we were told about special races, held at the end of each year, that only Umamusume chosen by the Three Goddesses can enter.
+3{ special races
+4 The Growth Race in junior year, the WBC in classic year, and the SWBC in senior year—
+4{ junior year | Growth Race | classic year | SWBC | senior year | WBC
+5 And in the Grandmasters, held at the very end, the Three Goddesses themselves await as opponents.
+5{ Grandmasters
+6 The Three Goddesses' running, built on an enormous wealth of Umamusume data—aiming for that peak, the trainers and Umamusume were fired up!

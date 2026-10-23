@@ -1,0 +1,239 @@
+{
+ "title": "熱量の差を感じるんですよね",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "（――担当のトレーナーさんがついて、\nしばらくが経ちました）",
+   "choice_data_list": [
+    "つまり、この場合の訳は……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……で。今日も今日とて、英語を教わってるわけですが）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（う～ん。頼んどいてなんだけど、いいのかな～。\nこの人、走るための担当になってくれたトレーナーさんなのに）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（根本的に真面目なんだろーな～。\n熱心というか、本気具合が伝わってくるっていうか）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はあっ……はあっ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『最終直線っ！！　まだいけるぞ！！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『最終直線っ！！　まだいけるよ！！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あのときもメチャクチャ熱くなってて……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『君の実力、そんなもんじゃないだろ！！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『貴方の実力、そんなもんじゃないでしょ！！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（なんでこんなに必死になってんだろーとか思ってたな～）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（にしても、よくああいうセリフが次から次に出てくるよね。\n……こういうの語彙力がどーのって言うんだっけ？　違う？）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（ノリすっごいし。……思い出すと、ちょっと……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふ、ふふっ……。",
+   "choice_data_list": [
+    "……ヒシミラクル？今の説明、聞いてた？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あっ。聞いてます、聞いてました！\nすみません、ちゃんと……えーっと、この単語が～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（いけない、いけない。さすがに自分で聞いといて、\n他のこと考えてるなんて、失礼だよね）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（忙しい中、教えてくれてるんだし……って、\nそう考えると普通に悪くない？　仕事外のこと頼んでるんだし）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "お礼～？　トレーナーに？\nどっちでもよくない？　担当の面倒みるのってフツーだしさ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～？　そんなもの？\n勉強もそれに含んでいいのかなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "そんなものでしょー。だって、成績悪かったらトレーニングも\nまともにできなくなったりするじゃん。補習もあるし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー……確かに？　じゃーこれも、\nトレーナーさんの仕事の一部……かぁ～？　そっかぁ～？？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "夢を目指すウマ娘",
+   "text": "はぁっ、はっ、はっ……！\nトレーナーさん、このまま続けてください！　まだ走れます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "夢を目指すトレーナー",
+   "text": "わかってる。でも、ダメ。ここまでよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "夢を目指すウマ娘",
+   "text": "でも！　次のレース……私は絶対に勝ちたいんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "夢を目指すトレーナー",
+   "text": "次のレースも、その次もでしょう？\nなら、もっと未来を見ましょう。勝ち続けるために……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（勝利に向けて、かぁ。\n外から見てても、わたしとの熱量の差を感じるな～）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんは、向こう側だよね。\nなにか思うこととか、ないのかなぁ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "差があっても、楽しいものなのかな～。\nつまらなくなったりとか～……って、ん？",
+   "choice_data_list": [
+    "準備、準備～♪"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……ぷっ。鼻歌、歌いながら準備してる）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、今……楽しいです？",
+   "choice_data_list": [
+    "もちろん！今日も期待してる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お、おお……。トレーニング開始前から元気ですね？",
+   "choice_data_list": [
+    "ヒシミラクルならできる！頑張れ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょ、なんでもう走ってる最中みたいなテンションなんですか。\n……ふっ、あはははっ。勢いありすぎ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……わざとふざけてるのかな？　わたしに気を使わせないように？\nそれとも、こんなやり取りも『楽しい』うちの1つだったり？）",
+   "choice_data_list": [
+    "もうすぐ準備終わるよ～"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……。はーい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（同じノリに乗ったり、同じ熱量では走れないかもだけど……\nトレーナーさんを見てるのは、楽しいんだよね、わたしも）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ま……考えるのは、あとにしよっと。\nとりあえず、今日もがんばりますか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

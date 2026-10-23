@@ -1,17 +1,3 @@
-"""Multi-horse field coordination -- NOT part of the original TS engine
-(which runs every RaceSolver in isolation, oblivious to other horses). This
-is the foundation for Global-accuracy mechanics that genuinely depend on
-where other horses are: live order/rank, gap-to-ahead/behind (bashin_diff_*,
-distance_diff_top, order/order_rate), position-keep relative to a real
-pacemaker, blocking, and lane selection.
-
-`RaceSolver.field` is set to a `RaceField` once the whole roster is built
-(race_runner.py does this after constructing every solver, before the tick
-loop starts). It is `None` during the very first "gate skill" activation
-round inside `RaceSolver.__init__` -- at that point no other horse exists
-yet -- so every dynamic condition that reads `s.field` must handle `None`
-by treating the condition as not-yet-determinable (return False).
-"""
 
 from __future__ import annotations
 
@@ -24,26 +10,16 @@ class RaceField:
     def __init__(self, solvers: list):
         self.solvers = solvers
         self.n = len(solvers)
-        # index -> 1-based rank (1 = leader), updated after every full tick
         self.rank_of: list[int] = [0] * self.n
-        # ranks sorted ascending -> solver index, i.e. order[0] is the leader
         self.order: list[int] = list(range(self.n))
-        # previous tick's rank, for overtake/order-improvement detection
         self._prev_rank_of: list[int] = list(self.rank_of)
-        # Effects aimed at other horses (debuffs), applied once the whole
-        # field has stepped: (target_index, SkillEffect, duration, skill_id)
         self._external: list[tuple] = []
-        # Spot struggle happens at most once per strategy group.
         self._compete_top_done: set[int] = set()
-        # ability types of the skills each runner activated on the previous
-        # tick (is_other_character_activate_advantage_skill, target 23)
         self._advantage_prev: dict[int, set] = {}
         for i, s in enumerate(solvers):
             s.field = self
             s.field_index = i
         self.update()
-        # effects aimed at others that fired at the gate, before this field
-        # existed (a friend's passive for Silence Suzuka, say)
         for s in solvers:
             for ef, duration, skill_id, targets in s.deferred_external:
                 for t in self.queue_external_effect(s, ef, duration, skill_id):
@@ -56,8 +32,6 @@ class RaceField:
             self.solvers[idx].refresh_derived_stats()
 
     def update(self) -> None:
-        """Recompute live order/rank from each solver's current `pos`. Call
-        once after every horse has been stepped for this tick."""
         self._prev_rank_of = self.rank_of
         idx = sorted(range(self.n), key=lambda i: -self.solvers[i].pos)
         self.order = idx
@@ -70,7 +44,6 @@ class RaceField:
         return solver.field_index
 
     def order_of(self, solver) -> int:
-        """1-based live finishing-position rank (1 = leader)."""
         return self.rank_of[self._index_of(solver)]
 
     def previous_order_of(self, solver) -> int:
@@ -80,11 +53,9 @@ class RaceField:
         return self.solvers[self.order[0]].pos
 
     def distance_to_leader(self, solver) -> float:
-        """Meters behind the current leader (0 if this solver IS the leader)."""
         return max(0.0, self.leader_pos() - solver.pos)
 
     def distance_to_ahead(self, solver) -> Optional[float]:
-        """Meters behind the horse immediately ahead, or None if leading."""
         i = self._index_of(solver)
         r = self.rank_of[i]
         if r <= 1:
@@ -93,7 +64,6 @@ class RaceField:
         return max(0.0, self.solvers[ahead].pos - solver.pos)
 
     def distance_to_behind(self, solver) -> Optional[float]:
-        """Meters ahead of the horse immediately behind, or None if last."""
         i = self._index_of(solver)
         r = self.rank_of[i]
         if r >= self.n:
@@ -118,8 +88,6 @@ class RaceField:
         return solver.lane - self.solvers[behind].lane
 
     def viewer_remain_distance(self) -> float:
-        """Remaining distance of the viewer's (the player's) own horse; NaN
-        (every comparison false) when she isn't in the race."""
         for s in self.solvers:
             if s.is_viewer:
                 return s.course.distance - s.pos
@@ -129,30 +97,17 @@ class RaceField:
         return any(ability_type in types for i, types in self._advantage_prev.items() if i != index)
 
     def did_overtake(self, solver) -> bool:
-        """True on the tick this solver's rank improved (took over at least
-        one other horse) versus the previous tick."""
         i = self._index_of(solver)
         return self.rank_of[i] < self._prev_rank_of[i]
 
-    # -- lane / blocking / vision (doc's Lane System + Blocking sections) ---
-    # 1 horse-lane = 1/18 course-width (doc). `solver.lane` is stored in
-    # course-width units throughout, matching the doc's primary unit; this
-    # constant converts a horse-lane count into that unit where the doc
-    # states a threshold in horse-lanes.
     HORSE_LANE = 1.0 / 18.0
 
     def _others(self, solver):
-        # A horse that has finished is no longer stepped -- it sits frozen on
-        # the line -- so it must not block or crowd the ones still running.
         for s in self.solvers:
             if s is not solver and not s.finished:
                 yield s
 
     def front_blocker(self, solver):
-        """Doc: front block = 0 < distGap < 2m AND |laneGap| <= a tolerance
-        that shrinks from 0.75 horse-lanes at 0m to 0.3 at 2m. Lowest
-        distance-gap qualifying horse wins. Returns (blocker, dist_gap) or
-        None."""
         best = None
         for other in self._others(solver):
             dist_gap = other.pos - solver.pos
@@ -165,9 +120,6 @@ class RaceField:
         return best
 
     def side_room(self, solver):
-        """Doc: side block = |distGap| < 1.05m AND |laneGap| < 2 horse-lanes.
-        Returns (inner_blocked, outer_blocked) -- inner = lower lane (toward
-        the rail), outer = higher lane."""
         inner_blocked = outer_blocked = False
         for other in self._others(solver):
             if abs(other.pos - solver.pos) >= 1.05:
@@ -182,8 +134,6 @@ class RaceField:
         return inner_blocked, outer_blocked
 
     def is_surrounded(self, solver) -> bool:
-        """Doc: true if ALL THREE of Out/Front/Behind each find another
-        horse (the same horse may satisfy more than one direction)."""
         out = front = behind = False
         for other in self._others(solver):
             dist_gap = other.pos - solver.pos
@@ -200,10 +150,6 @@ class RaceField:
         return not any(strategy_matches(other.horse.strategy, Strategy.NIGE) for other in self._others(solver))
 
     def pacemaker(self):
-        """Doc's pre-1.5-anniversary pacemaker rule (the current, post-1.5,
-        mechanism is explicitly flagged as unclear even in the real game --
-        using the last confirmed one): the 1st-place horse among the
-        field's most-forward strategy group that's actually present."""
         groups = (
             lambda strat: strat in (Strategy.NIGE, Strategy.OONIGE),
             lambda strat: strat == Strategy.SENKOU,
@@ -211,7 +157,7 @@ class RaceField:
             lambda strat: strat == Strategy.OIKOMI,
         )
         for match in groups:
-            for i in self.order:  # self.order is sorted leader-first
+            for i in self.order:
                 if match(self.solvers[i].horse.strategy):
                     return self.solvers[i]
         return None
@@ -223,9 +169,6 @@ class RaceField:
         return pm.pos - solver.pos
 
     def near_count(self, solver) -> int:
-        """Doc: near = |distGap| < 3m AND |laneGap| < 3 horse-lanes
-        (post-1st-anniversary thresholds; the doc notes these were tighter,
-        1.5m/1.5 horse-lanes, before that)."""
         count = 0
         for other in self._others(solver):
             if abs(other.pos - solver.pos) < 3.0 and abs(other.lane - solver.lane) < 3.0 * self.HORSE_LANE:
@@ -233,9 +176,6 @@ class RaceField:
         return count
 
     def near_infront_count(self, solver) -> int:
-        """Doc: near_infront_count -- same "near" definition as near_count
-        (|distGap|<3m, |laneGap|<3 horse-lanes) but restricted to horses
-        AHEAD (distGap>0)."""
         count = 0
         for other in self._others(solver):
             dist_gap = other.pos - solver.pos
@@ -244,26 +184,17 @@ class RaceField:
         return count
 
     def temptation_count_behind(self, solver) -> int:
-        """Doc: temptation_count_behind -- the number of horses ranked
-        behind `solver` (by finishing-position rank, not physical distance)
-        that are currently rushing (kakari)."""
         r = self.rank_of[self._index_of(solver)]
         return sum(1 for i in self.order[r:] if self.solvers[i].is_kakari)
 
     def temptation_count_infront(self, solver) -> int:
-        """Doc: temptation_count_infront -- the number of horses ranked
-        ahead of `solver` that are currently rushing (kakari)."""
         r = self.rank_of[self._index_of(solver)]
         return sum(1 for i in self.order[:r - 1] if self.solvers[i].is_kakari)
 
     def running_style_temptation_count(self, strategy, source=None) -> int:
-        """Doc: running_style_temptation_count_{nige,senko,sashi,oikomi} --
-        the number of horses in the field (the querying horse counts too)
-        with the given running strategy that are currently rushing."""
         return sum(1 for s in self.solvers if strategy_matches(s.horse.strategy, strategy) and s.is_kakari
                    and (source is None or self.is_opponent(source, s)))
 
-    # -- effects on other horses (debuffs) ---------------------------------
 
     @staticmethod
     def is_opponent(source, other):
@@ -273,9 +204,7 @@ class RaceField:
         return not team or team != other.context.get("teamId")
 
     def select_targets(self, source, target_type: int, target_value: int) -> list:
-        """Doc's Skill Target: which horses an effect aimed at others lands
-        on, nearest first where the target type is a count."""
-        from .race_solver import SkillTarget, SkillType  # race_solver imports nothing from here at load time
+        from .race_solver import SkillTarget, SkillType
         others = [s for s in self._others(source)]
         if target_type == SkillTarget.ALL:
             return [source] + others
@@ -307,12 +236,10 @@ class RaceField:
             ahead = sorted((s for s in others if s.pos > source.pos), key=lambda s: s.pos - source.pos)
             return ahead[:target_value]
         if target_type == SkillTarget.UMA_ID:
-            # that character, whoever carries the skill (herself included)
             return [s for s in self.solvers if not s.finished and s.chara_id == target_value]
         if target_type == SkillTarget.USED_RECOVERY:
             healers = [s for s in others if SkillType.RECOVERY in self._advantage_prev.get(s.field_index, ())]
             return healers[:target_value]
-        # Unsupported target types remain visible in race diagnostics.
         return []
 
     def queue_external_effect(self, source, effect, duration: float, skill_id: str) -> list[int]:
@@ -330,16 +257,8 @@ class RaceField:
             if not target.finished and not (target.debuff_cancel and effect.modifier < 0):
                 target.apply_effect(effect, duration, skill_id, Perspective.OTHER)
 
-    # -- spot struggle (doc: Spot Struggle / Lead Competition, CompeteTop) ---
 
     def _update_compete_top(self) -> None:
-        """Between two or more Front Runners (or two or more Oonige -- never
-        mixed) close to the frontmost of their group, once any horse is 150m
-        out and before one of them reaches section 6. Happens at most once per
-        group. Participants drop out when more than 5m behind every other
-        struggler or 0.416 course-widths away laterally, or when every other
-        struggler has."""
-        # exits first
         for group in (Strategy.NIGE, Strategy.OONIGE):
             active = [s for s in self.solvers if s.compete_top_active and s.horse.strategy == group]
             for s in active:
@@ -369,11 +288,8 @@ class RaceField:
             for m in cands:
                 m.start_compete_top()
 
-    # -- overlapping (doc: Overlapping) -------------------------------------
 
     def _resolve_overlaps(self) -> None:
-        """Two horses within 0.4m and 0.4 horse-lanes: the outer one is bumped
-        0.4 horse-lanes further out and re-picks her target lane."""
         running = [s for s in self.solvers if not s.finished]
         for a_i in range(len(running)):
             a = running[a_i]
@@ -384,11 +300,6 @@ class RaceField:
                     outer._lane_retarget = True
 
     def step_all(self, dt: float, active_indices: Optional[list[int]] = None) -> None:
-        """Step every (or only the still-racing `active_indices`) solver by
-        `dt`, then resolve what happens BETWEEN horses this tick (debuffs,
-        overlaps, spot struggles) and refresh the shared order/rank snapshot.
-        Doing the between-horse part after everyone has stepped keeps it
-        independent of stepping order."""
         indices = active_indices if active_indices is not None else range(self.n)
         for i in indices:
             self.solvers[i].step(dt)

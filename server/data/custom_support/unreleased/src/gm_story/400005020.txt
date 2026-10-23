@@ -1,0 +1,74 @@
+#title Those Who Watch Over Umamusume
+0 ...Leave the hill work as it is for now, and add pool training on Mondays and Thursdays...
+1 Hehe, her regimen really is different from back in her classic year.
+2 She's finally caught up with the Umamusume around her. The girls with two or three wins, the ones who've won graded races.
+3 ...It's been a long road, hasn't it, Meek?
+4 —One, two! One, two!
+5 (A trainer's creed: Watch your Umamusume closely! Never forget she is your partner, running by your side!)
+6 (Running... together with Umamusume. I have to be able to run toward their dreams with them. No matter how inexperienced... or anxious I am...)
+7 ...Ah. That girl, again—
+8 ...Hm? Happy Meek, are you feeling unwell?
+9 ... .........No.
+10 Then what's wrong? Everyone's already moved on to the next exercise. Or is there something else you'd like to do...?
+11 ...I fell behind... .........I'm going...
+12 (She's always one beat behind...)
+13 (But... she never gives up partway. She's slow, but she always sees it through to the end. Even if she's left behind... even if she has to stay late...)
+14 ...Right. I have to do my best too! Just like her—
+15 Huff... Huff... Phew. ...Mm...
+16 ...Ah... It's gone...
+17 ...Um. Happy Meek?
+18 Here... please, if you'd like.
+19 Sorry to be so sudden. I just... really wanted to talk with you, even just a little.
+20 .........With me?
+21 Yes. ...You've encouraged me so, so, so much.
+22 You never give up on what you've decided to do. You see it through patiently, at your own pace... That's what I saw in you.
+23 So... um, well. ...You're a wonderful Umamusume!
+24 If, if you'd allow me...! I want to run together with you!
+25 ...!
+26 Happy Meek. ...Would you... become my trainee?
+27 (I remember. The first time I saw Meek smile was right then—)
+28 ...Hm, an email? At this hour? From who...
+29 ......... ...?! Meek?!
+30 She was found collapsed beside the course. It seems she'd built up quite a lot of fatigue.
+31 But there don't seem to be any serious problems, so you can rest easy for now. Take care.
+32 Yes... Thank you very much...
+33 Fatigue... ...Could it be because I didn't think her training through properly...?
+34 That's... not it...! ...That's not it. Trainer... I'm sorry.
+35 ...You told me... to go at my own pace... ...But I... was training on my own...
+36 Huh... Training on your own? Wh-why...?
+37 ..................
+38 ...Cocon and Glasse... and Ms. Kashimoto... They were happy. ...Together... so much.
+39 Winning. ...Being happy together. ...Becoming happy... together.
+40 I thought... I wanted that too. ...I wanted to be happy.
+41 I wanted to be happy... together. ...With my trainer.
+42 You watched me... You understood me.
+43 With... my trainer.
+44 I wanted to win. That's why. ...But.
+45 .........I'm sorry.
+46 Meek...
+47 —So that's the reason for sweet Meek's rapid growth. She'd been putting in that much effort in secret.
+48 ...I thought I was being careful to watch her properly. That I had to be the person who knows her better than anyone.
+49 ...But I didn't see it at all. I was just getting carried away by how much she was growing. Even after you warned me...
+50 ...You stayed calm, Godolphin Barb, and you understood the risks that could happen. You know all the best training, too...
+51 The best trainer for Meek isn't someone like me, it's—
+52 That's not true. Meek didn't work this hard because I was watching over her or because of my knowledge.
+53 ...She worked so hard because you were her trainer.
+54 ...Because I... was her trainer...
+55 ...Once upon a time, there was an Umamusume like this.
+56 A girl no one expected anything from—even her parents had given up on her running—
+57 She had a frail build and didn't seem likely to get results. So she wasn't even given proper training. It took her nearly twenty races to win for the first time.
+58 She wanted to win, but she spent her days on training that could never let her win. Gradually, her heart grew bitter too.
+59 But then, a trainer came to her.
+60 That trainer stayed by the bitter girl's side, supporting her all the while.
+61 Perhaps that patience reached her—gradually she opened her heart, and her race results began to change.
+62 In time, she even defeated the Umamusume called the strongest. The two of them forged a one-of-a-kind bond and carved their names into history.
+63 A trainer is someone who can change both an Umamusume's feelings and her future.
+64 And Meek trusts you and has opened her heart to you. ...She said you watched her and understood her, didn't she?
+65 Then there's nothing to hesitate over. The best trainer for Meek is you.
+66 ...The best trainer... for Meek... ......!
+67 ...I want to answer Meek's feelings...!
+68 If she wants to work hard—if she wants to win soon—then I want to support that with everything I have!
+69 Yes, you can do it. Run together with her, as her one and only trainer.
+70 ......... ...Happy Meek...
+71 (The risk of excessive training... It's something that happens because it's bound to happen.)
+72 (...I can't choose training that tests her limits...)

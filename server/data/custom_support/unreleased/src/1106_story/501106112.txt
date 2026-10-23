@@ -1,0 +1,67 @@
+#title Hot Spring Trip
+0 Man, it's finally starting. My hot spring recuperation period!
+1 Two days before the hot spring trip, Hishi Miracle came into the trainer's office full of life.
+1> The hot spring itself is really just one day. | The hot spring itself is really just one day.
+2 No, no. There's a chance it gets extended.
+3 "Mira-ko needs more recuperation..." Thinking that, you'd pay the extra fee just for me, and...
+4 ......
+5 ...Um, where's the sharp comeback?
+6 I'm not getting the snappy one-liner that's like a smack on the butt.
+6> Well, if you need it, I'll add more time off.
+7 Huh.
+7> Your health comes first. | Your health comes first.
+8 ......
+9 ...Whaaat? Then my jokes stop being jokes!
+10 Even before the hot springs, when I asked for two days off, you actually gave them to me.
+10> That was the promise, right? | That was the promise, after all.
+11 ......
+12 Then I'm gonna rest a whole bunch, okay? I'll savor every bit of lazing around!
+13 And on the day of the hot spring trip...
+14 Ahh, the lovely smell of tatami. Today, this is my castle.
+14> Then rest up.
+15 Huh, you're already going back to your room, Trainer?
+16 No, no, then it's kinda... hmm.
+17 Ah! Right, when's dinner again?
+18 Sukiyaki and crab hot pot. Bamboo shoot rice, matsutake chawanmushi~♪
+18> Around 6 p.m., I think.
+19 Ooh, then it looks like I've got a chance to soak in the hot spring first.
+19> Yeah, go enjoy it to your heart's content. | Yeah, go enjoy it to your heart's content.
+20 Ahh...
+21 ...Okaaay.
+22 Trainer really only thinks about making me rest, huh.
+23 ...Ahaha, way too serious. When we finally got to come together.
+24 Bathing...
+25 Ahh... I'm gonna melt...
+26 ..."This hot spring is said to be effective for neuralgia, muscle pain, and fatigue recovery."
+27 So it says. Haaah...
+28 "Health," huh...
+29 (Creak...)
+30 Yikes. Hot, a sauna...
+31 (No, no matter how healthy it is, I can't take this. If I stay in here 10 minutes...)
+32 Hiiih...!
+33 (I'll leave in 5 more minutes! I'll leave in 5 more minutes! I'll leave in 5 more minutes!)
+34 Uuugh...!
+35 Whew... My head's all floaty... Haaah...
+36 It's cool outside...
+37 Phew, my body's still all warm.
+37> Hishi Miracle! How was the hot spring?
+38 Whoa, Trainer!
+39 Heh... I took on the sauna. Detox complete, my skin's super smooth and bouncy.
+40 Hehe... Compared to your strict training, it was a lukewarm sauna.
+40> Then should we look for a hotter sauna?
+41 Nonono! I'm saying your usual training is a bit too strict!
+42 So today I want you to be all carrot, no stick. In what you say and what you do.
+43 Like, you could treat me to ice cream! Even though it's before dinner.
+43> Just one. | Just one.
+44 Yay! It pays to ask♪
+45 (...This is my trainer.)
+46 (Serious, strict, sometimes soft. And just a teeny bit... outrageous.)
+47 (An amazing person who gave me, soaking in lukewarm water, the courage to dive into the heat.)
+48 Nom... munch...
+49 Eek, so cold♪ This ice cream is super sweet.
+49> Glad to hear it.
+50 ...Ehehe.
+51 ......Hmhm. You know what, Trainer?
+52 I don't mind trying a little harder. Starting tomorrow.
+53 ...Even if it's a bit strict, I'll keep up.
+54 It was a moment where I felt an irreplaceable bond with Hishi Miracle...

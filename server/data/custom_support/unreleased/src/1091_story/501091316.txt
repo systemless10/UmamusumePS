@@ -1,0 +1,92 @@
+#title After the Takarazuka Kinen: Memories♡
+0 Yaaay! First place♡
+1 Vivlos sweetieeeee!! Amaziiing, congratulaaations～!!
+2 Haaaaaa～...! You really did great, Vivlos!!
+3 Yeah, thanks for cheering～!!
+4 ...Ehehe. I can hear them right next to me♪
+5 Congratulations, Vivlos!
+6 Congratulations. ...I've been completely beaten.
+7 I'm frustrated, very much so. I needed to win.
+8 Diamond...
+9 But that's the same for everyone, isn't it? You were really strong, Vivlos!
+10 Running together, I can tell how capable you are...
+11 You'll surely hold your own overseas!
+12 ! Really?
+13 Really. Go show what you can do in Dubai, all-out!
+14 Yeah! I'll definitely go!
+15 Vivlos splendidly won the Takarazuka Kinen. After parting with her family for a bit, we left the racecourse, and...
+16 Huh? Chevacchi...?
+17 ...
+18 You came! If you'd told me—
+19 ...I-I...
+20 ...I?
+21 I... I'm...
+22 A coward and a scaredy-cat. And I'm not honest... I'm a pain.
+23 Because I had no confidence. Because I was no good compared to Sis and you...
+24 ...!
+25 ...But watching your race... I got frustrated.
+26 Instead of looking away, I got frustrated. Because I'm also—
+27 Your big sister. I could have been there for you...
+28 Chevacchi...
+29 ...I've been training a lot. Until I could say with confidence that I'm your big sister.
+30 —Vivlos. Run in the Japan Cup.
+30> ...!
+30{ Japan Cup
+31 The Japan Cup is a G1 race in November. A prestigious, important race where strong Umamusume from overseas sometimes run.
+32 This confidence must be something you gave me.
+33 I can be someone you can learn from, too.
+34 —As your big sister.
+35 .........
+36 ...
+37 ...S-say something.
+38 Ah, yeah...—
+39 !?
+39> Vivlos!?
+40 ...Ahaha. Don't both make the same face.
+41 It's okay, I'm just happy. 'Cause, 'cause...
+42 Chevacchi's looking me in the eyes.
+43 !
+44 ...Why do you... just because I'm your sister... so much?
+45 Is that not a good enough reason?
+46 You were always with me. It's because you're Chevacchi—that I love you.
+47 —...So that's how Chevacchi and I ended up running in the Japan Cup!
+48 ...Hehe. I see, I'm glad.
+49 But from what you just said, you haven't gotten your trainer's permission, have you?
+50 Oh, I didn't ask! It's okay, right, Tore-cchi?
+50> Sure, let's go for the Japan Cup | Sure, let's go for the Japan Cup
+51 Facing her other sister matters too, but it's also a race with invited Umamusume from overseas. It'll be good experience for Vivlos.
+52 Ehehe. I can't wait, Chevacchi!
+53 ...Chevacchi?
+54 Why... why do you tell everyone everything...!
+55 Hey, Papa, we wanted to hear it too. Cheval's cool declaration of war♡
+56 That's right, I bet it was so brave! Ooh, our daughters are all wonderful!
+57 —I knew this would happen...!
+58 But Chevacchi really was so coool～♡
+59 Riiight, she definitely was～. Cheval takes after Papa, so she's so cool♡
+60 And Verxina and Vivlos take after Mama♡ All right! Tonight we celebrate! In honor of Cheval saying what she wanted to say!
+61 Wh-whaaat!?
+62 It's fine once in a while. You'll be slimming down at summer camp after this anyway...
+63 Why not have them make lots of your favorite meat buns?
+64 ～～～～... .........Just one is fine.
+65 The family's laughter echoed in the evening sky. That comfortable atmosphere, everyone showing each other love, made me say without thinking—
+65> You'll all be together forever, won't you | You'll all be together forever, won't you
+66 ! Ah...
+67 ...Sorry, everyone! Go on ahead?
+68 There's somewhere I wanna go... with Tore-cchi!
+69 —Wow, so pretty...!
+70 Vivlos had brought me to an observation deck. Night had fully fallen, and a dazzling night view spread out below.
+70> It's beautiful | It's beautiful
+71 Right! The view in Dubai looked like this too.
+72 ...I remembered. Why I fell in love with Dubai.
+73 Everyone's busy now, but... back then, my family was together all the time.
+74 Every day was so happy, I loved it! That view looked so sparkly, surely... because I saw it with everyone.
+75 Running in the Twinkle Series, everyone's together again... I'm so happy right now.
+76 ...I wanna go back to that view that gave me those memories!
+76> This time, you'll be the one taking everyone | This time, you'll be the one taking everyone
+77 ! Yeah.
+77> Let's go to Dubai again, as a family
+78 ...Trainer, you too, okay?
+79 You're part of that family too.
+79> ...!
+80 Ahh! I knew you didn't get it!
+81 ...The Japan Cup. I'll take first place, and then—

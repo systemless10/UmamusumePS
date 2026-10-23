@@ -1,0 +1,353 @@
+{
+ "title": "My Heart Is Racing ♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "青い空。照りつける太陽。\nウマ娘たちが成長を争う、夏合宿がやってきた！　はずなのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～！　こっちこっち♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふふっ、やっぱり夏はバカンスだよね～っ！\n今日はめいっぱい楽しんじゃお～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分はヴィブロスと2人、高級リゾート地へ来ていた。\nというのも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのねートレっち～、お願いがあるの♪\n私ね、夏合宿いっぱい、い～っぱいがんばるから！　だからっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お休みの日、デートしよ♡\nママからリゾート優待チケット、もらっちゃったんだ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私たち、毎日ちょーがんばってるもん！\n今日はリフレッシュしちゃおーね、トレっち♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "実際、ヴィブロスはこの夏合宿でとても頑張った。\n彼女がリフレッシュできるよう……今日はとことん、付き合――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "と、いうわけで……トレっち、なにしたい！？",
+   "choice_data_list": [
+    "……えっ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～♡　このスムージー、おいし！\nちょびっとしょっぱくて、めっちゃ元気になる味だね！　トレっち♡",
+   "choice_data_list": [
+    "あ、ああ。運動後の塩分補給にいいかなって",
+    "う、うん。運動後の塩分補給にいいかなって"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんうんっ！　いつも選ばないタイプ！\nふーん、トレっちこういうの好きなんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それでそれで、次はどーする？？\nここけっこー広いし、エンタメ施設もいっぱいだよ～！",
+   "choice_data_list": [
+    "……君のやりたいこと、しないでいいのか？",
+    "……貴方のやりたいこと、しないでいいの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー？　やりたいことなら、やってるよ？\n『トレっちのやりたいことをする！』今日はこれっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "というわけで『やりたいこと』を訊ねられ、行き先として\n提案したのは……世界最速と名高い、あの動物がいる場所――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほへ～、チーターって時速100kmで走るんだ。\nあんな太もも細っこいのに！",
+   "choice_data_list": [
+    "身のこなしが走りに活かせそうだよな！",
+    "身のこなしが走りに活かせそうだよね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あははっ！　トレっちってば、目キラキラ！\nレース脳なんだから～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "動物園で、走りに活かせそうな知見も得られた。\nだが、動きっぱなしでは明日に響くだろうと考え……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "疲れを取るなら、このホテルスパ！\nヴィルシーナお姉ちゃんもお気に入りの、とっておき！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ヘトヘトボディー、キラキラにしちゃおー♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ほの暗い室内。どこからか香るアロマが……疲れをかき消していく。\nなるほど……空間による癒しの演出は、絶大だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "このアイディアは……ヴィブロスとの……\n……トレー、ニング……に、……も…………。………………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――……\n……――……っ……ぉーぃ……ぉ……～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、起きた！　おはよー♡",
+   "choice_data_list": [
+    "ご、ごめん！寝てた！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "気にしないで！　エステで癒されたみたいでうれしーよ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねねっ、お腹すいてる？\nそろそろお夕飯の時間だけど、どこで食べよっか。",
+   "choice_data_list": [
+    "えっと、せっかくだし海が見える場所で――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホテルオーナー",
+   "text": "おや、ヴィブロス君と……そちらはトレーナーさんでしょうか？\nようこそ、我がホテルへ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、オーナーちゃん！",
+   "choice_data_list": [
+    "オ、オーナー……ちゃん！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――そそ！　家族ぐるみでお友だちなの。\nあのねオーナーちゃん、今トレっちとスパしてきたんだ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホテルオーナー",
+   "text": "なるほど。……ディナーは決まっているのかな？\nまだなら、よかったら一緒にどうだい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホテルオーナー",
+   "text": "トレンドの食材を使った、イタリアンコース。\nそれと夜景を楽しみながら……選手としての、君の話でも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わあ、それってSNSで話題になってるやつ！？\nすてき～～♪　でも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日は、海の近くで食べようかなって！\nまた今度おしゃべりしよー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃ、いこっか！　トレっち、なに食べたいー？",
+   "choice_data_list": [
+    "……お誘い、断ってよかったのか？",
+    "……お誘い、断ってよかったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！　そーゆーので怒る人じゃないし！\nそれに……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "言ったでしょ？　今日はトレっちのやりたいこと、したいの♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はふ～～！　お腹、いっぱーい！\nん～……海風も、きもちーし……さいこーだねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "涼しい海風を感じながら、ゆったりと夕日を眺める。\nお腹も心も満たされ、心地よい時間が流れる……。",
+   "choice_data_list": [
+    "本当に、たくさんリフレッシュできたなぁ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！　……ほんとにほんとにっ？",
+   "choice_data_list": [
+    "あ、ああ。本当だけど……？",
+    "う、うん。本当だけど……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やっっっったぁ～～……！\n『トレっちを大事に作戦』だいせいこー♡♡♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは満足そうにはしゃいでいる。どうやら……\n今日はそんな意図で、こちらを優先してくれていたらしい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "確かに、彼女が『大事に』してくれたおかげで、\n今日はとても癒された。……の、だが――",
+   "choice_data_list": [
+    "君は楽しめなかったんじゃ……",
+    "貴方は楽しめなかったんじゃ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～？　そんなことないよ？　だって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ね、覚えてる？\nいっしょにストリートマーケット行った日のこと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私が新しいものにときめくみたいに、\n長い時間いっしょにいたから感じるときめきもある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あの日それを知ってから、どーしても見つけたくなったの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おじいさんの鞄やトレっちの鞄みたいに、\n私も……ずっと大事にしたいようなときめき、あるかなーって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それで、探して探して……見つけたんだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーニング中の、キビキビ真剣な姿。\nふにゃふにゃ癒されて、幸せそうに眠ってるとこ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレンドのアイテムだって、ディナーだって、勝てないの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって私――あなたに、こんなにときめいてるんだもん！",
+   "choice_data_list": [
+    "ヴィブロス……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへっ。\n……きっと今日のこの夕日も、ときめく思い出になるね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もうちょっと、ゆっくりしていっちゃおっか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ことん、と。肩に重みがかかる。そのまましばらく、\nヴィブロスと夕日が沈むのを眺めたのだった――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

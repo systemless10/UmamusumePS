@@ -55,9 +55,9 @@ fn lone_front_runner_threshold_counts_its_strategy_only() {
     let mut state = Keep::default();
     let mut random = RaceRandom::new(3,false);
     state.update(&p,1200,24,&runners,0,0,&mut random,0.0666,true);
-    assert_eq!(state.mode,1); // 8m remains below the lone-runner 12.5m exit.
+    assert_eq!(state.mode,1);
     runners[1].style = 1;
     let mut state = Keep::default();
     state.update(&p,1200,24,&runners,0,0,&mut random,0.0666,true);
-    assert_eq!(state.mode,0); // With a second front runner the limit is 4.5m.
+    assert_eq!(state.mode,0);
 }

@@ -1,0 +1,86 @@
+{
+ "title": "レース入着",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "うう～っ、\n1着獲れなかったよ～～～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いつもの感じでぎゅ～んて行けば\n勝てると思ったのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんか……\nなんかすっごくモヤモヤする～～～！",
+   "choice_data_list": [
+    "内容は悪くなかったよ！",
+    "そのモヤモヤは……特訓で晴らそう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ほんと？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "能力的には充分だったし、仕掛け所次第で\n結果も変わるレースだったろうと伝えた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあじゃあ、次やったら勝てるよね！\nやっぱり1着獲りたいもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ラストでちょー加速して勝つの！\n気持ちいいしかっこいいし、最高っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よーしっ、見ててねトレっち！\nかっこよく1着獲るとこ見せてあげるから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "特訓……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "展開に左右されない力を身につけることが、\n勝ち切るための確実な道だと伝える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うんっ、私特訓するっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだよねっ、ちょー強くなっちゃえば\nモヤモヤなんてしなくていいもんねっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "次は絶対勝ってみせるから、\nいちばん強くなれる方法、教えてっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

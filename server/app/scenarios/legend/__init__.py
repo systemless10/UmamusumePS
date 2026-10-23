@@ -1,24 +1,3 @@
-"""THE TWINKLE LEGENDS (scenario 10, JP only) -- ザ・トゥインクル・レジェンズ ("Legend").
-
-Built on the URA base (base.Scenario's defaults ARE URA); this class is the
-whole seam between the scenario and the shared career code, which only ever
-calls hooks.
-
-WHAT LIVES WHERE
-    impl.py       the mechanics -- gauges, knowledge buffs and the lottery, the
-                  three guidances, the Dream Fests, fan service and the CM, and
-                  the legend_data_set envelope
-    formula.py    the training numbers (on ramen.formula's machinery)
-    master.py     the single_mode_10_* tables
-    endpoints.py  select_buff, exchange_buff, legend_race_*, popularity_end, cm_end
-    producers.py  the event calendar and its resolvers
-
-docs/JP_TWINKLE_LEGENDS_SCENARIO.md is the spec: every rule, number and event
-here is traced there to the real server's captures, master.mdb or the client.
-
-JP ONLY BY CONSTRUCTION: Global's master.mdb has no single_mode_10_* tables,
-so the released-and-implemented intersection never advertises it there.
-"""
 
 from __future__ import annotations
 
@@ -33,7 +12,7 @@ def _partner_rows() -> tuple:
         return tuple((int(r["partner_id"]), int(r["chara_id"])) for r in master_data.query(
             "SELECT partner_id, chara_id FROM single_mode_unique_chara WHERE scenario_id=? "
             "ORDER BY partner_id", (impl.SCENARIO_ID,)))
-    except Exception:                                  # noqa: BLE001
+    except Exception:
         return ()
 
 
@@ -42,32 +21,25 @@ class Legend(Scenario):
     name = "Legend"
     endpoint_prefix = "single_mode_legend"
     data_set_key = "legend_data_set"
-    data_set_on_race_start = True       # real race_start carries legend_data_set too
+    data_set_on_race_start = True
     state_keys = (impl.STATE_KEY,)
 
-    # ------------------------------------------------- shared-content gates --
-    # The Director arrives with 210053 (400010001) and the Reporter with
-    # 210071 (single_mode_events.NPC_UNLOCKS). The career ends on T72 after the
-    # Legend race, the CM and the ending: no URA finals, no ending chain.
     uses_fixed_schedule = False
     has_versus_npc = False
     debut_reporter_event = 0
     has_director_ending = False
     has_ura_finals = False
     has_ending_chain = False
-    plays_calendar_stories = False      # no New Year / camp / raffle beats in 7 careers
+    plays_calendar_stories = False
     reserve_arrivals_after_race = True
-    camp_lists_rest = True              # A1 T38: 701/801 listed, disabled
-    replaces_goal_race_event = True     # 400010200 / 201 (§15)
-    # 28-31 the Dream Fest, 32 the CM, 33 fan service
+    camp_lists_rest = True
+    replaces_goal_race_event = True
     playing_states = frozenset({5, 28, 29, 30, 31, 32, 33})
     turn_end_hold_state = 5
     locked_npc_rows = _partner_rows()
     npc_targets = frozenset(t for t, _c in _partner_rows())
 
     def career_route(self, chara_info: dict):
-        """The trainee's own goals, the URA finals rows (target_type 3)
-        dropped: there is no scenario-10 group 701 (§1)."""
         from ... import career_branches, master_data
         chara = int((chara_info or {}).get("card_id") or 0) // 100
         row = master_data.query_one(
@@ -85,14 +57,11 @@ class Legend(Scenario):
         return row["id"], [i for i in route if int(i) not in finals]
 
     def partner_outing(self, full_state, chara_info, partner, turn) -> bool:
-        """A legend's outing with no date left pays nothing at all (§12)."""
         return int(partner or 0) in M.LEGENDS
 
     def race_field(self, chara_info, program_id, count):
         if not M.is_sprace_program(program_id):
             return None
-        # race_field is handed no full_state: the Dream Fest endpoints publish
-        # theirs around the simulation (impl.SIM_STATE).
         return impl.race_field(impl.SIM_STATE.get("full_state") or {}, chara_info,
                                int(program_id or 0), count)
 
@@ -103,11 +72,9 @@ class Legend(Scenario):
         return {102: list(producers.DIRECTOR_APPRAISAL),
                 103: [(90, 1010, 5), (70, 1009, 4), (40, 1008, 3), (0, 1007, 2)]}
 
-    # ------------------------------------------------------------ endpoints --
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 
-    # ------------------------------------------------------------- response --
     def command_info(self, full_state, chara_info, home_commands):
         if not isinstance(chara_info, dict):
             return None, False
@@ -131,7 +98,6 @@ class Legend(Scenario):
             for ci in (chara_info, (data.get("single_mode_load_common") or {}).get("chara_info")):
                 if isinstance(ci, dict) and int(ci.get("playing_state") or 1) == 1:
                     ci["playing_state"] = 5
-        # load / gain_skills in the middle of a scenario screen keep it.
         if live_ps in (28, 29, 30, 31, 32, 33):
             for ci in (chara_info, (data.get("single_mode_load_common") or {}).get("chara_info")):
                 if isinstance(ci, dict):
@@ -155,8 +121,6 @@ class Legend(Scenario):
 
     @staticmethod
     def _drop_carried_partners(chara_info: dict) -> None:
-        """A partner a deck card carries has no row of its own (112 Speed
-        Symboli with the group card, 101 with a Tazuna card)."""
         deck_charas = {formula.RF.card_meta(sid)[3] for sid in formula.RF.deck(chara_info).values()}
         carried = {t for t, c in _partner_rows() if c in deck_charas}
         if carried:
@@ -165,9 +129,6 @@ class Legend(Scenario):
                 if not (isinstance(e, dict) and e.get("target_id") in carried)]
 
     def persist_upkeep(self, full_state, chara_info) -> None:
-        """The group card's row carries one group_outing_info_array entry per
-        legend (§12): is_outing once dates unlock, story_step 1 once her own
-        date is done; the row's story_step counts dates 4-5."""
         k = impl.group_card(chara_info)
         if not k:
             return
@@ -184,7 +145,6 @@ class Legend(Scenario):
             row["story_step"] = max(0, int(steps.get(str(M.SPEED), 0)) - 1)
             row["is_outing"] = unlocked
 
-    # ------------------------------------------------------------- training --
     def training_gains(self, full_state, chara_info, command_id, facility_level, camp, partners):
         from ...handlers import single_mode_team as smt
         st = impl.state(full_state)
@@ -198,11 +158,9 @@ class Legend(Scenario):
                                   int(command_id or 0))
 
     def training_failure_override(self, full_state, chara_info, command_id, partners):
-        """Trainings cannot fail in the Challenge Zone (§6.3)."""
         return 0 if impl.zone_on(impl.state(full_state)) else None
 
     def training_bond_bonus(self, full_state, chara_info) -> int:
-        """社交術 / 交渉術 / トーク術: bond gain +2 each (EvaluateGaugeUp)."""
         return impl.effect_total(chara_info, impl.state(full_state), M.EFF_BOND_UP)
 
     def specialty_bonus(self, full_state) -> int:
@@ -210,9 +168,6 @@ class Legend(Scenario):
         return impl.effect_total(live, impl.state(full_state), M.EFF_SPECIALTY)
 
     def award_training_gains(self, full_state, chara_info, payload) -> None:
-        """A successful command (§3.2, §5.4, §6): the gauge of a training's
-        colour, the buffs it consumed and fired, the zone / St Lite steps,
-        Haiseiko's partners, and the +1 owed for a rest / outing."""
         st = impl.state(full_state)
         live = impl.live_chara(full_state) or chara_info
         turn = int(payload.get("current_turn") or impl.turn_of(chara_info))
@@ -258,8 +213,6 @@ class Legend(Scenario):
             impl.end_zone(full_state, 1)
             st["s9047"]["end"]["turn"] = turn
         if is_outing:
-            # The outing's own mood (camp rest: always +1) already landed in
-            # shared code; under St Lite it still counts (§6.2: career 2 T37).
             camp = group == 304 or cmd == 304 or summer
             up = 1 if camp else max(0, int(live.get("motivation") or 3)
                                     - int(chara_info.get("motivation") or 3))
@@ -271,9 +224,6 @@ class Legend(Scenario):
                               "summer": summer, "kind": "rest" if is_rest else "outing"})
 
     def on_race_result(self, full_state, chara_info, race_ctx, result_rank) -> None:
-        """An ordinary race owes its +1 (400010113); a cleared goal its beat
-        (400010200 / 201) and maybe fan service; a won G1 is kept for the
-        poster / CM (§3.2, §10, §15)."""
         from ...handlers import single_mode_team as smt
         st = impl.state(full_state)
         turn = int(race_ctx.get("turn") or impl.turn_of(chara_info))
@@ -297,9 +247,6 @@ class Legend(Scenario):
             st["pop_due"].append(3)
 
     def hint_partners(self, full_state, chara_info, command_id, partners, hinting):
-        """HintUp buffs give a card that missed its roll a second chance at
-        rate% of its own; 心眼 (HintEventFixedOccurrenceCount) shows one
-        for sure [INFERRED, as Grand Masters]."""
         st = impl.state(full_state)
         rate = impl.effect_total(chara_info, st, M.EFF_HINT)
         fixed = impl.effect_total(chara_info, st, M.EFF_HINT_FIXED)
@@ -320,9 +267,6 @@ class Legend(Scenario):
         return out
 
     def partner_placements(self, full_state, chara_info, turn, occupied=None, standing=None) -> dict:
-        """Haiseiko's guests: a full one in her own facility, the rest at
-        random (§6.4); AddSupportForTraining buffs bring deck cards that are
-        standing nowhere into random facilities [INFERRED]."""
         st = impl.state(full_state)
         out: dict = {}
         occupied = dict(occupied or {})
@@ -351,7 +295,6 @@ class Legend(Scenario):
         return out
 
     def final_partners(self, full_state, chara_info, command_id, turn, partners) -> list:
-        """A full-gauge deck card always stands in its own facility (§6.4)."""
         st = impl.state(full_state)
         forced = impl.forced_cards(chara_info, st)
         if not forced:
@@ -364,9 +307,6 @@ class Legend(Scenario):
         return out
 
     def mood_change(self, full_state, chara_info, value: int) -> int:
-        """An event's mood change under St Lite's guidance (§6.2): an up
-        extends super motivation or counts a step; a down cannot land while
-        it lasts. Returns the change to apply."""
         st = impl.state(full_state)
         if st["masterly"] != M.ST_LITE:
             return value
@@ -374,7 +314,6 @@ class Legend(Scenario):
             return 0 if impl.super_on(st) else value
         return impl.count_mood_up(full_state, value) if value > 0 else value
 
-    # ----------------------------------------------------------------- flow --
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
         return impl.sprace_pending(impl.state(full_state), int(turn or 0))
 
@@ -406,8 +345,6 @@ class Legend(Scenario):
         return event_engine.choice_reward_array(ev.engine_event(), chara_info or {})
 
     def on_event_resolved(self, full_state, chara_info, event_id) -> dict:
-        """The opening chain behind Tazuna's tips; the group card's events'
-        gauge gains and passion (§3.2, §12)."""
         from ... import career_events as CE
         from ...handlers import single_mode_team as smt
         event_id = int(event_id or 0)
@@ -433,7 +370,6 @@ class Legend(Scenario):
         return {}
 
     def on_event_choice(self, full_state, chara_info, event_id, choice_number) -> None:
-        """あの頃と今を繋げて (date 4): the chosen legend's gauge to 8 (§3.2)."""
         if int(event_id or 0) != producers.CARD_DATE4 or not impl.group_card(chara_info):
             return
         st = impl.state(full_state)
@@ -446,7 +382,6 @@ class Legend(Scenario):
         from ...handlers import single_mode_team as smt
         smt._grant_pure_passion(full_state, chara_info, M.GROUP_CARD, impl.turn_of(chara_info))
 
-    # ------------------------------------------------------------------ run --
     def snapshot(self, full_state) -> dict:
         st = impl.state(full_state)
         return {"legend_races": [dict(r) for r in st["races"]], "legend_buffs": impl.held(st),

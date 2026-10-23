@@ -1,0 +1,23 @@
+{
+ "title": "ジャパンCにむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "他のウマ娘はみんな、夢を持っていた。\nシンボリクリスエスは、レース界の発展と\nシンボリ家への恩返し。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "タップダンスシチーはロマン探し。\nネオユニヴァースは“LUZF”（謎）。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルもこのレースで、\n自分だけの夢を見つけられるだろうか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

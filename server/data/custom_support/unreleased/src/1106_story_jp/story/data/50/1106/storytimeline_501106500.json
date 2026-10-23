@@ -1,0 +1,164 @@
+{
+ "title": "名指導",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "はい、準備体操おーしまい。\n……ほどほど～に走りますかぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なまったらなまったで、\n走るの疲れてしんどいし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――これに関してはガチで遠慮とかネーんで！\nフジさんも本気で頼んます！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "フジキセキ",
+   "text": "もちろんだよポッケ！\n“キセキ”のような走りを、見せてあげよう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わっ、あの2人今から併走？\n……のんびり走りたいし、端っこ走ろ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "フジ＆ポッケ",
+   "text": "――フッ！\n――ハァ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（え！？　マ、マズ！\nこのままじゃコースかぶるじゃん！\nは……早くコースずらさないと～）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（えっと、えっと、なんだっけ……？\nスパートするときのコツは――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "フジ＆ポッケ",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はあっ、はあっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふ～、危なかったぁ……。\nトレーナーさんのアドバイス様様だ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～～、スパートしんどすぎるー。\nトレーナーさ～ん、コツとかないんですかぁ？",
+   "choice_data_list": [
+    "“する”んじゃなくて“かける”意識だな",
+    "“する”んじゃなくて“かける”意識かな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『無闇にしない』『踏み込む場所を意識する』\nそれで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自分の意思で“かけに”いく！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は～、なるほどなぁ。\nたしかにさっきの感じなら、しんどくは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……いや、今ドッときたかも。\nコツも掴めたし、さっさと部屋戻ろ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ジャングルポケット",
+   "text": "オイオイ、なんだよ今の加速っ！\nすっげーおもしれェ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～……ご、ごめんね？\n2人の併走邪魔しちゃったよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "フジキセキ",
+   "text": "ふふっ、邪魔なんてことはないよ！\nたしかに目は奪われたけど、ね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ジャングルポケット",
+   "text": "なあなあ、今からちょっと走ろうぜ！\n俺あんたと戦ってみてェ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "い、いや～ごめんね？\nそのー……そうそう、トレーニング量はさ\nトレーナーさんに聞かなきゃだし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "というわけで、ごめんねー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あ、危なかった～。危うく\n熱血トレーニングに巻き込まれるかと……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんが優秀なのも考えものだ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+#title The Goddesses' Blessing
+0 March arrived, and the Umamusume in their classic year were throwing themselves into training more than ever.
+1 Bitter Glasse, your next race is less than a month away. We'll start a new regimen today.
+2 Little Cocon, you'll increase your aerobic exercise even further to strengthen your endurance.
+3 Both of you, focus on the goals in front of you for now.
+4 Yes!
+4> They're really fired up
+5 Around this time of year, the other Umamusume start improving rapidly too.
+6 ...At last, those two are heading into the real fight toward their dreams.
+6> Now's the time for trainers to give it their all too
+7 Precisely. Which is why the Three Goddesses are a godsend.
+8 ...To be honest, I was skeptical of AI support. I have the training know-how in my head, and if I don't know something, I can look it up.
+9 But their ideas and observations from angles I'd never consider—and their accuracy, on top of that.
+10 In fact, those two are now showing more growth than I expected.
+11 An enormous amount of data, and simulations run at calculation speeds our minds could never hope to match.
+12 ...So this is how beneficial AI support can be for Umamusume.
+13 Well then, I should be going to see the Three Goddesses. We promised to discuss what comes next.
+14 In fact, I could feel the Three Goddesses' knowledge paying off in <chrname>'s training as well.
+15 Perhaps the Three Goddesses were becoming indispensable to us.
+16 Phew! Really worked my body hard today! Feels like I got even stronger!
+17 Seriously, you're way past stoic. You're a total meathead.
+18 Haha! But hey, don't you think you're getting better every day too, Little Cocon?
+19 I'm really glad Trainer Kashimoto's our trainer. She actually lets us do what we wanna do!
+20 Before I had a trainer, everyone always told me I was charging ahead on my own.
+21 I'd even get into fights with people who couldn't keep up. But Trainer Kashimoto was different—
+22 ...More extra training on your own again today, Bitter Glasse?
+23 Trainer Kashimoto... Um, sorry. I just felt like I wanted to do more...
+24 ...But this is just overdoing it, isn't it? Like everyone says, it's not proper training...
+25 ...I see.
+26 It's only natural that every Umamusume is different. It would be wrong for you to be the one adjusting.
+27 I'll revise your regimen right away. In exchange, from now on, don't hesitate to tell me.
+28 Huh...? Y-yes...
+29 People say Trainer Kashimoto's strict, but it's the opposite! She really pays attention to us!
+30 ...Yeah. She does.
+31 Let's both get results and make her happy! Well, see ya tomorrow!
+32 .........
+33 ...She really does pay attention.
+34 Yaaay! First place!
+35 Good work, Little Cocon. I'm sorry for having you join a group practice right after joining the team.
+36 ...I don't really mind that, but... More importantly, I couldn't win at all...
+37 Winning or losing isn't the issue. What I wanted to see was whether you have talent—
+38 And I sensed that you do.
+39 I have talent...? Me, after coming in sixth...?
+40 ...Compare yourself to the Umamusume you ran with. You're the only one who's already caught her breath.
+41 Huh...? She's... right...
+42 (She found my weapon... and she found me, too...)
+43 (With Trainer Kashimoto, I can win. No matter how big the race, I know I can...!)

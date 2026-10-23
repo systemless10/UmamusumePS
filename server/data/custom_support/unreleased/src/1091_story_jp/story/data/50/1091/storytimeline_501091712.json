@@ -1,0 +1,35 @@
+{
+ "title": "不在の理由は……",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスが、トレーニングに現れない。\n心配で捜し回ると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、ごめんなさい……！\n髪がぴょんってしてて、ダサくて、その……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんにも、すっごく怒られた。\n『約束を守らないほうがダサいわ』って。\n……ほんとに、そのとおりだよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もうこんなダサいこと、しない！\nだから……\nまたいっしょに走ってほしいです……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しっかりと反省しているようなので、\n謝罪を受け入れ、再スタートを誓い合った。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

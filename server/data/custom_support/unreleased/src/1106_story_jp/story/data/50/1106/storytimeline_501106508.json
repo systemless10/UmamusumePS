@@ -1,0 +1,32 @@
+{
+ "title": "レース疲れ",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "はふぅ……かわいいなぁ～……。",
+   "choice_data_list": [
+    "何を見ているんだ？",
+    "何を見ているの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "動物の赤ちゃんの動画です。\n子犬とか、子猫とか、ヒヨコとか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ……癒される～……。疲れたときは\nかわいいもので充電しないと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは疲れが溜まっているようだ。\n今後の予定を見直した方がいいかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "title": "大地に刻むほどの知識",
+ "text_block_list": [
+  {
+   "name": "バイアリーターク",
+   "text": "ふむ……<chrname>もお前も、\n着実に成長を遂げているようだな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "だが、努力を重ねているのは誰しも同じだ。\n自身の満足で止まることは許されん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "より強くなれ。大地をえぐるほどの……\n大地に蹄跡を刻むほどの強さを追い続けろ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

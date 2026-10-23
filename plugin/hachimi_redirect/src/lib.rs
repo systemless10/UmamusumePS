@@ -1,72 +1,3 @@
-//! Hachimi-Edge plugin: send the game's API traffic (Global or JP) to a custom
-//! server, set from the Hachimi menu -- no hosts-file redirect and no installed
-//! certificate needed. Optionally (on by default) blanks the device and Steam
-//! identifiers from every request that goes to that server.
-//!
-//! Four hooks, all found by name so they survive client updates:
-//!
-//! 1. URL -- Cute.Http.WWWRequest.Post(string url, byte[], Dictionary) is the
-//!    one place every API call is sent from (the only IWebRequest in both the
-//!    Global and JP dumps; it builds the UnityWebRequest and calls
-//!    SendWebRequest). UnityWebRequest.get_url is stripped from the build, so
-//!    the rewrite has to happen here, on the way in:
-//!        https://api.games.umamusume.{com,jp}/umamusume/...  ->  <server>/umamusume/...
-//!    Asset downloads (akamaized) and web views never pass through it.
-//!
-//! 2. TLS -- both clients ship PlayerSettings.insecureHttpOption = 0, so Unity
-//!    refuses http:// outright: the server has to stay HTTPS. The build also
-//!    strips CertificateHandler's constructor, so no managed override exists.
-//!    UnityTLS's default-CA check on Windows is crypt32's
-//!    CertVerifyCertificateChainPolicy(SSL, chain, {pwszServerName}, status),
-//!    followed by a walk over each chain element's TrustStatus (UnityPlayer.dll
-//!    2022.3.62f2, the only call site). When the SSL server name is exactly the
-//!    configured server's host and the redirect is on, the hook reports success
-//!    and clears those TrustStatus errors. Every other host is verified exactly
-//!    as before.
-//!
-//! 3. JP seal -- the JP client seals each request to an X25519 key it believes
-//!    is Cygames'. This is tools/hachimi_jp_localserver's patch, carried over
-//!    unchanged (see that crate for the envelope layout), so do NOT load both.
-//!    It arms when the arming channel answers AND either this plugin's redirect
-//!    is on or api.games.umamusume.jp resolves to loopback (the old hosts mode).
-//!    A patched client therefore never seals to a key the real server can't
-//!    open while its requests still go there.
-//!
-//! 4. Censor -- every request class derives from Gallop.RequestCommon, and
-//!    Gallop.HttpHelper.SetupRequestCommon<TRequestType>(req) fills its fields
-//!    right before the request is serialized. Request types are all classes,
-//!    so il2cpp compiles ONE shared body (SetupRequestCommon<object>) for every
-//!    request; it is found through reflection (MakeGenericMethod) rather than
-//!    by address. After it runs, the fields in CENSORED_STRINGS / keychain are
-//!    blanked -- only while redirecting, since the real server needs them (the
-//!    Steam ticket is the login). viewer_id is kept: it is the account key.
-//!
-//! 5. Capture (JP, off by default, `capture=` in redirect.cfg) -- stands in for
-//!    hachimi_umacap, which can't be loaded alongside (same LZ4 hooks). Only
-//!    while the redirect is OFF, i.e. on the real server: the LZ4 compress input
-//!    is the plaintext request envelope (msgpack body after the 0xAA / 0x78
-//!    header), the LZ4_decompress_safe_ext output is the plaintext reply, and
-//!    WWWRequest.Post gives the URL. Written as umacap-format JSONL
-//!    (api_request / http_txn / api_reply with decoded `json`) to
-//!    <hachimi dir>/umacap/api-<UTC stamp>-<pid>.jsonl, so tools/jpclient reads
-//!    it unchanged. Sealed wire, crypto constants and clicks are not captured.
-//!
-//! 6. Client log (off by default, `client_log=` in redirect.cfg) -- for
-//!    debugging the game itself: reopens UnityEngine.Logger so the game's own
-//!    errors reach Player.log, and records every managed exception as it is
-//!    created (even ones the game swallows) with its stack, to
-//!    <hachimi dir>/clientlog/client-<UTC stamp>-<pid>.log. Both clients.
-//!
-//! 7. Big fields (on by default, `big_fields=` in redirect.cfg) -- lets a race
-//!    with more than 18 runners load: caps the commentary's per-runner tables
-//!    at 18 (see that section). Inert in any race of 18 or fewer.
-//!
-//! 8. Code dump (menu button, debugging) -- writes the loaded GameAssembly
-//!    image plus a symbol map of every method and field to
-//!    <hachimi dir>/codedump/, for offline disassembly.
-//!
-//! Settings live in <hachimi dir>/redirect.cfg, one per game install, so the
-//! Global and JP clients each keep their own address.
 
 use std::ffi::{c_char, c_void, CStr, CString};
 use std::io::{Read, Write};
@@ -76,6 +7,7 @@ use std::sync::atomic::{AtomicBool, AtomicU64, AtomicUsize, Ordering};
 use std::sync::{Mutex, OnceLock, RwLock};
 use std::time::{Duration, Instant};
 mod custom_support;
+mod umapack;
 
 const OFFICIAL_ORIGINS: [&str; 2] = ["https://api.games.umamusume.com", "https://api.games.umamusume.jp"];
 const JP_HOST: &str = "api.games.umamusume.jp";
@@ -83,7 +15,6 @@ const DEFAULT_ARM_PORT: u16 = 8090;
 const RECHECK: Duration = Duration::from_secs(3);
 const CONFIG_NAME: &str = "redirect.cfg";
 
-// ------------------------------------------------------------- Hachimi API v3
 type GetApiFn = unsafe extern "C" fn(name: *const c_char) -> *mut c_void;
 type LogFn = unsafe extern "C" fn(i32, *const c_char, *const c_char);
 type InstanceFn = unsafe extern "C" fn() -> *const c_void;
@@ -167,7 +98,6 @@ fn notify(msg: &str) {
     }
 }
 
-/// Hachimi-Edge plugin entry point (API v3). Returns 1 = Ok, 0 = Error.
 #[no_mangle]
 pub extern "C" fn hachimi_init_v3(get_api: GetApiFn, version: i32) -> i32 {
     if version < 3 {
@@ -207,6 +137,7 @@ pub extern "C" fn hachimi_init_v3(get_api: GetApiFn, version: i32) -> i32 {
     if custom_support::enabled() {
         custom_support::install();
     }
+    let _ = std::panic::catch_unwind(umapack::install);
 
     let api = API.get().unwrap();
     if let Some(reg) = api.register_section {
@@ -216,9 +147,6 @@ pub extern "C" fn hachimi_init_v3(get_api: GetApiFn, version: i32) -> i32 {
     if region() == Region::Jp {
         spawn_seal_installer();
     }
-    // il2cpp is normally up by the time plugins load, so the URL hook goes in
-    // now. The censor hook calls managed reflection, which waits for the game
-    // to report it has initialized (that callback also retries the URL hook).
     try_install_post(false);
     let registered = api.on_game_init.map(|f| unsafe { f(Some(on_game_initialized), std::ptr::null_mut()) });
     if registered != Some(true) {
@@ -245,17 +173,11 @@ unsafe extern "C" fn on_game_initialized(_: *mut c_void) {
 
 static MANAGED_HOOKS: AtomicBool = AtomicBool::new(false);
 
-/// The hooks that need the game's managed side up. Run from Hachimi's
-/// game-initialized callback -- which never fires when Hachimi attaches late
-/// ("Late loading detected" in hachimi.log) -- and so ALSO from the first API
-/// request, which is always after initialization. Whichever comes first wins.
 fn install_managed_hooks() {
     if MANAGED_HOOKS.swap(true, Ordering::AcqRel) {
         return;
     }
     let _ = std::panic::catch_unwind(try_install_censor);
-    // Off means off: no big-field hook is placed at all (turning it on in the
-    // menu installs them then; turning it off again needs a restart to unhook).
     if BIG_FIELDS.load(Ordering::Acquire) {
         let _ = std::panic::catch_unwind(try_install_big_fields);
     }
@@ -268,7 +190,6 @@ fn install_managed_hooks() {
     }
 }
 
-// ------------------------------------------------------------- Win32 imports
 #[link(name = "kernel32")]
 extern "system" {
     fn GetModuleHandleW(name: *const u16) -> *mut c_void;
@@ -310,8 +231,6 @@ fn export(module: &str, symbol: &str, load: bool) -> usize {
     }
 }
 
-/// Committed, writable, not a guard page -- checked before touching memory a
-/// system DLL handed us, since a stray write there would crash the game.
 fn writable(p: *const u8, len: usize) -> bool {
     if p.is_null() {
         return false;
@@ -337,8 +256,6 @@ fn interceptor_hook(addr: usize, detour: *mut c_void) -> usize {
     }
 }
 
-/// The installer stores the trampoline right after hooking; a caller racing
-/// into that gap spins for nanoseconds rather than jumping to null.
 fn trampoline(slot: &AtomicUsize) -> usize {
     loop {
         let t = slot.load(Ordering::Acquire);
@@ -349,14 +266,12 @@ fn trampoline(slot: &AtomicUsize) -> usize {
     }
 }
 
-// ------------------------------------------------------------------- region
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum Region {
     Global,
     Jp,
 }
 
-/// From the executable name: the JP Steam build is UmamusumePrettyDerby_Jpn.exe.
 fn region() -> Region {
     static R: OnceLock<Region> = OnceLock::new();
     *R.get_or_init(|| {
@@ -371,7 +286,6 @@ fn region() -> Region {
     })
 }
 
-/// Default local addresses per region: Global 127.0.0.1:443, JP 127.0.0.2:443.
 fn default_server() -> &'static str {
     match region() {
         Region::Global => "https://127.0.0.1",
@@ -379,26 +293,21 @@ fn default_server() -> &'static str {
     }
 }
 
-// ------------------------------------------------------------------- config
 struct Config {
     enabled: bool,
-    server: String, // normalized: https://host[:port][/prefix], no trailing slash
-    host: String,   // lowercase, what the TLS server name must equal
+    server: String,
+    host: String,
 }
 
 static CONFIG: RwLock<Config> = RwLock::new(Config { enabled: false, server: String::new(), host: String::new() });
-/// Bumped on every config change so the JP arming cache never outlives it.
 static GENERATION: AtomicU64 = AtomicU64::new(0);
 static REDIRECTED: AtomicU64 = AtomicU64::new(0);
-/// Blank the identifying RequestCommon fields on redirected requests (default on).
 static CENSOR: AtomicBool = AtomicBool::new(true);
+static FUTURE_CONTENT: AtomicBool = AtomicBool::new(false);
 static CENSORED: AtomicU64 = AtomicU64::new(0);
 static CERTS_ACCEPTED: AtomicU64 = AtomicU64::new(0);
-/// Log plaintext API traffic while on the official server (default off, JP only).
 static CAPTURE: AtomicBool = AtomicBool::new(false);
 
-/// Accepts "host", "host:port" or "https://host[:port][/path]". Plain http://
-/// is rejected: Unity would refuse the request anyway (insecureHttpOption = 0).
 fn normalize(input: &str) -> Result<(String, String), String> {
     let s = input.trim().trim_end_matches('/');
     if s.is_empty() {
@@ -448,12 +357,13 @@ fn load_config() {
             match line.split_once('=').map(|(k, v)| (k.trim(), v.trim())) {
                 Some(("enabled", v)) => enabled = matches!(v, "1" | "true" | "yes" | "on"),
                 Some(("server", v)) if !v.is_empty() => server = v.to_string(),
-                Some(("censor", v)) => CENSOR.store(!matches!(v, "0" | "false" | "no" | "off"), Ordering::Release),
+                Some(("future_content", v)) => FUTURE_CONTENT.store(matches!(v, "1" | "true" | "yes" | "on"), Ordering::Release),
                 Some(("capture", v)) => CAPTURE.store(matches!(v, "1" | "true" | "yes" | "on"), Ordering::Release),
                 Some(("client_log", v)) => CLIENT_LOG.store(matches!(v, "1" | "true" | "yes" | "on"), Ordering::Release),
                 Some(("big_fields", v)) => BIG_FIELDS.store(!matches!(v, "0" | "false" | "no" | "off"), Ordering::Release),
                 Some(("custom_support", v)) => custom_support::ENABLED.store(matches!(v, "1" | "true" | "yes" | "on"), Ordering::Release),
                 Some(("server_events", v)) => custom_support::SERVER_EVENTS.store(matches!(v, "1" | "true" | "yes" | "on"), Ordering::Release),
+                Some(("unreleased_trainees", v)) => custom_support::UNRELEASED.store(matches!(v, "1" | "true" | "yes" | "on"), Ordering::Release),
                 _ => {}
             }
         }
@@ -492,27 +402,26 @@ fn set_config(enabled: bool, server: String, host: String, save: bool) {
 fn save_config(cfg: &Config) {
     let Some(p) = config_path() else { return };
     let text = format!(
-        "# Server redirect (Hachimi plugin hachimi_redirect)\nenabled={}\nserver={}\ncensor={}\ncapture={}\nclient_log={}\nbig_fields={}\ncustom_support={}\nserver_events={}\n",
+        "# Server redirect (Hachimi plugin hachimi_redirect)\nenabled={}\nserver={}\nfuture_content={}\ncapture={}\nclient_log={}\nbig_fields={}\ncustom_support={}\nserver_events={}\nunreleased_trainees={}\n",
         cfg.enabled,
         cfg.server,
-        CENSOR.load(Ordering::Acquire),
+        FUTURE_CONTENT.load(Ordering::Acquire),
         CAPTURE.load(Ordering::Acquire),
         CLIENT_LOG.load(Ordering::Acquire),
         BIG_FIELDS.load(Ordering::Acquire),
         custom_support::ENABLED.load(Ordering::Acquire),
-        custom_support::SERVER_EVENTS.load(Ordering::Acquire)
+        custom_support::SERVER_EVENTS.load(Ordering::Acquire),
+        custom_support::UNRELEASED.load(Ordering::Acquire),
     );
     if let Err(e) = std::fs::write(&p, text) {
         log(1, &format!("could not save {}: {e}", p.display()));
     }
 }
 
-// ---------------------------------------------------------- 1. URL rewrite
 type PostFn = unsafe extern "C" fn(*mut c_void, *mut c_void, *mut c_void, *mut c_void, *const c_void);
 static POST_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static POST_INSTALLED: OnceLock<bool> = OnceLock::new();
 
-/// Replaces Cute.Http.WWWRequest.Post(this, url, postData, headers, MethodInfo*).
 unsafe extern "C" fn hk_post(this: *mut c_void, url: *mut c_void, data: *mut c_void, headers: *mut c_void, mi: *const c_void) {
     if !MANAGED_HOOKS.load(Ordering::Acquire) {
         install_managed_hooks();
@@ -550,9 +459,6 @@ fn il2cpp_text(s: *mut c_void) -> Option<String> {
     }
 }
 
-/// A new il2cpp string with the official origin swapped for ours, or None to
-/// send the request untouched. The new string only lives on this call's stack,
-/// which il2cpp's GC scans, so it stays alive until Post has copied it.
 fn rewrite(url: *mut c_void) -> Option<*mut c_void> {
     if url.is_null() {
         return None;
@@ -576,8 +482,6 @@ fn rewrite(url: *mut c_void) -> Option<*mut c_void> {
     (!s.is_null()).then_some(s)
 }
 
-/// Returns false only when il2cpp isn't ready yet (worth retrying); any other
-/// failure is logged and final.
 fn try_install_post(final_attempt: bool) -> bool {
     if POST_INSTALLED.get().is_some() {
         return true;
@@ -621,11 +525,6 @@ fn try_install_post(final_attempt: bool) -> bool {
     true
 }
 
-// --------------------------------------------------------------- 4. censor
-/// RequestCommon string fields blanked to "" (JP names the ticket
-/// steam_session_auth_ticket, Global steam_session_ticket; a name the client
-/// lacks is skipped). keychain (a long) is zeroed. viewer_id is NOT touched:
-/// the server keys every account on it.
 const CENSORED_STRINGS: [&str; 10] = [
     "device_id",
     "device_name",
@@ -644,15 +543,13 @@ static SETUP_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static CENSOR_INSTALLED: OnceLock<bool> = OnceLock::new();
 
 struct CensorFields {
-    request_common: usize, // Il2CppClass* of Gallop.RequestCommon
-    strings: Vec<usize>,   // FieldInfo*
-    keychain: usize,       // FieldInfo* or 0
+    request_common: usize,
+    strings: Vec<usize>,
+    keychain: usize,
 }
 
 static FIELDS: OnceLock<CensorFields> = OnceLock::new();
 
-/// Replaces HttpHelper.SetupRequestCommon<object>(req, MethodInfo*): fill as
-/// usual, then blank what the server doesn't need.
 unsafe extern "C" fn hk_setup_request_common(req: *mut c_void, mi: *const c_void) {
     std::mem::transmute::<usize, SetupFn>(trampoline(&SETUP_TRAMPOLINE))(req, mi);
     let _ = std::panic::catch_unwind(|| censor(req));
@@ -667,8 +564,6 @@ fn censor(req: *mut c_void) {
     }
     let (Some(f), Some(api)) = (FIELDS.get(), API.get()) else { return };
     let (Some(set), Some(new_str)) = (api.set_field, api.string_new) else { return };
-    // The hooked body is shared by every reference-type instantiation, so check
-    // this really is a request before writing into it.
     let Some(is_subclass) = il2cpp::<unsafe extern "C" fn(*mut c_void, *mut c_void, bool) -> bool>("il2cpp_class_is_subclass_of")
     else {
         return;
@@ -680,9 +575,6 @@ fn censor(req: *mut c_void) {
         }
         let empty = new_str(c"".as_ptr());
         for &field in &f.strings {
-            // il2cpp_field_set_value takes a reference type's object pointer
-            // itself (a value type's by address, as keychain below). Passing
-            // &empty stored a stack address as the string and broke login.
             set(req, field as *mut c_void, empty as *const c_void);
         }
         if f.keychain != 0 {
@@ -695,7 +587,6 @@ fn censor(req: *mut c_void) {
     }
 }
 
-/// An il2cpp export by name, through Hachimi (works on the packed JP build too).
 fn il2cpp<T: Copy>(name: &str) -> Option<T> {
     let f = API.get()?.resolve_symbol?;
     let n = CString::new(name).ok()?;
@@ -718,9 +609,6 @@ fn try_install_censor() {
     let _ = CENSOR_INSTALLED.set(ok.is_ok());
 }
 
-/// SetupRequestCommon is generic, so its definition has no code address. The
-/// shared body is reached the way C# would: methodof(SetupRequestCommon)
-/// .MakeGenericMethod(typeof(RequestCommon)), then that MethodInfo's pointer.
 unsafe fn install_censor() -> Result<(), String> {
     type DomainGet = unsafe extern "C" fn() -> *mut c_void;
     type ThreadAttach = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
@@ -757,8 +645,6 @@ unsafe fn install_censor() -> Result<(), String> {
     if corlib.is_null() {
         return Err("mscorlib.dll image not found".into());
     }
-    // The request classes moved between assemblies across client builds
-    // (RequestCommon is in umamusume.Http.dll on current ones), so look in both.
     let find = |name: &CStr| {
         [c"umamusume.dll", c"umamusume.Http.dll"]
             .iter()
@@ -808,7 +694,6 @@ unsafe fn install_censor() -> Result<(), String> {
     if args_arr.is_null() {
         return Err("could not allocate Type[]".into());
     }
-    // Il2CppArray: klass, monitor, bounds, max_length, then the elements.
     *((args_arr as *mut u8).add(0x20) as *mut *mut c_void) = type_object(class_type(request_common));
     let mut params = [args_arr];
     let mut exc: *mut c_void = std::ptr::null_mut();
@@ -817,7 +702,6 @@ unsafe fn install_censor() -> Result<(), String> {
         return Err("MakeGenericMethod(RequestCommon) threw".into());
     }
     let method = from_reflection(inflated);
-    // MethodInfo starts with methodPointer.
     let addr = if method.is_null() { 0 } else { *(method as *const usize) };
     if addr == 0 {
         return Err("SetupRequestCommon<object> has no compiled body".into());
@@ -833,13 +717,11 @@ unsafe fn install_censor() -> Result<(), String> {
     Ok(())
 }
 
-// ------------------------------------------------------- 2. certificate check
 type VerifyPolicyFn = unsafe extern "system" fn(usize, *const u8, *const u8, *mut u8) -> i32;
 static VERIFY_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static CERT_HOOKED: OnceLock<bool> = OnceLock::new();
 const CERT_CHAIN_POLICY_SSL: usize = 4;
 
-/// Replaces crypt32!CertVerifyCertificateChainPolicy(oid, chain, para, status).
 unsafe extern "system" fn hk_verify_policy(oid: usize, chain: *const u8, para: *const u8, status: *mut u8) -> i32 {
     let ok = std::mem::transmute::<usize, VerifyPolicyFn>(trampoline(&VERIFY_TRAMPOLINE))(oid, chain, para, status);
     if oid != CERT_CHAIN_POLICY_SSL || chain.is_null() || para.is_null() || status.is_null() {
@@ -851,9 +733,6 @@ unsafe extern "system" fn hk_verify_policy(oid: usize, chain: *const u8, para: *
     }
 }
 
-/// CERT_CHAIN_POLICY_PARA { cbSize u32, dwFlags u32, pvExtraPolicyPara* @8 }
-/// SSL_EXTRA_CERT_CHAIN_POLICY_PARA { cbSize, dwAuthType, fdwChecks, pwszServerName* @0x10 }
-/// CERT_CHAIN_POLICY_STATUS { cbSize, dwError @4, lChainIndex @8, lElementIndex @0xC, .. }
 fn accept_our_server(chain: *const u8, para: *const u8, status: *mut u8) -> bool {
     unsafe {
         let extra = *(para.add(8) as *const *const u8);
@@ -888,10 +767,6 @@ fn accept_our_server(chain: *const u8, para: *const u8, status: *mut u8) -> bool
     }
 }
 
-/// Unity also ORs every chain element's TrustStatus.dwErrorStatus into its
-/// verdict after the policy call, so those have to read clean too.
-/// CERT_CHAIN_CONTEXT / CERT_SIMPLE_CHAIN: { cbSize, TrustStatus @4, count @0xC, items** @0x10 }
-/// CERT_CHAIN_ELEMENT: { cbSize, pCertContext @8, TrustStatus @0x10 }
 unsafe fn clear_chain_errors(ctx: *const u8) {
     let clear = |p: *const u8| {
         if writable(p, 4) {
@@ -942,9 +817,6 @@ fn install_cert_hook() {
     log(3, "hooked crypt32!CertVerifyCertificateChainPolicy (only the configured server's name is affected)");
 }
 
-// ------------------------------------------------------------- 3. JP seal
-// Six parameters although LZ4 takes four: under Win64 the extra two are harmless
-// stack slots passed straight through (see hachimi_jp_localserver).
 type Lz4Fn = unsafe extern "C" fn(*const u8, *mut u8, i32, i32, usize, usize) -> i32;
 static LZ4_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static SEAL_STATE: Mutex<&'static str> = Mutex::new("waiting for libnative.dll");
@@ -957,7 +829,6 @@ unsafe extern "C" fn hk_compress(src: *const u8, dst: *mut u8, n: i32, cap: i32,
     std::mem::transmute::<usize, Lz4Fn>(trampoline(&LZ4_TRAMPOLINE))(src, dst, n, cap, a5, a6)
 }
 
-/// Replaces LZ4_decompress_safe_ext; its output is the opened, plaintext reply.
 unsafe extern "C" fn hk_decompress(src: *const u8, dst: *mut u8, n: i32, cap: i32, a5: usize, a6: usize) -> i32 {
     let ret = std::mem::transmute::<usize, Lz4Fn>(trampoline(&LZ4_DEC_TRAMPOLINE))(src, dst, n, cap, a5, a6);
     if ret > 0 {
@@ -966,7 +837,6 @@ unsafe extern "C" fn hk_decompress(src: *const u8, dst: *mut u8, n: i32, cap: i3
     ret
 }
 
-/// Header length of an API request envelope, or None for other LZ4 traffic.
 fn envelope_header(src: *const u8, n: i32) -> Option<usize> {
     if src.is_null() || n <= 0 {
         return None;
@@ -974,7 +844,7 @@ fn envelope_header(src: *const u8, n: i32) -> Option<usize> {
     let header = match unsafe { *src } {
         0xA6 => 0xAA,
         0x74 => 0x78,
-        _ => return None, // not an API envelope -- LZ4 is used for other things too
+        _ => return None,
     };
     let env = unsafe { std::slice::from_raw_parts(src, (n as usize).min(header)) };
     ((n as usize) > header && env[1..4] == [0, 0, 0]).then_some(header)
@@ -998,15 +868,11 @@ struct Armed {
 
 static ARMED: Mutex<Option<Armed>> = Mutex::new(None);
 
-/// Our server's public key when (and only when) requests are going to our
-/// server and its arming channel answers; None means "leave the envelope alone".
 fn server_key(tail20: &[u8], udid: &[u8], tail50: Option<&[u8]>) -> Option<[u8; 32]> {
     let report: Vec<u8> = [tail20, udid, tail50.unwrap_or(&[])].concat();
     let generation = GENERATION.load(Ordering::Acquire);
     let mut guard = ARMED.lock().unwrap_or_else(|e| e.into_inner());
     if let Some(a) = guard.as_ref() {
-        // A changed report (new tail50 after signup, new build) is sent at once,
-        // so the server always knows the session before the request lands.
         if a.report == report && a.generation == generation && a.at.elapsed() < RECHECK {
             return a.key;
         }
@@ -1034,7 +900,6 @@ fn server_key(tail20: &[u8], udid: &[u8], tail50: Option<&[u8]>) -> Option<[u8; 
     key
 }
 
-/// The old hosts-file mode, kept so this plugin can stand in for hachimi_jp_localserver.
 fn dns_redirected() -> bool {
     match (JP_HOST, 443).to_socket_addrs() {
         Ok(addrs) => {
@@ -1049,9 +914,6 @@ fn hex(b: &[u8]) -> String {
     b.iter().map(|x| format!("{x:02x}")).collect()
 }
 
-/// The arming channel is plain HTTP on 8090. The local server binds it to
-/// 127.0.0.1 even though its JP API is on 127.0.0.2, so any loopback server
-/// address is armed through 127.0.0.1. A remote server must expose it on its own host.
 fn fetch_key(host: &str, tail20: &[u8], udid: &[u8], tail50: Option<&[u8]>) -> Option<[u8; 32]> {
     let port = std::env::var("UMA_JP_ARM_PORT").ok().and_then(|p| p.parse().ok()).unwrap_or(DEFAULT_ARM_PORT);
     let loopback = host == "localhost" || host.parse::<std::net::IpAddr>().map(|ip| ip.is_loopback()).unwrap_or(false);
@@ -1087,9 +949,6 @@ fn fetch_key(host: &str, tail20: &[u8], udid: &[u8], tail50: Option<&[u8]>) -> O
     Some(key)
 }
 
-/// True when the function already starts with a jump -- another tool (Frida, a
-/// capture plugin, hachimi_jp_localserver) has detoured it. Stacking two
-/// detours on one prologue corrupts both, so we decline instead.
 fn already_detoured(addr: usize) -> bool {
     let p = unsafe { std::slice::from_raw_parts(addr as *const u8, 2) };
     p[0] == 0xE9 || p[0] == 0xEB || (p[0] == 0xFF && p[1] == 0x25)
@@ -1119,7 +978,6 @@ fn try_install_seal() -> bool {
     set_seal_state("ready");
     log(3, "hooked libnative.dll LZ4_compress_default_ext");
 
-    // Replies, for capture only -- the seal works without it.
     let dec = export("libnative.dll", "LZ4_decompress_safe_ext", false);
     if dec == 0 || already_detoured(dec) {
         log(2, "LZ4_decompress_safe_ext missing or already hooked; replies will not be captured");
@@ -1136,7 +994,6 @@ fn try_install_seal() -> bool {
     true
 }
 
-// ----------------------------------------------------------------- 5. capture
 static REPLY_HOOKED: AtomicBool = AtomicBool::new(false);
 static CAPTURED: AtomicU64 = AtomicU64::new(0);
 
@@ -1148,7 +1005,6 @@ struct CaptureFile {
 
 static CAPTURE_FILE: Mutex<CaptureFile> = Mutex::new(CaptureFile { file: None, path: String::new(), seq: 0 });
 
-/// Only on the official server: local-server traffic is the server's own to log.
 fn capturing() -> bool {
     region() == Region::Jp && CAPTURE.load(Ordering::Acquire) && !CONFIG.read().unwrap_or_else(|e| e.into_inner()).enabled
 }
@@ -1169,7 +1025,6 @@ fn capture_reply(dst: *const u8, n: i32) {
         return;
     }
     let buf = unsafe { std::slice::from_raw_parts(dst, n as usize) };
-    // API replies are a msgpack map ({response_code, data_headers, data}).
     if !matches!(buf[0], 0x80..=0x8f | 0xde | 0xdf) {
         return;
     }
@@ -1177,7 +1032,6 @@ fn capture_reply(dst: *const u8, n: i32) {
     capture_write("api_reply", &format!(",\"len\":{n},\"json\":{json}"));
 }
 
-/// One umacap-format JSONL line; `fields` is a JSON fragment starting with ','.
 fn capture_write(kind: &str, fields: &str) {
     let mut c = CAPTURE_FILE.lock().unwrap_or_else(|e| e.into_inner());
     if c.file.is_none() {
@@ -1207,11 +1061,9 @@ fn capture_write(kind: &str, fields: &str) {
     }
 }
 
-/// YYYYMMDD-HHMMSS in UTC, like umacap's file names.
 fn utc_stamp() -> String {
     let s = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0) as i64;
     let (days, rem) = (s.div_euclid(86_400), s.rem_euclid(86_400));
-    // Howard Hinnant's civil_from_days.
     let z = days + 719_468;
     let era = z.div_euclid(146_097);
     let doe = z - era * 146_097;
@@ -1258,8 +1110,6 @@ fn base64(b: &[u8]) -> String {
     o
 }
 
-/// The whole buffer as one msgpack value rendered to JSON (bin -> base64
-/// string, ext -> null, map keys stringified), or None if it isn't exactly one.
 fn msgpack_json(b: &[u8]) -> Option<String> {
     let mut p = Mp { b, i: 0 };
     let mut out = String::with_capacity(b.len() * 2);
@@ -1346,17 +1196,15 @@ impl Mp<'_> {
                     0xd4..=0xd8 => 1usize << (t - 0xd4),
                     _ => self.uint(1 << (t - 0xc7))? as usize,
                 };
-                self.take(n + 1)?; // type byte + payload
+                self.take(n + 1)?;
                 o.push_str("null");
             }
-            _ => return None, // 0xc1 is never used
+            _ => return None,
         }
         Some(())
     }
 }
 
-/// libnative.dll is a Unity native plugin loaded on demand, so poll for it:
-/// the hook must be in before the first login request is sealed.
 fn spawn_seal_installer() {
     let _ = std::thread::Builder::new().name("redirect-seal-install".into()).spawn(|| {
         for _ in 0..12_000 {
@@ -1370,30 +1218,10 @@ fn spawn_seal_installer() {
     });
 }
 
-// -------------------------------------------------------------- 6. client log
-// Off by default (`client_log=` in redirect.cfg). For debugging the game
-// itself, e.g. a race that never leaves the loading screen:
-//
-// a. The build strips UnityEngine.Debug.Log*, so everything goes through
-//    UnityEngine.Logger, which the game can silence with logEnabled /
-//    filterLogType. Both setters are forced open, and the live
-//    Debug.unityLogger is reopened when the option is switched on, so the
-//    game's own errors reach Player.log again.
-// b. Every managed exception is recorded when it is CONSTRUCTED --
-//    System.Exception..ctor() / ..ctor(string), which every exception type
-//    chains to (il2cpp builds its own NullReference / IndexOutOfRange ones
-//    through the same constructors). That includes exceptions the game catches
-//    and swallows, which never reach any log. Each distinct type+message is
-//    written up to EXCEPTION_REPEATS times with the stack it was created on.
-// c. Logger.LogException is mirrored too, with the exception's own ToString.
-//
-// Written to <hachimi dir>/clientlog/client-<UTC stamp>-<pid>.log. The hooks go
-// in only once the option is first switched on, and do nothing while it's off.
 static CLIENT_LOG: AtomicBool = AtomicBool::new(false);
 static CLIENT_LOG_INSTALLED: OnceLock<bool> = OnceLock::new();
 static CLIENT_LOGGED: AtomicU64 = AtomicU64::new(0);
 const EXCEPTION_REPEATS: u32 = 3;
-/// Distinct type+message pairs remembered; later new ones are dropped.
 const DISTINCT_EXCEPTIONS_MAX: usize = 20_000;
 
 type CtorFn = unsafe extern "C" fn(*mut c_void, *const c_void);
@@ -1409,14 +1237,12 @@ static LOG_ENABLED_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static FILTER_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static LOG_EXCEPTION_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 
-/// MethodInfo*s called through il2cpp_runtime_invoke, which catches anything
-/// they throw instead of unwinding it through this plugin.
 struct ClientLogMethods {
-    stack_trace: usize,     // System.Environment.get_StackTrace
-    to_string: usize,       // System.Exception.ToString
-    unity_logger: usize,    // UnityEngine.Debug.get_unityLogger
-    set_log_enabled: usize, // UnityEngine.Logger.set_logEnabled
-    set_filter: usize,      // UnityEngine.Logger.set_filterLogType
+    stack_trace: usize,
+    to_string: usize,
+    unity_logger: usize,
+    set_log_enabled: usize,
+    set_filter: usize,
 }
 
 static CLIENT_LOG_METHODS: OnceLock<ClientLogMethods> = OnceLock::new();
@@ -1425,12 +1251,9 @@ static CLIENT_LOG_PATH: Mutex<String> = Mutex::new(String::new());
 static EXCEPTION_COUNTS: Mutex<Option<std::collections::HashMap<String, u32>>> = Mutex::new(None);
 
 thread_local! {
-    /// Set while recording, so exceptions raised by the recording itself
-    /// (building a stack trace, ToString) aren't recorded in turn.
     static RECORDING: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
 }
 
-/// LogType.Log: with logEnabled, every type passes Logger.IsLogTypeAllowed.
 const LOG_TYPE_ALL: i32 = 3;
 
 unsafe extern "C" fn hk_exception_ctor(this: *mut c_void, mi: *const c_void) {
@@ -1485,7 +1308,6 @@ fn record_exception_inner(ex: *mut c_void, msg: *mut c_void, logged: bool) {
     }
     let methods = CLIENT_LOG_METHODS.get();
     let entry = if logged {
-        // Already thrown and caught: its own ToString has the real stack.
         let text = methods.and_then(|m| invoke_text(m.to_string, ex)).unwrap_or_else(|| name.clone());
         format!("LOGGED {text}")
     } else {
@@ -1496,7 +1318,6 @@ fn record_exception_inner(ex: *mut c_void, msg: *mut c_void, logged: bool) {
     client_log_write(&entry);
 }
 
-/// "Namespace.Class" of a managed object.
 fn class_name(obj: *mut c_void) -> Option<String> {
     let get_class: unsafe extern "C" fn(*mut c_void) -> *mut c_void = il2cpp("il2cpp_object_get_class")?;
     let name: unsafe extern "C" fn(*mut c_void) -> *const c_char = il2cpp("il2cpp_class_get_name")?;
@@ -1512,7 +1333,6 @@ fn class_name(obj: *mut c_void) -> Option<String> {
     }
 }
 
-/// A string-returning method run through il2cpp_runtime_invoke; None if it threw.
 fn invoke_text(method: usize, this: *mut c_void) -> Option<String> {
     let invoke: Invoke = il2cpp("il2cpp_runtime_invoke")?;
     let mut exc: *mut c_void = std::ptr::null_mut();
@@ -1552,7 +1372,6 @@ fn client_log_write(entry: &str) {
     }
 }
 
-/// Switches the option, installing the hooks the first time it goes on.
 fn set_client_log(on: bool) {
     CLIENT_LOG.store(on, Ordering::Release);
     if on {
@@ -1612,7 +1431,6 @@ unsafe fn install_client_log() -> Result<(), String> {
         set_filter: mi(logger, c"set_filterLogType", 1),
     });
 
-    // Each hook is independent: a missing one is reported, the rest still go in.
     let mut hooked = Vec::new();
     let mut failed = Vec::new();
     let hooks: [(*mut c_void, &CStr, i32, *mut c_void, &AtomicUsize, &str); 5] = [
@@ -1642,8 +1460,6 @@ unsafe fn install_client_log() -> Result<(), String> {
     Ok(())
 }
 
-/// Debug.unityLogger.logEnabled = true; filterLogType = Log -- the game may
-/// have silenced it before the hooks went in.
 fn reopen_unity_logger() {
     let Some(m) = CLIENT_LOG_METHODS.get() else { return };
     if m.unity_logger == 0 {
@@ -1676,28 +1492,6 @@ fn reopen_unity_logger() {
     });
 }
 
-// ------------------------------------------------------------- 7. big fields
-// On by default (`big_fields=` in redirect.cfg); does nothing in a race of 18
-// or fewer, i.e. every official race. A practice/room race from a private
-// server can carry more runners than the client's 18 (RaceDefine.
-// RACE_HORSE_MAX), and the client copes with that almost everywhere -- except
-// tables built around exactly 18 runners.
-//
-// Gallop.JikkyoTagProcessor (commentary text tags) -- read off the JP build's
-// UpdateTagRace: per-runner values are sized to the real field (_horseNum),
-// but the positions of the numbered tags in _tagText ("%h_pop1".."%h_pop18",
-// "%h_rank1".., ...) live in GlobalTagIndex int[] tables with one slot per
-// tag, i.e. 18. The paddock's popularity loop walks p = _horseNum-1 .. 0
-// through GlobalTagIndex.tagHPop*[p] and throws IndexOutOfRangeException at
-// p = 18, so the paddock never finishes loading. _horseTagKeys (one per
-// numbered tag, built inside UpdateTagRace) is the same kind of table.
-//
-// Every such table is widened to the field size, the extra slots repeating the
-// last real tag's position: runners past 18th fill the 18th tag (which the
-// last of them ends up holding), and every lookup stays in bounds. Commentary
-// still names at most 18; every runner loads and races.
-// (Capping _horseNum instead does NOT work: the same loop then indexes the
-// 18-slot _horseTagValues with real runner indices up to the field size.)
 const RACE_HORSE_MAX: i32 = 18;
 static BIG_FIELDS: AtomicBool = AtomicBool::new(true);
 static BIG_FIELDS_INSTALLED: OnceLock<bool> = OnceLock::new();
@@ -1708,11 +1502,7 @@ static TAG_HORSE_KEYS_FIELD: AtomicUsize = AtomicUsize::new(0);
 static TAG_CTOR_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static TAG_UPDATE_RACE_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 
-/// JikkyoTagProcessor..ctor(courseSet, raceId, raceName, horseArray,
-/// horseIndexByPopularity, getHorseIndexByOrder, getPlayerHorseIndex).
 type TagCtorFn = unsafe extern "C" fn(*mut c_void, *mut c_void, i32, *mut c_void, *mut c_void, *mut c_void, *mut c_void, *mut c_void, *const c_void);
-/// JikkyoTagProcessor.UpdateTagRace(JikkyoSceneType, RaceParamDefine.JikkyoParam):
-/// both forwarded untouched as register-sized values.
 type TagUpdateRaceFn = unsafe extern "C" fn(*mut c_void, usize, usize, *const c_void);
 
 unsafe extern "C" fn hk_jikkyo_tag_ctor(
@@ -1762,7 +1552,6 @@ fn note_widened(what: &str, count: usize, n: i32) {
 
 type FieldGetValue = unsafe extern "C" fn(*mut c_void, *mut c_void, *mut c_void);
 
-/// The processor's _horseNum when the fix applies (on, and above 18).
 fn big_field_size(obj: *mut c_void) -> Option<i32> {
     if obj.is_null() || !BIG_FIELDS.load(Ordering::Acquire) {
         return None;
@@ -1788,7 +1577,6 @@ fn object_field(obj: *mut c_void, field: &AtomicUsize) -> *mut c_void {
     v
 }
 
-/// Widens every array-typed field of `obj` shorter than `n`; returns how many.
 fn widen_array_fields(obj: *mut c_void, n: i32) -> usize {
     type GetClass = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
     type GetFields = unsafe extern "C" fn(*mut c_void, *mut *mut c_void) -> *mut c_void;
@@ -1829,10 +1617,6 @@ fn widen_array_fields(obj: *mut c_void, n: i32) -> usize {
     count
 }
 
-/// Replaces the array in `obj.field` with a copy of length `n` when it is
-/// shorter, the extra elements repeating its last one. False if untouched.
-/// Value-type elements are copied as raw bytes; object references are stored
-/// through il2cpp's GC write barrier (Unity's incremental GC needs it).
 fn widen_array(obj: *mut c_void, field: *mut c_void, n: i32) -> bool {
     type GetClass = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
     type ElementClass = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
@@ -1857,7 +1641,6 @@ fn widen_array(obj: *mut c_void, field: *mut c_void, n: i32) -> bool {
         if arr.is_null() {
             return false;
         }
-        // Il2CppArray: klass, monitor, bounds, max_length (0x18), elements (0x20).
         let len = *((arr as *const u8).add(0x18) as *const usize);
         if len == 0 || len >= n as usize {
             return false;
@@ -1897,28 +1680,20 @@ fn widen_array(obj: *mut c_void, field: *mut c_void, n: i32) -> bool {
                 std::ptr::copy_nonoverlapping(last, dst.add(i * esz), esz);
             }
         }
-        // A reference type goes in as the object pointer itself (see censor).
         set(obj, field, wide as *const c_void);
     }
     true
 }
 
-// - Gallop.SkillEffectPool.CreatePool(IRaceHorseAccessor) builds the race
-//   view's skill effects by walking accessor.GetHorseInfo(0..GetHorseNumber())
-//   and reading each horse's SkillManager._skillArray; one null there throws
-//   NullReferenceException and the race never starts. Before it runs, every
-//   horse is checked: a missing SkillManager gets HorseRaceInfo.CreateSkill(),
-//   a missing _skillArray gets SkillManager.CreateSkillArray(). Each repair is
-//   logged (hachimi.log, and the client log when on) with the runner index.
 static POOL_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 
 struct PoolRefs {
-    accessor_horse_number: usize, // IRaceHorseAccessor.GetHorseNumber MethodInfo*
-    accessor_horse_info: usize,   // IRaceHorseAccessor.GetHorseInfo MethodInfo*
-    create_skill: usize,          // HorseRaceInfo.CreateSkill MethodInfo*
-    create_skill_array: usize,    // SkillManager.CreateSkillArray MethodInfo*
-    skill_manager_offset: usize,  // HorseRaceInfo._skillManager
-    skill_array_offset: usize,    // SkillManager._skillArray
+    accessor_horse_number: usize,
+    accessor_horse_info: usize,
+    create_skill: usize,
+    create_skill_array: usize,
+    skill_manager_offset: usize,
+    skill_array_offset: usize,
 }
 
 static POOL_REFS: OnceLock<PoolRefs> = OnceLock::new();
@@ -1930,9 +1705,6 @@ unsafe extern "C" fn hk_create_pool(this: *mut c_void, accessor: *mut c_void, mi
     std::mem::transmute::<usize, PoolFn>(trampoline(&POOL_TRAMPOLINE))(this, accessor, mi);
 }
 
-/// Runs `method` (a MethodInfo*) on `obj` through il2cpp_runtime_invoke,
-/// resolving interface/virtual methods against the object first. None if it
-/// threw. Value-type results come back boxed.
 fn invoke_method(method: usize, obj: *mut c_void, args: &mut [*mut c_void]) -> Option<*mut c_void> {
     type Virtual = unsafe extern "C" fn(*mut c_void, *const c_void) -> *const c_void;
     let invoke: Invoke = il2cpp("il2cpp_runtime_invoke")?;
@@ -1959,7 +1731,6 @@ fn repair_horse_skills(accessor: *mut c_void) {
     if boxed.is_null() {
         return;
     }
-    // A boxed int: object header (klass, monitor), then the value.
     let n = unsafe { *((boxed as *const u8).add(0x10) as *const i32) };
     CURRENT_FIELD.store(n.max(0) as usize, Ordering::Release);
     let mut repaired = Vec::new();
@@ -2051,14 +1822,6 @@ unsafe fn install_skill_pool_fix(get_image: GetImageFn, get_class: GetClassFn, g
     Ok(())
 }
 
-// - The NullReferenceException in CreatePool is a skill-effect work entry with
-//   no prefab: SkillEffectPool.FindOrAddEffectCacheMakeWork(list, name) appends
-//   a work entry and fills EffectPrefab from RaceLoaderEffect.SkillEffectPrefab
-//   Dic, and CreatePool's last loop dereferences every entry's prefab. An
-//   effect that was never loaded (not in the dictionary) leaves it null. A
-//   freshly appended entry with no prefab is taken back out of the list, so
-//   that effect simply isn't pooled -- the same thing CreatePool already does
-//   when CreateEffectCache returns nothing. Each dropped effect name is logged.
 static EFFECT_WORK_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static EFFECT_WORK_PREFAB_OFFSET: AtomicUsize = AtomicUsize::new(0);
 static DROPPED_EFFECTS: Mutex<Vec<String>> = Mutex::new(Vec::new());
@@ -2080,9 +1843,6 @@ fn drop_prefabless_work(list: *mut c_void, work: *mut c_void, name: *mut c_void)
         if !(*((work as *const u8).add(prefab_off) as *const *mut c_void)).is_null() {
             return;
         }
-        // List<T>: _items (0x10), _size (0x18), _version (0x1C). Only the entry
-        // this call just appended (the last one) is removed; nulling a slot
-        // needs no GC write barrier.
         let items = *((list as *const u8).add(0x10) as *const *mut c_void);
         let size = (list as *mut u8).add(0x18) as *mut i32;
         if items.is_null() || *size <= 0 {
@@ -2118,8 +1878,6 @@ unsafe fn install_effect_work_fix(get_image: GetImageFn, get_class: GetClassFn, 
     if pool.is_null() {
         return Err("SkillEffectPool not found".into());
     }
-    // The nested class may not resolve by name; EffectPrefab sits at 0x20
-    // (after EffectName and Num) on both current clients.
     let work = get_class(uma, c"Gallop".as_ptr(), c"SkillEffectPool/EffectCacheMakeWork".as_ptr());
     let prefab = if work.is_null() { std::ptr::null_mut() } else { field(work, c"EffectPrefab".as_ptr()) };
     EFFECT_WORK_PREFAB_OFFSET.store(if prefab.is_null() { 0x20 } else { offset(prefab) }, Ordering::Release);
@@ -2136,20 +1894,11 @@ unsafe fn install_effect_work_fix(get_image: GetImageFn, get_class: GetClassFn, 
     Ok(())
 }
 
-// - Gallop.RaceUIRank (the HUD's position and "N runners" numbers) loads its
-//   digit sprites into two 20-entry tables (1..20) in Setup, then shows the
-//   field size as _rankingNumSmallSprites[horseNum - 1] -- index 29 of 20 in a
-//   30-runner race. Setup only uses horseNum for that sprite, so it is called
-//   with horseNum capped at 20, and afterwards both tables are widened to the
-//   real field size, places 21+ reusing the "20" sprite, so the running
-//   position display can't overflow either. (No digit sprites exist past 20.)
 const RANK_SPRITES_MAX: usize = 20;
 static UI_RANK_SETUP_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static UI_RANK_BIG_FIELD: AtomicUsize = AtomicUsize::new(0);
 static UI_RANK_SMALL_FIELD: AtomicUsize = AtomicUsize::new(0);
 static UI_RANK_INIT_SPRITES_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
-/// The field size the last oversized Setup saw: InitSprites rebuilds the
-/// 20-entry tables on its own, and is re-widened to this.
 static UI_RANK_LAST_N: AtomicUsize = AtomicUsize::new(0);
 
 type UiRankInitSpritesFn = unsafe extern "C" fn(*mut c_void, *const c_void);
@@ -2172,10 +1921,6 @@ fn widen_rank_sprites(this: *mut c_void, n: i32) {
     note_widened("RaceUIRank sprite", widened, n);
 }
 
-/// RaceUIRank.Setup(index, indexMax, displayTargetList, distanceCheckTarget,
-/// horseNum, showDistance, hideDistance, raceType, conservePowerFlashPrefab).
-/// Arguments 5+ are stack slots on Win64, so the floats pass through as raw
-/// 8-byte slots untouched.
 type UiRankSetupFn = unsafe extern "C" fn(
     *mut c_void, usize, usize, usize, usize, usize, usize, usize, usize, usize, *const c_void,
 );
@@ -2239,17 +1984,10 @@ unsafe fn install_ui_rank_fix(get_image: GetImageFn, get_class: GetClassFn, get_
     Ok(())
 }
 
-// - Gallop.RaceUIMiniMap draws one marker per runner from _horseIconArray, a
-//   fixed set of icons baked into the UI prefab (18), but AlterUpdate walks all
-//   _horseNum runners through it. After SetupUI the array is widened to the
-//   field size; runners past the last icon share it (cosmetic only: that one
-//   marker shows whichever of them updates last).
 static MINIMAP_SETUP_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 static MINIMAP_HORSE_NUM_FIELD: AtomicUsize = AtomicUsize::new(0);
 static MINIMAP_ICONS_FIELD: AtomicUsize = AtomicUsize::new(0);
 
-/// RaceUIMiniMap.SetupUI(float showDistance, float showMoveTime, float
-/// hideMoveTime): the floats arrive in xmm1..xmm3, so they are typed f32.
 type MiniMapSetupFn = unsafe extern "C" fn(*mut c_void, f32, f32, f32, *const c_void);
 
 unsafe extern "C" fn hk_minimap_setup(this: *mut c_void, show: f32, show_time: f32, hide_time: f32, mi: *const c_void) {
@@ -2295,13 +2033,6 @@ unsafe fn install_minimap_fix(get_image: GetImageFn, get_class: GetClassFn, get_
     Ok(())
 }
 
-// - Race camera targets: RaceCameraEventBase.GetTargetPosition/-Rotation treat
-//   a target index >= RaceUtil.GetRaceHorseMaxNum(raceType) (18 or 20) as a
-//   fixed scene object, not a runner -- so a shot following "the leader" or
-//   "Nth place" that lands on runner 19+ swings onto a prop (the billboard).
-//   GetRaceHorseMaxNum is only used by the camera, so it reports the current
-//   race's real field size when that is larger. The field size is recorded
-//   per race when the race view builds its skill pool (see CreatePool above).
 static CURRENT_FIELD: AtomicUsize = AtomicUsize::new(0);
 static MAX_NUM_TRAMPOLINE: AtomicUsize = AtomicUsize::new(0);
 
@@ -2422,12 +2153,7 @@ unsafe fn install_big_fields() -> Result<(), String> {
     Ok(())
 }
 
-/// Debugging aid (client log on): writes a class's field offsets and each
-/// method's address to clientlog/<name>.txt, and the first CODE_DUMP_BYTES of
-/// every method body to clientlog/<name>.<method>.bin, for offline
-/// disassembly. Read from memory, so it works on the packed JP build.
 const CODE_DUMP_BYTES: usize = 8192;
-/// Gallop classes dumped while the client log is on (umamusume.dll).
 const CODE_DUMP_CLASSES: &[&CStr] = &[
     c"HorseRaceInfo",
     c"JikkyoTagProcessor",
@@ -2441,8 +2167,6 @@ const CODE_DUMP_CLASSES: &[&CStr] = &[
     c"RaceManagerReplay",
     c"RaceViewBase",
     c"RaceViewReplay",
-    // Interfaces list their methods in slot order: maps an interface call's
-    // slot number in a disassembly to its name on THIS build.
     c"IHorseRaceInfo",
     c"IRaceHorseAccessor",
     c"HorseRaceInfoReplay",
@@ -2523,14 +2247,12 @@ fn export_module_base(module: &str) -> usize {
     unsafe { GetModuleHandleW(w.as_ptr()) as usize }
 }
 
-/// Committed and readable (code pages included) for the whole range.
 fn writable_or_code(p: *const u8, len: usize) -> bool {
     let mut a = p as usize;
     let end = a + len;
     while a < end {
         let mut mbi = MemoryBasicInformation::default();
         let n = unsafe { VirtualQuery(a as *const c_void, &mut mbi, std::mem::size_of::<MemoryBasicInformation>()) };
-        // MEM_COMMIT, any readable protection, not PAGE_GUARD / PAGE_NOACCESS.
         if n == 0 || mbi.state != 0x1000 || mbi.protect & 0x100 != 0 || mbi.protect & 0x01 != 0 || mbi.protect == 0 {
             return false;
         }
@@ -2539,17 +2261,6 @@ fn writable_or_code(p: *const u8, len: usize) -> bool {
     true
 }
 
-// ------------------------------------------------------------ 8. code dump
-// Debugging aid, from the menu's "Dump game code" button: writes the loaded
-// GameAssembly.dll image (decrypted, as mapped) and a symbol map of every
-// method and field in every loaded assembly, so the game can be disassembled
-// offline with names. Output in <hachimi dir>/codedump/:
-//   GameAssembly.mem  -- the module, base .. base+SizeOfImage; unreadable
-//                        pages are zero-filled, so file offset == RVA
-//   methods.tsv       -- rva, image, Namespace.Class, method, param count, slot
-//                        (slot = index in the class's method list, which for
-//                        an interface is its dispatch slot)
-//   fields.tsv        -- image, Namespace.Class, field, offset, static flag
 static CODE_DUMP_STATE: Mutex<String> = Mutex::new(String::new());
 static CODE_DUMP_RUNNING: AtomicBool = AtomicBool::new(false);
 
@@ -2692,7 +2403,6 @@ unsafe fn dump_game_code() -> Result<String, String> {
     std::fs::write(dir.join("methods.tsv"), mtsv).map_err(|e| e.to_string())?;
     std::fs::write(dir.join("fields.tsv"), ftsv).map_err(|e| e.to_string())?;
 
-    // PE: e_lfanew at 0x3C; OptionalHeader.SizeOfImage at NT + 0x50.
     let nt = base + *((base + 0x3C) as *const u32) as usize;
     let size = *((nt + 0x50) as *const u32) as usize;
     let mut image = vec![0u8; size];
@@ -2714,7 +2424,6 @@ unsafe fn dump_game_code() -> Result<String, String> {
     Ok(format!("done: {n_classes} classes, {n_methods} methods, {} MB image -> {}", size >> 20, dir.display()))
 }
 
-// --------------------------------------------------------------------- GUI
 struct UiState {
     enabled: bool,
     buf: [u8; 256],
@@ -2836,11 +2545,11 @@ fn draw(ui: *mut c_void) {
     drop(st);
 
     if let Some(cb) = api.checkbox {
-        let label = cstr("Hide device and Steam info from the server");
-        let mut on = CENSOR.load(Ordering::Acquire);
+        let label = cstr("Enable Admin Panel support for future Global content");
+        let mut on = FUTURE_CONTENT.load(Ordering::Acquire);
         unsafe { cb(ui, label.as_ptr(), &mut on) };
-        if on != CENSOR.load(Ordering::Acquire) {
-            CENSOR.store(on, Ordering::Release);
+        if on != FUTURE_CONTENT.load(Ordering::Acquire) {
+            FUTURE_CONTENT.store(on, Ordering::Release);
             save_config(&CONFIG.read().unwrap_or_else(|e| e.into_inner()));
         }
     }
@@ -2941,6 +2650,7 @@ fn draw(ui: *mut c_void) {
         }
     }
     custom_support::menu(&u);
+    umapack::menu(&u);
 }
 
 fn toggle(want: bool, address: &str) {

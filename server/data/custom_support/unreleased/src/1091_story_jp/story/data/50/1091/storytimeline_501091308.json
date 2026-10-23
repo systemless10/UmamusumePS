@@ -1,0 +1,260 @@
+{
+ "title": "オークスの後に・On Fire!",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "はぁっ……！　はぁっ……！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "（苦しい……！　苦しい～～……！\nでも……あとちょっと……！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あとちょっとで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あと！\nちょっとで…………！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ああああああっ……！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（うおおおお……！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "1着はヴィブロス！　ヴィブロスです！\n姉ヴィルシーナの悲願を！\n2戦目にして果たしました……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やった……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁっ……\nやったぁぁ～～～っ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンたち",
+   "text": "すごい、ヴィブロス……！\n『オークス』で勝てるなんて……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンたち",
+   "text": "なあこれ、二冠……ありえるんじゃ？\n“2”の呪いを、祝福に変える……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンたち",
+   "text": "『秋華賞』も絶対、\n見逃せないな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス……\n貴方なら――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンたち",
+   "text": "ヴィブロス～～！！\n『秋華賞』も絶対勝ってくれ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "……あと1歩で、涙をのんだ彼女のためにも！\n勝利を……お願いします……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、\n約束するっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "勝たなきゃ。\n絶対に！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――トレーナーさん！",
+   "choice_data_list": [
+    "ヴィブロス！おめ――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！\nありがとう！　で、で！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『秋華賞』！\n絶対勝つには、どうしたらいいかな！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "戻ってきたヴィブロスは、\n賛辞を受け取るのもそこそこに、\n強い決意を瞳に湛えていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そんなもの、ないのはわかってるけど……\nでも、ここまできたら！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなの期待に応えたい。\n『秋華賞』……絶対、勝ちたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーニングはもちろんがんばるよ！\n夏合宿、あるよね？",
+   "choice_data_list": [
+    "ああ",
+    "うん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘たちの実力向上を目指す、\n夏合宿……そこで彼女たちは、\n見違えるほど成長する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、それってみんなそうでしょ？\nだから、あともういっこ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "プラスで、自信がほしいの！\n勝つために、もういっこ……！",
+   "choice_data_list": [
+    "だったら、レースを追加する？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "合宿では確かに成長はできるが、レース勘は\nやや鈍る。そのため、万全を期す意味で、\n『秋華賞』の前哨戦を走る――",
+   "choice_data_list": [
+    "『紫苑ステークス』とか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なるほど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "確かに、\nレースができたら安心かも。",
+   "choice_data_list": [
+    "ちゃんと体調と相談しながら走れる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ～！\n急にすっごい子ども扱い！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "確かに子どもだけどー、\nそこまで子どもじゃないもん。だから大丈夫！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それにトレっちも、\n見ててくれるんでしょ？",
+   "choice_data_list": [
+    "もちろん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ大丈夫！\n『紫苑ステークス』を走ろっ？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "紫苑ステークス"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それで『秋華賞』……絶対勝って、\n二冠ウマ娘になる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、次の目標レースは、\n夏合宿を終えた後の、\n『紫苑ステークス』に決まった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

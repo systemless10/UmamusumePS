@@ -1,0 +1,456 @@
+{
+ "title": "初詣",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ティアラ路線の挑戦という前向きなものから、\n体の異変、家族のすれ違いという懸念まで、\n様々なことが起こったクラシック級。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "シニア級は無事に走りきれることを願って、\nヴィブロスと初詣に来た。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どうしよっかな？\nなにお願いしよ～？",
+   "choice_data_list": [
+    "全部お願いしたらいいんじゃないか？",
+    "全部お願いしたらいいんじゃない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもでも～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "渾身のおねだりじゃないとダメ！\n……だったら、どうする？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "絶対届いてほしいし……\nちょっと迷っちゃうかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "普段のヴィブロスであれば、迷わず\n全部をおねだりしていると思うが……\n色々なことがあり、慎重になっているようだ。",
+   "choice_data_list": [
+    "じゃあ、俺が君の分も祈るよ",
+    "じゃあ、私が貴方の分も祈るよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんとっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、でも……お願いって口に出すと、\n叶わないって言うよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どーやって、\n私の願い、伝えよっか？",
+   "choice_data_list": [
+    "確かに……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ま、トレっちと私は以心伝心だし～。\n大丈夫か♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お願いね、トレっち！\nよーく考えて祈ってね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "というわけで、ヴィブロスと被らない、\n彼女の願いを考えてみる――",
+   "choice_data_list": [
+    "ヴィブロスの回復を祈願",
+    "ヴィブロスの成長を祈願",
+    "ヴィブロスがセレブになるよう祈願"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "とにかくヴィブロスの体が回復して、\n思いどおりの夢を描けるように祈った――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、\nちょー必死な顔してた！",
+   "choice_data_list": [
+    "見てたのか？",
+    "見てたの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちらっとだけ！\nなんか、気になっちゃって～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえねえ、\nなにをお祈りしてたの？",
+   "choice_data_list": [
+    "……答えたくない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "叶わなくなっちゃうから？",
+   "choice_data_list": [
+    "なっちゃうから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "気になる～……けど、\nガマンする！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それだけトレっちが大事に願ってくれたこと、\n台無しにしたくないもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "叶うといいなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その日の夜――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むにゃむにゃ……むにゃ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――ヴィブロス……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれ……トレーナーさん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "大事な大事な君のために、\n最高級セレブホテルを用意したよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "大事な大事な貴方のために、\n最高級セレブホテルを用意したよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "これが俺から君へ贈る愛だ。\nどうかゆっくり、休んでくれ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "これが私から貴方へ贈る愛だよ。\nどうかゆっくり、休んでね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え～～～、もう～～～♡\n愛とか～～♡　照れちゃう♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちってほんとさいこー！\nうん、ゆっくり休むー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あのね、私のお願いは……\nトレっちと、ずっといっしょに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――えへ、えへえへ……。\nむにゃ……えへ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "すや……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスがこの先、どんなレースでも\n勝利できるように、彼女の成功を祈った。",
+   "choice_data_list": [
+    "（強くなれ……ヴィブロス！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そう、この先どんな試練が訪れても、\n全てに打ち克てるように。\n強く、強く、強くなってほしい……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、なんか燃えてたね？\n炎せおってる感じ。",
+   "choice_data_list": [
+    "気持ちを込めたからな……！",
+    "気持ちを込めたからね……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、\nそんな感じした！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……わかんないけど、\nたぶん被ってない気がする！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あとなんかコワイから、\n聞けなくてよかったかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その日の夜――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むにゃむにゃ……むにゃ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれ……トレーナーさん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "さあ、ヴィブロス！\n蝶のようにドリブル、蜂のようにシュートだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え！？\nなんで！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "フィジカルを鍛えるんだ！\n全てはフィジカルなんだよ、ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "フィジカルを鍛えるの！\n全てはフィジカルなんだよ、ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "強くなるんだ！\nさあ、シュート100本！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なになになになに！？\nやだーっ、トレっち壊れた～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――うーん……うーん……。\nもう、打てないよぉ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ていうか……そこは、\n野球でしょ……――ぐう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "やはりヴィブロスの根底にある願いといえば、\nセレブ……被りそうだが、二重に願うことで、\nセレブさが増すこともあるだろう。",
+   "choice_data_list": [
+    "（理想の自分になれますように）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、なんかニヤニヤしてなかった？",
+   "choice_data_list": [
+    "我ながら変な願いだなと思って"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー！\nなに願ったの！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "答え合わせしたい～！",
+   "choice_data_list": [
+    "……してもいいのか？",
+    "……してもいいの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ、ダメじゃん！\n気になるけど～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "叶ってたら、\nいつか教えてね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その日の夜――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むにゃむにゃ……むにゃ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――ヴィブロス様……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え？　誰もいないのに声がする……\nなに！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "ヴィブロス様。貴方は、\nセレブになりたいと願われた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "そして貴方のトレーナー様も、\n貴方がセレブになるよう願われた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "すご、そーだったんだ！\nやっぱ以心伝心♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "なので、今ならポイント2倍……\nいや、ポイント500倍のセレブにして\n差し上げましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんと！？\nスーパーウルトラセレブってこと！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、でも……トレっち、\n『うまいセレブ話にのっちゃダメ』って、\n怒るかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちもいっしょのセレブがいいし！\n納得してくれそーなラインは～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――むにゃ……やっぱり……\nプラス35くらいで、お願いします……ぐう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

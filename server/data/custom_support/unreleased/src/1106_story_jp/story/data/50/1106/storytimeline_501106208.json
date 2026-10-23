@@ -1,0 +1,225 @@
+{
+ "title": "ジャパンCにむけて",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "『ジャパンカップ』……。\nまたまたすごいメンバーが集まりましたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おなじみのクリスエスちゃんに、\nタップちゃん。それに加えて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ユニヴァースちゃんまで！\n『菊花賞』終わったばかりなのに、\nここにも出てくるなんて。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ユニヴァース"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの『宝塚記念』とほとんど同じ、\nすご娘ばっかり～……。",
+   "choice_data_list": [
+    "勝てなさそう？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえ！　そんなことはありません！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もう前とは違います。わたしだって実力は\nそこそこのなかなかですからっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "夢だけは負けてるかもですね。\n他のみんなは、なんか持ってそうだし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "参考にしたいかも。\nちょっといってきま～す！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは嬉々として、夢に燃える\nウマ娘たちの輪の中に飛び込んでいった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はいはい、みんな！　ちょっとアンケートを\n取らせてほしいんだけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエスちゃんの夢はアレだよね。\nレース界、つまりはウマ娘界の発展。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "それと――もうひとつ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――シンボリ家への恩返し。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そ、そっか……。お世話になった人への\nお返しって夢もあるんだね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "タップちゃんの夢は？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハッ、決まってるさ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "――ドでかいロマン探し！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よ、よくわからないかも……。\n具体的に～……なに？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "そんなのは手にしてみないと\nわからないね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "財宝、友情、あるいは喝采。そんなもんの\nヒトカケラが、この手に残ればそれでいい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なるほど～。\nで、ユニヴァースちゃんは？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ネオユニヴァース",
+   "text": "夢……。ネオユニヴァースの夢は\n――“明確”なんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そう？　それじゃあズバッと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ネオユニヴァース",
+   "text": "“LUZF”をする。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、あんだって？　ルズ……\nわかんないってか、読めもしないってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ネオユニヴァース",
+   "text": "意味は――\nトレスするため“再取得”だね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あははは……説明してもらったら、\n余計わかんなくなったかも。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんとなくいい感じに……ってことかな！\nありがと、みんな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "で――ヒシミラクルは？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしは～、まだわかんない。\nだから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "夢を持ってるみんなと、あらためて\n走ってみて、考えることにするよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハハッ、そうか。\nその体当たりな考え、キライじゃない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "なら来な！　結局、アタシたちの宝の地図は、\nコースにしか落ちてないんだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん、夢見る先輩がた、\n今日はよろしく～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よぉし、わたしも見つけちゃうぞ～！\n『これだー！』って誇れる、\nめちゃかっこいい夢！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,422 @@
+{
+ "title": "バレンタイン",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "――きゃ～～っ。\nめっちゃかわいい、あのチョコ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やばくない？　ぴかぴかでちょーリッチ！\n私、あれがいいな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人A",
+   "text": "好きだね～、あーいうお高そうなの。\nじゃ、トレーナーさんにはアレあげれば？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、それもいいなぁ。\nおそろいで私も食べちゃう♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人B",
+   "text": "自分の分も買うんかい。\nてか、ちょっと意外だったなー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人B",
+   "text": "ヴィブロスって、トレーナーさんの話\nめっちゃするし、超好きじゃん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、大好きー♡\nだからバレンタインもあげるの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人B",
+   "text": "……いや臆面もなく。まあいいや、\nだから、『買う』でいいんだーって思ってさ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人A",
+   "text": "確かに。好きピには手作りあげたいもんね！\n私も恋人にはケーキ作るよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人B ",
+   "text": "は！？　アンタいつの間に！？\nちょ、詳しく聞かせろや！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ねえねえ。\n手作りって、うれしいのかなぁ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほら、私ってこーじゃん？\nハイブラ系好きでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから、ちゃんとしたもののほうが\nうれしいかなーって思っちゃうっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人A",
+   "text": "えー……まあ、\n好きな人からもらう手作りは嬉しいっしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人B",
+   "text": "トレーナーさんがどう思うかは、\nさすがにわからんけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人B",
+   "text": "ウチら生徒的なもんだし、\n重いと思って受け取ってくんないかもね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人A",
+   "text": "え、てかそれでも受け取ってくれたら……\n超脈ありくない！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "脈あり……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……え、私って、\nトレっちから脈、あってほしいの！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人A",
+   "text": "え！？\n急になに！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんかそれって……\nトレっちのこと、そーゆー感じみたいじゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人B",
+   "text": "いや知らんけど……違うの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "………………わかんない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え、え、え、え！？\nわかんないよ、困る～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちは、お姉ちゃんたちといっしょで……\n優しくて、甘やかしてくれて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……だから、だいす――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "………………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……困る……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスのトレーニングを終え、\nトレーナー室で仕事をしていたある日――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……トレーナーさん。",
+   "choice_data_list": [
+    "ヴィブロス？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "なぜか大人しく入ってきたヴィブロス。\nこの雰囲気に、どこか懐かしさを感じる……。\nそうだ、あれは契約前……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分に誤解されたと思ったヴィブロスが、\n夢への真剣な想いを語るために、\n勇気を出して来てくれたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [
+    "……いいよ、ヴィブロス"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え？",
+   "choice_data_list": [
+    "なんでも言ってくれ、受け止めるから",
+    "なんでも言って、受け止めるから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……！！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……そ、そんなすっごい話じゃないもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これ！\n渡したかっただけっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ハッピーバレンタイン、\nトレっち！",
+   "choice_data_list": [
+    "……バレンタイン！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、そうだよ？\nデパ地下で買ってきたの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ここのチョコブランド、\nドバイでも人気らしくて～、\nちょうどポップアップやってたんだよね♡",
+   "choice_data_list": [
+    "ありがとう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ホワイトデーのお返し、\n楽しみにしてるね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～、緊張したぁっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなが変なこと言うからっ。\nトレっちはトレっちなのに！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……受け止める、か。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……手作りすれば、よかったかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ほんとに？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "受け止めてくれる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスの真剣な雰囲気に、覚悟を決める。\nもちろん、トレーナーとして……\n彼女の想いは全て受け止める自信はある。",
+   "choice_data_list": [
+    "もちろん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……じゃあ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これ、もらってくれる？",
+   "choice_data_list": [
+    "これは……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "作ったの。\n私の、手作りチョコ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ハッピーバレンタイン、\nトレーナーさん。",
+   "choice_data_list": [
+    "バレンタイン……――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その言葉にハッとする。\n今日はバレンタインだったのだ。\nそして彼女の先ほどの言葉……。",
+   "choice_data_list": [
+    "ヴィブロス、これは――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あ、ま、待って！\nちょっと……待って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………あのね。\n受け取ってほしいの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私も、わかんないの。\nわかんないけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーナーさんのこと、\nお姉ちゃんたちと同じくらい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "大好きなのは、\n絶対だから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから、いいよね？\n困らないよね……？",
+   "choice_data_list": [
+    "……ありがとう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへ。\nうんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち！\n……いつもありがとうっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

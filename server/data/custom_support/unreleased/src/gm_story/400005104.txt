@@ -1,0 +1,11 @@
+#title A Crystal of Accumulated Knowledge
+0 One day, while training with the Three Goddesses' support—
+1 Oh? Looks like it's time to "absorb" all the knowledge you've built up.
+1> "Absorb"...?
+1{ absorb
+2 Knowledge is history, and history is something that links and binds to other histories.
+3 Knowledge gathered as points connects into lines, and as they intersect, they create new knowledge.
+4 You should already be able to see it. What lies beyond knowledge joined with knowledge.
+5 Now's the time to make these crystals and this knowledge your own, and pass them on to your precious Umamusume.
+6 Sure enough, the knowledge I'd built up had linked together, each piece forming a greater knowledge.
+7 Taking that greater knowledge into myself—maybe now was the time...!

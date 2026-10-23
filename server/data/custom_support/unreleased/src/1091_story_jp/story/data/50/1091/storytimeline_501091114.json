@@ -1,0 +1,411 @@
+{
+ "title": "My Beloved Sister♡　-2-",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "秋になり、近づいたクラシック級を意識して\nトレーニングを続けていたある日――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人",
+   "text": "あ、ヴィブロスちゃん！\n見たよ～、ウマトック！",
+   "choice_data_list": [
+    "（……ウマトック？）"
+   ],
+   "color_text_info_list": [
+    "ウマトック"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "確かウマトックとは、\n人気のショート動画コンテンツだ。\n若者にウケがいいと聞いている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃー、ありがとっ♡\nどーだった？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人",
+   "text": "もー、いつもどおりだよ！\n超かわいいし、超勉強になった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人",
+   "text": "ドバイって、10月も夏なんだねぇ。\n知らなかったよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロスの友人",
+   "text": "さすが“ドバイマスター”！\nまた更新待ってる～！",
+   "choice_data_list": [
+    "（ドバイマスター……？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ふふっ。\nあははっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、ちょーはてな顔～！\nあのね、私ウマトックやってるんだ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ダンスとか、\n好きなことをなんでも発信してるの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、メインはね？　ドバイのお話！\n国の雰囲気とか、歴史とか、雑学とか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやら、かなりちゃんとした\nコンテンツを発信しているらしい。\n彼女のドバイ愛の深さがうかがい知れる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そしたらね、いつの間にかコメントで\nドバイマスターって言われるようになってて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "名前もそれにしちゃった！\n『ヴィブロス【ドバイマスター】』、\nフォローしてね♡",
+   "choice_data_list": [
+    "（ごつい二つ名だなぁ……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ていうか、話変わるけどー。\nトレっち次のお休み、暇？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちのレース、\n応援に行かない？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "シュヴァち"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "シュヴァち……彼女のもう1人の姉、\nシュヴァルグラン。彼女は今、\nクラシック級で頑張っているところだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "というわけで、次の休日、\n2人でシュヴァルグランの出走する\nレースを見に来た。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "レース実況",
+   "text": "――勝者はシュヴァルグラン！\n2バ身差をつけ、危なげなく勝利しました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～～～～っ！\nすっごいすごい、さすがシュヴァち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんと、さすがだよ～～っ。\nかっこいい♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、終わったらシュヴァちのとこ、行こ？\nサプライズしよ！",
+   "choice_data_list": [
+    "サプライズ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "にへへ！　実は今日来てること、\nシュヴァちに言ってないんだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おめでとうって、\nびっくりさせちゃおっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……いい。……言わないでほしい。\nお祝いなんて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え？\nシュヴァち？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……同世代のすごい子は、GⅠを走ってる。\n姉さんだって、とっくに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "なのに僕は、まだ“ここ”だ。\nこの程度で、お祝いなんて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、勝ったのはすごいじゃんっ！\nシュヴァちがすごいってこと、私――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "違うんだってば！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……っ！\nあ……い、今のは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……トリプルティアラ、獲りたいんだろ。\nだったら……もう僕に構わないほうがいい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へっ、なんで！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "僕は……\n逃げた、ダメなヤツだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "姉さんと比べられるのが、怖かった……\nだから、クラシック三冠を選んだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "そのくせ、結局……\nクラシックレースには出られなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……キミは僕と違って、才能がある。\n下を見たって、しょうがないよ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あーあ、\n怒られちゃった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "また、\n嫌われちゃったかな。",
+   "choice_data_list": [
+    "……大丈夫？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……なんか、\nシュヴァちって難しくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ビミョーに、\n避けられてる感じ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もっと子どもの頃は、\nちょーなかよしだったのにな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんでだろ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……でも、大丈夫！\n私がシュヴァちのこと、大好きだから！",
+   "choice_data_list": [
+    "……突き放されても？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だってシュヴァち、\nちょーかっこいいじゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "逃げたって言ってたけど、\nそーじゃなくない？　って思うし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私には、お姉ちゃんの作った道じゃなくて、\n自分の道を走りたいように見える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それって、ちょー大変だと思うの。\nでも諦めないで、がんばってる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そんなシュヴァちって、\nちょーかっこいいでしょ？",
+   "choice_data_list": [
+    "かっこいいな",
+    "かっこいいね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ、\nでしょ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちなら、\n絶対大丈夫。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんてったって、お姉ちゃんの妹で、\n私のお姉ちゃん、なんだからね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは、ヴィルシーナだけではなく\nシュヴァルグランにも深い信頼を寄せている。\n今は届いていないようだが――",
+   "choice_data_list": [
+    "（でもそれも、いつかは――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "けほっ。",
+   "choice_data_list": [
+    "大丈夫？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、うん、全然大丈夫！\nなんか、乾燥してる？　秋だ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そういえば以前、ヴィルシーナと\n遊園地に行った時、軽く腹痛を訴えていた。\nあの後特に問題はないが……。",
+   "choice_data_list": [
+    "帰ったら保健室へ行こうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、それなら1人で大丈夫っ。\n行っておくね！",
+   "choice_data_list": [
+    "じゃあ、後で報告してくれ",
+    "じゃあ、後で報告してね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、ちょっと売店見てこよーかな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "もうすぐクラシック級。彼女に思う存分、\n夢を叶えてもらうために……\n今一度、体調には気をつけて見ておこう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

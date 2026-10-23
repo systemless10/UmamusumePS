@@ -1,18 +1,3 @@
-"""BEYOND DREAMS (scenario 13) -- the endpoints only this scenario has.
-
-    single_mode_breeders/select_bc_race           {current_turn, program_id}   pick the BC (T1, ps 41)
-    single_mode_breeders/team_meeting             {current_turn, enhance_group_level_array}
-    single_mode_breeders/team_review              {current_turn}               a Reflection (ps 43)
-    single_mode_breeders/team_sp_training         {current_turn}               DREAMS for this turn
-    single_mode_breeders/finish_team_union_event  {current_turn}               after a union cut (ps 47)
-    single_mode_breeders/bc_race_entry            {current_turn}               BC day (T69)
-    single_mode_breeders/member_bc_race           {current_turn}               the members' own BCs
-    single_mode_breeders/change_dress_option      {value}
-
-Shapes are dump.cs's and the captures' (docs/JP_BEYOND_DREAMS_SCENARIO.md §1).
-The breeders_data_set every response carries is attached at the response
-chokepoint (Breeders.attach), like on every shared endpoint.
-"""
 
 from __future__ import annotations
 
@@ -90,8 +75,6 @@ def _refresh(full_state: dict, chara_info: dict) -> None:
         impl.refresh_preview(full_state, chara_info, home, smt._support_card_levels(full_state))
 
 
-# ------------------------------------------------------------ selection ---
-
 def handle_select_bc_race(payload: dict) -> dict:
     got = _career(payload)
     if got is None:
@@ -119,8 +102,6 @@ def handle_select_bc_race(payload: dict) -> dict:
     return _finish(viewer_id, full_state, career, chara_info, response)
 
 
-# --------------------------------------------------------------- meeting ---
-
 def handle_team_meeting(payload: dict) -> dict:
     got = _career(payload)
     if got is None:
@@ -134,7 +115,7 @@ def handle_team_meeting(payload: dict) -> dict:
                                    payload.get("enhance_group_level_array") or [])
     except impl.Refused as exc:
         return _refused("team_meeting", exc)
-    st["hold_turn"] = 0              # a Reflection's meeting closes the reviewed turn
+    st["hold_turn"] = 0
     st["flags"].pop("overflow", None)
     chara_info["playing_state"] = 1
     _refresh(full_state, chara_info)
@@ -150,8 +131,6 @@ def handle_team_meeting(payload: dict) -> dict:
     log.info("breeders: meeting -> %s (%s DP spent, %s left)", st["levels"], spent, st["dp"])
     return _finish(viewer_id, full_state, career, chara_info, response)
 
-
-# ---------------------------------------------------------------- review ---
 
 def handle_team_review(payload: dict) -> dict:
     got = _career(payload)
@@ -175,8 +154,6 @@ def handle_team_review(payload: dict) -> dict:
         "team_review_result_array": impl.review_result_array(st)}
     return _finish(viewer_id, full_state, career, chara_info, response)
 
-
-# ---------------------------------------------------------------- DREAMS ---
 
 def handle_team_sp_training(payload: dict) -> dict:
     got = _career(payload)
@@ -204,8 +181,6 @@ def handle_team_sp_training(payload: dict) -> dict:
     return _finish(viewer_id, full_state, career, chara_info, response)
 
 
-# ----------------------------------------------------------------- union ---
-
 def handle_finish_team_union_event(payload: dict) -> dict:
     got = _career(payload)
     if got is None:
@@ -229,11 +204,7 @@ def handle_finish_team_union_event(payload: dict) -> dict:
     return _finish(viewer_id, full_state, career, chara_info, response)
 
 
-# -------------------------------------------------------------------- BC ---
-
 def handle_bc_race_entry(payload: dict) -> dict:
-    """BC day: the race is set up (and simulated) here, so the race card the
-    client shows and the later race_entry agree; ps 44 until member_bc_race."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -250,10 +221,6 @@ def handle_bc_race_entry(payload: dict) -> dict:
     if got is None:
         return refuse()
     viewer_id, full_state, career, chara_info = got
-    # Park the race until member_bc_race: while a race context is live, the
-    # shared check_event reads every ack as the race handoff, and 決戦のBC！
-    # (resolved in between) would never resolve. The same simulated race comes
-    # back for race_entry, so the card shown here is the race that is run.
     impl.state(full_state)["bc_ctx"] = full_state.pop(smt.RACE_CTX_KEY, None)
     chara_info["playing_state"] = 44
     CE.emit(full_state, producers.bc_day_event())
@@ -266,9 +233,6 @@ def handle_bc_race_entry(payload: dict) -> dict:
 
 
 def handle_member_bc_race(payload: dict) -> dict:
-    """The members' own BCs: one row per BC group the members run that is not
-    the player's; the winner is one of that group's members (§9). Members
-    always win [user decision, 2026-09-29: no loss was ever captured]."""
     got = _career(payload)
     if got is None:
         return refuse()

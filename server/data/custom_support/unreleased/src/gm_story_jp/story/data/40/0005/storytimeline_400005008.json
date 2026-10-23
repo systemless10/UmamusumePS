@@ -1,0 +1,141 @@
+{
+ "title": "グロウアップレースの後に・勝利",
+ "text_block_list": [
+  {
+   "name": "ダーレーアラビアン",
+   "text": "へえへえ～！　やるじゃん、子羊くん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "あの子の個性をちゃんと活かした、\nいいレースだったよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ええ、<chrname>ちゃんと\nしっかり走ってこられているみたいね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "トレーナーとしても順調に成長している。\n今日のことは自信として胸に刻め。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "そしてトレーナーであれば、ここからが\nウマ娘たちの本番であることもわかるだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "クラシック級――栄誉ある称号に挑む\nウマ娘同士の対戦が待っているわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "これまで以上にトレーナーの支えが大事に\nなるから、ちゃんと見守ってあげてね。",
+   "choice_data_list": [
+    "はい……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてジュニア級最後のレース、\n『グロウアップレース』は幕を閉じた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "見させていただきました、\nおふたりのご担当されるウマ娘の走り！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "デビューして間もないのに貫禄があって、\n自信に満ちていて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ミークは今回招待されませんでしたけど、\nいつか一緒に出たいって思わされました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "一歩ずつ、焦らずに行きましょう。\n彼女ならきっと花開くはずです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ビターグラッセとリトルココンも、\n共に好成績を収めてくれました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "おかげで、明るい気持ちで\nクラシック級を迎えられそうです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "私も、本当に充実したと言いますか\n学びの多いジュニア級でした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "何よりも、三女神から教わる知識には\n多くの気づきをもらうばかりで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "数え切れないほどのデータがあればこそ、\n問題点やその改善方法も、より正確になる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "私たちも、知識をたくさん吸収して\n立派なトレーナーにならないとですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "なによりも、担当ウマ娘をしっかりと\n支えられるようにならないと！",
+   "choice_data_list": [
+    "お互いに頑張りましょう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "はいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ふふっ、そうですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして三女神の知識を味方にジュニア級を\n<chrname>と駆け抜けたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,444 @@
+{
+ "title": "ヴィクトリアマイルの後に・Torch",
+ "text_block_list": [
+  {
+   "name": "2人",
+   "text": "――はあああああああああっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……っっ！\n……ふ……――さすが、私の妹……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――……行きましょう、ヴィブロス！！\n貴方の、夢に向かって……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！！\nうんっっっっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "2人",
+   "text": "――やあああああああ！！\n――はあああああああ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "――夢の姉妹対決！\nその結果は……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……～～～～っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いヴィルシーナ",
+   "text": "――ヴィブロス！\n追いついてごらんなさい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いヴィブロス",
+   "text": "待ってよおねえちゃん！\nおねえちゃん～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのお姉ちゃんを、\n本気にさせた……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私って、\nちょ～～～～すごいっっっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――本当ね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "お疲れさま、ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "強くなったわね。\n……とても。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ、そうでしょ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのね、す～～っごい楽しかったよ！\nいっしょに戦ってくれてありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "私もよ。\n貴方と走ったら、なんだか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんか、すっきりしちゃった？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ、当たり！\nお姉ちゃんって、そんな顔もするんだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんか、お姉ちゃんっていうか～……\nヴィルシーナちゃんって感じ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "からかわないの。\n……でも、本当に楽しかったわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "心が軽くなったのも本当よ。\n私、貴方にもらってばかりね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううん！　私ももらったよ。\nお姉ちゃんから……すてきなエール！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、がんばるね！\n夢に向かって……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……2人とも、すごい。\n僕なんかとは……違う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "でも……僕だって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私の大好きなお姉ちゃんズでーす♡\nねね、2人ともちょーいいでしょ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ。\nだって、お姉ちゃんたちの妹だもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "大好きで、大事なお姉ちゃんに！\n見せたいの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "――僕だって。\nキミの姉……なんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァち～～～～っ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～～～……見つからないけどっ。\nきっと、来てるよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァち、私なんとかなったよ！\nあのちょーすっごいお姉ちゃんと走れた！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちも絶対、\nなんとかなるよ～～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって私の、\nお姉ちゃんだもんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……ヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "――……進まなきゃ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "強くなるんだ――誇れるように。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、お姉ちゃんとちょーいい走りできた！",
+   "choice_data_list": [
+    "お疲れ様！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちがくて～！\n褒めて？",
+   "choice_data_list": [
+    "すごいぞ、ヴィブロス！",
+    "すごいね、ヴィブロス！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "にへへ～♡\nトレっち、褒めるの上手になった♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……シュヴァちも、\n見ててくれたかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "元気、出してくれたかなぁ？",
+   "choice_data_list": [
+    "きっと気持ちは届いてるよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだよねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、私ね。\n来年、やっぱりドバイに行きたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな応援してくれてる、\n私の大事な夢だから！",
+   "choice_data_list": [
+    "ああ、目指そう",
+    "うん、目指そう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "この1年で更に体を成長させ、調整する。\n着実に進めば、過酷な海外遠征にもきっと\n耐えられるウマ娘になっているだろう。",
+   "choice_data_list": [
+    "君をドバイに連れていく！",
+    "貴方をドバイに連れていく！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ、\n連れてって！",
+   "choice_data_list": [
+    "次のレースは、ドバイに繋がるものがいいな",
+    "次のレースは、ドバイに繋がるものがいいね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おお～っ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "距離やレース場、過去の比較などで\nドバイに繋がりそうなレースもあるが、\n今、彼女に提案するならば……。",
+   "choice_data_list": [
+    "“相手”で選んでもいいかもな",
+    "“相手”で選んでもいいかもね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "相手？\nなんで？",
+   "choice_data_list": [
+    "海外の経験を借りるんだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "今シニア級のウマ娘たちの中には、\n海外レースでの経験を持つ子……\nあるいは海外を志す子がいる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "1人はサトノクラウン。多くの有力ウマ娘を\n育てているサトノ家の1人で、\n香港でのレース経験を持つ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "サトノクラウン"
+   ]
+  },
+  {
+   "name": "",
+   "text": "もう1人はサトノダイヤモンド……同じく\nサトノ家のウマ娘で、ヴィブロスと\n同世代。『凱旋門賞』を目指している。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "サトノダイヤモンド",
+    "凱旋門賞"
+   ]
+  },
+  {
+   "name": "",
+   "text": "そんな2人が同時に出走を\n表明したレースがある。それは――",
+   "choice_data_list": [
+    "『宝塚記念』を走らないか？",
+    "『宝塚記念』を走らない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『宝塚記念』は関西のグランプリレース。\n人々、そしてウマ娘たちの夢をのせる\nこのレースから、ドバイの夢に繋げるのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "宝塚記念"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おお～……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんか、\n新章って感じ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わかった、『宝塚記念』にしよっ。\nていうか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "メンツ的に、\nセレブ記念って感じ～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、次の目標レースは\n『宝塚記念』に決まった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

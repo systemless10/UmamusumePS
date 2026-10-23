@@ -1,0 +1,35 @@
+{
+ "title": "テストの結果は？",
+ "text_block_list": [
+  {
+   "name": "級友のウマ娘",
+   "text": "あ～、小テストびみょ～。\nヴィブちゃんは？　やっぱり満点？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～、朝パラパラって教科書見たから、\nわかんないとこはなかったけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "って、うぇえええ、れ、0点っ！？\nうそうそうそっ、なんでぇ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先生",
+   "text": "ヴィブロスさん、名前は書きましょうね。\n規則ですから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そんな～～っ！\nせんせ、オマケしてよーーっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

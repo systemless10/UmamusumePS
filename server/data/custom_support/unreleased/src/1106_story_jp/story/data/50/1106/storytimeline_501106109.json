@@ -1,0 +1,406 @@
+{
+ "title": "クリスマス",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "――クリスマス。トレセン学園の生徒たちは、\nみんなそれぞれに楽しい時間を過ごす。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "華やかなパーティーに興じる者。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "プレゼント配りに精を出す者など。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ぼっちな時間を過ごす者はいない。\nいないはずだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。",
+   "choice_data_list": [
+    "なぜ、ここにいる？",
+    "なんで、ここにいるの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あう～、ちょっとやらかしたってか、\n流れでこうなっちゃって～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "友だちとクリパしようって\n言ってたんですけど……\nいや～な予感はしてたんですよねぇ。",
+   "choice_data_list": [
+    "中止になったのか？",
+    "中止になったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "中止ってか、自然消滅ってか……。\nつまりですね……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やろうとは言ってたんですけど、\nなんとなく誰かが進めてくれるかな～って\n思ってたんですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そしたら、みんな様子見になっちゃって。\n人集まらなかったらどうしようとか、\n考え始めて～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "結局、なんも準備してないってことで、\nエアクリスマスに～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "予感はしてても、自分で仕切るような\n行動力はないし～。あはは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "……こうしてロンリークリスマスを\n強いられたようだ。ならば……。",
+   "choice_data_list": [
+    "……なんか食べにいく？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……！？　い、いいんですか？",
+   "choice_data_list": [
+    "ああ、もしヒマなら",
+    "うん、もしヒマなら"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ヒマですっ。めっちゃヒマ！\nエヘヘ、それじゃあお言葉に甘えて～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうしてヒシミラクルとクリスマスを\n過ごすことになったが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、クリスマスといえばフライドチキン！\nもう最高ですよねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、知ってましたか？\n実は外国ではクリスマスに\nチキン食べないそうなんですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "逆にわかんないな～って。なんで\nクリスマスにチキン食べないんですかね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だって、おいしいのに。\nあとフライドチキンもいいですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "近所のイルミネーションもいいですよね。\nもうピカピカで～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ショーウインドーの前で、\n映え狙い、いっときます～？\nいつもなら照れちゃうけど！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "たいしたことをしているわけでもないのに、\nヒシミラクルのテンションはずっと高かった。",
+   "choice_data_list": [
+    "……こういうのでいいのか？",
+    "……こういうのでいいの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ、こういうのって……？",
+   "choice_data_list": [
+    "もっと名スポットとか豪華な店とか……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー……憧れはするんですけどね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんかほらっ、緊張するじゃないですか。\nそういうのより……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしは知ってる人と、きゃあきゃあ\nやるほうが楽しいってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だって面白いじゃないですか。もう\nしゃべっちゃって笑っちゃうほうが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だから今日は――最高ですっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まさかのぼっちから、\nこんな大逆転クリスマスになるなんて、\nなんだか夢みたいで！",
+   "choice_data_list": [
+    "夢か……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "あまりに意味の広い言葉。\n小さな夢、大きな夢いろいろ。だが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こんな日常の瞬間こそが、\nヒシミラクルにとっては\n夢なのかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしはこういうので満足ですけど、\n他のウマ娘は違うのかもしれないですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "豪華なパーティーに呼んでもらうために\nがんばったり、今日もトレーニングしてたり。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "尊敬はするけど……\nなんかピンとこないってか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あ、そうか。",
+   "choice_data_list": [
+    "どうかした？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\nわたし、見つけたかもしれません。\nわたしの夢。",
+   "choice_data_list": [
+    "本当に？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい。こんなことを心から思うの、\nきっとわたしだけでしょうし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よし！　これを背負って\n『有馬記念』にいってみよっかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これくらいならわたしにも背負えるし、\nそれに叶えたいって思うし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ずっと探していた自分だけの夢を\nヒシミラクルは、ひょんなことから\n見つけ出したようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――その帰り道。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、帰りはお土産に\nコンビニでイチゴショートを買いましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "2個入りのおいしいやつ！\nそれでクリパ第2ラウンドといきますか～。\nふふふ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "コンビニのケーキで、\nさらにテンションアップ。\nヒシミラクルはずっと楽しそうだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あれ？　トレーナーさん、\nあそこにすごい行列が……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なにか売ってますね。\n『年末ラッキーくじ』かぁ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "人が並んでると、なんか並ばないと\n損な気になりません？",
+   "choice_data_list": [
+    "……買ってみる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして2人で買ってみたラッキーくじを\nしみじみと眺め……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "普通は～当たりませんよね？\n1等とか。",
+   "choice_data_list": [
+    "ああ、まず当たらない",
+    "うん、まず当たらない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもですよ？　わたしはミラクルウマ娘な\nわけです。ここまで活躍できるとは\n誰も思わなかったし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もしかすると、もしかするかもですよ？",
+   "choice_data_list": [
+    "いやいやいや……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フッフッフー、1等、いっとくか～。\nもし当たったら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "億ション！　億ションだって買えちゃう\nわけですよ。セレブの仲間入りですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんだって、\n一緒に住めるわけです。\n当たったら山分けですから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もし当たったら、買っちゃいます～？\n住んじゃいます～？",
+   "choice_data_list": [
+    "いやいやいや……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いいんですよ、わたしは。\n毎日楽しそうだし。",
+   "choice_data_list": [
+    "いやいやいや……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいやいや……。",
+   "choice_data_list": [
+    "いやいやいやいや……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいやいやいや……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "当たってもいないうちから続く、\nいやいやいやの応酬。しかし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "もしかしたら当たるのでは？\nヒシミラクルを見ていると、\nなぜかそんな気になるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

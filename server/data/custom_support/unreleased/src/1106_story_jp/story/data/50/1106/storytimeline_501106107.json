@@ -1,0 +1,451 @@
+{
+ "title": "バレンタイン",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "――バレンタイン。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それはおおよそみんながチョコを渡す日。\nそして、1か月後には――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクルの父親",
+   "text": "よーしっ、クーちゃん！\n父さんからのお返しは、どのお菓子がいい？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クー"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～～っ！　そんなそんなー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それじゃあっちのマフィンとー、\nこの前テレビで出てた\nチョコレートサンデーも食べて帰りたいかも？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクルの父親",
+   "text": "こらこら、ちゃっかりしてるな～。\n……今年だけだぞ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（バレンタインで渡したチョコは、\n倍のご褒美になって\n未来のわたしに返ってくる……！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "クラスメイトA",
+   "text": "ミーラ子！　アンタは、\nトレーナーさんにあげるの？　チョコ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ？　トレーナーさん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "クラスメイトB",
+   "text": "うんうん。担当がついた子って\nお礼とか兼ねてよく渡してるじゃん？\nだからミラ子もかな～……なんて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、なるなる。\nそれでトレーナーさんにかぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクルの父親",
+   "text": "父さんは大人だからな～。\nもらった分の3倍、いや5倍！\nクーちゃんにお返ししちゃおう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………むふ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いっちょやったりますよ！\n大人なトレーナーさんへわたしからチョコを！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まずお父さんの分はノルマでしょ。\nいつものアレを確保して～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そのままトレーナーさんの分もついでに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……お父さんみたいなチョコで\nいいのかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんって\nちょっと変だからなぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（周りを見てても、\nうちのトレーナーはだいぶメラメラ寄りだし）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（高望みしすぎなくらい、\nわたしのことを信じきっちゃうときがあって）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……担当のわたしを\n『菊花賞』に出させちゃうくらいで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（そして多分、適当なチョコでも\nお礼を言ってくれそうなお人好しで）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（どれを食べてもお腹の中に入れば、\nチョコはチョコだけど）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……一応、結構。お世話になったし）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "店員",
+   "text": "バレンタイン特別仕様チョコ\n残り1名様限りです！\n有名シェフが赤いバラを模して――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "バラ！　おぉ～……へぇ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あははっ、似合いそー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よしっ。すみませーん、それをひと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "店員",
+   "text": "？　どうなさいましたか？\nお客様。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "い、いえいえ。\nなんでもないです～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（た、高すぎ！\nお父さん用のチョコの5倍なんですけど！？）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（無理！　ムリムリムリ！\n今月のお小遣いでやりくりするには\n無理なお値段だって！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……でも）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マダム",
+   "text": "まあ！　そちらのチョコ、いただける？\nメッセージカードも頼めるかしら。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……どもども～、トレーナーさん。\nハッピーバレンタインです～。",
+   "choice_data_list": [
+    "なんかしょんぼりしてないか……？",
+    "なんかしょんぼりしてない……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは～。いえいえー。\nそんなそんなー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあ身の丈に合ったチョコを、\n持参いたしましてね。\nどうぞどうぞということで……。",
+   "choice_data_list": [
+    "えっ、ありがとう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえいえ～……。\nどういたしまして～。",
+   "choice_data_list": [
+    "そうだ、お返しにお好み焼きでもおごろうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へっ、いいんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～、やったぁ～～。\nエビで鯛を釣っちゃった～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（やったやったー。やっぱり大人の\nチョコレートのお返しは倍以上になって\n返ってくるもんで――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あれ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（わたし、本当なんで\nしょんぼりしちゃってたんだろ）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（チョコをあげる目的は、\nお返しをもらうことだったくせに）",
+   "choice_data_list": [
+    "ヒシミラクル？どうしたんだ？",
+    "ヒシミラクル？どうしたの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わっ……えと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "多分なんでもないでーす。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………ん～～っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あっ、もしもし？\nお母さん？　ええっとね――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お小遣い、前借りさせてください！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（わ～、ヤバイ！　言っちゃった！\nチョコなのに！　チョコのために！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（も～、お母さんたちには内緒だね。\n絶対言われるもん『高すぎ』でしょって。\nもう言わなくてもわかるくらい――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……だけど）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（少しだけ、背伸びしてみたい）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、ハッピーバレンタイーン！",
+   "choice_data_list": [
+    "えっ、いいのか！",
+    "えっ、いいの！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フフン。どーぞどーぞ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルから手渡された箱を開けると、\nふわっと上品なカカオの香りが立ち上った。",
+   "choice_data_list": [
+    "これは……いいチョコだ……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フフフン。\n……わかります？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあー、よき一品ですよ。\nお召し上がっちゃってくださいな。",
+   "choice_data_list": [
+    "ありがとう、お返しも考えておかないとな",
+    "ありがとう、お返しも考えておかないとね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……！\nあっ、はい。お返しですかっ？\nおぉ～……それはー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……んっと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……今回はあげたくて、あげちゃったので。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんにはいつもお世話に\nなっているので。それはお礼です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "感謝の気持ちとして味わってください。\nお返しなどはいらないので、パクッと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "エヘヘ……ではでは。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふっ……ぷくくっ。\nあははっ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "すっごい見栄、はっちゃったー。\nあーあ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……背伸びしすぎちゃったかな）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

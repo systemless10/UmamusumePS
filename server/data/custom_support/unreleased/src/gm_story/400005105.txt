@@ -1,0 +1,117 @@
+#title The Forebears of Those Who Run Today
+0 Phew~...! What do you think? I'm pretty confident about that run!
+1 Above all, it's my secret weapon, honed together with my trainer!
+2 To me, you've still got a long way to go! Let's keep honing it, little lamb.
+3 That's mean! You're always calling me a little lamb!
+4 Someday I'll knock your socks off! All right, let's go one more time!!
+5 Listen well. Even when your body reaches its limit, don't let your heart reach its limit too.
+6 Y... Yes!
+7 Even when you hit a wall, there's no need to be swallowed by negativity. Grow strong! So that you can run again tomorrow!
+8 ...Stronger! So that my... our running... is carved deep into everyone's hearts!
+9 Huff... Huff... I can handle this much now~.
+10 Yes, it seems bringing you into the world of racing was the right choice after all.
+11 Truly... thank you for finding me—and for watching over me.
+12 Hehe... Well, you looked like you wanted to run. I could tell you must love running.
+13 Let's keep running together from here on. I'll always be right beside you, watching over you, Sham dear—
+14 We'd made our mark in the SWBC, and the Grandmasters was finally drawing near.
+15 Originally, I'd used the simulator to make up for the knowledge I lacked...
+16 But the time spent with the Three Goddesses, and the history Umamusume left behind that they shared—
+17 It transcends eras and leaves so much to the Umamusume running today.
+18 The ultimate AI that supports Umamusume and trainers: the Mega Dream Supporter.
+19 Its knowledge aside, the Three Goddesses had taught me what's important for a trainer to keep running alongside an Umamusume.
+20 Then at the Grandmasters, I want to show the Three Goddesses—
+21 I want the Three Goddesses who raised us to see for themselves how much we've grown.
+22 And for that, the name of the goddess with the knowledge I need most right now is—
+22> Darley Arabian | Darley Arabian | Godolphin Barb | Godolphin Barb | Byerley Turk | Byerley Turk
+23 Hey, you came. And the sun's—yeah. Looks like it's reached its zenith.
+24 —Shall we begin, then?
+25 Now, what to do. What do you two want to do?
+26 Hahaha, I guess that's already decided.
+27 Right. I'll respect your will. And by extension—that vivid individuality of yours.
+28 As you know, once a possibility dies out, it never comes back.
+29 Individuality, once lost, vanishes into darkness.
+30 So all you have to do is keep it connected.
+31 You'll inherit it and connect it. Your individuality belongs to you alone. And it's something you entrust to those who come after.
+32 With you as a bridge, a colorful future surely awaits.
+33 Now, reach out your hand. —The future has only just begun.
+34 Obtained <itemname>.
+34{ <itemname>
+35 <itemname>, the wisdom granted by the Three Goddesses—I'll prove at the Grandmasters that we've truly taken their feelings to heart!
+35{ <itemname>
+36 Hey, you came. And the sun's—yeah. Looks like it's reached its zenith.
+37 —Shall we begin, then?
+38 Now, what to do. What do you two want to do?
+39 Hahaha, I guess that's already decided.
+40 Right. I'll respect your will. And by extension—that vivid individuality of yours.
+41 As you know, once a possibility dies out, it never comes back.
+42 Individuality, once lost, vanishes into darkness.
+43 So all you have to do is keep it connected.
+44 You'll inherit it and connect it. Your individuality belongs to you alone. And it's something you entrust to those who come after.
+45 With you as a bridge, a colorful future surely awaits.
+46 Now, reach out your hand. —The future has only just begun.
+47 Obtained <itemname>.
+47{ <itemname>
+48 <itemname>, the wisdom granted by the Three Goddesses—I'll prove at the Grandmasters that we've truly taken their feelings to heart!
+48{ <itemname>
+49 The wind told me you were coming.
+50 Now, let's go. To the source of the wind. To the place where it all began—
+51 —This is where the wind is born.
+52 On the way here, there were so many wonderful wishes and hopes.
+53 The hope to watch over them, as far as forever reaches.
+54 The wish for them to live in good health, in any place, in any age.
+55 And now, I wish too.
+56 I wish to deliver everyone's wishes, the hope to watch over them, all those wonderful wishes.
+57 And that you'll never, ever forget how many there were who wished for your happiness.
+58 Hearing Godolphin Barb's words, my Umamusume and I nodded together.
+59 ...Thank you.
+60 Blessings upon you. And happiness everlasting...—
+61 Obtained <itemname>.
+61{ <itemname>
+62 <itemname>, the wisdom granted by the Three Goddesses—I'll prove at the Grandmasters that we've truly taken their feelings to heart!
+62{ <itemname>
+63 The wind told me you were coming.
+64 Now, let's go. To the source of the wind. To the place where it all began—
+65 —This is where the wind is born.
+66 On the way here, there were so many wonderful wishes and hopes.
+67 The hope to watch over them, as far as forever reaches.
+68 The wish for them to live in good health, in any place, in any age.
+69 And now, I wish too.
+70 I wish to deliver everyone's wishes, the hope to watch over them, all those wonderful wishes.
+71 And that you'll never, ever forget how many there were who wished for your happiness.
+72 Hearing Godolphin Barb's words, my Umamusume and I nodded together.
+73 ...Thank you.
+74 Blessings upon you. And happiness everlasting...—
+75 Obtained <itemname>.
+75{ <itemname>
+76 <itemname>, the wisdom granted by the Three Goddesses—I'll prove at the Grandmasters that we've truly taken their feelings to heart!
+76{ <itemname>
+77 ...Heh. I can hear the sound of running across the earth.
+78 —Come. To the place where all things take root.
+79 —Since the very beginning, the Umamusume as a people have had an instinct: to run.
+80 And still, we keep on running.
+81 What is it that sustains this instinct? It is—
+82 —Strength. Not mere physical power, nor merely the firmness of conviction.
+83 Through the layering of so much history, we Umamusume gained true strength.
+84 By inheriting it, and carrying it on.
+85 So long as that strength does not waver, glory enduring is assured.
+86 Now, take it.
+87 —All of this strength.
+88 Obtained <itemname>.
+88{ <itemname>
+89 <itemname>, the wisdom granted by the Three Goddesses—I'll prove at the Grandmasters that we've truly taken their feelings to heart!
+89{ <itemname>
+90 ...Heh. I can hear the sound of running across the earth.
+91 —Come. To the place where all things take root.
+92 —Since the very beginning, the Umamusume as a people have had an instinct: to run.
+93 And still, we keep on running.
+94 What is it that sustains this instinct? It is—
+95 —Strength. Not mere physical power, nor merely the firmness of conviction.
+96 Through the layering of so much history, we Umamusume gained true strength.
+97 By inheriting it, and carrying it on.
+98 So long as that strength does not waver, glory enduring is assured.
+99 Now, take it.
+100 —All of this strength.
+101 Obtained <itemname>.
+101{ <itemname>
+102 <itemname>, the wisdom granted by the Three Goddesses—I'll prove at the Grandmasters that we've truly taken their feelings to heart!
+102{ <itemname>

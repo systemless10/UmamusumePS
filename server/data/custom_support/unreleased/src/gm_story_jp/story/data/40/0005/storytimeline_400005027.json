@@ -1,0 +1,79 @@
+{
+ "title": "決戦！グランドマスターズ",
+ "text_block_list": [
+  {
+   "name": "実況",
+   "text": "いよいよ、この日がやってきました！\n『グランドマスターズ』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "この舞台に集まったのは、真の実力者――\n『SWBC』を乗り越えた優駿たち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "その彼女たちが、まさに究極の頂点を\n掴もうと挑みますっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "VR内で行われるレースの模様は、\n各レース場のターフビジョンでも放送中！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "まるで現実のGⅠレースのような熱気が\nスタンドを包み込んでいます！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "GⅠレース"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "（わああぁぁぁーーーーっ！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "VR内の地下バ道――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『グランドマスターズ』の舞台へと続く\nこの道にも、大きな歓声が響き渡る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "陽は昇り、沈みゆく。\n遥か彼方の地平へと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "けれど必ずまた昇る。\n幾度も、幾度も、巡り合う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "見せてもらおう、我々が伝えた\nかつてを走った者たちの想いを。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "今を走るウマ娘の走りを――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

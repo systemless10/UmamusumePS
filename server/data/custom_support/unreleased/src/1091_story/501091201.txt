@@ -1,0 +1,42 @@
+#title Toward the Oka Sho
+0 On the day of the Oka Sho, when we arrived at the racecourse—
+1 Vivlos, go for it～!
+2 —A huge crowd of fans had been waiting for Vivlos since early morning.
+3 You're getting revenge for your sister, right?! We're rooting for you!
+4 Show us Vivlos in the center, okay～!
+5 First, one crown...! I'll pray with all my might too...!
+6 ...—
+7 —Yes, not bad. Just as the earlier checkup showed, there's nothing major to worry about.
+7> I see...!
+8 This time, I'd asked the school nurse to come along to make sure there were no major problems with Vivlos's health.
+9 However, that's only for now. Anything can happen in a race.
+10 Vivlos, please don't push yourself too hard. Now then, good luck!
+11 Okaaay! Thank you so much!
+12 ...Phew, thank goodness.
+12> Now all that's left is to do your best in the race | Now all that's left is to do your best in the race
+13 Yeah!
+14 ...It kinda feels like, it's finally here!
+15 Onee-chan's here to watch too! I wanna show her something cool and put her mind at ease first.
+16 Vivlos was cheerful as always, but... her expression seemed a little stiff.
+16> ...Could you be nervous?
+17 ...Ehehe. Yeah.
+18 Just a teeny bit!
+19 I decided I'd carry everyone's feelings... and Onee-chan's too.
+20 When I think about it like that... maybe it's not just a teeny bit?
+20> You can do it, it'll be okay | You can do it, it'll be okay
+21 You think so...?
+22 ...Do you really think so?
+22> Yeah! | Yeah!
+23 These past few months, Vivlos has worked hard while managing her health. Having watched her up close, I can say it—
+23> Hard work never betrays you
+24 !
+25 It'll be all right, Vivlos... I'll prove it.
+26 That hard work never betrays you...!
+27 ...
+28 ...Yeah. Thank you, Tore-cchi!
+29 I'm definitely gonna win! As Onee-chan's little sister!
+29> Go for it! | Go for it!
+30 I watched Vivlos go and let out a small breath. Just like her, I was a little nervous too.
+30> (Please... stay safe)
+31 Vivlos...
+32 ...Above all, stay safe. Please let her run to the finish without anything happening—

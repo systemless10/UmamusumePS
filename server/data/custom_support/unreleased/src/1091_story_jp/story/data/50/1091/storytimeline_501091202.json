@@ -1,0 +1,171 @@
+{
+ "title": "オークスにむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『オークス』当日。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『桜花賞』でのヴィブロスの活躍を\n見たファンたちが、今日も応援のため\n多く集まっていた。更に――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――うん、髪の毛、直ったわよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとう、お姉ちゃん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今日はヴィルシーナも、観客ではなく\nヴィブロスのサポートとして\n手伝いにきてくれていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『桜花賞』を見届けたことで、\n彼女の中でも心の整理がついたのだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえお姉ちゃん～、\nもっと髪の毛とかしてほしいなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ダメよ。\nせっかく整えたのに。これで完璧！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー、じゃあ……\nなでなでして？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "もう、だから崩れちゃうでしょう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "くす……\n甘えん坊なんだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "大好きな姉と一緒なこともあり、\nヴィブロスは上機嫌だ。『桜花賞』の\n疲れも残らず、体調も大きな問題はない。",
+   "choice_data_list": [
+    "後は距離だけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『オークス』は2400m、\n『桜花賞』と比べ一気に長くなりますね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "短い期間での調整に、\n私もかなり苦労しました。",
+   "choice_data_list": [
+    "トレーニングでは対応できてる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "本番はまた環境が全く異なりますから。\nヴィブロスなら問題ないと思いますが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょおっとぉ～！\n2人だけで話すのダメっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私もぜーったい！\n間に入れて？",
+   "choice_data_list": [
+    "ああ、君の話だもんな",
+    "うん、貴方の話だもんね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "それだけじゃないと思いますけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "はい！　甘えん坊はここまで。\nもうすぐレースよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "貴方ならきっと大丈夫。\n頑張ってね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！\nがんばる！",
+   "choice_data_list": [
+    "今日も無事に帰ってくるんだぞ",
+    "今日も無事に帰ってきてね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はーい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん、トレーナーさん……\n私、勝って帰ってくるからね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そしたら……\nたーくさん！　甘やかしてね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

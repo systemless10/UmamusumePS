@@ -1,0 +1,325 @@
+{
+ "title": "夏の誘いに乗って",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～♡\n明日のスケジュールって、\nどうなってる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お願いがあるの。あのね……\nいっしょにプールに行こ？",
+   "choice_data_list": [
+    "海があるのに？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって、海近くのプールって、\nなんかセレブっぽいし☆\nねっ、ねっ？　いいでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスはソワソワしながら、\n行こう行こうとおねだりしてくる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "随分と、はしゃいでいるようだ。\nトレーニングも頑張っているし、\n息抜きも悪くないだろう。",
+   "choice_data_list": [
+    "よし、行こうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！　やったぁ～！\nい～っぱい遊ぼうね、トレっち☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それとぉ……\nプールに行ったら、よそ見は禁止だよ？\n私だけに集中してね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――ヴィブロスとの約束で、\nプールへとやってきた。\n先に行っててと言われ、待っていると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃーんっ☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ。どう？　どう？？\n私のための、私だけの水着なんだよ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "……なるほど。\nはしゃいでいた理由は、これだったか。\n新しい水着を自慢したかったのだろう。",
+   "choice_data_list": [
+    "よく似合ってる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "派手過ぎず、可愛らしさの中に\n上品さもあって、彼女にピッタリだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むー……それはうれしいけど、\nもうひと声、欲しいかな～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ。もう、トレっち！\n考えるなら、ちゃんと私を見て考えて？",
+   "choice_data_list": [
+    "そう言われても……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、お願い♡\nなんて言ってくれるか、\n楽しみにしてたんだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほらほら、なにかなーい？",
+   "choice_data_list": [
+    "う、う～ん……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もうっ。仕方ないな～。\n帰るまでには、考えといてね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "答えに満足するまで、帰らないから。\n覚悟しといてね～？　ふふっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃ、今日はいーっぱいあそぼ！\nまずは、なにからする～？",
+   "choice_data_list": [
+    "可愛い浮き輪があるよ",
+    "スライダーはどう？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "浮き輪！　泳がずプカプカしてるの、\nちょっとセレブっぽいかも……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "行こ行こ！\nあっちのスペースなら、\n大きな浮き輪も使えるみたいっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスが乗った浮き輪を引っ張りながら、\nしばらくプールの中を歩いた。さすがに\n疲れはじめ、休憩となったのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "浮いてるだけなのに、楽しかった～♡\nありがと、トレっち。",
+   "choice_data_list": [
+    "筋力つきそう……はぁ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふふっ。だったら、次はトレっちが\nの～んびり楽しむ番だね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほら、もういっかい行こっ。\n今度は私が引っ張ってあげる♪",
+   "choice_data_list": [
+    "え、いいのか？",
+    "え、いいの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もちろん！\nいっしょに楽しまなくちゃ、\n意味がないんだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "一日、ヴィブロスとたっぷり遊んだ。\nそろそろ帰ろうかと話していると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいかもっ。\nふたりペアで滑れるみたいだし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どのくらいスピード出るのかなぁ？\nワクワクしちゃうっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁ～♡　楽しいねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "思ったよりはスピード出なかったけど、\nもう少し体の角度を変えたら、\nスピード出たりするのかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いろいろと試してみよっ☆",
+   "choice_data_list": [
+    "あ、危なくない程度にね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、もちろん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "一日、ヴィブロスとたっぷり遊んだ。\nそろそろ帰ろうかと話していると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あー！　トレっち、忘れてない？\n帰る前に、あの質問に答えてくれないとっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よそ見せず、ちゃんと見てたよね？\n私に集中してって、お願いしてたもんね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そうだった……と思い、改めて考えながら、\nじっと彼女の顔を見つめる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！　……も、もう。トレっちってば。\n見るのは水着で、私の顔じゃないよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "照れくさそうに身をよじった\nヴィブロスの水着が、ふわりと揺れた。\nそれが、どことなく今日の彼女のようで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "思いっきり遊び、笑って、はしゃいで。\nとても――",
+   "choice_data_list": [
+    "……楽しそう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "服への感想としてはおかしなものだったかも\nしれないが、そう思った。\n……すると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、うんっ。そうなの！\nかわいくて、わくわくして、\nいっぱい遊びに誘いたくなるでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "さすが、トレっち！\nわかって――",
+   "choice_data_list": [
+    "本当に、似合ってる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "改めて、そう思った。\nヴィブロスは一瞬、止まったかと思うと、\n口元に浮かんだ笑みを我慢するように言う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こ、こほんっ。\n本当は、もーっと褒めてほしいけど、\nまた次にとっておくねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それと！\n今回は私がトレっちを誘ったけど、\n次は……。",
+   "choice_data_list": [
+    "計画、立てておくよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふふっ、うん！　たっくさん誘ってね♡\nいろんなところに行って、夏を満喫しなきゃ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

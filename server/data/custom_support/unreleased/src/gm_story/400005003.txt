@@ -1,0 +1,32 @@
+#title Our Own Starts
+0 That day, the trainers who'd just finished their debut races were holding a little celebration.
+1 To our trainees making it through their debuts safely. First of all, good work, everyone!
+1> Good work!
+2 I thought Meek's debut would be a little further off, but she worked really hard...!
+3 Mine also managed to debut in perfect condition, without overexerting herself.
+4 This is Trainer Riko Kashimoto. She's handled Umamusume before, which makes her our senior.
+4{ Riko Kashimoto
+5 I know the real work starts now, but for the moment, we've crossed one mountain.
+6 I've seen your training before, Trainer Kashimoto—
+6{ Kashimoto
+7 Everything's planned out so meticulously, right down to the pace and the workload. You're really thorough.
+8 Just as no two days are ever the same, Umamusume change every day too.
+9 I monitor their subtle changes and reflect them in their training each time. ...That is my approach.
+10 Trainer Kashimoto is known for her thorough management.
+11 Her sharp gaze often seems to make her hard to approach, but...
+12 That said, it's not as if I want to bind my Umamusume.
+13 I let them do what they want to do as much as possible. Assessing their condition on top of that is my job, I believe.
+14 Whether it's management or judgment, I still have such a long way to go...
+15 Which is why, in a way, I'm really grateful to have the Three Goddesses here.
+16 I have to soak up as much knowledge as I can to make up for my lack of experience!
+17 I feel the same way. Even with experience, knowledge is something I'm desperate for.
+18 Rookie or veteran, the weight of carrying an Umamusume's dreams is no different.
+19 Ah, there you are! Trainer Kashimoto, good work today!!
+20 Sorry, it's a little early to start training, but... We'd like to talk to you about something. Is that okay?
+21 Yes, that's fine. I'll be right there.
+22 ...Well then. Let's continue to do our utmost for our trainees.
+22> Right...!
+23 Yes, let's do our best!
+24 Trainers who keep running themselves for the sake of their Umamusume.
+25 Just like Trainer Kiryuin and Trainer Kashimoto, I resolved once again to build trust with my Umamusume and run alongside her.
+25{ Kiryuin

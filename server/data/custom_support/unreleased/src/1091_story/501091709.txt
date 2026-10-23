@@ -1,0 +1,15 @@
+#title Solid Showing
+0 Uuu～, I couldn't get first place～～～...
+1 I thought I'd win if I went zoom like usual...
+2 I feel... I feel sooo gloomy～～～!
+2> It wasn't a bad race! | Let's clear that gloom away... with special training!
+3 ...Really?
+4 I told her she had more than enough ability, and that it was a race where the result could change depending on when she made her move.
+5 Then, then, if I do it again, I'll win, right! I really wanna get first place!
+6 I'll speed up like crazy at the end and win! It feels good and it's cool, the best!
+7 Okaaay, watch me, Tore-cchi! I'll show you me getting first place all cool!
+8 Special training...
+9 I told her that building strength that isn't swayed by how the race unfolds is the sure path to winning.
+10 ...Yeah, I'll do special training!
+11 That's right, if I get super strong, I won't have to feel gloomy at all!
+12 I'll definitely win next time, so teach me the way to get the strongest!

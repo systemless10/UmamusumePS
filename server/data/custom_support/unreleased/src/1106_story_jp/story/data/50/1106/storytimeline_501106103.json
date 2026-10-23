@@ -1,0 +1,143 @@
+{
+ "title": "夏合宿（2年目）スタート！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "――夏合宿。実力の大幅アップを目指して\n行われる、季節行事だが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふ～ん、夏合宿って、\nなんか気分上がるよね～。\n臨海学校とか修学旅行みたいで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なにしよ、なにしよ。やっぱみんなで\n花火したり、縁側でアロマ焚いてみたり？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、闇お好み焼きとかも面白そう～♪\n誰～、コロッケ入れたの～なんて。",
+   "choice_data_list": [
+    "はい、これ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ、トレーナーさん。なんです、この紙？\n闇お好みのレシピですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "レシピ……ではない。この夏の\nトレーニングメニューを手渡した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "げげ～っ、なんです、このメニュー！？\nきっつきつじゃないですか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これで臨海学校とか修学旅行って\n言えるんですか～？\n言う気あるんですか～！？",
+   "choice_data_list": [
+    "――ない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今回のメニューで最優先したのは、\nヒシミラクルが\n『努力を実感できること』だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ゆえに、キツさをより感じてもらえるよう、\nわざとアレンジを施してある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんの鬼、悪魔、英語の先生っ！\nひどいですよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いいんですか。わたし、トレーナーさんの\nことをキライになっちゃうかもですよ？",
+   "choice_data_list": [
+    "――上等だ",
+    "――上等だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うっわ～、トレーナーさんが夏の暑さで、\nビッキビキになっちゃった～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どう思われても構わない。嫌われるのは\n悲しいが、全てはヒシミラクルのためだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その夜――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そろ～り、そろ～り……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ピィィィッ！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひっ！？",
+   "choice_data_list": [
+    "何をしている？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "い、いや～、近くにコンビニないかな～とか。\nあと……電車走ってないかな、とか？",
+   "choice_data_list": [
+    "脱走兵は、トレーニング2割増だ",
+    "脱走兵は、トレーニング2割増だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わぁん、ノらなきゃよかった～。\nわたしは友だちにそそのかされただけで～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "逃がすわけにはいかない。\nこの夏は徹底的に頑張ってもらおう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

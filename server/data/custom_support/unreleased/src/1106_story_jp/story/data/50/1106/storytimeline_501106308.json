@@ -1,0 +1,366 @@
+{
+ "title": "菊花賞の後に・そこそこミラクル",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "（わたしは……ふつ～だ。\n覚悟が足りないから、自分を\n追い込んだりしてこなかった。つまり――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（ムリしてない！　今までムリしなかった分、\n長々とがんばれる！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（早めのスパートから、じりじりと。\nそのまま、ず～っと走り続けられれば……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "最後にはきっと――！\nたぁぁぁぁ～～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ワアアアアアアアアア！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、あれぇ～？　もしかしたら\n勝てるかもって思ったのに、ここまで～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "負けても当たり前かもしれないけど、\nでも……でも、なんか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――勝利には届かず。だが大きな成果が\nあった。それは秘めた可能性が見えたこと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――ズブいウマ娘。だからこそ長い距離を\n根気よく走らせてみないと真価はわからない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ステイヤーとしての底力が、\n3000mという長距離レースで発揮された。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさぁん、それなりには\nなんとかなりましたけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、なんか……なんかですね……。",
+   "choice_data_list": [
+    "なんか……何？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっと……悔しいかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "別に後悔とかはないんですけど、\nでも少しっ。わたしもぜいたくに\nなったってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "GⅠでの勝ち負けをしっかり悔しがれる。\nそれは明らかに、成長の証に思えた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "さあトレーナーさん、打ち上げですよぉ。\nお好み、お好み♪　るんるんる～ん！",
+   "choice_data_list": [
+    "ああ、『菊花賞』お疲れ様",
+    "うん、『菊花賞』お疲れ様"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "打ち上げ会場は、もちろんお好み焼き屋。\n2人で今までの振り返り会をすることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "振り返りか～。\nトレーナーさんはどうでしたか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "これまでの総括。\nまず真っ先に思い浮かぶのは――",
+   "choice_data_list": [
+    "“あの言葉”は正しかったな",
+    "“あの言葉”は正しかったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの……言葉？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そう、あれはメイクデビュー、\n2000mのレース後……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "距離が長めだったのは、助かったかも。\n短距離とかだと、\n一瞬で終わってたでしょうし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、でもエンジンかかるのは遅い方なので、\n距離はもっとあった方が～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その言葉通り、ヒシミラクルは\n『菊花賞』で結果を出してくれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわ～……ちょっと恥ずいなぁ……。\nあれはノリってか、そんなに深い考えは～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フ……でも、あったことにしちゃおうかな～。\nわたし、すごいっ！　な～んて！",
+   "choice_data_list": [
+    "それから、ちゃんと『努力』もしたよな",
+    "それから、ちゃんと『努力』もしたよね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、そっちは……ちゃんとしました。\nちょっとだけ胸を張れますっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、こんなに一生懸命、\nなにかをやったことなんてなかったし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、できましたもんね！\nやれましたもんね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えらくなったなぁ……。\nがんばれて、よかったなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しみじみと努力の成果を噛み締める\nヒシミラクル。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "この自信こそ、未来に繋がる\nなにより大きなものだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして2人で、食後の散歩をしながら――",
+   "choice_data_list": [
+    "ヒシミラクル、次走についてだけど"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、はい……。",
+   "choice_data_list": [
+    "レース選択以上に、大切なことがある"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "な、なんでしょう……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "次の目標はほぼ見えていた。\n今回『菊花賞』で見せてくれた\n長距離適性を考えれば――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "来年の『天皇賞（春）』3200mが有力。\nどこよりもヒシミラクルに向く条件。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "天皇賞（春）"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "だが、どのレースを走るかより、\n今回はずっと大事なことがある。",
+   "choice_data_list": [
+    "もう自分で宣言できるな？",
+    "もう自分で宣言できるよね？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自分で……。",
+   "choice_data_list": [
+    "ああ、ヒシミラクル自身の気持ちで",
+    "うん、ヒシミラクル自身の気持ちで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分で目標を決め、やるぞと進む。\nそれができるかが、とても大きい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "む、むむむぅ……。今日のレースっぷりなら、\n多分、来年のあそこですよね……。",
+   "choice_data_list": [
+    "ズバッと頼むぞ！",
+    "ズバッと頼むよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぐぐぐぐ……。",
+   "choice_data_list": [
+    "よっ、決断の天才！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなぁ、見え見えな～。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "目標は……てん……てん……。",
+   "choice_data_list": [
+    "てん――？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしがぁぁぁ！\n目指すのはぁぁぁぁぁ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『天皇賞（春）』～～～！！！！！！\nそこで勝ぁぁぁぁつ！！！！！",
+   "choice_data_list": [
+    "……え！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……へ？",
+   "choice_data_list": [
+    "今“勝つ”って言った？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、あ、言いました？\n誰が？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしがぁぁぁぁ？\nあああ、違う違うっ、つい勢い！",
+   "choice_data_list": [
+    "よし、約束な",
+    "よし、約束ね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええええええっ、そんなぁ。\n言い過ぎた。言い過ぎましたぁぁぁ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝つ～、勝つまでいける～？\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やって……みます。できるかも……。\nもう言っちゃいましたもんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――照れ笑い。\nそして初めての目標宣言。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "二強不在の『菊花賞』で存在感を示した\nヒシミラクルは――\n『天皇賞（春）』で勝利を目指す。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

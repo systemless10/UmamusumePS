@@ -1,0 +1,33 @@
+{
+ "title": "目標達成の後に・ノーカウントな努力",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "クラシック級の5月までを無事終えた、\nヒシミラクルだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "同期の破壊神タニノギムレットや\n仕事人シンボリクリスエスへの対抗心は\n芽生えない。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "シンボリクリスエス"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "足りないのは『覚悟』。\nそして、ちゃんと『努力』しているのに、\nできていないと感じてしまう自覚のなさ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "努力している自覚こそが、自信に繋がる。\n次の目標『神戸新聞杯』までに\n意識を改革することにした。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "神戸新聞杯"
+   ]
+  }
+ ]
+}

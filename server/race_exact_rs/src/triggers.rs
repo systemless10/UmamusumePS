@@ -1,10 +1,8 @@
-//! Global condition construction, including source-order shared RNG draws.
 use crate::{course::Course,rng::RaceRandom};
 #[derive(Clone,Debug)]
 pub struct Trigger {
     pub name:String, pub op:String, pub rhs:i32, pub windows:Vec<(f32,f32)>,
     pub randomized:bool, pub lot:Option<bool>, pub previous:bool,
-    /// SkillTriggerIsActivateAnySkill `_prevActivateSkillCount` / `_activateThisSkillCount`.
     pub prev_count:i32, pub this_count:i32,
 }
 pub type Condition=Vec<Vec<Trigger>>;
@@ -47,7 +45,6 @@ pub fn build(text:&str,c:&Course,r:&mut RaceRandom,tag:&str)->Condition {
             "up_slope_random"|"down_slope_random"=>{
                 t.randomized=true;let sign=if n.starts_with("up") {1} else {-1};
                 let mut slopes=c.slopes.iter().filter(|s|s.number==sign).collect::<Vec<_>>();
-                // RaceManager._CacheSlopes uses the distance-sorted course event cache.
                 if std::env::var("RX_SLOPE_RANDOM_ORDER").map_or(true,|v|v!="0") {slopes.sort_by(|a,b|a.start.total_cmp(&b.start));}
                 if !slopes.is_empty() {
                     let i=r.int_max(slopes.len() as i32,&||tag.into()) as usize;
@@ -67,8 +64,6 @@ pub fn build(text:&str,c:&Course,r:&mut RaceRandom,tag:&str)->Condition {
                 t.windows.sort_by(|a,b|a.0.total_cmp(&b.0));
             },
             "random_lot"=>t.lot=Some(r.int_max(100,&||tag.into())<v),
-            // JP-only tokens; the JP client strips trigger code (SkillTriggerNull), so
-            // these draw patterns are inferred from start-delay RNG alignment.
             "phase_firstquarter_random"=>{
                 t.randomized=true;let (lo,hi)=c.bounds(v);
                 t.windows.push(lot(r,lo,lo+(hi-lo)*0.25,tag));
@@ -82,9 +77,6 @@ pub fn build(text:&str,c:&Course,r:&mut RaceRandom,tag:&str)->Condition {
                 let inside:Vec<(f32,f32)>=segs.into_iter().filter(|s|s.1>lo && s.0<hi).map(|s|(s.0.max(lo),s.1.min(hi))).collect();
                 if !inside.is_empty() {
                     if std::env::var("RX_JP_PCR").map_or(true,|v|v!="old") {
-                        // Fitted on 25 JP activations: the first draw is a float position over the
-                        // summed in-phase segment length, walked along the clipped segments; the
-                        // second draw is consumed unused.
                         let total:f32=inside.iter().map(|s|s.1-s.0).sum();
                         let mut x=r.float_max(total,&||tag.into());let _=r.raw(&||tag.into());
                         let mut start=inside[inside.len()-1].1;
@@ -103,8 +95,6 @@ pub fn build(text:&str,c:&Course,r:&mut RaceRandom,tag:&str)->Condition {
 pub fn compare(lhs:f32,op:&str,rhs:f32)->bool {
     match op {"=="=>lhs==rhs,"!="=>lhs!=rhs,">="=>lhs>=rhs,"<="=>lhs<=rhs,">"=>lhs>rhs,"<"=>lhs<rhs,_=>false}
 }
-/// Every trigger is visited, even after a failed sibling. None identifies a
-/// missing accessor rather than silently satisfying an unsupported predicate.
 pub fn evaluate(c:&mut Condition,distance:f32,query:&impl Fn(&str,i32)->Option<f32>,unsupported:&mut std::collections::BTreeSet<String>)->bool {
     let mut any=false;
     for group in c {
@@ -114,7 +104,6 @@ pub fn evaluate(c:&mut Condition,distance:f32,query:&impl Fn(&str,i32)->Option<f
                 else if let Some(lot)=t.lot {lot}
                 else if let Some(v)=query(&t.name,t.rhs) {
                     if t.name=="is_activate_any_skill" {
-                        // GetValueLh (0x35e1b00): reading mutates the saved counters.
                         let adjusted=v as i32-t.this_count;let prev=t.prev_count;t.prev_count=adjusted;
                         if prev<adjusted {t.this_count+=1;}
                         compare(i32::from(prev<adjusted) as f32,&t.op,t.rhs as f32)

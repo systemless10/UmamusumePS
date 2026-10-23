@@ -1,10 +1,3 @@
-//! Port of race_runner.py -- reads one race spec as JSON on stdin, writes
-//! `{seed, frames, results, skillEvents, raceEvents, distanceDiffMax}` as
-//! JSON on stdout. Drop-in
-//! replacement for the hot path only: `race_simulator.py`'s existing
-//! `_run_simulation_node` already shells out to a Node subprocess with
-//! exactly this contract, so swapping the subprocess target is the whole
-//! integration (see that function and `race_runner.run_race`).
 
 mod activation_conditions;
 mod activation_sample_policy;
@@ -116,15 +109,12 @@ fn load_skill_table(text: &str) -> Result<SkillTable, String> {
             .collect::<Result<Vec<_>, String>>()?;
         let rarity = raw.get_i64("rarity")? as i32;
         let wisdom_check = raw.get("wisdomCheck").and_then(Value::as_f64).map(|n| n != 0.0).unwrap_or(false);
-        // tagged 601-615: the passive greens value usage 14 counts
         let green = opt_array(raw, "tags").iter().filter_map(Value::as_i64).any(|t| (601..=615).contains(&t));
         out.insert(skill_id.clone(), SkillDef { rarity, wisdom_check, green, alternatives });
     }
     Ok(out)
 }
 
-// ---------------------------------------------------------------------------
-// Race spec (stdin JSON) parsing
 
 fn skill_id_and_level(v: &Value) -> Result<(String, i32, bool), String> {
     if let Some(obj) = v.as_object() {
@@ -229,9 +219,6 @@ fn parse_race_spec(v: &Value) -> Result<RaceSpec, String> {
     Ok(RaceSpec { seed, course_id, ground, weather, season, single_mode, horses, metadata: v.get("raceContext").cloned().unwrap_or(Value::Null) })
 }
 
-/// `_STRATEGY_IDS.get(spec["horses"][i]["strategy"], 2)` in Python: an
-/// *exact*, case-sensitive string match against the raw input (not the
-/// parsed `Strategy` enum, which is case-insensitive and accepts "SASHI").
 fn strategy_id_for_output(raw: &str) -> f64 {
     match raw {
         "Nige" => 1.0,
@@ -243,8 +230,6 @@ fn strategy_id_for_output(raw: &str) -> f64 {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Builder construction, mirroring race_runner._new_builder
 
 fn new_builder(
     conditions: &'static HashMap<String, activation_conditions::Condition>,
@@ -279,10 +264,6 @@ fn new_builder(
         strategy_aptitude: Aptitude::parse_str(&h.strategy_aptitude_str, "strategy")?,
     };
     b.horse(desc);
-    // Doc's "Charge Up / Conserve Power" and "Stamina Limit Break" -- both
-    // already ported but never enabled by the upstream raceRunner.ts
-    // bridge. Real Global mechanics, so enabled here. Must come after
-    // .horse()/.mood() (both read from them).
     b.with_asiwotameru();
     b.with_stamina_syoubu();
     Ok(b)
@@ -311,9 +292,6 @@ fn is_usable(
     ok
 }
 
-/// The Skill event's duration the way the real server writes it: the
-/// skill's own scaled duration if it has one, -1 for a permanent one (every
-/// gate-time passive in a real capture is -1), 0 for an instant one (a heal).
 fn wire_duration(a: &race_solver::Activation) -> f64 {
     if let Some(d) = a.timed_duration {
         return d;
@@ -328,11 +306,6 @@ fn wire_duration(a: &race_solver::Activation) -> f64 {
 fn run_race(spec: &RaceSpec, conditions: &'static HashMap<String, activation_conditions::Condition>) -> Result<Value, String> {
     let course = course_data::get_course(spec.course_id);
 
-    // Whether a skill id can actually be built for this race. Some skills'
-    // conditions reference tokens this engine doesn't implement and those
-    // fail from inside build() (not add_skill()), so a single bad skill
-    // would otherwise abort the whole horse's build. Memoized across the
-    // roster (most horses share most of their skills).
     let mut skill_usable: HashMap<(usize, String, i32), bool> = HashMap::new();
     let mut skipped_skills = Vec::new();
 
@@ -369,8 +342,6 @@ fn run_race(spec: &RaceSpec, conditions: &'static HashMap<String, activation_con
     let mut hp_out = vec![false; n];
     let mut blocked_front_time = vec![0.0f64; n];
     let mut frames: Vec<Value> = Vec::new();
-    // Capture initialization before HP drain or lane motion. The serializer
-    // must not reconstruct time zero from an already updated horse.
     let gate_horses = (0..n).map(|i| {
         let s = field.solvers[i].borrow();
         json::obj(vec![
@@ -381,8 +352,6 @@ fn run_race(spec: &RaceSpec, conditions: &'static HashMap<String, activation_con
         ])
     }).collect();
     frames.push(json::obj(vec![("t", json::num(0.0)), ("horses", json::arr(gate_horses))]));
-    // Largest leader-to-last gap before the leader finishes -- the scenario
-    // header's distance_diff_max.
     let mut distance_diff_max = 0.0f64;
 
     let mut t = 0.0f64;
@@ -414,8 +383,6 @@ fn run_race(spec: &RaceSpec, conditions: &'static HashMap<String, activation_con
             distance_diff_max = distance_diff_max.max(hi - lo);
         }
 
-        // Record every tick; downsample_result thins them to the real
-        // server's recording cadence.
         let horses: Vec<Value> = (0..n)
             .map(|i| {
                 let s = field.solvers[i].borrow();
@@ -451,8 +418,6 @@ fn run_race(spec: &RaceSpec, conditions: &'static HashMap<String, activation_con
     let mut results = Vec::with_capacity(n);
     for i in 0..n {
         let s = field.solvers[i].borrow();
-        // Where she actually went into the last spurt; -1 = never did (a
-        // plan that only starts at the planner's 60m margin is no spurt).
         let lst = s.last_spurt_start_pos;
         let spurted = 0.0 < lst && lst < course.distance - 60.0 - 1e-6;
         results.push(json::obj(vec![
@@ -477,8 +442,6 @@ fn run_race(spec: &RaceSpec, conditions: &'static HashMap<String, activation_con
                 Ok(v) => v,
                 Err(_) => continue,
             };
-            // horses the skill landed on: herself for a buff, the targets
-            // for a debuff (the event's target bitmask on the wire)
             let targets: Vec<Value> = if a.targets.is_empty() { vec![json::num(i as f64)] } else { a.targets.iter().map(|&x| json::num(x as f64)).collect() };
             skill_events.push(json::obj(vec![
                 ("horseIndex", json::num(i as f64)),
@@ -489,8 +452,6 @@ fn run_race(spec: &RaceSpec, conditions: &'static HashMap<String, activation_con
                 ("targets", json::arr(targets)),
             ]));
         }
-        // Rushed episodes, under the non-numeric "kakari" sentinel skill id
-        // team_stadium's PvP scoring and the career epithets read.
         let mut spans = s.kakari_log.clone();
         if s.is_kakari {
             spans.push((s.kakari_started_at, t));
@@ -524,22 +485,10 @@ fn run_race(spec: &RaceSpec, conditions: &'static HashMap<String, activation_con
     ]))
 }
 
-// Frame cadence -- MUST stay identical to race_simulator.py's
-// _DENSE_LEAD_FRAMES / _SPARSE_STRIDE / _GOAL_WINDOW / _select_frames (see
-// the notes there: every tick for the first second, then every 16 ticks,
-// every tick again while any horse is within 25m of the goal).
 const DENSE_LEAD_FRAMES: usize = 17;
 const SPARSE_STRIDE: usize = 16;
 const GOAL_WINDOW: f64 = 25.0;
 
-/// Thin `frames` down to exactly the set build_race_scenario would have kept,
-/// so ~92% of the ticks never get serialized and piped only to be dropped.
-///
-/// Python prepends a synthetic t=0 "gate" frame when the first simulated
-/// frame starts after t=0, and selects AFTER that prepend -- so the index
-/// math below works in that post-prepend space and maps back.
-/// `gateFrameNeeded` tells Python whether to add it; `framesDownsampled`
-/// tells Python the list is already thinned.
 fn downsample_result(result: Value, distance: f64) -> Value {
     let mut map = match result {
         Value::Object(m) => m,
@@ -559,9 +508,6 @@ fn downsample_result(result: Value, distance: f64) -> Value {
     let off = if gate_needed { 1 } else { 0 };
     let eff_len = frames.len() + off;
 
-    // Each horse's (pos, speed, t, lane) at the last frame at or before its
-    // OWN finishTimeRaw, at full resolution -- build_race_scenario coasts
-    // finishers on from there, and the frame selection needs it too.
     let mut finish: Vec<Option<(f64, f64, f64, f64)>> = Vec::new();
     let mut finish_frames: Vec<Value> = Vec::new();
     if let Some(results) = map.get("results").and_then(Value::as_array) {
@@ -642,9 +588,6 @@ fn downsample_result(result: Value, distance: f64) -> Value {
 fn run() -> Result<(), String> {
     let courses = load_course_table(COURSE_DATA_JSON)?;
     course_data::init_courses(courses);
-    // The client's own master.mdb skill table, written by
-    // app/simulation/race_engine/skill_table.py (the Python engine reads the
-    // same table); the embedded JP table is only a fallback.
     let skills = match std::env::var("UMA_RACE_SKILL_TABLE").ok().and_then(|p| std::fs::read_to_string(p).ok()) {
         Some(text) => load_skill_table(&text)?,
         None => load_skill_table(SKILL_DATA_JSON)?,
@@ -653,17 +596,6 @@ fn run() -> Result<(), String> {
 
     let conditions: &'static HashMap<String, activation_conditions::Condition> = Box::leak(Box::new(activation_conditions::build_conditions()));
 
-    // Persistent-worker loop: one JSON spec per line in, one JSON result per
-    // line out, flushed each iteration.
-    //
-    // The two tables loaded above are ~600 KB of JSON and cost ~21 ms to parse
-    // -- that used to be paid on EVERY race, because each race was a fresh
-    // process. Paying it once per process instead is the entire point. The
-    // per-request work below is stateless (the RNG is seeded from the spec),
-    // so races cannot leak into each other across iterations.
-    //
-    // A caller that writes one spec and closes stdin still behaves exactly as
-    // before, so this stays compatible with the old one-shot invocation.
     let stdin = std::io::stdin();
     let mut reader = stdin.lock();
     let stdout = std::io::stdout();
@@ -672,20 +604,16 @@ fn run() -> Result<(), String> {
     loop {
         line.clear();
         if reader.read_line(&mut line).map_err(|e| e.to_string())? == 0 {
-            break; // EOF -- parent closed the pipe
+            break;
         }
         if line.trim().is_empty() {
             continue;
         }
-        // A bad spec must not take the worker down with it: report the error
-        // as a JSON reply and keep serving. The caller treats an "error" key
-        // as a failed run and falls back to the Python engine for that race.
         let outcome = (|| -> Result<Value, String> {
             let spec_json = json::parse(&line)?;
             let spec = parse_race_spec(&spec_json)?;
             let distance = course_data::get_course(spec.course_id).distance;
             let result = run_race(&spec, conditions)?;
-            // debugging aid for engine-parity checks: every tick, unthinned
             if spec_json.get("allFrames").and_then(Value::as_bool).unwrap_or(false) {
                 return Ok(result);
             }

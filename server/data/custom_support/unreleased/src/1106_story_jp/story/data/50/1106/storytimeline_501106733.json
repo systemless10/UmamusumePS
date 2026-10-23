@@ -1,0 +1,23 @@
+{
+ "title": "想いの継承",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "わわっ、な、なに今の……？\nていうかなんか、体がポカポカする……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……もしかして、\nこれが七不思議の正体だったり？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なぁんて、漫画じゃあるまいし。\n寝ぼけてたかな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

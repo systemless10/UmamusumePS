@@ -1,0 +1,350 @@
+{
+ "title": "友だちみたいなんですけど、でも",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "――休日。トレーニングに関する本を購入し、\nあとはのんびり遊びにいって過ごそうかと考えていると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、トレーナーさん。こんにちは～。\n……本屋帰りです？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お～……難しい漢字タイトルで読めないんですけど。\nなんとかかんとかのプライオ……メトリー……？",
+   "choice_data_list": [
+    "要するにトレーニングの本"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なるほど。……休日までトレーニングのこと考えてるなんて、\n相変わらず熱心ですねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（う～ん。わたしのためのもの……これって、付き合ったほうが\nいいのかな？　お疲れさまで～すって、去ってくのも違う気が）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、次はどこに行くんです？\nまだ買い物、残ってたり？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "特に決めてはいなかったが、カラオケか映画にでも\n行こうかと思っていた――と、伝えると。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、普通……。",
+   "choice_data_list": [
+    "普通だよ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あっ、あはは。や、悪い意味じゃないです。\nそっかそっか。あ～……じゃあ、一緒にどうですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょうど暇してたんで。付き合わせてください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は～。やっぱり声出すのって気持ちいいですね～。\nライブのレッスンもありますけど、カラオケは別腹って感じです。",
+   "choice_data_list": [
+    "ライブって緊張する？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "当たり前のこと聞かないでくださいよ～！\nするに決まってるじゃないですか！　毎回、ブルブルですよっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "しかも失敗したら、みんなに迷惑かかるし～。\n声だって震えるし。周りが完璧だと余計にドキドキものだし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それに、ステージってやっぱり特別な場所じゃないですか。\n普通じゃ味わえない空気もあるし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "楽しいとか嬉しいとか、そういうのもある反面、\n緊張ハンパないんですってば～。あ、思い出すだけで動悸が……。",
+   "choice_data_list": [
+    "そうだったんだ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうだったんです！\nトレーナーさんも1度立ってみたらわかる――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……と、次の曲ですね。\nこの曲、いま練習していて――",
+   "choice_data_list": [
+    "ミラ子ー！こっち向いてー！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっ！？　い、いきなりなんですか。\nあ、もしかして声援！？",
+   "choice_data_list": [
+    "イエーイ！ミラ子、イエーイ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっ、声援になってませんけど！？　あはっ、あははは！\nやめてくださいって！　笑って歌えないから～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふ～～～……。\n今の、今までで1番気持ちよく歌えたかも？",
+   "choice_data_list": [
+    "歌声最高！もっと聴きたい！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしばかり乗せていないで、トレーナーさんも歌ってくださいよ！",
+   "choice_data_list": [
+    "じゃあ、ヒシミラクルへ送る応援歌を……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うんうん……って、そんな曲あるわけ――",
+   "choice_data_list": [
+    "期待のウマ娘～♪それはヒシミラクル♪"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まさかのアカペラ！？\nあはははっ、もうやめてくださいってば！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はー……面白かった……。",
+   "choice_data_list": [
+    "やり遂げた……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なに、やってやったみたいな顔してるんですか～。\n途中、何度も笑っちゃいましたよ。",
+   "choice_data_list": [
+    "ごめん、楽しくなっちゃって……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ま～調子のいいことばっかり言ってるな～とは思いましたけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……でも、嫌な気持ちにはならないんだよなぁ。\n褒め言葉も本気で言ってるって、なんかわかるし）",
+   "choice_data_list": [
+    "声出したらお腹が……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ。すきましたね～。\nファミレスにでも入りましょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、お子様ランチのポスター……\n時々、無性に食べたくなったりしません？　お子様ランチ。",
+   "choice_data_list": [
+    "あるかも……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ね～。なんででしょうね。\nあとファミレスくると、必ず頼むものがあって――",
+   "choice_data_list": [
+    "ポテトとか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ですです。とりあえずポテトはマストなんですよ。\nトレーナーさんは、どうですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "必ず頼むものとか……あ、フリードリンクで、\n変なの混ぜて飲んだりしたこととかあります？",
+   "choice_data_list": [
+    "例えば？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうですね～。今はやりませんけど、\nむか～し、わたしが友だちにやられたのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふ～。けっこー食べちゃいましたね。\nたくさん食べて、たくさん喋って……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "友だちといるときと、同じノリっていうか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。",
+   "choice_data_list": [
+    "どうしたんだ？",
+    "どうしたの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "や、トレーナーさんって……もっとこう、\n先生みたいな感じかなって思ってたんですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "話すときに緊張したり、壁を感じたり……\n大人と子どもの差っていうか。距離感？　みたいな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、トレーナーさんにはそれがあんまりないな～って。",
+   "choice_data_list": [
+    "それって……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、助かるって話ですよ。\n楽でいいです。変に気を使わなくて済むし。",
+   "choice_data_list": [
+    "ならよかった"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……まぁ、逆に気を使ってもらってるから、楽なのかもですけど。",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえいえ。そろそろ帰りましょうか。\n今日は笑い疲れたので、ぐっすり眠れそうです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……普段は、今日みたいに同じノリにもなれるけど。\nレースとなると、やっぱり熱量の差を感じるんだよね）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（期待された分はがんばりたいし、がんばるけど……\nこの差は、トレーナーさん的にどうなんだろ）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（同じになれなくても、差を埋められるなら埋めたいな～。\nんー、お礼するとか？　いつも熱心にありがとうございます？）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（いやいや、なんかそれだと嫌味な感じじゃん。\nそうじゃなくて、もっとこう……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いっそ、プレゼント贈るとか……\nや、いきなりそれもおかしいか～？　なんで？　ってなるよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うーん、うーん……悩ましい～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "隣でうんうんと唸っているヒシミラクル。\n突然、どうしたのだろう。相談事なら遠慮しないでほしいが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "漏れ出た言葉から察するに、\n友だちへの贈り物で悩んでいるのかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ならば深く聞き返す必要はないだろう。綺麗な夕焼けを見ながら、\nヒシミラクルと歩幅を合わせ、のんびりと帰宅した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

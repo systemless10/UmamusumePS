@@ -1,4 +1,3 @@
-"""Port of Region.ts -- half-open interval [start, end) set algebra."""
 
 from __future__ import annotations
 

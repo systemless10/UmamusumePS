@@ -1,0 +1,183 @@
+{
+ "title": "菊花賞にむけて",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "――『菊花賞』。\nヒシミラクルが初めて目標に掲げたGⅠ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そこに挑む前にと\n連れてこられた場所は……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、くじ引きしましょう。\nくじ引き！",
+   "choice_data_list": [
+    "なぜ……くじ引き？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほら～、ちょっとした運試しってか、\n現実逃避ってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いいのが当たると、今日はいけるぞ～って\n気になるじゃないですか。\nテレビの占いみたく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今朝の番組だと、おひつじ座は10位で\nイマイチだったんですよね……。\nですから、ここで挽回ってことで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして引いてみた、ウマ娘くじ。\n結果は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おおおっ、当たりです、当たり！\nこれ、結構すごくないですかっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "店長さん、これ、\nかなりレアのレアのレアですよね！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "店長",
+   "text": "ああ、あんまり当たらないよ！\n8本中3本しか、当たり入ってないからね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "入ってる！　けっこう入ってますよ、それ！\n3/8なら！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ま、いっか。トレーナーさん、\nそこそこラッキーってことで。",
+   "choice_data_list": [
+    "ああ、運勢は悪くない！",
+    "うん、運勢は悪くない！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "勢いに乗って、京都レース場に乗り込んだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ううう、ゲン担ぎしてきたとはいえ、\n気が重い～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『菊花賞』か～。出られるのは\nすごくうれしいんですけれど～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まだ場違いな感じがちょっとあるってか。\n命を懸けて勝つぞ～みたいにはなれなくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱりわたし『覚悟』が足りないですよね。\nクリスエスちゃんやギムレットちゃんに\n比べると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『覚悟』の不足。それは確かかもしれない。\nだが……。",
+   "choice_data_list": [
+    "今日は2人はいない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……そうですね。\nその通りですけれど。",
+   "choice_data_list": [
+    "だから今日は『努力』のみの勝負だ",
+    "だから今日は『努力』のみの勝負だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『努力』のみの勝負……。\n『覚悟』関係なしの\n積み重ね勝負……ってことですか？",
+   "choice_data_list": [
+    "ああ！",
+    "うん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そっか。そうですよね……。\nスゴヤバな2人がいないGⅠ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "努力だけなら、わたしもしてきました！\n足りないかもしれないけど、\n出る資格はあります。",
+   "choice_data_list": [
+    "ああ、大いに期待してるぞ！",
+    "うん、大いに期待してるよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――はい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ワアアアアアアアアアッ！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（期待も応援も……相変わらず重い。\n気軽なんかじゃぜんぜんない。\nそれでも――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うんっ、潰れたりはしない！\nこの声援に応えなきゃ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よーし、きっと起こしてみせるぞ！\n――ミラクル！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

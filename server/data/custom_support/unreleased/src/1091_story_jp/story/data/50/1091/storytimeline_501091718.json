@@ -1,0 +1,41 @@
+{
+ "title": "リフレッシュ完了",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～～、おっはよ～～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "見て見て、私、\nちょーかわいくなったと思わない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お休み中にね、お姉ちゃんと\n美容フルコースツアーやったんだよ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "髪切って～、尻尾エステして～、\nネイルサロンとコスメショップも行ったんだ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、ね、褒めて褒めて～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやらヴィブロスは、\n充実した休日を過ごせたようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

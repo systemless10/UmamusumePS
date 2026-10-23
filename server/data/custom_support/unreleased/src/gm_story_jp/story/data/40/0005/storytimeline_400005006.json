@@ -1,0 +1,355 @@
+{
+ "title": "自由なる心・ダーレーアラビアン",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "今日は<chrname>のトレーニングが\n休みのため、どう過ごすか考えていると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "持久力を向上させるには、\nやはり肺活量をいかに――ん？",
+   "choice_data_list": [
+    "これからトレーニングですか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ああ、<username>トレーナー。\nこれからリトルココンのトレーニングでして。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "リトルココン"
+   ]
+  },
+  {
+   "name": "",
+   "text": "樫本トレーナーは、ビターグラッセの他に\nリトルココンというウマ娘も担当している。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "デビュー戦を押し切って勝利した、\nかなりの実力者だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "これから――と言っても、あの子のことです。\nすでにトレーニングを始めているでしょうが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "せっかくの機会なので、リトルココンの\nトレーニングを見学させてもらおうと、\n樫本トレーナーに同行した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "ふぅ……ふぅ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "ねえ、あなたリトルココンさんだよね！\nデビュー戦、すごかったね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "わかるー！　もしよかったら併走しない？\n私たちと一緒に走ろうよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……遠慮しとく。\n誰かとペース合わせんの好きじゃないし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "わーん、フラれたー！\nしょうがない、気が向いたら付き合ってね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "うん、気が向いたら。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "お疲れ様です、リトルココン。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "樫本トレーナー。\n今日もよろしくお願いします。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……と、そっちにいるのは？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "<username>トレーナーです。\n今日は貴方のトレーニングを見学したいと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "見学？　ふぅん……。\nなんの参考になるのか知らないけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "さあ、それでは早速始めましょうか。\nまずはダートを3分のペースで5周で。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "はい、行ってきます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……彼女には磨いてもらいたい\n武器がありまして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "持久力――この先レースの距離が延びても\nロングスパートをかけられるそんな武器です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "長く走るぶん、脚に負担はかけたくないので\nトレーニングではダートを多めにしています。",
+   "choice_data_list": [
+    "なるほど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "よっ、子羊くんたち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ダーレーアラビアンさん、\nどうかされましたか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "まあね、なかなかいいカンをしてるなって。\nリトルココンの武器、あれは目を見張るな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "あの子の場合、基礎的な能力も高いから\n一見するとスピードを重視しがちだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "だけど、真に強いのは心臓に肺！\nその武器をとことん磨いてやらないとな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "……ところで確認だが、リトルココンは\nなにかとストイックなところがあるだろ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ええ、私とのトレーニングの前にも\n1人でコツコツと走り込むくらいですから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "やっぱり。樫本トレーナーが管理してるのに\nどうしてああなってるのか\n不思議だったんだけど、合点がいった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "リトルココン、\n僅かに体のバランスを崩してるよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "バランスを……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "彼女の場合、ストイックなだけに\nちょっとばかり走り込みが過剰だった。\n逆に上半身への意識が弱くなってる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ならさ、その時間を利用して\n全身運動をしてもらうのはどうだ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "他にも食事のカロリーを上げてみるとか。\nもう少し上半身にウェイトを置くほうがいい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ちょっとした鍛え方のミスで\n持久力や瞬発力を潰す事例もあるからな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ウォーミングアップにもなると進んで\nやらせていましたが、それが僅かながらも\nバランスを崩しているとは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ウマ娘は1人1人で輝き方は異なる。\nあの子の個性を大切にな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "おっと！　あの子もいい個性を持ってるな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……今の知識もまた、多くのデータから\n適切なものを持ち出したのでしょうね。",
+   "choice_data_list": [
+    "頼りになりますね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "まったく……ですが、ウマ娘たちにとって\nトレーナーが1番頼りでなければならない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "アドバイスをもとに、私がリトルココンを\nしっかりと成長させなくてはなりませんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "――以上のような形で、全身の筋肉を\n負荷なく鍛えてもらえれば問題ありません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "わかりました。\n……あの、自主トレのことまで\n見てもらって、ありがとうございます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "いえ、私ももっと気にかけるべきでした。\n貴方の前向きな気持ちにだけ乗ってしまって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ですが、おかげでより鮮明になりました。\n貴方がこの先、どのように走るのかと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "磨きましょう、貴方の武器を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "はい……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "それで、ちょうど貴方のローテーションを\n固めたところなので、伝えておきましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "まずは場数を踏み、\nレース経験や体づくりを進めていきます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "そして来年は大舞台に挑んでいきます。\nとりわけ、貴方の武器が輝くレースに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "来年の……大舞台って……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "共に行きますよ、クラシックレースに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……っ！　はいっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "二人三脚で個性を磨く、\n樫本トレーナーとリトルココン。\nそして個性を大事にするダーレーアラビアン。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "3人のやりとりを見て、個性とはウマ娘\nそのものを指すのだろうと思うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

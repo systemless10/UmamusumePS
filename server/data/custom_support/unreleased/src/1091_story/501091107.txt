@@ -1,0 +1,77 @@
+#title Valentine's Day
+0 Kyaa! That chocolate is sooo cute!
+1 Isn't that crazy? It's all shiny and super rich! I want that one.
+2 You sure love those expensive-looking things. Then why not give that one to your trainer?
+3 Yeah, that'd be nice too. And I'll eat a matching one myself♡
+4 You're buying one for yourself too? Actually, I'm kinda surprised.
+5 Vivlos, you talk about your trainer a ton, so you really like them, right?
+6 Yeah, I love them♡ That's why I'm giving them Valentine's chocolate!
+7 ...Not even embarrassed. Whatever. I just figured, so you're fine with "buying" it.
+8 Huh?
+9 True. You'd wanna make something homemade for someone you like! I'm making a cake for my partner.
+10 Huh?! Since when?! Hey, give me the details!
+11 ...Hey, hey. Are homemade ones really that nice to get?
+12 I mean, you know how I am, right? I like high-end brands.
+13 So I kinda think something proper would make them happier.
+14 Hmm... Well, homemade stuff from someone you like makes you happy, right?
+15 I honestly can't say how your trainer would feel about it, but...
+16 We're basically their students, so they might think it's too heavy and not accept it.
+17 Wait, but if they accepted it anyway... wouldn't that mean they're totally into you?!
+18 ...!
+19 Into me...
+20 ...Wait, do I want Tore-cchi to be into me?!
+21 Huh?! Where'd that come from?!
+22 It's like... it sounds like I see Tore-cchi that way!
+23 I mean, I don't know... Don't you?
+24 ......I don't know.
+25 Wh-wh-wh-what?! I don't know, this is so confusing!
+26 Tore-cchi is just like my Onee-chans... kind, and spoils me...
+27 ...So that's why I lo—
+28 ......
+29 ...This is confusing...
+30 One day, after finishing Vivlos's training, I was working in the trainer's office...
+31 ...Trainer.
+31> Vivlos?
+32 For some reason, Vivlos came in quietly. Something about this atmosphere feels nostalgic... Right, it was before our contract...
+33 Thinking I'd misunderstood her, Vivlos had worked up the courage to come and tell me how serious she was about her dream.
+34 ......
+34> ...Go ahead, Vivlos.
+35 Huh?
+35> Tell me anything. I'll take it all in. | Tell me anything. I'll take it all in.
+36 ...!!!!
+37 ...I-it's not some huge talk or anything!
+38 This! I just wanted to give you this!
+39 Happy Valentine's Day, Tore-cchi!
+39> ...Valentine's!
+40 Yep, that's right? I bought it at a department store food hall!
+41 This chocolate brand is apparently popular in Dubai too, and they happened to have a pop-up♡
+41> Thank you!
+42 Yeah!
+43 I'm looking forward to your White Day gift in return♡
+44 Kyaa, that was so nerve-racking.
+45 'Cause everyone said weird stuff. Tore-cchi is just Tore-cchi!
+46 ...Take it all in, huh.
+47 ...Should I have made it myself?
+48 ...Really?
+49 You'll take it all in?
+50 At Vivlos's serious tone, I steel myself. Of course, as her trainer... I'm confident I can take in all of her feelings.
+50> Of course.
+51 ...Then...
+52 Will you accept this?
+52> This is...?
+53 I made it. My homemade chocolate!
+54 Happy Valentine's Day, Trainer.
+54> Valentine's...
+55 Those words snap me to attention. Today is Valentine's Day. And what she said just now...
+55> Vivlos, this is...
+56 !
+57 ...Ah, w-wait! Just... wait.
+58 ......You see. I want you to accept it.
+59 I don't know either. I don't know, but...
+60 I love you just as much as my Onee-chans...
+61 That part is absolutely certain.
+62 So it's okay, right? It won't bother you...?
+62> ...Thank you!
+63 !
+64 ...Ehehe. Yeah.
+65 Tore-cchi! ...Thank you for always being there.

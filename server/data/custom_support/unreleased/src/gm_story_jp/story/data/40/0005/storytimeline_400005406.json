@@ -1,0 +1,23 @@
+{
+ "title": "グロウアップレース開催！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ジュニア級も終わる年末、\n三女神から1件の知らせが届いた。\nそれは『グロウアップレース』の招待状――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "三女神によって選ばれる、\n素質あるウマ娘だけが出走できる舞台。\nそこに<chrname>も上がるのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ここまでのウマ娘とトレーナーの\n二人三脚の成果を見せるため、\nいざ決戦の幕が切って落とされる……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

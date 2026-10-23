@@ -1,0 +1,624 @@
+{
+ "title": "Sisters♡",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "――3月の初め、\nそのニュースは飛び込んできた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "私、ヴィルシーナは……\n今年の『ヴィクトリアマイル』に出走します。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（おお～……っ！？）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "記者たち",
+   "text": "緊急記者会見って、何事かと思ったけど……\nまさかこんな発表だったとは！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "記者たち",
+   "text": "また見られるのか……！\nヴィルシーナの、胸の熱くなるレースを！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "近年は前線を退いていた、かつての\n“マイル女王”が戻ってくる――\nそのニュースは、世間を沸かせた。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "マイル女王"
+   ]
+  },
+  {
+   "name": "",
+   "text": "さらに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "記者A",
+   "text": "今年の『ヴィクトリアマイル』……\n妹のヴィブロスさんも出走を表明しています！\nつまり――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "はい。私は妹と対決するために、\nこのレースを選択しました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "みなさま、今の妹の強さはご存じでしょう。\n……私も、見てきました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――ずっと、近くで……。\nあの子の成長を、見守ってきたんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "姉として……1人のウマ娘として。\n私の心は決まっていました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――ヴィブロス、私から貴方へ、\n心躍るレースをプレゼントするわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――お姉ちゃんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィルシーナの会見を一緒に見ていた\nヴィブロスは、会見後に慌てて\n姉のもとに駆けつけた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ、\n『ヴィクトリアマイル』で走るって……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "宣言した通りよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、どうして！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あら。\n私とレースするのは嫌？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううんっ、すごくうれしい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって、本気のお姉ちゃんと\n走ったこと、ないもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "わくわくする？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "すっごく！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ふふ。\nなら、出走を決めて正解ね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ヴィブロス、貴方は私のために、\nたくさん頑張ってくれたわね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "でも、そのために……\n1番大事な夢が遠くなった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "だったら、姉として……\n私がすべきことは1つだったのよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――ドバイのレースと同じくらい、\n貴方の心を満たすレースを贈る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――では、\nよろしくて？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "誰もが知るように。\n私は、強いわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "貴方に華を持たせてあげる気はない。\nあの頃よりも強くなって、迎え撃つ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "貴方に私を、\n超えられるかしら？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ふ。\n……期待しているわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえねえ、お姉ちゃんとレースだって！\nやばくなーいっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィルシーナの宣言を受けて、ヴィブロスは\nすっかり元気を取り戻したようだ。",
+   "choice_data_list": [
+    "そんなに嬉しいのか？",
+    "そんなに嬉しいの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょーうれしいよ！\nだって、考えたこともなかったもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "子どもの頃は、よくいっしょに走ってたけど、\nお姉ちゃんは手加減してくれてて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いつも私が追いかける側だったの。\nトレセン学園に入ってからもそう――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんのこと、ターフの外から見てた。\nそれが当たり前だった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも……そんなお姉ちゃんと、\n本気で走れるんだね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "走って、いいんだねっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスの喜びようを見ると、\nヴィルシーナの想いはしっかり届いたようだ。\nならば、トリプルティアラウマ娘として――",
+   "choice_data_list": [
+    "全力で立ちはだかろう！",
+    "めいっぱい楽しもう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……やば、私、\nちょーかっこいいの思いついちゃったかも♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あ、もしもしお姉ちゃん？\nさっき言い忘れたことがあって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのね……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "かかってこーいっ！！",
+   "choice_data_list": [
+    "！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへっ、せっかくレースできるんだもん！\nバッチバチできてね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あとは～……\nもう1人のお姉ちゃんとも、話さなくちゃ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……煽るじゃない。\nしかも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『どうぞ、かかっていらして？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……同じ言葉で。\n全く……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――後悔しても、知らないわよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "TVの音",
+   "text": "『私、ヴィルシーナは……\n今年の『ヴィクトリアマイル』に出走します』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！\nちょー楽しむ♪",
+   "choice_data_list": [
+    "ヴィルシーナに勝てたら、超セレブだぞ",
+    "ヴィルシーナに勝てたら、超セレブだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！！\nほんとだ～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだよね、どうせなら……\n今よりもーっとセレブになってドバイに行く！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よーしっ。\n『ヴィクトリアマイル』、がんばるぞ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あ、そうだ。\nその前に……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんとのレース……\nもう1人にも、見てもらわなくちゃ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "TVの音",
+   "text": "『私、ヴィルシーナは……\n今年の『ヴィクトリアマイル』に出走します』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "TVの音",
+   "text": "『――これで夢の姉妹対決が実現します！\nヴィクトリアマイル、ますます楽しみですね』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……“姉妹”対決、か。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "…………そうだよね。\n結果の出せない僕なんか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "シュヴァル。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……っ。\nな、何。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "今年の『ヴィクトリアマイル』、\n観に来てくれるかしら。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……行ったら、\nもっと惨めに……なる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "わかってる。\n僕が、2人とどれくらい差があるかなんて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "違うわ、シュヴァル。\n私には確信があるの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "私たちのレースは、\n貴方を追い込むものじゃない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――貴方の心に、\n火をつけるものよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……？\nどういうこと……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "見たらわかるわ。……ねえシュヴァル、\n私にとって、貴方も大事な妹よ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "そして――……いえ、\nこれはあの子に任せるわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "東京レース場で待っているわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……はぁ。\nなんだったんだ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――シュヴァちっっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのねあのね、\n『ヴィクトリアマイル』、絶対観に来て？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……。\n姉さんにそそのかされた？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え？\nなんで？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……いや。\n悪いけど、僕は……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ダメ～っ！\n絶対、来て！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私ね、お姉ちゃんと戦うの。\nちょー強い、あのお姉ちゃんと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……よかったね。\nキミは……姉さんが、大好きだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！　だから、もう1人の\n大好きなお姉ちゃんにも来てほしい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "大好きで、大事なお姉ちゃんに！\n見せたいの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……私、お姉ちゃんたちの妹だから、\nがんばれたんだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから、私もシュヴァちに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……待ってるからね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "あ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……2人とも、\nどうして……平気で言えるんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "シュヴァル！\nおいで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァち～～♡\n大好きだよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……僕、だって……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

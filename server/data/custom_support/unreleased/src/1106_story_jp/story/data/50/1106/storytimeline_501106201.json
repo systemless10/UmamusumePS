@@ -1,0 +1,159 @@
+{
+ "title": "日本ダービーにむけて",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "さすがに……。\nさすがに、このレースだけは～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "場違い……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "不似合い……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "オマケすぎるよぉ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『日本ダービー』。クラシック三冠の中でも\nもっとも栄誉ある特別なレース。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "それなりに実績をあげてきた\nヒシミラクルだが……\n本番を前にたじろぐばかりだった。",
+   "choice_data_list": [
+    "オマケは言いすぎでは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえいえ、どう見ても\nオマケですって～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "格が合わないってか、\n落ち着かないですもん。\nずっとソワソワしちゃって。",
+   "choice_data_list": [
+    "でも、とても名誉なことだよ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ですね。\nそれはわかってるんですけど～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、そろそろいかなきゃ。\nドア、どっちどっちどっち……。",
+   "choice_data_list": [
+    "こっち！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、そうでした。\nふらふらふら～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "心ここにあらず。ヒシミラクルは\nフワフワした足取りでパドックへ出ていった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "さあ、やってきました『日本ダービー』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "注目の的は、やはり走りの気迫が違う\nこの2人でしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "破壊神『タニノギムレット』と\n仕事人『シンボリクリスエス』！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "シンボリクリスエス"
+   ]
+  },
+  {
+   "name": "実況",
+   "text": "かたや動のウマ娘なら、かたや静のウマ娘！\nしかし走りはどちらも引けを取りません！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "ククク、『NHKマイルC』の次は此処か。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "蹴破ってやるさ。\n定理ごと根こそぎな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "来い、クリスエス。オマエの短剣の刃が\n巨大樹に立つか、試してみろ！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クリスエス"
+   ]
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――『日本ダービー』。\nルドルフ、シリウス以来の……栄光。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "I'll show you.\n――成し遂げよう、お前を超えて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ウオオオオオッ！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、なにか言う？　あいさつしとく？\nギムレットちゃんとクリスエスちゃんに、\nこんにちは的な～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやぁ、見るだけ見るだけ……邪魔しない。\nわたしは友情出演っと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

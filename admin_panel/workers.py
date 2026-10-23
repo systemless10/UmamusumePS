@@ -1,4 +1,3 @@
-"""The per-region worker processes and the JSON-lines calls into them."""
 
 from __future__ import annotations
 
@@ -16,7 +15,6 @@ REGIONS = ("global", "jp")
 
 
 def _python() -> str:
-    """The server's venv python (it has the server's dependencies)."""
     for cand in (ROOT / "server/.venv/bin/python3.14", ROOT / "server/.venv/bin/python3",
                  ROOT / "server/.venv/Scripts/python.exe"):
         if cand.exists():
@@ -25,17 +23,12 @@ def _python() -> str:
 
 
 def _master_env(region: str) -> dict:
-    """MASTER_MDB_PATH for one region's worker. The launching PS exports the
-    path for its OWN region; handing that to the other region's worker made it
-    read the wrong game's master (e.g. Global showing JP names)."""
     own = os.environ.get("UMA_REGION", "global").strip().lower()
     explicit = os.environ.get(f"MASTER_MDB_PATH_{region.upper()}")
     if explicit:
         return {"MASTER_MDB_PATH": explicit}
     if region == own and os.environ.get("MASTER_MDB_PATH"):
         return {}
-    # Same defaults as start-server.sh: Global uses the repo's master.mdb, JP
-    # the macOS Wine install; otherwise master_data probes the Steam paths.
     candidates = {"global": [ROOT / "master.mdb"],
                   "jp": [Path(os.environ.get("UMA_WINEPREFIX", Path.home() / "Games/steam"))
                          / "drive_c/Program Files (x86)/Steam/steamapps/common/UmamusumePrettyDerby_Jpn"
@@ -116,14 +109,26 @@ class Worker:
 class Pool:
     def __init__(self):
         self.workers = {r: Worker(r) for r in REGIONS}
+        self.usable = set(REGIONS)
+        self.setup_mode = False
 
     def call(self, region: str, op: str, viewer, args) -> dict:
         if region not in self.workers:
             raise WorkerError(f"Unknown region {region}.")
+        if self.setup_mode:
+            raise WorkerError("The panel is in setup mode. Finish Setup first.")
+        if region not in self.usable:
+            raise WorkerError(f"{region.upper()} is off or has no master.mdb (see Setup).")
         return self.workers[region].call(op, viewer, args)
 
     def status(self) -> dict:
-        return {r: {"alive": w.alive, "started_at": w.started_at, "calls": w.calls} for r, w in self.workers.items()}
+        return {r: {"alive": w.alive, "started_at": w.started_at, "calls": w.calls, "usable": r in self.usable}
+                for r, w in self.workers.items()}
+
+    def configure(self, usable) -> None:
+        self.usable = set(usable)
+        for w in self.workers.values():
+            w.stop()
 
     def restart(self, region: str) -> None:
         self.workers[region].stop()

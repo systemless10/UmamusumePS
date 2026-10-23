@@ -1,15 +1,3 @@
-"""RUN! MECHA UMAMUSUME (scenario 9) -- the endpoints only this scenario has.
-
-    single_mode_mecha/overdrive     {current_turn}                     use a charge (ps 1)
-    single_mode_mecha/tuning        {current_turn, board_info_array}   spend mecha EN (ps 26)
-    single_mode_mecha/upgrade_race  {current_turn}                     the UGE's grade (ps 25)
-    single_mode_mecha/mecha_live    {current_turn}                     the concert (ps 27)
-
-and exec_command, which renames the client's 901 / 902 / 906 back to the
-shared 101 / 102 / 106 before the shared handler runs. Shapes are dump.cs's and
-the captures' (docs/JP_MECHA_SCENARIO.md §2). The mecha_data_set every response
-carries is attached at the response chokepoint (Mecha.attach).
-"""
 
 from __future__ import annotations
 
@@ -66,10 +54,7 @@ def _refused(where: str, why) -> dict:
     return refuse()
 
 
-# --------------------------------------------------------- exec_command ---
-
 def handle_exec_command(payload: dict) -> dict:
-    """The shared exec_command on the shared facility ids (see __init__)."""
     fields = dict(payload)
     cid = fields.get("command_id")
     if isinstance(cid, int) and cid in formula.SERVER_ID:
@@ -77,12 +62,7 @@ def handle_exec_command(payload: dict) -> dict:
     return _smt().handle_exec_command(fields)
 
 
-# ------------------------------------------------------------ overdrive ---
-
 def handle_overdrive(payload: dict) -> dict:
-    """§7.2: a charge for this turn's command (free under Super Overdrive);
-    the reply shows the boosted previews, the gears and Leg 12's instant
-    energy / motivation."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -103,11 +83,7 @@ def handle_overdrive(payload: dict) -> dict:
     return response
 
 
-# --------------------------------------------------------------- tuning ---
-
 def handle_tuning(payload: dict) -> dict:
-    """§8.3: the whole new allocation. Back to the turn (T3, or the turn after
-    a UGE, whose arrival beats follow)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -131,11 +107,7 @@ def handle_tuning(payload: dict) -> dict:
     return response
 
 
-# ---------------------------------------------------------- upgrade_race ---
-
 def handle_upgrade_race(payload: dict) -> dict:
-    """§8.5: the grade off the progress; the result event (timing 17) on this
-    reply, its rewards on its check_event."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -163,11 +135,7 @@ def handle_upgrade_race(payload: dict) -> dict:
     return response
 
 
-# ------------------------------------------------------------ mecha_live ---
-
 def handle_mecha_live(payload: dict) -> dict:
-    """§14.2: the concert after the ending. add_music 1094 the account's first
-    time; the reply carries the next ending beat (already on screen)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -180,8 +148,6 @@ def handle_mecha_live(payload: dict) -> dict:
     career["data"]["chara_info"] = chara_info
     response = _envelope(career, ("chara_info", "home_info", "unchecked_event_array"))
     data = response["data"]
-    # The ending beat the 209041 reply already put on screen (the trainee's
-    # own, event 6) goes out again here, as the real reply does (6/6).
     shown = copy.deepcopy(full_state.get(_smt().DISPLAY_EVENT_KEY) or [])
     data["unchecked_event_array"] = shown or _next_events(full_state, chara_info)
     data["add_music"] = song

@@ -1,10 +1,3 @@
-"""Trainee cards (card_collection): give / remove, stars (rarity), potential
-(talent_level / awakening) and card hint levels (skill_data_array), plus the
-character's own collection row and star pieces.
-
-Hint levels follow cards.py's rules: a skill comes from the card's
-available_skill_set, unlocks at its need_rank (awakening level), and its hint
-level is capped by awakening (_max_hint_level: 3, 4 at Lv6, 5 at Lv7)."""
 
 from __future__ import annotations
 
@@ -122,7 +115,6 @@ def apply(viewer, args):
         raise OpError(f"Not trainee cards in this region's master: {unknown[:8]}")
     entries = full_state.setdefault(KEY, [])
     by_id = {e.get("card_id"): e for e in entries if isinstance(e, dict)}
-    top_talent = uma_catalog()["max_talent"]
 
     if action == "remove":
         gone = set(ids)
@@ -152,8 +144,9 @@ def apply(viewer, args):
             r = meta["max_rarity"] if rarity == "max" else int(rarity)
             e["rarity"] = max(meta["default_rarity"], min(meta["max_rarity"], r))
         if talent not in (None, ""):
-            t = top_talent if talent == "max" else int(talent)
-            e["talent_level"] = max(1, min(top_talent, t))
+            top = meta["max_talent"]
+            t = top if talent == "max" else int(talent)
+            e["talent_level"] = max(1, min(top, t))
             _clamp_hints(e)
         if hints not in (None, ""):
             _set_hints(e, hints, bool(args.get("all_skills")))
@@ -164,8 +157,6 @@ def apply(viewer, args):
 
 @op("umas.save", label="Edit uma {card_id}")
 def save_one(viewer, args):
-    """Save one card's whole editor: stars, potential, every hint level, the
-    character's collection row and star pieces."""
     full_state = load(viewer)
     card_id = int(args.get("card_id") or 0)
     meta = _cards().get(card_id)
@@ -181,7 +172,7 @@ def save_one(viewer, args):
     if args.get("rarity") is not None:
         e["rarity"] = max(meta["default_rarity"], min(meta["max_rarity"], int(args["rarity"])))
     if args.get("talent_level") is not None:
-        e["talent_level"] = max(1, min(uma_catalog()["max_talent"], int(args["talent_level"])))
+        e["talent_level"] = max(1, min(meta["max_talent"], int(args["talent_level"])))
     if args.get("create_time"):
         e["create_time"] = str(args["create_time"])
     if isinstance(args.get("skills"), list):

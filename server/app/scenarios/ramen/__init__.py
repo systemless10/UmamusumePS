@@ -1,27 +1,3 @@
-"""RAMEN (scenario 14, JP only) -- らっしゃい！トレセン軒！ ("Welcome! Tracen-ken!").
-
-This class is the whole seam between the scenario and the rest of the server:
-shared career code never imports anything below this package, it asks the
-registry which scenario a career is in and calls hooks.
-
-WHAT LIVES WHERE
-    impl.py       the mechanics -- the gauge, tricks, secret ingredients,
-                  tasting, the Jamborees, the Ultimate Ramen, and the
-                  ramen_data_set envelope
-    formula.py    the training numbers: the home preview, the scenario's bonus
-                  line and the gauge preview
-    master.py     the single_mode_14_* tables
-    endpoints.py  the scenario's own calls (region selection, tasting, the
-                  Jamboree, the ending live, the Ultimate Ramen)
-    producers.py  the event calendar and its resolvers
-
-docs/JP_RAMEN_SCENARIO.md is the spec: every rule, number and event here is
-traced there to the real server's captures or to master.mdb.
-
-JP ONLY BY CONSTRUCTION. Global's master.mdb has no scenario 14, so the
-released-and-implemented intersection in dispatch never advertises it there,
-and nothing in this package runs for any other scenario id.
-"""
 
 from __future__ import annotations
 
@@ -35,24 +11,13 @@ class Ramen(Scenario):
     name = "Ramen"
     endpoint_prefix = "single_mode_ramen"
     data_set_key = "ramen_data_set"
-    # Real race_start replies carry the live ramen_data_set (tricks, gauge,
-    # evaluation). Without it the JP schema step blank-fills one, and a WATCHED
-    # race after the first tasting softlocked (T23 Hanshin JF, 2026-09-26).
     data_set_on_race_start = True
     state_keys = (impl.STATE_KEY,)
 
-    # ------------------------------------------------- shared-content gates --
-    # None of URA's opening chain (1013/1014/1015) or Happy Meek: the Director
-    # arrives with 214001 and the Reporter with 214048 (single_mode_events.
-    # NPC_UNLOCKS), both on this scenario's own calendar.
     uses_fixed_schedule = False
     has_versus_npc = False
     debut_reporter_event = 0
-    # The real turn-78 chain is 101006 -> 10 -> 214037 -> 43 -> 6: URA's
-    # wrap-up without the Director's "Super Successful Event!".
     has_director_ending = False
-    # Unity Cup's finale cutscenes, 101001-101006 (62/62 careers). The post
-    # sort ids here are placeholders: attach() restamps them from the route.
     finals_events = {
         1: {"pre": (101001, 400000101, False), "post": (101002, 400000104, 12)},
         2: {"pre": (101003, 400000102, False), "post": (101004, 400000105, 13)},
@@ -60,49 +25,32 @@ class Ramen(Scenario):
     }
     _FINALS_POST = {101002: 74, 101004: 76, 101006: 78}
 
-    # 45 region selection, 46 Jamboree ready, 48 the ending live (§1.2).
     playing_states = frozenset({5, 45, 46, 48})
 
-    # A turn's own beats are served under it with playing_state 5, the next
-    # turn only arriving with 1 (captures: 987/987 same-turn exec_command
-    # replies, 94/94 in the finals). Before the finals the client shrugs a 1
-    # off; from turn 73 on it hangs on an empty home screen once the chain
-    # drains (live-reported 2026-09-26).
     turn_end_hold_state = 5
 
-    # One banner per facility (§8), and the Director's appraisal tiers.
     LEVELUP_EVENTS = {101: 214039, 102: 214040, 103: 214041, 105: 214042, 106: 214043}
 
     def facility_levelup_event(self, command_id) -> tuple:
         base = formula.SUMMER_TO_BASE.get(int(command_id or 0), int(command_id or 0))
         return (self.LEVELUP_EVENTS.get(base, 214039), 400000005)
 
-    # NPC Tazuna (101, no link card) praises in SP too.
     sp_appraisers = frozenset({102, 101})
 
     def appraisal_events(self):
-        """The Director's tiers and NPC Tazuna's (101): SP +2 below bond 40,
-        +3 from it, bond +5 (10 real); the 70/90 tiers' +4/+5 follow the
-        Director's series on master's 0/40/70/90 thresholds (not captured)."""
         return {102: [(90, 214047, 5), (70, 214046, 4), (40, 214045, 3), (0, 214044, 2)],
                 101: [(90, 214072, 5), (70, 214071, 4), (40, 214070, 3), (0, 214069, 2)]}
 
     def gated_npc_charas(self) -> frozenset:
-        """Tazuna's card stays off the training screen until 214002."""
         return frozenset({9001})
 
     def npc_supporters(self, full_state, chara_info) -> list:
         return list(impl.state(full_state)["npcs"])
 
-    # ------------------------------------------------------------ endpoints --
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 
-    # ------------------------------------------------------------- response --
     def command_info(self, full_state, chara_info, home_commands):
-        """Recompute this turn's overlay (bubbles, gauge preview, bonus line)
-        from the facilities about to be served. `rolled` also covers the
-        one-shot flags attach() consumes, so their clearing is persisted."""
         if not isinstance(chara_info, dict):
             return None, False
         from ...handlers import single_mode_team as smt
@@ -111,9 +59,6 @@ class Ramen(Scenario):
         rolled = impl.refresh_preview(full_state, chara_info,
                                       {"command_info_array": home_commands or []},
                                       smt._support_card_levels(full_state))
-        # A changed preview must be saved too: exec_command pays the stored
-        # one, and a tasting saves BEFORE this runs -- its new effects were
-        # shown on the buttons but the stale pre-tasting bonus was paid.
         return None, bool(rolled or st["flags"] or st["preview"] != before)
 
     def attach(self, response, full_state, chara_info, command_info_array=None,
@@ -130,8 +75,6 @@ class Ramen(Scenario):
             home = ((full_state.get(smt.STATE_KEY) or {}).get("data") or {}).get("home_info") or {}
         st = impl.state(full_state)
         if impl.career_over(chara_info):
-            # Served, not persisted: the ending chain stays in state 5 (see
-            # impl.career_over), or the client draws the turn-78 home again.
             for ci in (chara_info, (data.get("single_mode_load_common") or {}).get("chara_info")):
                 if isinstance(ci, dict) and int(ci.get("playing_state") or 1) == 1:
                     ci["playing_state"] = 5
@@ -143,8 +86,6 @@ class Ramen(Scenario):
                                             "is_checked_uraf_event": 1}
         elif call == "load":
             turn = impl.turn_of(chara_info)
-            # A Jamboree's hold covers the copy the client resumes from, too:
-            # the chokepoint applies held_turn to the top-level chara_info only.
             nested = (data.get("single_mode_load_common") or {}).get("chara_info")
             if st.get("hold_turn") and isinstance(nested, dict):
                 nested["turn"] = int(st["hold_turn"])
@@ -167,7 +108,6 @@ class Ramen(Scenario):
         elif call == "check_event":
             data["ramen_data_set_check_event"] = {
                 "is_gauge_gained": bool(impl.flag(st, "gauge_gained"))}
-        # The finale's post-race cutscenes name the route goal they close.
         for ev in data.get("unchecked_event_array") or ():
             turn = self._FINALS_POST.get(int(ev.get("event_id") or 0))
             if turn:
@@ -176,8 +116,6 @@ class Ramen(Scenario):
         return response
 
     def settle(self, full_state, chara_info, endpoint=""):
-        """A link card's date step pays secret ingredients (§4.2): noticed as
-        its story_step advancing, whichever event advanced it."""
         if not isinstance(chara_info, dict):
             return False
         st = impl.state(full_state)
@@ -197,7 +135,6 @@ class Ramen(Scenario):
                 changed = True
         return changed
 
-    # ------------------------------------------------------------- training --
     def training_gains(self, full_state, chara_info, command_id, facility_level,
                        camp, partners):
         from ...handlers import single_mode_team as smt
@@ -206,8 +143,6 @@ class Ramen(Scenario):
                                   smt._support_card_levels(full_state))
 
     def training_award_bonus(self, full_state, chara_info, command_id) -> list:
-        """The bonus line the client showed on this facility (§6.2) -- paid on
-        top of home_info's number, exactly as the button read."""
         st = impl.state(full_state)
         preview = st["preview"]
         if preview.get("turn") != impl.turn_of(chara_info):
@@ -215,8 +150,6 @@ class Ramen(Scenario):
         return [dict(p) for p in preview["bonus"].get(str(command_id)) or ()]
 
     def award_training_gains(self, full_state, chara_info, payload) -> None:
-        """A successful action: a training moves the gauge in its own
-        response; a rest, outing or infirmary visit queues its gauge event."""
         st = impl.state(full_state)
         turn = int(payload.get("current_turn") or impl.turn_of(chara_info))
         ctype = int(payload.get("command_type") or 0)
@@ -244,9 +177,6 @@ class Ramen(Scenario):
         return impl.specialty_bonus(full_state)
 
     def hint_partners(self, full_state, chara_info, command_id, partners, hinting):
-        """Every normal card on the board shows its hint on a senior tasting's
-        turn (effect 16); otherwise the hint rate passives (effect 14) give a
-        card that did not roll one a second chance."""
         st = impl.state(full_state)
         turn = impl.turn_of(chara_info)
         by_pos = formula.deck(chara_info)
@@ -269,12 +199,9 @@ class Ramen(Scenario):
         return out
 
     def partner_placements(self, full_state, chara_info, turn, occupied=None, standing=None) -> dict:
-        """Deck-card copies a region effect or the Ultimate Ramen put into a
-        facility this turn (§5.5, §10)."""
         return impl.extra_partners(full_state, int(turn or 0))
 
     def training_failure_override(self, full_state, chara_info, command_id, partners):
-        """Failure rate down N% while a tasting's effect 22 is in force (§6.5)."""
         turn = impl.turn_of(chara_info)
         down = impl.failure_down(full_state, turn)
         if not down:
@@ -296,10 +223,7 @@ class Ramen(Scenario):
         turn = impl.turn_of(chara_info)
         return impl.effect_sum(st, turn, M.EFFECT_RACE) if impl.uraf_active(st, turn) else 0
 
-    # ----------------------------------------------------------------- flow --
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
-        """A Jamboree turn whose Jamboree has not been held: its chain leads,
-        and the served turn stays put until region selection / the live."""
         cp = M.check_point_for_turn(turn)
         return bool(cp) and not any(r["check_point_type"] == cp
                                     for r in impl.state(full_state)["results"])
@@ -311,8 +235,6 @@ class Ramen(Scenario):
         return int(impl.state(full_state).get("hold_turn") or 0)
 
     def choice_reward_preview(self, full_state, chara_info, event_id):
-        """This scenario's events carry their payout as choices; preview those
-        (214030's six hints, display 6 -- as the real server shows them)."""
         from ... import career_events as CE
         from ... import event_engine
         ev = CE.find(full_state, event_id)
@@ -321,25 +243,21 @@ class Ramen(Scenario):
         return event_engine.choice_reward_array(ev.engine_event(), chara_info or {})
 
     def holds_chain_after(self, event_id) -> bool:
-        """Resolving a Jamboree's opening or result beat hands the client its
-        own screen (the Jamboree, region selection, the ending live), and it
-        opens only on an EMPTY chain."""
         return int(event_id or 0) in (producers.JAMBOREE_OPEN_EVENTS | producers.RESULT_EVENTS)
 
     def on_event_resolved(self, full_state, chara_info, event_id) -> dict:
         from ... import career_events as CE
         event_id = int(event_id or 0)
         if event_id == 1001 and impl.turn_of(chara_info) <= 1:
-            ev = producers.opening_event()        # behind Tazuna's tips
+            ev = producers.opening_event()
             if ev:
                 CE.emit(full_state, ev)
         elif event_id == producers.STORY_ENDING_TRIGGER and impl.turn_of(chara_info) >= 78:
-            ev = producers.ending_event()          # 10 -> 214037 -> ...
+            ev = producers.ending_event()
             if ev:
                 CE.emit(full_state, ev)
         return {}
 
-    # ------------------------------------------------------------------ run --
     def snapshot(self, full_state) -> dict:
         st = impl.state(full_state)
         return {"ramen_results": [dict(r) for r in st["results"]],

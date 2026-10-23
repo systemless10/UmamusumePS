@@ -1,7 +1,3 @@
-// Umas (trainee cards): every card in the region's master with filters for
-// aptitudes, preferred style, stars, potential and hint levels; bulk give / set /
-// remove; and a full editor for one card (stars, potential, every hint level,
-// the character's bond / fans and star pieces).
 
 import { act, call, esc, gameIcon, icon, keepScroll, loadCatalog, store } from "./core.js";
 import { APT_LABELS, STATS, STYLES, aptRow, ask, empty, gradeOptions, modal, opts, selection, selectionBar, stars, targetPicker }
@@ -72,7 +68,7 @@ export const umasWin = {
         if (f.bonus.length && !f.bonus.every((i) => c.talent[i] > 0)) return false;
         for (let i = 0; i < 10; i++) if (f.apt[i] && c.apt[i] < +f.apt[i]) return false;
         if (f.stars && (!o || (f.stars === "notmax" ? o.rarity >= c.max_rarity : o.rarity !== +f.stars))) return false;
-        if (f.pot && (!o || (f.pot === "notmax" ? o.talent >= maxT() : o.talent !== +f.pot))) return false;
+        if (f.pot && (!o || (f.pot === "notmax" ? o.talent >= (c.max_talent || maxT()) : o.talent !== +f.pot))) return false;
         if (f.hints) {
           if (!o) return false;
           const cap = hintCap(o.talent);
@@ -164,7 +160,7 @@ export const umasWin = {
           <div class="ed-sec"><div class="section">Card</div><div class="ed-row">
             <label>Stars<span class="starpick">${[1, 2, 3, 4, 5].map((n) => `<button data-star="${n}" class="${n <= st.rarity ? "on" : ""}"
               ${n < c.default_rarity || n > c.max_rarity ? "disabled" : ""}>★</button>`).join("")}</span></label>
-            <label>Potential (awakening)<span class="seg">${Array.from({ length: maxT() }, (_, i) => i + 1).map((n) =>
+            <label>Potential (awakening)<span class="seg">${Array.from({ length: c.max_talent || maxT() }, (_, i) => i + 1).map((n) =>
               `<button data-pot="${n}" class="${n === st.talent ? "on" : ""}">${n}</button>`).join("")}</span></label>
             <label>Created<input type="text" class="sm" data-ct value="${esc(e.create_time || "")}" style="width:170px"></label>
           </div></div>
@@ -191,7 +187,7 @@ export const umasWin = {
           <div class="modal-foot">${d.owned ? `<button class="btn danger sm" data-x="rm">${icon("trash")} Remove card</button><span class="grow"></span>` : ""}
             <button class="btn sm" data-x="close">Cancel</button><button class="btn primary sm" data-x="save">${icon("save")} Save</button></div></div>`;
       };
-      m.box.addEventListener("input", (ev) => {      // typed values survive redraws
+      m.box.addEventListener("input", (ev) => {
         const t = ev.target;
         if (t.dataset.ch) ch[t.dataset.ch] = t.value;
         else if (t.matches("[data-pc]")) d.pieces = t.value;

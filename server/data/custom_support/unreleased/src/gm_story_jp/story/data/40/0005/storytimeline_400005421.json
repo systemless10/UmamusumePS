@@ -1,0 +1,29 @@
+{
+ "title": "SWBCにむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "その年の区切り――\n『SWBC』の開催日を迎えた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "紆余曲折がありながらも、\nこの舞台に立てるのは三女神のサポートと\nトレーナーたちがウマ娘に寄り添った結果だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして、自分と<chrname>も\n二人三脚でここまで駆け抜けてきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今を駆けるウマ娘と、\nそれを支えたトレーナーの真価を問う\n熱いレースがいよいよ始まる……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

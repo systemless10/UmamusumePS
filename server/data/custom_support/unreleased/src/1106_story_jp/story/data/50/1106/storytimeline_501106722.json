@@ -1,0 +1,52 @@
+{
+ "title": "頭痛で憂鬱",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "ふんふふ～ん♪\n待ちに待ったオフ～。なにをしようかな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日は1日寝て、ダラダラしちゃおっと。\nおやすみなさ～い♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うう～……いたた……。",
+   "choice_data_list": [
+    "頭痛？大丈夫？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい……なんとか……。",
+   "choice_data_list": [
+    "原因はわかっているのか？",
+    "原因はわかっているの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……たぶん、昨日1日\nぶっ通しで寝ちゃったせいですかね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "寝すぎて頭が痛くなることって、\nよくありますよね？　あれです～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてヒシミラクルは、\nしばらく頭痛に悩まされるのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

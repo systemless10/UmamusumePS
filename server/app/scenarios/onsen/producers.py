@@ -1,13 +1,3 @@
-"""ONSEN (scenario 12) -- the event calendar and its resolvers.
-
-Every beat here is on docs/JP_ONSEN_SCENARIO.md §12's calendar, read off the
-real careers: the turn it fires on, which response carried it, its
-play_timing, its choice count and what resolving it paid. As in Ramen, two
-turn numbers are in play (career_events.Ctx): `ctx.turn` is the turn just
-PLAYED -- the beats that close a turn's action chain (timing 3/6) key off it --
-and `ctx.advanced_turn` the turn being arrived at, which the turn-start beats
-(timing 1) key off.
-"""
 
 from __future__ import annotations
 
@@ -20,47 +10,34 @@ from .impl import SCENARIO_ID
 
 log = logging.getLogger("uma-server")
 
-OPENING = (212002, 400012000)                  # turn 1, behind Tazuna's tips (1001)
-FIRST_PICK = (212003, 400012001)               # turn 3 arrival: the first spring pick
-STORY_BEATS = {                                # (event, story) closing the played turn, no choice
+OPENING = (212002, 400012000)
+FIRST_PICK = (212003, 400012001)
+STORY_BEATS = {
     19: (212032, 400012004), 30: (212033, 400012007), 43: (212034, 400012009),
     47: (212035, 400012010), 54: (212036, 400012013), 67: (212037, 400012015),
     71: (212038, 400012016)}
-TOWN_BEAT = (212031, 400012003)                # turn 13, then the reporter
-REPORTER = (212016, 400000100)                 # 変人記者、登場！？ -- unlocks 103
+TOWN_BEAT = (212031, 400012003)
+REPORTER = (212016, 400000100)
 SUMMER_START = {37: (212029, 400012008), 61: (212030, 400012014)}
-LEGEND = (212042, 400012111)                   # turn 65: spring 10 found
+LEGEND = (212042, 400012111)
 PARTY_OPEN = {24: (212019, 400012105), 48: (212020, 400012106), 72: (212021, 400012107)}
-LINK_BEAT = (212041, 400012020)                # the first finals action, six choices
+LINK_BEAT = (212041, 400012020)
 ENDING = {True: (212039, 400012021), False: (212040, 400012022)}
-ENDING_REWARD = {True: (50, 250, 2), False: (20, 100, 1)}   # all stats, SP, 保養 hint levels
-STORY_ENDING_TRIGGERS = (2, 10)                # "Twinkle Monthly Special Issue"
-# Kiyoko's T78 sendoff picks by DATES, not rarity (sweep 2026-10-11): +22 when
-# all five dates (+11..+15) were walked, +23 when not -- the rule every link
-# friend follows (Tazuna 122/123, Casino 22/23). The ~435 SSR careers that got
-# 023 never reached date 5; the one R career that got 022 had; the account
-# gallery logs 022 for the SSR too, earned right after its date 5.
-KIYOKO_ENDING = (37, 809050023)                # incomplete; served by onsen_live
-KIYOKO_DONE_ENDING = (38, 809050022)           # complete
-# Complete pays power/guts/wisdom 10 + SP 40, scaled by the card's event
-# effect at its deck level (R LB3 +23%: 12/12/12/49 -- power was capped).
+ENDING_REWARD = {True: (50, 250, 2), False: (20, 100, 1)}
+STORY_ENDING_TRIGGERS = (2, 10)
+KIYOKO_ENDING = (37, 809050023)
+KIYOKO_DONE_ENDING = (38, 809050022)
 KIYOKO_DONE_PAY = (("power", 10), ("guts", 10), ("wisdom", 10), ("skill_points", 40))
 FINALS_FIRST_TURN = 73
-# A turn-START beat (timing 1) waits behind everything the played turn's
-# action queued -- its dig event, completion, party -- which is how the real
-# chains order (212030 arrives after T60's 212005).
 PRIO_ARRIVAL = CE.PRIO_TRAILING + 5
 
 DIG_EVENTS = {"rest": (212004, 6), "race": (212005, 3), "outing": (212006, 6)}
-DIG_STORY = 400012104                          # 掘削作業、順調！
-# Completion events by (how the dig came, first / later / legendary spring).
+DIG_STORY = 400012104
 COMPLETE_EVENTS = {"train": (212000, 212068, 212072), "rest": (212001, 212069, 212073),
                    "race": (212017, 212070, 212074), "outing": (212018, 212071, 212075)}
 COMPLETE_STORIES = (400012108, 400012109, 400012110)
 COMPLETE_TIMING = {"train": 6, "rest": 6, "race": 3, "outing": 6}
 
-# 212041's choices: (link chara, the hint unlinked, the gold one linked), in
-# choice order; choice 6 is Kiyoko's (the guide's "Yunohana Bloom", §13.2).
 LINK_HINTS = ((1100, 202472, 202471), (1080, 200432, 200431), (1099, 203602, 203601),
               (1026, 202462, 202461), (1003, 202372, 202371), (9050, 200512, 200511))
 
@@ -121,9 +98,6 @@ def kiyoko_done_ending(chara_info: dict, k) -> CE.Event | None:
 
 
 def kiyoko_ending(chara_info: dict) -> CE.Event | None:
-    """The sendoff onsen_live serves. Timing still follows the captures by
-    rarity (the R career's came straight after the scenario ending, the SSR's
-    after the live); which story plays follows the dates."""
     k = impl.kiyoko_card(chara_info)
     if not k or k[2] == 1:
         return None
@@ -136,7 +110,6 @@ def kiyoko_ending(chara_info: dict) -> CE.Event | None:
 
 
 def complete_event(st: dict, kind: str, turn: int) -> CE.Event | None:
-    """The completion beat for the spring just finished (§12.2)."""
     first, later, legend = COMPLETE_EVENTS[kind]
     sel = int(st["selected"])
     if sel == M.LEGEND_ONSEN:
@@ -185,9 +158,6 @@ def onsen_calendar(ctx: CE.Ctx) -> list:
 
 @CE.producer("onsen_dig", priority=CE.PRIO_SPECIAL, scenario=SCENARIO_ID)
 def onsen_dig(ctx: CE.Ctx) -> list:
-    """A rest, outing or race queues its dig event -- the dig lands when it
-    RESOLVES (§12.2); a training or PR that finished the spring queues the
-    completion beat straight away."""
     st = impl.state(ctx.full_state)
     out = []
     due = st.get("complete_due") or {}
@@ -207,16 +177,12 @@ def onsen_dig(ctx: CE.Ctx) -> list:
     return [e for e in out if e is not None]
 
 
-# ============================================================ resolvers ===
-
 def _ps(chara_info: dict, value: int) -> None:
     chara_info["playing_state"] = value
 
 
 @CE.resolver("onsen_first_pick")
 def _first_pick(full_state, chara_info, event, choice_number, **kw):
-    """212003: springs 2-4 open, two tickets, Kiyoko's card joins training,
-    and the selection screen."""
     st = impl.state(full_state)
     k = impl.kiyoko_card(chara_info)
     if k:
@@ -237,8 +203,6 @@ def _summer(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("onsen_dig")
 def _dig(full_state, chara_info, event, choice_number, **kw):
-    """212004/5/6: the dig, its bonus stats and energy, and -- if the spring is
-    done -- its completion beat, next in the chain."""
     st = impl.state(full_state)
     payload = event.payload or {}
     turn = int(payload.get("turn") or impl.turn_of(chara_info))
@@ -253,8 +217,6 @@ def _dig(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("onsen_complete")
 def _complete(full_state, chara_info, event, choice_number, **kw):
-    """A spring is finished: dug, tickets, the rank, and the selection screen
-    -- held on the turn it was dug in (the select response moves on)."""
     st = impl.state(full_state)
     payload = event.payload or {}
     onsen = int(payload.get("onsen_id") or st["selected"])
@@ -287,8 +249,6 @@ def _party_open(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("onsen_result")
 def _result(full_state, chara_info, event, choice_number, **kw):
-    """A party's result: facilities +1 on a good result at T24/T48, the next
-    springs open; after the third, the URA-final tickets and turn 73."""
     st = impl.state(full_state)
     payload = event.payload or {}
     sched, result = int(payload.get("schedule_id") or 0), int(payload.get("result_type") or 0)

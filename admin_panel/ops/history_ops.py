@@ -1,4 +1,3 @@
-"""Undo history: list the panel's changes, show one, and undo it."""
 
 from __future__ import annotations
 

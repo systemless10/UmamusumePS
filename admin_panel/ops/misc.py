@@ -1,5 +1,3 @@
-"""Everything else on an account: items, wallet, star pieces, characters,
-mail, paid features, titles, epithets, songs and friend support cards."""
 
 from __future__ import annotations
 
@@ -21,8 +19,6 @@ CARAT_ITEM_ID = 43
 MONEY_ITEM_ID = 59
 INT32 = 2_147_483_647
 
-
-# ------------------------------------------------------------------ items ---
 
 @op("items.owned")
 def items_owned(viewer, args):
@@ -48,8 +44,6 @@ def items_set(viewer, args):
 
 @op("items.bulk", label="Items: {action}")
 def items_bulk(viewer, args):
-    """give: set every catalogue item in `group` (or all) to at least `count`;
-    owned: set every owned item to `count`; clear: remove all owned items in `group`."""
     full_state = load(viewer)
     action, group = args.get("action"), args.get("group") or ""
     if action not in ("give", "owned", "clear"):
@@ -60,7 +54,7 @@ def items_bulk(viewer, args):
     n = 0
     for it in cat:
         if it["id"] == CARAT_ITEM_ID:
-            continue                           # carats live in coin_info, not item_list
+            continue
         if action == "give":
             if (find(full_state.get("item_list_state") or [], "item_id", it["id"]) or {}).get("number", 0) < count:
                 set_item(full_state, it["id"], count)
@@ -97,8 +91,6 @@ def wallet_set(viewer, args):
     return {"ok": True}
 
 
-# ----------------------------------------------------------------- pieces ---
-
 @op("pieces.set", label="Star pieces: {changes} uma(s)")
 def pieces_set(viewer, args):
     full_state = load(viewer)
@@ -114,8 +106,6 @@ def pieces_set(viewer, args):
     return {"ok": True}
 
 
-# ------------------------------------------------------------- characters ---
-
 @op("charas.list")
 def charas_list(viewer, args):
     full_state = load(viewer)
@@ -126,8 +116,6 @@ def charas_list(viewer, args):
 
 @op("charas.set", label="Characters: {field} on {ids}")
 def charas_set(viewer, args):
-    """Set one field (love_point, fan, training_num, max_grade) on several
-    characters, adding their collection rows when asked."""
     full_state = load(viewer)
     field = args.get("field")
     if field not in ("love_point", "fan", "training_num", "max_grade", "love_point_pool"):
@@ -148,8 +136,6 @@ def charas_set(viewer, args):
     save(viewer, full_state)
     return {"changed": n}
 
-
-# ------------------------------------------------------------------- mail ---
 
 @op("mail.list")
 def mail_list(viewer, args):
@@ -189,14 +175,11 @@ def mail_clear(viewer, args):
     full_state = load(viewer)
     box = full_state.get(P.PRESENT_BOX_KEY) or {}
     presents = box.get("presents") or []
-    # Claimed rows are the already-redeemed ledger (see admin.py clear-mail).
     box["presents"] = [] if args.get("all") else [p for p in presents if p.get("state")]
     full_state[P.PRESENT_BOX_KEY] = box
     save(viewer, full_state)
     return {"removed": len(presents) - len(box["presents"])}
 
-
-# ---------------------------------------------------------- paid features ---
 
 @op("paid.list")
 def paid_list(viewer, args):
@@ -223,8 +206,6 @@ def paid_grant(viewer, args):
     return {"ok": True}
 
 
-# ----------------------------------------------------------------- titles ---
-
 @op("honors.list")
 def honors_list(viewer, args):
     full_state = load(viewer)
@@ -248,8 +229,6 @@ def honors_set(viewer, args):
     return {"owned": len(owned)}
 
 
-# --------------------------------------------------------------- epithets ---
-
 @op("epithets.set", label="Epithets: chara {chara_id}")
 def epithets_set(viewer, args):
     full_state = load(viewer)
@@ -259,8 +238,6 @@ def epithets_set(viewer, args):
     save(viewer, full_state)
     return {"owned": len(st[chara])}
 
-
-# ------------------------------------------------------------------ songs ---
 
 @functools.lru_cache(maxsize=1)
 def _songs() -> list:
@@ -298,8 +275,6 @@ def music_set(viewer, args):
     save(viewer, full_state)
     return {"changed": n}
 
-
-# ------------------------------------------------------------ friend cards ---
 
 @op("friends.list")
 def friends_list(viewer, args):

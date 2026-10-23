@@ -1,0 +1,5 @@
+#title After the Growth Race: Defeat
+0 Though <chrname> missed out on winning the Growth Race, the Three Goddesses rated her talent highly.
+1 Meanwhile, Trainer Kashimoto's two Umamusume also showed the results of their hard work in the Growth Race.
+2 Trainer Kiryuin's Happy Meek wasn't able to run, but they spent junior year at their own pace.
+3 It was a first year in which every trainer felt the benefits of the Three Goddesses' support.

@@ -1,29 +1,3 @@
-"""おまかせ育成 (auto-play) plans, per scenario.
-
-A career's load/start reply lists the account's plans for THAT career's
-scenario (`WIRE` single_mode_ramen/start: auto_play_selected_plan_id 140101,
-auto_play_default_plan_array [], auto_play_custom_plan_array 140101/140102,
-each with Ramen's own settings -- region selects 10013-10015, final select
-10012). The client builds a scenario-typed plan record from each entry
-(WorkAutoPlayRamenCustomPlanRecord and the like, keyed by plan id).
-
-The JP career seeds were captured on Onsen, so every career used to go out
-with Onsen's plans (120002 / 120101 / 120102, selected 120102). A Ramen career
-then had no Ramen plan at all while the client ran its own pick, 140001: it
-froze on the inheritance screen at turn 31 twice (live-reported 2026-09-26 and
-2026-09-27), and the same career went through once reloaded with no plan.
-
-single_mode/auto_play_select_plan {plan_id} is remembered per scenario (plan
-ids are scenario_id * 10000 + n) and served back as the selected plan.
-Scenarios with no captured plans keep the seed's lists.
-
-The save endpoints (auto_play_save_custom_plan / _default_plan / _plan_name /
-_plan_description) persist the player's edits per account and plan id; the
-next load/start serves each plan back with its saved settings, so configs
-differ per scenario (plan ids never collide across scenarios). A scenario
-with nothing captured serves its saved plans alone (a plan set the client
-saved is one it already knew about), else leaves the reply untouched.
-"""
 
 from __future__ import annotations
 
@@ -36,9 +10,9 @@ from ... import state as state_store
 
 log = logging.getLogger("uma-server")
 
-STATE_KEY = "jp_auto_play_plan"     # {str(scenario_id): plan_id}
-CUSTOM_KEY = "jp_auto_play_custom"    # {str(plan_id): custom plan dict}
-DEFAULT_KEY = "jp_auto_play_default"  # {str(plan_id): default plan dict}
+STATE_KEY = "jp_auto_play_plan"
+CUSTOM_KEY = "jp_auto_play_custom"
+DEFAULT_KEY = "jp_auto_play_default"
 _COMMONS = ("single_mode_load_common", "single_mode_start_common")
 _OK = {"response_code": 1, "data_headers": {"result_code": 1, "notifications": {}}}
 
@@ -61,7 +35,6 @@ def _ack() -> dict:
 
 
 def _edit(payload: dict, key: str, plan_id: int, patch: dict, base: dict | None = None) -> None:
-    """Merge `patch` into the account's saved plan `plan_id` under `key`."""
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
     saved = full_state.setdefault(key, {})
@@ -72,7 +45,6 @@ def _edit(payload: dict, key: str, plan_id: int, patch: dict, base: dict | None 
 
 
 def handle_select_plan(payload: dict) -> dict:
-    """`WIRE` the reply carries no data."""
     viewer_id = payload["viewer_id"]
     plan_id = int(payload.get("plan_id") or 0)
     full_state = state_store.get_state(viewer_id) or {}
@@ -119,8 +91,6 @@ HANDLERS = {"single_mode/auto_play_select_plan": handle_select_plan,
 
 
 def _overlay(plans: list, saved: dict, scenario_id: int) -> list:
-    """`plans` with the account's saved edits applied, plus saved plans of this
-    scenario the list did not have."""
     out, seen = [], set()
     for plan in plans:
         pid = plan.get("plan_id")
@@ -135,7 +105,6 @@ def _overlay(plans: list, saved: dict, scenario_id: int) -> list:
 
 
 def after(endpoint: str, payload: dict, resp: dict) -> None:
-    """Swap the seed's plans for the career scenario's own on load/start."""
     data = resp.get("data")
     if not isinstance(data, dict) or not endpoint.startswith("single_mode"):
         return
@@ -169,7 +138,6 @@ def after(endpoint: str, payload: dict, resp: dict) -> None:
     chosen = int((full_state.get(STATE_KEY) or {}).get(str(scenario_id)) or 0)
     common["auto_play_default_plan_array"] = default
     common["auto_play_custom_plan_array"] = custom
-    # Never keep the seed's pick (Onsen's 120102) on another scenario's career.
     seed_pick = int(common.get("auto_play_selected_plan_id") or 0)
     if _scenario_of(seed_pick) != scenario_id:
         seed_pick = 0

@@ -18,7 +18,7 @@ const levelValue = (values, level) => {
 };
 
 export const customSupportWin = {
-  title: "Custom support studio", icon: "sparkle", size: [840, 580], place: [0.05, 0.025, 0.92, 0.94], key: "c",
+  title: "Custom support cards", icon: "sparkle", size: [840, 580], place: [0.05, 0.025, 0.92, 0.94], key: "c",
   tools(win) { return [targetPicker(win)]; },
   mount(body, win) {
     body.classList.add("flush", "csc-studio");
@@ -26,10 +26,6 @@ export const customSupportWin = {
     let selectedEffect = 0, search = "", skillQuery = "", message = "", busy = false, generation = 0;
     const target = () => ({ region: store.region, viewer: store.viewer });
     const published = (id) => data?.manifest?.cards.find((c) => c.id === id);
-    // Crops for the framed slots, per-mille of the art: top-left corner, and
-    // size as a share of the largest crop of that shape that fits. Mirrors
-    // custom_support.crop_box, defaults included. The card crop is 3:4: the
-    // deck/list card shows its art area at that shape.
     const CROPS = {
       card_focus: { aspect: [3, 4], label: "CARD CROP", help: "Drag the frame over the part of the artwork the deck and list card should show." },
       icon_focus: { aspect: [1, 1], label: "ICON CROP", help: "Drag the square over the part of the artwork the small round icon should show." },
@@ -44,7 +40,6 @@ export const customSupportWin = {
       img.src = artSrc(draft);
       return null;
     };
-    // Largest crop of this shape, in pixels.
     const fullCrop = (key) => {
       const [aw, ah] = CROPS[key].aspect, { w, h } = artDims;
       const fw = Math.min(w, Math.floor(h * aw / ah));
@@ -93,7 +88,6 @@ export const customSupportWin = {
       e.preventDefault();
       const key = stage.dataset.focusStage, rect = stage.getBoundingClientRect(), start = focusOf(key);
       const box = stage.querySelector("[data-focus-box]").getBoundingClientRect();
-      // Grab the crop where clicked; clicking outside it centres it there.
       const inside = e.clientX >= box.left && e.clientX <= box.right && e.clientY >= box.top && e.clientY <= box.bottom;
       const off = inside ? [e.clientX - box.left, e.clientY - box.top] : [box.width / 2, box.height / 2];
       const move = (ev) => setFocus(key, { ...start, x: (ev.clientX - off[0] - rect.left) / rect.width * 1000, y: (ev.clientY - off[1] - rect.top) / rect.height * 1000 });
@@ -211,7 +205,6 @@ export const customSupportWin = {
       if (el.matches("[data-skill-search]")) { skillQuery = el.value; const ids = new Set(draft.hints.filter((h) => !h.hint_gain_type).map((h) => h.hint_value_1)); body.querySelector("[data-skill-results]").innerHTML = skillResults(skills.filter((s) => !ids.has(s.id) && `${s.name} ${s.id}`.toLowerCase().includes(skillQuery.toLowerCase())).slice(0, 40), ids.size); return; }
       if (!draft) return;
       if (el.matches("[data-focus-zoom]") && artDims) {
-        // Zoom about the crop's centre.
         const key = el.dataset.focusZoom, f = focusOf(key), { w, h } = artDims, size = 1100 - +el.value;
         const [cw, ch] = cropSize(key, f), [nw, nh] = cropSize(key, { size });
         setFocus(key, { x: f.x + (cw - nw) / w * 500, y: f.y + (ch - nh) / h * 500, size }); return;
@@ -245,7 +238,6 @@ export const customSupportWin = {
         if (!await leave()) return;
         const donor = cat.supports.cards.find((c) => !c.custom && c.rarity === 3 && c.type === "speed") || cat.supports.cards.find((c) => !c.custom && TYPES.some(([t]) => c.type === t));
         if (!donor) { message = "No normal support cards are available in this region."; render(); return; }
-        // Use a searchable native picker in a compact starter panel.
         body.querySelector(".csc-content").innerHTML = `<div class="csc-section-head"><h2>New card</h2><p>Copy a normal support card's effects, hints, character and events. It will receive an entirely new ID.</p></div><label class="csc-field">Template card${selectCards(donor.id, 'data-template-picker', (c) => TYPES.some(([t]) => c.type === t))}</label><div class="csc-start-preview" data-template-preview>${gameIcon("supportart", donor.id, "csc-donor-art")}<p>${esc(label(donor.id))}</p></div><button class="btn primary" data-action="start-template">${icon("plus")} Create draft</button>`;
         const picker = body.querySelector("[data-template-picker]"); picker.onchange = () => { body.querySelector("[data-template-preview]").innerHTML = `${gameIcon("supportart", +picker.value, "csc-donor-art")}<p>${esc(label(picker.value))}</p>`; };
         return;

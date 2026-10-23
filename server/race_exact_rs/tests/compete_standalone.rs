@@ -1,4 +1,3 @@
-// Compile the standalone prototype without editing lib.rs or simulator.rs.
 #[path = "../src/compete.rs"]
 mod compete;
 

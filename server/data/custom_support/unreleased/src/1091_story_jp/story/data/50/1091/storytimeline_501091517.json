@@ -1,0 +1,35 @@
+{
+ "title": "いつものお店で……",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "ん～……、そろそろ替えどきかな～。\n何度かお洗濯しちゃったし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ、おニューのリボンにして\nトレっちに褒めてもらっちゃお～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "う、売り切れ！？　入荷未定！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "この青色、なかなか見つからないのに～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてしばらく、\n古びたリボンで過ごすことに\nなるのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

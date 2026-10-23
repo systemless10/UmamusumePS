@@ -1,7 +1,3 @@
-"""Port of ActivationSamplePolicy.ts -- turns a RegionList (where a skill's
-condition can statically hold) into one concrete trigger Region per race
-sample, plus the double-dispatch `reconcile*` methods used when an
-AndOperator combines two conditions with different sample policies."""
 
 from __future__ import annotations
 
@@ -216,8 +212,6 @@ class _AllCornerRandomPolicy:
         return self.place_all_triggers(regions, rng)[0]
 
     def place_all_triggers(self, regions: RegionList, rng: Rule30CARng) -> list[Region]:
-        """All (up to 4) triggers, in course order: with a cooldown the skill
-        can activate again on a later one."""
         triggers: list[float] = []
         candidates = sorted(regions, key=lambda r: r.start)
         while len(triggers) < 4 and len(candidates) > 0:

@@ -1,0 +1,31 @@
+#title The Hoofprints of Umamusume and Trainers
+0 <chrname> had competed for the summit against the Three Goddesses—and against powerhouses.
+1 She couldn't claim the top spot, but her dignified running was nothing like when we first met, and I could feel how much she'd grown.
+2 Heh. I thought you'd be downcast, but it seems you feel the same way we do.
+3 You made it to this stage and ran to the very end. Your running more than met our expectations.
+4 The growth of Umamusume is our wish—and you showed it to us clearly.
+5 But you're planning to keep running, right? Next time, show us what it looks like to stand at the top!
+6 And so, the fierce battle of the Grandmasters left a deep impression on all who watched, and came to a close.
+7 And the Umamusume continue to put their all into their daily training, as always.
+8 I feel Bitter Glasse and Little Cocon are more motivated than ever.
+9 Though I must say, seeing them in such good form, I'm feeling more motivated myself.
+10 Hehe, I'm working hard every day too, to become Meek's one and only trainer!
+11 Each and every one of these days will someday become the hoofprints Umamusume and trainers left behind—history!
+12 Is your history being carved out well, Trainer <username>?
+12> Of course!
+13 But our race isn't over yet. They're still running, after all.
+14 We'd better stay sharp so we don't get left behind too!
+15 ...Yes, and one more thing.
+16 I've started to see girls who are inspired by those two's running.
+17 Just as it was for us, the running of Umamusume is something that connects.
+18 Will Meek's and my running someday influence other girls too...?
+19 Perhaps you'll even end up training one of them yourself.
+20 That sounds really dramatic!
+21 (Knock knock knock!)
+22 Trainer Kashimoto, it's time for training!
+23 The simulator's in high demand, so you'd better hurry.
+24 ...Trainer. .........Maybe we can't take it easy.
+25 You all seem ready to go again today. All right, let's go.
+26 Come on, Trainer <username>! Let's go too!
+27 Today, once again, the Umamusume run, their desire to run swelling—
+28 Woven from the history called knowledge, they continue to carve out new history, today and every day.

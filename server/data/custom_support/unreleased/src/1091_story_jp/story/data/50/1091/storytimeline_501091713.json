@@ -1,0 +1,151 @@
+{
+ "title": "お大事に！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスがケガを負ってしまったので、\n保健室へ同行した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "も～トレっちってば、大丈夫だってば～。\nちょっと痛むだけなのに……でもありがと♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それより早く練習戻ろうよ～。\nまだ今日のメニュー残ってるでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "最近タイムもちょーいい感じだったし、\nノッてるときに走っときたいじゃん！",
+   "choice_data_list": [
+    "ダメ。悪化させたらいい感じも台無しだよ",
+    "どうしてもというなら別メニューで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え～、ダメなの～？\n少しくらいい～じゃ～ん、走らせてよ～っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "無理をして悪化したら走れない期間が長引く。\n今後のために必要な我慢だと重ねて諭す。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "む～……でもトレっちがそうまで言うなら、\nおとなしく休んだほうがいいってことか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わかった！\n今日はもうお休みだね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、せっかく時間あるなら駅前のショップに\nチョコレートデーツ買いに行こっかな♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちもいっしょに行こうよ～。\n……ダメ？",
+   "choice_data_list": [
+    "……買ってくるから安静にするように"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちぇー。\nしょーがない、おとなしく待つか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "大事を取って練習を切り上げ、\n安静に過ごしてもらうことにしたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "も～、心配性なんだから～。\nでもそれでいいよっ、練習しよっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ふうっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ん～～～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんか、ケガしたところ……痛くなってる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ケガした部位を気にし始めたのを見て、\nすぐに駆け寄る。",
+   "choice_data_list": [
+    "……痛むのか？",
+    "……痛むの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん……ごめん。\nやっぱり休んでればよかったかも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやらケガが悪化してしまったようだ。\n当面の方針を見直す必要があるだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、\nこのくらいなら平気っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "せっかくタイムも縮んできてたのに、\n何日も動かなかったら鈍っちゃうし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よしっ、まだまだやるぞ～っ♪\nこんなところで立ち止まってられないもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その後も負担の軽いメニューを活用しつつ、\nヴィブロスの調整を続けるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

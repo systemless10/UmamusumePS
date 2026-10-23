@@ -1,14 +1,10 @@
-// Import from uma.moe: fetch a trainer's star uma (their featured legacy),
-// veterans and Team Trials members with the user's own API key, then add the
-// picked ones to the legacy roster, where races and the game pick them up.
 
 import { act, call, esc, gameIcon, icon, toast } from "./core.js";
 import { aptRow, empty, modal, opts } from "./widgets.js";
 
-// The key is the user's own; it's kept in this browser only if they ask.
 const KEY_STORE = "umamoe.apiKey", TARGET_STORE = "umamoe.target";
 const read = (k) => { try { return localStorage.getItem(k) || ""; } catch { return ""; } };
-const write = (k, v) => { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch { /* storage blocked */ } };
+const write = (k, v) => { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch {   } };
 const SHOW = [["all", "Everything"], ["star", "Star uma"], ["pinned", "Pinned veterans"], ["veteran", "Veterans"], ["team", "Team Trials"]];
 const SPARKS = [["blue", "Blue"], ["pink", "Pink"], ["green", "Green"], ["white", "White"]];
 const DIST = { 1: "Sprint", 2: "Mile", 3: "Medium", 4: "Long", 5: "Dirt" };

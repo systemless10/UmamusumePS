@@ -1,15 +1,3 @@
-"""JP's form of the Archive directory replies (rules in
-app/handlers/archive_directory.py).
-
-  note/index          JP sends top_directory_card_array -- one entry per
-                      card, its best directory horse -- where Global sends
-                      the full directory_card_array (26 real JP replies: 55..66
-                      entries, ascending card_id, every directory_ranking 1);
-                      the full list is note/get_directory_card's, per card.
-  trained_chara/remove  JP names what happened to each veteran:
-                      update_trained_chara_id_array (kept hidden in the
-                      Archive) and remove_trained_chara_id_array (deleted).
-"""
 
 from __future__ import annotations
 

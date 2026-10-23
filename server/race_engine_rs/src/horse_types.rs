@@ -1,4 +1,3 @@
-//! Port of horse_types.py.
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Strategy {
@@ -75,8 +74,6 @@ impl Aptitude {
     }
 }
 
-/// Mutable: RaceSolver clones this per-solver and green (stat-boost) skills
-/// mutate it in place mid-race, exactly like the Python/TS `horse` field.
 #[derive(Clone, Debug)]
 pub struct HorseParameters {
     pub speed: f64,

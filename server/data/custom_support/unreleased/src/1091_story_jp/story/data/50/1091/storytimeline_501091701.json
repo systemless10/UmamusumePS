@@ -1,0 +1,47 @@
+{
+ "title": "休息はバッチリ！",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "ね～～、シュヴァち早く早く～～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "はぁ……なんで、わざわざ僕まで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって今日のオフは、\n三姉妹デートしたかったんだもん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな今日までいーっぱいがんばったし！\nラブラブで、あまあま～なお出かけにしよー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あら、じゃあ2人とも甘やかさないと。\nシュヴァルも遠慮なく甘えていいわよ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "ぼ、僕はいいってば、そういうの……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして大好きな姉たちと共に、\nヴィブロスは休日を大満喫したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

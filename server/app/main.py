@@ -1,10 +1,3 @@
-"""
-Global entry point: the Global wire transport (app/crypto.py) around the
-shared request pipeline (app/dispatch.py). JP's entry point is app/jp/server.py.
-
-Run with:
-    uvicorn app.main:app --reload --port 8080
-"""
 
 from __future__ import annotations
 
@@ -20,15 +13,9 @@ from . import dispatch as pipeline
 from . import region
 from .admin_lifecycle import lifespan
 
-# This is the GLOBAL server. JP runs as its own process with its own data
-# (app/jp/server.py, `./start-server.sh --region jp`); see app/region.py.
 if region.PROCESS_REGION != "global":
     raise RuntimeError("app.main is the Global server; JP is app.jp.server")
 
-# Console keeps its level (UMA_LOG_LEVEL, default INFO); the FILE always
-# records DEBUG. Diagnosing a live incident used to mean having had the right
-# level set before it happened -- the 2026-09-05 debut report had no server-side
-# record at all because nothing was ever written to disk.
 _LOG_DIR = Path(__file__).resolve().parents[1] / "logs"
 _LOG_DIR.mkdir(exist_ok=True)
 _file_handler = logging.handlers.RotatingFileHandler(
@@ -44,22 +31,63 @@ log = logging.getLogger("uma-server")
 
 app = FastAPI(title="Umamusume private server (dev)", lifespan=lifespan)
 from . import custom_support, custom_support_http
+try:
+    from . import ios_cdn
+except ImportError:
+    ios_cdn = None
+from .jp.features import skill_upgrade
 app.include_router(custom_support_http.router)
+from . import profile_images
+app.include_router(profile_images.router)
+
+
+from contextlib import nullcontext
+from concurrent.futures import ThreadPoolExecutor
+_CDN_POOL = ThreadPoolExecutor(max_workers=64, thread_name_prefix="ioscdn") if ios_cdn else None
+
+
+async def ios_cdn_index():
+    from starlette.concurrency import run_in_threadpool
+    from fastapi.responses import JSONResponse
+    idx = await run_in_threadpool(ios_cdn.index)
+    return JSONResponse(idx) if idx else Response(status_code=404)
+
+
+async def ios_cdn_file(path: str):
+    from fastapi.responses import FileResponse, RedirectResponse
+    from starlette.concurrency import run_in_threadpool
+    kind, target = ios_cdn.resolve(path)
+    if kind == "file":
+        return FileResponse(target, media_type="application/octet-stream")
+    if (ios_cdn.active() or {}).get("upstream") == "proxy":
+        import asyncio
+        status, body, ctype = await asyncio.get_running_loop().run_in_executor(_CDN_POOL, ios_cdn.fetch_upstream, target)
+        return Response(content=body, status_code=status, media_type=ctype)
+    return RedirectResponse(target, status_code=302)
+
+
+if ios_cdn:
+    app.get("/ioscdn-index")(ios_cdn_index)
+    app.get("/" + ios_cdn.PREFIX + "{path:path}")(ios_cdn_file)
 
 
 @app.post("/{endpoint_path:path}")
 async def dispatch(endpoint_path: str, request: Request):
     raw = await request.body()
     decoded = crypto.decode_request(raw, dict(request.headers))
-    with custom_support.request_context(dict(request.headers), decoded.payload):
-        patched = custom_support.project(pipeline.handle_decoded(endpoint_path, decoded.payload, decoded.sid or None))
+    headers = dict(request.headers)
+    profile_images.set_request_base(headers)
+    cdn = ios_cdn.request_context(decoded.payload, headers) if ios_cdn else nullcontext(None)
+    with cdn as overlay:
+        evo_ep = endpoint_path.removeprefix("umamusume/")
+        noted = skill_upgrade.before(evo_ep, decoded.payload)
+        resp = pipeline.handle_decoded(endpoint_path, decoded.payload, decoded.sid or None)
+        skill_upgrade.after(evo_ep, decoded.payload, resp, noted)
+        patched = custom_support.project(resp)
+        if overlay:
+            patched = ios_cdn.patch_response(patched, overlay)
+        rc = (patched.get("data_headers") or {}).get("result_code") if isinstance(patched, dict) else None
+        if rc not in (None, 1):
+            logging.getLogger("uma-server").warning("result_code %s for %s (ios overlay %s)", rc, endpoint_path, bool(overlay))
     body = crypto.encode_response(patched, decoded.udid_raw)
-    # VERIFIED 2026-08-11 against a live real-server capture
-    # (tools/capture_proxy.py --upstream real): the real server's
-    # Content-Type is "application/x-msgpack; charset=utf-8", not
-    # "text/plain". Content itself was independently proven byte-correct
-    # (a real captured response replayed verbatim through this exact code
-    # path still failed client-side -- see docs/LINUX_LOGIN_FIX.md), so this
-    # header is the next remaining, evidence-backed difference between what
-    # we send and what the real server sends.
     return Response(content=body, media_type="application/x-msgpack; charset=utf-8")

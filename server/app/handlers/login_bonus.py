@@ -1,57 +1,3 @@
-"""Daily login bonus -- data.login_bonus_list (load/index's own field, no
-dedicated endpoint: dump.cs has no LoginBonus*Request/Response class at
-all, only LoginBonusData = {login_bonus_id, total_count} embedded directly
-in LoginResponse.CommonResponse) plus its real reward table (master.mdb
-login_bonus_data + login_bonus_detail).
-
-Confirmed live via captures/20260818_081331/0009_load_index.json and
-captures/20260811_141604/0006_load_index.json (same 3 real campaign ids,
-~6 days apart, every total_count advanced by exactly 1 over that gap) --
-there is no separate "claim" call; the reward is granted automatically by
-the SERVER on login, and total_count simply reports how many days have
-been granted so far. The CLIENT's own popup logic appears to compare this
-served total_count against its local cache (same "compare progression
-against SaveData.db" behavior load.py's own module docstring already
-documents for fan/rank/etc.) -- so the bug this fixes (user-reported
-2026-08-18: "the daily reward popup shows... doesn't actually send
-rewards... pops up more than once per day") was that load/index served
-the FROZEN seed's total_count forever (a snapshot that never advances =
-client always thinks "not claimed today" = popup every single login)
-while never granting anything to the mailbox at all.
-
-Three real campaigns confirmed currently active (login_bonus_data, ids
-match the two captures above exactly):
-  11001  type 1, count_num 7,  start 2025/9/22,  end 2099 (evergreen)
-  20001  type 2, count_num 10, start 2021/2/24,  end 2099 (evergreen)
-  30047  type 3, count_num 10, start 2026/7/22,  end 2026/8/28 (time-boxed)
-`type` is the client's MasterLoginBonusData.BonusType (dump.cs):
-1 Normal, 2 StartDash, 3 Campaign, 4 MultipleStepBonus, 5 Comeback. So
-11001 is the evergreen NORMAL daily bonus (7-day sheet), 20001 the 10-day
-StartDash newcomer bonus (150 carats a day), 30047 a time-boxed campaign.
-Normal is the only type that repeats: once its sheet is finished it starts
-again at day 1 (a 7-row table that never expires only makes sense as a
-cycle). Every other type pays out count_num days and then stops. The
-served total_count stays inside 1..count_num (day 8 is served as 1 again):
-the captures only ever show counts up to 3, so the day-8 wire value itself
-is unobserved.
-
-Per-viewer state (LOGIN_BONUS_STATE_KEY): {"campaigns": {str(login_bonus_
-id): {"total_count": int, "last_claim_day": int}}}; "day" is daily_races.
-_served_day() (this server's one existing daily-reset clock, 05:00 JST via
-the servertime this server already reports -- reused rather than
-reinvented) so a campaign advances at most once per served day.
-
-apply_and_report(viewer_id), called from load.py's handle_load_index,
-does its OWN independent read-modify-write (like presents.admin_send,
-which it calls) rather than sharing load.py's already-fetched full_state
-object: state.py's blob is saved whole, not merged, so if this ran on a
-stale copy fetched before admin_send's own save, saving afterward would
-silently revert the very presents it just granted. Reward slots (1-5) are
-granted as SEPARATE present-box entries via presents.admin_send -- some
-days pay out more than one item (e.g. 30047 day 1: a support card AND
-carats), matching how every other multi-item reward on this server is
-mailed as one present per item, not one present per day.
-"""
 
 from __future__ import annotations
 
@@ -63,17 +9,9 @@ from .. import state as state_store
 from . import daily_races, presents
 
 LOGIN_BONUS_STATE_KEY = "login_bonus_state"
-_BONUS_TYPE_NORMAL = 1                   # MasterLoginBonusData.BonusType.Normal
-_BONUS_TYPE_MULTI_STEP = 4               # MasterLoginBonusData.BonusType.MultipleStepBonus
-LOGIN_DAYS_KEY = "login_days_recorded"   # {"days": [daily_races._served_day(), ...]} --
-                                         # every distinct calendar day (same 05:00 JST
-                                         # reset clock the campaigns above use) this
-                                         # account has genuinely had load/index called
-                                         # on. Feeds missions.py's 600001 ("log in for a
-                                         # total of N days") / 600022 ("Daily: Log in")
-                                         # condition types -- nothing tracked THIS
-                                         # granularly existed before (login_bonus_state
-                                         # above is per-CAMPAIGN, not a plain day count).
+_BONUS_TYPE_NORMAL = 1
+_BONUS_TYPE_MULTI_STEP = 4
+LOGIN_DAYS_KEY = "login_days_recorded"
 
 
 def _parse_mdb_datetime(value) -> int | None:
@@ -83,7 +21,8 @@ def _parse_mdb_datetime(value) -> int | None:
         dt = datetime.datetime.strptime(value.strip(), "%Y/%m/%d %H:%M:%S")
     except ValueError:
         return None
-    return int(dt.timestamp())
+    from .missions import mdb_tz
+    return int(dt.replace(tzinfo=mdb_tz()).timestamp())
 
 
 def _active_campaigns(now_ts: int) -> list:
@@ -113,28 +52,10 @@ def _grant_day(viewer_id, login_bonus_id: int, count: int) -> None:
         presents.admin_send(
             viewer_id, item_category=cat, item_id=row[f"item_id{suffix}"],
             item_num=row[f"item_num{suffix}"],
-            # real: "Obtained from {0} Day {1}." with (login_bonus_id, day) [cap]
             message_id=1007, message_params=(login_bonus_id, count))
 
 
 def apply_and_report(viewer_id) -> list:
-    """Advance every active campaign at most once for today, grant what's
-    newly due, and return the login_bonus_list array load/index serves --
-    ONLY the campaigns that were newly granted THIS call, never a standing
-    status list. Confirmed 2026-08-19 against a real capture (fresh real
-    account, captures/20260819_092154/): 0060_load_index.json (the call
-    right after tutorial completion, the FIRST grant) carries all 3 active
-    campaigns at total_count 1; 0065_load_index.json (a genuine relaunch --
-    tool_start_session at 0064 -- with nothing new to grant, same day)
-    carries login_bonus_list: [] -- completely empty, not a repeat of the
-    same 3 entries. Previously this returned the full status of every
-    active campaign on EVERY call regardless of whether anything was new,
-    which is exactly why user-reported 2026-08-19 "theres still 2 daily
-    login event/reward screens that appear multiple times" (every relaunch,
-    same session) kept happening: the client was being handed the same
-    'you have a reward' payload it had already shown, every single time,
-    because this function never stopped reporting campaigns once they'd
-    already been paid out for the day."""
     now_ts = patch._servertime()
     today = daily_races._served_day()
     active = _active_campaigns(now_ts)
@@ -142,30 +63,18 @@ def apply_and_report(viewer_id) -> list:
     full_state = state_store.get_state(viewer_id) or {}
     campaigns = (full_state.get(LOGIN_BONUS_STATE_KEY) or {}).get("campaigns") or {}
 
-    # Record today as a genuine login day BEFORE any grant/save cycle below --
-    # this must persist even on the to_grant-empty early return, and must be
-    # visible to the RE-fetch after granting (see that fetch's own comment),
-    # so save it here immediately rather than folding it into either of the
-    # two campaign saves below.
     days = full_state.setdefault(LOGIN_DAYS_KEY, {}).setdefault("days", [])
     if today not in days:
         days.append(today)
-        # First real login of the day -- campaign_walking's gauge_up_login
-        # (independent of whether any login_bonus campaign above is active).
         from . import campaign_walking
         campaign_walking.add_gauge(full_state, "login")
+        from . import map_event
+        map_event.add_gauge(full_state, "login")
         state_store.save_state(viewer_id, full_state)
 
-    # MultipleStepBonus (type 4) rows sharing a group_id are ONE event played
-    # as consecutive sheets (client: GetListWithGroupIdOrderByStepAsc). Only
-    # the lowest unfinished step of a group may advance, once per day --
-    # serving two steps of one group at once (e.g. 30048 + 30049 together)
-    # hangs the client on the blank background after the first sheet
-    # (user-reported 2026-10-11, Sparkly Magic Show). Step 1 (7) + step 2 (5)
-    # = 12 days = the Oct 7-19 window exactly, so the steps run back to back.
     def _claimed(r):
         return campaigns.get(str(r["id"])) or {}
-    current_step = {}   # group_id -> the one step row allowed today
+    current_step = {}
     for row in sorted((r for r in active if r["type"] == _BONUS_TYPE_MULTI_STEP),
                       key=lambda r: r["step"]):
         g = row["group_id"]
@@ -173,13 +82,13 @@ def apply_and_report(viewer_id) -> list:
             continue
         if any(_claimed(o).get("last_claim_day") == today for o in active
                if o["type"] == _BONUS_TYPE_MULTI_STEP and o["group_id"] == g):
-            current_step[g] = None          # group already advanced today
+            current_step[g] = None
         elif (_claimed(row).get("total_count") or 0) < row["count_num"]:
             current_step[g] = row["id"]
     active = [r for r in active if r["type"] != _BONUS_TYPE_MULTI_STEP
               or current_step.get(r["group_id"]) == r["id"]]
 
-    to_grant = []   # [(login_bonus_id, new_total_count)]
+    to_grant = []
     for row in active:
         lbid = row["id"]
         c = campaigns.get(str(lbid)) or {}
@@ -189,7 +98,7 @@ def apply_and_report(viewer_id) -> list:
         if total >= row["count_num"]:
             if row["type"] != _BONUS_TYPE_NORMAL:
                 continue
-            total = 0          # Normal loops: the finished sheet restarts at day 1
+            total = 0
         to_grant.append((lbid, total + 1))
 
     if not to_grant:
@@ -198,8 +107,6 @@ def apply_and_report(viewer_id) -> list:
     for lbid, new_total in to_grant:
         _grant_day(viewer_id, lbid, new_total)
 
-    # Re-fetch AFTER granting (see module docstring) so this save can't
-    # clobber what the admin_send calls above just persisted.
     full_state = state_store.get_state(viewer_id) or {}
     live_campaigns = full_state.setdefault(LOGIN_BONUS_STATE_KEY, {}).setdefault("campaigns", {})
     for lbid, new_total in to_grant:
@@ -209,15 +116,9 @@ def apply_and_report(viewer_id) -> list:
 
 
 def total_login_days(full_state: dict) -> int:
-    """Count of distinct calendar days apply_and_report has ever recorded
-    for this account -- missions.py's 600001 ('Log in for a total of N
-    days')."""
     return len((full_state.get(LOGIN_DAYS_KEY) or {}).get("days") or [])
 
 
 def logged_in_today(full_state: dict) -> bool:
-    """missions.py's 600022 ('Daily: Log in') -- true once load/index has
-    run today (apply_and_report always runs before this could be checked,
-    since both are called from the same handle_load_index)."""
     today = daily_races._served_day()
     return today in ((full_state.get(LOGIN_DAYS_KEY) or {}).get("days") or [])

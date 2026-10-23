@@ -1,0 +1,27 @@
+#title Summer Camp (Year 2) Begins!
+0 Summer training camp. A seasonal tradition meant to dramatically raise one's ability, but...
+1 Hmhmm~ Summer camp gets you kinda pumped, huh? It's like a seaside school trip or a class field trip.
+2 What should we do, what should we do? Fireworks with everyone, or burning aroma oils on the veranda?
+3 Oh, a mystery-ingredient okonomiyaki party sounds fun too♪ Like, "Who put a croquette in this?!"
+3> Here, take this.
+4 Huh, Trainer? What's this paper? A mystery okonomiyaki recipe?
+5 Not a recipe. I handed her this summer's training menu.
+6 Ack! What is this menu?! It's packed solid!
+7 How is this anything like a seaside school or a field trip?! Are you even trying?!
+7> I'm not.
+8 My top priority with this menu was making sure Hishi Miracle could feel her own effort.
+9 So I deliberately arranged it so she'd feel the strain even more.
+10 Trainer, you demon, you devil, you English teacher! This is so mean!
+11 Are you sure about this? I might end up hating you, Trainer, you know?
+11> Bring it on. | Bring it on.
+12 Whoa... the summer heat has made my trainer all hardcore.
+13 I don't care what she thinks of me. Being hated would be sad, but it was all for Hishi Miracle's sake.
+14 That night...
+15 Sneak... sneak...
+16 (Tweeeet!)
+17 Eek?!
+17> What are you doing?
+18 W-well, um, I was wondering if there's a convenience store nearby. And also... if the trains are still running?
+18> Deserters get 20% more training. | Deserters get 20% more training.
+19 Waaah, I shouldn't have gone along with it. My friends put me up to it...
+20 I can't let her get away. This summer, she's going to work hard, through and through.

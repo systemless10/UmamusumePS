@@ -1,0 +1,362 @@
+{
+ "title": "温泉旅行",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、ついに始まりますね。\n温泉療養期間！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "温泉旅行2日前。ヒシミラクルは\n生き生きとトレーナー室にやってきた。",
+   "choice_data_list": [
+    "温泉自体は実質1日だけどな",
+    "温泉自体は実質1日だけどね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいや。ワンチャン\n延長の可能性もありますから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『もっとミラ子に療養が必要だ……』\nそう考えたトレーナーさんが、\nわたしの分だけ追加料金を払ってくれて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あの～、ズバッとしたツッコミは？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お尻をビシっと叩くような\nキレのある一言が飛んでこないんですが。",
+   "choice_data_list": [
+    "いや、必要なら休暇を追加するけど"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え。",
+   "choice_data_list": [
+    "君の健康が第一だからな",
+    "貴方の健康が第一だからね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……え～？　それじゃあ、\n冗談が冗談にならないじゃないですかー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そもそも温泉の前だって、\n2日間休みがほしいってお願いしたら、\n本当にくれちゃったし。",
+   "choice_data_list": [
+    "そういう約束だったろ？",
+    "そういう約束だったから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じゃあいっぱい休んじゃいますよー？\nダラダラを味わい尽くしますからねー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そして温泉旅行当日――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～～、畳のいい匂い～。\n今日はここがわたしのお城～。",
+   "choice_data_list": [
+    "じゃあ、ゆっくり休んで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ、トレーナーさん\nもうお部屋に戻っちゃうんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいや～、\nなんだかそれじゃあ……んー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あっ！　そうだ、\nご飯の時間っていつでしたっけ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "すき焼きにカニ鍋。\n筍ご飯に、松茸茶碗蒸し～♪",
+   "choice_data_list": [
+    "18時くらいだったかな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほほう、その前に温泉に\n入るチャンスありそうですね。",
+   "choice_data_list": [
+    "ああ、思う存分堪能しておいで",
+    "うん、思う存分堪能しておいで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……はーい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、本気で\n休ませることしか考えてないんだよなー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あははっ、真面目すぎー。\nせっかく一緒に来られたのに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "入浴中……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あぁ～……溶けちゃいそ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……『この温泉は、\n神経痛、筋肉痛、疲労回復に\n効果があるとされています』。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だってさー。はぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "“健康”かぁ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（キィ……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ヤバ。熱っ、サウナ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（いや、いくら健康によくても\n耐えられんて。こんなん10分もいたら――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はひぃ～……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あと5分したら出る！\nあと5分したら出る！\nあと5分したら出る！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぅぅ～……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃ～……頭ふわふわする～……。\nはぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "外涼しー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふへ～、\n体がまだポカポカする～。",
+   "choice_data_list": [
+    "ヒシミラクル！温泉はどうだった？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わっ、トレーナーさん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フ……わたし、サウナに挑戦しました。\nデトックス完了、お肌も超ツヤぷるです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フフ……トレーナーさんの\nビシビシに比べれば、\n生ぬるいサウナでしたけど。",
+   "choice_data_list": [
+    "じゃあもっと熱いサウナを探す？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちゃうちゃう！\nトレーナーさんの普段のトレーニングが\nちょい厳しすぎるってことですー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なので今日は全力のアメでお願いします。\n発言も、行動も。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんなら、わたしにアイスをおごるとか！\nまだ夕飯前ですけど。",
+   "choice_data_list": [
+    "ひとつだけだぞ",
+    "ひとつだけだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やたっ！\nお願いは言ってみるもんですね～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……これが、わたしのトレーナーさん）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（真面目で、厳しくて、たまに甘くて。\nほんのちょっぴり……とんでもなくて）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（ぬるま湯に浸かっていたわたしに\n熱へ飛び込む勇気をくれた――すごい人）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はむ……はぐ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃ～、つめた～♪\nこのアイス、めちゃ甘です～。",
+   "choice_data_list": [
+    "それはよかった"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……エヘヘ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………フフン。\nあのですね、トレーナーさん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、もっとがんばってみても\nいいですよ。明日から。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……少しくらい厳しくても、\nついていきますから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルとの間に、\nかけがえのない絆を感じた\nひとときだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

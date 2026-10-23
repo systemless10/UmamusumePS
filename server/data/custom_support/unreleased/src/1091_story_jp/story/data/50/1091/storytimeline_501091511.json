@@ -1,0 +1,246 @@
+{
+ "title": "甘えの伝道師♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある日、ジムでメジロドーベルと話している\nヴィブロスを見かけた――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぜったい大丈夫だって、行ってきなよ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "とりあえず、聞いてみる！　ね？\n迷惑かとか、わからないんだしっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "う……うんっ。\nとりあえず……とりあえず……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "…………あ、あの……っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロライアン",
+   "text": "ん？　どうしたのドーベル、\n何かかしこまっちゃって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "大丈夫……。聞かなきゃわからないっ。\n……聞かなきゃわからない……っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "や、あの……。きょ、今日\nライアンの予定って、どうなのかな……って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "その……もし予定大丈夫なら……。\n筋トレ、教えてほしくて……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロライアン",
+   "text": "わあっ！　もちろん、喜んで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロライアン",
+   "text": "珍しいドーベルのお願いごとだもん、\n遠慮なく頼ってほしいな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロドーベル",
+   "text": "……っ。……あ、ありがとう……っ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんうん♪　えらいぞ、ドーベルさん♪",
+   "choice_data_list": [
+    "（何か相談に乗ってあげてたのかな……？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "別の日、ヴィブロスと\n大樹のウロ近くで過ごしていると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ニシノフラワー",
+   "text": "ヴィブロスさん……！\n先日は、ありがとうございました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "フラワー！\nどうだった？　うまく甘えられた？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ニシノフラワー",
+   "text": "は……はいっ。ヴィブロスさんの\nアドバイス通りに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ニシノフラワー",
+   "text": "『大好きで尊敬するスカイさんと、\n一緒に併走したいです！』\n……って、すなおな気持ちを伝えて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ニシノフラワー",
+   "text": "そしたら、定期的に併走できることに\nなったんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ニシノフラワー",
+   "text": "ぜんぶヴィブロスさんのおかげですっ。\nありがとうございましたっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんうんっ♡\nこれからもいっぱい甘えちゃえ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……どうやらヴィブロスは\n上手な甘え方を教えてあげているようだ。\nその後も、度々似たやりとりを見かけ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カワカミプリンセス",
+   "text": "――というわけで！　おかげでキングさんと、\nめくるめく時間を過ごせましたわ～～～っ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カワカミプリンセス",
+   "text": "それもこれも、ヴィブロスさんの。\n……いえ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カワカミプリンセス",
+   "text": "トレセン学園の“甘えの伝道師”の\nおかげですわ～～！！",
+   "choice_data_list": [
+    "甘えの伝道師！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "いつの間にかヴィブロスは、\nすごい二つ名で呼ばれるようになっていた！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～。\n私、そんなすごいこと言ってないけどなー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どんな気持ちで、なにしてほしいか。\n素直に言っちゃおーってだけだもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だってみんなが\n『だいすき♡』『甘えたい♡』って\n思うような相手なんでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そんなすてきな相手なら、\n願いを叶えてくれるかはともかく、\nお話はちゃんと聞いてくれると思うの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ならやっぱり、\n恥ずかしがって気持ちを隠したり、\n遠慮してごまかしたりしないで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だいすきだからって、甘えちゃうべき！\n相手もきっとうれしいはずっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちはどう？\n私が甘えるの、やだな～って思う？",
+   "choice_data_list": [
+    "全然。もっと力になりたいって思うよ！",
+    "全部叶えられるかは、スタミナ次第かな……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カワカミプリンセス",
+   "text": "なるほどっ！　でしたらこれからも\n遠慮せずババンと甘えることにいたしますわ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ、私も！\nというわけで、トレっち～――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーニングのあと、いっしょに\nはちみー飲みに行きたいな～？　……えへっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カワカミプリンセス",
+   "text": "まあまあまあ！\nなんて素敵なお覚悟でしょう！\n初めから全部叶えるおつもりなんて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ、トレっち優しー♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちとしたいこと、い～っぱいあるんだ！\nぜ～んぶやろーね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

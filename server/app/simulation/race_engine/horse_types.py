@@ -1,4 +1,3 @@
-"""Port of HorseTypes.ts."""
 
 from __future__ import annotations
 
@@ -25,8 +24,6 @@ class Aptitude(IntEnum):
 
 
 class HorseParameters:
-    """Mutable: RaceSolver clones this per-solver and green (stat-boost)
-    skills mutate it in place mid-race, exactly like the TS `horse` field."""
 
     __slots__ = (
         "speed", "stamina", "power", "guts", "wisdom", "strategy",

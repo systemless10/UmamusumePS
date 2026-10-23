@@ -1,23 +1,3 @@
-"""RAMEN (scenario 14, JP only) -- らっしゃい！トレセン軒！ -- the mechanics.
-
-docs/JP_RAMEN_SCENARIO.md is the spec this implements, section for section; it
-records where every rule and number came from (62 complete real careers, the
-single_mode_14_* master tables and the JP client dump). This module holds the
-career state and the rules that move it:
-
-    the learning gauge and tricks      §3   (gauge_*, add_tricks)
-    secret ingredients                 §4   (add_secrets)
-    tasting                            §5   (taste)
-    the scenario's bonus line          §6   (facility_bonus)
-    the Ramen Jamboree                 §7   (commit_check_point, jamboree_rewards)
-    region selection                   §9   (select_regions)
-    the Ultimate Ramen finals          §10  (apply_uraf)
-
-and builds the ramen_data_set every response carries (attach).
-
-WHERE A RULE IS NOT SETTLED BY THE CAPTURES it says so where it is applied,
-with the value chosen -- see "INFERRED" below and §14 of the doc.
-"""
 
 from __future__ import annotations
 
@@ -34,36 +14,31 @@ log = logging.getLogger("uma-server")
 SCENARIO_ID = 14
 STATE_KEY = "ramen"
 
-FEELINGS = (1, 2, 3)            # 1 noodle, 2 soup, 3 topping
+FEELINGS = (1, 2, 3)
 GAUGE_FULL = 7
 TRICK_SLOTS = 10
 SECRET_CAP = 4
-SECRETS_PER_TASTING = 2          # secret ingredients one tasting may spend
-TASTING_SIZE = 5                 # feelings one recipe uses
-PT_STEP_PCT = 10                 # +10% pt per earlier tasting this period...
-PT_STEP_MAX = 5                  # ...for at most five of them
-LAST_GAUGE_TURN = 72             # the gauge and tastings end with the last Jamboree
+SECRETS_PER_TASTING = 2
+TASTING_SIZE = 5
+PT_STEP_PCT = 10
+PT_STEP_MAX = 5
+LAST_GAUGE_TURN = 72
 SUMMER_TURNS = frozenset({37, 38, 39, 40, 61, 62, 63, 64})
-SUMMER_SSR_MULT = 8              # SSR Tazuna's summer gauge, 76k/76k rows
-SUMMER_LINK_MULT = 2             # an older link card's summer gauge (2,370/2,370 rows, 2026-09-30)
+SUMMER_SSR_MULT = 8
+SUMMER_LINK_MULT = 2
 FRIENDSHIP_GAUGE = 2
-# The base split's total by link card (§3.1): SSR Tazuna 10, an older
-# Tazuna / Light Hello card 5 (captured with 10021 and 30052), none 3.
 GAUGE_TOTAL = {2: 10, 1: 5, 0: 3}
 REGION_PICKS = 3
 
-# Jamboree results (§7).
 RESULT_OK, RESULT_GREAT, RESULT_SUPER = 1, 2, 3
 RESULT_EVENTS = {1: {RESULT_OK: 214006, RESULT_GREAT: 214006},
                  2: {RESULT_OK: 214008, RESULT_GREAT: 214008},
                  3: {RESULT_OK: 214011, RESULT_GREAT: 214010, RESULT_SUPER: 214016}}
 RESULT_STORIES = {214006: 400014006, 214008: 400014012, 214010: 400014020,
                   214011: 400014021, 214016: 400014019}
-RESULT_TIMING = 24               # every captured result event, 187/187
+RESULT_TIMING = 24
 RESULT_SHOW_CLEAR = 1401
 ULTIMATE_SHOW_CLEAR = 1402
-# Rewards by (check_point_type, result): all-stat, SP, fans, and whether every
-# facility gains a level. Every row is captured (盛況 at all three, 2026-09-30).
 JAMBOREE_REWARD = {
     (1, RESULT_GREAT): (10, 100, 3000, True),
     (1, RESULT_OK): (5, 50, 500, False),
@@ -73,35 +48,26 @@ JAMBOREE_REWARD = {
     (3, RESULT_GREAT): (20, 200, 45000, True),
     (3, RESULT_OK): (15, 150, 5000, False),
 }
-# Energy = base + feeling_bonus(tricks held); 30 for 大盛況 and up across 200
-# samples, 20 for 盛況 (4 samples).
 JAMBOREE_ENERGY = {RESULT_OK: 20, RESULT_GREAT: 30, RESULT_SUPER: 30}
-# Hints (skill_id, levels). RMJ2 大盛況: 時中の妙. RMJ3: ペースキープ, 深呼吸,
-# 恩返し、召し上がれ -- +1 each at 大盛況, +2/+2/+3 at 超盛況. 盛況 teaches
-# none of these, only the chosen ramen skill (captured).
 JAMBOREE_HINTS = {
     (2, RESULT_GREAT): ((202791, 1),),
     (3, RESULT_SUPER): ((200472, 2), (200742, 2), (210392, 3)),
     (3, RESULT_GREAT): ((200472, 1), (200742, 1), (210392, 1)),
 }
 
-# The link charas (dump.cs SCENARIO_LINK_CHARA_ID_*) in 214030's choice order,
-# with the hint each teaches and the gold one when linked.
 LINK_HINTS = (
-    ((1022,), 201312, 201313),          # Fine Motion
-    ((1077,), 201172, 201173),          # Narita Top Road
-    ((1120,), 203872, 203871),          # Calstone Light O
-    ((1058,), 202722, 202721),          # Meisho Doto
-    ((1060,), 201102, 201103),          # Nice Nature
-    ((9001, 9008), 203502, 203501),     # Tazuna / Light Hello
+    ((1022,), 201312, 201313),
+    ((1077,), 201172, 201173),
+    ((1120,), 203872, 203871),
+    ((1058,), 202722, 202721),
+    ((1060,), 201102, 201103),
+    ((9001, 9008), 203502, 203501),
 )
 LINK_NPC_CHARAS = (1022, 1058, 1060, 1077, 1120)
-NPC_CHARA_COUNT = 6              # NPC charas in training, every career (62/62)
+NPC_CHARA_COUNT = 6
 
 FINALS_SKILL_TIPS = {1: 200761, 2: 201652, 3: 203851}
 
-
-# ================================================================ state ===
 
 def _blank() -> dict:
     return {
@@ -140,26 +106,17 @@ def turn_of(chara_info: dict) -> int:
 
 
 def served_turn(full_state: dict, chara_info: dict) -> int:
-    """The turn the client is being shown: a Jamboree turn is held from its
-    action until region selection / the live (see Ramen.held_turn), while the
-    run's own turn has already moved on. The data set describes the held one
-    -- the real turn-72 chain still shows the gauge and the tricks."""
     return int(state(full_state).get("hold_turn") or 0) or turn_of(chara_info)
 
 
 def flag(st: dict, name: str, value=None):
-    """A one-shot response flag: set with a value, read-and-clear without."""
     if value is not None:
         st["flags"][name] = value
         return value
     return st["flags"].pop(name, None)
 
 
-# ========================================================== the deck ===
-
 def link_type(chara_info: dict) -> int:
-    """2 with SSR Tazuna 30305, 1 with an older Tazuna / Light Hello card,
-    0 with neither (single_mode_14_deck_info)."""
     best = 0
     for sid in formula.deck(chara_info).values():
         best = max(best, M.deck_link_types().get(sid, 0))
@@ -167,8 +124,6 @@ def link_type(chara_info: dict) -> int:
 
 
 def deck_type_count(chara_info: dict) -> int:
-    """Distinct card types in the deck, friend and group included -- the
-    'deck holds >= 4 types' condition (condition_type 6)."""
     kinds = set()
     for sid in formula.deck(chara_info).values():
         kind, cmd, _r, _c = formula.card_meta(sid)
@@ -177,7 +132,6 @@ def deck_type_count(chara_info: dict) -> int:
 
 
 def linked_charas(chara_info: dict) -> set:
-    """Every chara the deck or the trainee brings (§12)."""
     out = {int((chara_info.get("card_id") or 0) // 100)}
     for sid in formula.deck(chara_info).values():
         out.add(formula.card_meta(sid)[3])
@@ -191,16 +145,11 @@ def _conditions_met(row: dict, chara_info: dict) -> bool:
     return True
 
 
-# ===================================================== gauge & tricks ===
-
 def gauge_total(chara_info: dict) -> int:
     return GAUGE_TOTAL[link_type(chara_info)]
 
 
 def split_base(regions, total: int) -> dict:
-    """The per-trick base gauge speed (§3.1): the three regions' recipe needs
-    (15 in all) scaled to `total`, rounded down, the leftover handed out by
-    largest remainder with ties going to the HIGHER feeling id."""
     need = {f: 0 for f in FEELINGS}
     for r in regions:
         for f, n in M.region_feelings().get(int(r), {}).items():
@@ -219,8 +168,6 @@ def gauge_active(st: dict, turn: int) -> bool:
 
 
 def roll_bubbles(full_state: dict, chara_info: dict, turn: int) -> bool:
-    """This turn's ingredient bubble per facility (§3.2): always a 2/2/1
-    split of the three feelings. Rolled once per turn; True when rolled now."""
     st = state(full_state)
     if st["bubbles"].get("turn") == turn:
         return False
@@ -240,7 +187,6 @@ def bubble(st: dict, base_cmd: int) -> int:
 
 def facility_reduce(st: dict, chara_info: dict, command_id: int, partners,
                     turn: int) -> dict:
-    """{feeling: gauge points} training this facility would take (§3.3)."""
     base_cmd = formula.SUMMER_TO_BASE.get(command_id, command_id)
     base = {int(k): int(v) for k, v in st["base"].items()}
     friend = formula.is_friendship_training(chara_info, command_id, partners)
@@ -255,8 +201,6 @@ def facility_reduce(st: dict, chara_info: dict, command_id: int, partners,
             v = v * (SUMMER_SSR_MULT if link == 2 else SUMMER_LINK_MULT)
         if friend:
             v += FRIENDSHIP_GAUGE
-        # SSR Tazuna's summer ignores the bubble; an older link card's summer
-        # keeps it, and a value already at 7+ skips it without clamping down.
         if f == bubble(st, base_cmd) and not (summer and link == 2):
             if v < GAUGE_FULL:
                 v += 1 + cards + npcs // 2
@@ -267,15 +211,12 @@ def facility_reduce(st: dict, chara_info: dict, command_id: int, partners,
 
 
 def add_tricks(st: dict, feelings) -> list:
-    """Append in feeling order; beyond ten the OLDEST drop (§3.5)."""
     gained = sorted(int(f) for f in feelings)
     st["tricks"] = (st["tricks"] + gained)[-TRICK_SLOTS:]
     return gained
 
 
 def add_secrets(st: dict, n: int) -> None:
-    """Secret ingredients, capped at four; a refused one sets the response's
-    not_gain_special_feeling (§4.2)."""
     room = SECRET_CAP - int(st["secrets"])
     if n > room:
         flag(st, "not_gain_secret", True)
@@ -283,8 +224,6 @@ def add_secrets(st: dict, n: int) -> None:
 
 
 def spend_gauge(st: dict, amounts: dict) -> list:
-    """Take gauge points; a gauge that empties yields its trick and refills
-    to 7, with no carry-over (§3.4)."""
     gained = []
     for f in FEELINGS:
         remain = int(st["gauge"].get(str(f), GAUGE_FULL)) - int(amounts.get(f, 0))
@@ -296,8 +235,6 @@ def spend_gauge(st: dict, amounts: dict) -> list:
 
 
 def plain_gauge(st: dict, chara_info: dict, turn: int) -> dict:
-    """What a rest, outing, infirmary visit or race pays the gauge: the base
-    split (x8 / x2 in a linked summer)."""
     link = link_type(chara_info)
     mult = (SUMMER_SSR_MULT if link == 2 else SUMMER_LINK_MULT) if (
         turn in SUMMER_TURNS and link) else 1
@@ -305,8 +242,6 @@ def plain_gauge(st: dict, chara_info: dict, turn: int) -> dict:
 
 
 def train_gauge(full_state: dict, chara_info: dict, command_id, turn: int) -> list:
-    """A successful training on `command_id` -- pays the reduce the player was
-    shown for it this turn."""
     st = state(full_state)
     if not gauge_active(st, turn):
         return []
@@ -314,8 +249,6 @@ def train_gauge(full_state: dict, chara_info: dict, command_id, turn: int) -> li
     if preview.get("turn") != turn:
         return []
     reduce = preview["reduce"]
-    # The client names a camp facility by its camp id (601-605); accept the
-    # base id for it as well, so the pay-out never hinges on which one came.
     key = next((k for k in (command_id, formula.BASE_TO_SUMMER.get(command_id),
                             formula.SUMMER_TO_BASE.get(command_id))
                 if k is not None and str(k) in reduce), None)
@@ -325,31 +258,21 @@ def train_gauge(full_state: dict, chara_info: dict, command_id, turn: int) -> li
     return spend_gauge(st, amounts)
 
 
-# Facility order of training_exec_info_array on the wire (captured).
 EXEC_INFO_ORDER = (101, 105, 102, 103, 106)
 
 
 def count_training(st: dict, command_id) -> None:
-    """One more successful training on this facility this career (a camp
-    facility counts toward its base one)."""
     base = formula.SUMMER_TO_BASE.get(int(command_id), int(command_id))
     if base in EXEC_INFO_ORDER:
         st["exec_counts"][str(base)] = int(st["exec_counts"].get(str(base), 0)) + 1
 
 
 def training_exec_info(st: dict) -> list:
-    """Career training counts per facility. The real server sends them with
-    the region-selection screen, and auto play's region pick
-    (RamenRegionSelector.GetExecTraining) reads them; null there hangs it."""
     return [{"base_command_id": c, "exec_count": int(st["exec_counts"].get(str(c), 0))}
             for c in EXEC_INFO_ORDER]
 
 
-# ======================================================= active effects ===
-
 def active_effects(st: dict, turn: int) -> list:
-    """[(category, id, value)] in force this turn: the tasting's (§5.4) and,
-    in the finals, the Ultimate Ramen's (§10)."""
     out = []
     if st["active"].get("turn") == turn:
         out += [tuple(e) for e in st["active"].get("effects") or ()]
@@ -374,7 +297,6 @@ def has_effect(st: dict, turn: int, effect_type: int) -> bool:
 
 
 def effect_sum(st: dict, turn: int, effect_type: int, base_cmd: int = 0) -> int:
-    """Σ this turn's active effects of one type that apply to a facility."""
     total = 0
     for cat, eid, value in active_effects(st, turn):
         row = M.effect_row(cat, eid)
@@ -385,7 +307,6 @@ def effect_sum(st: dict, turn: int, effect_type: int, base_cmd: int = 0) -> int:
 
 
 def limits(st: dict, turn: int) -> dict:
-    """{target_type: +N} this turn's limit breaks (effect 10)."""
     out: dict = {}
     for cat, eid, value in active_effects(st, turn):
         row = M.effect_row(cat, eid)
@@ -400,9 +321,6 @@ def limits(st: dict, turn: int) -> dict:
 
 
 def latest_result(st: dict):
-    """(check_point_type, result_state) of the most recent Jamboree, or None.
-    Its passives are the ones in force -- they do NOT add up across Jamborees
-    (§6.3: stacking fails the senior rainbow rows, latest-only passes)."""
     if not st["results"]:
         return None
     last = max(st["results"], key=lambda r: r["check_point_type"])
@@ -416,7 +334,6 @@ def passive(st: dict, effect_type: int) -> int:
 
 def facility_bonus(full_state: dict, chara_info: dict, command_id: int, level: int,
                    partners, card_levels=None, turn: int = 0) -> list:
-    """This facility's ramen_data_set.command_info_array params (§6.2)."""
     st = state(full_state)
     turn = turn or served_turn(full_state, chara_info)
     base_cmd = formula.SUMMER_TO_BASE.get(command_id, command_id)
@@ -434,8 +351,6 @@ def failure_down(full_state: dict, turn: int) -> int:
 
 
 def specialty_bonus(full_state: dict) -> int:
-    """Specialty rate: the running pt's and the latest Jamboree's (§6.4 --
-    placement is random, so the size of this is not capture-verified)."""
     st = state(full_state)
     return M.pt_effect(st["pt"], M.EFFECT_SPECIALTY) + passive(st, M.EFFECT_SPECIALTY)
 
@@ -445,12 +360,7 @@ def hint_rate(full_state: dict) -> int:
     return M.pt_effect(st["pt"], M.EFFECT_HINT_RATE) + passive(st, M.EFFECT_HINT_RATE)
 
 
-# ============================================================ regions ===
-
 def selection_type(full_state: dict, chara_info: dict) -> int:
-    """The region_select_type the client is choosing for right now, or 0 when
-    it is not on the selection screen: one selection opens the run and one
-    follows each of the first two Jamborees."""
     if int(chara_info.get("playing_state") or 1) != 45:
         return 0
     kind = len(state(full_state)["results"]) + 1
@@ -470,7 +380,6 @@ def reduce_base_array(base: dict) -> list:
 
 
 def select_regions(full_state: dict, chara_info: dict, regions) -> None:
-    """Commit a selection: the new split, and the gauge restarts at 7/7/7."""
     st = state(full_state)
     st["regions"] = [int(r) for r in regions]
     st["all_regions"] = st["all_regions"] + st["regions"]
@@ -480,22 +389,17 @@ def select_regions(full_state: dict, chara_info: dict, regions) -> None:
 
 
 def expected_pt(st: dict, turn: int) -> int:
-    """The next tasting's pt (§5.6)."""
     if turn > LAST_GAUGE_TURN or not st["regions"]:
         return 0
     gain = M.tasting_gain_pt().get(M.period_of(turn), 0)
     return gain * (100 + PT_STEP_PCT * min(int(st["tastings"]), PT_STEP_MAX)) // 100
 
 
-# ============================================================= tasting ===
-
 class Refused(Exception):
     pass
 
 
 def taste(full_state: dict, chara_info: dict, used, turn: int) -> dict:
-    """Cook one region's recipe (§5). Returns last_tasting_info; raises
-    Refused when the request is not a legal tasting."""
     st = state(full_state)
     if not gauge_active(st, turn):
         raise Refused("no tasting before the first region or after turn 72")
@@ -524,12 +428,10 @@ def taste(full_state: dict, chara_info: dict, used, turn: int) -> dict:
     if region is None:
         raise Refused(f"{want} is no selected region's recipe")
 
-    # Spend.
     drop = set(i - 1 for i in indices)
     st["tricks"] = [f for i, f in enumerate(st["tricks"]) if i not in drop]
     st["secrets"] = int(st["secrets"]) - secrets
 
-    # Effects, the region's upgraded by the pt held BEFORE this tasting.
     pt_before = int(st["pt"])
     period = M.period_of(turn)
     effects = []
@@ -566,7 +468,6 @@ def taste(full_state: dict, chara_info: dict, used, turn: int) -> dict:
     return info
 
 
-# Effects that act once, at the tasting, and are not listed as active (§5.4).
 _INSTANT = frozenset({M.EFFECT_PARAM, M.EFFECT_BOND, M.EFFECT_ALL_TIPS,
                       M.EFFECT_TYPE_HINTS, M.EFFECT_EXTRA_CARD, M.EFFECT_EXTRA_CARDS})
 _URAF_INSTANT = frozenset({M.EFFECT_PARAM, M.EFFECT_EXTRA_CARDS})
@@ -603,7 +504,6 @@ def _apply_instant(full_state, chara_info, etype, row, value, turn, not_up_bond)
 
 
 def flag_turn(st: dict, name: str, turn: int) -> None:
-    """A per-turn mark (unlike flag(), not consumed by the response)."""
     st["marks"][name] = turn
 
 
@@ -612,8 +512,6 @@ def flagged_turn(st: dict, name: str, turn: int) -> bool:
 
 
 def card_hint_effects(chara_info: dict, support_card_id: int, rng) -> list:
-    """One of a card's hints as effects, exactly as its '!' would pay it: a
-    skill from its own pool at 1 + its hint-level effect, or its stat variant."""
     learned = {s.get("skill_id") for s in chara_info.get("skill_array") or ()}
     groups = event_engine.card_hint_groups(support_card_id)
     pool = [g for g in groups if g[0] == "stat"
@@ -634,8 +532,6 @@ def grant_card_hint(chara_info: dict, support_card_id: int, rng) -> None:
 
 def place_extra_card(full_state: dict, chara_info: dict, command_id: int, turn: int,
                      rng=None) -> None:
-    """A random normal deck card not already there joins this facility for the
-    turn (§5.5); it counts as a card in every formula."""
     st = state(full_state)
     extra = st["extra_partners"]
     if extra.get("turn") != turn:
@@ -666,8 +562,6 @@ def extra_partners(full_state: dict, turn: int) -> dict:
     return {int(k): list(v) for k, v in (extra.get("map") or {}).items()}
 
 
-# =========================================================== jamboree ===
-
 def result_for(check_point_type: int, pt: int) -> int:
     row = M.check_points().get(check_point_type) or {}
     great = int(row.get("great_success_pt") or 0)
@@ -680,8 +574,6 @@ def result_for(check_point_type: int, pt: int) -> int:
 
 def commit_check_point(full_state: dict, chara_info: dict, check_point_type: int,
                        twinkle) -> tuple:
-    """Hold the Jamboree: record its result, reset this period's pt, and
-    return (result_state, the result Event)."""
     st = state(full_state)
     result = result_for(check_point_type, int(st["pt"]))
     st["results"] = [r for r in st["results"]
@@ -705,8 +597,6 @@ def commit_check_point(full_state: dict, chara_info: dict, check_point_type: int
 
 def jamboree_rewards(full_state: dict, chara_info: dict, check_point_type: int,
                      result: int) -> list:
-    """The result event's payout (§7.3) -- everything but the facility levels
-    and the trick reset, which its resolver does."""
     st = state(full_state)
     stats, sp, fans, _levels = JAMBOREE_REWARD[(check_point_type, result)]
     energy = JAMBOREE_ENERGY[result] + M.feeling_bonus(len(st["tricks"]))
@@ -728,8 +618,6 @@ def jamboree_rewards(full_state: dict, chara_info: dict, check_point_type: int,
 
 
 def goal_sort_id(chara_info: dict, turn: int) -> int:
-    """The route goal due on this turn, else 1 -- the result events' and 214026's
-    show_clear_sort_id (every captured value matches this, 62 careers)."""
     try:
         from ... import master_data
         ids = tuple(chara_info.get("route_race_id_array") or ())
@@ -740,14 +628,12 @@ def goal_sort_id(chara_info: dict, turn: int) -> int:
                 f"AND turn=? LIMIT 1", ids + (int(turn),))
             if row:
                 return int(row["sort_id"])
-    except Exception:                                  # noqa: BLE001
+    except Exception:
         log.exception("ramen: goal sort id lookup failed")
     return 1
 
 
 def check_point_info(st: dict, current: int = 0) -> list:
-    """Every Jamboree held so far; the one just held first, as the real
-    check_point response orders them (load lists them in order)."""
     rows = sorted(st["results"], key=lambda r: r["check_point_type"])
     if current:
         rows = ([r for r in rows if r["check_point_type"] == current]
@@ -755,8 +641,6 @@ def check_point_info(st: dict, current: int = 0) -> list:
     return [{"check_point_type": r["check_point_type"], "result_state": r["result_state"]}
             for r in rows]
 
-
-# ============================================================= finals ===
 
 def uraf_rows(select_type: int, deck_ok: bool = True) -> list:
     rows = [r for r in M.finals_effects()
@@ -767,9 +651,6 @@ def uraf_rows(select_type: int, deck_ok: bool = True) -> list:
 
 
 def apply_uraf(full_state: dict, chara_info: dict, turn: int) -> list:
-    """The Ultimate Ramen's turn (§10): +20 energy, +1 motivation, a copy of
-    each support card in a random training, and the turn's lasting effects.
-    Returns the not_up status codes the instant part hit."""
     st = state(full_state)
     kind = int(st["uraf"].get("type") or 0)
     deck_ok = deck_type_count(chara_info) >= 4
@@ -804,20 +685,11 @@ def uraf_active(st: dict, turn: int) -> bool:
     return bool(st["uraf"].get("type")) and st["uraf"].get("turn") == turn
 
 
-# ============================================================ envelope ===
-
-# Responses that leave the client on its training screen get the per-turn
-# arrays; everything mid-chain gets null in their place and the client keeps
-# what it has (§1.1 -- nulls are significant).
 _FULL_ENDPOINTS = frozenset({"tasting", "uraf_effect_apply", "ramen_live", "load",
                              "gain_skills", "start"})
 
 
 def career_over(chara_info: dict) -> bool:
-    """chara_info.state 3: the last finals race has been run. The real server
-    serves everything from that race_out to the last gain_skills with
-    playing_state 5 and the mid-chain (null) data set -- never the training
-    screen again (62/62 careers)."""
     return int((chara_info or {}).get("state") or 0) == 3
 
 
@@ -835,8 +707,6 @@ def _is_full(endpoint: str, data: dict) -> bool:
 
 
 def evaluation_array(full_state: dict, chara_info: dict) -> list:
-    """ramen_data_set.evaluation_info_array: the deck's normal charas by
-    position and the NPC charas by their own id, once 214002 has run."""
     st = state(full_state)
     if not st["npcs"]:
         return []
@@ -917,10 +787,6 @@ def ramen_data_set(full_state: dict, chara_info: dict, home_info: dict,
 
 def refresh_preview(full_state: dict, chara_info: dict, home_info: dict,
                     card_levels=None) -> bool:
-    """Recompute this turn's scenario overlay from the facilities the client is
-    about to see, and remember it -- exec_command pays exactly what it said
-    (see Ramen.training_award_bonus / train_gauge). True when a new random roll
-    was made and the state needs saving."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     rolled = roll_bubbles(full_state, chara_info, turn) if gauge_active(st, turn) else False
@@ -945,20 +811,12 @@ def refresh_preview(full_state: dict, chara_info: dict, home_info: dict,
     return rolled
 
 
-# ====================================================== career plumbing ===
-
 def _smt():
-    """handlers.single_mode_team, imported on use -- a top-level import would
-    close the cycle through the scenario registry."""
     from ...handlers import single_mode_team
     return single_mode_team
 
 
 def recruit_npcs(full_state: dict, chara_info: dict) -> list:
-    """The six NPC charas who train alongside the run from 214002 on (§12):
-    every link chara the deck and the trainee do not already bring, topped up
-    with random charas (62/62 careers: always six). They stand in facilities
-    as bodies and nothing else -- Grand Live's uncarded supporters, exactly."""
     st = state(full_state)
     if st["npcs"]:
         return st["npcs"]
@@ -983,7 +841,6 @@ def recruit_npcs(full_state: dict, chara_info: dict) -> list:
 
 
 def raise_all_facilities(full_state: dict, chara_info: dict) -> None:
-    """+1 to every facility, max 5 (§8): a Jamboree at 大盛況 or better."""
     smt = _smt()
     career = (full_state.get(smt.STATE_KEY) or {}).get("data") or {}
     levels = smt._facility_levels(career)
@@ -999,10 +856,6 @@ def raise_all_facilities(full_state: dict, chara_info: dict) -> None:
 
 
 def refresh_home(full_state: dict, chara_info: dict) -> None:
-    """Rebuild the training screen off the state a scenario action just moved
-    (a tasting's bond and card copies, a Jamboree's facility levels, the
-    Ultimate Ramen's copies). The placement is seeded by turn, so this re-draws
-    the same layout rather than re-rolling it."""
     smt = _smt()
     career = full_state.get(smt.STATE_KEY)
     if not isinstance(career, dict):

@@ -1,0 +1,269 @@
+{
+ "title": "デビュー戦にむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "迎えた、ヴィブロスのメイクデビュー当日。\nレース場のある京都へ行くと――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "メイクデビュー"
+   ]
+  },
+  {
+   "name": "ファンたち",
+   "text": "ヴィブロス～！\n頑張れーっっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "新幹線から降りたとたん、たくさんの人に\n迎えられた。中には、ヴィブロスの\n名前の入ったうちわを掲げている人もいる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……もしかして、\n私ってちょー注目されてる？",
+   "choice_data_list": [
+    "そうみたいだな",
+    "そうみたいだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ、すっごーい！\nデビュー前なのに！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……って、そりゃそうかぁ。\nだって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ミーハーなファンA",
+   "text": "わ、やっぱめっちゃかわいい！\nお母さんにそっくりだなぁ。\nあのウマ娘の――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ミーハーなファンB",
+   "text": "ヴィルシーナの時は後から好きになったし……\n妹ちゃんは最初から推すぞ～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ママとお姉ちゃんって、\nちょー有名だもんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私も2人みたいな、\nセレブになりたーいっ♪",
+   "choice_data_list": [
+    "（プレッシャーじゃないみたいだ）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "注目度の高さが負担になる子もいるが……\nヴィブロスの場合は、特に心配はないようだ。\nと、そこに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "ヴィブロス！\nデビュー決定、おめでとうございます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがと～！\nあなたも、ママかお姉ちゃんのファン？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "えっ？\nあ、自分はヴィルシーナのファンです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "ヴィルシーナの時は、\n全レース現地で見ました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええ～っ！\nすごいね？　ほんとに大ファンなんだね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "はい！　だから、彼女の妹も応援したくて！\nシュヴァルグランの時も、\nデビュー戦を見に行ったんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうなんだ！　じゃあ～、お姉ちゃんの\nときと同じくらい、応援してくれる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "もちろんです！\n……いや、それ以上に想いを懸けますよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "貴方がお姉ちゃんのような、\n素晴らしいウマ娘になれるように……\n誠心誠意、応援させてくださいっ！",
+   "choice_data_list": [
+    "（お姉ちゃんのような、か……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "姉ヴィルシーナの道を行くことを発表すれば、\n当然トリプルティアラの期待は高まるだろう。\nミーハー的なものではない、本気の想いだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――その時に、果たして本当に\nプレッシャーを感じずにいられるのか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふん、ふふーん♪\nデビュー、デビュー♪",
+   "choice_data_list": [
+    "（……今はとにかく目の前のレースだ）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（コンコンッ）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス。\n気分はどうかしら？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "もうすぐメイクデビュー！\n楽しみだね、ヴィブロスちゃん♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "控室に入ってきたのは、ヴィブロスのご両親、\nそしてヴィルシーナだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな、わざわざ来てくれたの？\n京都までっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "当たり前だよ～。ヴィブロスちゃんの、\n大事な大事なデビュー戦だもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "トレーニングを頑張ってる\nシュヴァルちゃんからも、\n勝手にパワー預かってきたのよ？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "シュヴァル"
+   ]
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "ヴィブロス、自分を信じて、\n無事に走ってくるんだぞ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え～～っ、うれしいっ！\nパパ、ママ、ありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "さっきね、駅でもね、お姉ちゃんの\nファンの人から応援してもらったんだ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "！\nそう……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんも、\nがんばれ……ちょうだい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……頑張ってね、ヴィブロス。\nデビュー戦は生涯にたった1度だけ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "貴方らしく、\n華やかにメイクデビューしてきなさい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、ありがとう！\nお姉ちゃん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……じーっ。",
+   "choice_data_list": [
+    "……俺も？",
+    "……私も？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ。\nがんばれ、聞きたいな？",
+   "choice_data_list": [
+    "……頑張れ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ、ありがと！\n私、がんばってくるね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

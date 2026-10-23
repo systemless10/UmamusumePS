@@ -1,0 +1,53 @@
+{
+ "title": "クレーンゲームに挑戦！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある日、\nヴィブロスと出かけた先で――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わっ、コレ見て見て！　すっごくかわいい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスが示すほうを見てみると、\nウマ娘たちをモチーフにしたぬいぐるみが\n入った、クレーンゲームがあった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ、トレっち～！\nとってとって～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いーでしょ？　ね？\nトレっちがとってくれたら、\n自分でとるよりうれしーしっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おねがーい♡\nいっぱい応援するから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私のために♡　がんばって♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――このゲーム、負けられない！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

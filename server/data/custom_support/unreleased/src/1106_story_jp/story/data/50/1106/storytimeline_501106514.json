@@ -1,0 +1,321 @@
+{
+ "title": "ボールに心通わせて",
+ "text_block_list": [
+  {
+   "name": "ナリタトップロード",
+   "text": "お願いします！　今度のサッカーの試合、\nミラ子ちゃんに出ていただきたいんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、わたし見る専門だから。\n動きも鈍いし、どうかな～……\n得意なポジションもないし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは、人数が足りないという\nサッカーの試合への出場を依頼された。だが、\nどうにも自信なさげである。それならば――",
+   "choice_data_list": [
+    "攻守への影響が少なそうな真ん中はどう？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "真ん中って……MF！？　正気ですか！？\nチームの司令塔ですよ？\nすごく大事なポジションじゃないですか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "流れを見て、指示を出し、試合を形作る！\nそんな重要ポジション、務まるわけないです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "詳しいじゃないですかっ！\nミラ子ちゃん、ぜひMFお願いします！\nプレーはこちらでフォローしますので！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あぁぁ～……いや、詳しいって言っても～……\nうぅぅ、断り切れなそうな流れ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そして、試合当日。ヒシミラクルは\nMFとしてフィールドを駆けていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ミラ子ちゃん、お願いしますっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おっと……！\n味方、味方は……いたっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええ～いっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "味方へ勢いよくボールを蹴ったヒシミラクル。\nしかし、ボールは彼女の意図しない方向へ\n弱々しく飛んでいってしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ああ～、ごめん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ドンマイですっ！　次行きましょ次！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "その後、試合は両チーム\n点が入らないまま進んでいき――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "はぁ……はぁ、はぁ……くっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（トップロードちゃん、\nマークされて動けてない……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（それに、片側で密集しすぎてる。\n展開が狭いし、取り合いで体力も削られてる。\n……このままじゃ……負ける）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……あれ？\n前にもこんな展開……見た気が…………）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクルの父親",
+   "text": "ああー、熱くなって、周りが見えてない……\nもっと逆サイドも意識しないと～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いヒシミラクル",
+   "text": "どーして？　今攻めてるんじゃないの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクルの父親",
+   "text": "そう。でも逆サイドを見てごらん。敵しか\nいないだろう？　あっちにパスが回ると、\nゴールまで一直線に行けちゃうんだよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（お父さんと観に行った試合だ……！\nだったら――――！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……トップロードちゃん！　こっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ミラ子ちゃんが逆サイドに――\n！　…………ミラ子ちゃん、パスっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ゴールまで誰もいない逆サイドで、\nボールを受け取ったヒシミラクル。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "誰もいないフィールドを\n確かなドリブルで前進し――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トップロードちゃん！　パス行くよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "彼女は誰もいない空間にボールを蹴った。\n誰もがまたしてもミスキックだと思った……。\nただ1人を除いて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "はああああああっっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ピィーーーーーーーーッ！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "2人",
+   "text": "やった、やったね～～っ！！\nやりましたーーっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "2人の見事なコンビネーションシュートが\n決め手となり、この日の試合は\n彼女たちの勝利に終わったのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "いやー、勝ててよかったーっ！\nミラ子ちゃんのアシストのおかげですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなことないって。それより、\nあんな無茶苦茶なパス、よく取りに行けたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "あの時は、なんだかミラ子ちゃんが\n今からパスを出すぞって\n考えてる気がしたんですよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、それわたしも～！　パスする位置、\n前の方がいいだろうなって、考えが読めたの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ふふっ！　なんだか、私たち不思議と\n気が合うとこありますもんねっ！！",
+   "choice_data_list": [
+    "いいコンビになれそうだな",
+    "いいコンビになれそうだね",
+    "今、お互いが何を考えてるかわかる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ふふっ！　なんだか、私たち不思議と\n気が合うとこありますもんねっ！！",
+   "choice_data_list": [
+    "いいコンビになれそうだな",
+    "いいコンビになれそうだね",
+    "今、お互いが何を考えてるかわかる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ですよねっ！　私もそう思いました！\nぜひぜひ次の試合もよろしくお願いしますっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、\n今回はたまたま上手くいっただけで～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "あっ！　プレーヤーが嫌なら、\nコーチとかどうです？　指示、的確でしたし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "無理だってば～！　わたしはふつーに、\n観客として試合は観たいの～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ぐいぐい来るナリタトップロードに、\nたじたじなヒシミラクルなのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おお、面白そうですね～。\nやってみましょうか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……読めた？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "はい！　じゃあ、せーので言いましょう！\nせーの――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "2人",
+   "text": "お腹空いた～！\n勝てて嬉しいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………通じ合えるのは、\nサッカーのときだけ、かな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "……みたい、ですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "なぜかサッカーの時だけ心が通じ合える、\n不思議な2人なのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

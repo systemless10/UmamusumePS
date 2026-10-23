@@ -1,0 +1,353 @@
+{
+ "title": "強き心・バイアリーターク",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "シミュレーターでのトレーニングの準備を\nしようと、体育館にやってくると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "これは、<username>トレーナー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "ああ、前に休憩室に居たトレーナーか！\nえっと……こんにちは！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "元気に挨拶するのは、樫本トレーナーの\n担当するウマ娘、ビターグラッセ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ビターグラッセ"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女はデビュー戦からその実力を見せ、\n早くも有望株と注目されている。",
+   "choice_data_list": [
+    "これからトレーニングですか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ええ、デビュー戦の結果を受けて\n本格的なメニューに取り組むところです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "どんなトレーニングなんだろ、\nキツイやつだといいんだけど。",
+   "choice_data_list": [
+    "キツイのがいいのか？",
+    "キツイのがいいの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "当然、キツくないトレーニングだと\n強くはなれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ビターグラッセは、大舞台での勝利を\n目標としていますから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "ただの勝利じゃなく、熱い戦いでの勝利……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "どんな強豪でも、先輩相手でも、\n熱くなれる大舞台で勝つ、それが私の夢。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ビターグラッセの覚悟は口だけでなく、\nちゃんと結果としても示しましたしね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "そうしたことから、バイアリータークさんに\nトレーニングの協力を求めることにしました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "強さを突き詰めるためにバイアリータークへ\n協力を頼むというのは、どういうことだろう。",
+   "choice_data_list": [
+    "見学させてもらってもいいですか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ええ、別に構いませんが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "うおおお～～っ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ビターグラッセは、ハードなメニューを\n嬉々としてこなしていく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "はぁっ……！　はぁっ……！\nキツ～！　でも最高だっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "さすがに効いているようですね。ですが、\n貴方にはこれくらいがよいと判断しました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "さすが樫本トレーナー、\nそれじゃ、次のメニュー行ってきますっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "これだけのメニューを続けてなお、\n体がぶれることなく、踏み込みの強さも\n維持できているとはな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "フィジカルについてはデビューした\nウマ娘の中でも突出しています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "音を上げない……その言葉がぴったりと\n当てはまるのが彼女ですから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "体の作りからも、タフさは見て取れる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "ゆえに、メニューに関しても\nさらなる選択肢を持たせられるだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "今のメニューをあえてダートや深い芝で行い、\nよりタフな体作りを図るのもよかろう。",
+   "choice_data_list": [
+    "今よりも大変な条件を……！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "海外のウマ娘にはこのタイプが多い。\n海外のレースも見据えるのならば、\nない選択肢ではない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……なるほど、無理にメニューを\n増やさずとも、さらに鍛えることができると。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "どうですか、これがバイアリータークさんに\n協力を頼んだ理由です。",
+   "choice_data_list": [
+    "厳しそう……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ふふっ、ごらんのとおりビターグラッセは\n自分を鍛え上げることに積極的です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "そしてバイアリータークさんも\n『規律』という思考のもとに\n強いウマ娘を理想にしている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ことビターグラッセのトレーニングにおいて、\n私にはない着想の知識を伝えてくれるのです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "バイアリータークさん、今のトレーニングを\n取り入れてみましょう。ただし、スピードを\n要するメニューには組み込まない形で。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "まずは基礎となる体作りに重きを置くと。\nそれで問題ないだろう。では次に――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "樫本トレーナー、お疲れ様でした！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "お疲れ様です。\nどうでしたか、今日のトレーニングは。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "最高です！　体を程よく追い詰める感じとか、\nそれでいて上手く疲労を分散する感じとか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……へへっ、きっと今日だけでも\nすごく強くなったんだろうな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "見るからにハードなトレーニングを終えて、\n彼女は疲れではなく喜びを見せていた。",
+   "choice_data_list": [
+    "充実しているみたいだな",
+    "充実しているみたいだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "樫本トレーナーが担当になってからは\nなおさら！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "トレーナーがつくのは、強くなれる反面、\n多少縛られるイメージがあったけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "樫本トレーナーは私のやりたいことを\nむしろ応援して、後押ししてくれる。\nもっと強くなれって支えてくれる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "トレーニングメニューも、体調管理も\nいろんなことを見てくれていて、\nだから本当に充実してる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ふふっ、しっかり応えてくれる\n貴方のおかげで、こちらも充実しています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "この関係を続けていけば、貴方の目指す\n熱い戦いというのも、実現するでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "それで、さっそく今後のローテーションを\n組んでみました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "おおっ！？　私の出るレース、\n決まったんですか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "やはりクラシックレースでの活躍は\nウマ娘にとって大きなステータスになります。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クラシックレース"
+   ]
+  },
+  {
+   "name": "樫本理子",
+   "text": "なので、その足掛かりとなる春のレースを\nまずは目標としましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "クラシックレース……！\nへへっ！　そっか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "あの、最後にもう1周走ってきます！\nせっかくいい感じに疲れてたのに、\nそれが飛んじゃったので！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "あっ……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……仕方ないですね。\nしっかり強くなりなさい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "強くなりたいというビターグラッセと、\nそれを支える樫本トレーナー。\nその2人に知識を与えるバイアリーターク。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "3人は共に、しっかりと目標を\n見据えているのだと感じたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

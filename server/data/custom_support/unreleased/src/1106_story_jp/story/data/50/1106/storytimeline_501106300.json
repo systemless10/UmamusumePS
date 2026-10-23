@@ -1,0 +1,220 @@
+{
+ "title": "夏合宿（2年目）終了",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "ふっ、ふっ……はっ、はっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（リンリーン！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふっ、ふっ……はっ、はっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（リンリーン！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（そろそろ合宿期間も終わりかぁ。\n毎朝やってきたランニング……。でも……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（リンリーン！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あんなにプレッシャーだった自転車の\nベルの音が……あんまり、いやじゃないや）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほぁあ……。",
+   "choice_data_list": [
+    "ヒシミラクル、どうかしたか？",
+    "ヒシミラクル、どうかした？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "走っている途中。突然、朝方の海を見ながら、\n立ち止まってしまったが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……きれ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "最初の頃は、走りながら海見る余裕なんて、\nぜんぜんなかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも今は……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "もちろん息は上がっている。\nでもバテバテという程ではない。",
+   "choice_data_list": [
+    "君は――強くなったんだ",
+    "貴方は――強くなったんだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "強く？　そうでしょうか？",
+   "choice_data_list": [
+    "ああ、努力した分だけな",
+    "うん、努力した分だけね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "努力……。それは～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "しました！　今までで1番！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひどい目にあいましたもん、も～。\nこの夏のこと、一生忘れませんから～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "泣きながら笑っている。\n深い感情と共に……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『他ウマ娘に負けないほど努力した』という\n記憶は、のほほんとしたヒシミラクルの心に\nクッキリと刻まれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～、ただ残念だったのは……\n夏祭りですねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "結局、行けずに終わっちゃったかぁ。\nあ～あ、来年こそは……。",
+   "choice_data_list": [
+    "それなら大丈夫！今日だから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え……今日……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えええっ、じゃあもしかして\n行けるんですか？\n行ってもいいんですか……！？",
+   "choice_data_list": [
+    "ああ、頑張ったゴホウビに！",
+    "うん、頑張ったゴホウビに！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わぁい、やったぁぁぁ～……！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "元よりそのつもりだった。\n苦労した夏の締めくくりに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ヒューン、ドドドーン！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ううう、トレーナーさん。\nトレーナー……さん……。わたし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "遊んでますっ、遊んじゃってます～。\nたのしっ、ヤバ！\nでも、なんか落ち着かなくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いいんですか？　いいんですよね？\n夏祭り、楽しんじゃって。",
+   "choice_data_list": [
+    "ああ、頑張ったゴホウビだから！",
+    "うん、頑張ったゴホウビだから！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぅあ～、本当の努力って、\nこういうことなんですね～。\n染みる～、染みるよぉ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、がんばったんですね。\nがんばれたんですね、ほんとに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "しみじみと実感するヒシミラクル。徹底的に\n追い込むのは大変、かつ心も痛んだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "鈍感なヒシミラクルに、努力の自覚を\nやっと植え付けることができたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

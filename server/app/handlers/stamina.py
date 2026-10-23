@@ -1,43 +1,3 @@
-"""TP (Training Points) and RP (Race Points) -- the two regenerating pools.
-
-Both were previously frozen: tp_info/rp_info were seeded once from the
-load/index snapshot (collection.DYNAMIC_CONTAINERS) and then never moved,
-so a career start cost nothing and Team Trials was unlimited.
-
-THE WIRE MODEL (measured, not guessed -- see the numbers below):
-
-  {current_tp, max_tp, max_recovery_time}
-
-`max_recovery_time` is the epoch second at which the pool will be FULL, and
-is 0 when it already is. It does NOT move while the pool refills on its own
--- it is the fixed finish line -- so the sub-tick progress toward the next
-point is carried in that one field and nothing else has to be stored.
-Reading the pool is therefore pure arithmetic against the clock:
-
-    missing = ceil((max_recovery_time - now) / interval)
-    current = max - missing
-
-CONFIRMED INTERVALS. 44 distinct load/index tp_info/rp_info values across the
-capture corpus, each divided by (max - current) against its own capture
-timestamp, land on 600s per TP (median 599.3, spread entirely explained by
-capture-directory timestamps being a few minutes off the actual request) and
-<=7200s per RP. Sharper still, item/use_recovery_item pins it exactly:
-captures/20260904_232507 goes 26 TP -> 57 TP on one +30 carrot, and its
-max_recovery_time drops by 18000s = 30 x 600 to the second. So: 10 minutes
-per TP (max 100), 2 hours per RP (max 5), and a grant/spend of N simply
-shifts max_recovery_time by -/+ N*interval.
-
-CAREER COST. single_mode*/start carries the client's own `use_tp`; the server
-recomputes it rather than trusting it (career_tp_cost below). Base is 30, and
-an active campaign_data row (target_type=1 SingleMode, effect_type_1=4
-SingleUseTP) REPLACES that base with an absolute value -- campaign 225 in this
-master.mdb runs 1784757600..1787867999 with effect_value_1=15, and every
-captured start inside that window sent use_tp=15 while every one outside it
-sent 30. The 2x boosts (`boost_story_event_id`, `boost_factor_research_event_id`,
-the training-challenge mode) are consume_tp_ratio columns on their own master
-tables, all 20000 on a basis of 10000 -- which is where the 60 TP ceiling
-comes from.
-"""
 
 from __future__ import annotations
 
@@ -58,22 +18,15 @@ from ..result_codes import ResultCode, refuse
 TP_STATE_KEY = "tp_info_state"
 RP_STATE_KEY = "rp_info_state"
 
-# Defaults for an account whose snapshot never carried the container.
 _DEFAULT_MAX_TP = 100
 _DEFAULT_MAX_RP = 5
 
-# item_data.item_category for the two recovery families (master.mdb):
-#   20 -> TP items, effect_value_1 = 30 each ("Toughness 30", "Star Fruit",
-#         the 68 Valentine chocolates, ...)
-#   21 -> RP items, item 34 "Carrot Jelly Mini" (+1), item 35 "Carrot Jelly" (+5)
 _TP_ITEM_CATEGORY = 20
 _RP_ITEM_CATEGORY = 21
 
-# consume_tp_ratio's basis (20000 = 200% = the 2x boost).
 _RATIO_BASE = 10000
 
 
-# --------------------------------------------------------------- knobs --
 def tp_interval() -> int:
     return config.get_int("tp_recovery_seconds", 600)
 
@@ -90,10 +43,7 @@ def team_trials_rp_cost() -> int:
     return config.get_int("team_trials_rp_cost", 1)
 
 
-# ------------------------------------------------------- the pool math --
 class _Pool:
-    """One regenerating pool, described by the three wire field names it
-    uses. TP and RP differ ONLY in those names and their interval."""
 
     def __init__(self, state_key, current_field, max_field, default_max, interval):
         self.state_key = state_key
@@ -103,8 +53,6 @@ class _Pool:
         self.interval = interval
 
     def read(self, full_state: dict, now: int | None = None) -> dict:
-        """The pool, advanced to `now`. Mutates (and returns) the stored dict
-        so a caller that saves full_state persists the tick."""
         now = int(now if now is not None else time.time())
         pool = full_state.get(self.state_key)
         if not isinstance(pool, dict):
@@ -119,20 +67,9 @@ class _Pool:
         cur = int(pool[self.current] or 0)
         mrt = int(pool["max_recovery_time"] or 0)
         if cur >= cap:
-            # At or over the cap nothing accrues and the finish line is
-            # cleared -- exactly what the real server sends (every full
-            # tp_info in the corpus carries max_recovery_time 0). Over the
-            # cap is a real state, not an error: a carrot is allowed to
-            # overfill, and the surplus then simply sits there.
             pool["max_recovery_time"] = 0
             return pool
         if mrt <= 0:
-            # BELOW the cap with no finish line is a state the real server
-            # never sends, but our own does: load_index_fresh.json's snapshot
-            # carries {current_tp: 0, max_tp: 100, max_recovery_time: 0}, and
-            # so do two other captured accounts. Read literally that is a pool
-            # that can never refill -- a fresh account permanently stuck at 0
-            # TP. Heal it by starting the clock now instead.
             pool["max_recovery_time"] = now + (cap - cur) * self.interval()
             return pool
         remaining = mrt - now
@@ -141,31 +78,14 @@ class _Pool:
             pool["max_recovery_time"] = 0
             return pool
         interval = self.interval()
-        # A finish line further out than a full pool takes to refill cannot be
-        # right under the CURRENT interval -- it was written under a different
-        # one (tp_recovery_seconds is a live config knob, re-read on mtime, so
-        # this happens the moment it is retuned) or against a larger cap. Read
-        # literally it says "cap - missing" points are owed with `missing`
-        # absurdly large, which drives the figure negative; the max() below
-        # then pins current at whatever stale value was last stored and the
-        # pool NEVER refills again. Observed 2026-09-11: tp_recovery_seconds
-        # 600 -> 1 froze an account at 3 TP while its client, computing off
-        # its own hardcoded 600s, went on displaying 67. Re-anchor instead --
-        # keep the points actually held, restart the clock under the interval
-        # in force now.
         if remaining > cap * interval:
             pool["max_recovery_time"] = now + (cap - cur) * interval
             return pool
-        # Points still owed at `now`. ceil, because a partially-elapsed tick
-        # has not been credited yet.
         missing = math.ceil(remaining / interval)
         pool[self.current] = max(cur, cap - missing)
         return pool
 
     def add(self, full_state: dict, amount: int, now: int | None = None) -> dict:
-        """Grant `amount` (may exceed the cap -- the real game lets a carrot
-        overfill, it just warns first), pulling the finish line closer by
-        amount*interval so the partial tick in flight is preserved."""
         now = int(now if now is not None else time.time())
         pool = self.read(full_state, now)
         if amount <= 0:
@@ -180,9 +100,6 @@ class _Pool:
         return pool
 
     def spend(self, full_state: dict, amount: int, now: int | None = None) -> dict | None:
-        """Deduct `amount`, or None (and no mutation) if the pool can't cover
-        it. Pushes the finish line out by amount*interval; from a FULL pool
-        there is no finish line yet, so one is started at `now`."""
         now = int(now if now is not None else time.time())
         pool = self.read(full_state, now)
         if amount <= 0:
@@ -205,7 +122,6 @@ RP = _Pool(RP_STATE_KEY, "current_rp", "max_rp", _DEFAULT_MAX_RP, rp_interval)
 
 
 def refresh(full_state: dict, now: int | None = None) -> None:
-    """Tick both pools. The caller owns saving."""
     TP.read(full_state, now)
     RP.read(full_state, now)
 
@@ -218,13 +134,7 @@ def rp_info(full_state: dict) -> dict:
     return copy.deepcopy(RP.read(full_state))
 
 
-# ------------------------------------------------- career (TP) pricing --
 def _campaign_use_tp(scenario_id: int, now: int) -> int | None:
-    """An active SingleUseTP campaign's ABSOLUTE cost, or None.
-
-    target_type 1 = MasterCampaignData.TargetCategory.SingleMode,
-    effect_type_1 4 = EffectType.SingleUseTP. target_id 0 means every
-    scenario; a scenario-specific row wins over the blanket one."""
     try:
         row = master_data.query_one(
             "SELECT effect_value_1 FROM campaign_data "
@@ -243,8 +153,6 @@ def _campaign_use_tp(scenario_id: int, now: int) -> int | None:
 
 @functools.lru_cache(maxsize=None)
 def _ratio(table: str, key_column: str, key: int) -> int:
-    """A consume_tp_ratio off one of the three tables that carry one, on a
-    basis of 10000. Cached -- master.mdb is read-only for the process."""
     try:
         row = master_data.query_one(
             f"SELECT consume_tp_ratio FROM {table} WHERE {key_column}=?", (key,))
@@ -257,11 +165,6 @@ def _ratio(table: str, key_column: str, key: int) -> int:
 
 
 def career_tp_cost(start_chara: dict, now: int | None = None) -> int:
-    """What one career run costs THIS account right now.
-
-    Base 30, replaced outright by an active SingleUseTP campaign (15 during
-    the half-TP window), then scaled by whichever 2x boost the player opted
-    into on the setup screen. 15 at the floor, 60 at the ceiling."""
     now = int(now if now is not None else time.time())
     start_chara = start_chara if isinstance(start_chara, dict) else {}
     scenario_id = start_chara.get("scenario_id") or 0
@@ -291,14 +194,6 @@ def career_tp_cost(start_chara: dict, now: int | None = None) -> int:
 
 def spend_career_tp(viewer_id, full_state: dict, start_chara: dict,
                     claimed_use_tp=None) -> bool:
-    """Charge a career start. False (and no mutation) if the account cannot
-    afford it -- the caller must then refuse the start rather than hand out
-    a free run.
-
-    The client sends its own `use_tp` and shows that number to the player;
-    a disagreement means our master-data reading of the campaign/boost state
-    has drifted from the client's, so it is logged loudly even though the
-    server's own figure is what gets charged."""
     cost = career_tp_cost(start_chara)
     if claimed_use_tp is not None and int(claimed_use_tp or 0) != cost:
         log.warning("career TP cost disagreement for viewer %s (scenario %s): "
@@ -312,7 +207,6 @@ def spend_career_tp(viewer_id, full_state: dict, start_chara: dict,
     return True
 
 
-# ------------------------------------------------------------ handlers --
 def _ok(data: dict) -> dict:
     return {"response_code": 1,
             "data_headers": {"result_code": 1, "notifications": {}}, "data": data}
@@ -324,9 +218,6 @@ def _refuse(code: int = ResultCode.PARAM_ERROR) -> dict:
 
 @functools.lru_cache(maxsize=None)
 def _recovery_item(item_id: int):
-    """(pool, amount-per-unit) for a recovery item, or None if item_id is not
-    one. Read straight off item_data rather than hardcoded: the TP family
-    alone is 70 rows and grows with every seasonal chocolate."""
     row = master_data.query_one(
         "SELECT item_category, effect_value_1 FROM item_data WHERE id=?", (item_id,))
     if not row:
@@ -339,8 +230,6 @@ def _recovery_item(item_id: int):
 
 
 def consume_recovery_items(full_state: dict, item_ids) -> list:
-    """Burn one each of the supplied recovery items and return consumed IDs.
-    Race consumables are handled separately by their race handlers."""
     from . import shop
     used = []
     for raw in item_ids or []:
@@ -360,13 +249,6 @@ def consume_recovery_items(full_state: dict, item_ids) -> list:
 
 @registry.endpoint("item/use_recovery_item")
 def handle_use_recovery_item(payload: dict) -> dict:
-    """item/use_recovery_item {item_id, client_own_num, item_num} ->
-    {tp_info, rp_info}.
-
-    Capture-confirmed shape (4 in the corpus, all item 32 x1): BOTH keys are
-    present and the pool the item does not touch is sent as null, not
-    omitted. client_own_num is the client's own belief about its stock and
-    is deliberately ignored -- item_list_state is the authority."""
     from . import shop
     viewer_id = payload["viewer_id"]
     item_id = int(payload.get("item_id") or 0)
@@ -395,21 +277,12 @@ def handle_use_recovery_item(payload: dict) -> dict:
                 "rp_info": rp_info(full_state) if pool is RP else None})
 
 
-# PATH UNCONFIRMED. RecoveryTrainerPointRequest/RecoveryRacePointRequest
-# {count, client_own_num} -> {coin_info, tp_info/rp_info} are read exactly
-# off dump.cs, but dump.cs holds no URL strings and neither endpoint has ever
-# been captured, so the path itself is inferred from the PascalCase ->
-# snake_case convention every known pair follows. Both plausible spellings are
-# registered; if the real client uses a third, pressing the refill button once
-# prints it as main.py's "no handler/fixture for ..." warning and it can be
-# added to the tuples below.
 _TP_REFILL_PATHS = ("recovery/trainer_point", "user/recovery_trainer_point")
 _RP_REFILL_PATHS = ("recovery/race_point", "user/recovery_race_point")
 
 
 def _buy_recovery(payload: dict, pool, carat_key: str, carat_default: int,
                   amount_key: str, amount_default: int, info_key: str) -> dict:
-    """The shared body of the two paid refills: N carats -> a pool grant."""
     from . import shop
     viewer_id = payload["viewer_id"]
     count = max(1, int(payload.get("count") or 1))
@@ -421,8 +294,6 @@ def _buy_recovery(payload: dict, pool, carat_key: str, carat_default: int,
                  info_key, viewer_id, cost)
         return _refuse()
 
-    # amount 0 means "fill the pool" -- the natural reading for RP, whose
-    # real-game refill tops the whole 5 up rather than granting one point.
     per = config.get_int(amount_key, amount_default)
     if per <= 0:
         current = pool.read(full_state)
@@ -436,7 +307,6 @@ def _buy_recovery(payload: dict, pool, carat_key: str, carat_default: int,
 
 
 def _register_refills() -> None:
-    """Both spellings of both refills, bound to the same body."""
     def make(pool, carat_key, carat_default, amount_key, amount_default, info_key):
         def handler(payload: dict) -> dict:
             return _buy_recovery(payload, pool, carat_key, carat_default,

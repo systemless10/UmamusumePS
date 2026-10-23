@@ -1,0 +1,445 @@
+{
+ "title": "左うちわのグランプリ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "年末に開催される、大注目の\nグランプリレース『有馬記念』。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "グランプリ"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは出走こそしないものの……\n観戦のため、中山レース場へと来ていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、もしかして、\nもしかするとなんですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしが出ていたら、そこそこは\nいい勝負になったかもって思いません？",
+   "choice_data_list": [
+    "言うようになったなぁ",
+    "言うようになったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょ、調子のりすぎですか？\nでも『菊花賞』で\nあそこまで走れたわけですし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあクリスエスちゃんには\nさすがに負けますけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そう、今日の出走ウマ娘の1人、\nシンボリクリスエスは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "さあ、現れました、シンボリクリスエス！\n今年度の『天皇賞（秋）』を制したウマ娘！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "クラシック級で『天皇賞（秋）』を制した\nウマ娘は、歴史上でもごくわずか！\n今日はどんなレースを見せてくれるのか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――フッ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "快挙を成し遂げた上での、満を持しての出走。\nそして立ちはだかるのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "今日は最高に楽しい走りを見せないとね♪\nみなさんの声援に応えて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "『天皇賞（秋）』での惜敗……。\nそのお返しは必ず！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "1番人気は、王家に連なるとも言われる\n高貴なウマ娘『ファインモーション』。\nそしておなじみ『ナリタトップロード』。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ファインモーション"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "まさしく誰が勝ってもおかしくない\n強豪ぞろいだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ではライバルたちの\nお手並み拝見といきますか。",
+   "choice_data_list": [
+    "もう完全に互角？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、そこまでは。\nでもわたしも『天皇賞（春）』を\n目指してるウマ娘ですし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "輝きなら、もうクリスエスちゃんにも\nそこそこ近づけてるかなって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "確かにヒシミラクルの実力は\nメキメキ上がってきている。だが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "このレースで、シンボリクリスエスとの\n位置関係もハッキリしそうだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハッ、誰もが豪華客船の上で惚けてやがる。\nだがな――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "見てろ。足元には迫ってるぜ。\n恐ろしい海賊を乗せた小舟がな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そしてレーススタート。\n終盤は――予想外の展開になった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハァアアアアアアアアア！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "おおっと、並み居る強豪を突き放したのは、\nなんと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "逃げウマ娘、タップダンスシチーです！！\nこれは届かない、誰も誰も誰も届かない！！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "タップダンスシチー"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええええっ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "伏兵タップダンスシチーの弾むような逃げ。\n一見、奇策かと思われたが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "凄まじい突貫力で止まる気配がない。\n影の実力者が現れたことは間違いなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "すごい……こんなの……\nこんな走りできないよ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "しかもすごい差……。\n絶対捕まえられないよ……。\nもう……決まり……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "だが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "フッ――！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "――何！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ただ1人、その海賊船を追い、\n並びかける黒い影があった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "クリスエスゥゥゥッ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Just――ゴールだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "シンボリクリスエス！！\nゴール直前、すごい脚で差し切ったー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "今年度のグランプリウマ娘は、シンボリ\nクリスエス！　シンボリクリスエスです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ォォォォッ、なぜだぁぁぁぁ！！！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "なぜだクリスエス！　誰も見ちゃあいない\nアタシを見てたとでも言うのか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "相手は――nobody.",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "誰でもない。\nただMissionを遂行するのみ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "缶coffee『BOSS』でも飲むといい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "くっそー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエス……ちゃん……。輝きなら、\n少しは近づけてるって思ってた……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも今の走り……。\nもし、わたしだったら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、まだ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜんぜん……。\nぜんぜんぜんぜん……だよ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして、その日の帰り道――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\nクリスエスちゃんはすごいです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "前からそう思ってたけど、でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、ぜんぜんわかってなかった。\n本当のすごさを……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今やっとわかったのかも。わたし自身も、\nそれなりに走れるようになって、やっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエスちゃんは勝っても負けても\nずっと――目標を見ている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "普通の人みたく、だらけちゃったり、\n調子に乗ったりしない……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "心の持ち方がぜんぜん違う……。\n多分、クリスエスちゃんにとっては……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの栄光……。クラシック級で\n『天皇賞（秋）』を勝ったことすらも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まだはじまり……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ここからもっともっと強くなりますよね。\n『覚悟』が違うから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『覚悟』の違い。わかっていたこと――\nそして実感できていなかったこと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは今日、その本質の差を\nまざまざと知ったようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ついて……いけるのかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今年はどうにかやれたけど、来年も\nこのままいけるなんて思えなくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしはやっぱり……わたしのまま。\nちょっとくらい成長しても……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "この先、ほんとに\nやっていけるんでしょうか？",
+   "choice_data_list": [
+    "そう……信じてるけどな",
+    "そう……信じてるけどね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "あえて強くは言わない。\nただ静かに信念だけを伝える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ～、その言葉に応えたくて、\nここまで来たんですよねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、ウソでもいいから、このまま\nトレーナーさんに乗せられてたいなぁ。\nあはは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "忘れられない苦み。\nそれでもヒシミラクルはかすかに笑い……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "わずかな期待と大いなる不安を抱えて、\nこうしてクラシック級の1年は終わった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

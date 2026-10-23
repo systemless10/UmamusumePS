@@ -1,11 +1,3 @@
-"""UAF Ready GO! (scenario 7) -- the event calendar and its resolvers.
-
-Every beat here is on docs/JP_UAF_SCENARIO.md §10, read off 52 real alt
-careers: the turn it fires on, its play_timing, its choice count and what
-resolving it paid. As in Cook, `ctx.turn` is the turn just PLAYED (the beats
-closing a turn, timing 3/6) and `ctx.advanced_turn` the turn being arrived at
-(timing 1).
-"""
 
 from __future__ import annotations
 
@@ -18,23 +10,18 @@ from .impl import SCENARIO_ID
 
 log = logging.getLogger("uma-server")
 
-# Turn 1, behind Tazuna's tips (1001), 52/52. 207019 unlocks the Director (102)
-# and Ryoka (111); 207105 hands over the first three items.
 OPENING = ((207019, 400007000, 1, None), (207105, 400007105, 1, "sport_items"),
            (207029, 400007001, 0, None))
-# Closing the played turn (timing 3 after a race, else 6): (event, story, choices).
 STORY_BEATS = {
-    12: (207020, 400007002, 1), 13: (101007, 400000100, 1),   # 101007 unlocks the Reporter
+    12: (207020, 400007002, 1), 13: (101007, 400000100, 1),
     25: (207021, 400007006, 0), 41: (207022, 400007010, 0), 42: (207023, 400007011, 0),
     50: (207024, 400007015, 0), 51: (207106, 400007106, 0), 65: (207025, 400007019, 0),
     66: (207026, 400007020, 1)}
-# 207026's choice: motivation +1 (12/33; the other 21 were at the mood cap).
 MOOD_BEATS = frozenset({207026})
-ARRIVALS = {35: (207104, 400007104), 59: (207104, 400007104)}  # timing 1, no choice
+ARRIVALS = {35: (207104, 400007104), 59: (207104, 400007104)}
 
 COMPE_OPEN = {1: (207004, 400007003), 2: (207007, 400007007), 3: (207010, 400007012),
               4: (207013, 400007016), 5: (207016, 400007021)}
-# (compe_type, result_state) -> (event, story, all stats, SP, fans, hint). Exact.
 COMPE_RESULT = {
     (1, 1): (207005, 400007004, 5, 40, 1000, None), (1, 2): (207006, 400007005, 3, 30, 100, None),
     (2, 1): (207008, 400007008, 10, 50, 5000, None), (2, 2): (207009, 400007009, 5, 40, 500, None),
@@ -44,14 +31,11 @@ COMPE_RESULT = {
 RESULT_TIMING = 15
 RESULT_SHOW_CLEAR = 701
 
-# The ending by the T72 result: won (n=1) / lost (27/27).
 ENDING = {1: (207027, 400007024, 30, 90, (210301, 1)), 2: (207028, 400007025, 20, 70, None)}
 STORY_ENDING_TRIGGERS = (2, 10)
 
 PRIO_ARRIVAL = CE.PRIO_TRAILING + 5
 
-# Resolving these hands the client its own screen (ps 21 competition, ps 22
-# the T72 live), which opens only on an EMPTY chain.
 SCREEN_EVENTS = frozenset({*(e for e, _s in COMPE_OPEN.values()),
                            COMPE_RESULT[(5, 1)][0], COMPE_RESULT[(5, 2)][0]})
 
@@ -84,7 +68,6 @@ def _raced(st: dict, turn: int) -> bool:
 
 
 def closing_pending(full_state: dict, chara_info: dict, turn: int) -> bool:
-    """Whether `turn` closes on a scenario story that has not played yet."""
     beat = STORY_BEATS.get(int(turn))
     return bool(beat) and not CE.already_fired(full_state, f"sport:{beat[0]}")
 
@@ -134,11 +117,8 @@ def sport_calendar(ctx: CE.Ctx) -> list:
     return [e for e in out if e is not None]
 
 
-# ============================================================ resolvers ===
-
 @CE.resolver("sport_items")
 def _items(full_state, chara_info, event, choice_number, **kw):
-    """207105: the first three items (52/52)."""
     impl.refill_items(impl.state(full_state), 1)
     return {}
 
@@ -153,8 +133,6 @@ def _compe_open(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("sport_compe_result")
 def _compe_result(full_state, chara_info, event, choice_number, **kw):
-    """The result's check_event: T72 hands over to the live (ps 22);
-    otherwise the turn moves on."""
     st = impl.state(full_state)
     if int((event.payload or {}).get("compe_type") or 0) == 5:
         chara_info["playing_state"] = impl.PS_COMPETITION_LIVE

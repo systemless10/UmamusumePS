@@ -1,0 +1,224 @@
+{
+ "title": "目標達成の後に・Followers♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "――ヴィブロスと、体調に気をつけつつ、\nティアラ路線全てを走ると決めた。\nその日から、様々な動きがあった。",
+   "choice_data_list": [
+    "（まずは、メニューを組みなおす――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "身体的負担を減らし、より効率的に\n成長できるメニューを考える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "元々、体の華奢なヴィブロスにはそこまで\nハードな負荷をかけていなかったこともあり、\nより効率的なメニュー作成は難航した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナーA",
+   "text": "――ああ、そういうことなら、\nうちのメニューを参考にしてくれ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先輩トレーナーA",
+   "text": "うちの子も、体のことでは苦労したから……\nきっと役立つと思う。頑張って！",
+   "choice_data_list": [
+    "ありがとうございます！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "幸い、トレセン学園には様々な知見が\n集まっている。色々な人の力を借り、\n今の彼女にベストなメニューを作成した。",
+   "choice_data_list": [
+    "（そして、ヴィブロスの様子をよく見る）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち！\nお待たせ！",
+   "choice_data_list": [
+    "小テストはどうだった？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もー、全然よゆー！\n勘でいけちゃった♡",
+   "choice_data_list": [
+    "さすがだな！",
+    "さすがだね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ～、\nでしょっ？",
+   "choice_data_list": [
+    "じゃあ、保健室に行こうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はーいっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "定期的に保健室の先生に診てもらい、\n常に現在地点と擦り合わせながら\nメニューも修正し、試行錯誤を繰り返した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そんなふうに過ごしていたある日、\n『桜花賞』を目前に控え――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "見て見てトレっち！\nすごくない～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスが見せてくれたのは\nSNSのコメント画面だった。そこには――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『ティアラ路線、がんばってね！』\n『応援してます！』『リベンジしちゃえ！』\n『ヴィブロスちゃんのファンです♪』……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "応援メッセージ、\nちょーいっぱいきてる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "フォロワーもちょー増えたし、\nセレブって感じ♪",
+   "choice_data_list": [
+    "そうかもな",
+    "そうかもね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロス自身のファンもたくさん増え、\n彼女自身のモチベーションも高まっている。\nあとは……。",
+   "choice_data_list": [
+    "今日の体調はどうだ？",
+    "今日の体調はどう？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ、大丈夫！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ううん、やっぱり言い直すね。\nちょこっとお腹が痛いかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、すごい痛みじゃないよ。\n昨日の検査でも、\n悪化はしてないって言われたでしょ？",
+   "choice_data_list": [
+    "そうだな",
+    "そうだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "完治とはいかないまでも、レースは問題なく\n走れるくらい調整はできた。この2か月間、\n無理をせずに頑張ってくれた結果だ。",
+   "choice_data_list": [
+    "よく頑張ったな",
+    "よく頑張ったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ううん！\n私こそ、ありがとう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちがたくさん、\n私のこと考えてくれて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私がちゃんと大丈夫か、\nつきっきりで見守ってくれたから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ファンのみんなも、\nトレーナーさんも全力で応援してくれてる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "全部、ちゃんと応えたいな。",
+   "choice_data_list": [
+    "くれぐれも無理はしないように"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女の本当の夢は、あくまでもドバイにある。\nトリプルティアラへの想いはわかるが、\nそこを目指せなくなれば元も子もない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、わかってるよ。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トリプルティアラももう、\n私のほんとの夢だもんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まずは『桜花賞』！\n勝つぞー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ティアラ路線1戦目、\n『桜花賞』は――もうすぐそこだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

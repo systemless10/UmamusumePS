@@ -1,0 +1,486 @@
+{
+ "title": "めざめろ、闘争心！",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "――クラシック級の春間近。たくさんの\n経験を積んできたヒシミラクルは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "や～、わたしもやっと、\nプロのウマ娘らしくなってきたってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーニング場に入るときも、ど～も、\nお邪魔しまーす……って言わなくなったし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そこそこはたくましくなった。\nが……。",
+   "choice_data_list": [
+    "そろそろクラシック三冠の季節だな",
+    "そろそろクラシック三冠の季節だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ！？　あ～、言われてみれば～、\nそんな気も……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――クラシック三冠。\nクラシック級、春の『皐月賞』\n『日本ダービー』、そして秋の『菊花賞』。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クラシック三冠",
+    "皐月賞",
+    "日本ダービー"
+   ]
+  },
+  {
+   "name": "",
+   "text": "3つのGⅠをひとくくりにして、そう呼ぶ。\n多くのウマ娘たちが、この一連のレースを\n目指して頑張る。",
+   "choice_data_list": [
+    "もしヒシミラクルが望むなら……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "望む！？　わたしが！？\nいやいや、いやいやいや……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クラシック三冠って、レースに全てを\n賭けてるウマ娘が集まる場所でしょ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんな娘たち相手にガチるのは、どうも……。\nあははは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "闘争心は一向に芽生えなかった。\n同期の強豪に勝とうという気迫は見えない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうなったら、強引にでも闘争心を\n起こさせるしかない。手を打つことにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～、坂路トレーニング、\n今日からこの時間に変更かぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、空いてる時間に\nしてくれたのかなぁ？　だったら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（バキャッ！！！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うひゃ、なに！？？？？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "誰かが柵を蹴破って、こっちに？\nあれは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "誰だ……。契約の刻、俺から“ワタシ”への\n羽化を遮るのは。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "闘技場に彷徨い込んだなら、\n主役の座と場は勝ち取るがいい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "タニノギムレット……ちゃん！？\nまさかのドン被り～？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "タニノギムレット"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "――“劇薬”を投じてみることにした。\nそう、タニノギムレットは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "“破壊神”の名をほしいままにする、\n同期のウマ娘。クラシック三冠の有力候補だ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "破壊神"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "あえてコースの使用時間を合わせ、\n競わせるよう仕向けてみた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "――吼えるか、俺と？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、いや、とてもとてもとても……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "フッ、下界に戻るか。なら行け。\n狭間は破壊しておいた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "戻るって……\nトレーニングを止めてってこと？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、そんなことをしたら、\nトレーナーさんが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（悲しむ……よね。それじゃ前みたく、\n言い訳してサボるのと同じ……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（どうにか……どうにかしなきゃ。\n少しこわいけど……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ギムレット……ちゃんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ギムレット"
+   ]
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "――？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "その……さ、わたしも、\nここでトレーニングしたいんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だから……だからさ。\nもしよかったら……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "フッ――よかったら……何だ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "火が――ついた。あのヒシミラクルに火が。\nそう……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "競い合うことこそ、ウマ娘の宿命。\nコースがひとつしかないなら\n併走するしか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よかったら、交代交代で走ろー！\nみたいな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、いやいやいや、ご心配なく。\nわたし、ちゃんとギムレットちゃんが\n走り終わったのを見て、コースインするから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "火は……つかなかった。\nかわりに爆発したのは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――“生存本能”。これまで教室の隅で、\nこっそり生きてきた順応力。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "スクールカースト上位の者に睨まれず、\nうまく共存する術に、\nヒシミラクルは長けていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "ククク……交代交代？　走り終わったのを\n見て、コースイン……だと？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "気遣いなど不要！　走り終えたら、\n合図をくれてやる。聴こえたら入るんだな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は、はい……！\nやたっ、ごめんね、わざわざ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかもタニノギムレットも意外に協調的。\n争いも併走もまったく発生しなかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして数日、まったく別々のメニューを\nこなしたが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "ハァァァァアアアアアア！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（ギムレットちゃん、すごいなぁ。\nなんて迫力のある走り……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（もっと近くで見たいかも！\n併走まではしなくても、\n一緒にコースインすれば……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（そのためには、もう少しなかよく～……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～の～、ギムレットちゃん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "――ん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "走り、すごいよね。\nやっぱりクラシック三冠に燃えてるから、\nそれだけ走れるの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "クラシック三冠……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "ク、クククク――両河の一つだな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、あんふぇすの……ひとつ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "そう、河は二つある。クラシック三冠は\n“火の川”。そしてもう一つは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "マイルを貫く“冥府の川”だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "マイルって……あ～、もしかして\n『NHKマイルC』のこと？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "NHKマイルC"
+   ]
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "ああ、二つあるなら――\n“ワタシ”は双流を束ね、大海に至る。\nそう、この両腕で抱くのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "両方だ！！　『皐月賞』と『日本ダービー』、\nさらには間の『NHKマイルC』をも制覇！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タニノギムレット",
+   "text": "これこそ禁忌の『MCローテ』だ！！\nハァーッハッハッハ！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えええええっ、うっそ……！？\n両方って……えぇぇ……～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『MCローテ』。その口から語られたのは、\nとんでもない野望だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "4月の『皐月賞』、5月の『NHKマイルC』\n『日本ダービー』全てに出走する、\n超強行策……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "普通はまず目指さない\n規格外の過密ローテーションだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、なる……ほど……。そんなのを\n目指してるから、すごい走りが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ご、ごめんね～。そうとも知らず、\nわたし、話しかけて、\nトレーニングの邪魔しちゃって～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じゃあっ、応援してるからってことで～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そういうとヒシミラクルは自分の方へ\n駆け寄ってきて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん……。\nやっぱり、自分を持ってる娘っていうのは\n違うんですねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "手なんか届くわけないって思ってましたけど、\nその理由、わかりました。",
+   "choice_data_list": [
+    "届くかもしれないよ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえいえ、だって『MCローテ』ですよ？\nすごすぎってか、意味わかんないですもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしは、わたしなりに\nやってこうかなって……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "さすがにぶつけた相手が悪かった。\n並の夢ならともかく\nスケールが大きすぎる……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "闘争心を煽る方法は、\n別の角度から探すほうがよさそうだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

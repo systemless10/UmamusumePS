@@ -1,21 +1,3 @@
-"""BEYOND DREAMS (scenario 13) -- the training numbers: the home preview, its
-energy, and the scenario's bonus line on top of it.
-
-All fitted to the real JP server (docs/JP_BEYOND_DREAMS_SCENARIO.md §6-§7):
-
-    home   = Ramen's formula (ramen.formula.home_raw) on this scenario's own
-             per-level base values (Lv1 and summer from master, Lv2-4 fitted:
-             100% of clean previews); sub-stats x sub% on a DREAMS turn,
-             floored, never below 1 (78/78)
-    energy = -20/-21/-22/-24/-26 by level (summer -25/-26), each cost-down
-             its own truncating factor, as in Onsen
-    bonus  = floor(home x (1 + (M+S)/100) x (1+F1/100) x (1+F2/100)) - home,
-             capped per line; a DREAMS sub-stat pays max(1, floor(lift x sub%))
-             (66/66); the energy line refunds |cost| - trunc(|cost| x (1-r))
-
-M = the members' bonus, S = DREAMS' SP % (SP only), F1 = the team rank's and F2
-= DREAMS' friendship %, both on friendship trainings only.
-"""
 
 from __future__ import annotations
 
@@ -31,13 +13,8 @@ STATS = RF.STATS
 TARGET_SP = RF.TARGET_SP
 TARGET_ENERGY = RF.TARGET_ENERGY
 MAIN_TARGET = {101: 1, 105: 2, 102: 3, 103: 4, 106: 5}
-LINE_CAP = 100               # each line's per-stat / SP cap before Mental's limit-ups
+LINE_CAP = 100
 
-# FACILITY BASE VALUES PER LEVEL {command: {level: {target_type: value}}}.
-# Level 1 and 5 (= summer 60x) are master's single_mode_training_effect rows;
-# levels 2-4 are fitted from the captures (7 careers, every clean preview
-# matches). Stamina Lv4 was never observed: 11/7 by the other facilities'
-# pattern (main +1 per level, sub +1 at Lv4).
 BASE = {
     101: {1: {1: 11, 3: 2}, 2: {1: 12, 3: 2}, 3: {1: 13, 3: 2}, 4: {1: 14, 3: 3}, 5: {1: 15, 3: 4}},
     105: {1: {2: 8, 4: 6}, 2: {2: 9, 4: 6}, 3: {2: 10, 4: 6}, 4: {2: 11, 4: 7}, 5: {2: 12, 4: 8}},
@@ -47,7 +24,6 @@ BASE = {
     106: {1: {1: 2, 5: 8}, 2: {1: 2, 5: 9}, 3: {1: 2, 5: 10}, 4: {1: 3, 5: 11}, 5: {1: 4, 5: 12}},
 }
 BASE_SP = 7
-# Energy by level, every facility alike; summer is its own row (speed -25).
 ENERGY = {1: -20, 2: -21, 3: -22, 4: -24, 5: -26}
 SUMMER_ENERGY = {601: -25, 602: -26, 603: -26, 604: -26}
 WIT_ENERGY = 5
@@ -63,8 +39,6 @@ def home_raw(chara_info: dict, command_id: int, level: int, partners, card_level
 
 def home_line(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
               sub_pct: int = 100, main_cap: int = LINE_CAP, sp_cap: int = LINE_CAP) -> dict:
-    """{target_type: home_pre} -- floored and capped, before the 1200 halving.
-    A DREAMS turn pays its sub-stats at sub_pct, floored, never below 1."""
     base_cmd = SUMMER_TO_BASE.get(command_id, command_id)
     raw = home_raw(chara_info, command_id, level, partners, card_levels)
     out = {}
@@ -108,13 +82,11 @@ def energy(chara_info: dict, command_id: int, level: int, partners, card_levels=
         return -int(math.floor(-base * mult + 1e-9))
     base_cmd = SUMMER_TO_BASE.get(command_id, command_id)
     cards = [(sid, bond, None) for sid, bond in RF.facility_cards(chara_info, partners)]
-    # Shown in full even at max energy (7 careers); the payout clamps it.
     return tf.training_energy(base, base_cmd, cards)
 
 
 def home_gains(chara_info: dict, command_id: int, level: int, partners, card_levels=None,
                sub_pct: int = 100, main_cap: int = LINE_CAP, sp_cap: int = LINE_CAP) -> dict | None:
-    """The home preview in calculate_training_gain's shape."""
     line = home_line(chara_info, command_id, level, partners, card_levels, sub_pct, main_cap, sp_cap)
     if not line:
         return None
@@ -131,9 +103,6 @@ def bonus_params(chara_info: dict, command_id: int, level: int, partners, card_l
                  sub_pct: int = 100, main_cap: int = LINE_CAP, sp_cap: int = LINE_CAP,
                  add_main_cap: int = LINE_CAP, add_sp_cap: int = LINE_CAP,
                  energy_down: int = 0) -> list:
-    """breeders_data_set.command_info_array[].params_inc_dec_info_array for one
-    facility (§6, §7.3). team_f / dreams_f are already zeroed by the caller
-    when the facility is not a friendship training."""
     base_cmd = SUMMER_TO_BASE.get(command_id, command_id)
     full = home_line(chara_info, command_id, level, partners, card_levels, 100, main_cap, sp_cap)
     out = []

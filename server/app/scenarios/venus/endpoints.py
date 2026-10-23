@@ -1,19 +1,3 @@
-"""GRAND MASTERS (scenario 5) -- the endpoints only this scenario has.
-
-    single_mode_venus/spirit_use            {current_turn}                use the Goddess' Wisdom
-    single_mode_venus/venus_race_entry      {current_turn}                ps 12 -> 13, the field
-    single_mode_venus/venus_race_start      {is_short, current_turn}      ps 13 -> 14, the race
-    single_mode_venus/venus_race_end        {current_turn}                ps 14 -> 15, result + rewards
-    single_mode_venus/venus_race_out        {current_turn}                ps 15 -> 5, the result event
-    single_mode_venus/venus_race_continue   {continue_type, current_turn} retry a lost special race
-    single_mode_venus/venus_spirit_history  {current_turn}                past tables
-
-Their fields sit at the top level of the request (none is nested in a
-*_request_common). Shapes are dump.cs's and the captures'
-(docs/JP_GRAND_MASTERS_SCENARIO.md §2). The venus_data_set every reply carries
-is attached at the response chokepoint (Venus.attach), which reads the race
-off state per endpoint.
-"""
 
 from __future__ import annotations
 
@@ -79,8 +63,6 @@ def _race_turn(full_state: dict, chara_info: dict, payload: dict) -> int:
                or impl.turn_of(chara_info))
 
 
-# ------------------------------------------------------------- wisdom ---
-
 def handle_spirit_use(payload: dict) -> dict:
     got = _career(payload)
     if got is None:
@@ -102,7 +84,6 @@ def handle_spirit_use(payload: dict) -> dict:
 
 
 def handle_spirit_history(payload: dict) -> dict:
-    """venus_spirit_history: one set per wisdom used [INFERRED shape, §16 #4]."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -113,11 +94,7 @@ def handle_spirit_history(payload: dict) -> dict:
     return response
 
 
-# -------------------------------------------------------- special race ---
-
 def handle_race_entry(payload: dict) -> dict:
-    """ps 12 -> 13: the field is drawn and the race simulated here, so the
-    paddock shows the race that is run."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -182,8 +159,6 @@ def handle_race_start(payload: dict) -> dict:
 
 
 def handle_race_end(payload: dict) -> dict:
-    """ps 14 -> 15: the result, fans, race_history (WBC / SWBC only), the
-    trophy and the facility points (§7)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -229,7 +204,6 @@ def handle_race_end(payload: dict) -> dict:
 
 
 def _summary(credited: dict) -> dict:
-    """reward_summary_info around smt._credit_race_reward's applied drops."""
     return {"add_card_bonus_info": None, "add_card_list": [], "add_chara_list": [],
             "add_cloth_list": [], "add_fcoin": credited["add_fcoin"], "add_honor_list": [],
             "add_item_list": copy.deepcopy(credited["add_item_list"]),
@@ -243,13 +217,11 @@ def _win_saddles(history: list) -> list:
     try:
         from ...handlers import trained_chara
         return trained_chara._win_saddles_from_results(history)
-    except Exception:                                  # noqa: BLE001
+    except Exception:
         return []
 
 
 def handle_race_out(payload: dict) -> dict:
-    """ps 15 -> 5 with the result event (timing 13); resolving it releases
-    the held turn (producers._result)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -274,9 +246,6 @@ def handle_race_out(payload: dict) -> dict:
 
 
 def handle_race_continue(payload: dict) -> dict:
-    """Retry a lost special race (§16 #5 [INFERRED]: the shared continue's
-    budgets -- continue_type 1 free, 2 an alarm clock -- then back to ps 13
-    with a fresh simulation)."""
     got = _career(payload)
     if got is None:
         return refuse()

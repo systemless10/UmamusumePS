@@ -1,0 +1,31 @@
+{
+ "title": "クレーンゲーム失敗……",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、残念でしたね……。",
+   "choice_data_list": [
+    "ごめん……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえいえ。これ、めちゃ難しいですし。\nわたしの友だちも、みんな失敗してました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もしかすると、ぱかプチが人気だから\n前より難しくなってた可能性もありますよ。\nうーん、世知辛いですねぇ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "残念な結果に終わった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

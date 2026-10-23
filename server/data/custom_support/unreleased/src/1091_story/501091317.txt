@@ -1,0 +1,50 @@
+#title After the Japan Cup: New World♡
+0 —Vivlos! Come over here! It's so pretty!
+1 Ah, Vivlos... gimme your hand. ...See? Can you see it?
+2 Waaah...! It's all sparkly...!
+3 —It's like everyone's smiles. All the people I love most...—
+4 —...Thank you.
+5 I... I love everyone—sooo much!!
+6 Haaaaaaah...!
+7 —This year's Japan Cup! The winner is...!
+8 Vivlos! It's Vivlos! She's beaten her fierce rivals! A blue wind comes sweeping down over Tokyo!
+9 (Wooooooo!)
+10 Vivlos...
+11 Congratulations, Vivlos sweetie～～! You too, Cheval sweetie! You looked so cool～!
+12 They're our pride and joy, truly... And you too, Verxina, for walking the road ahead of them.
+13 ...Yeah. Thank you.
+14 For letting me be those girls' big sister... thank you.
+15 Everyone, thanks for cheering～～!!
+16 ...Congratulations.
+17 Chevacchi!
+18 I was super happy we got to run together! It was super fun!
+19 I could give it my all because you were there with me, Chevacchi.
+20 'Cause I wanted to show you how cool I can be♡
+21 ...Yeah. I saw it, all right.
+22 ...I was watching too. The whole time...
+23 You really are... different from me. Different, but...
+24 We do have guts... in common, I guess.
+25 !
+26 Or... I guess that sounds like, "What's the loser going on about?"
+27 ...People will probably say all kinds of things. "Figures the middle sister's the dud"... stuff like that.
+28 ! That's not—
+29 It's fine. If they do... I'll talk back.
+30 "Just watch. I'm... her big sister too."
+31 Chevacchi...!
+32 ...Well then.
+33 ...I'll go renew my passport.
+34 If I'm going anyway, I don't just want to tag along... I want to run too.
+35 !
+36 Yeah, yeah! Let's go together!
+37 Tore-cchi～～～!!
+37> Congratulations, Vivlos!
+38 Yeah!
+39 Hey, hey, so right now, I'm...?
+39> A total celebrity! | A total celebrity!
+40 Niheheh! Right♪
+41 Now I can aim for it. This time for sure...—
+42 —Vivlos, over here!
+43 With my family that I love so much—
+44 And with my Trainer!
+45 To the sparkly land of celebrities...—
+46 Shall we fly away, Tore-cchi♡

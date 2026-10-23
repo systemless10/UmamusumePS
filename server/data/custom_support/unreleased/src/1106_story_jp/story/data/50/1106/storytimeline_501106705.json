@@ -1,0 +1,311 @@
+{
+ "title": "お好みを求めて",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "この日は、ヒシミラクルがお家お好み焼きを\nするとのことで、食材の買い出しに\n付き合うこととなった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "お、来た来た！　待っとったで～！",
+   "choice_data_list": [
+    "タマモクロスも一緒なんだ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええ、食材が余るかと思って、お誘い\nしたんです。そしたら、買い出しも\n手伝ってくれることになって～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "へへんっ！　食わせてもらうだけは、\n性に合わんからな！　ほな、行こか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まずは卵っと！　やっぱ、お好み焼きには、\n茶色い殻の卵ですよね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "なんでや、白いのでよかったやろ。\n栄養価は同じやねんで？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうなんですけど！　ちょっと高い卵だと、\n高級なお好み焼きを食べてる気分になれる\nじゃないですか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "使うんは中身の方やから殻の色関係ない気も\nするけど……まあ、わからんでもないわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "さ、次は商店街に行きましょうか！",
+   "choice_data_list": [
+    "ここで買えばよくない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わかってないですね～。それじゃあ、\nおいしいお好み焼きは作れないですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お好み焼きは具材のチームプレー！\nいい食材を集めればそれだけ、\nおいしくなるんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "キャベツキャベツ～。\nえ～っとえ～っと…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、虫食いがある！\nこれだっ！　これくださいっ！",
+   "choice_data_list": [
+    "虫食いを買うのか！？",
+    "虫食いを買うの！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お母さんが言っていたんです。\n『虫がいる野菜は、虫が食べたくなるくらい\nおいしい野菜』だって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "けど、食われ過ぎとるんはあかんで。\nもったいないからな。\nちょっと食われとるくらいが1番ええんや！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん、いい香り！\nやっぱり天かすは、揚げ物屋のが1番ですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "へー、天かす入れるんやな。\nウチはたこ焼きにしか使わんから、\nどんな味になるんか楽しみやわ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "食感がいいんですよ！　それに、\nいろんな物を揚げた油でできてるんで、\n味に深みが出て、濃厚になるんです～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "次はメインやろ？\nえ～っと、豚バラとなると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえ、今回は海鮮にしましょう。\nエビとかイカとかいろいろ味わえますし、\nゴージャスな感じがするじゃないですか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "海鮮！？　そら、ゴージャスやな～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～～……でも、\n全部そろえるのは大変なので……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "冷凍の海鮮ミックスで行こうかと～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "そこはこだわらへんのかいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやぁ～、せっかくならお得に\nいろいろ味わいたいじゃないですか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "買い物を終えて帰路につく。\nヒシミラクルのお好み焼きへの情熱は\n目を見張るものがあった。",
+   "choice_data_list": [
+    "お好み焼きにこだわりがあるんだな！",
+    "お好み焼きにこだわりがあるんだね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もちろん、大好きなので！　好きな物って\nこだわりたくなるじゃないですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "ホンマに今日は、\n自分のこだわりを曲げへんかったな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そりゃ、わたしにとって最高の\nお好み焼きの形がありますから！\nそこは譲りませんよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあ……今回はちょっと\n張り切ってたとこはありますけどね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしのこだわりの味を、\n好きになってもらえたら嬉しいな～、と。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だから今日は、お家お好み焼きなんです。\n具材とか、わたしの好みで\nこだわり抜けるから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ってことで、トレーナーさん。\nわたしのお好み焼き……食べますよね？",
+   "choice_data_list": [
+    "もちろん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "学園に戻り、みんなでお好み焼きを作って\n食べた。ヒシミラクルがこだわっただけあり、\nとても美味しいお好み焼きだった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おいしかった～～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "ふぅ～！　天かす使うのも有りやな！\n今度ウチでもやってみるか～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜひぜひ！　それで、どうでした？\nわたしのお好み焼き？",
+   "choice_data_list": [
+    "また食べたいな！",
+    "これならお店で食べなくてもいいかも"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええ！　食べたいときは\nいつでも言ってくださ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえ、やっぱり特別な日だけ\n食べることにしましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そっちのほうが特別感あって、もっと\nおいしく食べられる気がするんですよね～！",
+   "choice_data_list": [
+    "確かにそうだな",
+    "確かにそうだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ですよね～！　じゃあ次回に向けて、\n特別な日を作らないとですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "次に彼女のお好み焼きを食べる日が楽しみだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それは違いますよ。\nお店にはお店のよさがあります……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "家で作るよりも、生地はふっくらしているし、\n具材もちょうどいい具合に刻まれている。\nなにより――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "準備も片付けもしなくていいですからね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タマモクロス",
+   "text": "せやな。ほな、お家お好み焼き\nメインイベント、後片付け……始めよか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うへ～、これだけが、お家でやる\n最大のデメリットなんですよね～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そう言ってげんなりするヒシミラクルと共に、\n後片付けを行ったのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

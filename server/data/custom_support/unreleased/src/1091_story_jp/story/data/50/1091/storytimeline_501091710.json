@@ -1,0 +1,76 @@
+{
+ "title": "レース敗北",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "……ただいま～……はぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ、トレっち～……\n全然思った通りの走りができなかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんか今日の私、ダメダメだ～……。",
+   "choice_data_list": [
+    "それでも、最後までレースを捨てなかった",
+    "自分らしい走りができるように鍛え直そう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "勝ちを狙う気持ちは走りから伝わってきた。\nそれがいつか必ず結果に繋がると諭す。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ふふっ、トレっちは優しいね。\nでもそうだよね、練習もめっちゃしてるし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こんなところで止まってらんないっ。\n今度はもっと上に……ううん、勝つから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、私もっかいがんばるよっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "鍛え直しかぁ……。\nでもみんな強かったし、そうだよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、\n私らしい走り、できるようになりたい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いっぱい練習して、次こそ勝ちたいっ！",
+   "choice_data_list": [
+    "勝たせるよ。そのための道は用意する"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！　よーし、へこむのはこれで終わり！\nもっともっと強くなるぞ～～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

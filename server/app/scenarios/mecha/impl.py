@@ -1,22 +1,3 @@
-"""RUN! MECHA UMAMUSUME (scenario 9, JP only) -- the mechanics.
-
-docs/JP_MECHA_SCENARIO.md is the spec this implements, section for section; it
-records where every rule and number came from (seven real careers, the
-single_mode_09_* master tables, the JP client dump). This module holds the
-career state and the rules that move it:
-
-    research levels, limits, progress     §3   (levels, add_research, progress_rate)
-    research points per training          §4   (formula.research_points, refresh_preview)
-    the scenario line                     §5   (formula.scenario_line, refresh_preview)
-    mecha gears                           §6   (gear_rolls) -- the RATE is not exact
-    overdrive and its gauge               §7   (add_energy, activate_overdrive)
-    tuning, mecha EN, the UGE             §8   (set_chips, commit_uge, uge_rewards)
-    research members                      §9   (recruit_members)
-    link characters                       §10  (link_sum)
-
-and builds the mecha_data_set every career response carries (data_set).
-Where the captures do not settle a rule it says so where it is applied.
-"""
 
 from __future__ import annotations
 
@@ -33,37 +14,26 @@ log = logging.getLogger("uma-server")
 SCENARIO_ID = 9
 STATE_KEY = "mecha"
 
-LIMIT_START, LIMIT_STEP = 200, 100      # research limit: 200, +100 per UGE (§3)
-GAUGE_MAX = 3                           # max_energy_num
-TUNING_TURN = 3                         # TUNING_COMMAND_ENABLE_TURN
-EN_FIRST = 5                            # 1.3 チューニング試験 (§8.4)
-EN_PER_UGE = 6                          # minus the grade drop (§8.4, 40/40)
-RACE_WATCH_RESEARCH = 7                 # 400009101: +7 to all five (§11.1)
+LIMIT_START, LIMIT_STEP = 200, 100
+GAUGE_MAX = 3
+TUNING_TURN = 3
+EN_FIRST = 5
+EN_PER_UGE = 6
+RACE_WATCH_RESEARCH = 7
 SUMMER_TURNS = frozenset({37, 38, 39, 40, 61, 62, 63, 64})
 FINALS_FIRST_TURN = 73
-RESEARCH_MEMBERS = 11                   # is_research_member 1 after 209026 (§9)
-HEAD_HINTS_LATE_UGES = 4                # UGEs done before 209084 replaces 209040 (dress 200803)
+RESEARCH_MEMBERS = 11
+HEAD_HINTS_LATE_UGES = 4
 
-# MECHA GEARS (§6) -- NOT EXACT. No master table holds the odds; these are the
-# measured rates: 48.6 % of non-friendship, non-overdrive facilities without a
-# link card (U 139/288, career 2 161/329, career 3 13/30), 59.1 % with Biwa +
-# Taishin + Gimlet (career 1, 169/286) -- about +3.5 points per link character
-# carrying link effect 14 ("more gears"). The user exempted the gear frequency
-# from the 1:1 rule (2026-10-03).
 GEAR_BASE = 0.486
 GEAR_PER_LINK = 0.035
 
-# UGE rewards (§8.5): all five stats / SP at A or S on UGE k = 5 + 5k / 15 + 10k;
-# B is one UGE lower (captured for UGE 1-2; UGE 3-5 at B is that pattern,
-# INFERRED). Facilities +1 at UGE 1/3/5 with A or S (5 careers x 3 UGEs).
 FACILITY_UP_UGES = frozenset({1, 3, 5})
-SKILL_ZENSHIN = 200511         # 全身全霊 (group 20051 rarity 2)
-SKILL_YUME = 210342            # 夢の再生方法 (group 21034 rarity 1)
-SKILL_SUEASHI = 200512         # 末脚, 1.4's hint at level 3
-SKILL_KESHIKI = 210341         # もう少しだけ、いい景色, the ending's hint
+SKILL_ZENSHIN = 200511
+SKILL_YUME = 210342
+SKILL_SUEASHI = 200512
+SKILL_KESHIKI = 210341
 
-
-# ================================================================ state ===
 
 def _blank() -> dict:
     return {
@@ -98,7 +68,6 @@ def turn_of(chara_info: dict) -> int:
 
 
 def flag(st: dict, name: str, value=None):
-    """A one-shot response flag: set with a value, read-and-clear without."""
     if value is not None:
         st["flags"][name] = value
         return value
@@ -114,11 +83,7 @@ def live_chara(full_state: dict) -> dict:
     return ((full_state.get(smt.STATE_KEY) or {}).get("data") or {}).get("chara_info") or {}
 
 
-# ============================================================== links ===
-
 def linked(chara_info: dict) -> set:
-    """Every chara the deck or the trainee brings (§10: a link counts for
-    either)."""
     return RI.linked_charas(chara_info)
 
 
@@ -141,8 +106,6 @@ def gear_links(chara_info: dict) -> int:
 
 
 def ensure_started(st: dict, chara_info: dict) -> bool:
-    """Career-start link effects (§3, §7.1): research levels max(1, the +20s),
-    the gauge's +3 energies as whole charges. True when it ran."""
     if st["started"] or not isinstance(chara_info, dict) or not chara_info.get("support_card_array"):
         return False
     st["started"] = True
@@ -152,8 +115,6 @@ def ensure_started(st: dict, chara_info: dict) -> bool:
     log.info("mecha: start levels %s, gauge %s/%s", start, st["energy"], st["remain"])
     return True
 
-
-# ============================================================ research ===
 
 def level(st: dict, status: int) -> int:
     return int(st["levels"].get(str(status), 1))
@@ -177,8 +138,6 @@ def result_of(st: dict, schedule_id: int) -> int:
 
 
 def progress_rate(st: dict, turn: int) -> int:
-    """floor(the five levels / the coming UGE's target x 100); 0 once the last
-    UGE is behind the served turn (§3). It re-bases on the turn after a UGE."""
     for _sid, (t, target, _stock, _dress) in sorted(M.schedules().items()):
         if int(turn) <= t:
             return total_research(st) * 100 // max(1, target)
@@ -186,9 +145,6 @@ def progress_rate(st: dict, turn: int) -> int:
 
 
 def add_research(st: dict, gains) -> list:
-    """Raise the levels by [(status, n)], each capped at the limit. Returns the
-    statuses that were ALREADY at the limit -- not_up_macha_parameter_info's
-    status_type_array (§2.3: 427/427 replies)."""
     capped = []
     for status, n in gains:
         have = level(st, status)
@@ -199,8 +155,6 @@ def add_research(st: dict, gains) -> list:
     return sorted(capped)
 
 
-# ============================================================ overdrive ===
-
 def charges_max() -> int:
     return max((row[2] for row in M.schedules().values()), default=2)
 
@@ -210,9 +164,6 @@ def gauge_full(st: dict) -> bool:
 
 
 def add_energy(st: dict, n: int, at_start: bool = False) -> bool:
-    """+n gauge energy: three make a charge (§7.1). Nothing while both charges
-    are held or Super Overdrive is on. True when anything was lost to a full
-    gauge (overdrive_num_max_flag)."""
     lost = False
     for _ in range(max(0, int(n))):
         if gauge_full(st) or (int(st["burst"]) and not at_start):
@@ -247,8 +198,6 @@ def has_effect(st: dict, effect_type: int) -> bool:
 
 
 def can_overdrive(st: dict, turn: int) -> str:
-    """'' when an overdrive may be used now, else why not (§7.2, §7.6: with
-    Super Overdrive on it is free -- with 0 charges INFERRED)."""
     if overdrive_on(st, turn):
         return "already on this turn"
     if int(st["remain"]) < 1 and not int(st["burst"]):
@@ -257,9 +206,6 @@ def can_overdrive(st: dict, turn: int) -> str:
 
 
 def activate_overdrive(st: dict, chara_info: dict, turn: int) -> list:
-    """The overdrive call (§7.2-§7.3): a charge (none under Super Overdrive),
-    the count, and Leg 12's energy +15 / motivation +1. Returns the not_up
-    codes the instant part hit."""
     if not int(st["burst"]):
         st["remain"] = int(st["remain"]) - 1
     st["od_turn"] = int(turn)
@@ -286,12 +232,7 @@ def head_research_pct(st: dict, turn: int) -> int:
     return effect_sum(st, M.EFF_RESEARCH) if overdrive_on(st, turn) else 0
 
 
-# ================================================================ gears ===
-
 def gear_rolls(full_state: dict, chara_info: dict, turn: int) -> dict:
-    """{base command: rolled gear} for this turn, rolled once (§6 -- the rate
-    is measured, NOT EXACT). Friendship trainings and an overdrive with the
-    Head core at 3+ override it at preview time."""
     st = state(full_state)
     g = st["gears"]
     if g.get("turn") != int(turn):
@@ -302,14 +243,7 @@ def gear_rolls(full_state: dict, chara_info: dict, turn: int) -> dict:
     return {int(k): bool(v) for k, v in st["gears"]["map"].items()}
 
 
-# ====================================================== research members ===
-
 def recruit_members(full_state: dict, chara_info: dict) -> list:
-    """209026's roster (§9): the deck's normal cards are research members; the
-    link charas the deck and the trainee do not bring join as NPC members,
-    topped up with random charas to eleven members. The filler draw is NOT
-    EXACT -- any chara outside the deck and the trainee fits all captured
-    draws -- and uses Ramen's drawable pool."""
     st = state(full_state)
     if st["roster"]:
         return list(st["members"])
@@ -336,8 +270,6 @@ def recruit_members(full_state: dict, chara_info: dict) -> list:
 
 
 def is_member(st: dict, chara_info: dict, partner: int) -> bool:
-    """is_research_member: a deck NORMAL card (once the roster is set) or an
-    NPC member. The friend card and the 1xx NPCs never are."""
     if not st["roster"]:
         return False
     if int(partner) >= formula.NPC_MIN:
@@ -347,19 +279,12 @@ def is_member(st: dict, chara_info: dict, partner: int) -> bool:
 
 
 def point_members(st: dict, partners) -> int:
-    """Bodies that raise research points (§4.1): every deck card, the friend
-    card included, and the NPC research members."""
     return sum(1 for p in partners or ()
                if int(p) < formula.DECK_MAX or int(p) in st["members"])
 
 
-# ============================================================ previews ===
-
 def refresh_preview(full_state: dict, chara_info: dict, commands, card_levels=None,
                     turn: int | None = None) -> bool:
-    """Recompute this turn's scenario overlay from the facilities about to be
-    served, and remember it: exec_command pays exactly what it said. True when
-    a random roll was made (persist)."""
     from ...handlers import conditions
     st = state(full_state)
     turn = int(turn or turn_of(chara_info))
@@ -390,8 +315,6 @@ def refresh_preview(full_state: dict, chara_info: dict, commands, card_levels=No
             "turn": turn, "research_level": lvls[formula.FACILITY_STATUS[base]], "lb_extra": lb_extra,
             "gear": gear, "chips": chips, "overdrive": od, "core_effects": effects,
             "total_research": sum(lvls.values()), "members": members, "home_energy": home_energy})
-        # A stat a condition blocks (Slow Metabolism: speed) gains nothing on
-        # the home line, so it has nothing to scale here either.
         line = [x for x in line if not (1 <= x["target_type"] <= 5 and conditions.blocks_stat(
             chara_info, formula.STATS[x["target_type"] - 1]))]
         points = formula.research_points(cmd, point_members(st, partners), gear=gear, friendship=friend,
@@ -417,23 +340,17 @@ def gain_possible(st: dict) -> bool:
     return not gauge_full(st) and not int(st["burst"])
 
 
-# ================================================================= UGE ===
-
 def uge_pending(st: dict, turn: int) -> bool:
     sid = M.schedule_for_turn(turn)
     return bool(sid) and not result_of(st, sid)
 
 
 def en_for(st: dict, schedule_id: int, grade: int) -> int:
-    """EN at UGE k = 6 - max(0, grade(k-1) - grade(k)), grade(0) = S (§8.4,
-    40/40 captured UGEs)."""
     before = result_of(st, schedule_id - 1) if schedule_id > 1 else 3
     return EN_PER_UGE - max(0, int(before) - int(grade))
 
 
 def commit_uge(st: dict, turn: int) -> tuple:
-    """The upgrade_race call: the grade off the progress (§8.5). Returns
-    (schedule_id, result_type)."""
     sid = M.schedule_for_turn(turn)
     grade = M.grade_for(progress_rate(st, turn))
     st["results"] = [r for r in st["results"] if int(r["schedule_id"]) != sid] + [
@@ -445,9 +362,6 @@ def commit_uge(st: dict, turn: int) -> tuple:
 
 
 def uge_reward_effects(schedule_id: int, grade: int) -> list:
-    """The result event's choice (§8.5): stats and SP; at UGE 5 the two hints
-    (+3 each at S, else +1 -- B at UGE 5 INFERRED from GameTora's "level 1
-    hint, level 3 at S")."""
     k = int(schedule_id) if grade >= 2 else int(schedule_id) - 1
     stats, sp = 5 + 5 * k, 15 + 10 * k
     effects = [{"type": "all_stats", "value": f"+{stats}"},
@@ -460,15 +374,13 @@ def uge_reward_effects(schedule_id: int, grade: int) -> list:
 
 
 def apply_uge_result(full_state: dict, chara_info: dict, schedule_id: int, grade: int) -> None:
-    """What the result event's check_event lands besides its choice (§8.5):
-    the limit, the EN, the facilities, Super Overdrive."""
     st = state(full_state)
     st["limit"] = LIMIT_START + LIMIT_STEP * uges_done(st)
     st["tp"] = int(st["tp"]) + en_for(st, schedule_id, grade)
     if grade >= 2 and int(schedule_id) in FACILITY_UP_UGES:
         RI.raise_all_facilities(full_state, chara_info)
     if int(schedule_id) == 5 and grade >= 3:
-        st["burst"] = 1                     # Super Overdrive (§7.6)
+        st["burst"] = 1
 
 
 def last_uge_s(st: dict) -> bool:
@@ -488,16 +400,11 @@ def upgrade_result_array(st: dict) -> list:
     return [{"schedule_id": int(r["schedule_id"]), "result_type": int(r["result_type"])} for r in rows]
 
 
-# ============================================================== tuning ===
-
 def chip_budget(st: dict) -> int:
     return int(st["tp"]) + sum(int(v) for v in st["chips"].values())
 
 
 def set_chips(st: dict, board_info_array) -> str:
-    """The tuning request: the WHOLE new allocation (§8.3). '' when applied,
-    else why it was refused (budget, a chip above 5, a locked chip, a chip on
-    the wrong board, a board missing)."""
     new = {str(c): 0 for chips in M.BOARD_CHIPS.values() for c in chips}
     boards = set()
     for b in board_info_array or ():
@@ -508,7 +415,7 @@ def set_chips(st: dict, board_info_array) -> str:
         for c in b.get("chip_info_array") or ():
             chip, pt = int(c.get("chip_id") or 0), int(c.get("point") or 0)
             if chip == M.BOARD_TOTAL.get(board):
-                continue                      # a board total is derived, never set
+                continue
             if chip not in M.BOARD_CHIPS[board]:
                 return f"chip {chip} on board {board}"
             if not 0 <= pt <= M.CHIP_MAX:
@@ -535,18 +442,14 @@ def board_info(st: dict) -> list:
             for b, chips in sorted(M.BOARD_CHIPS.items())]
 
 
-# ============================================================ envelope ===
-
 def career_over(chara_info: dict) -> bool:
     return RI.career_over(chara_info)
 
 
 def evaluation_array(chara_info: dict, st: dict) -> list:
-    """mecha_data_set.evaluation_info_array: chara_info's rows, each with its
-    chara and is_research_member (§9)."""
     by_pos = formula.RF.deck(chara_info)
     deck_charas = {formula.RF.card_meta(sid)[3] for sid in by_pos.values()}
-    npc = {t: c for t, c in M.partner_rows() if c not in deck_charas}   # 101 rides a Tazuna card
+    npc = {t: c for t, c in M.partner_rows() if c not in deck_charas}
     out = []
     for e in sorted((e for e in chara_info.get("evaluation_info_array") or () if isinstance(e, dict)),
                     key=lambda e: int(e.get("target_id") or 0)):
@@ -582,7 +485,6 @@ def overdrive_info(st: dict, turn: int) -> dict:
 
 
 def command_rows(st: dict, commands, turn: int) -> list:
-    """mecha_data_set.command_info_array, row for row with the home screen."""
     gain = gain_possible(st)
     out = []
     for c in commands or ():

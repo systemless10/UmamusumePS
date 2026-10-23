@@ -1,0 +1,317 @@
+{
+ "title": "デビュー戦の後に・全部入りでお祝い",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜぇ、ぜぇ、ぜぇ……。\nつかれ……た～……。うぇ、げっほ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わからん～、もうなんもかんも～……。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どうにかなった……？\n体あったまるの、めちゃ遅かったけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "元よりスロースターターであることと、\n緊張は見越しての2000m。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "やはり、この距離のレースを選んだのは\n正解だったようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "見事な好走。にもかかわらず、\nヒシミラクルは全身を引きずるように\n帰ってきた。",
+   "choice_data_list": [
+    "どうだった、初レースは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜぇ、ぜぇ……。質問とか許して～。\nそんなすぐ、しゃべれるわけないじゃ\nないですか～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まだ……息が……。\n体も心もめちゃめちゃってか……。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "距離が長めだったのは、助かったかも。\n短距離とかだと、\n一瞬で終わってたでしょうし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、でもエンジンかかるのは遅い方なので、\n距離はもっとあった方が～……。",
+   "choice_data_list": [
+    "これ以上長いレースは、まだないんだ",
+    "これ以上長いレースは、まだないんだよね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "な、なるほど～。ジュニア級ってのは\n短いのが多いんですね……。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ジュニア級"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも今は……先の話より休ませて……。\n全部使っちゃって、体中空っぽ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "完全にエネルギーを使い果たしたようだ。\nハードな挑戦を乗り切ったヒシミラクルを\n称えるために……。",
+   "choice_data_list": [
+    "よし、じゃあゴホウビ出そう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ？　ゴホウビって……\nデビューがんばった記念に、ですか？",
+   "choice_data_list": [
+    "ああ、何か食べにいこう。なんでもいいよ",
+    "うん、何か食べにいこう。なんでもいいよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――！？　なんでも！？\n本当になんでもいいんですか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だったら……そうですね。\n遠慮せずに思い切り……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よぉし、“あれ”で！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルが選んだゴホウビは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "るんるーん、お好み、お好み、\nお好み焼きっと！　うっれしいな～！",
+   "choice_data_list": [
+    "お好み焼きでよかったのか？",
+    "お好み焼きでよかったの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はいっ、ゴホウビといえば、これです。\nおいしいし、楽しいし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "昔、両親によく連れてきてもらったんですよ。\nレースやサッカーの試合を観た帰りに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクルの父親",
+   "text": "ほーら、クーちゃん。\n焼けたよー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクルの母親",
+   "text": "勝利のお好み！　今日も2ゴールで勝てて、\nよかったわねー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "幼いヒシミラクル",
+   "text": "うんっ、クーにはおっきいのちょうだい！\n具はね～、ぜんぶ入りの～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "みんなでワイワイ言いながら食べる、\nお好み焼き。最高ですよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "しかも今日はなんと、観る側じゃなく、\n観戦される側になれたんですから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、よりおいしい！\n粉もの最高！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これ以上のしあわせなんて、ありませんよね。\nあります？　もし、あったとしても～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしは、これがいーんです。\nこれ以上は別にいらないってか。エヘヘ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そう言うヒシミラクルは本当に\n嬉しそうだった。微笑みながら、\nお好み焼きをひっくり返そうとすると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、トレーナーさん、ちゃうちゃう。\n返し方はそうじゃなく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "さてはシロウトだな？\nお好みセミプロのわたしがやってあげよう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はいはい、貸してくださ～い！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "得意げにお好み焼きを焼くヒシミラクルは\nレースの時より、ずっと堂々としていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そしてトレセン学園へと戻るバスの中――",
+   "choice_data_list": [
+    "ヒシミラクル、次の目標レースなんだけど"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "つ、次？　気が早くありません？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "一週間後とかに考えるでもいいんじゃ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "これがヒシミラクルのテンポ感だった。\nだから――",
+   "choice_data_list": [
+    "しばらくは……じっくり走ろうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じっくり……。目標レースとか決めずに？",
+   "choice_data_list": [
+    "ああ、それが合うと思う",
+    "うん、それが合うと思う"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ずっと考えていた。お好み焼き屋で\n見せてくれた、あの笑顔について。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しみじみした喜びを、\nなによりの幸せと感じるウマ娘。\nそんな彼女にとって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "急激なステップアップは合わなそうだ。\n環境の変化に振り回されるだけだろう。\n加えて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "脚質も性格も、あきらかに長距離向き。\nグイグイ押されて、徐々によくなる晩成型。\nならば……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ジュニア級～クラシック級の早いうちは、\n距離の合うレースが少ない。\n急がないほうがよさそうだ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クラシック級"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じっくりでOKなら、ありがたいです～。\n今日もいっぱいいっぱいで～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "慣れていかなきゃですね、ちょっとずつ。\n慣れられるなら、ですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "方針は決まった。\nとりあえずの期間としては――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "クラシック級の5月までと、長めに設ける。\nこのバスのように、\nゆっくり着実に進んでいこう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

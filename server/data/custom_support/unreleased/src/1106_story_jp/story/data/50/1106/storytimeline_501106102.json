@@ -1,0 +1,458 @@
+{
+ "title": "初詣",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "年が明け――ヒシミラクルは\nシニア級になった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今日は2人で初詣に行く約束をしている。\n待ち合わせに出かける前に、\nふとテレビをつけると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "番組司会者",
+   "text": "『UMA-TV』新春スペシャル～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "番組司会者",
+   "text": "まずは今年大注目の候補をピックアップ！\n活躍が期待されるのは、なんといっても\nこのウマ娘！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "番組司会者",
+   "text": "シンボリクリスエスです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "番組司会者",
+   "text": "昨年はクラシック級ながら、\n『天皇賞（秋）』を制覇！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "番組司会者",
+   "text": "実力はもちろん、そのストイックさと風貌は、\nファンの心を強く惹きつけます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "番組司会者",
+   "text": "さらに強くなるであろう今年、\nトゥインクル・シリーズの中心になることは\n間違いありません。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トゥインクル・シリーズ"
+   ]
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "視聴者へ――メッセージ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "No cross, No crown.\n――以上だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "他のウマ娘とは取り上げられ方が違った。\n成し遂げた快挙、そして崇高な覚悟……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルも多少は映っていたが、\n扱いの差は大きかった。と――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ブルルルル、ブルルルル……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルからメッセージが届いた。\n今の番組を見て、\nショックを受けたのだろうか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、二度寝しました！[汗][汗]\nでももう起きたから大丈夫（^^）V",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……やけに、おじさんっぽいメッセージ。\nでも元気は元気のようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "着替えて、初詣に行くことにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルがあの番組を見なかったのなら、\n幸いだ。扱いの差に落ち込むことも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……トレーナーさぁん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……表情がズーンと沈んでいた。\nこれはもしかして……。",
+   "choice_data_list": [
+    "……見た？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "見ましたぁ。友だちが『ミラ子も\n紹介されてたよ』って言うので、\n後からウマチューブで。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ミラ子",
+    "ウマチューブ"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっと期待してたんですよぉ。\nかなり取り上げてくれるのかなぁって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもクリスエスちゃんがほとんどで、\nわたしなんて、ほぼワイプで……。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クリスエス"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "扱いの差がぁ～。わたしだって\nけっこう、がんばったのに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあ、わかっちゃいるんですけどね。\n走りに差があるのは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、それをストレートに言われると\n傷つくじゃないですかぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "わかっちゃいるけど、言われると傷つく。\nヒシミラクルはどこまでも普通の少女だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "神さま、お願いです。\nどうか元気をください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "せめて凹んだ分だけは\n取り戻せたらな～……みたいな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――凹んだ分の元気。それなら神様に\nすがらないでも、どうにかなりそうだ。",
+   "choice_data_list": [
+    "よし、なら元気の出ることをしようか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、トレーナーさんが\nなにか考えてくれるんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よかった～！\nじゃあお願いします。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "新春1番のお楽しみ。ヒシミラクルに、\n何をさせて、元気を出してもらおう？",
+   "choice_data_list": [
+    "ロイヤルなお茶会",
+    "サッカー観戦",
+    "日曜大工"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ロイヤルなお茶会……。わたしには、\nあんまり縁のない感じですけど～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなの開いてそうな知り合いは……。\nあ、ひとりいるかな。同期のあの娘……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "ミラ子さん、どうぞ！\n特製のアイリッシュミルクティーだよ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "ストレートもいいけれど、\nやっぱりミルクたくさんが最高だよね！\nどうぞどうぞ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぁ～、このティーカップ……。\nきれいすぎる～。それじゃあ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん……ん……ん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "どう？　お口に合うかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "こ、これは……！",
+   "choice_data_list": [
+    "どんな味？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どんな！？　ぜんぜんわかりません！？\nなんかこう、スッとしてて、\nシュッとしてて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもおいし～！　それだけはわかります！\nちょっと高級なウマ娘になった気分ってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファインモーション",
+   "text": "わぁ、美味しかったならよかった！\nたくさん飲んでね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうしてヒシミラクルは、\n安らぎのひと時を過ごしたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "サッカー観戦！　そうそう、お正月の時期は\n高校サッカーやってますよね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜひぜひ観に行きましょう。\nうちはみんなサッカー大好きですから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――そして観戦し終えた後。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、あれ？　あそこにいるウマ娘は\nもしかして……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ミラ子ちゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トップロードちゃん……！\nトップロードちゃんもサッカーを観に？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トップロード"
+   ]
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "はい！　観るのもやるのも趣味ですから。\n努力する姿を見て、気を引き締めたくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "よかったら語り合いませんか？　今の試合！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして3人でファミレスへと来た。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんか、すごかったよね～。\n後半バテバテになってもがんばってて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "はい、疲れても疲れても\nずっとプレスをかけ続けてて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "それにしてもミラ子ちゃん、サッカー相当\n好きなんですね。よかったら、もっと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん！　わたしもトップロードちゃんと\n話せて、うれしいよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "尽きないサッカー談議。\n2人はサッカーのあれこれについて、\nたくさん話した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "日曜大工……。あんまりやったことないかも。\nでも、なんか楽しそうですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――こうして、ある場所へと向かう。\nそこで日曜大工をしていたのは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシアマゾン",
+   "text": "悪いね、アケボノ。手伝ってもらっちまって。\nその木の箱、持ってきてくれるかい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシアケボノ",
+   "text": "うん、重いね、これ。\nボーノな家具できるかな～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "美浦の寮長ヒシアマゾンとビッグウマ娘\nヒシアケボノが、精を出して作業していた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの～、わたしも混ぜてもらってい～い？\nめちゃ初心者だけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシアマゾン",
+   "text": "おう、やってみたいなら大歓迎さ。\nなんでも好きなモン作ってみな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシアケボノ",
+   "text": "アマゾン、アケボノ、そしてミラクル！\n3ヒシそろって、トンテンカンー！！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ミラクル"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして教えられるままに、\nヒシミラクルは日曜大工に挑み……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、なんか本棚っぽいのできたかも！\nちょっとデコボコだけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これ、めちゃ楽しい～。\n次はもっと大きいものも作りたいな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシアマゾン",
+   "text": "ははは、そうだな！　今度はみんなで\n協力して、小屋でも作るか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "3ヒシそろっての日曜大工により、\nヒシミラクルはさまざまなテクニックを\n学んだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

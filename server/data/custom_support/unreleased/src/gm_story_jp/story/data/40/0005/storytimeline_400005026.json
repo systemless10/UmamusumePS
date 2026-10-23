@@ -1,0 +1,177 @@
+{
+ "title": "開催！グランドマスターズ",
+ "text_block_list": [
+  {
+   "name": "桐生院トレーナー",
+   "text": "うわぁっ！　参拝客でいっぱいですね！\nこれは結構な時間、並ぶ覚悟が必要ですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "年末まで走り続けてきたのですから、正月\nくらいゆっくり並ぶのも悪くないでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "年が明け、トレーナー陣の3人で\n初詣にやって来ていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "それにしても……ここに並ぶみんなが\n今年の抱負を胸に、来ているんですよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "私は、ミークのトレーナーとして\n今年も一緒に進んでいければと願っています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……でも、それだけではなくて、\nミークと駆けてきた道のりが――\n私たちの蹄跡が、伝え残ってほしいなと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……同感です。\nそれだけ、かけがえのないものでした。",
+   "choice_data_list": [
+    "伝え残せるよう、今年も頑張りましょう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……ええ、そうですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "はい！　よし、しっかりお祈りしないと……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "新しい年の訪れに、トレーナーたちは揃って\n新たな決意をするのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "あの……失礼します。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふっ、急に呼びつけちゃってごめんなさい。\nあなたたちに伝えたいことがあって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "この場所でお前たちと出会ってから\n3年もの月日が流れたわけか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……ええ、その間に\nいろいろなことがありました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "ああ、お前たちの担当ウマ娘を通じて\nしっかりと見させてもらった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "成長した喜び、苦難に直面した苦しみ、\nそして苦難を乗り越える強さ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "君たちはトレーナーとしてウマ娘に寄り添い、\n想いに応えてみせた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "……だから、今度は直接見させてもらいたい。\n君たちが二人三脚で駆け抜けてきた全てを！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……っ！？\n直接と言うのは、つまり……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……我々の担当するウマ娘は、\n貴方たち三女神との勝負に臨むと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ええ、あなたたちの4人のウマ娘に\n『グランドマスターズ』への招待状を送るわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "いや、今回は“挑戦状”と言うべきかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "普段、自分たちをサポートしてくれる\n三女神とは違った威圧感……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>と歩んだこれまでが、\n三女神をここまで熱く\nさせているのだとしたら――",
+   "choice_data_list": [
+    "挑戦、受けて立ちます……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ははっ！　出会った時と変わらない、\nいい目をしてるな、君たちは。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "手加減など一切しない。\nお互い、力の限り走り合うぞ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、<chrname>と共に\n三女神に臨み、ウマ娘の頂点を目指す\n『グランドマスターズ』への出走が決まった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

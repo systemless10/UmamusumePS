@@ -1,13 +1,3 @@
-"""Port of HpPolicy.ts -- HP/stamina drain and the last-spurt decision.
-
-`get_last_spurt_pair` is the most safety-critical formula in the whole
-engine: it decides both whether/where a horse commits to max effort for
-the remainder of the race, and (if HP is insufficient to sprint the whole
-remaining distance) which throttled-down speed to settle for instead, via
-a candidate search + stochastic "subpar acceptance" roll. Transcribed
-verbatim from HpPolicy.ts, including the two-equation solve in the
-candidate loop.
-"""
 
 from __future__ import annotations
 
@@ -26,7 +16,6 @@ _HP_CONSUMPTION_GROUND_MODIFIER = [
 
 
 class NoopHpPolicy:
-    """Used only for pacer solvers -- infinite HP."""
 
     def init(self, horse) -> None:
         pass
@@ -53,10 +42,6 @@ class GameHpPolicy:
         self.base_speed = 20.0 - (course.distance - 2000) / 1000.0
         self.ground_modifier = _HP_CONSUMPTION_GROUND_MODIFIER[course.surface][ground]
         self.rng = rng
-        # placeholder until init() -- the first round of skill activations
-        # happens before init() is called, but some conditions access HP
-        # methods during that round (e.g. is_hp_empty_onetime), so this must
-        # be "initialized enough" for them not to blow up.
         self.max_hp = 1.0
         self.hp = 1.0
         self.guts_modifier = 1.0
@@ -74,9 +59,6 @@ class GameHpPolicy:
             modifier *= 0.6
         if state.is_downhill_mode:
             modifier *= 0.4
-        # A spot struggle has its OWN rushed multiplier (Front Runner 1.4x,
-        # 3.6x if also rushed; Oonige 3.5x / 7.7x) rather than stacking on
-        # top of the plain rushed 1.6x -- 1.4 * 1.6 would only be 2.24.
         compete_top = getattr(state, "compete_top_hp_coef", None)
         if compete_top:
             modifier *= compete_top
@@ -91,8 +73,6 @@ class GameHpPolicy:
                 * self.get_status_modifier(state) * self.ground_modifier * guts_modifier)
 
     def tick(self, state, dt: float) -> None:
-        # NOTE unsure whether hp is consumed by `amount*dt` per frame or
-        # `amount` once every second; believed to be the former (a rate).
         self.hp -= self.hp_per_second(state, state.current_speed) * dt
 
     def has_remaining_hp(self) -> bool:
@@ -125,9 +105,6 @@ class GameHpPolicy:
             speed -= 0.1
 
         if len(candidates) == 0:
-            # maxSpeed - 0.1 < baseTargetSpeed2 (can happen with very low
-            # speed, e.g. 1). Not clear what's "correct"; opt for never
-            # starting spurt, matching the TS engine.
             return self.distance, max_speed
 
         def finish_time(cand):
@@ -142,9 +119,6 @@ class GameHpPolicy:
 
 
     def hp_needed_to_finish(self, pos: float, mid_speed: float, spurt_speed: float) -> float:
-        """HP it would take to run from `pos` to the goal: the rest of the
-        early/mid race at `mid_speed`, the late race at `spurt_speed` under the
-        guts multiplier. Stamina Keep compares this against the HP left."""
         spurt_start = phase_start(self.distance, 2)
         mid = _LastLegState(phase=1, is_pace_down=False, is_downhill_mode=False, is_kakari=False)
         late = _LastLegState(phase=2, is_pace_down=False, is_downhill_mode=False, is_kakari=False)

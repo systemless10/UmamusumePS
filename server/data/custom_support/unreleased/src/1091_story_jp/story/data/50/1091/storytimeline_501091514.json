@@ -1,0 +1,263 @@
+{
+ "title": "ドバイマスター・ヴィブロス",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "だったら、こっちの物件はどう？\nキレイなターコイズブルーの海が\n一望できるタワーマンション！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "ふむ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "ドバイのレースに関する知識はあるが、\n物件は……わからない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええ～！？\nでも住む場所は大事でしょ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "エレガントなモザイクタイルのスパで\nリフレッシュして～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "デザイナーズホテルの\nふかふかのベッドで\nスヤスヤ～ってしてから～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――レースに出走すれば！　1着間違いなし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "なるほど……確かに\nパフォーマンスへの影響は大きそうだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ、そうでしょ～？\nドゥラメンテさんもそう思うでしょう～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "例えば、ドゥラメンテさんなら、\nまるまる1部屋、蹄鉄を並べちゃうとかどう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "ふむ……蹄鉄専用の部屋か。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねっ、黄金の蹄鉄飾ろーよ！\nゴールド・スークに売ってるかな～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "金の重さを考えると、\n落鉄の確率が高まるのではないか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、テンションあがらない？\nお出かけコーデみたいに蹄鉄を選べたら、\n楽しーでしょ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "ふむ……コンディションに合わせ\n選択肢を持っておく……それも1つの考えか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でしょ？　私もドバイに住むときは、\n1部屋、蹄鉄のお部屋にしよっかな～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ってなると、どの物件がいいかな～。\n……あ、これなんかどう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "テラスにプールがついてて、\nゴールド・スークにも近いんだ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ、ゴールド・スークっていうのは、\nキレイな金細工がいっぱい売ってて、それも\nギラギラじゃなくて、キラキラ～な感じで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "……この家賃額は、非現実的なのでは？\n参考にならないのではないだろうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいじゃんいいじゃん、\nまずはお気に入りの夢を選ぶの。\nあとはそこ目指してがんばればいーんだから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "なるほど。\n君は、目標意識が高いんだな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスがドゥラメンテと楽しげに\n話し込んでいる姿を見かけた。\nきっとドバイの話をしているのだろう。",
+   "choice_data_list": [
+    "楽しそうだな、ドバイの話？",
+    "楽しそうだね、ドバイの話？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だよ～♪　ねえねえ、トレっちは\nドバイに住むとしたら、どんなとこがいい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "駅近とか、間取りとか、\nインテリアとか、いろいろ考えたいよね～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！　でも、夢は大きく、だからね？\n現実的に～とかは、いったん無しで！",
+   "choice_data_list": [
+    "1番いい立地を選ぼう！",
+    "自分たちで建てるとか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だったら、空近がいいな～、空近～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "空近？　……駅近のような意味か。\n空港に近い物件……ということだろう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちが～う、そのまんまの意味だよ！\n空に近いから、空近～♪",
+   "choice_data_list": [
+    "どんな物件なんだ？",
+    "どんな物件なの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これこれ、世界で1番お空に近いお部屋♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスが見せてくれた物件は\n超々高層ビルの最上階の1室だった。",
+   "choice_data_list": [
+    "（家賃が）非現実的だな……",
+    "（家賃が）非現実的だね……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから、それはいったんナーーーシ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『まるで雲の上のお城みたいっ！\nいつか住んでみたいな～♪\nよーし、そのためにもがんばっちゃうぞ！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そーゆーのでいいの！\nね、がんばろうね、トレっち♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ、なにそれ！　いいねいいね！？\nトレっち、夢のクオリティが高～い！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイはね、人工の大きな島を造ったり、\n3Dプリンタでお家を建てたり、いろんな\n面白いことをしてるの♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だからどんな夢でも叶えられるよ、きっと！\n例えば、プールつきの豪邸があるんだから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "レース場つきの豪邸とかも\n建てちゃえるかも！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ドゥラメンテ",
+   "text": "レース場つきの家か。\nそれはいいな……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でしょでしょ？\nいろんな夢を見られるのが\nドバイのいいところなの♪　例えば他にも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "2人のドバイトークは\nまだまだ続きそうだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

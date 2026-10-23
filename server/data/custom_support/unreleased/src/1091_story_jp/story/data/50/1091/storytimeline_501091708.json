@@ -1,0 +1,91 @@
+{
+ "title": "レース勝利！",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～、ただいま～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ～、1着っ！\n先頭でゴールって気持ちいいよねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "観客席もちょー盛り上がってたしっ！\n思わず手、振りまくっちゃったよね～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、月刊トゥインクルの取材も来てたよっ。\n私の記事、載っちゃったりするのかな～っ？",
+   "choice_data_list": [
+    "期待していいと思うよ",
+    "特集号が出るくらい頑張らないとな！",
+    "特集号が出るくらい頑張らないとね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、月刊トゥインクルの取材も来てたよっ。\n私の記事、載っちゃったりするのかな～っ？",
+   "choice_data_list": [
+    "期待していいと思うよ",
+    "特集号が出るくらい頑張らないとな！",
+    "特集号が出るくらい頑張らないとね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だよねっ、だよねっ！\nトレっちもそう思うよねっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今からちょー楽しみ～♪\nみんなに自慢できるもんね～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "写真も載っちゃうかな！？\n載ったらお姉ちゃんに見せてあげるんだ～っ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "発売したらすぐチェックしといてね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それちょーいいじゃん！\n特集号とかかっこよすぎ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きっとページもいっぱいだよねっ！\nレースめっちゃ勝たなきゃだ～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、インタビュー用の服も要るかな。\nどんなの着よ～！　楽しみすぎじゃ～ん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よーしっ、別冊ヴィブロス特集号出るくらい\nおっきなレースで勝てるよーになるぞ～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "title": "ダイエット成功！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "最近、増量しすぎてしまったヴィブロス。\nそこで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "カラオケで楽しくカロリー消費♪\nトレっち、キタサン！　盛り上がっていこー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "キタサンブラック",
+   "text": "イエーイ！",
+   "choice_data_list": [
+    "イエーイ！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まずはみんなで盛り上がれる曲で……\nこれっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスが選んだのは、CMにも\n使用されているポピュラーな洋楽だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "～～～～～～～～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "キタサンブラック",
+   "text": "！？　す、すごい！　これって\nネイティブ英語……ってやつじゃ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ！　ありがとー！\n友だちに教えてもらった曲なのっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "その子もね、海外目指してるんだ。\n『レースで世界一周するんだ』って！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だからよく\n『海外目指すなら、洋楽くらい歌えないと』\nって、いっしょに歌い合って……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いっぱい燃えられる曲なんだよね！\nカロリー消費にぴったり、でしょ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ってわけで、トレっち！\nデュエットいってみよー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その後もヴィブロスは得意の洋楽を\n踊って、歌って――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "仲間とともに\n踊って、歌って、歌いまくり――！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "楽しくカロリー消費し、\n減量に成功したのだった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

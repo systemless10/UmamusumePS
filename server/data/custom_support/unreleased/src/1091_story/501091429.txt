@@ -1,0 +1,5 @@
+#title After the Shuka Sho: Praise
+0 Sadly, the Shuka Sho was out of Vivlos's reach. As she sheds tears of frustration, her family gives her warm applause.
+1 Having run the Tiara path to the end, Vivlos enjoys the party her parents prepared, then resolves once more to aim for the races in Dubai.
+2 As a stepping stone to making her dream come true, Vivlos and the Trainer set the Nakayama Kinen as their next goal.
+2{ Nakayama Kinen

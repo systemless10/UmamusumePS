@@ -1,0 +1,29 @@
+#title Fan Letters
+0 Hmmm～ which pen should I use?
+1 The sparkly one... but this blue one might be more vivid and easier to read...
+2 She's been writing replies to fan letters like that for over an hour now.
+3 She said she'd write them in the free time before training and got started... but it's almost time for training.
+4 I know! I'll use the blue pen and just put on sparkly stickers♪
+5 ～～♪
+6 I felt bad interrupting such a fun time. It looks like she's down to one last letter, and waiting wouldn't take more than a few dozen minutes. So—
+6> (I'll wait a little longer) | (I'll wait a little longer)
+7 ...Yeah, looks good. Super heart-fluttery♡
+8 Phew! Sorry for the wait, Tore-cchi—
+9 ...Wait, it's already this late!?
+10 Sorry, Tore-cchi, I didn't notice! Were you maybe calling me...!?
+10> No, I was just happy you were having fun
+11 Getting watched like that is embarrassing♡ Did I look that happy?
+11> You really like this kind of thing, huh? | You really like this kind of thing, huh?
+12 Yeah, I loooove it! Making things sparkly, making them colorful♪ 'Cause—
+13 Then it makes people's hearts flutter so much!
+14 I want people's hearts to flutter, you know! With everything I give them—
+15 Whether it's my running or my words! I wanna make it all sparkly and make hearts flutter!
+16 ...'Cause I know. The power of a fluttering heart♡
+17 It lets you push through even tough training. A thrill you just can't stop—!
+18 Like this, all my fans make my heart flutter with their letters of support. So—
+19 So everyone's hearts can flutter with these letters too. So that thrilling flutter helps them work harder at school and at their jobs—
+20 A carefully stacked pile of envelopes. Each one is packed with Vivlos's feelings for her fans.
+20> That's heart-fluttering thoughtfulness | That's heart-fluttering thoughtfulness
+21 ! ...Ehehe.
+22 Okay, time to go all out at training too! So I can make everyone's hearts flutter with my running too♪
+23 Thanks to the fan letters, Vivlos was more fired up than ever.

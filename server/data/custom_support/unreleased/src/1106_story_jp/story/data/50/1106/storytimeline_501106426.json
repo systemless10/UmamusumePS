@@ -1,0 +1,29 @@
+{
+ "title": "左うちわのグランプリ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『有馬記念』を観戦しにきたヒシミラクル。\n今日は『天皇賞（秋）』を制した\nシンボリクリスエスらが出走するが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分だって、出走したらいい勝負が\nできたかもと少し調子に乗る。\nが、開けてみると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分には到底できない走りで、\nシンボリクリスエスが快勝。輝きや志には、\n依然大きな差があると思い知らされる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "この先も本当についていけるのか。\nヒシミラクルは強く不安に感じるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,20 +1,3 @@
-"""BEYOND DREAMS (scenario 13, JP only) -- Beyond Dreams: 共に前へ、共に光を -- the mechanics.
-
-docs/JP_BEYOND_DREAMS_SCENARIO.md is the spec this implements, section for
-section; it records where every rule and number came from (7 real careers,
-the single_mode_13_* master tables, the JP client dump). This module holds the
-career state and the rules that move it:
-
-    the team: forming, placement, the Dream Gauge, ranks     §4.1-§4.3
-    Dreams Points, Reflections, the Strategy Meeting         §4.4-§4.5
-    team union beats and team-building stories                §4.6
-    Casino Drive's outing split                               §5.3
-    DREAMS training                                           §7
-    the BC                                                    §3, §9
-
-and builds the breeders_data_set every career response carries (data_set).
-Where the captures do not settle a rule it says so where it is applied.
-"""
 
 from __future__ import annotations
 
@@ -30,42 +13,27 @@ log = logging.getLogger("uma-server")
 
 SCENARIO_ID = 13
 STATE_KEY = "breeders"
-# Account-level, NOT cleared per career: breeders_data_set_start's
-# last_select_bc_group_id is the previous career's pick (career 2 of the
-# corpus served 5 after career 1 raced the BC Turf).
 LAST_PICK_KEY = "breeders_last_bc_group"
 
 ROUTE_ID = 30000
-FINAL_TURN = 69                 # the BC; no URA finals
+FINAL_TURN = 69
 SUMMER_TURNS = frozenset({37, 38, 39, 40, 61, 62, 63, 64})
-START_DP = {M.DECK_SSR: 10, M.DECK_R: 8, M.DECK_NONE: 5}   # captures: 10 / 8 / 5 (§4.5)
+START_DP = {M.DECK_SSR: 10, M.DECK_R: 8, M.DECK_NONE: 5}
 LEVEL_COST = 5
 FULL_EXP = 3
-# Team members whose support card is in the deck are "much more likely" to
-# join (both guides). INFERRED weight; every captured team also held 1138.
 MEMBER_WEIGHT_LINKED = 4
-# Placement of a member without her card in the deck: she follows a random
-# placed deck card this often, else picks a facility at random. Fitted so a
-# member stands alone on a card-less facility on 3.1% of turns, as in the
-# captures (9/294 turns with cards on the board; §4.2). 0.7 gave 14%.
 FOLLOW_CARD_CHANCE = 0.93
-# The command_gain_exp_array rows, in wire order.
 GAIN_EXP_COMMANDS = (3, 4, 7, 8)
 
-# ---------------------------------------------------------------- events --
 REVIEW_PRE = {1: (213010, 400013005), 2: (213012, 400013009), 3: (213014, 400013013),
               4: (213016, 400013018), 5: (213007, 400013022)}
 REVIEW_EXCELLENT = {1: (213003, 400013006), 2: (213004, 400013010), 3: (213005, 400013014),
                     4: (213006, 400013019), 5: (213018, 400013023)}
-# Every season captured (S1 / S5 on 2026-09-30): 213011 + 2(N-1).
 REVIEW_GOOD = {1: (213011, 400013007), 2: (213013, 400013011), 3: (213015, 400013015),
                4: (213017, 400013020), 5: (213019, 400013024)}
-REVIEW_TIMING = 22               # BreedersTeamReviewEnd
+REVIEW_TIMING = 22
 REVIEW_SHOW_CLEAR = 1301
-# (all stats, energy, SP, mood, support hint events) by (season, excellent).
-# Every season captured, both results. S1 Good pays no all-stat bonus; its
-# energy is unseen (the one sample was at max energy), 5 like the others.
-SKILL_ZENSHIN = 200511           # 全身全霊, the 4th Excellent's hint
+SKILL_ZENSHIN = 200511
 REVIEW_REWARD = {
     (1, True): (3, 15, 10, 1, 4), (2, True): (5, 15, 20, 1, 4), (3, True): (10, 15, 35, 1, 4),
     (4, True): (15, 15, 60, 1, 4), (5, True): (30, 15, 100, 1, 4),
@@ -77,18 +45,15 @@ UNION_REWARD = {1: (213810, 400013211), 2: (213812, 400013219), 3: (213814, 4000
 UNION_PAY = {1: {"speed": 10, "sp": 10},
              2: {"speed": 5, "stamina": 10, "power": 10, "guts": 10, "wiz": 10, "sp": 40},
              3: {"speed": 25, "stamina": 25, "power": 25, "guts": 25, "wiz": 25, "sp": 60}}
-UNION_NEED = {1: 3, 2: 6, 3: 8}  # team rank E / B / S (§4.6)
-UNION_TURN = {2: 49}             # union 2 is the Senior New Year, only
+UNION_NEED = {1: 3, 2: 6, 3: 8}
+UNION_TURN = {2: 49}
 UNION3_FROM = 59
-# Team-building pairs keyed by the team's lowest-id member (4/4 teams).
 BUILDING = {1081: ((213121, 400013213), (213123, 400013216)),
             1132: ((213101, 400013212), (213102, 400013215)),
             1136: ((213127, 400013214), (213130, 400013217))}
-BUILDING_NEED = (4, 6)           # team rank D, then B
+BUILDING_NEED = (4, 6)
 BUILDING_PAY = ({"all": 6, "sp": 40}, {"all": 10, "sp": 60})
 
-
-# ================================================================ state ===
 
 def _blank() -> dict:
     return {
@@ -133,8 +98,6 @@ def rng_for(full_state: dict, *parts) -> random.Random:
     return random.Random(":".join(["breeders", str(CE.career_salt(full_state))] + [str(p) for p in parts]))
 
 
-# ========================================================== the deck ===
-
 def deck(chara_info: dict) -> dict:
     return formula.RF.deck(chara_info)
 
@@ -149,7 +112,6 @@ def deck_id_of(chara_info: dict) -> int:
 
 
 def casino_card(chara_info: dict):
-    """(position, support_card_id) of the deck's Casino Drive, or None."""
     for pos, sid in deck(chara_info).items():
         if formula.RF.card_meta(sid)[3] == M.CASINO_CHARA:
             return pos, sid
@@ -157,7 +119,6 @@ def casino_card(chara_info: dict):
 
 
 def deck_type_count(chara_info: dict) -> int:
-    """Distinct card types, the friend card included (career 7: 4 + friend = 5)."""
     return RI.deck_type_count(chara_info)
 
 
@@ -168,8 +129,6 @@ def linked_charas(chara_info: dict) -> set:
 def normal_positions(chara_info: dict) -> list:
     return [p for p, sid in sorted(deck(chara_info).items()) if formula.RF.is_normal_card(sid)]
 
-
-# ============================================================ the team ===
 
 def members(st: dict) -> list:
     return st["members"]
@@ -192,8 +151,6 @@ def can_gain(m: dict) -> bool:
 
 
 def form_team(full_state: dict, chara_info: dict) -> list:
-    """Three of the five candidates (§4.1), weighted toward the ones the deck
-    brings; never the trainee herself. Slot order is the draw order."""
     st = state(full_state)
     if st["members"]:
         return st["members"]
@@ -216,8 +173,6 @@ def form_team(full_state: dict, chara_info: dict) -> list:
 
 
 def formation_story(st: dict) -> tuple:
-    """(event_id, story_id) of チーム『DREAMS』、結成！ -- the trio's index among
-    C(5,3) in member-id order (7/7 careers, 5 distinct trios)."""
     from itertools import combinations
     trio = tuple(sorted(int(m["chara_id"]) for m in st["members"]))
     combos = list(combinations(sorted(M.members()), 3))
@@ -226,8 +181,6 @@ def formation_story(st: dict) -> tuple:
 
 
 def lowest(st: dict, rng: random.Random) -> dict | None:
-    """The member the next '+1' goes to: lowest exp among members who can gain,
-    then lowest rank, then a coin (51/51 captured events, §4.3)."""
     cands = [m for m in st["members"] if can_gain(m)]
     if not cands:
         return None
@@ -237,7 +190,6 @@ def lowest(st: dict, rng: random.Random) -> dict | None:
 
 
 def add_exp(full_state: dict, st: dict, m: dict, n: int = 1) -> int:
-    """Fill a member's gauge by up to n segments (it stops at full)."""
     got = 0
     for _ in range(int(n)):
         if not can_gain(m):
@@ -254,9 +206,6 @@ def rank_up(st: dict, m: dict) -> None:
 
 
 def train_members(full_state: dict, st: dict, chara_ids) -> None:
-    """A successful training with these members: a full gauge ranks up (and
-    pays its +30% in this very training, already in the preview), the rest
-    gain a segment."""
     for c in chara_ids:
         m = member(st, c)
         if not m:
@@ -276,9 +225,6 @@ def plus_one(full_state: dict, tag) -> dict | None:
 
 
 def outing_split(st: dict, rng: random.Random | None = None) -> dict:
-    """Casino's outing: 3 segments, one at a time, each to the lowest gauge
-    (§5.3, 9/9). Points nobody can take are lost. Preview and payout agree:
-    the tie-break is seeded by the caller."""
     sim = {int(m["chara_id"]): [int(m["rank"]), int(m["exp"])] for m in st["members"]}
     rng = rng or random.Random(0)
     out: dict = {}
@@ -293,11 +239,7 @@ def outing_split(st: dict, rng: random.Random | None = None) -> dict:
     return out
 
 
-# ============================================================ schedule ===
-
 def upcoming_schedule(st: dict, turn: int):
-    """The Reflection this turn counts toward: the first review turn >= turn
-    not yet held."""
     done = {int(r["schedule_id"]) for r in st["reviews"]}
     for t, sid in sorted(M.review_turns().items()):
         if t >= int(turn) and sid not in done:
@@ -311,8 +253,6 @@ def need_for(schedule_id) -> int:
 
 
 def predict(st: dict, turn: int) -> int:
-    """predict_enhance_point: rank-up DP banked so far, plus the Reflection's
-    own DP once the team rank meets its need (§4.4)."""
     out = int(st["pending"])
     sid = upcoming_schedule(st, turn)
     if sid and st["members"] and team_rank(st) >= need_for(sid):
@@ -325,16 +265,10 @@ def review_pending(st: dict, turn: int) -> bool:
     return bool(sid) and st["formed"] and not any(int(r["schedule_id"]) == sid for r in st["reviews"])
 
 
-# The trainee's unique skill: +1 when the Excellent result of Reflections 3
-# (turn 36) and 5 (turn 60) resolves, and +1 on the BC win -- in place of the
-# shared 3007/3008/3009, which Beyond Dreams never plays. umacap: 101431 went
-# 1 -> 2 (213005) -> 3 (213018) -> 4 (213903) in two careers; a Good at 36
-# (213015) left 101311 at 1, and Excellents at 12/24/48 never raised it.
 UNIQUE_LEVEL_REVIEWS = (3, 5)
 
 
 def commit_review(full_state: dict, chara_info: dict, turn: int):
-    """team_review: the season's result and its Event (§4.4)."""
     st = state(full_state)
     sid = M.review_turns()[int(turn)]
     excellent = team_rank(st) >= need_for(sid)
@@ -368,8 +302,6 @@ def commit_review(full_state: dict, chara_info: dict, turn: int):
 
 
 def review_payout(full_state: dict, chara_info: dict, schedule_id: int, excellent: bool) -> None:
-    """The result's DP, stock and level cap, and its hint events -- the stats
-    ride the event's own effects."""
     st = state(full_state)
     turn = [t for t, s in M.review_turns().items() if s == schedule_id][0]
     gain = int(st["pending"]) + (M.dp_review(st["deck_id"], schedule_id) if excellent else 0)
@@ -386,15 +318,12 @@ def review_payout(full_state: dict, chara_info: dict, schedule_id: int, excellen
 
 
 def review_result_array(st: dict) -> list:
-    """Newest first, then the rest in order (the real team_review reply)."""
     rows = sorted(st["reviews"], key=lambda r: r["schedule_id"])
     new = int(st.get("new_review") or 0)
     if new:
         rows = [r for r in rows if r["schedule_id"] == new] + [r for r in rows if r["schedule_id"] != new]
     return [{"schedule_id": r["schedule_id"], "result_type": r["result_type"]} for r in rows]
 
-
-# ============================================================= meeting ===
 
 class Refused(Exception):
     pass
@@ -405,8 +334,6 @@ def level_limit(st: dict, turn: int) -> int:
 
 
 def apply_meeting(st: dict, turn: int, levels: list) -> int:
-    """enhance_group_level_array holds ABSOLUTE levels; 5 DP per level gained,
-    never lowered, never above team_sp_level_limit. Returns the DP spent."""
     want = {int(e.get("group_type") or 0): int(e.get("level") or 0) for e in levels or ()}
     limit = level_limit(st, turn)
     cost = 0
@@ -428,13 +355,7 @@ def enhance_groups(st: dict) -> list:
     return [{"group_type": g, "level": int(st["levels"].get(str(g), 1))} for g in M.GROUPS]
 
 
-# ============================================================== DREAMS ===
-
 def active_effect_ids(st: dict, chara_info: dict) -> list:
-    """The effect rows DREAMS runs with (§7.1): group 0 plus each group's
-    level; a num_support_type-5 row only with >= 5 card types, and the
-    physical sub-stat row replaces group 0's. 5-type rows go first on the
-    wire (careers 5 and 7)."""
     types = deck_type_count(chara_info)
     rows = []
     for g in (M.GROUP_COMMON,) + M.GROUPS:
@@ -463,7 +384,6 @@ def dreams_active(st: dict, turn: int) -> bool:
 
 
 def dreams_caps(st: dict, chara_info: dict, turn: int) -> tuple:
-    """(home main cap, home SP cap, bonus main cap, bonus SP cap)."""
     if not dreams_active(st, turn):
         return (formula.LINE_CAP,) * 4
     e = effect_sums(st, chara_info)
@@ -480,10 +400,6 @@ def sub_pct(st: dict, chara_info: dict, turn: int) -> int:
 
 
 def activate_dreams(full_state: dict, chara_info: dict, turn: int, board_tips) -> None:
-    """team_sp_training (§7.2): a stock spent, and this turn's board becomes
-    every normal deck card and every member on every facility. The '!' marks
-    already on the board show everywhere; Technique's GuaranteeTips adds N
-    random cards, and its 5-type row gives every card one [INFERRED]."""
     st = state(full_state)
     if int(st["stock"]) < 1:
         raise Refused("no DREAMS stock")
@@ -508,12 +424,7 @@ def dreams_partners(chara_info: dict) -> list:
     return normal_positions(chara_info)
 
 
-# =========================================================== placement ===
-
 def place_members(full_state: dict, chara_info: dict, turn: int, board: dict) -> dict:
-    """{chara_id: command_id} -- where each member stands this turn (§4.2).
-    A member whose card is in the deck stands with it (192/192); the others
-    follow a random placed deck card or pick at random [INFERRED]."""
     st = state(full_state)
     if st["placement"].get("turn") == turn and st["placement"].get("map"):
         return {int(k): int(v) for k, v in st["placement"]["map"].items()}
@@ -546,12 +457,7 @@ def members_at(full_state: dict, chara_info: dict, turn: int, command_id: int, b
     return [c for c, cmd in placed.items() if cmd == int(command_id)]
 
 
-# ============================================================ previews ===
-
 def refresh_preview(full_state: dict, chara_info: dict, home_info: dict, card_levels=None) -> bool:
-    """Recompute this turn's bonus lines and member placement from the
-    facilities about to be served, and remember them: exec_command pays
-    exactly these."""
     st = state(full_state)
     if not st["formed"]:
         return False
@@ -602,8 +508,6 @@ def preview_bonus(st: dict, turn: int, command_id: int) -> list:
     return [dict(p) for p in pv["bonus"].get(str(command_id)) or ()]
 
 
-# ============================================================ envelope ===
-
 def _rank_up_predict(st: dict, here: list) -> int:
     ms = [member(st, c) for c in here if member(st, c)]
     if not ms:
@@ -625,23 +529,15 @@ def is_goal_turn(chara_info: dict, turn: int) -> bool:
     from ...handlers import single_mode_team as smt
     try:
         return int(turn) in smt._forced_race_turns(tuple(chara_info.get("route_race_id_array") or ()))
-    except Exception:                                  # noqa: BLE001
+    except Exception:
         return False
 
 
-# BC field strength: every real BC mob is its single_mode_npc row times these
-# per-stat factors, within about +-1% (52 mobs over 4 captured BC fields; e.g.
-# 9001002 751/678/769/434/756 -> 1327/992/1286/634/1066). No career or trainee
-# dependence: the same row came out the same in two careers.
 BC_STAT_FACTORS = {"speed": 1.778, "stamina": 1.468, "power": 1.668, "guts": 1.468, "wiz": 1.418}
 BC_STAT_JITTER = 0.01
 
 
 def bc_field(chara_info: dict, program_id, count: int) -> list | None:
-    """The BC's own mob field (`count` runners), or None when `program_id` is
-    not a BC. Stats, aptitudes, skills and mood come from the BC's NPC group
-    at BC strength; the face is a regular career mob, because the group's own
-    9xxx mobs hang a watched JP race at loading (race_mobs.MAX_RACE_MOB_ID)."""
     from ...handlers import race_mobs, single_mode_team as smt
     rows = M.bc_npc_rows(int(program_id or 0)) if program_id else ()
     if not rows:
@@ -666,9 +562,6 @@ def bc_field(chara_info: dict, program_id, count: int) -> list | None:
     return out
 
 
-# Replies that leave the client on its training screen carry the per-facility
-# rows; everything mid-chain sends command_info_array null and the client keeps
-# what it has (1,356/1,356 real replies).
 _FULL_ENDPOINTS = frozenset({"start", "load", "team_sp_training"})
 
 
@@ -684,8 +577,6 @@ def reply_is_full(endpoint: str, data: dict) -> bool:
 
 
 def data_set(full_state: dict, chara_info: dict, home_info: dict, full: bool = True) -> dict:
-    """breeders_data_set -- every field present; command_info_array is null
-    on a mid-chain reply (§1)."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     commands = [c for c in (home_info or {}).get("command_info_array") or ()
@@ -701,8 +592,6 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict, full: bool = T
                          {"chara_id": h, "gain_exp": 1 if can_gain(member(st, h)) else 0}
                          for h in here if member(st, h)],
                      "rank_up_predict": _rank_up_predict(st, here)})
-    # BC day gains nothing: every real turn-69 reply sends all four rows 0, and
-    # the race row's 1 put the member level-up badge on the BC itself.
     gainable = turn < FINAL_TURN and any(can_gain(m) for m in st["members"])
     goal_turn = is_goal_turn(chara_info, turn)
     gain_rows = []
@@ -737,7 +626,6 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict, full: bool = T
 
 
 def data_set_start(full_state: dict) -> dict:
-    """breeders_data_set_start / _load."""
     st = state(full_state)
     return {"last_select_bc_group_id": int(full_state.get(LAST_PICK_KEY) or 0),
             "deck_id": int(st["deck_id"]),
@@ -745,11 +633,7 @@ def data_set_start(full_state: dict) -> dict:
             "enhance_group_array": enhance_groups(st)}
 
 
-# =============================================================== route ===
-
 def debut_route_row(chara_id: int) -> int:
-    """The trainee's own debut goal: the turn-12 row of her personal route
-    (captures: [1571] / [1364] / [100] before the BC pick)."""
     from ... import master_data
     row = master_data.query_one(
         "SELECT rr.id FROM single_mode_route r JOIN single_mode_route_race rr "
@@ -760,13 +644,10 @@ def debut_route_row(chara_id: int) -> int:
 
 
 def bc_route(flag: int) -> list:
-    """The BC's goals 2-6: rows 13<flag-100><sort>."""
     return [131000 + (int(flag) - 100) * 10 + sort for sort in range(2, 7)]
 
 
 def roll_track(full_state: dict) -> int:
-    """Santa Anita or Del Mar, rolled once at start [INFERRED; 1 of 4 Del Mar
-    in the corpus before career 5, 3 of 7 overall]."""
     st = state(full_state)
     if not st["track"]:
         st["track"] = (M.TRACK_DEL_MAR if rng_for(full_state, "track").random() < 0.4

@@ -1,0 +1,272 @@
+{
+ "title": "エンディング（ノーマル）",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "トゥインクル・シリーズ最初の3年間を、\nヒシミラクルは駆け抜けた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "達成した数々のミラクル。それにより、\n変わったものもあるが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～、どうしてあんなにレース\nがんばったのに、またテスト勉強～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ねえねえ、少しは免除とかあっても、\nよくない？　なんか不公平ってか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "逆に公平でしょ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "レースはレース、学業は学業。\nそれがトレセン学園の方針なんだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "ミラ子さ～。走るほうはすごく伸びたけど、\n勉強は前とぜんっぜん変わらないよね～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はうう～、言わないでよ～。頭の回転とか、\nそんなに速くなるわけないじゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "逆に悪くなってるまでない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひっど～。ないってば～。忙しいなりに\n勉強もがんばって、キープしてるもん～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "トレセン学園での暮らしぶりは\n前とまったく変わらなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "でもさ～。まさかミラ子が\nGⅠウマ娘になるなんてね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、それはね。\nわたしが1番思ってる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "冗談で未来のGⅠウマ娘とか言ってたけど、\nこんな才能があったなんて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん、待って。\nあったのかな、才能？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "なかったの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～、才能あるとかないとか、\n努力がどうかとかさ、結局わかんないじゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしたちはみんな……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自分で自分のことなんて、\nわかんないだよ、きっと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それは他の人から見ても同じ。\n答えとか、誰も持ってない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だからさ。\nあれこれ考えるより、やるしかない。\nやってみて気づくしかない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これが、わたしから言えることかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フフーン、どう？　ちょっとは見直した？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "なるほどね～。でもさ～、ミラ子、\nえらそうに言ってるけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "トレーナーさんに背中押されまくって、\n気づいたんだよね？　自分から\nやったわけじゃなくない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぎく～……。まあ、それはね……。\nわたしはラッキーだったってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まずは『なにかあるかも』って思ってくれる\n誰かがいないと始まらないから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしにはそういう\n特別な人がいたってことで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "お、ノロケか～？\n言うねえ、ヒューヒュー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ち、違うよ～、ノロケじゃないって～。\n大真面目だしっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "本気の本気で\nそういう人がいたから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、トレーナーさんからだ。\nそだ、もうトレーニングの時間……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ごめん、じゃっ、またね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "はいは～い、がんばって～。\nお幸せにね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（そうだ、わたしには信じてくれる人がいる。\nだから……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（今日もがんばろ。自分で思う限界より、\nほんのちょっとだけ）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ってこれ全部～！？\nめっちゃ多くないですか～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "こんなにできるわけないですよ～。",
+   "choice_data_list": [
+    "君ならできる！期待してるぞ！",
+    "貴方ならできる！期待してるよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "また、それ～？\nトレーナーさんの鬼、悪魔～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わかりました！\nやりますよ、やりますから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やりきったら、めちゃホメてくださいね。\nあとジュースもおごってくださいね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そーれー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルはぶーぶー言いながらも、\nどこか嬉しそうに駆けていく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "変わらない日常。でも前よりもほんの少し\n満ち足りた暮らしが、ここにある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

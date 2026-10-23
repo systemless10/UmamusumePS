@@ -1,4 +1,3 @@
-"""Editable race library and exact practice replay inspection/injection."""
 import base64
 import copy
 import functools
@@ -16,12 +15,7 @@ from .common import OpError, load, save, text, card_name, APTITUDES, int_arg
 from .catalog import uma_catalog
 
 KEY = 'admin_race_library'
-# Largest field the replay format carries exactly: per-runner GutsOrder /
-# WizOrder are bytes on the client. (BlockFrontHorseIndex is an sbyte; past
-# runner 127 the encoder sends "nobody in front" instead.) Fields above the
-# client's 18 need the hachimi_redirect big-field fixes to play.
 MAX_RUNNERS = 255
-# ExhibitionRaceDefine.PRACTICE_RACE_RACE_MAIN_CHARA_NUM: entries 0-2 are Main.
 MAIN_RUNNERS = 3
 
 
@@ -57,7 +51,6 @@ def definition(args):
         h['motivation'] = int_arg(h, 'motivation', settings['motivation'] or 3, 1, 5)
         for k in APTITUDES:
             h[k] = int_arg(h, k, 7, 1, 10)
-        # Repeated veterans are separate entries, with distinct protocol IDs.
         h['trained_chara_id'] = 800000000 + i
         h.setdefault('rarity', 3)
         h.setdefault('talent_level', 5)
@@ -110,7 +103,6 @@ def queue_meta(queued):
 
 @op('races.course')
 def course_profile(viewer, args):
-    """Course geometry and starting gates for one race instance."""
     found = S.get_course_for_race_instance(int_arg(args, 'id', lo=1))
     if found is None:
         raise OpError('Unknown course/race instance for this region.')
@@ -123,15 +115,11 @@ COURSE_PATHS = Path(__file__).resolve().parents[2] / 'server' / 'data' / 'course
 
 @functools.cache
 def course_paths():
-    # Built by tools/build_course_paths.py from the client's lane anims.
     return json.loads(COURSE_PATHS.read_text(encoding='utf-8')) if COURSE_PATHS.is_file() else {}
 
 
 @op('races.track')
 def track_layout(viewer, args):
-    """Top-down route of one race instance, plus the other routes on the same
-    track and surface (drawn as the stadium outline). route is None when the
-    client asset for this course was not extracted."""
     found = S.get_course_for_race_instance(int_arg(args, 'id', lo=1))
     if found is None:
         raise OpError('Unknown course/race instance for this region.')
@@ -140,7 +128,6 @@ def track_layout(viewer, args):
     route = paths.get(str(set_id))
     ground = route['ground'] if route else course.get('surface')
     track = route['track'] if route else course.get('raceTrackId')
-    # Every 4th [x, z] pair is plenty for the faint outline.
     outline = [[v for i in range(0, len(p['points']), 8) for v in p['points'][i:i + 2]] + p['points'][-2:]
                for k, p in paths.items() if k != str(set_id) and p['track'] == track and p['ground'] == ground]
     return {'course_set': set_id, 'course': dict(course, gates=gates),
@@ -208,7 +195,6 @@ def entry(full, args):
 
 
 def by_gate(e):
-    """Runner rows in wire-slot order (by real gate)."""
     rows = e['payload']['race_result_info']['race_horse_data_array']
     gates = e.get('gate_assignment')
     if gates and len(gates) == len(rows):
@@ -219,7 +205,6 @@ def by_gate(e):
 def inspect(e):
     info = e['payload']['race_result_info']
     decoded = decode_scenario(gzip.decompress(base64.b64decode(info['race_scenario'])))
-    # Wire frame/event slots are sorted by physical gate, not roster order.
     horses = by_gate(e)
     course = S.get_course_for_race_instance(info['race_instance_id'])
     return {'entry': e, 'horses': horses, 'results': [asdict(r) for r in decoded['results']],
@@ -233,7 +218,6 @@ def inspect(e):
 
 @op('races.possible')
 def possible(viewer, args):
-    """Course-condition windows, without rolling a fresh observed race."""
     from app.simulation.race_engine import race_runner, race_solver_builder as B
     from app.simulation.race_engine.region import Region, RegionList
     from app.simulation.race_engine.race_solver import Perspective
@@ -274,8 +258,6 @@ def inspect_saved(viewer, args):
 def run(viewer, args):
     d = definition(args)
     settings = d['settings']
-    # The client's Main slots are entries 0-2, so the chosen Main runners go
-    # first (stable order otherwise); gate_assignment follows its runner.
     order = sorted(range(len(d['runners'])), key=lambda i: not d['runners'][i].get('main'))
     horses = [{k: v for k, v in d['runners'][i].items() if k != 'main'} for i in order]
     if settings.get('gate_assignment'):
@@ -304,8 +286,6 @@ def run(viewer, args):
     full = load(viewer)
     full[L.STATE_KEY]['pending']['name'] = str(args.get('name') or 'Custom race')[:120]
     full[L.STATE_KEY]['pending']['definition'] = d
-    # Real gates: frame_order is capped at the course's stalls, so it no
-    # longer orders an oversized field the way the wire slots are.
     full[L.STATE_KEY]['pending']['gate_assignment'] = sim['gate_assignment']
     save(viewer, full)
     return inspect(full[L.STATE_KEY]['pending'])
@@ -327,11 +307,9 @@ def inject(viewer, args):
         overwrite = int(args.get('overwrite_id') or 0)
         if overwrite and not any(r['practice_race_id'] == overwrite for r in st['saved']):
             raise OpError('Choose an existing saved race to replace.')
-        # Allocate a new identity when copying an existing replay onto the shelf.
         e['practice_race_id'] = st['next_race_id']
         st['next_race_id'] += 1
         previous_pending = st['pending']
-        # Use the client save endpoint so capacity and overwrite rules stay identical.
         st['pending'] = e
         save(viewer, full)
         L.handle_race_end({'viewer_id': viewer, 'is_save': 1, 'overwrite_race_id': overwrite})

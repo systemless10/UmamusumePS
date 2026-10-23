@@ -1,0 +1,35 @@
+{
+ "title": "WBCへの招待状",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある日、三女神から知らせが送られてくる。\nそれは1年の最後に行われる\n『WBC』への招待状だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "クラシック級でもまた、三女神によって\nその素質が認められた<chrname>。\nトレーナーである自分も素直に喜びを感じる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その一方、同じく担当ウマ娘が『WBC』に\n選出されたにもかかわらず、\n浮かない表情をする樫本トレーナー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ビターグラッセがレースで、\nこれまで得意としていた自分の走りを\nもってしても、まったく敵わなかったのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "この時期、ウマ娘たちには充分な力と経験が\n備わってくる。フィジカルだけを強みに\nしていた彼女に試練の時が来たのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

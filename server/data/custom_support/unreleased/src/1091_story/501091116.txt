@@ -1,0 +1,111 @@
+#title Reminiscing
+0 "I want to win a race in Dubai"—
+1 Having finished the Tiara races, Vivlos was training hard to move on to her next dream.
+2 And at the start of a winter full of that sense of fulfillment... "that moment" arrived.
+3 Hah... Hah... Hah...
+4 *gasp, gasp*...— *wheeze, wheeze*...
+5 Hu-huh... *cough*!
+5> Vivlos?
+6 (Thud...!)
+6> Vivlos!
+7 —Vivlos had suddenly collapsed, and I rushed her to the hospital. The results of her examination were...
+8 Now that the tension of the Tiara races has broken, everything she's been pushing through has come out all at once.
+9 Training and racing here in Japan shouldn't be much of a problem... but you're aiming for an overseas expedition, aren't you?
+10 Y-yes! I wanna go to Dubai!
+11 Hmm... I'd advise against it this time.
+12 Huh...
+13 An overseas expedition is completely different from everyday life. The environment changes drastically, so it demands a strong mind and body that can endure it.
+14 Take Hokko Tarumae, for example. She also fell ill on an unfamiliar overseas expedition, and was forced to take a long break afterward.
+14{ Hokko Tarumae
+15 ...Even the toughest Umamusume lose a drastic amount of weight on expeditions. Unfortunately, it's common.
+16 As she is now, I don't think Vivlos could endure a grueling overseas expedition—physically, at the very least.
+17 So, thinking of her future... it would be best to give up this time and make recovering her health the top priority.
+18 If she'd been able to rest for about six months when the problem was first noticed, things might have been different...
+19 ...
+20 —...
+20> (She's down... Of course she is)
+21 ...Hey, Trainer.
+22 What about doing my best without overdoing it... like before the Oka Sho?
+23 Then I'm sure I could—
+24 ...Nuh-uh, I'm sorry. It's not at that level anymore, is it?
+24> ...Let's find out at the Nakayama Kinen
+25 Depending on how she runs in the Nakayama Kinen, we might be able to judge that she can endure a grueling overseas expedition.
+25> Let's face your body again, one step at a time, okay? | Let's face your body again, one step at a time, okay?
+26 ...
+27 —I'm sorry, Vivlos.
+28 Onee-chan... ...You already know, huh.
+29 Yes. ...I pushed you too hard.
+30 I took away your most important dream. ...I'm a failure as a big sister.
+31 No, it's not your fault, Onee-chan! It's 'cause I was selfish...
+32 ...
+32> ...For now, let's head back to the academy
+33 ...Yes, let's.
+34 Vivlos, shall we link arms?
+35 Nuh-uh, I'm fine. I can walk on my own...—
+36 And so, Vivlos began training while we kept a close eye on her condition, but...
+37 She wasn't the only one with frustrated feelings.
+38 —Dammit...!
+39 !
+40 Huff... Huff... Dammit, nothing's changing...!
+41 ...My little sister got results like that, and I...
+42 Cheval Grand had recently run in a G1 and placed on the board... but she must be frustrated that she can't break through.
+43 Chevacchi...
+43> (I want to give them a breather)
+44 Right now, a heavy atmosphere hung around her, and around myself too. I wanted to lift their spirits, even just a little.
+44> (For Vivlos, it's gotta be—that)
+45 Kyaa! Suuuuuper glamorous!!
+46 On our next day off, I brought Vivlos and the others to a daytime cruise party.
+47 For celebrity-loving Vivlos, I relied on Director Akikawa's connections and somehow managed to get invitations.
+48 Ah! There's a shop too!
+49 Hey, hey, isn't that charm cute? Let's get matching ones, Chevacchi♡
+50 No...
+51 Waaah♡
+51> (I'm glad she's enjoying herself)
+52 Was it really all right for us to come along too?
+52> Of course! Enjoy yourselves
+53 ...Enjoy, huh.
+53> You don't like this kind of thing? | You don't like this kind of thing?
+54 ...! Ah, no...
+55 ...Cheval, you love the sea and ships, don't you? When was it?
+56 You were so set on riding that terribly unsteady-looking water taxi—
+57 That was when we went to Dubai! Chevacchi was being super stubborn for once, and Papa and Mama were so happy!
+58 Ah... That's right. ...I'm sorry.
+59 ...
+59> Why are you apologizing? | Why are you apologizing?
+60 What?
+60> It's a happy memory, isn't it? | It's a happy memory, isn't it?
+61 !
+62 ...Yeah, it was super fun. That's why I fell in love with Dubai.
+63 'Cause I was with my family, who I love so much.
+64 If I worked hard for my family who I love, I won't regret it, even if it's lonely!
+65 Vivlos...
+66 Onee-chan! I...
+67 Running the same races as you, and having so many people cheer for me... It was really fun!
+68 What about you? Weren't you happy?
+69 ...I was happy. Very much so.
+70 Right? So... it's okay this way!
+71 There's never gonna be another Tiara season for me. I'm sooo glad I got to run back then!
+72 Running, and getting to see you smile! I was suuuuuper... happy.
+73 Vivlos...
+74 ...Thank you.
+75 It seems Vivlos and Verxina's hearts had cleared up a little.
+75> (And Cheval Grand...)
+76 ...So dazzling. And yet I...—
+77 Chevacchi! I'm gonna work hard, for real.
+78 At the Nakayama Kinen, I'll show them I can go to Dubai!
+79 It'll work out somehow, right?
+79> Yeah! | Yeah!
+80 So, you too, Chevacchi—
+81 ...Things don't just work out somehow.
+82 Huh.
+83 ! Ah...
+84 No, that was just my...—
+85 ...! Sorry!
+86 Ah!
+87 Wait, Vivlos. Let's leave her be for a while.
+88 She probably wants to be alone. ...Shall we go get some drinks?
+89 ...Nuh-uh, I'm coming too!
+90 You too, Tore-cchi! Let's go together?
+90> Sure | Sure
+91 ...It's okay. I understand Chevacchi.
+92 I'm worried about Cheval Grand... but for now, it seems Vivlos has made up her mind about the Nakayama Kinen.

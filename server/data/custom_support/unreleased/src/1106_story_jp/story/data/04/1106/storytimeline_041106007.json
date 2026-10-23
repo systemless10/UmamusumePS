@@ -1,0 +1,371 @@
+{
+ "title": "あなたは特別をくれる人",
+ "text_block_list": [
+  {
+   "name": "ウマ娘A",
+   "text": "あ、お祭りのポスター。しかも花火もあるじゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "噂だと、ここからちょっと山入ったところに、\nホタルが見られる場所もあるんだってー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "行きたいけど……せっかくの合宿だし、集中したいんだよね。\nトレーニング後とはいえ、気が抜けちゃったら嫌だし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "だよね。合宿の残りも少ないし……ん、がんばろ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――というわけでして。わたしは遊びに行きたいんですけど、\nみんながんばってるし、空気読まずに誘うわけにも……。",
+   "choice_data_list": [
+    "だったら付き合おうか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、トレーナーさんも忙しかったじゃないですか。\nトレーニングの準備やら、ずっとわたしに付きっきりで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "申し訳ないと少しだけ声が小さくなるヒシミラクル。\n遠慮してほしくはないと、わざとからかうように言ってみる。",
+   "choice_data_list": [
+    "ヒシミラクルが気を使うだなんて……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっ、なんでですかっ。\nもともと普通に使える子ですけど！？",
+   "choice_data_list": [
+    "そうだったのか……！",
+    "そうだったんだ……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ。も～いいです。じゃあ、遠慮しません。\nトレーナーさんに付き合ってもらうことにします。",
+   "choice_data_list": [
+    "もちろん、喜んで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、でも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "その……せっかくなら、お祭りじゃなくて……\n今日くらいはちょっとだけ、特別なことしてみませんか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うーん、いませんねぇ……。\nただの噂だったんですかね、ホタル。",
+   "choice_data_list": [
+    "あまり奥には行かないほうが"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ですよね。すみません。\n場所もわからないのに、連れてきちゃって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（柄にもなく、きれいな景色を見せて……とか。\n普段しないようなことしたら、これか～）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はあっ、残念。お礼になるかと思ったんだけどな。",
+   "choice_data_list": [
+    "お礼？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……声、出てました？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "や～～～……その、ですね。\n前々からちょっと思っていたことがあって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほら、トレーナーさんってレースに……\nわたしにすごく期待してくれてるじゃないですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "で、わたしはその期待に応えたいな～と\nこれでも一応、思ってるわけなんですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それだけじゃ、トレーナーさんの熱には足りないかな、と。\nそういうの考えてたら、気になっちゃって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "せめて、わたしにしてくれている分のお礼でも……\nと考えていたら、まぁこの通りです。失敗しました。",
+   "choice_data_list": [
+    "気持ちだけでも嬉しいよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは。トレーナーさんなら、そう言いますよね。\nわたしとしても、そんなに重たく考えていたわけではないので。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "またなにかの機会があれば、お礼させてください。\n軽い感謝の気持ちと思ってもらえればいいので。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（……ほんと、残念ではあるんですけどね）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（空とかすっごく広くて、ちょっと特別感あるし。\nここでバチッとホタル見て決められていたら、スッキリしたのに）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "落ち込んでいるようには見えない。\n……が、ガッカリしているのは間違いなさそうだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "お礼なんて、本当に必要ない。\n応えようとしてくれているだけでも、本当に嬉しいことなのに。",
+   "choice_data_list": [
+    "じゃあ、何してもらおうかな！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ？",
+   "choice_data_list": [
+    "もっとトレーニング増やす？それとも――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいやいや！\nまた機会があればって、いま言いましたよね！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "っていうか、それお礼になるんですか！？\n普通にしますって、必要ならっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こちらの声色から、ふざけて言っているということは\n理解しているようで、ヒシミラクルは小さく笑っている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――同じ熱量など、求めてはいない。\nただもし、彼女が走りたい、勝ちたいと願っているのなら。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "期待のために、頑張りたいと思ってくれているのなら。\nそれが当たり前にできるように、協力したい。",
+   "choice_data_list": [
+    "走って学園まで帰ったりとか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それ、トレーナーさんも付き合うことになるんですよ？\n自転車でもつらいと思いますけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まったく、すーぐふざけるんですから。\nわたしはそこそこ、真面目な話をしていたんですけど～？",
+   "choice_data_list": [
+    "うん、本当に嬉しかった"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "む……。",
+   "choice_data_list": [
+    "そんなに必死になって考えてくれて……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そ、そこまでじゃ……。",
+   "choice_data_list": [
+    "夜も眠れないほど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もー！　それ捏造、捏造ですよ！\n夜は寝てます、ぐっすり！！",
+   "choice_data_list": [
+    "あははは"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ。トレーナーさん気にしてないのに、熱量の差……とか言って、\n1人で変に気にしちゃってたの、バカみたいじゃないですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "肩の力が抜けたように息を吐くヒシミラクルに、笑顔を向ける。\nお互いの熱が違っていても、悪いとは限らない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "他のウマ娘やトレーナーとは、確かに違うのだろうけれど、\nそれでも――",
+   "choice_data_list": [
+    "楽しいと思えるからな",
+    "楽しいと思えるからね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "一緒に頑張ろうと言える。互いを重荷には感じない。\nだったら、問題はない。ちゃんと一緒に進んでいけるはずだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……それは、うん。ですね。",
+   "choice_data_list": [
+    "もう少しだけ、奥に入ってみよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え？　急にどうしたんですか？\nちょっ、トレーナーさん！　そっちは暗すぎて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今よりほんの少しだけ奥に進む。\nすると、木々の隙間から見上げた空に――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わ……星、すっごい……近い……。\nちょっと場所を変えただけなのに。",
+   "choice_data_list": [
+    "暗いほうがよく見えるから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……1人だったら、きっと見逃してました。先もよく見えないし、\nちょっと不安だし……ここまでは、来られなかったなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日も……いつも通り、何事もなく、\nホタルも見られないまま、普通に終わるんだと思ってました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……。でも……トレーナーさんのおかげで、\nちょっと特別感を味わっちゃいました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……もしかしたら、これからも同じようなことがあるのかな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……。ほどほどにしてくださいね。\nわたしは『普通』に慣れきっているので。……じゃないと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――驚き過ぎて、泣いちゃうかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ほどほどに――けれど、その目には期待がある。\nならば応えたくなってしまうのは、仕方のないことだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

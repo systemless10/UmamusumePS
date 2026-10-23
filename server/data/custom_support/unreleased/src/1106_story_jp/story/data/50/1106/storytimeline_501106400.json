@@ -1,0 +1,33 @@
+{
+ "title": "ヒシミラクル登場！",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヒシミラクルはごくごく“ふつ～”のウマ娘。\nやる気も普通で、他のスターウマ娘のように\n絶対成功しようとする強い意志はない。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ヒシミラクル"
+   ]
+  },
+  {
+   "name": "",
+   "text": "学園内のレースでも9連敗……。しかし、\nデビュー済の強豪ナリタトップロードとも\n張り合える素質を秘めている。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ナリタトップロード"
+   ]
+  },
+  {
+   "name": "",
+   "text": "アスリートに不可欠な日々の努力すら、\nグイグイ押してやらないと、\nちゃんとできないが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "イチかバチか。プロスポーツの世界で\nやっていけるかの挑戦が始まった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

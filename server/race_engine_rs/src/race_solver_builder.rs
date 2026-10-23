@@ -1,21 +1,3 @@
-//! Port of race_solver_builder.py -- base->adjusted stat pipeline,
-//! skill-data loading/wiring through the condition parser + sample-policy
-//! layer.
-//!
-//! Scoped to exactly what `race_runner.py`'s actual usage exercises (the
-//! only caller this port needs to reproduce): `nsamples` is always 1, and
-//! `race_runner._new_builder` only ever calls `.seed/.course/.mood/.ground/
-//! .weather/.season/.gate_index/.horse/.with_asiwotameru/
-//! .with_stamina_syoubu/.add_skill/.build`. Pacer support
-//! (`.pacer`/`.use_default_pacer`), `.fork`, `.with_wisdom_checks`,
-//! `.with_activate_counts_as_random`, per-skill sample-policy overrides,
-//! and the generator `redo`/`.send()` protocol are all unreachable from
-//! that call path and are not implemented here; `build()` returns a plain
-//! `Vec<RaceSolver>` of length `nsamples` instead of a generator.
-//! `on_skill_activate`/`on_skill_deactivate` are likewise set directly on
-//! the constructed solver by race_runner.py, not through the builder, so
-//! there is no builder-level setter for them either -- see
-//! `RaceSolver::set_on_skill_activate`.
 
 use std::collections::HashMap;
 
@@ -29,8 +11,6 @@ use crate::race_solver::{Perspective, RaceSolver, SkillEffect, SkillRarity, Skil
 use crate::random_gen::Rule30CARng;
 use crate::region::{rmap_one, Region};
 
-// ---------------------------------------------------------------------------
-// Skill data (skill_data.json), loaded once by main.rs via `init_skills`.
 
 pub struct SkillEffectDef {
     pub effect_type_raw: i32,
@@ -48,7 +28,6 @@ pub struct SkillAlternative {
     pub effects: Vec<SkillEffectDef>,
     pub base_duration: f64,
     pub time_usage: i32,
-    /// base cooldown in seconds (x CourseDistance/1000 at build)
     pub cooldown: f64,
 }
 
@@ -71,8 +50,6 @@ fn skills_table() -> &'static SkillTable {
     SKILLS.get().expect("init_skills must run before build_skill_data")
 }
 
-// ---------------------------------------------------------------------------
-// Stat pipeline
 
 const GROUND_SPEED_MODIFIER: [[f64; 5]; 3] = [[0.0; 5], [0.0, 0.0, 0.0, 0.0, -50.0], [0.0, 0.0, 0.0, 0.0, -50.0]];
 const GROUND_POWER_MODIFIER: [[f64; 5]; 3] = [[0.0; 5], [0.0, 0.0, -50.0, -50.0, -50.0], [0.0, -100.0, -50.0, -100.0, -100.0]];
@@ -106,7 +83,7 @@ fn stamina_syoubu_distance_factor(distance: f64) -> f64 {
 }
 
 fn stamina_syoubu_calc_approximate_modifier(stamina: f64, distance: f64) -> f64 {
-    let random_factor = 1.0; // TODO (matches Python): unclear how the real random-factor scaling works
+    let random_factor = 1.0;
     (stamina - 1200.0).sqrt() * 0.0085 * stamina_syoubu_distance_factor(distance) * random_factor
 }
 
@@ -118,8 +95,6 @@ fn adjust_overcap(stat: f64) -> f64 {
     }
 }
 
-/// Raw per-horse input, matching the dict shape `race_runner._new_builder`
-/// passes to `.horse({...})`.
 #[derive(Clone)]
 pub struct HorseSpec {
     pub speed: f64,
@@ -133,9 +108,6 @@ pub struct HorseSpec {
     pub strategy_aptitude: Aptitude,
 }
 
-/// RawStat -> BaseStat: halve anything past 1200 (adjust_overcap), apply
-/// mood, then hard-clamp to [1, 2000] -- the wiki's documented final bound
-/// on Base Stats (matches Python's `_base_stat`).
 fn base_stat(raw: f64, motiv_coef: f64) -> f64 {
     ((adjust_overcap(raw) as f32 * motiv_coef as f32) as f64).max(1.0).min(2000.0)
 }
@@ -156,8 +128,6 @@ pub fn build_base_stats(desc: &HorseSpec, mood: i32) -> HorseParameters {
     }
 }
 
-/// Single Mode Modifier (doc): in a career race EVERY runner gets +400 to
-/// each adjusted stat -- see race_solver_builder.py.
 const SINGLE_MODE_MODIFIER: f64 = 400.0;
 
 fn clamp_stat(v: f64) -> f64 {
@@ -182,8 +152,6 @@ pub fn build_adjusted_stats(base: &HorseParameters, course: &CourseData, ground:
     }
 }
 
-// ---------------------------------------------------------------------------
-// Skill target / effect building
 
 const SKILL_TARGET_SELF: i32 = 1;
 const SKILL_TARGET_ALL: i32 = 2;
@@ -221,10 +189,6 @@ fn valid_skill_type(t: i32) -> Option<SkillType> {
     }
 }
 
-// Doc's skill-level multiplier tables (levels 1-10), by effect category.
-// Real Global mechanic, not present in the vendored TS engine (which never
-// passes skill level at all -- everything fires at its flat stored value).
-// Index 0 unused (levels are 1-indexed).
 const LEVEL_MULTIPLIER_TARGET_SPEED: [f64; 11] = [1.00, 1.00, 1.01, 1.04, 1.07, 1.10, 1.13, 1.16, 1.19, 1.22, 1.25];
 const LEVEL_MULTIPLIER_ACCEL: [f64; 11] = [1.00, 1.00, 1.02, 1.04, 1.06, 1.08, 1.10, 1.125, 1.15, 1.175, 1.20];
 const LEVEL_MULTIPLIER_STAT: [f64; 11] = [1.00, 1.00, 1.01, 1.02, 1.03, 1.04, 1.05, 1.06, 1.07, 1.08, 1.10];
@@ -242,9 +206,6 @@ fn level_multiplier(skill_type: SkillType, level: i32) -> f64 {
     }
 }
 
-/// Value Scaling type 8/9, Multiply Random: the value is multiplied by 0
-/// (60%), 0.02 (30%) or 0.04 (10%) -- the HP half of Nothing Ventured /
-/// Risky Business. See race_solver_builder.py.
 fn multiply_random(roll: f64) -> f64 {
     if roll < 0.6 {
         0.0
@@ -255,8 +216,6 @@ fn multiply_random(roll: f64) -> f64 {
     }
 }
 
-/// What the horse brings into the race beyond stats (value scaling and the
-/// chara-id / viewer conditions). `None` = unknown (an NPC): scaling 1.0.
 #[derive(Clone, Default)]
 pub struct HorseContext {
     pub chara_id: Option<i32>,
@@ -269,7 +228,6 @@ pub struct HorseContext {
     pub data: std::collections::BTreeMap<String, crate::json::Value>,
 }
 
-/// First multiplier whose `value < bound`; the last one otherwise.
 pub fn bucket(value: f64, table: &[(Option<f64>, f64)]) -> f64 {
     for &(bound, mult) in table {
         match bound {
@@ -280,11 +238,9 @@ pub fn bucket(value: f64, table: &[(Option<f64>, f64)]) -> f64 {
     table[table.len() - 1].1
 }
 
-// The doc's pre-race Value Scaling tables -- see race_solver_builder.py.
 const TEAM_TOTAL_MULT: [(Option<f64>, f64); 5] = [(Some(1200.0), 0.8), (Some(1800.0), 0.9), (Some(2600.0), 1.0), (Some(3600.0), 1.1), (None, 1.2)];
 const WIN_COUNT_MULT: [(Option<f64>, f64); 5] = [(Some(6.0), 0.8), (Some(14.0), 0.9), (Some(18.0), 1.0), (Some(25.0), 1.1), (None, 1.2)];
 const MAX_RAW_STAT_MULT: [(Option<f64>, f64); 5] = [(Some(600.0), 0.8), (Some(800.0), 0.9), (Some(1000.0), 1.0), (Some(1100.0), 1.1), (None, 1.2)];
-// APPROXIMATION -- the client's fan-count thresholds are undocumented.
 const FAN_COUNT_MULT: [(Option<f64>, f64); 5] = [(Some(100000.0), 0.8), (Some(200000.0), 0.9), (Some(300000.0), 1.0), (Some(400000.0), 1.1), (None, 1.2)];
 
 fn static_value_multiplier(value_usage: i32, ctx: &HorseContext) -> f64 {
@@ -399,10 +355,6 @@ pub fn build_skill_data(
         if regions.is_empty() {
             continue;
         }
-        // Some two-trigger skills need both triggers placed (e.g. all the
-        // is_activate_other_skill_detail ones); others should only ever
-        // place one even with non-mutually-exclusive conditions. Only place
-        // a second trigger for the two known cases that need it.
         if !triggers.is_empty() && !alt.condition.contains("is_activate_other_skill_detail") && !alt.condition.contains("is_used_skill_id") {
             continue;
         }
@@ -427,10 +379,6 @@ pub fn build_skill_data(
     if !triggers.is_empty() {
         return Ok(triggers);
     }
-    // No alternative's condition is satisfiable for this course/horse. Still
-    // add a placeholder (for Adventure of 564-style ActivateRandomGold
-    // interactions) at a location after the course ends, with a constantly
-    // false dynamic condition so it never activates normally.
     let effects = build_skill_effects(&def.alternatives[0], perspective, level, rng, ctx);
     if effects.is_empty() && !ignore_null_effects {
         return Ok(Vec::new());
@@ -452,8 +400,6 @@ pub fn build_skill_data(
     }])
 }
 
-// ---------------------------------------------------------------------------
-// Builder
 
 type ExtraSkillHook = Box<dyn Fn(&mut Vec<SkillData>, &HorseParameters, &CourseData)>;
 
@@ -500,13 +446,11 @@ impl RaceSolverBuilder {
         self
     }
 
-    /// Every runner's character id (is_exist_chara_id).
     pub fn chara_ids(&mut self, ids: Vec<i32>) -> &mut Self {
         self.race_params.chara_ids = ids;
         self
     }
 
-    /// A career (single mode) race: every adjusted stat +400.
     pub fn single_mode(&mut self, flag: bool) -> &mut Self {
         self.single_mode = flag;
         self
@@ -569,7 +513,6 @@ impl RaceSolverBuilder {
         self
     }
 
-    /// Must be called after `.horse()` and `.mood()`.
     pub fn with_asiwotameru(&mut self) -> &mut Self {
         let base_displayed_power = self.horse_desc.as_ref().expect("with_asiwotameru requires .horse() first").power * (1.0 + 0.02 * self.race_params.mood as f64);
         let hook: ExtraSkillHook = Box::new(move |skilldata, horse, course| {
@@ -590,8 +533,6 @@ impl RaceSolverBuilder {
                     wisdom_check: false,
                     sample_policy: crate::activation_sample_policy::SamplePolicy::Immediate,
                     regions: spurt_start,
-                    // Released "at the start of the last spurt" (doc) -- not at
-                    // the start of the late race.
                     extra_condition: Some(Box::new(|s, _f| s.is_last_spurt)),
                     effects: vec![SkillEffect::on_self(
                         SkillType::Accel,
@@ -641,18 +582,12 @@ impl RaceSolverBuilder {
         self
     }
 
-    /// Everything `build()` does before it starts constructing solvers:
-    /// stat pipeline, skill-data loading, sample-policy trigger placement.
-    /// Split out so `validate_skills()` can run exactly this much without
-    /// paying for a throwaway `RaceSolver`.
     #[allow(clippy::type_complexity)]
     fn prepare(&mut self) -> CondResult<(HorseParameters, Vec<SkillData>, Vec<Vec<Region>>, Vec<Vec<Region>>, Rule30CARng)> {
         let horse_desc = self.horse_desc.as_ref().expect("horse() must be called before build()");
         let mut horse = build_base_stats(horse_desc, self.race_params.mood);
         let solver_rng = Rule30CARng::seeded(self.rng.int32() as u64);
-        let _pacer_rng = Rule30CARng::seeded(self.rng.int32() as u64); // drawn for parity with Python's rng advancement even though no pacer is ever configured on this path
-        // Pre-race skill rolls: the wisdom check below and any Multiply
-        // Random values. Its own stream, so neither disturbs trigger placement.
+        let _pacer_rng = Rule30CARng::seeded(self.rng.int32() as u64);
         let mut skill_rng = Rule30CARng::seeded(self.rng.int32() as u64);
 
         let course = self.course.expect("course() must be called before build()");
@@ -669,7 +604,6 @@ impl RaceSolverBuilder {
         }
 
         let mut triggers: Vec<Vec<Region>> = Vec::with_capacity(skilldata.len());
-        // the later all_corner_random triggers (nsamples is always 1 here)
         let mut followups: Vec<Vec<Region>> = Vec::with_capacity(skilldata.len());
         for sd in &skilldata {
             if matches!(sd.sample_policy, crate::activation_sample_policy::SamplePolicy::AllCornerRandom) {
@@ -682,9 +616,6 @@ impl RaceSolverBuilder {
             }
         }
 
-        // Skill Activation Chance (doc): every skill flagged for it rolls a
-        // wisdom check BEFORE the race, max(100 - 9000/BaseWiz, 20)%, on BASE
-        // wisdom -- one roll per skill, not per alternative.
         let own_chance = (1.0 - 90.0 / horse.wisdom).max(0.2);
         let mut passed: HashMap<String, bool> = HashMap::new();
         let mut keep: Vec<bool> = Vec::with_capacity(skilldata.len());
@@ -703,30 +634,16 @@ impl RaceSolverBuilder {
         let mut k = keep.iter();
         followups.retain(|_| *k.next().unwrap());
 
-        // must come after skill activations are decided: conditions like
-        // base_power depend on BASE stats
         horse = build_adjusted_stats(&horse, course, self.race_params.ground_condition, self.single_mode);
 
         Ok((horse, skilldata, triggers, followups, solver_rng))
     }
 
-    /// Raises whatever `prepare()` would raise for this builder's skill
-    /// set, without constructing a `RaceSolver` -- used to probe whether a
-    /// single skill can be built at all (see main.rs's per-skill fallback,
-    /// mirroring `race_runner.is_usable`).
     pub fn validate_skills(&mut self) -> CondResult<()> {
         self.prepare()?;
         Ok(())
     }
 
-    /// Returns one solver per sample. `nsamples` is always 1 on the path
-    /// this port implements (see module doc) -- enforced here rather than
-    /// silently mis-behaving, since `Box<dyn Fn>` extra_conditions aren't
-    /// `Clone` and Python's generator otherwise shares the same closure
-    /// object by reference across samples, which this port has no
-    /// equivalent for. Unlike Python's generator, there is no `redo`/
-    /// `.send()` protocol either -- also unreachable from race_runner.py's
-    /// actual usage.
     pub fn build(&mut self) -> CondResult<Vec<RaceSolver>> {
         if self.nsamples != 1 {
             return Err("RaceSolverBuilder::build only supports nsamples == 1 on this port".to_string());
@@ -744,9 +661,6 @@ impl RaceSolverBuilder {
                 perspective: sd.perspective,
                 rarity: sd.rarity,
                 trigger: trig,
-                // `None` here plays the role Python's `k_true` sentinel
-                // played: a condition whose static filter alone determines
-                // whether it holds, with no further per-tick check needed.
                 extra_condition: std::rc::Rc::from(sd.extra_condition.unwrap_or_else(|| Box::new(|_s, _f| true))),
                 effects: sd.effects,
                 cooldown: sd.cooldown * cooldown_scale,

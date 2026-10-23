@@ -1,14 +1,3 @@
-"""
-Simulate selected runners and encode the client's race_scenario wire format.
-
-Global uses race_exact_rs, verified against 2,379 complete captured replays.
-Its recorded integer fields, frame cadence, ordered events and finish results
-are encoded directly, while handler-facing results retain original horse order.
-
-JP uses race_exact_rs in JP mode (experimental), falling back to race_engine_rs
-and then the Python race_engine; UMA_JP_LEGACY_RACE=1 skips race_exact_rs.
-The retired Node/TypeScript engine is not used by either region.
-"""
 
 from __future__ import annotations
 
@@ -23,18 +12,6 @@ from pathlib import Path
 from .. import master_data, region
 from .scenario_format import HorseFrame, HorseResult, RaceEvent, SkillEvent, encode_scenario
 
-# course_data.json used to be resolved from the vendored uma-tools/ checkout
-# (uma-skill-tools/data/course_data.json) -- when that failed to resolve,
-# simulate_race() raised and every race silently fell back to STATIC FIXTURE
-# REPLAY, which serves horses belonging to some other race and makes the real
-# client NullRef in PaddockViewControllerBase (observed 2026-08-11: a Grand
-# Live debut softlock; the traceback in the server log was FileNotFoundError
-# on course_data.json). Now that uma-tools/ has been deleted (2026-08-30,
-# Node/TS fully retired -- see race_simulator's module docstring), this reads
-# the same file's contents from race_engine/data/course_data.json instead --
-# already vendored in-repo there for the native engines, and confirmed
-# byte-identical to the old uma-tools copy before that copy was removed.
-# UMA_COURSE_DATA_JSON still overrides the path entirely if ever needed.
 COURSE_DATA_JSON = Path(
     os.environ.get("UMA_COURSE_DATA_JSON")
     or Path(__file__).resolve().parent / "race_engine" / "data" / "course_data.json"
@@ -42,7 +19,7 @@ COURSE_DATA_JSON = Path(
 
 _course_data_cache: dict | None = None
 
-APTITUDE_LETTERS = "SABCDEFG"  # index 0=S (best) .. 7=G (worst)
+APTITUDE_LETTERS = "SABCDEFG"
 
 STRATEGY_NAMES = {1: "Nige", 2: "Senkou", 3: "Sasi", 4: "Oikomi", 5: "Oonige"}
 
@@ -59,12 +36,6 @@ def _course_data() -> dict:
 
 
 def get_course_for_race_instance(race_instance_id: int) -> tuple[int, dict, int] | None:
-    """race_instance_id -> race_instance.race_id -> race.course_set/entry_num
-    -> course_data.json entry. entry_num is the real number of starting
-    stalls for this specific race (varies 5-18 across master.mdb, not
-    always a full 18-horse field -- practice races were previously always
-    simulated with 18 regardless, which is why more horses would show up
-    running than the race's own gate could hold)."""
     ri = master_data.query_one("SELECT race_id FROM race_instance WHERE id=?", (race_instance_id,))
     if ri is None:
         return None
@@ -103,21 +74,6 @@ def _strategy_aptitude(chara: dict) -> str:
 
 
 def _sim_stat(value) -> int:
-    """Floor a RAW stat (chara_info's speed/stamina/power/guts/wiz, or a
-    skill's level) at 1 before it reaches the physics engine. Zero or
-    NEGATIVE raw stats (a deliberately-debuffed trainee) need this: sqrt of
-    a negative puts NaN into the simulation, and JSON.stringify(NaN) is
-    null, which detonated build_race_scenario and silently degraded EVERY
-    career race to fixture replay. Clamped for the physics only; the served
-    chara_info keeps its real (possibly negative) value.
-
-    Deliberately NOT doing anything to the upper end here (previously it
-    briefly also halved raw stats past 1200, matching the real client's own
-    RawStat -> BaseStat formula -- but race_solver_builder.py's
-    _adjust_overcap() already does exactly that step downstream, so doing
-    it here too silently halved every stat TWICE. Left as a raw passthrough
-    on the high end; see _adjust_overcap/build_base_stats for the real
-    >1200 halving and the [1,2000] final clamp)."""
     try:
         return max(1, int(value))
     except (TypeError, ValueError):
@@ -128,11 +84,6 @@ _unique_skill_ids_cache = None
 
 
 def _unique_skill_ids() -> set:
-    """skill_id (str) -> chara-unique tier (rarity 3/4/5). race_engine's
-    skill-activate hook used to hardcode SkillEvent.isUnique to 0 for every
-    single event regardless of the skill's real rarity -- this feeds the
-    real value through instead, via the "isUnique" flag on each skill spec
-    below."""
     global _unique_skill_ids_cache
     if _unique_skill_ids_cache is None:
         from .. import master_data
@@ -163,8 +114,6 @@ def build_horse_spec(chara: dict, course: dict, gate_index: int = 0) -> dict:
             for sk in (chara.get("skill_array") or [])
         ],
         "gateIndex": gate_index,
-        # for skills that scale with or depend on these (race_engine value
-        # scaling, is_exist_chara_id)
         "charaId": _opt_int(chara.get("chara_id") or ((chara.get("card_id") or 0) // 100)),
         "fanCount": _opt_int(chara.get("fan_count", chara.get("fans"))),
         "winCount": _opt_int(chara.get("single_mode_win_count", chara.get("wins"))),
@@ -175,7 +124,6 @@ def build_horse_spec(chara: dict, course: dict, gate_index: int = 0) -> dict:
         "scenarioData": list(chara.get("scenario_data_array") or []),
         "successionSkillCount": _opt_int(chara.get("succession_skill_count")) if chara.get("succession_skill_count") is not None else sum(
             900000 <= int(sk["skill_id"]) < 1000000 for sk in chara.get("skill_array") or []),
-        # Preserve flags/context that newer regional skills can consume.
         "raceContext": dict(chara.get("race_context") or {}),
     }
 
@@ -195,28 +143,13 @@ def _resolve_race_engine_rs_exe() -> Path:
     override = os.environ.get("UMA_RACE_ENGINE_RS_EXE")
     if override:
         return Path(override)
-    # server/app/simulation/race_simulator.py -> server/race_engine_rs/...
     return Path(__file__).resolve().parents[2] / _RACE_ENGINE_RS_RELATIVE
 
 
 RACE_ENGINE_RS_EXE = _resolve_race_engine_rs_exe()
 
 
-# The race engine is now a PERSISTENT worker rather than a process per race.
-# Spawning it cost ~20 ms, and it re-parsed course_data.json + skill_data.json
-# (~600 KB) on every start for another ~21 ms -- 41 ms of fixed overhead on a
-# ~119 ms race, none of it simulation. The binary loops over newline-delimited
-# JSON (race_engine_rs/src/main.rs), so one process serves every race.
-#
-# Requests are serialized through _RS_LOCK: the worker handles one race at a
-# time. That is not a throughput loss worth worrying about here (main.py
-# already serializes a viewer's requests, and this is a private server), and
-# it is what keeps the single stdin/stdout pipe coherent.
 _RS_TIMEOUT_SECONDS = 8
-# Runner interactions make a race cost grow with the square of the field:
-# measured ~2.7s at 120 runners and ~12.4s at 255. A fixed 8s killed every big
-# field twice and then handed it to the Python engine (~20x slower), which
-# looked like "simulating forever". Allow ~3x the expected time.
 _RS_TIMEOUT_PER_RUNNER_SQ = 0.0006
 
 
@@ -240,14 +173,9 @@ def _rs_kill_worker() -> None:
 
 
 def _rs_worker() -> subprocess.Popen:
-    """The live worker, started on first use and restarted if it ever dies."""
     global _rs_proc
     if _rs_proc is not None and _rs_proc.poll() is None:
         return _rs_proc
-    # Both engines must run the same skill definitions: the client's own
-    # master.mdb table (see race_engine/skill_table.py), handed to the worker
-    # as a file. The worker only falls back to its embedded JP table if it
-    # cannot read it.
     from .race_engine.skill_table import ensure_file
     env = dict(os.environ)
     try:
@@ -258,7 +186,7 @@ def _rs_worker() -> subprocess.Popen:
         [str(RACE_ENGINE_RS_EXE)],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,   # errors come back as a JSON "error" reply
+        stderr=subprocess.DEVNULL,
         text=True,
         encoding="utf-8",
         env=env,
@@ -267,14 +195,6 @@ def _rs_worker() -> subprocess.Popen:
 
 
 def _run_simulation_rust(spec: dict) -> dict:
-    """Primary path: the native Rust port of app.simulation.race_engine (see
-    that package's README/history -- formula-for-formula and RNG-bit-for-bit
-    matched against the Python engine, which remains the automatic fallback
-    below if this ever raises). Same JSON contract documented in
-    race_engine_rs/src/main.rs, now one line in and one line out.
-
-    A dead or wedged worker is killed and retried once; if that also fails the
-    caller falls back to the Python engine for this race, exactly as before."""
     payload = json.dumps(spec)
     last_error = "unknown"
     with _RS_LOCK:
@@ -283,8 +203,6 @@ def _run_simulation_rust(spec: dict) -> dict:
                 proc = _rs_worker()
             except (FileNotFoundError, OSError) as e:
                 raise RuntimeError(f"race_engine_rs failed to run: {e}") from e
-            # readline on a pipe has no timeout of its own; killing the worker
-            # makes it return "" immediately, which the retry below handles.
             watchdog = threading.Timer(_rs_timeout(spec), proc.kill)
             watchdog.start()
             try:
@@ -308,9 +226,6 @@ def _run_simulation_rust(spec: dict) -> dict:
 
 
 def _dense_ranks(gates: list[int]) -> list[int]:
-    """Gate numbers -> 0..n-1 by ascending gate. A field of n always fills
-    stalls 1..n (every real capture's frame 0 is a contiguous run from the
-    rail), so this is the gate the physics must start each horse from."""
     order = sorted(range(len(gates)), key=lambda i: gates[i])
     ranks = [0] * len(gates)
     for rank, i in enumerate(order):
@@ -331,8 +246,6 @@ def build_spec(horses: list[dict], course_set_id: int, ground_condition: int, we
     course = _course_data()[str(course_set_id)]
     ranks = _dense_ranks(gates)
     if stalls and len(ranks) > stalls:
-        # More runners than stalls: start them in rows behind the real
-        # stalls (1..n, 1..n, ...) instead of in lanes past the outer rail.
         ranks = [r % stalls for r in ranks]
     context = dict(race_context or {})
     if "sub_weather" in context:
@@ -361,7 +274,6 @@ def build_spec(horses: list[dict], course_set_id: int, ground_condition: int, we
 
 
 def skill_diagnostics(spec: dict) -> list[dict]:
-    """Report unsupported catalogue features for either engine without changing the wire replay."""
     import re
     from .race_engine.skill_table import skills
     from .race_engine.activation_conditions import Conditions
@@ -416,46 +328,13 @@ def run_simulation(
     single_mode: bool = False,
     race_context: dict | None = None,
 ) -> dict:
-    """horses: list of real trained_chara dicts (index 0 = player's horse).
-    Returns {seed, frames, results, skillEvents, raceEvents, ...}. Global uses
-    race_exact_rs and preserves its wire scenario without legacy processing.
-    Engine failures propagate rather than selecting an approximate engine.
-    JP's primary engine is the native Rust port (race_engine_rs, a formula-for-formula and
-    RNG-bit-for-bit match of the Python engine); any failure to run it
-    (missing/unbuilt binary, a crash, a timeout) falls back automatically to
-    app.simulation.race_engine's pure-Python implementation, so a Rust bug
-    degrades a single race's engine rather than the request. Set
-    UMA_DISABLE_RACE_ENGINE_RS=1 to force the Python engine always --
-    UMA_RACE_ENGINE_RS_EXE overrides the resolved binary path.
-
-    gate_count: the course's full physical gate count (defaults to the field
-    size when unset). A random sample of `len(horses)` distinct gates out of
-    `gate_count` is drawn, keeping array order (and therefore
-    results[i]/sim_results[i] -> horse identity) unchanged -- only the
-    physical starting gate moves. The physics starts each horse from its
-    RANK among those gates (a field of n fills stalls 1..n).
-
-    gate_assignment: use THIS exact permutation instead of rolling a fresh
-    one. Needed wherever the gate lineup is shown to the player in one
-    request (e.g. daily_races.py's race_entry paddock screen, built from
-    race_horse_data_array[].frame_order) before the race actually runs in a
-    LATER, separate request (race_start).
-
-    single_mode: a career race. Every runner gets the game's +400 Single
-    Mode Modifier on all adjusted stats (see race_solver_builder)."""
     course = _course_data()[str(course_set_id)]
-    # A field can outnumber the course's stalls (practice/room races with many
-    # player entries): extra runners get extra gates past the last real one.
-    # Sampling n gates from fewer than n raised and softlocked race start.
     stalls = gate_count
     gate_count = max(gate_count or 0, len(horses))
     gates = list(gate_assignment) if gate_assignment and len(gate_assignment) == len(horses) \
         else random.sample(range(gate_count), len(horses))
     seed = seed if seed is not None else random.randint(0, 2**31 - 1)
     current_region = region.CURRENT_REGION.get()
-    # JP: race_exact_rs in JP mode is experimental (not replay-exact yet) but
-    # runs the real server's rules; UMA_JP_LEGACY_RACE=1 restores the old engine,
-    # which also remains the fallback for races the exact engine cannot build.
     if current_region == "global" or not os.environ.get("UMA_JP_LEGACY_RACE"):
         from . import race_exact_engine
         try:
@@ -493,22 +372,12 @@ def run_simulation(
     result["gate_assignment"] = gates
     result["course_set_id"] = course_set_id
     _add_result_details(result, horses, course_set_id, seed)
-    # DERIVED HERE, not in either engine: both return the same frames+results,
-    # and the Rust port is the PRIMARY path.
     result["finalStretchOvertakes"] = _final_stretch_overtakes(
         course, result.get("frames") or [], result.get("results") or [])
     return result
 
 
 def _display_times(raw_times: list[float], course_set_id: int, seed: int) -> list[float]:
-    """The time the result screen shows, from the real race time. Doc: Finish
-    Time -- displayed = actual * 1.18, but kept within the course's own
-    [finish_time_min, finish_time_max] (race_course_set): a winner outside
-    that range is shown at the bound it broke, give or take up to its
-    *_random_range, and every other runner keeps the same offset from the
-    winner. Fitted exactly against all 13 real captures (display - raw*1.18
-    is one constant per race, zero whenever the winner lands inside the
-    bounds)."""
     if not raw_times:
         return []
     scaled = [t * 1.18 for t in raw_times]
@@ -551,12 +420,6 @@ def _rank_desc(values: list[float]) -> list[int]:
 
 
 def _defeat_type(horse: dict, result: dict, course: dict, field_size: int) -> int:
-    """RaceDefine.DefeatType -- the result screen's reason a runner lost:
-    1 Win, 2 Lose (the runner-up), 4 Temptation (rushed), 5 GutsOrder,
-    6 Stamina, 7 LastSpurtFalse, 9 PassiveSkillNum, 10 BlockFrontTime, 12 ProperDistance,
-    13 ProperGround, 14 Motivation. The game's own priority between reasons
-    is not known; this follows the order they most often appear in real
-    captures. 9 PassiveSkillNum is the catch-all."""
     order = result["finishOrder"]
     if order == 0:
         return 1
@@ -565,8 +428,6 @@ def _defeat_type(horse: dict, result: dict, course: dict, field_size: int) -> in
     if result.get("rushed"):
         return 4
     if result.get("hpOut"):
-        # Real captures: a runner who ran dry is blamed on her guts unless
-        # her guts was among the field's best, then on her stamina.
         return 6 if result.get("gutsOrder", 0) < max(1, field_size // 3) else 5
     distance_field = {1: "proper_distance_short", 2: "proper_distance_mile",
                       3: "proper_distance_middle", 4: "proper_distance_long"}[course["distanceType"]]
@@ -581,13 +442,10 @@ def _defeat_type(horse: dict, result: dict, course: dict, field_size: int) -> in
         return 10
     if result.get("lastSpurtStartDistance", -1) < 0:
         return 7
-    # the commonest reason for a healthy, unblocked loser in real captures
     return 9
 
 
 def _add_result_details(result: dict, horses: list[dict], course_set_id: int, seed: int) -> None:
-    """Everything the wire result records carry beyond the physics: display
-    time and margin, guts/wisdom order, and the defeat reason."""
     results = result.get("results") or []
     course = _course_data()[str(course_set_id)]
     display = _display_times([r["finishTimeRaw"] for r in results], course_set_id, seed)
@@ -604,22 +462,7 @@ def _add_result_details(result: dict, horses: list[dict], course_set_id: int, se
 
 
 def _final_stretch_overtakes(course, frames: list, results: list) -> list:
-    """How many runners each horse passed over the FINAL STRETCH, per horse,
-    indexed like the `horses` array.
-
-    The final stretch is the last entry in course.straights -- the same region
-    the is_last_straight skill conditions use, so "in the final stretch" means
-    here exactly what it means to a skill. Each horse's place is counted the
-    moment it ENTERS that straight and again at the finish, and the improvement
-    between the two is how many runners it passed. Being passed clamps to 0: the
-    only question ever asked of this is "overtook at least N" (epithets 85/160).
-
-    Reads the frames the simulation already produced, so it costs one pass and
-    never a second simulation."""
     n = len(results)
-    # `course` is the raw course_data JSON dict here (run_simulation's own
-    # _course_data()), but the same helper is useful against the parsed Course
-    # object, so accept either shape.
     straights = (course.get("straights") if isinstance(course, dict)
                  else getattr(course, "straights", None)) or []
     if not frames or not straights or not n:
@@ -627,9 +470,6 @@ def _final_stretch_overtakes(course, frames: list, results: list) -> list:
     last = straights[-1]
     entry = last["start"] if isinstance(last, dict) else last.start
 
-    # First frame in which each horse is at or past the start of the final
-    # straight. One that never reaches it is scored from the last frame instead
-    # of being dropped.
     entry_frame = [None] * n
     for f in frames:
         horses = f["horses"]
@@ -640,19 +480,11 @@ def _final_stretch_overtakes(course, frames: list, results: list) -> list:
                 entry_frame[i] = f
         if all(e is not None for e in entry_frame):
             break
-    # finishOrder is 0-based; it also breaks ties below.
     final_place = [int(r["finishOrder"]) for r in results]
     out = []
     for i in range(n):
         f = entry_frame[i] or frames[-1]
         horses = f["horses"]
-        # Place on entry = rank by position, ties broken by the FINAL order.
-        # The tiebreak matters: horses can share a position to the last decimal
-        # (a tightly packed field, or two runners the solver has moving
-        # identically), and counting only strictly-ahead runners then reports
-        # every one of them as 2nd -- which turns into a fake overtake for
-        # everyone behind. Ordering a tied group the way it finished means a tie
-        # contributes no movement, which is the honest reading: nobody passed.
         order = sorted(range(n), key=lambda j: (-horses[j]["pos"], final_place[j]))
         place_then = order.index(i)
         out.append(max(0, place_then - final_place[i]))
@@ -663,8 +495,6 @@ log = logging.getLogger("uma-server")
 
 
 def _simulate_job(job: dict) -> dict:
-    """One race, simulated AND encoded. Module-level (never a closure or a
-    lambda) so it stays picklable for run_races' process pool."""
     sim = run_simulation(
         job["horses"], job["course_set_id"], job["ground"], job["weather"],
         job["season"], job["seed"], gate_count=job["gate_count"],
@@ -674,34 +504,12 @@ def _simulate_job(job: dict) -> dict:
     return {"sim": sim, "scenario": scenario_b64, "frame_count": frame_count}
 
 
-# Races are only worth shipping to other processes when there is real work to
-# spread; below this many skills in the field, spawning costs more than it saves.
 _PARALLEL_SKILL_THRESHOLD = 400
 
 
 def run_races(jobs: list, max_workers: int = 5) -> list:
-    """Simulate several INDEPENDENT races, in parallel where it pays off.
-
-    Each race is a pure function of (horses, course, conditions, seed) and the
-    engine is seeded per race, so distributing them changes nothing about the
-    results -- only the wall clock.
-
-    Why this exists: team_stadium/start has to simulate a whole five-race
-    match inside ONE request. The per-tick cost scales with the number of
-    skills in the field, and a roster carrying several hundred skills per
-    horse pushed a match to ~21s -- long enough that the client gave up and
-    showed a network error, then retried, re-running the same five races
-    again. Measured on such a roster: 21.6s sequential vs 8.2s across five
-    workers, pool startup included.
-
-    Any failure at all (a spawn that won't start, an unpicklable job, a
-    worker that dies) falls back to running the jobs sequentially in-process,
-    so the worst case is today's behaviour rather than a broken request."""
     if not jobs:
         return []
-    # jobs carry raw trained_chara dicts (run_simulation builds the horse
-    # specs itself), so the skill list is `skill_array` here -- `skills` is
-    # only the name it has after build_horse_spec. Accept either.
     total_skills = sum(
         len(h.get("skill_array") or h.get("skills") or [])
         for j in jobs for h in (j.get("horses") or []) if isinstance(h, dict))
@@ -716,43 +524,20 @@ def run_races(jobs: list, max_workers: int = 5) -> list:
     return [_simulate_job(j) for j in jobs]
 
 
-# THE REAL SERVER'S RECORDING CADENCE. Decoded from every real captured
-# race_scenario (practice, daily, legend, main story, career, team trials;
-# 5- to 18-horse fields), and matching the race docs' "Frame Rate" note:
-#
-#   * every tick for the first second: t = 0, 0.0666, ... 1.0656 (17 frames).
-#     That block is the start dash -- a horse leaves the gate at 3 m/s and is
-#     past 11 m/s within a third of a second; sampling it sparsely was the
-#     reported gate-open flicker (BUG FIXED 2026-09-03).
-#   * then one frame per 16 ticks (1.0656 s)...
-#   * ...except near the goal: when a sampled frame finds any horse within
-#     25 m of the line (either side of it -- finishers keep running), every
-#     tick is recorded until no horse is within that window, and the 16-tick
-#     cadence resumes from the last recorded frame. Entering the dense mode
-#     only ever happens on a sampled frame; leaving it happens on any tick.
-#     (Real: 0018_main_story dense 172.63-175.03 while the winner ran from 14m
-#     short to 25m past; 0047#r3 dense twice, 206.73-208.93 and 211.06-213.52.)
-_DENSE_LEAD_FRAMES = 17   # ticks kept at full rate from the gate
-_SPARSE_STRIDE = 16       # ticks between frames otherwise (1.0656s at 1/15s)
-_GOAL_WINDOW = 25.0       # metres either side of the goal recorded densely
+_DENSE_LEAD_FRAMES = 17
+_SPARSE_STRIDE = 16
+_GOAL_WINDOW = 25.0
 
-# Both engines now capture initialization at t=0. Retain a synthetic gate
-# frame only for compatibility with older external engine outputs.
 _GATE_FRAME_SPEED = 3.0
 
 
 def _coast_pos(pos: float, t: float, fin) -> float:
-    """Where a horse is at `t`: its simulated position, or -- once it has
-    finished (the engines stop stepping finishers) -- coasting on past the
-    line at its crossing speed, as finishers do in real races."""
     if fin is not None and t > fin[2]:
         return fin[0] + fin[1] * (t - fin[2])
     return pos
 
 
 def _select_frames(frames: list, finish: dict, distance: float) -> list[int]:
-    """Indices of `frames` (gate frame at index 0) the real server would have
-    recorded -- see the cadence notes above."""
     n = len(frames)
     if n <= _DENSE_LEAD_FRAMES:
         return list(range(n))
@@ -773,18 +558,6 @@ def _select_frames(frames: list, finish: dict, distance: float) -> list[int]:
 
 
 def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None = None) -> tuple[str, int, int]:
-    """sim_result: output of run_simulation(). Returns (gzip+base64
-    race_scenario, recorded frame count, original frame count). gate_count
-    is accepted for call-site compatibility only.
-
-    sim_result["gate_assignment"] maps horse array-index -> its physical gate.
-    EVERY per-horse wire structure (frames, results, event horse indices, the
-    frame's block-front index) is ordered by GATE, not by array/build order --
-    confirmed from real capture bytes (frame-0 lanes run 0, 555, 1111, ... in
-    wire order while race_horse_data_array lists the player first at gate
-    13). rank_of maps array index -> dense 0..horse_num-1 wire slot (a smaller
-    field's raw gate number can exceed horse_num-1; only the relative order
-    carries wire meaning -- BUG FIXED 2026-08-30)."""
     import base64
     import gzip
 
@@ -797,10 +570,6 @@ def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None
     distance = _course_data()[str(sim_result["course_set_id"])]["distance"] \
         if sim_result.get("course_set_id") is not None else None
     sim_frames = sim_result["frames"]
-    # The Rust engine thins the frame list itself (the same _select_frames
-    # rule; see downsample_result in race_engine_rs/src/main.rs) and flags
-    # that it did, because nearly everything it used to send was parsed here
-    # purely to be thrown away. The Python fallback sends every tick.
     pre_thinned = bool(sim_result.get("framesDownsampled"))
     needs_gate = sim_result.get("gateFrameNeeded")
     if needs_gate is None:
@@ -813,10 +582,7 @@ def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None
                        for h in sim_frames[0]["horses"]],
         }] + sim_frames
 
-    # Where each horse finished, for coasting past the line: the last
-    # full-resolution frame at or before its own finishTimeRaw (sent
-    # precomputed by the Rust engine, whose frame list is already thinned).
-    finish = {}  # horse idx -> (finish_pos, finish_speed, finish_t, finish_lane)
+    finish = {}
     engine_finish = sim_result.get("finishFrames") if pre_thinned else None
     if engine_finish:
         for hi in range(horse_num):
@@ -842,10 +608,6 @@ def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None
     else:
         raw_frames = [sim_frames[k] for k in _select_frames(sim_frames, finish, distance)]
 
-    # DEFENSE: a NaN/Infinity anywhere in the sim arrives here as None. One
-    # None used to TypeError below and silently degrade the whole race to
-    # fixture replay. Carry the last good value forward instead -- and fail
-    # loudly if a horse NEVER reports.
     last_good = {}
     for f in raw_frames:
         for hi, h in enumerate(f["horses"]):
@@ -861,13 +623,6 @@ def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None
                 if h.get("hp") is None:
                     h["hp"] = 0.0
 
-    # Lanes are the PHYSICS lanes now. They used to be a synthesized
-    # gate-spread-then-shrink-toward-the-rail curve, because the old lane
-    # model let the whole field pile onto lane 0 on top of each other; the
-    # engines now run the real lane rules (overtake/normal mode, side
-    # blocking, overlap bumping, the final-corner fan-out), and real frames
-    # carry exactly that: the pack two horse-lanes apart on the rail mid-race
-    # and fanning out down the stretch.
     frames = []
     for f in raw_frames:
         t = f["t"]
@@ -876,7 +631,7 @@ def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None
             pos, sp, lane = h["pos"], h["speed"], h.get("lane", 0.0)
             fin = finish.get(idx)
             if fin is not None and t > fin[2]:
-                pos = _coast_pos(pos, t, fin)  # coast past the line instead of freezing
+                pos = _coast_pos(pos, t, fin)
                 sp = fin[1]
                 lane = fin[3]
             block = h.get("block", -1)
@@ -894,7 +649,6 @@ def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None
     for idx, r in enumerate(sim_result["results"]):
         results[rank_of[idx]] = HorseResult(
             finish_order=r["finishOrder"],
-            # the result screen's time and margin (see _display_times)
             finish_time=r.get("finishTimeDisplay", r["finishTime"]),
             finish_diff_time=r.get("finishDiffDisplay", 0.0),
             start_delay_time=r["startDelayTime"],
@@ -914,20 +668,8 @@ def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None
             target_mask=sum(1 << rank_of[t] for t in (e.get("targets") or [e["horseIndex"]])),
         )
         for e in sim_result.get("skillEvents", [])
-        # "kakari" (rushing) isn't a real skill id -- it is the engines'
-        # sentinel for team_stadium's scoring and the epithets. On the wire a
-        # rushed horse is its frames' temptation_mode, not an event.
         if isinstance(e["skillId"], int)
     ]
-    # SimulateEventType (from the client's own IL2CPP dump): 4 CompeteTop
-    # (spot struggle), 5 CompeteFight (dueling), 6 ReleaseConservePower.
-    # BUG FIXED 2026-09-24: type 5 used to be sent for EVERY horse at its
-    # finish ("Finished") and type 6 once for the player at her last spurt
-    # ("this horse is you") -- both guesses, both wrong: every real type-5
-    # pair is two horses starting a duel on the final straight, and type 6
-    # only lined up with a player's spurt because that horse had >1200 power.
-    # Skill popups and win credit never depended on either (see
-    # docs/RACE_ENGINE_MECHANICS_AUDIT.md item 10).
     race_events = [
         RaceEvent(t=e["t"], type_id=e["type"], params=(rank_of[e["horseIndex"]],))
         for e in sim_result.get("raceEvents", [])
@@ -935,8 +677,6 @@ def build_race_scenario(sim_result: dict, horse_num: int, gate_count: int | None
     blob = encode_scenario(horse_num, frames, results, skill_events=skill_events, race_events=race_events,
                            distance_diff_max=float(sim_result.get("distanceDiffMax") or 0.0))
     scenario_b64 = base64.b64encode(gzip.compress(blob)).decode("ascii")
-    # rawFrameCount: the engine's ORIGINAL tick count, which sim_result["frames"]
-    # no longer reports once the engine has thinned the list itself.
     return (scenario_b64, len(raw_frames),
             int(sim_result.get("rawFrameCount", len(sim_result["frames"]))))
 
@@ -955,28 +695,6 @@ def simulate_race(
     single_mode: bool = False,
     race_context: dict | None = None,
 ) -> dict | None:
-    """Runs a full practice race for player_chara + real opponents. Field size =
-    the player-requested `entry_num` (practice races let you pick fewer than a
-    full field), capped by the course's physical gate count and the opponent
-    pool; falls back to the course's own entry_num when unset. Returns
-    {"race_scenario": ..., "results": [...], ...} or None if the course can't
-    be resolved.
-
-    gate_assignment: see run_simulation -- pass the SAME permutation shown at
-    an earlier paddock/entry screen so the animation starts each horse where
-    that screen already said it would.
-
-    extra_player_charas: additional player-owned entries (practice races let
-    the player enter more than one of their own umas at once -- confirmed
-    real via a proxy-captured request/response against the genuine Cygames
-    server, up to 5 seen in one race). Placed in the field right after
-    player_chara, before any opponent, so callers can rely on
-    horses[0:1+len(extra_player_charas)] being every player entry in
-    submission order. Every existing caller omits this (defaults to None),
-    so single-player-entry behaviour is completely unchanged.
-
-    single_mode: a career (training) race -- every horse gets the real
-    server's +400 Single Mode Modifier on each adjusted stat."""
     course_info = get_course_for_race_instance(race_instance_id)
     if course_info is None:
         return None
@@ -1000,31 +718,8 @@ def simulate_race(
         "seed": sim_result["seed"],
         "course_set_id": course_set_id,
         "horses": horses,
-        # The SAME randomized gate permutation build_race_scenario just used
-        # for the in-race lane_position frames -- callers need it too, for
-        # race_horse_data_array[].frame_order (the PRE-race gate lineup).
-        # Without this, frame_order defaults to plain array index (player
-        # always index 0 -> always "gate 1" before the race starts), while
-        # the animation itself correctly starts her in the random gate --
-        # live-reported as "always in gate 1, then randomly teleports to her
-        # actual gate" the moment the race animation kicks in.
         "gate_assignment": sim_result.get("gate_assignment"),
-        # The course's physical stall count; a field can be larger than this.
         "gate_count": course_entry_num,
-        # THE RAW EVENT STREAM, passed straight through. Not used to build the
-        # wire scenario (the SkillEvent list above is the filtered, re-indexed
-        # version that goes to the client) -- this is for callers that need to
-        # know what actually HAPPENED in the race: which skills each horse fired
-        # and when it was Rushed. team_stadium.py already reads the same stream
-        # off run_simulation directly for its PvP scoring; career races get it
-        # here, where two epithets need it ("Use at least 13 skills in a single
-        # race", and the win-while-Rushed family).
-        #
-        # Entries are {horseIndex, skillId, t, duration, isUnique}, indexed by
-        # the horses array above, and skillId is the non-numeric sentinel
-        # "kakari" for a Rushed episode rather than a real skill.
         "skill_events": sim_result.get("skillEvents") or [],
-        # Runners each horse passed over the final straight, indexed like
-        # `horses` (see race_runner._final_stretch_overtakes).
         "final_stretch_overtakes": sim_result.get("finalStretchOvertakes") or [],
     }

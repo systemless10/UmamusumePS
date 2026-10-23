@@ -1,0 +1,41 @@
+{
+ "title": "絶対将来使わないのに",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ！\n今日の数学って小テストあるんだっけ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "友人C",
+   "text": "いえーす。いつものマーク形式のやつ。\nちな、ミラ子の嫌いな点Pが出てくる単元ね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわー、まじか。\nい……いや、もうこうなったら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "サイコロえんぴつに賭ける！\nここぞでミラクル、起きるかもだし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "数学教師",
+   "text": "自己採点で赤点だった人は、\n次の定期テストまでにしっかり復習を――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "数学のテストでとんでもない点を\n取ってしまう、ヒシミラクルなのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

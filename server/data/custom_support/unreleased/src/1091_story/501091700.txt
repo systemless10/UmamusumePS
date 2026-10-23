@@ -1,0 +1,9 @@
+#title Sleep Deprived
+0 The day after Vivlos took a day off, while the two of us were having a meeting—
+1 Funyaah～～... I'm sleepy...
+1> Haven't you been sleeping? | Haven't you been sleeping?
+2 Mm～～... Yesterday I was helping a friend with fashion advice until late.
+3 ...I hope my advice gave her confidence...
+4 Sooo, I'm all tired～.
+5 Tore-cchi, lend me your lap as a pillow?
+6 ...I politely declined, while worrying about her lack of sleep.

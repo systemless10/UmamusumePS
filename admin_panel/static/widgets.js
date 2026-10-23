@@ -1,8 +1,6 @@
-// Shared UI pieces for the admin windows.
 
 import { REGION_NAME, esc, gameIcon, icon, store, userName } from "./core.js";
 
-// ------------------------------------------------------------ game constants
 export const APT_KEYS = ["turf", "dirt", "short", "mile", "middle", "long", "front", "pace", "late", "end"];
 export const APT_LABELS = ["Turf", "Dirt", "Sprint", "Mile", "Medium", "Long", "Front", "Pace", "Late", "End"];
 export const APT_FIELDS = ["proper_ground_turf", "proper_ground_dirt", "proper_distance_short", "proper_distance_mile",
@@ -24,9 +22,6 @@ export const stars = (n, max = 5) => `<span class="stars">${"★".repeat(Math.ma
 export const lbDiamonds = (lb) => `<span class="lb">${[0, 1, 2, 3].map((i) => `<i class="${i < lb ? "on" : ""}"></i>`).join("")}</span>`;
 export const opts = (pairs, sel) => pairs.map(([v, t]) => `<option value="${esc(v)}" ${String(v) === String(sel) ? "selected" : ""}>${esc(t)}</option>`).join("");
 
-// ------------------------------------------------------------ target picker
-// The account <select> in a window's title bar. It follows (and sets) the
-// global target, so every window always edits the same account.
 export function targetPicker(win) {
   const sel = document.createElement("select");
   sel.className = "compact";
@@ -36,7 +31,7 @@ export function targetPicker(win) {
     const cur = store.viewer;
     const known = list.some((u) => u.id === cur);
     sel.innerHTML = (known ? "" : `<option value="${esc(cur)}">${esc(cur || "…")}</option>`)
-      + list.map((u) => `<option value="${esc(u.id)}">${esc(userName(u))} · ${esc(u.id)}${u.default ? " ★" : ""}</option>`).join("");
+      + list.map((u) => `<option value="${esc(u.id)}">${esc(userName(u))} · ${esc(u.id)}${u.default ? " · default" : ""}</option>`).join("");
     sel.value = cur;
   };
   sel.addEventListener("change", () => store.setTarget(store.region, sel.value));
@@ -48,7 +43,6 @@ export function targetPicker(win) {
 
 export const regionTag = () => `<span class="pill">${REGION_NAME[store.region]}</span>`;
 
-// ------------------------------------------------------------ modal
 export function modal(win, html, { wide = false, onClose } = {}) {
   const el = document.createElement("div");
   el.className = "modal";
@@ -60,7 +54,6 @@ export function modal(win, html, { wide = false, onClose } = {}) {
   return { el, box: el.firstElementChild, close };
 }
 
-// A confirm / prompt in the window. Resolves the typed value (or true), or null.
 export function ask(win, { title, text = "", ok = "OK", danger = false, input = null, value = "", placeholder = "" }) {
   return new Promise((resolve) => {
     let done = false;
@@ -78,9 +71,6 @@ export function ask(win, { title, text = "", ok = "OK", danger = false, input = 
   });
 }
 
-// ------------------------------------------------------------ search picker
-// <div class="pick"> with an input and a dropdown of matches.
-// search(q) -> [{...}], row(item) -> html, pick(item).
 export function picker({ placeholder = "Search…", search, row, pick, width }) {
   const el = document.createElement("div");
   el.className = "pick";
@@ -113,11 +103,10 @@ export function picker({ placeholder = "Search…", search, row, pick, width }) 
   return el;
 }
 
-// Matchers over the region's catalogues.
 const has = (q, ...fields) => fields.some((f) => String(f ?? "").toLowerCase().includes(q));
 export const skillSearch = (skills) => (q) => skills.filter((s) => has(q, s.name, s.id));
 export const skillRow = (s) => `${gameIcon("skill", s.icon, "xs")}<span class="${s.rarity >= 2 ? "r2" : ""}">${esc(s.name)}</span>
-  <span class="faint">${s.rarity >= 3 ? "unique" : s.rarity === 2 ? "gold" : "white"} · ${s.id}</span>`;
+  <span class="faint">${SKILL_TIER(s)} · ${s.id}</span>`;
 export const umaSearch = (cat) => (q) => cat.umas.cards.filter((c) => has(q, c.name, c.title, c.id));
 export const umaRow = (c) => `${gameIcon("card", c.id, "xs")}<span>${esc(c.name)}</span><span class="faint">${esc(c.title)} · ${c.id}</span>`;
 export const supportSearch = (cat) => (q) => cat.supports.cards.filter((c) => has(q, c.name, c.title, c.id));
@@ -130,8 +119,6 @@ export const factorSearch = (factors) => (q) => {
 };
 export const factorRow = (f) => `<span class="spark kind-${f.kind}">${esc(f.name)}</span><span class="faint">${f.kind}</span>`;
 
-// ------------------------------------------------------------ selection
-// A Set of ids plus click / shift-click range selection over the shown order.
 export function selection() {
   const sel = new Set();
   let anchor = null;
@@ -140,7 +127,7 @@ export function selection() {
     click(id, order, e) {
       if (e.shiftKey && anchor !== null) {
         const a = order.indexOf(anchor), b = order.indexOf(id);
-        if (a >= 0 && b >= 0) {          // shift-click: select the whole range
+        if (a >= 0 && b >= 0) {
           for (let i = Math.min(a, b); i <= Math.max(a, b); i++) sel.add(order[i]);
           return;
         }
@@ -163,7 +150,6 @@ export function selectionBar(n, shown, total) {
     <button class="linkish" data-sel="invert">Invert</button>`;
 }
 
-// ------------------------------------------------------------ files
 export function download(name, data) {
   const blob = new Blob([typeof data === "string" ? data : JSON.stringify(data, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
@@ -191,3 +177,84 @@ export function pickFile(accept = ".json,application/json") {
 
 export const empty = (text, extra = "") => `<div class="empty empty-pad"><div>${text}</div>${extra}</div>`;
 export const noTarget = () => empty("Pick an account first.", `<button class="btn primary" data-open="users">${icon("users")} Users</button>`);
+
+export function tabbed(body, win, defs) {
+  body.classList.add("flush");
+  win.state.tab = defs.some((d) => d.id === win.state.tab) ? win.state.tab : defs[0].id;
+  body.innerHTML = `<div class="tabs tabbar">${defs.map((d) => `<button data-tab="${d.id}">${d.icon ? icon(d.icon) : ""}${esc(d.label)}</button>`).join("")}</div>
+    <div class="tab-panes"></div>`;
+  const panes = body.querySelector(".tab-panes");
+  const subs = new Map();
+  const show = (id) => {
+    win.state.tab = id;
+    win.save();
+    for (const b of body.querySelectorAll("[data-tab]")) b.classList.toggle("on", b.dataset.tab === id);
+    for (const [k, s] of subs) s.pane.hidden = k !== id;
+    if (!subs.has(id)) {
+      const def = defs.find((d) => d.id === id);
+      const pane = document.createElement("div");
+      pane.className = "win-body tab-pane";
+      panes.append(pane);
+      const sub = { kind: win.kind + ":" + id, el: win.el, body: pane, pane, offs: [],
+        state: win.state["t_" + id] ||= {}, save: () => win.save(), parent: win };
+      subs.set(id, sub);
+      sub.cleanup = def.mount(pane, sub);
+    } else subs.get(id).refresh?.();
+  };
+  body.querySelector(".tabbar").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-tab]");
+    if (b) show(b.dataset.tab);
+  });
+  win.reveal = (opts) => { if (opts?.tab && defs.some((d) => d.id === opts.tab)) show(opts.tab); subs.get(win.state.tab)?.reveal?.(opts); };
+  win.refresh = () => subs.get(win.state.tab)?.refresh?.();
+  win.beforeClose = async () => {
+    for (const s of subs.values()) if (s.beforeClose && !await s.beforeClose()) return false;
+    return true;
+  };
+  show(win.state.tab);
+  return () => { for (const s of subs.values()) { s.cleanup?.(); for (const off of s.offs) off(); } };
+}
+
+const SKILL_TIER = (s) => (s.rarity >= 6 ? "evolved" : s.rarity >= 3 ? "unique" : s.rarity === 2 ? "gold" : "white");
+export const SKILL_FILTERS = [["", "All", null], ["white", "White", (s) => SKILL_TIER(s) === "white"],
+  ["gold", "Gold", (s) => SKILL_TIER(s) === "gold"], ["unique", "Unique", (s) => SKILL_TIER(s) === "unique"], ["evolved", "Evolved", (s) => SKILL_TIER(s) === "evolved"]];
+export const skillTile = (s) => `${gameIcon("skill", s.icon, "sm")}<span class="bt-body"><span class="bt-head"><b class="ellipsis ${s.rarity >= 2 ? "r2" : ""}">${esc(s.name)}</b>
+  <span class="faint">${SKILL_TIER(s)}${s.cost ? ` · ${s.cost} SP` : ""} · ${s.id}</span></span><span class="bt-desc faint">${esc(s.desc || "")}</span></span>`;
+export const dot = (ok, label) => `<span class="sdot ${ok === true ? "ok" : ok === false ? "bad" : "warn"}"></span>${esc(label)}`;
+
+export function openBrowser(win, { title, items, filters = [], tile, isOn, toggle, onDone, limit = 300, detailed = false }) {
+  let q = "", f = filters[0]?.[0] ?? "", onlyOn = false;
+  const m = modal(win, `<div class="row section-row"><h3 class="grow">${esc(title)}</h3><span class="faint" data-bcount></span></div>
+    <div class="row wrap"><label class="search grow">${icon("search")}<input type="text" data-bq placeholder="Search…" spellcheck="false"></label>
+      <label class="check"><input type="checkbox" data-bon> chosen only</label></div>
+    ${filters.length ? `<div class="seg wrap" data-bf>${filters.map(([v, l]) => `<button type="button" data-v="${v}">${esc(l)}</button>`).join("")}</div>` : ""}
+    <div class="browse-grid ${detailed ? "detailed" : ""}" data-bgrid></div>
+    <div class="modal-foot"><span class="faint">Click to add or remove</span><span class="grow"></span><button class="btn primary sm" data-bdone>Done</button></div>`,
+    { wide: true, onClose: () => onDone?.() });
+  const grid = m.box.querySelector("[data-bgrid]");
+  let shown = [];
+  const draw = () => {
+    const fn = filters.find(([v]) => v === f)?.[2] || (() => true);
+    const ql = q.trim().toLowerCase();
+    const all = items.filter((it) => fn(it) && (!onlyOn || isOn(it)) && (!ql || `${it.name} ${it.id}`.toLowerCase().includes(ql)));
+    shown = all.slice(0, limit);
+    grid.innerHTML = shown.map((it, i) => `<button type="button" class="browse-tile ${isOn(it) ? "on" : ""}" data-i="${i}" title="${esc(it.name)} · ${it.id}">
+      ${tile(it)}<span class="browse-mark">${icon(isOn(it) ? "check" : "plus")}</span></button>`).join("") || empty("Nothing matches.");
+    m.box.querySelector("[data-bcount]").textContent = `${items.filter(isOn).length} chosen · ${all.length > limit ? `showing ${limit} of ${all.length}` : `${all.length} shown`}`;
+    for (const b of m.box.querySelectorAll("[data-bf] button")) b.classList.toggle("on", b.dataset.v === String(f));
+  };
+  m.box.querySelector("[data-bq]").addEventListener("input", (e) => { q = e.target.value; draw(); });
+  m.box.querySelector("[data-bon]").addEventListener("change", (e) => { onlyOn = e.target.checked; draw(); });
+  m.box.querySelector("[data-bf]")?.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { f = b.dataset.v; draw(); } });
+  grid.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-i]");
+    if (!b) return;
+    const it = shown[+b.dataset.i];
+    toggle(it, !isOn(it));
+    const scroll = grid.scrollTop; draw(); grid.scrollTop = scroll;
+  });
+  m.box.querySelector("[data-bdone]").onclick = () => m.close();
+  draw();
+  m.box.querySelector("[data-bq]").focus();
+  return m;
+}

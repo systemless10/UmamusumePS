@@ -1,0 +1,70 @@
+#title At Summer Camp (Year 2)
+0 To help Hishi Miracle feel her own effort, I decided to have her run every morning during the camp.
+1 (Tweeeet!)
+1> Good morning!
+2 Waaah, it's so early. It's only 8 o'clock! And today's a free day...
+3 I was gonna wake up around 11, grab the leftover rice balls from breakfast, and get started from there.
+3> ...Isn't that way too late?
+4 Hishi Miracle's plans were far more sluggish than I'd imagined...
+5 Hup, hup...
+6 Hah, so tiring. My body... doesn't feel warmed up at all yet...
+7 (Ring ring!)
+8 Whoa, Trainer, what's that?
+8> A bicycle for roadwork. | A bicycle for roadwork.
+9 Whaaat, so you're gonna follow me the whole time?
+10 Then I can't even sneak in a break!
+10> That's right, I won't let you. | Yep, I won't let you.
+11 If she rests, she won't feel like she's working as hard. This too was for Hishi Miracle's sake.
+12 Waaah, this is seriously rough. Where'd my summer go?
+13 With my friends! Swimming at the beach... Nice and slow! Going for a walk...
+14 With my friends! Swimming at the beach... Nice and slow! Going for a walk...
+15 Throughout the run, Hishi Miracle kept humming her desires as a song.
+15> You want to go to the beach or take a walk? | You want to go to the beach or take a walk?
+16 Of course I do! Sniffle sniffle...
+17 And while we're at it, a summer festival! Beach swimming, and a walk!
+17> I could let you, you know.
+18 Really?!
+19 Hishi Miracle stopped abruptly. I nearly crashed into her.
+20 You'll really let me? Beach swimming, a walk, the summer festival!
+20> Sure, we'll do a different menu tomorrow. | Sure, we'll do a different menu tomorrow.
+21 Tomorrow! It's a promise. So, which one will you let me do?
+22 This year's summer festival should be at the end of August. So let's put that on hold...
+23 A lively day at the beach, or a slow walk. Which should I let her do?
+23> A super slow walk | A super lively beach day
+24 Super slow... I feel like that's a little different from a normal walk, but...
+25 Okay. It's a promise.
+26 And the next day. Instead of running, I had her take a leisurely walk.
+27 Nngh, nnnnngh, mmmph...
+28 Trainer, there's no way you call this a walk while carrying this! How many kilos is it?!
+28> ...A lot.
+29 A lot... This is harder than running!
+29> In exchange, you can take it slow.
+30 Even if you hadn't said so, I can only walk slowly! Ugh...
+31 Hah, hah, hah... My arms feel like they're gonna fall off. When's the last time I worked this hard?
+32 Maybe not since I got the solo in the folk song "Shunsaku-bushi" at my kindergarten recital...
+32> You did great. | You did great.
+33 Ugh... Well, I guess I did get stronger thanks to it.
+34 By carrying an ultra-heavy box, Hishi Miracle became tougher in body and mind.
+35 Super lively... I feel like that's a little different from a normal beach day, but...
+36 Okay. It's a promise.
+37 And the next day. Instead of running, I made it a beach day, but...
+38 Hmhm hmm~ Hmhm hmhm hmm~♪
+38> You're not swimming? | You're not swimming?
+39 Well, actually, see... I super hate swimming. I'm so bad at it I practically drown, so, like...
+40 My favorite part of the beach is lying around on the sand. A soothing sand bath, y'know?
+41 Looking closely, there was sand stuck to her swimsuit. In that case...
+41> The only way to wash it off is to swim. | The only way to wash it off is to swim.
+42 Huh? Trainer, what's that in your hands?
+43 (Clang! Clang! Clang! Clang!)
+44 Eeeek, a can? What are you gonna do with that?
+44> Chase Hishi Miracle around until she swims.
+45 Eeek, I told you I'm super bad at swimming!
+46 (Clang! Clang! Clang! Clang!)
+47 Kyaaaaaaaaah!
+48 If she stayed on the beach all day, she'd slack off. I steeled my heart and chased Hishi Miracle into the sea.
+49 Wheeze, wheeze... I thought I was gonna die... Geez, Trainer...
+50 You were totally planning to make me train after all. So mean.
+50> You did great with the swimming. | You did great with the swimming.
+51 Ugh, well, if I didn't try, you'd clang at me.
+52 Well, I guess thanks to that, my nerves got a little tougher...
+53 And so, Hishi Miracle survived a beach day... that was really swim training in disguise.

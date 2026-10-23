@@ -1,0 +1,64 @@
+{
+ "title": "レース入着",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ、入着です。\n上々の結果なんじゃないでしょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "掲示板にのれると、やっぱり違いますね。\nわたしの番号、いつまでも眺めちゃいました。",
+   "choice_data_list": [
+    "いい走りだったぞ！",
+    "いい走りだったよ！",
+    "もっと上を目指すべきだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "掲示板にのれると、やっぱり違いますね。\nわたしの番号、いつまでも眺めちゃいました。",
+   "choice_data_list": [
+    "いい走りだったぞ！",
+    "いい走りだったよ！",
+    "もっと上を目指すべきだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい、わたしも今日の走りには\n満足しています。いい勝負できましたし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "次もこの調子でいけるといいんですが。\n……まあ、がんばるつもりです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もっと上……。たしかに、\nちょっと惜しかった、かも……？\nでも――",
+   "choice_data_list": [
+    "君なら1着を獲れる！",
+    "貴方なら1着を獲れる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……もう、トレーナーさんは\n相変わらずなんだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わかりました。\n次は1着、狙うだけなら自由ですもんね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

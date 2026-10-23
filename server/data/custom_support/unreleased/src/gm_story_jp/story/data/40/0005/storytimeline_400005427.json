@@ -1,0 +1,23 @@
+{
+ "title": "これからを駆ける者たちへ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『グランドマスターズ』を終えて、\n今日もシミュレーター内ではウマ娘と\nトレーナー、そして三女神の声が聞こえる――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘の祖と言われる三女神は、\nかつてのウマ娘とトレーナーの歴史を通し、\n今を走るウマ娘とトレーナーを支える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "やがて自分と<chrname>の歩みが\n伝え残り、語り継がれるように、\n思い切り走れと心の中で激励を送るのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,13 +1,3 @@
-"""
-Hand-editable runtime knobs, read from client_config.json next to the server
-package.
-
-Kept in its own module (rather than in main) so both the dispatcher and patch.py
-can read it without an import cycle. The file is re-read whenever its mtime
-changes, so edits take effect by relaunching the GAME -- no server restart. A
-missing or malformed file falls back to the caller's default and logs, never
-raising into a response.
-"""
 
 from __future__ import annotations
 
@@ -19,9 +9,6 @@ from . import region
 
 log = logging.getLogger("uma-server")
 
-# Global keeps its historical server/client_config.json; any other region reads
-# its own copy from its data dir, so no knob (servertime, resource_version,
-# testing overrides) is ever shared between regions.
 CONFIG_PATH = (
     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "client_config.json")
     if region.PROCESS_REGION == "global"
@@ -41,7 +28,7 @@ def load() -> dict:
                 _cache["data"] = json.load(fh) or {}
             log.info("client_config.json reloaded: %s",
                      {k: v for k, v in _cache["data"].items() if not k.startswith("_")})
-        except Exception:  # noqa: BLE001 - a bad hand-edit must not break responses
+        except Exception:
             log.exception("client_config.json unreadable; using built-in defaults")
             _cache["data"] = {}
         _cache["mtime"] = mtime
@@ -49,7 +36,6 @@ def load() -> dict:
 
 
 def get(key: str, default=None):
-    """Config value, or `default` when unset/null."""
     value = load().get(key)
     return default if value is None else value
 
@@ -63,8 +49,6 @@ def get_int(key: str, default: int) -> int:
 
 
 def get_float(key: str):
-    """Config value as a float, or None when unset/null/not a number. For the
-    career tuning multipliers, where None means the real formula decides."""
     value = load().get(key)
     if value is None:
         return None

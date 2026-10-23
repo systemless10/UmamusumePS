@@ -1,0 +1,23 @@
+{
+ "title": "有馬記念にむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "憧れのウマ娘たちが集う『有馬記念』。\nそこでヒシミラクルが語った夢は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "“夢がなくても勝つ”ことだった。\n大望もなく、立派でもない自分が\n勝つからこそ、夢を与えることができる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分の夢の代わりに、たくさんの\n小さな期待を背負って、ヒシミラクルは走る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

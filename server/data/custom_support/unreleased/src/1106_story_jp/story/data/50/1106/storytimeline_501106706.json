@@ -1,0 +1,289 @@
+{
+ "title": "空を泳ぐ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "出かけた帰り、ヒシミラクルは\n駅に用事があると言い出した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これから友だちと\nバブリーランドへ行くんですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それもタダで！\nって言うのもですね――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人A",
+   "text": "おめでとうございます！\n3等！　バブリーランド招待券でーす！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "招待券って、大当たりじゃん！\nおめでと～～～っ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "あ！　これ、何人か一緒に行けるみたいだし、\nミラ子も行こうよ、バブリーランド！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……で、他の友だちも誘って。\nみんなで楽しんでこようかと！",
+   "choice_data_list": [
+    "水泳苦手だったんじゃ……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "確かに泳ぐのは苦手ですけど……。\n泳がなくても、楽しむことはできますよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……って、なんですか、その顔。\n別に無理して付き合ってませんよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "友だちが、くじを当てて喜んでた。\n……わたしもそれが嬉しかったんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だいたい、友だちに合わせるなんて\n普通にするじゃないですか。わたしに\n合わせてくれてるときもあるだろうし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "普通の友だち付き合いって\nそういうものじゃないですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "あ――っと、お邪魔だった？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜ～んぜん。さっきまでトレーナーさんと\n出かけてたから、駅まで一緒に来ただけだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "ならさ、トレーナーさんも一緒にどうです？\nお出かけの続きってことで！",
+   "choice_data_list": [
+    "いや、みんなで楽しんできなよ",
+    "いや、みんなで楽しんできてよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "まあまあ、そう固いこと言わずに！\n大勢のほうが楽しいですって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふ、2人もこう言ってくれてますし。\n一緒に行きましょうよ、トレーナーさん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "断るような用事もないし、\nここは彼女たちの言葉に甘えて\nついて行くとしよう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "わ～おっ！\nここの流れるプール速そうじゃない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "さ～て、わたしはジュースでも飲んで\nくつろごうかな――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "いきなり休憩はないでしょ？\n遊ぼうよ。ほら、バレーとかどう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え……？\n2人とも、泳がないの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "ええ～、泳ぎたいの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうじゃないけど……せっかく\nプールに来たのに、泳がないのは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "ミラ子、泳ぐの苦手でしょ？\nプールに入らない遊びのほうがいいかなって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "みんなで来たんだから、\nみんなで楽しまないともったいないでしょ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "そうそう。仲間はずれになんてできないって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "2人とも…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふっ。そういうことなら！\nウォータースライダーに行きたいな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "え、大丈夫なの？\n泳がないにしても。結構、水浴びるよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "だったら、私たちが前後でカバーして滑ろ！\n少しは飛沫を防げるでしょ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "3人",
+   "text": "やっほぉ～～っ！！\nあはははははっ！！\nアッハハハハハ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ザッパーーーーン！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あぁ～、まだ鼻がツーンとする……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "大丈夫？　待ってて。\n温かい飲み物でも買って来るから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "ビックリしたー……ウォータースライダーで\n溺れかけるとは思わないじゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは……でも、あのスピードと浮遊感！\n癖になっちゃいそう！　滑れて楽しかった～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘A",
+   "text": "ああ、今日は楽しかったー！\nまたみんなで行こうね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うん！\n今度は浮き輪でも持って行こうかな～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ウマ娘B",
+   "text": "いや～、浮き輪でも飛沫はかかると思うよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "無理なく自然体でいられる友人……。\n3人の姿に、なんとも素敵な在り方だと、\n深く感じ入るのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あぁ、疲れた……でも、みんなで\n遊んだ後の疲労感は、好きなんだよね～。\nまた行きたいなぁ、バブリーランド。",
+   "choice_data_list": [
+    "次は水鉄砲でも持って行こうか",
+    "通ってたら、泳ぎが得意になったりして？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いいですね。それだったら水浴びもできて、\nプールで遊んでる感も出ますしね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今度行くときは絶対持って行こっと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいやいや、それって泳ぎの練習を\nするってことですよね！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それはいやです！　断固拒否～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

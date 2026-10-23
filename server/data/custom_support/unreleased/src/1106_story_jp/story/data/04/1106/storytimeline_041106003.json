@@ -1,0 +1,399 @@
+{
+ "title": "やる気出させてくれますか",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "えーと、明日の資源ごみ……雑誌はどれ捨てるんだっけ。\nこれは捨てる、温泉特集はとっとく……あと、これは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――大学のパンフかぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これは……まだ、一応……とっとこうかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "選抜レースを目指しての\nヒシミラクルとのトレーニングは、順調に進んでいた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よし、柔軟おわり。\nそれじゃ、今日ものんびり――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "びっくりしたぁ……\nあ～、なるほど。トップロードちゃんが走るのかぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "一足先にデビュー済みで、学内外問わず人気のある次世代のスター、\nナリタトップロードがコースへ出るところだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん、今日もかっこいー！　やっぱレベル違うよな～、\n同学年だしお喋りもしますけど、別世界の住人感ありますもん。",
+   "choice_data_list": [
+    "そうかなあ……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そ～ですよ～。だってトップロードちゃんは、ファンの人から\n『トゥインクル・シリーズで勝つ』ことを期待されてるでしょ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それって、めっちゃすごいことだと思いません？\nだって、デビューって自動的にできるもんじゃありませんし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "地方に行く子だっているし、進学する子だっているし、\nていうかそっちのほうが多いくらいで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もちろんわたしだって、\nいつも一緒にいる子たちだって……なんていうか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『レース1本でほんとにやってけるの？』っていう……\n『勝つ』よりずっと前のところで、それぞれ悩んでる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だからこそ、トップロードちゃんとか……クリスエスちゃんとか\nギムレットちゃんとか、『勝つのが目標』な子たちは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……なんか、違う世界の人みたいに見えるな～って……\n思ったりも、するんですよぉ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……というワケで、まだいまいちデビューの実感がない\nわたしなのでした～。ちゃんちゃん♪",
+   "choice_data_list": [
+    "（だから、契約に条件をつけたのか……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『選抜レースで勝たない限り、正式な契約は結ばない』……\n先日告げられた条件は、デビュー自体を白紙にもできる内容だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "デビュー後の世界に踏み出すことに怯える気持ちはわかる。\nしかし、ヒシミラクルというウマ娘は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『勝てる』と伝えた時、確かに喜んでいたはずなのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "すみません、併走相手の子が急用で来られなくなっちゃって……\nよければどなたか、一緒に走ってくれませんかっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "トップロードちゃんと併走ってこと……？\nじ、実力者と走れるいい機会じゃん。あんた行ってきなよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "いや無理無理無理！　あの子もう何回も重賞勝ってるんだよ！？\nデビュー前のあたしらと走っても、勝負になんないって……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トップロードちゃん、誰と走るんでしょうねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分がそこへ並ぶなんて微塵も思っていないような顔で、\nヒシミラクルがそんなことを言うものだから。",
+   "choice_data_list": [
+    "あの！！この子が走りますっ！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……え？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女の努力も、悩みも知った今だからこそ、\nそんなのは――なんだか悔しいと、思ったのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ミラ子ちゃん、ありがとうっ！\n一緒に走るの、なんだか久々ですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、あはは。力不足かもだけど、よろしく～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっとトレーナーさんっ……！\nなんで恥を晒させるようなことするんですかぁ……！",
+   "choice_data_list": [
+    "君なら大丈夫！",
+    "貴方なら大丈夫！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "な、なにを根拠に……！",
+   "choice_data_list": [
+    "君と彼女は、同じ世界に住んでる",
+    "貴方と彼女は、同じ世界に住んでる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……え～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……んなわけ、なくないですか～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルの強さを、彼女自身に知ってほしい。\nだが、ここで良い結果にならなければ元も子もない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "エンジンのかかるタイミングを早めるために、\n考え抜いた秘策もあった。これならば、きっと――！",
+   "choice_data_list": [
+    "いっけー！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でぇ……！？\nい、今走り出したとこなんですけど～！？",
+   "choice_data_list": [
+    "いけ！頑張れ！できる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（いやいや、こんなタイミングでペース上げたって\nのちのちヘバって笑いものになるのがオチですって……）",
+   "choice_data_list": [
+    "ヒシミラクルなら大丈夫！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（いや無理だって……）",
+   "choice_data_list": [
+    "よっ日本一！ポテンシャルの鬼！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（恥ずかしいって……）",
+   "choice_data_list": [
+    "粘りの天才！未来の三冠ウマ娘！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そっ……そこまで言うかぁ～……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "秘策……それは、とにかくグイグイ褒めておだてて押しまくること。\nそう、つまり――",
+   "choice_data_list": [
+    "（期待を、伝えること！！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はあっ、はあっ……。",
+   "choice_data_list": [
+    "もう1回、スパートかけて！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（も、もう1回……！？）",
+   "choice_data_list": [
+    "ヒシミラクルなら、できる！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あ～もう、しょうがないなぁ～っ……！！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "……っ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（あれっ、意外に行ける……いやさすがにもうムリかも～！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はあっ……はあっ……あれ……？\nなんか……勝負になった……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "お疲れさまです、いい併走でしたねっ！\nやっぱりミラ子ちゃん、強いです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わ……あ、いやあ～、そうかなぁ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "そうですよ！　本当、いいトレーニングになりました。\nまたぜひよろしくお願いします！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……。",
+   "choice_data_list": [
+    "その通り！！ヒシミラクルは強い！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わあびっくりしたあ！？　……いやぁ～……\n今日は作戦がうまくハマっただけで、次もこう行くとは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは謙遜しているが……たったあれだけの打ち合わせで\nここまでやれたのは、彼女自身の力のおかげだ。",
+   "choice_data_list": [
+    "『努力の成果』ってやつだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "別に、そこまで必死に努力してたわけじゃないですし……。",
+   "choice_data_list": [
+    "そんなことない！頑張ってた！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうですかね……\nあ～！　いや～ほら～またですよ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "さっきの併走も、トレーナーさんにしつこく言われて\nやっとやる気が出たんですよぉ。そのくらいやる気がなくって――",
+   "choice_data_list": [
+    "じゃあ、俺が毎回しつこく言うよ！",
+    "じゃあ、私が毎回しつこく言うよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えぇ～……？\nわたし、そこまでしてもらうほどのウマ娘じゃ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "首を横に振る。\n少なくとも自分は、トゥインクル・シリーズで――",
+   "choice_data_list": [
+    "君が勝つって、信じてるから",
+    "貴方が勝つって、信じてるから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……んんん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……そっか。……ほんと、なんですねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

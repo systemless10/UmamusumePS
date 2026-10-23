@@ -1,0 +1,31 @@
+{
+ "title": "クレーンゲーム大成功！",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "すごいです！　こんなにたくさん！\nまさにプロ級！",
+   "choice_data_list": [
+    "全部あげるよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "本当ですか！？\nありがとうございます～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ……。同じクラスの持ってない子に、\nお裾分けしよっと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――大満足の結果だった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

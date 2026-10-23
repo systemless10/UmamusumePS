@@ -1,0 +1,8186 @@
+{
+ "name": "skill_evolution",
+ "tables": {
+  "skill_data": [],
+  "text_data": [],
+  "single_mode_skill_need_point": [],
+  "skill_upgrade_description": [
+   {
+    "id": 100101111,
+    "card_id": 100101,
+    "rank": 3,
+    "skill_id": 100101111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100101211,
+    "card_id": 100101,
+    "rank": 5,
+    "skill_id": 100101211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100102111,
+    "card_id": 100102,
+    "rank": 3,
+    "skill_id": 100102111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100102211,
+    "card_id": 100102,
+    "rank": 5,
+    "skill_id": 100102211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100103111,
+    "card_id": 100103,
+    "rank": 3,
+    "skill_id": 100103111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100103211,
+    "card_id": 100103,
+    "rank": 5,
+    "skill_id": 100103211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100201111,
+    "card_id": 100201,
+    "rank": 3,
+    "skill_id": 100201111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100201211,
+    "card_id": 100201,
+    "rank": 5,
+    "skill_id": 100201211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100202111,
+    "card_id": 100202,
+    "rank": 3,
+    "skill_id": 100202111,
+    "start_date": 1690772400
+   },
+   {
+    "id": 100202211,
+    "card_id": 100202,
+    "rank": 5,
+    "skill_id": 100202211,
+    "start_date": 1690772400
+   },
+   {
+    "id": 100301111,
+    "card_id": 100301,
+    "rank": 3,
+    "skill_id": 100301111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100301211,
+    "card_id": 100301,
+    "rank": 5,
+    "skill_id": 100301211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100302111,
+    "card_id": 100302,
+    "rank": 3,
+    "skill_id": 100302111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100302211,
+    "card_id": 100302,
+    "rank": 5,
+    "skill_id": 100302211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100401111,
+    "card_id": 100401,
+    "rank": 3,
+    "skill_id": 100401111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100401211,
+    "card_id": 100401,
+    "rank": 5,
+    "skill_id": 100401211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100402111,
+    "card_id": 100402,
+    "rank": 3,
+    "skill_id": 100402111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100402211,
+    "card_id": 100402,
+    "rank": 5,
+    "skill_id": 100402211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100501111,
+    "card_id": 100501,
+    "rank": 3,
+    "skill_id": 100501111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100501211,
+    "card_id": 100501,
+    "rank": 5,
+    "skill_id": 100501211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100502111,
+    "card_id": 100502,
+    "rank": 3,
+    "skill_id": 100502111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100502211,
+    "card_id": 100502,
+    "rank": 5,
+    "skill_id": 100502211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100601111,
+    "card_id": 100601,
+    "rank": 3,
+    "skill_id": 100601111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100601211,
+    "card_id": 100601,
+    "rank": 5,
+    "skill_id": 100601211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100602111,
+    "card_id": 100602,
+    "rank": 3,
+    "skill_id": 100602111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100602211,
+    "card_id": 100602,
+    "rank": 5,
+    "skill_id": 100602211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100701111,
+    "card_id": 100701,
+    "rank": 3,
+    "skill_id": 100701111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100701211,
+    "card_id": 100701,
+    "rank": 5,
+    "skill_id": 100701211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100702111,
+    "card_id": 100702,
+    "rank": 3,
+    "skill_id": 100702111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100702211,
+    "card_id": 100702,
+    "rank": 5,
+    "skill_id": 100702211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100801111,
+    "card_id": 100801,
+    "rank": 3,
+    "skill_id": 100801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100801211,
+    "card_id": 100801,
+    "rank": 5,
+    "skill_id": 100801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100802111,
+    "card_id": 100802,
+    "rank": 3,
+    "skill_id": 100802111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100802211,
+    "card_id": 100802,
+    "rank": 5,
+    "skill_id": 100802211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100901111,
+    "card_id": 100901,
+    "rank": 3,
+    "skill_id": 100901111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100901211,
+    "card_id": 100901,
+    "rank": 5,
+    "skill_id": 100901211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100902111,
+    "card_id": 100902,
+    "rank": 3,
+    "skill_id": 100902111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 100902211,
+    "card_id": 100902,
+    "rank": 5,
+    "skill_id": 100902211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101001111,
+    "card_id": 101001,
+    "rank": 3,
+    "skill_id": 101001111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101001211,
+    "card_id": 101001,
+    "rank": 5,
+    "skill_id": 101001211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101002111,
+    "card_id": 101002,
+    "rank": 3,
+    "skill_id": 101002111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101002211,
+    "card_id": 101002,
+    "rank": 5,
+    "skill_id": 101002211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101101111,
+    "card_id": 101101,
+    "rank": 3,
+    "skill_id": 101101111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101101211,
+    "card_id": 101101,
+    "rank": 5,
+    "skill_id": 101101211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101102111,
+    "card_id": 101102,
+    "rank": 3,
+    "skill_id": 101102111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101102211,
+    "card_id": 101102,
+    "rank": 5,
+    "skill_id": 101102211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101201111,
+    "card_id": 101201,
+    "rank": 3,
+    "skill_id": 101201111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101201211,
+    "card_id": 101201,
+    "rank": 5,
+    "skill_id": 101201211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101202111,
+    "card_id": 101202,
+    "rank": 3,
+    "skill_id": 101202111,
+    "start_date": 1685329200
+   },
+   {
+    "id": 101202211,
+    "card_id": 101202,
+    "rank": 5,
+    "skill_id": 101202211,
+    "start_date": 1685329200
+   },
+   {
+    "id": 101301111,
+    "card_id": 101301,
+    "rank": 3,
+    "skill_id": 101301111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101301211,
+    "card_id": 101301,
+    "rank": 5,
+    "skill_id": 101301211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101302111,
+    "card_id": 101302,
+    "rank": 3,
+    "skill_id": 101302111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101302211,
+    "card_id": 101302,
+    "rank": 5,
+    "skill_id": 101302211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101303111,
+    "card_id": 101303,
+    "rank": 3,
+    "skill_id": 101303111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101303211,
+    "card_id": 101303,
+    "rank": 5,
+    "skill_id": 101303211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101401111,
+    "card_id": 101401,
+    "rank": 3,
+    "skill_id": 101401111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101401211,
+    "card_id": 101401,
+    "rank": 5,
+    "skill_id": 101401211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101402111,
+    "card_id": 101402,
+    "rank": 3,
+    "skill_id": 101402111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101402211,
+    "card_id": 101402,
+    "rank": 5,
+    "skill_id": 101402211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101501111,
+    "card_id": 101501,
+    "rank": 3,
+    "skill_id": 101501111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101501211,
+    "card_id": 101501,
+    "rank": 5,
+    "skill_id": 101501211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101502111,
+    "card_id": 101502,
+    "rank": 3,
+    "skill_id": 101502111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101502211,
+    "card_id": 101502,
+    "rank": 5,
+    "skill_id": 101502211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101601111,
+    "card_id": 101601,
+    "rank": 3,
+    "skill_id": 101601111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101601211,
+    "card_id": 101601,
+    "rank": 5,
+    "skill_id": 101601211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101602111,
+    "card_id": 101602,
+    "rank": 3,
+    "skill_id": 101602111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101602211,
+    "card_id": 101602,
+    "rank": 5,
+    "skill_id": 101602211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101701111,
+    "card_id": 101701,
+    "rank": 3,
+    "skill_id": 101701111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101701211,
+    "card_id": 101701,
+    "rank": 5,
+    "skill_id": 101701211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101702111,
+    "card_id": 101702,
+    "rank": 3,
+    "skill_id": 101702111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101702211,
+    "card_id": 101702,
+    "rank": 5,
+    "skill_id": 101702211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101801111,
+    "card_id": 101801,
+    "rank": 3,
+    "skill_id": 101801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101801211,
+    "card_id": 101801,
+    "rank": 5,
+    "skill_id": 101801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101802111,
+    "card_id": 101802,
+    "rank": 3,
+    "skill_id": 101802111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101802211,
+    "card_id": 101802,
+    "rank": 5,
+    "skill_id": 101802211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101901111,
+    "card_id": 101901,
+    "rank": 3,
+    "skill_id": 101901111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101901211,
+    "card_id": 101901,
+    "rank": 5,
+    "skill_id": 101901211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101902111,
+    "card_id": 101902,
+    "rank": 3,
+    "skill_id": 101902111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 101902211,
+    "card_id": 101902,
+    "rank": 5,
+    "skill_id": 101902211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102001111,
+    "card_id": 102001,
+    "rank": 3,
+    "skill_id": 102001111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102001211,
+    "card_id": 102001,
+    "rank": 5,
+    "skill_id": 102001211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102002111,
+    "card_id": 102002,
+    "rank": 3,
+    "skill_id": 102002111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102002211,
+    "card_id": 102002,
+    "rank": 5,
+    "skill_id": 102002211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102101111,
+    "card_id": 102101,
+    "rank": 3,
+    "skill_id": 102101111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102101211,
+    "card_id": 102101,
+    "rank": 5,
+    "skill_id": 102101211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102102111,
+    "card_id": 102102,
+    "rank": 3,
+    "skill_id": 102102111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102102211,
+    "card_id": 102102,
+    "rank": 5,
+    "skill_id": 102102211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102201111,
+    "card_id": 102201,
+    "rank": 3,
+    "skill_id": 102201111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102201211,
+    "card_id": 102201,
+    "rank": 5,
+    "skill_id": 102201211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102202111,
+    "card_id": 102202,
+    "rank": 3,
+    "skill_id": 102202111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102202211,
+    "card_id": 102202,
+    "rank": 5,
+    "skill_id": 102202211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102301111,
+    "card_id": 102301,
+    "rank": 3,
+    "skill_id": 102301111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102301211,
+    "card_id": 102301,
+    "rank": 5,
+    "skill_id": 102301211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102302111,
+    "card_id": 102302,
+    "rank": 3,
+    "skill_id": 102302111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102302211,
+    "card_id": 102302,
+    "rank": 5,
+    "skill_id": 102302211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102401111,
+    "card_id": 102401,
+    "rank": 3,
+    "skill_id": 102401111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102401211,
+    "card_id": 102401,
+    "rank": 5,
+    "skill_id": 102401211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102402111,
+    "card_id": 102402,
+    "rank": 3,
+    "skill_id": 102402111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102402211,
+    "card_id": 102402,
+    "rank": 5,
+    "skill_id": 102402211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102501111,
+    "card_id": 102501,
+    "rank": 3,
+    "skill_id": 102501111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102501211,
+    "card_id": 102501,
+    "rank": 5,
+    "skill_id": 102501211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102601111,
+    "card_id": 102601,
+    "rank": 3,
+    "skill_id": 102601111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102601211,
+    "card_id": 102601,
+    "rank": 5,
+    "skill_id": 102601211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102602111,
+    "card_id": 102602,
+    "rank": 3,
+    "skill_id": 102602111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102602211,
+    "card_id": 102602,
+    "rank": 5,
+    "skill_id": 102602211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102701111,
+    "card_id": 102701,
+    "rank": 3,
+    "skill_id": 102701111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102701211,
+    "card_id": 102701,
+    "rank": 5,
+    "skill_id": 102701211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102702111,
+    "card_id": 102702,
+    "rank": 3,
+    "skill_id": 102702111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102702211,
+    "card_id": 102702,
+    "rank": 5,
+    "skill_id": 102702211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102801111,
+    "card_id": 102801,
+    "rank": 3,
+    "skill_id": 102801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102801211,
+    "card_id": 102801,
+    "rank": 5,
+    "skill_id": 102801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102901111,
+    "card_id": 102901,
+    "rank": 3,
+    "skill_id": 102901111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 102901211,
+    "card_id": 102901,
+    "rank": 5,
+    "skill_id": 102901211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103001111,
+    "card_id": 103001,
+    "rank": 3,
+    "skill_id": 103001111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103001211,
+    "card_id": 103001,
+    "rank": 5,
+    "skill_id": 103001211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103002111,
+    "card_id": 103002,
+    "rank": 3,
+    "skill_id": 103002111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103002211,
+    "card_id": 103002,
+    "rank": 5,
+    "skill_id": 103002211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103101111,
+    "card_id": 103101,
+    "rank": 3,
+    "skill_id": 103101111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103101211,
+    "card_id": 103101,
+    "rank": 5,
+    "skill_id": 103101211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103102111,
+    "card_id": 103102,
+    "rank": 3,
+    "skill_id": 103102111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103102211,
+    "card_id": 103102,
+    "rank": 5,
+    "skill_id": 103102211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103201111,
+    "card_id": 103201,
+    "rank": 3,
+    "skill_id": 103201111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103201211,
+    "card_id": 103201,
+    "rank": 5,
+    "skill_id": 103201211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103202111,
+    "card_id": 103202,
+    "rank": 3,
+    "skill_id": 103202111,
+    "start_date": 1690772400
+   },
+   {
+    "id": 103202211,
+    "card_id": 103202,
+    "rank": 5,
+    "skill_id": 103202211,
+    "start_date": 1690772400
+   },
+   {
+    "id": 103301111,
+    "card_id": 103301,
+    "rank": 3,
+    "skill_id": 103301111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103301211,
+    "card_id": 103301,
+    "rank": 5,
+    "skill_id": 103301211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103401111,
+    "card_id": 103401,
+    "rank": 3,
+    "skill_id": 103401111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103401211,
+    "card_id": 103401,
+    "rank": 5,
+    "skill_id": 103401211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103402111,
+    "card_id": 103402,
+    "rank": 3,
+    "skill_id": 103402111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103402211,
+    "card_id": 103402,
+    "rank": 5,
+    "skill_id": 103402211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103501111,
+    "card_id": 103501,
+    "rank": 3,
+    "skill_id": 103501111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103501211,
+    "card_id": 103501,
+    "rank": 5,
+    "skill_id": 103501211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103502111,
+    "card_id": 103502,
+    "rank": 3,
+    "skill_id": 103502111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103502211,
+    "card_id": 103502,
+    "rank": 5,
+    "skill_id": 103502211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103601111,
+    "card_id": 103601,
+    "rank": 3,
+    "skill_id": 103601111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103601211,
+    "card_id": 103601,
+    "rank": 5,
+    "skill_id": 103601211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103701111,
+    "card_id": 103701,
+    "rank": 3,
+    "skill_id": 103701111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103701211,
+    "card_id": 103701,
+    "rank": 5,
+    "skill_id": 103701211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103702111,
+    "card_id": 103702,
+    "rank": 3,
+    "skill_id": 103702111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103702211,
+    "card_id": 103702,
+    "rank": 5,
+    "skill_id": 103702211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103801111,
+    "card_id": 103801,
+    "rank": 3,
+    "skill_id": 103801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103801211,
+    "card_id": 103801,
+    "rank": 5,
+    "skill_id": 103801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103802111,
+    "card_id": 103802,
+    "rank": 3,
+    "skill_id": 103802111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103802211,
+    "card_id": 103802,
+    "rank": 5,
+    "skill_id": 103802211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103901111,
+    "card_id": 103901,
+    "rank": 3,
+    "skill_id": 103901111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 103901211,
+    "card_id": 103901,
+    "rank": 5,
+    "skill_id": 103901211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104001111,
+    "card_id": 104001,
+    "rank": 3,
+    "skill_id": 104001111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104001211,
+    "card_id": 104001,
+    "rank": 5,
+    "skill_id": 104001211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104002111,
+    "card_id": 104002,
+    "rank": 3,
+    "skill_id": 104002111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104002211,
+    "card_id": 104002,
+    "rank": 5,
+    "skill_id": 104002211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104101111,
+    "card_id": 104101,
+    "rank": 3,
+    "skill_id": 104101111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104101211,
+    "card_id": 104101,
+    "rank": 5,
+    "skill_id": 104101211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104102111,
+    "card_id": 104102,
+    "rank": 3,
+    "skill_id": 104102111,
+    "start_date": 1682650800
+   },
+   {
+    "id": 104102211,
+    "card_id": 104102,
+    "rank": 5,
+    "skill_id": 104102211,
+    "start_date": 1682650800
+   },
+   {
+    "id": 104201111,
+    "card_id": 104201,
+    "rank": 3,
+    "skill_id": 104201111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104201211,
+    "card_id": 104201,
+    "rank": 5,
+    "skill_id": 104201211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104301111,
+    "card_id": 104301,
+    "rank": 3,
+    "skill_id": 104301111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104301211,
+    "card_id": 104301,
+    "rank": 5,
+    "skill_id": 104301211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104401111,
+    "card_id": 104401,
+    "rank": 3,
+    "skill_id": 104401111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104401211,
+    "card_id": 104401,
+    "rank": 5,
+    "skill_id": 104401211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104501111,
+    "card_id": 104501,
+    "rank": 3,
+    "skill_id": 104501111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104501211,
+    "card_id": 104501,
+    "rank": 5,
+    "skill_id": 104501211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104502111,
+    "card_id": 104502,
+    "rank": 3,
+    "skill_id": 104502111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104502211,
+    "card_id": 104502,
+    "rank": 5,
+    "skill_id": 104502211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104601111,
+    "card_id": 104601,
+    "rank": 3,
+    "skill_id": 104601111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104601211,
+    "card_id": 104601,
+    "rank": 5,
+    "skill_id": 104601211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104602111,
+    "card_id": 104602,
+    "rank": 3,
+    "skill_id": 104602111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104602211,
+    "card_id": 104602,
+    "rank": 5,
+    "skill_id": 104602211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104701111,
+    "card_id": 104701,
+    "rank": 3,
+    "skill_id": 104701111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104701211,
+    "card_id": 104701,
+    "rank": 5,
+    "skill_id": 104701211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104801111,
+    "card_id": 104801,
+    "rank": 3,
+    "skill_id": 104801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104801211,
+    "card_id": 104801,
+    "rank": 5,
+    "skill_id": 104801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104802111,
+    "card_id": 104802,
+    "rank": 3,
+    "skill_id": 104802111,
+    "start_date": 1688007600
+   },
+   {
+    "id": 104802211,
+    "card_id": 104802,
+    "rank": 5,
+    "skill_id": 104802211,
+    "start_date": 1688007600
+   },
+   {
+    "id": 104901111,
+    "card_id": 104901,
+    "rank": 3,
+    "skill_id": 104901111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 104901211,
+    "card_id": 104901,
+    "rank": 5,
+    "skill_id": 104901211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105001111,
+    "card_id": 105001,
+    "rank": 3,
+    "skill_id": 105001111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105001211,
+    "card_id": 105001,
+    "rank": 5,
+    "skill_id": 105001211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105002111,
+    "card_id": 105002,
+    "rank": 3,
+    "skill_id": 105002111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105002211,
+    "card_id": 105002,
+    "rank": 5,
+    "skill_id": 105002211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105101111,
+    "card_id": 105101,
+    "rank": 3,
+    "skill_id": 105101111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105101211,
+    "card_id": 105101,
+    "rank": 5,
+    "skill_id": 105101211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105102111,
+    "card_id": 105102,
+    "rank": 3,
+    "skill_id": 105102111,
+    "start_date": 1685329200
+   },
+   {
+    "id": 105102211,
+    "card_id": 105102,
+    "rank": 5,
+    "skill_id": 105102211,
+    "start_date": 1685329200
+   },
+   {
+    "id": 105201111,
+    "card_id": 105201,
+    "rank": 3,
+    "skill_id": 105201111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105201211,
+    "card_id": 105201,
+    "rank": 5,
+    "skill_id": 105201211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105202111,
+    "card_id": 105202,
+    "rank": 3,
+    "skill_id": 105202111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105202211,
+    "card_id": 105202,
+    "rank": 5,
+    "skill_id": 105202211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105301111,
+    "card_id": 105301,
+    "rank": 3,
+    "skill_id": 105301111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105301211,
+    "card_id": 105301,
+    "rank": 5,
+    "skill_id": 105301211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105302111,
+    "card_id": 105302,
+    "rank": 3,
+    "skill_id": 105302111,
+    "start_date": 1688007600
+   },
+   {
+    "id": 105302211,
+    "card_id": 105302,
+    "rank": 5,
+    "skill_id": 105302211,
+    "start_date": 1688007600
+   },
+   {
+    "id": 105501111,
+    "card_id": 105501,
+    "rank": 3,
+    "skill_id": 105501111,
+    "start_date": 1687143600
+   },
+   {
+    "id": 105501211,
+    "card_id": 105501,
+    "rank": 5,
+    "skill_id": 105501211,
+    "start_date": 1687143600
+   },
+   {
+    "id": 105601111,
+    "card_id": 105601,
+    "rank": 3,
+    "skill_id": 105601111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105601211,
+    "card_id": 105601,
+    "rank": 5,
+    "skill_id": 105601211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105602111,
+    "card_id": 105602,
+    "rank": 3,
+    "skill_id": 105602111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105602211,
+    "card_id": 105602,
+    "rank": 5,
+    "skill_id": 105602211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105701111,
+    "card_id": 105701,
+    "rank": 3,
+    "skill_id": 105701111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105701211,
+    "card_id": 105701,
+    "rank": 5,
+    "skill_id": 105701211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105801111,
+    "card_id": 105801,
+    "rank": 3,
+    "skill_id": 105801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105801211,
+    "card_id": 105801,
+    "rank": 5,
+    "skill_id": 105801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105802111,
+    "card_id": 105802,
+    "rank": 3,
+    "skill_id": 105802111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105802211,
+    "card_id": 105802,
+    "rank": 5,
+    "skill_id": 105802211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105901111,
+    "card_id": 105901,
+    "rank": 3,
+    "skill_id": 105901111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105901211,
+    "card_id": 105901,
+    "rank": 5,
+    "skill_id": 105901211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105902111,
+    "card_id": 105902,
+    "rank": 3,
+    "skill_id": 105902111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 105902211,
+    "card_id": 105902,
+    "rank": 5,
+    "skill_id": 105902211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106001111,
+    "card_id": 106001,
+    "rank": 3,
+    "skill_id": 106001111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106001211,
+    "card_id": 106001,
+    "rank": 5,
+    "skill_id": 106001211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106002111,
+    "card_id": 106002,
+    "rank": 3,
+    "skill_id": 106002111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106002211,
+    "card_id": 106002,
+    "rank": 5,
+    "skill_id": 106002211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106101111,
+    "card_id": 106101,
+    "rank": 3,
+    "skill_id": 106101111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106101211,
+    "card_id": 106101,
+    "rank": 5,
+    "skill_id": 106101211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106102111,
+    "card_id": 106102,
+    "rank": 3,
+    "skill_id": 106102111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106102211,
+    "card_id": 106102,
+    "rank": 5,
+    "skill_id": 106102211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106201111,
+    "card_id": 106201,
+    "rank": 3,
+    "skill_id": 106201111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106201211,
+    "card_id": 106201,
+    "rank": 5,
+    "skill_id": 106201211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106202111,
+    "card_id": 106202,
+    "rank": 3,
+    "skill_id": 106202111,
+    "start_date": 1682650800
+   },
+   {
+    "id": 106202211,
+    "card_id": 106202,
+    "rank": 5,
+    "skill_id": 106202211,
+    "start_date": 1682650800
+   },
+   {
+    "id": 106401111,
+    "card_id": 106401,
+    "rank": 3,
+    "skill_id": 106401111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106401211,
+    "card_id": 106401,
+    "rank": 5,
+    "skill_id": 106401211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106501111,
+    "card_id": 106501,
+    "rank": 3,
+    "skill_id": 106501111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106501211,
+    "card_id": 106501,
+    "rank": 5,
+    "skill_id": 106501211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106601111,
+    "card_id": 106601,
+    "rank": 3,
+    "skill_id": 106601111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106601211,
+    "card_id": 106601,
+    "rank": 5,
+    "skill_id": 106601211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106701111,
+    "card_id": 106701,
+    "rank": 3,
+    "skill_id": 106701111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106701211,
+    "card_id": 106701,
+    "rank": 5,
+    "skill_id": 106701211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106702111,
+    "card_id": 106702,
+    "rank": 3,
+    "skill_id": 106702111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106702211,
+    "card_id": 106702,
+    "rank": 5,
+    "skill_id": 106702211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106801111,
+    "card_id": 106801,
+    "rank": 3,
+    "skill_id": 106801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106801211,
+    "card_id": 106801,
+    "rank": 5,
+    "skill_id": 106801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106802111,
+    "card_id": 106802,
+    "rank": 3,
+    "skill_id": 106802111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106802211,
+    "card_id": 106802,
+    "rank": 5,
+    "skill_id": 106802211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106901111,
+    "card_id": 106901,
+    "rank": 3,
+    "skill_id": 106901111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106901211,
+    "card_id": 106901,
+    "rank": 5,
+    "skill_id": 106901211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 106902111,
+    "card_id": 106902,
+    "rank": 3,
+    "skill_id": 106902111,
+    "start_date": 1680058800
+   },
+   {
+    "id": 106902211,
+    "card_id": 106902,
+    "rank": 5,
+    "skill_id": 106902211,
+    "start_date": 1680058800
+   },
+   {
+    "id": 107001111,
+    "card_id": 107001,
+    "rank": 3,
+    "skill_id": 107001111,
+    "start_date": 1689908400
+   },
+   {
+    "id": 107001211,
+    "card_id": 107001,
+    "rank": 5,
+    "skill_id": 107001211,
+    "start_date": 1689908400
+   },
+   {
+    "id": 107101111,
+    "card_id": 107101,
+    "rank": 3,
+    "skill_id": 107101111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 107101211,
+    "card_id": 107101,
+    "rank": 5,
+    "skill_id": 107101211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 107102111,
+    "card_id": 107102,
+    "rank": 3,
+    "skill_id": 107102111,
+    "start_date": 1680058800
+   },
+   {
+    "id": 107102211,
+    "card_id": 107102,
+    "rank": 5,
+    "skill_id": 107102211,
+    "start_date": 1680058800
+   },
+   {
+    "id": 107201111,
+    "card_id": 107201,
+    "rank": 3,
+    "skill_id": 107201111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 107201211,
+    "card_id": 107201,
+    "rank": 5,
+    "skill_id": 107201211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 107401111,
+    "card_id": 107401,
+    "rank": 3,
+    "skill_id": 107401111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 107401211,
+    "card_id": 107401,
+    "rank": 5,
+    "skill_id": 107401211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 107601111,
+    "card_id": 107601,
+    "rank": 3,
+    "skill_id": 107601111,
+    "start_date": 1681095600
+   },
+   {
+    "id": 107601211,
+    "card_id": 107601,
+    "rank": 5,
+    "skill_id": 107601211,
+    "start_date": 1681095600
+   },
+   {
+    "id": 107801111,
+    "card_id": 107801,
+    "rank": 3,
+    "skill_id": 107801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 107801211,
+    "card_id": 107801,
+    "rank": 5,
+    "skill_id": 107801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 108301111,
+    "card_id": 108301,
+    "rank": 3,
+    "skill_id": 108301111,
+    "start_date": 1679281200
+   },
+   {
+    "id": 108301211,
+    "card_id": 108301,
+    "rank": 5,
+    "skill_id": 108301211,
+    "start_date": 1679281200
+   },
+   {
+    "id": 108401111,
+    "card_id": 108401,
+    "rank": 3,
+    "skill_id": 108401111,
+    "start_date": 1684465200
+   },
+   {
+    "id": 108401211,
+    "card_id": 108401,
+    "rank": 5,
+    "skill_id": 108401211,
+    "start_date": 1684465200
+   },
+   {
+    "id": 108501111,
+    "card_id": 108501,
+    "rank": 3,
+    "skill_id": 108501111,
+    "start_date": 1678417200
+   },
+   {
+    "id": 108501211,
+    "card_id": 108501,
+    "rank": 5,
+    "skill_id": 108501211,
+    "start_date": 1678417200
+   },
+   {
+    "id": 108701111,
+    "card_id": 108701,
+    "rank": 3,
+    "skill_id": 108701111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 108701211,
+    "card_id": 108701,
+    "rank": 5,
+    "skill_id": 108701211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 109801111,
+    "card_id": 109801,
+    "rank": 3,
+    "skill_id": 109801111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 109801211,
+    "card_id": 109801,
+    "rank": 5,
+    "skill_id": 109801211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 109901111,
+    "card_id": 109901,
+    "rank": 3,
+    "skill_id": 109901111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 109901211,
+    "card_id": 109901,
+    "rank": 5,
+    "skill_id": 109901211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 110001111,
+    "card_id": 110001,
+    "rank": 3,
+    "skill_id": 110001111,
+    "start_date": 1677207600
+   },
+   {
+    "id": 110001211,
+    "card_id": 110001,
+    "rank": 5,
+    "skill_id": 110001211,
+    "start_date": 1677207600
+   },
+   {
+    "id": 110401111,
+    "card_id": 110401,
+    "rank": 3,
+    "skill_id": 110401111,
+    "start_date": 1688958000
+   },
+   {
+    "id": 110401211,
+    "card_id": 110401,
+    "rank": 5,
+    "skill_id": 110401211,
+    "start_date": 1688958000
+   },
+   {
+    "id": 110501111,
+    "card_id": 110501,
+    "rank": 3,
+    "skill_id": 110501111,
+    "start_date": 1681873200
+   },
+   {
+    "id": 110501211,
+    "card_id": 110501,
+    "rank": 5,
+    "skill_id": 110501211,
+    "start_date": 1681873200
+   },
+   {
+    "id": 110601111,
+    "card_id": 110601,
+    "rank": 3,
+    "skill_id": 110601111,
+    "start_date": 1683687600
+   },
+   {
+    "id": 110601211,
+    "card_id": 110601,
+    "rank": 5,
+    "skill_id": 110601211,
+    "start_date": 1683687600
+   }
+  ],
+  "skill_upgrade_condition": [
+   {
+    "id": 10010101,
+    "description_id": 100101111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10010102,
+    "description_id": 100101111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10010103,
+    "description_id": 100101211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10010104,
+    "description_id": 100101211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10010105,
+    "description_id": 100101211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10010201,
+    "description_id": 100102111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10010202,
+    "description_id": 100102111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10010203,
+    "description_id": 100102211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10010204,
+    "description_id": 100102211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10010205,
+    "description_id": 100102211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10010301,
+    "description_id": 100103111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10010302,
+    "description_id": 100103111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10010303,
+    "description_id": 100103111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10010304,
+    "description_id": 100103211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10010305,
+    "description_id": 100103211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10020101,
+    "description_id": 100201111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10020102,
+    "description_id": 100201111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10020103,
+    "description_id": 100201111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020104,
+    "description_id": 100201211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020105,
+    "description_id": 100201211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020201,
+    "description_id": 100202111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020202,
+    "description_id": 100202111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020203,
+    "description_id": 100202111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020204,
+    "description_id": 100202111,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020205,
+    "description_id": 100202111,
+    "num": 3,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020206,
+    "description_id": 100202211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10020207,
+    "description_id": 100202211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10020208,
+    "description_id": 100202211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10030101,
+    "description_id": 100301111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10030102,
+    "description_id": 100301111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10030103,
+    "description_id": 100301111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10030104,
+    "description_id": 100301211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10030105,
+    "description_id": 100301211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10030201,
+    "description_id": 100302111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10030202,
+    "description_id": 100302111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10030203,
+    "description_id": 100302111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10030204,
+    "description_id": 100302211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10030205,
+    "description_id": 100302211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10040101,
+    "description_id": 100401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10040102,
+    "description_id": 100401111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10040103,
+    "description_id": 100401111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10040104,
+    "description_id": 100401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10040201,
+    "description_id": 100402111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10040202,
+    "description_id": 100402111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10040203,
+    "description_id": 100402111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10040204,
+    "description_id": 100402211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10040205,
+    "description_id": 100402211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10050101,
+    "description_id": 100501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10050102,
+    "description_id": 100501111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10050103,
+    "description_id": 100501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10050104,
+    "description_id": 100501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10050105,
+    "description_id": 100501211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10050106,
+    "description_id": 100501211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10050201,
+    "description_id": 100502111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10050202,
+    "description_id": 100502111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10050203,
+    "description_id": 100502111,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10050204,
+    "description_id": 100502211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10050205,
+    "description_id": 100502211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10050206,
+    "description_id": 100502211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10060101,
+    "description_id": 100601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10060102,
+    "description_id": 100601111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10060103,
+    "description_id": 100601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10060104,
+    "description_id": 100601211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10060105,
+    "description_id": 100601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10060201,
+    "description_id": 100602111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10060202,
+    "description_id": 100602111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10060203,
+    "description_id": 100602111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10060204,
+    "description_id": 100602211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10060205,
+    "description_id": 100602211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10060206,
+    "description_id": 100602211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10070101,
+    "description_id": 100701111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10070102,
+    "description_id": 100701111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070103,
+    "description_id": 100701111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070105,
+    "description_id": 100701211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070106,
+    "description_id": 100701211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10070201,
+    "description_id": 100702111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070202,
+    "description_id": 100702111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070203,
+    "description_id": 100702111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070204,
+    "description_id": 100702111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070205,
+    "description_id": 100702211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070206,
+    "description_id": 100702211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10070207,
+    "description_id": 100702211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10080101,
+    "description_id": 100801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10080102,
+    "description_id": 100801111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10080103,
+    "description_id": 100801111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10080104,
+    "description_id": 100801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10080105,
+    "description_id": 100801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10080106,
+    "description_id": 100801211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10080201,
+    "description_id": 100802111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10080202,
+    "description_id": 100802211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10080203,
+    "description_id": 100802211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10090101,
+    "description_id": 100901111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10090102,
+    "description_id": 100901111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10090103,
+    "description_id": 100901111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10090104,
+    "description_id": 100901211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10090105,
+    "description_id": 100901211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10090201,
+    "description_id": 100902111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10090202,
+    "description_id": 100902111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10090203,
+    "description_id": 100902111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10090204,
+    "description_id": 100902111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10090205,
+    "description_id": 100902211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10090206,
+    "description_id": 100902211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10100101,
+    "description_id": 101001111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10100102,
+    "description_id": 101001111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10100103,
+    "description_id": 101001211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10100104,
+    "description_id": 101001211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10100105,
+    "description_id": 101001211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10100201,
+    "description_id": 101002111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10100202,
+    "description_id": 101002211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10100203,
+    "description_id": 101002211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10100204,
+    "description_id": 101002211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10110101,
+    "description_id": 101101111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10110102,
+    "description_id": 101101111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10110103,
+    "description_id": 101101211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10110104,
+    "description_id": 101101211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10110105,
+    "description_id": 101101211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10110201,
+    "description_id": 101102111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10110202,
+    "description_id": 101102111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10110203,
+    "description_id": 101102111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10110204,
+    "description_id": 101102211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10110205,
+    "description_id": 101102211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10110206,
+    "description_id": 101102211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10120101,
+    "description_id": 101201111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10120102,
+    "description_id": 101201111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10120103,
+    "description_id": 101201111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10120104,
+    "description_id": 101201211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10120201,
+    "description_id": 101202111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10120202,
+    "description_id": 101202111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10120203,
+    "description_id": 101202111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10120204,
+    "description_id": 101202111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10120205,
+    "description_id": 101202211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10120206,
+    "description_id": 101202211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10120207,
+    "description_id": 101202211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130101,
+    "description_id": 101301111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10130102,
+    "description_id": 101301111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10130103,
+    "description_id": 101301111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130104,
+    "description_id": 101301211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10130105,
+    "description_id": 101301211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130106,
+    "description_id": 101301211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130201,
+    "description_id": 101302111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10130202,
+    "description_id": 101302111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130203,
+    "description_id": 101302211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130204,
+    "description_id": 101302211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130301,
+    "description_id": 101303111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10130302,
+    "description_id": 101303111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10130303,
+    "description_id": 101303111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130304,
+    "description_id": 101303211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10130305,
+    "description_id": 101303211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10130306,
+    "description_id": 101303211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10140101,
+    "description_id": 101401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10140102,
+    "description_id": 101401111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10140103,
+    "description_id": 101401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10140104,
+    "description_id": 101401211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10140201,
+    "description_id": 101402111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10140202,
+    "description_id": 101402111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10140203,
+    "description_id": 101402111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10140204,
+    "description_id": 101402211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10140205,
+    "description_id": 101402211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10150101,
+    "description_id": 101501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10150102,
+    "description_id": 101501111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10150103,
+    "description_id": 101501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10150104,
+    "description_id": 101501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10150105,
+    "description_id": 101501211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10150201,
+    "description_id": 101502111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10150202,
+    "description_id": 101502111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10150203,
+    "description_id": 101502111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10150204,
+    "description_id": 101502211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10150205,
+    "description_id": 101502211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10150206,
+    "description_id": 101502211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10160101,
+    "description_id": 101601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10160102,
+    "description_id": 101601111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10160103,
+    "description_id": 101601111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10160104,
+    "description_id": 101601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10160105,
+    "description_id": 101601211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10160106,
+    "description_id": 101601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10160201,
+    "description_id": 101602111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10160202,
+    "description_id": 101602111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10160203,
+    "description_id": 101602111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10160204,
+    "description_id": 101602111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10160205,
+    "description_id": 101602211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10160206,
+    "description_id": 101602211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10160207,
+    "description_id": 101602211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170101,
+    "description_id": 101701111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10170102,
+    "description_id": 101701111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10170103,
+    "description_id": 101701111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170104,
+    "description_id": 101701111,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170105,
+    "description_id": 101701211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10170106,
+    "description_id": 101701211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170107,
+    "description_id": 101701211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170108,
+    "description_id": 101701211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170201,
+    "description_id": 101702111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10170202,
+    "description_id": 101702111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10170203,
+    "description_id": 101702111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170204,
+    "description_id": 101702211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170205,
+    "description_id": 101702211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10170206,
+    "description_id": 101702211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180101,
+    "description_id": 101801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10180102,
+    "description_id": 101801111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180103,
+    "description_id": 101801111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180104,
+    "description_id": 101801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180105,
+    "description_id": 101801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180106,
+    "description_id": 101801211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180201,
+    "description_id": 101802111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10180202,
+    "description_id": 101802111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10180203,
+    "description_id": 101802111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180204,
+    "description_id": 101802211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180205,
+    "description_id": 101802211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10180206,
+    "description_id": 101802211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190101,
+    "description_id": 101901111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10190102,
+    "description_id": 101901111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10190103,
+    "description_id": 101901111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190104,
+    "description_id": 101901211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190105,
+    "description_id": 101901211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190106,
+    "description_id": 101901211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190107,
+    "description_id": 101901211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190108,
+    "description_id": 101901211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190201,
+    "description_id": 101902111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10190202,
+    "description_id": 101902111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190203,
+    "description_id": 101902111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190204,
+    "description_id": 101902211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10190205,
+    "description_id": 101902211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10190206,
+    "description_id": 101902211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200101,
+    "description_id": 102001111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10200102,
+    "description_id": 102001111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10200103,
+    "description_id": 102001111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200104,
+    "description_id": 102001111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10200105,
+    "description_id": 102001211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200106,
+    "description_id": 102001211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200107,
+    "description_id": 102001211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200108,
+    "description_id": 102001211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200201,
+    "description_id": 102002111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10200202,
+    "description_id": 102002111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10200203,
+    "description_id": 102002111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200204,
+    "description_id": 102002211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200205,
+    "description_id": 102002211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200206,
+    "description_id": 102002211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10200207,
+    "description_id": 102002211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10210101,
+    "description_id": 102101111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10210102,
+    "description_id": 102101111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10210103,
+    "description_id": 102101111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10210104,
+    "description_id": 102101211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10210105,
+    "description_id": 102101211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10210106,
+    "description_id": 102101211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10210201,
+    "description_id": 102102111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10210202,
+    "description_id": 102102111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10210203,
+    "description_id": 102102211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10210204,
+    "description_id": 102102211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10220102,
+    "description_id": 102201111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10220103,
+    "description_id": 102201111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10220104,
+    "description_id": 102201211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10220105,
+    "description_id": 102201211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10220106,
+    "description_id": 102201211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10220201,
+    "description_id": 102202111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10220202,
+    "description_id": 102202111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10220203,
+    "description_id": 102202111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10220205,
+    "description_id": 102202211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10220206,
+    "description_id": 102202211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10230101,
+    "description_id": 102301111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10230102,
+    "description_id": 102301111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10230103,
+    "description_id": 102301111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10230104,
+    "description_id": 102301211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10230105,
+    "description_id": 102301211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10230106,
+    "description_id": 102301211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10230201,
+    "description_id": 102302111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10230202,
+    "description_id": 102302111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10230203,
+    "description_id": 102302211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10230204,
+    "description_id": 102302211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240101,
+    "description_id": 102401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240102,
+    "description_id": 102401111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240103,
+    "description_id": 102401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10240104,
+    "description_id": 102401211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10240105,
+    "description_id": 102401211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240201,
+    "description_id": 102402111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240202,
+    "description_id": 102402111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240203,
+    "description_id": 102402211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240204,
+    "description_id": 102402211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240205,
+    "description_id": 102402211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10240206,
+    "description_id": 102402211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10250101,
+    "description_id": 102501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10250102,
+    "description_id": 102501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10250103,
+    "description_id": 102501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10250104,
+    "description_id": 102501211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10260101,
+    "description_id": 102601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10260102,
+    "description_id": 102601111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10260103,
+    "description_id": 102601111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10260104,
+    "description_id": 102601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10260105,
+    "description_id": 102601211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10260106,
+    "description_id": 102601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10260201,
+    "description_id": 102602111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10260202,
+    "description_id": 102602111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10260203,
+    "description_id": 102602111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10260204,
+    "description_id": 102602211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10260205,
+    "description_id": 102602211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10260206,
+    "description_id": 102602211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10270101,
+    "description_id": 102701111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10270102,
+    "description_id": 102701111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10270103,
+    "description_id": 102701211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10270104,
+    "description_id": 102701211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10270105,
+    "description_id": 102701211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10270201,
+    "description_id": 102702111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10270202,
+    "description_id": 102702111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10270203,
+    "description_id": 102702111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10270204,
+    "description_id": 102702211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10270205,
+    "description_id": 102702211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10280101,
+    "description_id": 102801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10280102,
+    "description_id": 102801111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10280103,
+    "description_id": 102801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10280104,
+    "description_id": 102801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10280105,
+    "description_id": 102801211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10290101,
+    "description_id": 102901111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10290102,
+    "description_id": 102901111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10290103,
+    "description_id": 102901111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10290104,
+    "description_id": 102901111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10290105,
+    "description_id": 102901111,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10290106,
+    "description_id": 102901111,
+    "num": 3,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10290107,
+    "description_id": 102901211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10290108,
+    "description_id": 102901211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300101,
+    "description_id": 103001111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300102,
+    "description_id": 103001111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300103,
+    "description_id": 103001211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10300104,
+    "description_id": 103001211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300105,
+    "description_id": 103001211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300201,
+    "description_id": 103002111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300202,
+    "description_id": 103002111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300203,
+    "description_id": 103002111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300204,
+    "description_id": 103002211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10300205,
+    "description_id": 103002211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10310101,
+    "description_id": 103101111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10310102,
+    "description_id": 103101111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10310103,
+    "description_id": 103101111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10310104,
+    "description_id": 103101211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10310105,
+    "description_id": 103101211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10310201,
+    "description_id": 103102111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10310202,
+    "description_id": 103102111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10310203,
+    "description_id": 103102211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10310204,
+    "description_id": 103102211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10310205,
+    "description_id": 103102211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320101,
+    "description_id": 103201111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320102,
+    "description_id": 103201111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320103,
+    "description_id": 103201211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10320104,
+    "description_id": 103201211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320105,
+    "description_id": 103201211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320201,
+    "description_id": 103202111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320202,
+    "description_id": 103202111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320203,
+    "description_id": 103202111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320204,
+    "description_id": 103202211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10320205,
+    "description_id": 103202211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10320206,
+    "description_id": 103202211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10330101,
+    "description_id": 103301111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10330102,
+    "description_id": 103301111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10330103,
+    "description_id": 103301111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10330104,
+    "description_id": 103301211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10330105,
+    "description_id": 103301211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10340101,
+    "description_id": 103401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10340102,
+    "description_id": 103401111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10340103,
+    "description_id": 103401111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10340104,
+    "description_id": 103401111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10340105,
+    "description_id": 103401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10340106,
+    "description_id": 103401211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10340201,
+    "description_id": 103402111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10340202,
+    "description_id": 103402111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10340203,
+    "description_id": 103402111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10340204,
+    "description_id": 103402211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10340205,
+    "description_id": 103402211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10340206,
+    "description_id": 103402211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10350101,
+    "description_id": 103501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10350102,
+    "description_id": 103501111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10350103,
+    "description_id": 103501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10350104,
+    "description_id": 103501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10350105,
+    "description_id": 103501211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10350106,
+    "description_id": 103501211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10350201,
+    "description_id": 103502111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10350202,
+    "description_id": 103502111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10350203,
+    "description_id": 103502211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10350204,
+    "description_id": 103502211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10360101,
+    "description_id": 103601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10360102,
+    "description_id": 103601111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10360103,
+    "description_id": 103601111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10360104,
+    "description_id": 103601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10360105,
+    "description_id": 103601211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10360106,
+    "description_id": 103601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10360107,
+    "description_id": 103601211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10370101,
+    "description_id": 103701111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10370102,
+    "description_id": 103701111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10370103,
+    "description_id": 103701111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10370104,
+    "description_id": 103701211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10370105,
+    "description_id": 103701211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10370106,
+    "description_id": 103701211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10370201,
+    "description_id": 103702111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10370202,
+    "description_id": 103702111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10370203,
+    "description_id": 103702211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10370204,
+    "description_id": 103702211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10370205,
+    "description_id": 103702211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380101,
+    "description_id": 103801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10380102,
+    "description_id": 103801111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380103,
+    "description_id": 103801111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10380104,
+    "description_id": 103801111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380105,
+    "description_id": 103801111,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10380106,
+    "description_id": 103801111,
+    "num": 3,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380107,
+    "description_id": 103801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380108,
+    "description_id": 103801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380109,
+    "description_id": 103801211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10380201,
+    "description_id": 103802111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380202,
+    "description_id": 103802111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380203,
+    "description_id": 103802111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380204,
+    "description_id": 103802211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380205,
+    "description_id": 103802211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380206,
+    "description_id": 103802211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10380207,
+    "description_id": 103802211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10390101,
+    "description_id": 103901111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10390102,
+    "description_id": 103901111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10390103,
+    "description_id": 103901111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10390104,
+    "description_id": 103901111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10390105,
+    "description_id": 103901211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10390106,
+    "description_id": 103901211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10400102,
+    "description_id": 104001111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10400103,
+    "description_id": 104001111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10400104,
+    "description_id": 104001211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10400105,
+    "description_id": 104001211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10400106,
+    "description_id": 104001211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10400201,
+    "description_id": 104002111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10400202,
+    "description_id": 104002111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10400203,
+    "description_id": 104002111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10400205,
+    "description_id": 104002211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10400206,
+    "description_id": 104002211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10410101,
+    "description_id": 104101111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10410102,
+    "description_id": 104101111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10410103,
+    "description_id": 104101211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10410104,
+    "description_id": 104101211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10410105,
+    "description_id": 104101211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10410106,
+    "description_id": 104101211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10410201,
+    "description_id": 104102111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10410202,
+    "description_id": 104102111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10410203,
+    "description_id": 104102111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10410204,
+    "description_id": 104102211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10410205,
+    "description_id": 104102211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10410206,
+    "description_id": 104102211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10420101,
+    "description_id": 104201111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10420102,
+    "description_id": 104201111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10420103,
+    "description_id": 104201111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10420105,
+    "description_id": 104201211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10420106,
+    "description_id": 104201211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10420107,
+    "description_id": 104201211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10430101,
+    "description_id": 104301111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10430102,
+    "description_id": 104301111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10430103,
+    "description_id": 104301111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10430104,
+    "description_id": 104301211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10430105,
+    "description_id": 104301211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10430106,
+    "description_id": 104301211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10440102,
+    "description_id": 104401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10440103,
+    "description_id": 104401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10440104,
+    "description_id": 104401211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10440105,
+    "description_id": 104401211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10440106,
+    "description_id": 104401211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10450101,
+    "description_id": 104501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10450102,
+    "description_id": 104501111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10450103,
+    "description_id": 104501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10450104,
+    "description_id": 104501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10450105,
+    "description_id": 104501211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10450201,
+    "description_id": 104502111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10450202,
+    "description_id": 104502111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10450203,
+    "description_id": 104502111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10450204,
+    "description_id": 104502111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10450205,
+    "description_id": 104502211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10450206,
+    "description_id": 104502211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10450207,
+    "description_id": 104502211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10460101,
+    "description_id": 104601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10460102,
+    "description_id": 104601111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10460103,
+    "description_id": 104601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10460104,
+    "description_id": 104601211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10460105,
+    "description_id": 104601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10460201,
+    "description_id": 104602111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10460202,
+    "description_id": 104602111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10460203,
+    "description_id": 104602111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10460204,
+    "description_id": 104602211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10460205,
+    "description_id": 104602211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10460206,
+    "description_id": 104602211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10460207,
+    "description_id": 104602211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10470101,
+    "description_id": 104701111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10470102,
+    "description_id": 104701111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10470103,
+    "description_id": 104701111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10470104,
+    "description_id": 104701111,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10470105,
+    "description_id": 104701211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10470106,
+    "description_id": 104701211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480101,
+    "description_id": 104801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480102,
+    "description_id": 104801111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480103,
+    "description_id": 104801111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480104,
+    "description_id": 104801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10480105,
+    "description_id": 104801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10480106,
+    "description_id": 104801211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480107,
+    "description_id": 104801211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480201,
+    "description_id": 104802111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480202,
+    "description_id": 104802111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480203,
+    "description_id": 104802111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480204,
+    "description_id": 104802111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480205,
+    "description_id": 104802211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480206,
+    "description_id": 104802211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10480207,
+    "description_id": 104802211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10490101,
+    "description_id": 104901111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10490102,
+    "description_id": 104901111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10490103,
+    "description_id": 104901111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10490104,
+    "description_id": 104901211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10490105,
+    "description_id": 104901211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10490106,
+    "description_id": 104901211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10500101,
+    "description_id": 105001111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10500102,
+    "description_id": 105001111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10500103,
+    "description_id": 105001211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10500104,
+    "description_id": 105001211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10500105,
+    "description_id": 105001211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10500201,
+    "description_id": 105002111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10500202,
+    "description_id": 105002111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10500203,
+    "description_id": 105002211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10500204,
+    "description_id": 105002211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510101,
+    "description_id": 105101111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510102,
+    "description_id": 105101211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510103,
+    "description_id": 105101211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510104,
+    "description_id": 105101211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510201,
+    "description_id": 105102111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510202,
+    "description_id": 105102111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510203,
+    "description_id": 105102111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510204,
+    "description_id": 105102111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510205,
+    "description_id": 105102211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510206,
+    "description_id": 105102211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510207,
+    "description_id": 105102211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10510208,
+    "description_id": 105102211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520101,
+    "description_id": 105201111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520102,
+    "description_id": 105201111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520103,
+    "description_id": 105201111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520104,
+    "description_id": 105201211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520105,
+    "description_id": 105201211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520201,
+    "description_id": 105202111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520202,
+    "description_id": 105202111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520203,
+    "description_id": 105202111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520204,
+    "description_id": 105202211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10520205,
+    "description_id": 105202211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530101,
+    "description_id": 105301111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10530102,
+    "description_id": 105301111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530103,
+    "description_id": 105301111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530104,
+    "description_id": 105301211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530201,
+    "description_id": 105302111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530202,
+    "description_id": 105302111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530203,
+    "description_id": 105302111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530204,
+    "description_id": 105302211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530205,
+    "description_id": 105302211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530206,
+    "description_id": 105302211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10530207,
+    "description_id": 105302211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10550101,
+    "description_id": 105501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10550102,
+    "description_id": 105501111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10550103,
+    "description_id": 105501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10550104,
+    "description_id": 105501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10550105,
+    "description_id": 105501211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10550106,
+    "description_id": 105501211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10550107,
+    "description_id": 105501211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10550108,
+    "description_id": 105501211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10560101,
+    "description_id": 105601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10560102,
+    "description_id": 105601111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10560103,
+    "description_id": 105601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10560104,
+    "description_id": 105601211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10560105,
+    "description_id": 105601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10560106,
+    "description_id": 105601211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10560107,
+    "description_id": 105601211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10560108,
+    "description_id": 105601211,
+    "num": 3,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10560201,
+    "description_id": 105602111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10560202,
+    "description_id": 105602111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10560203,
+    "description_id": 105602111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10560204,
+    "description_id": 105602211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10560205,
+    "description_id": 105602211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10560206,
+    "description_id": 105602211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10570101,
+    "description_id": 105701111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10570102,
+    "description_id": 105701111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10570103,
+    "description_id": 105701111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10570104,
+    "description_id": 105701211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10570105,
+    "description_id": 105701211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10580101,
+    "description_id": 105801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10580102,
+    "description_id": 105801111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10580103,
+    "description_id": 105801111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10580104,
+    "description_id": 105801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10580105,
+    "description_id": 105801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10580201,
+    "description_id": 105802111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10580202,
+    "description_id": 105802211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10580203,
+    "description_id": 105802211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10580204,
+    "description_id": 105802211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10590101,
+    "description_id": 105901111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10590102,
+    "description_id": 105901111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10590103,
+    "description_id": 105901111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10590104,
+    "description_id": 105901211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10590105,
+    "description_id": 105901211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10590201,
+    "description_id": 105902111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10590202,
+    "description_id": 105902111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10590203,
+    "description_id": 105902111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10590204,
+    "description_id": 105902211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10590205,
+    "description_id": 105902211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10590206,
+    "description_id": 105902211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10600101,
+    "description_id": 106001111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10600102,
+    "description_id": 106001111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10600103,
+    "description_id": 106001111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10600104,
+    "description_id": 106001111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10600105,
+    "description_id": 106001211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10600106,
+    "description_id": 106001211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10600107,
+    "description_id": 106001211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10600108,
+    "description_id": 106001211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10600201,
+    "description_id": 106002111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10600202,
+    "description_id": 106002111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10600203,
+    "description_id": 106002111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10600204,
+    "description_id": 106002211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10600205,
+    "description_id": 106002211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10600206,
+    "description_id": 106002211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10610101,
+    "description_id": 106101111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10610102,
+    "description_id": 106101111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10610103,
+    "description_id": 106101211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10610104,
+    "description_id": 106101211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10610201,
+    "description_id": 106102111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10610202,
+    "description_id": 106102111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10610203,
+    "description_id": 106102111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10610204,
+    "description_id": 106102211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10610205,
+    "description_id": 106102211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10610206,
+    "description_id": 106102211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10620101,
+    "description_id": 106201111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10620102,
+    "description_id": 106201111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10620103,
+    "description_id": 106201211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10620104,
+    "description_id": 106201211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10620105,
+    "description_id": 106201211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10620201,
+    "description_id": 106202111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10620202,
+    "description_id": 106202111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10620203,
+    "description_id": 106202111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10620204,
+    "description_id": 106202211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10620205,
+    "description_id": 106202211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10620206,
+    "description_id": 106202211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10640101,
+    "description_id": 106401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10640102,
+    "description_id": 106401111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10640103,
+    "description_id": 106401111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10640104,
+    "description_id": 106401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10640105,
+    "description_id": 106401211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10640106,
+    "description_id": 106401211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10650101,
+    "description_id": 106501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10650102,
+    "description_id": 106501111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10650103,
+    "description_id": 106501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10650104,
+    "description_id": 106501111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10650105,
+    "description_id": 106501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10650106,
+    "description_id": 106501211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10650107,
+    "description_id": 106501211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10660101,
+    "description_id": 106601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10660102,
+    "description_id": 106601111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10660103,
+    "description_id": 106601111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10660104,
+    "description_id": 106601111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10660105,
+    "description_id": 106601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10660106,
+    "description_id": 106601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10670101,
+    "description_id": 106701111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10670102,
+    "description_id": 106701111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10670103,
+    "description_id": 106701111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10670104,
+    "description_id": 106701211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10670105,
+    "description_id": 106701211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10670106,
+    "description_id": 106701211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10670201,
+    "description_id": 106702111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10670202,
+    "description_id": 106702111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10670203,
+    "description_id": 106702111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10670204,
+    "description_id": 106702211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10670205,
+    "description_id": 106702211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10670206,
+    "description_id": 106702211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10680101,
+    "description_id": 106801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10680102,
+    "description_id": 106801111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10680103,
+    "description_id": 106801111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10680104,
+    "description_id": 106801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10680105,
+    "description_id": 106801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10680106,
+    "description_id": 106801211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10680201,
+    "description_id": 106802111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10680202,
+    "description_id": 106802111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10680203,
+    "description_id": 106802111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10680204,
+    "description_id": 106802211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10680205,
+    "description_id": 106802211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10680206,
+    "description_id": 106802211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10690101,
+    "description_id": 106901111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10690102,
+    "description_id": 106901111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10690103,
+    "description_id": 106901211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10690104,
+    "description_id": 106901211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10690201,
+    "description_id": 106902111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10690202,
+    "description_id": 106902111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10690203,
+    "description_id": 106902211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10690204,
+    "description_id": 106902211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10690205,
+    "description_id": 106902211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10700101,
+    "description_id": 107001111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10700102,
+    "description_id": 107001111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10700103,
+    "description_id": 107001111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10700104,
+    "description_id": 107001211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10700105,
+    "description_id": 107001211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10700106,
+    "description_id": 107001211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10710101,
+    "description_id": 107101111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10710102,
+    "description_id": 107101111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10710103,
+    "description_id": 107101211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10710104,
+    "description_id": 107101211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10710201,
+    "description_id": 107102111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10710202,
+    "description_id": 107102111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10710203,
+    "description_id": 107102211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10710204,
+    "description_id": 107102211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10710205,
+    "description_id": 107102211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10710206,
+    "description_id": 107102211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10720101,
+    "description_id": 107201111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10720102,
+    "description_id": 107201111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10720103,
+    "description_id": 107201211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10720104,
+    "description_id": 107201211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10740101,
+    "description_id": 107401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10740102,
+    "description_id": 107401111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10740103,
+    "description_id": 107401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10740104,
+    "description_id": 107401211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10740105,
+    "description_id": 107401211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10740106,
+    "description_id": 107401211,
+    "num": 3,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10760101,
+    "description_id": 107601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10760102,
+    "description_id": 107601111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10760103,
+    "description_id": 107601111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10760104,
+    "description_id": 107601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10760105,
+    "description_id": 107601211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10760106,
+    "description_id": 107601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10760107,
+    "description_id": 107601211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10780101,
+    "description_id": 107801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10780102,
+    "description_id": 107801111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10780103,
+    "description_id": 107801111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10780104,
+    "description_id": 107801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10780105,
+    "description_id": 107801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10780106,
+    "description_id": 107801211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10830101,
+    "description_id": 108301111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10830102,
+    "description_id": 108301111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10830103,
+    "description_id": 108301111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10830104,
+    "description_id": 108301211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10830105,
+    "description_id": 108301211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10830106,
+    "description_id": 108301211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10830107,
+    "description_id": 108301211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10830108,
+    "description_id": 108301211,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10840101,
+    "description_id": 108401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10840102,
+    "description_id": 108401111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10840103,
+    "description_id": 108401111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10840104,
+    "description_id": 108401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10840105,
+    "description_id": 108401211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10840106,
+    "description_id": 108401211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10840107,
+    "description_id": 108401211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10850101,
+    "description_id": 108501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10850102,
+    "description_id": 108501111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10850103,
+    "description_id": 108501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10850104,
+    "description_id": 108501111,
+    "num": 3,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10850105,
+    "description_id": 108501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10850106,
+    "description_id": 108501211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 2,
+    "count_type": 1
+   },
+   {
+    "id": 10850107,
+    "description_id": 108501211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10850108,
+    "description_id": 108501211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10870101,
+    "description_id": 108701111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10870102,
+    "description_id": 108701111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10870103,
+    "description_id": 108701111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10870104,
+    "description_id": 108701211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10870105,
+    "description_id": 108701211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10980101,
+    "description_id": 109801111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10980102,
+    "description_id": 109801111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10980103,
+    "description_id": 109801211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10980104,
+    "description_id": 109801211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10990101,
+    "description_id": 109901111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 10990102,
+    "description_id": 109901111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10990103,
+    "description_id": 109901111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10990104,
+    "description_id": 109901211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 10990105,
+    "description_id": 109901211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11000101,
+    "description_id": 110001111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 11000102,
+    "description_id": 110001111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11000103,
+    "description_id": 110001111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11000104,
+    "description_id": 110001211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11000105,
+    "description_id": 110001211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11040101,
+    "description_id": 110401111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 11040102,
+    "description_id": 110401111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11040103,
+    "description_id": 110401111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11040104,
+    "description_id": 110401211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11040105,
+    "description_id": 110401211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11040106,
+    "description_id": 110401211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11040107,
+    "description_id": 110401211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11050101,
+    "description_id": 110501111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11050102,
+    "description_id": 110501111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11050103,
+    "description_id": 110501111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11050104,
+    "description_id": 110501211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 11050105,
+    "description_id": 110501211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11050106,
+    "description_id": 110501211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11060101,
+    "description_id": 110601111,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11060102,
+    "description_id": 110601111,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11060103,
+    "description_id": 110601111,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11060104,
+    "description_id": 110601111,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11060105,
+    "description_id": 110601211,
+    "num": 1,
+    "sub_num": 1,
+    "timing_type": 2,
+    "count_type": 2
+   },
+   {
+    "id": 11060106,
+    "description_id": 110601211,
+    "num": 1,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11060107,
+    "description_id": 110601211,
+    "num": 2,
+    "sub_num": 1,
+    "timing_type": 1,
+    "count_type": 1
+   },
+   {
+    "id": 11060108,
+    "description_id": 110601211,
+    "num": 2,
+    "sub_num": 2,
+    "timing_type": 1,
+    "count_type": 1
+   }
+  ]
+ }
+}

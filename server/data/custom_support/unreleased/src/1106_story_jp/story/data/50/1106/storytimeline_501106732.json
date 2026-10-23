@@ -1,0 +1,23 @@
+{
+ "title": "想いの継承",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、三女神像だ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そういえばこの像って、\nトレセン学園七不思議的なのあったよーな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……どんなやつだっけ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

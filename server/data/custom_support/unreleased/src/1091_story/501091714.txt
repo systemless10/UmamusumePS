@@ -1,0 +1,27 @@
+#title Don't Overdo It!
+0 I carried the injured Vivlos to the infirmary. Her first aid is done for now.
+1 Ahaha... Tore-cchi, sorry. Thanks for carrying me.
+2 But look, I'm not taking a break or anything. There are other training menus too...
+3 I'm bad at sitting still! And if I rest for days, I'll get rusty, right?
+4 I'm gonna run in races in Dubai. I know that's not easy.
+5 So I don't have time to rest! I've gotta practice lots and get stronger!
+5> For the sake of that dream, I want you to rest now | Okay. But if I think it's dangerous, we stop
+6 It's precisely because I know how much she's staking on her dream that I can't risk having it cut short.
+7 But if I rest... won't it get further away...?
+8 I told her that as long as the injury doesn't drag on, she'll surely get there. I believe she has the strength for it.
+9 Tore-cchi...
+10 ...Okay, got it. I'll hold back. 'Cause I believe in you too, Tore-cchi.
+11 Then while I'm resting, I'll study up on Dubai.
+12 Vivlos stayed off her feet and focused on treating her injury.
+13 Don't worry! I know my own body♪
+14 ...Ow... ow...!
+14> Vivlos...!
+15 Why does my other leg hurt too...?
+16 Moving to protect an injury puts extra strain on other parts. That must be how she hurt her other leg.
+17 Sorry, Tore-cchi. I'll heal properly first after all.
+18 If I can't run, I can't go to Dubai either... I don't want that.
+19 Vivlos managed to come around. It seems she'll need rest for a while...
+20 ...Yeah, it's fine! This is totally okay.
+21 Thank goodness～! I can't wait until it heals. There's lots I can do!
+22 Dubai, here I come!
+23 To keep the strain off Vivlos's body, we shifted to lighter practice for a while.

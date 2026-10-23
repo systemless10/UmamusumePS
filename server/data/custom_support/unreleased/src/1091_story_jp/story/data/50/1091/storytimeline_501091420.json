@@ -1,0 +1,25 @@
+{
+ "title": "目標達成の後に・Followers♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "2か月間の尽力のかいあって、\nヴィブロスの症状は完治とまではいかずとも、\n問題なくレースが走れるくらいに回復した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "トリプルティアラももう、\n自分の本当の夢だと語るヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "応援してくれるファンやトレーナーのため\nにも――ヴィブロスはトリプルティアラの\n初戦、『桜花賞』へ気合いを入れるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "桜花賞"
+   ]
+  }
+ ]
+}

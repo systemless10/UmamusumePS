@@ -1,0 +1,303 @@
+{
+ "title": "Racing Dream",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "トゥインクル・シリーズ最初の3年間。\nヒシミラクルは数々のミラクルを\n成し遂げた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "最初はまったく有力視されて\nいなかっただけに、その歩みはまさに奇跡。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして将来も明るい。\nこの先、どんなふうにやっていくかを\n2人で話し合うことにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "さあトレーナーさん、お好み焼きですよ。\nお好み焼き！",
+   "choice_data_list": [
+    "ああ、今日は決起会だな！",
+    "うん、今日は決起会だね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい。決起会だし、ホッキ貝。\n貝柱入りはやっぱり欠かせませんよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どんどん食べましょう。焼くのはわたしに\nドーンと任せてもらえるとっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてヒシミラクルお手製のお好み焼きは\nじゃんじゃん焼き上がり……。",
+   "choice_data_list": [
+    "この先は、出走するGⅠ全勝を狙うか",
+    "この先は、出走するGⅠ全勝を狙おうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お～、いいですね、それ。\nやりがいありそう。",
+   "choice_data_list": [
+    "海外遠征とかもいいかもしれないな",
+    "海外遠征とかもいいかもしれないね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "海外……。なんかスケール、\nめちゃすごですねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも大変そう。\n話だけだと、よくわかんないってか。",
+   "choice_data_list": [
+    "ヒシミラクルはどうしたい？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、わたしですか……？",
+   "choice_data_list": [
+    "ああ、1番の望みは？",
+    "うん、1番の望みは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "それが何より大切だ。数々の偉業を達成した\nヒシミラクルが、1番にやりたいことは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えぇと、実をいうと、\n1番の望みは～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "このお好み焼きを\n冷めないうちに食べてほしい！\nだったりして。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自信作ですよ？　おいしいですよ？\nなので、ぜひぜひ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……どうやらレースのことは\nあまり頭にないようだった。",
+   "choice_data_list": [
+    "もしかして、そんなにやる気ない感じ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなことないですよ～。\nあるに決まってるじゃないですか。\nただ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしのやる気は、目標がどうでも\n変わらないってことです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんと一緒に目指すなら、\nどんな目標でも、夢になるのかなって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは、この先、\n続くであろう日々に想いを馳せ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とにかくトレーナーさんと2人で、\nなかよく楽しくやっていきたいですよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "相変わらず頼っちゃうときも多そうですけど、\nお世話になり続けたいってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それから、いろんな場所で\nおいしいもんが食べたいです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お好み焼きもいいけど、\n他にもいろいろあるし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あと、おこづかい！　お母さんには、\nもうちょっと、わたしのがんばり\n認めてほしい！　あげてほしい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それからレースもたくさんしたいですよね。\nできれば勝てたら最高ですけど～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝てなくても、力は出し切りたいかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "エヘヘ、こう考えるとわたしって、\n夢はないと言いつつ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "けっこう夢たくさんじゃないですか？",
+   "choice_data_list": [
+    "今言ったのが、全部夢？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい。ひとつひとつは小さくても、\n全部集まってひとつになれば……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "全部入りの立派な夢です！\nお好み焼きみたいに！",
+   "choice_data_list": [
+    "なるほど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルの言うことは\n確かにその通りだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どんなに小さくても夢は夢。それが集まって、\nヒシミラクルの未来を彩っていく……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん。わたし思うんですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "きっと、レース場に見にきてくれてる\nみんなも同じなんじゃないかって。",
+   "choice_data_list": [
+    "同じって？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "願いはわたしと同じってことです。\nつまり～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっといいこと、起きるといいな。\nちょっといいこと、続くといいなって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "応援してるウマ娘が勝つのも、\nその“ちょっといいこと”の\nひとつなんじゃないかって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だからわたし、走ります！　これからも！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "みんなと自分が、ちょっとだけ嬉しい\n気持ちになれるように。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしがトレーナーさんと毎日食べたいのは、\nそう――！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "小さな楽しさ全部入りのお好み焼き！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そう、レース場にはいつだって、\n小さな喜びがある。誰もがそれを追っている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "それは世界制覇や大出世のような\n立派なものではないかもしれない。だが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その喜びこそ――ヒシミラクルの見る夢。\nそして……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "あの日みんなが――\nヒシミラクルの走りに見た夢。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

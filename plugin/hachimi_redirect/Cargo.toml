@@ -2,7 +2,6 @@
 name = "hachimi_redirect"
 version = "0.1.0"
 edition = "2021"
-license = "AGPL-3.0-only"
 description = "Hachimi-Edge plugin: send Global/JP game API traffic to a custom server, optionally hiding device/Steam identifiers -- no hosts redirect, no installed certificate"
 
 [lib]
@@ -11,7 +10,6 @@ crate-type = ["cdylib"]
 [dependencies]
 serde_json = "1.0"
 
-# serde_json validates optional custom-card manifests; Win32 calls are declared by hand.
 
 [profile.release]
 opt-level = 3

@@ -1,0 +1,43 @@
+#title After the WBC: Victory
+0 Hahaha! Nice going! You showed us a brilliance like the sun itself!
+1 Winning such a high-level race proves how much you've grown.
+2 For now, let us simply praise that talent.
+3 I think both you and your trainee gained a great deal of experience in this race.
+4 So let's keep at it... and this time, aim to run in the SWBC, with even stronger rivals~.
+5 A race where an AI that knows everything about Umamusume selects only those with talent—
+6 Having made her mark there, I couldn't help but get excited at the thought that <chrname> might become a name remembered in history.
+6> (We'll get the next invitation, too!)
+7 (Knock, knock, knock...)
+8 ...Excuse me, Trainer Kashimoto.
+9 Bitter Glasse... What's the matter?
+10 Um... I'm sorry I haven't been getting results lately. I couldn't run a race I was happy with in today's WBC either.
+11 ...It's not your fault. You've been putting in plenty of effort.
+12 No, there has to be more I can do. Training, studying, all kinds of stuff...!
+13 I'm gonna work harder and harder! I'll work hard, and next time I'll win for sure!
+14 That's all I came to say. To fire myself up, too...!
+15 ...Understood. Let's keep at it.
+16 Yes!
+17 (...I'm the one who needs to work harder. I must give her results, no matter what...)
+18 It feels like the year flew by in an instant, Meek.
+19 But I think that's because running together with you has been so fulfilling.
+20 ...It flew by for me too. .........I wish it were longer...
+21 Our goal... We didn't make it in time... ...Time... is mean for not waiting for us.
+22 ...Meek.
+23 ...No, you still worked hard, Meek. It's because we set a goal and aimed for it.
+24 What matters is running toward a goal! And now our efforts are finally about to bloom!
+25 Lately your build has clearly been changing, and your stamina and times are improving too.
+26 Your peak is definitely coming—so let's keep at it together like this! Next year, let's show everyone what we've built!
+27 ... .........Understood.
+28 Hehe. Well then, good night. Have a happy New Year, Meek.
+29 ...Okay. .........Happy New Year.
+30 .........
+31 ...We've worked so hard, step by step, to get here. We'll make you bloom for sure, Meek...!
+32 .........
+33 ...Me too...
+34 ...Hehe, I did it. Trainer Kashimoto...!
+35 A strong run right to the very end, Little Cocon. ...You did it.
+36 First me, and now Little Cocon! Both of us winning on the same day—that's amazing!
+37 Yes, truly. You're both remarkable. I'm proud of you—from the bottom of my heart.
+38 .........
+39 ...I want to win soon too...
+40 ...Soon... ...I want to make my trainer happy...!

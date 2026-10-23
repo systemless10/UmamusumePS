@@ -1,0 +1,37 @@
+{
+ "title": "連続出走で……",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "……む～～～っ……。",
+   "choice_data_list": [
+    "えっと……ヴィブロス最近、機嫌悪い……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって最近トレっちと全然遊びに\n行けないし……お休みは疲れて寝ちゃうし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "……そういえば、このところレース続きで\n息抜きできていないような気がする。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "駅前のアラビアレストランに行きたいの～。\nバクラヴァとクナーファ食べたいよ～っ。\nねートレっち、おーねーがーいーっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "心身のコンディションを整える事は大切だ。\n今後のレース日程を見直してみよう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

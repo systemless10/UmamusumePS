@@ -1,0 +1,66 @@
+#title Toward the Nakayama Kinen
+0 A little while before taking on the Nakayama Kinen—
+1 —I heard from Verxina. You want to hear about when I went to Dubai, right?
+2 On Verxina's recommendation, we were going to hear about it from an Umamusume who'd experienced an overseas expedition—Hokko Tarumae.
+3 Yeah, I want you to tell me! What it was like...
+4 ...Only if it's okay with you, Tarumae!
+4{ Tarumae
+5 When Vivlos was examined before, the doctor had mentioned her name too—
+6 Hokko Tarumae is an Umamusume who made dirt her main battlefield, with a great record of ten G1 wins. She's also Verxina's roommate.
+7 She once took on an overseas expedition... and lost badly. Her record had been good until then, but after returning home, she was forced into a long recovery.
+8 Of course it's okay! It was pretty rough back then, though.
+9 Ugh... Right. Your break was long, wasn't it?
+10 Yeah, in the end it took over six months.
+11 It was a disaster. Right when I'd won something like five G1s here in Japan.
+12 I thought, "with this momentum, I can do it!" and tried taking on the world, but...
+13 ...It was really hard. I'd heard about it, but the environment and everything was different.
+14 That different?
+15 Yeah, very. I was on edge myself in an unfamiliar environment, too...
+16 I got sicker than I ever had before. Even after coming home, recovering was a struggle.
+17 In the end, my best in Dubai was fifth place. On top of that, I threw away an important period.
+18 Maybe if I hadn't taken it on, I could've added way more wins to my record... That thought even crossed my mind.
+19 Is... that so...
+20 Of course, taking on the challenge meant something, and I don't regret it at all! But...
+21 I heard from Verxina that you're aiming for Dubai too, Vivlos.
+22 Yeah!
+23 I see! Good luck!
+24 But... if you have even a little worry, I think it's better not to rush, maybe.
+25 !
+26 Even going in perfect condition, it was tough... for me, anyway.
+27 Take care of your dream, but take care of yourself too. I'm rooting for you!
+28 ...Yeah, thank you, Tarumae!
+29 I'm so glad I got to hear this from you, Tarumae!
+30 Onee-chan told me about you, but you really are super dependable!
+31 ...Nuh-uh? I can be... scatterbrained too, you know?
+32 So when you tell anyone about me, be sure to say "she's honest and cute," okay!
+33 ? Okay♪
+34 —And finally, race day arrived. Depending on today's run, we'd decide whether she could set out on her overseas expedition—to Dubai.
+35 ...Haa～.
+36 With such an important race for her future, Vivlos seemed a little nervous too.
+36> (I want to help her relax a little)
+37 *giggle*... You're such a spoiled girl.
+38 Come to think of it, Vivlos is really relaxed when she's being pampered by someone.
+39 Phew...
+39> Vivlos
+40 Hm?
+40> Is there anything you want me to do? | Is there anything you want me to do?
+41 Something I want you to do...?
+41> I'll grant one request
+42 !
+43 Then give me a hug!
+43> Anything else
+44 Head pats!
+44> That's a bit...
+45 Whaaat!
+46 Everything's a no? Then don't ask～.
+46> ...Fair enough
+47 Geez. ...Hehe.
+48 Oh, fine. Tore-cchi, open your arms wide?
+49 Then hug the air in front of you nice and tight?
+49> ...Like this?
+50 Yep!
+51 ...Air hug♡
+51> !
+52 Ehehe! I got some power♡
+53 ...Yeah, I'm okay!
+54 —Watch closely, okay? My running...!

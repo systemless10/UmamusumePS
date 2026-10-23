@@ -1,0 +1,31 @@
+#title The Grandmasters Begins!
+0 Whoa! It's packed with visitors! We'd better be prepared to wait in line for quite a while.
+1 We've been running nonstop until the end of the year. Waiting in line at a leisurely pace for New Year's isn't so bad.
+2 The new year had come, and the three of us trainers had come for our first shrine visit of the year.
+3 Even so... everyone lined up here came with their hopes for the year in their hearts, didn't they?
+4 I'm praying that I can keep moving forward with Meek this year as her trainer.
+5 ...But not just that. I hope the road Meek and I have run—our hoofprints—get passed down.
+6 ...I feel the same. It's been that irreplaceable.
+6> Let's do our best this year so they get passed down!
+7 ...Yes, let's.
+8 Yes! Okay, I need to pray properly...!
+9 With the arrival of the new year, the trainers all made new resolutions together.
+10 And then—
+11 Um... Excuse us.
+12 Hehe, sorry for calling you here so suddenly. There's something we wanted to tell you.
+13 So three whole years have passed since we met you here.
+14 ...Yes. A great many things happened in that time.
+15 Indeed. We watched it all closely, through your Umamusume.
+16 The joy of growing, the pain of facing hardship, and the strength to overcome it—
+17 As trainers, you stayed by your Umamusume's side and answered their feelings.
+18 ...So now, we want to see it for ourselves. Everything you've raced through, side by side!
+19 ...?! For yourselves... You mean...!
+20 ...Our Umamusume will race against you, the Three Goddesses.
+21 That's right. We'll send your four Umamusume invitations to the Grandmasters.
+22 No, maybe this time we should call it a "challenge"?
+23 A pressure unlike the Three Goddesses who usually support us...
+24 If everything <chrname> and I had walked through together was what fired up the Three Goddesses this much—
+24> We accept your challenge...!
+25 Haha! You've still got the same great look in your eyes as when we first met.
+26 We won't hold back in the slightest. Let us race each other with all our strength...!
+27 And so, <chrname> and I would face the Three Goddesses, entering the Grandmasters to aim for the very peak of Umamusume!

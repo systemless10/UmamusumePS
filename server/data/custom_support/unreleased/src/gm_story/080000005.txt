@@ -1,0 +1,18 @@
+#title Prologue
+0 —Are you ready?
+1 There's no need to be so nervous. We'll have the most reliable teachers there are in the VR world.
+2 The ones said to be the forebears of all Umamusume—the Three Goddesses!
+3 I imagine the WBC will be a grueling race.
+4 But I know you can do it! Win your way through every race and conquer the Grandmasters!
+5 And so began a journey into an unknown world—!
+6 The sun rises, and then it sets.
+7 Toward a horizon far, far away.
+8 Yet it will always rise again.
+9 Again and again, it comes back around.
+10 So long as strong will endures, our hopes go on and on.
+11 To all those who have been born. To all those who are yet to be.
+12 To every meeting, and every farewell, we offer this.
+13 Happiness everlasting.
+14 Glory enduring.
+15 A future full of color.
+16 Grandmasters: Legacies Immortal

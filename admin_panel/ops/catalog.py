@@ -1,6 +1,3 @@
-"""Master-data catalogues for the panel's pickers and filters. All read-only and
-cached for the worker's lifetime (master.mdb does not change under a running
-process)."""
 
 from __future__ import annotations
 
@@ -15,7 +12,6 @@ SUPPORT_TYPES = {101: "speed", 105: "stamina", 102: "power", 103: "guts", 106: "
 FACTOR_KINDS = {1: "blue", 2: "pink", 3: "green", 4: "white", 5: "race", 6: "scenario", 7: "other"}
 GRADES = {100: "G1", 200: "G2", 300: "G3", 400: "OP", 700: "Pre-OP", 800: "Maiden", 900: "Debut", 999: "Daily"}
 
-# item_data.item_category -> tab (VivloToolkit's inventory groups, plus a few).
 ITEM_GROUPS = [
     ("Recovery", {20, 21}),
     ("Training", {11, 34, 110, 160, 164}),
@@ -57,14 +53,27 @@ def support_catalog() -> dict:
 
 @functools.lru_cache(maxsize=1)
 def max_talent() -> int:
-    """Highest awakening level this region's master can reach."""
     if M.has_table("card_talent_level_upgrade_money"):
         row = M.query_one("SELECT MAX(upgrade_talent_level) AS m FROM card_talent_level_upgrade_money")
         if row and row["m"]:
             return int(row["m"])
     row = M.query_one("SELECT MAX(talent_level) AS m FROM card_talent_upgrade") \
         if M.has_table("card_talent_upgrade") else None
-    return int(row["m"]) + 1 if row and row["m"] else 5
+    return int(row["m"]) if row and row["m"] else 5
+
+
+@functools.lru_cache(maxsize=1)
+def card_max_talents() -> dict:
+    import time
+    out: dict[int, int] = {}
+    if M.has_table("card_talent_level_upgrade_item"):
+        for r in M.query("SELECT talent_group_id, MAX(upgrade_talent_level) AS m FROM card_talent_level_upgrade_item "
+                         "WHERE COALESCE(start_date, 0) <= ? GROUP BY talent_group_id", (int(time.time()),)):
+            out[int(r["talent_group_id"])] = int(r["m"])
+    elif M.has_table("card_talent_upgrade"):
+        for r in M.query("SELECT talent_group_id, MAX(talent_level) AS m FROM card_talent_upgrade GROUP BY talent_group_id"):
+            out[int(r["talent_group_id"])] = int(r["m"])
+    return out
 
 
 def max_hint_level(talent_level: int) -> int:
@@ -72,7 +81,7 @@ def max_hint_level(talent_level: int) -> int:
     return cards._max_hint_level(int(talent_level or 1))
 
 
-@functools.lru_cache(maxsize=1)
+@M.context_cache(maxsize=16)
 def uma_catalog() -> dict:
     rar: dict[int, dict] = {}
     for r in M.query("SELECT * FROM card_rarity_data ORDER BY card_id, rarity"):
@@ -89,21 +98,45 @@ def uma_catalog() -> dict:
             "talent": [r["talent_speed"], r["talent_stamina"], r["talent_pow"], r["talent_guts"], r["talent_wiz"]],
             "apt": rows.get(top) or [1] * len(APTITUDES),
             "limited": r["limited_chara"],
+            "max_talent": min(max_talent(), card_max_talents().get(int(r["talent_group_id"] or 0), 5)),
         })
     talent = max_talent()
     return {"cards": cards, "aptitudes": list(APTITUDES), "max_talent": talent,
             "hint_caps": {t: max_hint_level(t) for t in range(1, talent + 1)}}
 
 
-@functools.lru_cache(maxsize=1)
 def skill_catalog() -> list:
+    from .common import future_content
+    return _skill_catalog(future_content())
+
+
+@functools.lru_cache(maxsize=2)
+def _skill_catalog(future: bool) -> list:
+    rows = {r["id"]: dict(r) for r in M.query("SELECT id, rarity, group_id, grade_value, icon_id FROM skill_data")}
+    try:
+        cost = {r["id"]: r["need_skill_point"] for r in M.query("SELECT id, need_skill_point FROM single_mode_skill_need_point")}
+    except Exception:
+        cost = {}
+    extra_text = {}
+    if future:
+        from app import custom_support as C
+        for b in C.unreleased_bundles():
+            t = b.get("tables") or {}
+            for r in t.get("skill_data") or []:
+                rows.setdefault(r["id"], r)
+            for r in t.get("single_mode_skill_need_point") or []:
+                cost.setdefault(r["id"], r["need_skill_point"])
+            for r in t.get("text_data") or []:
+                if r.get("category") in (47, 48) and r.get("text"):
+                    extra_text.setdefault((r["category"], r["index"]), r["text"])
     out = []
-    for r in M.query("SELECT id, rarity, group_id, grade_value, icon_id, skill_category FROM skill_data ORDER BY id"):
-        name = text(47, r["id"])
+    for sid, r in sorted(rows.items()):
+        name = text(47, sid) or extra_text.get((47, sid), "")
         if not name:
             continue
-        out.append({"id": r["id"], "name": name, "rarity": r["rarity"], "group": r["group_id"],
-                    "grade": r["grade_value"], "icon": r["icon_id"]})
+        out.append({"id": sid, "name": name, "rarity": r["rarity"], "group": r["group_id"],
+                    "grade": r["grade_value"], "icon": r["icon_id"], "cost": cost.get(sid),
+                    "desc": (text(48, sid) or extra_text.get((48, sid), "")).replace("\\n", " ")})
     return out
 
 
@@ -130,7 +163,6 @@ def factor_catalog() -> list:
 
 @functools.lru_cache(maxsize=1)
 def program_catalog() -> list:
-    """Career race programs (what race_history / race-add take)."""
     out = []
     for r in M.query("""SELECT p.id, p.month, p.half, p.race_instance_id, r.grade
                         FROM single_mode_program p
@@ -145,9 +177,14 @@ def rank_label(rank_id: int) -> str:
     base = ["G", "G+", "F", "F+", "E", "E+", "D", "D+", "C", "C+", "B", "B+", "A", "A+", "S", "S+", "SS", "SS+"]
     if 1 <= rank_id <= len(base):
         return base[rank_id - 1]
+    if rank_id >= 99:
+        n = rank_id - 99
+        letters = ["LG", "LF", "LE", "LD", "LC", "LB", "LA", "LS"]
+        if n // 25 < len(letters):
+            return letters[n // 25] + ("" if n % 25 == 0 else str(n % 25))
+        return f"#{rank_id}"
     n = rank_id - len(base) - 1
-    series = ["UG", "UF", "UE", "UD", "UC", "UB", "UA", "US", "LG", "LF", "LE", "LD", "LC", "LB", "LA", "LS",
-              "MG", "MF", "ME", "MD", "MC", "MB", "MA", "MS"]
+    series = ["UG", "UF", "UE", "UD", "UC", "UB", "UA", "US"]
     if 0 <= n // 10 < len(series):
         return series[n // 10] + ("" if n % 10 == 0 else str(n % 10))
     return f"#{rank_id}"
@@ -155,11 +192,12 @@ def rank_label(rank_id: int) -> str:
 
 @functools.lru_cache(maxsize=1)
 def ranks() -> list:
-    return [{"id": r["id"], "min": r["min_value"], "max": r["max_value"], "label": rank_label(r["id"])}
-            for r in M.query("SELECT id, min_value, max_value FROM single_mode_rank ORDER BY id")]
+    out = {r["id"]: {"id": r["id"], "min": r["min_value"], "max": r["max_value"], "label": rank_label(r["id"])}
+           for r in M.query("SELECT id, min_value, max_value FROM single_mode_rank ORDER BY id")}
+    return [out[k] for k in sorted(out)]
 
 
-@functools.lru_cache(maxsize=1)
+@M.context_cache(maxsize=16)
 def misc_catalog() -> dict:
     from app import scenarios
     charas = sorted({c["chara_id"] for c in uma_catalog()["cards"]})
@@ -180,8 +218,14 @@ def misc_catalog() -> dict:
 
 @op("catalog.core")
 def core(viewer, args):
-    """Everything the UI needs up front, in one round trip."""
-    return {"region": region_name(), "supports": support_catalog(), "umas": uma_catalog(),
+    from .common import hidden_ported
+    hide_t, hide_s = hidden_ported()
+    sup, umas = support_catalog(), uma_catalog()
+    if hide_s:
+        sup = {**sup, "cards": [c for c in sup["cards"] if c["id"] not in hide_s]}
+    if hide_t:
+        umas = {**umas, "cards": [c for c in umas["cards"] if c["id"] not in hide_t]}
+    return {"region": region_name(), "supports": sup, "umas": umas,
             "items": item_catalog(), "misc": misc_catalog()}
 
 

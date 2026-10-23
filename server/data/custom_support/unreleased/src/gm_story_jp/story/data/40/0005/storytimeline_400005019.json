@@ -1,0 +1,323 @@
+{
+ "title": "変わりやすい天気",
+ "text_block_list": [
+  {
+   "name": "ビターグラッセ",
+   "text": "ふぅ……ふぅ……ダメだ……。\nまたスパートのスタミナが残せなかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "位置取りのための加速……\n相手を内から出さないように蓋をする……\n競り合うならむしろ自分の脚を溜める……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "相手を見る走りって、これだけ自分の走りを\nコントロールしなくちゃいけないのか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……ちゃんと考えろ、私……。\n…………よし、もう1回……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "では次のメニューですが、リトルココンは\nダートコースを3周、軽く流してください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "はい、わかりました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……そしてビターグラッセですが、\n今日からリトルココンとの併せを\n積極的に取り入れてみましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "リトルココンと……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "今、貴方がやろうとしているペース管理は、\nリトルココンが得意とするものでもあります。\n学べることも多いはずです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "…………。\nはい、わかりました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……ふぅ……ふぅ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……ねえ、なんか最近\nアンタのトレーニング変わってない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "うん、まあ……。\nしっかり勝てるようにって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……前向きな理由にしては、\n楽しそうに見えないけど。\nいつもは、うるさいほど騒いでんのに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……アンタ、今やってることに納得してんの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……納得するとか、しないとかじゃない。\n勝てるようになりたいんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "周りのみんなはどんどん強くなってる。\n力だけじゃ追いつけないくらい……。\nそれなのに、なにもしないわけにはいかない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "それで、走り方を変えるってなったわけ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……樫本トレーナーが考えてくれたんだ。\n私に勝ってほしいからって。\nだから私も、全力で応えたい……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……言ってることはわかるけどさ、\nそれでも前の走りに未練はあるんでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "さっきからアンタ、自分に\n言い聞かせてるようにしか聞こえないよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "なら1度、言ってみなよ。\n本当はどうしたいのか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "樫本トレーナーのこと、よく知ってるでしょ。\nウマ娘をちゃんと見てくれる人だって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ウマ娘がそれぞれ違うのは当たり前。\n貴方が合わせにいくというのも違うでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "さっそくメニューを見直します。そのかわり、\n今度からは遠慮なく言ってきてください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "ちゃんと見てくれる……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "…………。\n……わかった、相談してみる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "うん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "いいですよ、ミーク！\n最後まで脚を使ってっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "お疲れ様です！\nやりましたよ、またまたタイム更新です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……はぁ……はぁ……ふぅ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ここのところずっと更新し続けて――\nコツコツと積み重ねてきた成果です！\nミークが努力した成果ですよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……ふぅ……ぶい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……調子がいいみたいね、ミークちゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "あ、ゴドルフィンバルブさん！\nはい！　またタイムを更新したんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "本当に上がり調子で、\nデビューから2年間溜め続けてきたものが、\n一気に放出されているかのようなんです……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……私たちのペースで、とは思ってきました。\nけれど、日々成長する周囲のウマ娘たちを\n見つめるばかりの日々が続いて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ミークにはたくさん、\n歯がゆい想いをさせてしまったと思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "でも、だからこそ今があるんですよね……！\n耐え忍んだ成果が、今どんどん花開いて……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……我慢しました……。\n…………だから、がんばってます……むん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "そうですね、ミーク！\nこんなにもしっかりと開花できて……\n今年こそ重賞制覇も夢じゃありませんね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……それにしても、この短期間での\n成長ぶりは、あまり例を見ないほどだわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "それだけに、慎重になることも大事よ。\n急にトレーニングを増やしたり、僅かな\n体調の変化も見逃したりしないようにね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "そうですね。管理は怠らず、\nトレーニングもしっかり段階を踏んで……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "そして、シニア級では\nこれまでできなかったことを\nミークと一緒にいっぱいやっていきます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……もっと強く……。\n…………もっともっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……レースに勝って……\n…………私もトレーナーも喜んで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………。\n……ふふ、トレーナー……喜びすぎ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………よし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……もっとがんばれ……。\n…………もっともっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

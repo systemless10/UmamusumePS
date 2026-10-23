@@ -1,0 +1,299 @@
+{
+ "title": "あこがれパワー♡",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "おでかけの後。付き合ってほしい場所がある\nと言われ、やってきたのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃじゃーん♡\n今、ちょー話題の展望台～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "アーンド、今日のせんせーたちでーす♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "あはっ、ヴィブロスちゃんの\nせんせーそのいちです♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アストンマーチャン",
+   "text": "せんせーそのになのです。\nこんにちは。",
+   "choice_data_list": [
+    "ど、どういうこと……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "2人のSNSちょーすごいんだよ！\nちょーバズるし、ちょーフォロワーもいるの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いつもトレンドの中心にいる！\nそれってちょーセレブっぽーいっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だからね、せんせーをおねがいしたの！\n映え写真レクチャー、してくださーいって♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "ふふっ、任せて♪\nバズりの極意、教えちゃうから♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "まずはやっぱり～、カワイイポーズからっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わ、ほんとにカワイイっ！！　私も私も～！\nトレっち撮って撮って～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（カシャ、カシャ、カシャ――）",
+   "choice_data_list": [
+    "（……凄くカワイイ写真が撮れた！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "展望台併設・ゲームセンター内――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アストンマーチャン",
+   "text": "秘技・マスコットまみれの術です。ささ、\nどれがほんもののマーちゃんでしょう～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー、なにそれかわいー♡\nじゃあ私も――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どっちがほんものでしょー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アストンマーチャン",
+   "text": "なんと、やりますね！\n姉妹推しを狙ってくるとは、侮れません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（カシャ、カシャ――）",
+   "choice_data_list": [
+    "（この写真、ファンなら凄く喜びそうだ！）",
+    "（この写真、ファンなら凄く喜びそう！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "展望台併設・ショッピングモール内――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "SNSでちょーバズってるアイスじゃん！\nほら、みんなで早食いチャレンジするやつ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちこれは動画で撮って！\nほらほら、いくよ～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "その後も話題になりそうなものを撮影し、\n投稿を続け――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わ、もうトレンド上位に入っちゃった！\nカレンさんたちのおかげ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "ふふっ、役に立ててよかった♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アストンマーチャン",
+   "text": "むふ、マーちゃんの記事もトレンド入りです。\nご一緒できて感謝かんげき。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へへ……うれしーなぁ……♡\n2人とも、ほんとにありがと♡",
+   "choice_data_list": [
+    "よかったな",
+    "よかったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！　ほら、トレっちも見て見て！\nみんなのコメント――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『すごく楽しそう！』\n『私も一緒に行きたい！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『クレーンゲーム上手すぎっ！』\n『次の休み、やってみようかな！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな憧れてくれてる……。\nあのときの私みたい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私もね、はじめてドバイにいったとき\nすっごく憧れたの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ぜーんぶキラキラ、ぜーんぶすてき！\n私ぜったいここに住みたい！　って！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そのためならいっぱいがんばれる、\nなんだってできるって思った……♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だからね、そーゆー憧れをくれるセレブに\n私もなりたいんだ！\nだって“憧れ”にはきっと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どんなひとでも、さいきょーにする\nパワーがあるから♡",
+   "choice_data_list": [
+    "ならもっと、セレブな写真撮らないとな！",
+    "ならもっと、セレブな写真撮らないとね！",
+    "できること、全部やってみよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どんなひとでも、さいきょーにする\nパワーがあるから♡",
+   "choice_data_list": [
+    "ならもっと、セレブな写真撮らないとな！",
+    "ならもっと、セレブな写真撮らないとね！",
+    "できること、全部やってみよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アストンマーチャン",
+   "text": "ふっふっふ、そこはお任せください。\n実はこの展望台、\n本領発揮はこの後なのです――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うわわわ、すごーい！\nちょーきれーー！！　ちょーエモーーい！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アストンマーチャン",
+   "text": "ふふ、きっと忘れられない1枚になりますよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "夜景と撮るコツも、教えてあげちゃうね♪\nあ、最後だしトレーナーさんも入って入って♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして撮った最後の1枚が、\n今日1番のウマいねを集めたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "それならタグにこだわってみるとか♪\n例えば――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "カレンチャン",
+   "text": "『#お友だち　#と　#放課後デート\n#ちゃんチャン同盟　#with\n#カワイイヴィブロスちゃん』とか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アストンマーチャン",
+   "text": "じゃあわたしは――\n『#次　#も　#一緒に……\n#約束だよ　#りめんばーマー』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "3人でおしゃべりしてるみたい♡　なら――\n『#次どこ　#ちゃんチャンヴィブちゃん\n#セレブな場所　#募集ちゅー』っと♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうしてしばらくタグで遊びあう、\n楽しそうな声が響いたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,5 +1,3 @@
-// Race workshop: the course profile strip and the breakdown of one exact race
-// replay (results, per-runner telemetry, skill activations, events).
 
 import { act, call, esc, gameIcon, icon } from './core.js';
 import { STYLES } from './widgets.js';
@@ -18,24 +16,20 @@ export const skillTier = (s) => !s ? '' : s.rarity >= 3 ? 'unique' : s.rarity ==
 export const courseFacts = (c) => c ? [`${c.distance} m`, SURFACES[c.surface], DISTANCES[c.distanceType], TURNS[c.turn], c.gates ? `${c.gates} gates` : '']
   .filter(Boolean) : [];
 
-// One percentage span positioned along the course.
 const span = (a, b, dist, cls, label = '', title = label) =>
   `<div class="cs-seg ${cls}" style="left:${a / dist * 100}%;width:${Math.max(0.15, (b - a) / dist * 100)}%" title="${esc(title)}"><span>${esc(label)}</span></div>`;
 const m = (v) => `${Math.round(v)}m`;
 
-// Landmarks drawn as dashed verticals through the strip and the chart.
 export function landmarks(c) {
   const d = c.distance, out = [[d / 2, 'Halfway']];
   const corner = c.corners?.at(-1), straight = c.straights?.at(-1);
   if (corner) out.push([corner.start, 'Final corner']);
   if (straight && straight.start > 0) out.push([straight.start, 'Final straight']);
-  // The game's late-race skill window opens with 777 m to go.
   if (d > 1000) out.push([d - 777, '777 m left']);
   if (d > 400) out.push([d - 200, '200 m left']);
   return out.sort((a, b) => a[0] - b[0]);
 }
 
-// Alternate label rows when landmarks sit close together.
 function staggered(marks, d) {
   let prev = -1, row = 0;
   return marks.map(([x, l]) => { row = prev >= 0 && (x - prev) / d < 0.12 ? 1 - row : 0; prev = x; return [x, l, row]; });
@@ -44,7 +38,6 @@ function staggered(marks, d) {
 export function courseStrip(c, extraRows = '') {
   if (!c?.distance) return '<p class="faint">No course geometry for this race.</p>';
   const d = c.distance;
-  // Elevation from the slope table (slope is gradient × 10⁴ %).
   let h = 0, pts = [[0, 0]], last = 0;
   for (const s of [...(c.slopes || [])].sort((a, b) => a.start - b.start)) {
     pts.push([s.start, h]);
@@ -76,8 +69,6 @@ export function courseStrip(c, extraRows = '') {
   </div>`;
 }
 
-// ------------------------------------------------------------ breakdown
-// ctx: {replay, skills, cards, courseName(id), runnerName(h), dirty, onEdit, onSend, onResimulate, onWatch}
 export function mountBreakdown(root, ctx) {
   const { replay } = ctx;
   const skillById = new Map(ctx.skills.map((s) => [s.id, s]));
@@ -91,7 +82,6 @@ export function mountBreakdown(root, ctx) {
   const eventsOf = (i) => skillEvents.filter((e) => e.params[0] === i);
   let sel = order[0] ?? 0, compare = -1, shown = { speed: true, hp: true, lane: false }, pinned = null, possible = new Map(), showPossible = false;
 
-  // Per-runner telemetry, extracted once.
   const cache = new Map();
   function series(i) {
     if (!cache.has(i)) {
@@ -102,7 +92,7 @@ export function mountBreakdown(root, ctx) {
     }
     return cache.get(i);
   }
-  const at = (pts, d) => {           // the last frame at or before distance d
+  const at = (pts, d) => {
     let lo = 0, hi = pts.length - 1;
     while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (pts[mid].d <= d) lo = mid; else hi = mid - 1; }
     return lo;
@@ -205,7 +195,6 @@ export function mountBreakdown(root, ctx) {
     const W = 1000, H = 240, runners = [sel, ...(compare >= 0 && compare !== sel ? [compare] : [])];
     const all = runners.map(series);
     const vs = all.flat().map((p) => p.v), lanesV = all.flat().map((p) => p.lane);
-    // Scale speed to the running part of the race; the start dash is clipped.
     const cruising = all.flat().filter((p) => p.d > dist * 0.05).map((p) => p.v);
     const vMin = Math.floor(Math.min(...(cruising.length ? cruising : vs)) - 1), vMax = Math.ceil(Math.max(...vs) + 0.5);
     const hpMax = Math.max(...all.map((pts) => pts[0]?.hp || 1)), laneMax = Math.max(0.1, ...lanesV);
@@ -233,7 +222,6 @@ export function mountBreakdown(root, ctx) {
     const axisL = shown.speed ? [0, 0.5, 1].map((f) => `<span style="top:${(1 - f) * 100}%">${(vMin + (vMax - vMin) * f).toFixed(1)}</span>`).join('') : '';
     const axisR = shown.hp ? [0, 0.5, 1].map((f) => `<span style="top:${(1 - f) * 100}%">${Math.round(hpMax * f)}</span>`).join('') : '';
     const ticks = [0, 0.25, 0.5, 0.75, 1].map((f) => `<span style="left:${f * 100}%">${Math.round(dist * f)} m</span>`).join('');
-    // Phase names and landmarks over the plot, on the same distance scale.
     const band = `<div></div><div class="rb-band">
         <div class="rb-band-phases">${PHASES.map(([a, b, l, k]) => `<span class="ph-${k}" style="left:${a * 100}%;width:${(b - a) * 100}%" title="${l} ${m(a * dist)}–${m(b * dist)}">${l}</span>`).join('')}</div>
         <div class="rb-band-marks">${staggered(landmarks(course), dist).map(([d, l, r]) => `<b class="r${r}" style="left:${d / dist * 100}%" title="${m(d)}">${esc(l)}</b>`).join('')}</div>
@@ -311,7 +299,6 @@ export function mountBreakdown(root, ctx) {
     if (!t) return;
     if (t.dataset.rbRunner !== undefined) { sel = +t.dataset.rbRunner; pinned = null; renderAnalysis(); loadPossible();
       if (t.matches('.rb-ev')) {
-        // Scroll only the pane; scrollIntoView would also shift the desktop window.
         const box = root.querySelector('[data-rb-analysis]');
         root.scrollTo({ top: root.scrollTop + box.getBoundingClientRect().top - root.getBoundingClientRect().top - 8, behavior: 'smooth' });
       } }

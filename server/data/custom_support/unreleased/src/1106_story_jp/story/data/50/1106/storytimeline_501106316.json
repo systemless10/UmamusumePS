@@ -1,0 +1,311 @@
+{
+ "title": "ジャパンCの後に・おじさんに導かれて",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜぇ、はぁ……。世界の\n『ジャパンカップ』でここまで走れた……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よぉし、わたしもわたしの夢決めよっと！\nわたしだけの夢は～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "“海外GⅠ制覇”！\n……とか、どうだろ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『ジャパンカップ』でもやれたし、ついでに\nいっとく？　帰りはお土産いっぱいで～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それから“宇宙旅行”もいいかも。\nユニヴァースちゃんっぽく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "1番乗りすれば、月の土地とかも\nもらえるかもしれないし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あとは“両親への恩返し”とか？\n旅行をプレゼントしてみたり～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "1泊2日の朝夕食付。\nクリスエスちゃんみたいな\n恩返しパターンも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……えぇぇぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんか、どれも今考えたっぽくない？\nしかも誰かのパクり……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～う～、やりたいこととか、\nとくにないんだよなぁ。\nわたし一般人だし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "好走したにもかかわらず、ヒシミラクルは\nコース上で頭を抱えていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "一方、レース場のあちこちでは、\n他のウマ娘たちが\n次走について話し合っていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "クリスエス。行くんだろ、\nこの後は『有馬記念』に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――ああ。ヒシミラクルは\nMissionを見つけられずにいる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "次は――chanceかもしれないな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハッ、それはわからないさ。\nレースってヤツは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "案外、頭空っぽのヤツのほうが、\nいい走りをするもんさ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ネオユニヴァース",
+   "text": "ネオユニヴァースは“冷凍睡眠”に入るよ。\n来春まで。だから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ネオユニヴァース",
+   "text": "『有馬記念』は“託す”をしたいんだ。\n同期の……『ズッ友』に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゼンノロブロイ",
+   "text": "はいっ、ユニさん！\nお任せくださいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ユニ"
+   ]
+  },
+  {
+   "name": "ゼンノロブロイ",
+   "text": "その剣、受け取りました！\n星を継ぐ者として、必ずや恥じぬ走りを！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "むひょ～、ユニヴァースさんから\n本好きの英雄ロブロイさんへの、\nときめきのリレーション！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ロブロイ"
+   ]
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "これはなんとしても、\nコース上で見届けなければ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アグネスデジタル",
+   "text": "あ、スミマセン。年末の売り子って、\n任せられますか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "早くも年末の決戦に向けて、\nライバルたちは動き始めていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ～あ、結局わたしだけが、\n夢、見つけられずじまいかぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうだよねぇ。\nず～っと見つからなかったのに、\n急に見つかるわけなんて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンのおじさん",
+   "text": "ヒシミラクルーっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え……あ、はい！？\nあそこのおじさんは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンのおじさん",
+   "text": "また夢、見させてくれよなー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え……。は、はい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "びっくりした～……。\nでも、そっか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "夢の見つからないわたしだけど、\nわたしに夢見てくれてる人はいるんだ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんか……ヘンなの。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そして、その夜――",
+   "choice_data_list": [
+    "夢は見つかった？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "見つかりませんでした。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっとわかりかけた気がします。\n……ほんのちょっぴりですけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしの夢はやっぱり、\n誰かのマネじゃなくて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "心からそう思ってないと\n夢じゃないですよね。",
+   "choice_data_list": [
+    "そうか……",
+    "そう……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "背伸びしたって、仕方ないのかなって。\nたとえば～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "お好み焼きはおいしい。誰かと一緒にいると\n楽しい。そんな“ふつ～”の先に……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしの夢はきっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それがなんなのかは、わかりません。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、行きませんか？\n『有馬記念』。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わかってるのは、わたしに\n夢見てくれてる人がいるってことだけ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そこには応えたいってか！",
+   "choice_data_list": [
+    "ああ、行こう！",
+    "うん、行こう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "夢探しは――まだ途中。\n本番までに何か見つかるのか、\nそれとも出たとこ勝負になるのか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "いずれにしろ今年の締めくくり\n『有馬記念』で、最高のミラクルを見せよう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

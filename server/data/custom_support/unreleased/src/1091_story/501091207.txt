@@ -1,0 +1,51 @@
+#title Toward the Takarazuka Kinen
+0 Before the Takarazuka Kinen, which we were taking on hoping to learn from girls who knew racing overseas—
+1 Ahaha! That's suuuper hilarious!
+2 Vivlos's cheerful laughter echoed throughout the waiting room.
+3 No, no, it's no laughing matter! It was a real ordeal back then!
+4 That's right～, Vivlos was this teeeny-tiny, but so full of curiosity... she'd wander off anywhere～.
+5 But you know, as soon as her two big sisters called, she'd come right out. She was so cute～♡
+6 That's true～! Little me, so cute♡
+6> (Her family's helping her relax)
+7 Still, it's not as if there was no tension. Her father, who knows how tough sports are as a baseball player, was leading the way and setting the mood well.
+7> (I'm glad her family came)
+8 Today's Takarazuka Kinen would gather Satono Crown and other Umamusume of proven ability. Many came from the Classic Triple Crown races.
+8> (But if she can show what she's capable of—)
+9 —Hey, Tore-cchi!
+9> Huh?
+10 Hey, hey, you think so too, right, Tore-cchi?
+10> Uh, y-yeah...? | Uh, y-yeah...?
+11 !!
+12 Kyaaa～♡ Geez, Tore-cchiii♡
+12> Huh?
+13 Trainer... you're surprisingly bold, aren't you～?
+14 ...Well, well, well. We'll have to have a looong talk! Sometime soon!
+14> .........Talk about what?!
+15 ...Honestly, what good is it for you to be the nervous one?
+16 I'll never forget what you just said♡
+16> (What did I just agree to...?!) | (What did I just agree to...?!)
+17 Okay, let's get ready! I got lots of energy from everyone!
+18 Everyone, I'm... gonna win today's race.
+19 I'll definitely live up to everyone's cheers!
+19> Go for it, Vivlos!
+20 Okaaay!
+21 Nǐ hǎo, Vivlos!
+22 Vivlos, let's have a good race today.
+23 Oh, no! Let's have a good race!
+24 Today, I'm planning to learn a whole lot from you two!
+25 I've heard. You're aiming for Dubai, aren't you?
+26 Sure, running against me will be a good experience for you. But—
+27 Bitter memories might be what sticks with you. Unless you're seriously ready to devour us.
+28 ...Nuh-uh, I'm not gonna eat anyone! I know it.
+29 Seriously having fun can teach you lots of things too!
+30 ...Hehe, I see. So that's your aesthetic.
+31 I'll stay true to my pride too. Diamond, so will you, won't you?
+31{ Diamond
+32 Mm-hm. I don't have any overseas experience yet, but...
+33 —I've prepared for my long-held wish. More than anyone!
+34 So I'm aiming to win in earnest too. With Crown's experience, and—
+34{ Crown
+35 Vivlos's feelings for her shining dream! I'll make them my strength!
+36 ! My shining... dream...!
+37 Thank you for taking my dream so seriously!
+38 Let's make it a suuuper amazing race with everyone's sparkle♡

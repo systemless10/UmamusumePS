@@ -1,9 +1,3 @@
-""".NET ArraySortHelper introsort (reference source), used by Array.Sort/List.Sort.
-
-The client sorts runners with Array.Sort / List<T>.Sort and a Comparison; the
-algorithm is not stable, so ties (e.g. equal distances at the start) come out in
-the order this exact algorithm leaves them.
-"""
 
 from __future__ import annotations
 
@@ -19,7 +13,6 @@ def _floor_log2_plus_one(n: int) -> int:
 
 
 def sort(keys: list, cmp, items: list | None = None, index: int = 0, length: int | None = None) -> None:
-    """In-place Array.Sort(keys[, items], index, length, comparison)."""
     if length is None:
         length = len(keys) - index
     if length < 2:

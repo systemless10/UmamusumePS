@@ -1,0 +1,31 @@
+#title Toward the Japanese Oaks
+0 The day of the Japanese Oaks.
+1 Having seen Vivlos's success at the Oka Sho, many fans had gathered to cheer for her again today. What's more—
+2 —There, your hair's fixed.
+3 Thank you, Onee-chan♡
+4 Today, Verxina had come not as a spectator, but to help support Vivlos.
+5 Seeing the Oka Sho through to the end must have helped her sort out her own feelings.
+6 Hey, Onee-chan～, I want you to brush my hair more.
+7 No. I just finished fixing it. There, perfect!
+8 Aww, then... pat my head?
+9 Honestly, that'll mess it up too, won't it?
+10 *giggle*... You're such a spoiled girl.
+11 Ehehe～♡
+12 Being with the sister she loves so much had Vivlos in a great mood. No fatigue remained from the Oka Sho, and there were no major problems with her health.
+12> The only remaining concern is the distance...
+13 The Japanese Oaks is 2,400 meters—much longer than the Oka Sho.
+14 Adjusting in such a short time was quite a struggle for me too.
+14> She's handling it in training
+15 The real race is a completely different environment, though. I don't think Vivlos will have a problem, but—
+16 Heeey～! No talking just the two of you!
+17 I absolutely have to be included too, okay?
+17> Right, it's about you, after all | Right, it's about you, after all
+18 I don't think that's the only reason.
+19 All right! Enough being spoiled. The race is about to start.
+20 Okay.
+21 I'm sure you'll be fine. Do your best!
+22 Yeah! I'll do my best!
+22> Come back safe again today | Come back safe again today
+23 Okaaay!
+24 Onee-chan, Trainer... I'm gonna win and come back.
+25 And then... spoil me loooots♡

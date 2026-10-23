@@ -1,0 +1,173 @@
+{
+ "title": "夏合宿（2年目）スタート！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "実力向上のための夏合宿が始まった。\nウマ娘たちは充実の秋を迎えるべく、\n自分をかなり追い込んでいく――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『なるべく休養に充てよう』……\nって、なんで！？",
+   "choice_data_list": [
+    "君の体のことを考えて、だよ",
+    "貴方の体のことを考えて、だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは体質に弱いところがある。\n他の子たちと同じように追い込んでしまえば、\n更に体調が悪化してしまう危険性がある。",
+   "choice_data_list": [
+    "ゆるめに負荷をかけよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……トレーナーさんの気持ちもわかるよ。\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お願いっ！\nがっつりトレーニングを積んでください！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "体のこと、私ももうちゃんとわかってる。\n絶対に無理しない！",
+   "choice_data_list": [
+    "ちゃんと成長できるメニューを組むよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女の能力は今でも十分高い。\nゆるめの負荷でも、『秋華賞』で\nよい結果を残すことはできる。",
+   "choice_data_list": [
+    "『紫苑ステークス』も挟むし、無茶は禁物"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうかもだけど……\nちゃんと成長できる“かも”じゃイヤなの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……強くなりたいの。\n『秋華賞』、絶対に勝てるくらい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『桜花賞』も『オークス』も、\n思ってたよりちょー大変だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……お姉ちゃんはプラスでさ、\nジェンティルドンナさんっていう\nちょーすごいライバルがいたわけじゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんの気持ち、\n全部はわからないかもだけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こんな大変なことに挑んでたんだって、\nそう思ったの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……最後の一冠、\n絶対に後悔したくない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょーかっこいい私の姿を、\n見せてあげたいの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もっともっと成長したい！\nだから……お願いっ、\nトレーニング、がんばらせて！",
+   "choice_data_list": [
+    "……わかった、考えるよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいの？",
+   "choice_data_list": [
+    "もちろん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "考えていたプランよりも、もっと\n負荷をかけて爆発的な成長を促しつつ、\n体に負担のないラインで抑える。",
+   "choice_data_list": [
+    "ちょっとだけ時間をもらうね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！\nありがとうっ、トレっち♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……わがままで、\nごめんね？",
+   "choice_data_list": [
+    "こんな優しいわがままなら大歓迎だ",
+    "こんな優しいわがままなら大歓迎！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへ。\nありがとう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、『紫苑ステークス』……\nその後に控える『秋華賞』に向けて、\n熱い夏合宿が始まった――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

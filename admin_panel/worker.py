@@ -1,12 +1,3 @@
-"""One region's worker: reads JSON requests on stdin, answers on stdout.
-
-Started by workers.py as `python -m admin_panel.worker` with UMA_REGION set,
-from the repo root. Requests run one at a time, so ops never race each other.
-
-    request : {"id": n, "op": "supports.apply", "viewer": "123", "args": {...}}
-    answer  : {"id": n, "ok": true, "result": ..., "log": "...", "history": [ids]}
-              {"id": n, "ok": false, "error": "...", "detail": "traceback"}
-"""
 
 from __future__ import annotations
 
@@ -22,11 +13,9 @@ for p in (os.path.join(ROOT, "server"), ROOT):
     if p not in sys.path:
         sys.path.insert(0, p)
 
-# The protocol owns the real stdout. Everything else that prints (admin.py and
-# career.py commands, server logging) goes to stderr, or into the op's log.
 _proto = os.fdopen(os.dup(1), "w", buffering=1, encoding="utf-8")
 os.dup2(2, 1)
-sys.argv = [sys.argv[0]]        # admin.py / career.py read --region from argv at import
+sys.argv = [sys.argv[0]]
 
 
 def _send(msg: dict) -> None:
@@ -38,7 +27,8 @@ def main() -> None:
     from admin_panel import history
     history.install()
     from admin_panel.ops import OPS, load_all
-    from admin_panel.ops.common import DEFAULT_VIEWERS, OpError, region_name, set_prefer_english
+    from app import default_viewer
+    from admin_panel.ops.common import OpError, region_name, set_prefer_english
     load_all()
     _send({"id": 0, "ok": True, "result": {"ready": True, "region": region_name()}})
 
@@ -51,7 +41,7 @@ def main() -> None:
         name = req.get("op")
         args = req.get("args") or {}
         set_prefer_english(args.pop("_prefer_english", True) is not False)
-        viewer = "".join(str(req.get("viewer") or DEFAULT_VIEWERS[region_name()]).split())
+        viewer = "".join(str(req.get("viewer") or default_viewer.get()).split())
         entry = OPS.get(name)
         if not entry:
             _send({"id": rid, "ok": False, "error": f"Unknown operation {name}."})
@@ -69,14 +59,14 @@ def main() -> None:
             if name == "history.undo" and ids:
                 history.mark_undone(int(args.get("id")), ids[0])
             _send({"id": rid, "ok": True, "result": result, "log": log.getvalue(), "history": ids})
-        except SystemExit as ex:          # admin.py / career.py refusing
+        except SystemExit as ex:
             ids = history.commit(_label(label, args, name)) if label else []
             msg = ex.code if isinstance(ex.code, str) else f"exited ({ex.code})"
             _send({"id": rid, "ok": False, "error": msg, "detail": log.getvalue(), "history": ids})
         except OpError as ex:
             ids = history.commit(_label(label, args, name)) if label else []
             _send({"id": rid, "ok": False, "error": str(ex), "detail": log.getvalue(), "history": ids})
-        except Exception as ex:  # noqa: BLE001 - report everything to the panel
+        except Exception as ex:
             ids = history.commit(_label(label, args, name)) if label else []
             _send({"id": rid, "ok": False, "error": f"{type(ex).__name__}: {ex}",
                    "detail": log.getvalue() + traceback.format_exc(), "history": ids})
@@ -85,12 +75,11 @@ def main() -> None:
 def _label(label, args, name) -> str:
     try:
         return label.format_map(_Args(args)) if callable(getattr(label, "format_map", None)) else str(label)
-    except Exception:  # noqa: BLE001
+    except Exception:
         return name
 
 
 class _Args(dict):
-    """format_map helper: missing keys read as blank, lists as their length."""
     def __missing__(self, key):
         return ""
 

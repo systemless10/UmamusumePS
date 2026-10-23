@@ -1,16 +1,3 @@
-"""育成ロードマップ: the selected-character pointer.
-
-`WIRE` umacap api-20261011-014732-344 seq 82/85: selecting
-{type, plan_id, position_id} answers it back with auto_call_skill_set_deck_id
-101 (GameDefine.TRAINING_ROADMAP_DECK_ID -- the roadmap character's skill
-list stands in as a skill-set deck); clearing (identifier null) answers null
-and 0.
-
-The roadmap's sheets themselves (update_plan / add_character / ...) are not
-built, so training_roadmap/load never lists a character to select and
-selected_info stays null -- the skill-set index's real value when nothing is
-selected.
-"""
 
 from __future__ import annotations
 
@@ -31,9 +18,6 @@ def selected(full_state: dict):
 
 
 def selected_info(full_state: dict):
-    """TrainingRoadmapSelectedInfo {selected_character_identifier, character,
-    succession_character, compare_source_array}; needs the stored sheet, which
-    this server does not keep yet."""
     return None
 
 
@@ -50,7 +34,6 @@ def handle_update_selected_character(payload: dict) -> dict:
     full_state[STATE_KEY] = ident
     blob = skill_set.info(full_state)
     deck = skill_set.TRAINING_ROADMAP_DECK_ID if ident else 0
-    # Selecting points auto-call at the roadmap deck; clearing drops it to 0.
     if ident or blob.get("auto_call_skill_set_deck_id") == skill_set.TRAINING_ROADMAP_DECK_ID:
         blob["auto_call_skill_set_deck_id"] = deck
     state_store.save_state(payload["viewer_id"], full_state)

@@ -1,0 +1,7 @@
+#title After Repeated Races...
+0 ...Mmmmmm...
+0> Um... Vivlos, have you been in a bad mood lately...?
+1 'Cause lately I can't go out and play with you at all, Tore-cchi... and on my days off I'm so tired I just sleep.
+2 ...Come to think of it, it feels like she hasn't had a chance to unwind with all these races in a row.
+3 I wanna go to the Arabian restaurant by the station～. I wanna eat baklava and knafeh～! C'mon, Tore-cchi, pleeeeease!
+4 Keeping her mind and body in good condition is important. Let's take another look at her upcoming race schedule.

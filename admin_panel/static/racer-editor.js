@@ -1,11 +1,9 @@
-// Race workshop: one runner's editor, opened as a dialog over the workshop.
-// Edits apply to the runner record in place; changed() tells the workshop.
 
 import { esc, gameIcon, icon } from './core.js';
 import { APT_FIELDS, APT_LABELS, GRADE, STATS, STYLES, MOODS, modal } from './widgets.js';
 import { skillTier } from './race-breakdown.js';
 
-export const MAX_RUNNERS = 255; // admin_panel/ops/races.py MAX_RUNNERS
+export const MAX_RUNNERS = 255;
 const SKILL_TYPES = [['', 'All'], ['1', 'White'], ['2', 'Gold'], ['3', 'Unique']];
 const STAT_PRESETS = [600, 900, 1200, 1600];
 const APT_GROUPS = [['Surface', [0, 1]], ['Distance', [2, 3, 4, 5]], ['Running style', [6, 7, 8, 9]]];
@@ -20,7 +18,6 @@ export function newRacer(card) {
 export const statOf = (h, key) => Number(h[key] ?? (key === 'power' ? h.pow : null) ?? 800);
 export const statTotal = (h) => STATS.reduce((sum, [key]) => sum + statOf(h, key), 0);
 
-// ctx: {runners, index, cards, skills, changed(), duplicate(i) -> new index, remove(i) -> next index or -1}
 export function openRacerEditor(win, ctx) {
   const cardById = new Map(ctx.cards.map((c) => [c.id, c]));
   const skillById = new Map(ctx.skills.map((s) => [s.id, s]));
@@ -111,7 +108,6 @@ export function openRacerEditor(win, ctx) {
     root.querySelector('[data-gallery-count]').textContent = found.length > 90 ? `Showing 90 of ${found.length} outfits · search to narrow down` : `${found.length} outfits`;
   }
 
-  // Re-render while keeping the editor's scroll position and focused search.
   function update() {
     const scroll = m.box.scrollTop, focus = document.activeElement?.dataset?.q;
     render();
@@ -124,7 +120,7 @@ export function openRacerEditor(win, ctx) {
     const t = e.target;
     if (t.dataset.q === 'skill') { skillQuery = t.value; results(); }
     else if (t.dataset.q === 'uma') { umaQuery = t.value; gallery(); }
-    else if (t.type === 'range') {                 // live-link the slider and its number box
+    else if (t.type === 'range') {
       const box = root.querySelector(`input[type=number][data-field="${t.dataset.field}"]`);
       box.value = t.value;
     }
@@ -154,7 +150,6 @@ export function openRacerEditor(win, ctx) {
     if (b.dataset.uma) {
       const c = cardById.get(+b.dataset.uma);
       r.card_id = c.id; r.chara_id = c.chara_id;
-      // Let the game's card-to-dress mapping choose the selected outfit.
       for (const key of ['mob_id', 'race_dress_id', 'race_cloth_id', 'single_mode_chara_id']) delete r[key];
       picking = false;
       return changed();

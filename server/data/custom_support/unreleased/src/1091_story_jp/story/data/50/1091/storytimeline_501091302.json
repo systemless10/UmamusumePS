@@ -1,0 +1,755 @@
+{
+ "title": "福引チャンス！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある日、ヴィブロスと買い物をした帰り――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "およ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、\nなんかやってるよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "さあさ、新春・大福引祭り開催中だよ～！\n特賞はなんと『温泉旅行券』！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "温泉旅行券"
+   ]
+  },
+  {
+   "name": "商店街の人",
+   "text": "1等は『特上にんじんハンバーグ』\n2等は『にんじん山盛り』\n3等は『にんじん1本』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "さあさ、楽しい楽しい福引だよ！\nどなたでもどうぞ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わぁ！\nすごいすごーいっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、\nちょっとやってかない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "温泉旅行、\n当たっちゃったりするかもっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、家族の中でも、\nこーゆーの1番強かったんだよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、いいでしょ？\nね、ね？",
+   "choice_data_list": [
+    "よし、やってみよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "先ほどの買い物で、ちょうど\n福引券を1枚手にしていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やった♡\nよーし……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ねね、お兄さんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "……ん？\nお、俺か？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん。\nあのね、お願いがあるんだけど～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じ～～……♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "ドキッ……！？\nえ、ええと……。",
+   "choice_data_list": [
+    "おねだりしても特賞は出ないぞ",
+    "おねだりしても特賞は出ないよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー？\nダメ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもいいんだ、私持ってるもんね♡\nよーし、いってみよー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスが張り切って\n抽選器のレバーを回した！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その結果は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "なんとっ！　おめでとうございまぁぁぁす！！\n特賞『温泉旅行券』、出ましたぁ～～～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おおおお～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち～～！？",
+   "choice_data_list": [
+    "さすが、持ってるな！",
+    "さすが、持ってるね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、ね、やばくない！？\nさすがすぎる～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "おめでとう！\nよかったなぁ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがと～♡\nお兄さんのおかげかもっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "当たるように、\nちょっとお祈りしてくれたでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "あはは……祈るくらいなら、\n不正じゃないだろ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんうんっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お兄さんが応援してくれたら、\n私なんでもできちゃいそう♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "そ、そうか……？\nよしっ、レースもいっちょ応援するか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～っ。\nありがと～！",
+   "choice_data_list": [
+    "（相変わらず甘え上手だなぁ……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これはも～、\nがんばるしかないねぇ、トレっち？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも、がんばるには体力がいるよね？\nだから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まず温泉に行って、\nエーキをやしなう的な♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "これからヴィブロスには大事なレースが\n待っている。本当であれば、集中して\nトレーニングをするべき場面だが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんて、大事なレースがあるもん。\nあとだよね。",
+   "choice_data_list": [
+    "……いいよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "へ？",
+   "choice_data_list": [
+    "温泉、行っておいで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいの？\nレースあるのに？",
+   "choice_data_list": [
+    "色々大変だったからな",
+    "色々大変だったからね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "気持ち的に、休まらない場面が続いていた。\nヴィブロスはよく頑張ってくれているし、\nむしろ褒めてあげたい気持ちはずっとある。",
+   "choice_data_list": [
+    "頑張ってるご褒美ってやつだな！",
+    "頑張ってるご褒美ってやつだね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ごほうび……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [
+    "予定を調整するけど、いつがいい？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……今ある予定の、\nいちばん最後！",
+   "choice_data_list": [
+    "え？それって……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、いいの。\nやっぱり、全部終わったあとでいい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "がんばってるごほうびなら、\nトレっちからもうもらってるもん。",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "毎日、いっぱい褒めてくれてるでしょ？\nそれでいいのっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから温泉は、\n私と……トレっちのごほうびにしよ？",
+   "choice_data_list": [
+    "俺の……？",
+    "私の……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちも、いっぱいがんばってるし。\nほんとのごほうび、もらってほしい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "明日から、またいっぱいがんばるから……\nごほうび、楽しみにしようね、トレっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスの思いやりを感じ……\n温泉旅行券をそっと、スケジュール帳の\n最後のページに挟んだのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "おめでとうございます、1等賞～！\n賞品は『特上にんじんハンバーグ』です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おお～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、すごくない！？\n私、持ってない～！？",
+   "choice_data_list": [
+    "すごいな！",
+    "すごいね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でしょっ、でしょ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー、ハンバーグ、\nちょーおいしそー♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃ、\n連絡しちゃうね～。",
+   "choice_data_list": [
+    "連絡？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！\nだってちょーおいしそうなんだもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "大好きな人たちにも、\n味わってほしいっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もしもし、お姉ちゃん？\n今からカフェテリア来られる～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～！\nおいしーね、お姉ちゃん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "うん、そうね……。味つけがしっかりしてて、\nでもお肉本来の旨味も感じられる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねー、お姉ちゃんって食レポうますぎ！\nさすがお姉ちゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほら、トレっちも！\n食レポして？",
+   "choice_data_list": [
+    "……肉汁がジューシー！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃはっ。\nダジャレみたい～！",
+   "choice_data_list": [
+    "（ちゃんと考えたのに……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ、楽しいなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちもいたら、\nもっと完璧だったけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "シュヴァルの分は、\n同室の子に渡しておいたわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとっ。\n急だったもんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いい匂いだし～、\nシュヴァちもきっとすぐ食べちゃうよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんながおいしいなら、\n私もちょー幸せっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "2等賞～！！\n賞品は『にんじん山盛り』です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ひゃ～っ！\nすっごいたくさん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こんなにもらっていいの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "おう、もちろんだよ！\n美味しく食べてやってくれ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やった～！\nありがとう♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、トレっち！\nこれだけあるんだもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どうせなら――\nパーティーじゃない！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "次の日――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――そう、これ！\n私が作ったキャロットケーキ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マヤノトップガン",
+   "text": "え～っ、すっごーい！\nひとくちサイズでカワイイ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "……変わったスパイスが入っているのかしら？\nオシャレな仕上がりね、あなたのアイディア？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、ちょっぴりドバイ風意識で～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "スパイススーク……\nマーケットをイメージして、\nいろんなスパイスを混ぜてみたの♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……って、作ったのは\nほとんどお姉ちゃんとトレっちだけど♡",
+   "choice_data_list": [
+    "はは……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなはにんじんで、\nなに作ってきてくれたのー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、ガーデンパーティーは\n華やかに進んだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "3等賞～！\n賞品は『にんじん1本』です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あちゃ～、3等かぁ。",
+   "choice_data_list": [
+    "でも、当たりは当たりだぞ",
+    "でも、当たりは当たりだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～～……でもやっぱり、\nすごいの当てたかったなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あ、そうだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えーん？",
+   "choice_data_list": [
+    "……ん？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、\n慰めてほしい～……。",
+   "choice_data_list": [
+    "……が、頑張った！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………。",
+   "choice_data_list": [
+    "力いっぱい回せて、偉い！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………。",
+   "choice_data_list": [
+    "……君が引けば全部1等だ！",
+    "……貴方が引けば全部1等！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うははっ！\nトレっちってばも～～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "くすくすっ……えへ、\nもう、なんでもいっかぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お兄さんっ。\n1等賞のにんじん、くださいっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "よくわからないが、上機嫌で\nにんじん1本を受けとってくれた\nヴィブロスだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "残念、はずれ！\n参加賞は『ティッシュ』だよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うそ～～～～！\nなんでぇ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よりにもよって……\n参加賞！？",
+   "choice_data_list": [
+    "こういうのは運だから……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもでも、\n“持ってる”セレブなら当たるよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ私、全然セレブじゃないじゃんっ！\nやだ～～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "テンションの下がってしまった\nヴィブロスだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

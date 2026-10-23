@@ -1,0 +1,25 @@
+{
+ "title": "桜花賞の後に・Bloom♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは『桜花賞』で勝利を掴み、\n見事、ヴィルシーナの雪辱を果たした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "観客席へ飛び出し、姉と喜びを分かち合う\nヴィブロス。ヴィルシーナも妹の様子に、\nほっとしているようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "レース後の体調に大きな問題はなさそうだが、\n油断はできない。体を休めつつ、\n次の『オークス』を目指すのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "オークス"
+   ]
+  }
+ ]
+}

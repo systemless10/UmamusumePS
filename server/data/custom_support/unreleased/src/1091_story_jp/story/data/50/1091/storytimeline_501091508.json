@@ -1,0 +1,35 @@
+{
+ "title": "レース疲れ",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "あぁ～……はふぅ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ミーティングを始めたものの、\nどうにも心ここに在らずの様子だったので\n何かあったのかと聞いてみたのだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～……頭も体もズシーンって重くて……\nなんか最近ずっとこんな感じなんだよね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日も小テストでミス連発で……。\n回答欄ずれてるとか、そういうの～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ここ最近のレースの疲労が原因だろうか。\nスケジュールをもう1度見直してみよう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

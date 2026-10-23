@@ -1,4 +1,3 @@
-"""Port of CourseData.ts."""
 
 from __future__ import annotations
 
@@ -6,8 +5,6 @@ import json
 import math
 from pathlib import Path
 from typing import NamedTuple
-
-# Phase = 0 | 1 | 2 | 3
 
 
 class Surface:
@@ -120,7 +117,6 @@ def phase_end(distance: float, phase: int) -> float:
 
 
 def course_speed_modifier(course: CourseData, stats) -> float:
-    """`stats` needs .speed/.stamina/.power/.guts/.wisdom attributes."""
     statvalues = [0, min(stats.speed, 901), min(stats.stamina, 901),
                   min(stats.power, 901), min(stats.guts, 901), min(stats.wisdom, 901)]
     total = sum((1 + math.floor(statvalues[stat] / 300.01)) * 0.05 for stat in course.course_set_status)
@@ -147,10 +143,6 @@ def get_course(course_id: int) -> CourseData:
         corners=corners,
         straights=straights,
         slopes=slopes,
-        # raw laneMax/10000 = max lane in course-widths (confirmed against
-        # real track data: Tokyo turf, the doc's stated widest course, comes
-        # out to exactly 1.5; narrow NAR dirt tracks come out around 1.1-1.2,
-        # matching the doc's stated range).
         max_lane=raw.get("laneMax", 13000) / 10000.0,
     )
     _course_cache[course_id] = course

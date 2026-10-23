@@ -1,0 +1,25 @@
+{
+ "title": "オークスの後に・Double Tiara♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『桜花賞』に続き『オークス』でも勝利し、\n二冠を獲得したヴィブロス。観客も\nトリプルティアラに大きな期待を寄せる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスも『秋華賞』での勝利に向け、\n夏合宿に加えてもう1つ自信を持てるすべが\n欲しいとトレーナーに願い出る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "さらなる飛躍を目指し、\nヴィブロスとトレーナーは次の目標を\n『紫苑ステークス』に定めるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "紫苑ステークス"
+   ]
+  }
+ ]
+}

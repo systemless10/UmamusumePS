@@ -1,13 +1,3 @@
-//! Port of activation_conditions.py -- the skill trigger-condition table.
-//!
-//! Two-phase system per condition: a static `filter_*` function restricts a
-//! region list to where the condition could possibly hold (computed once at
-//! skill-build time), paired with an optional dynamic per-tick predicate
-//! over a live `RaceSolver` (checked once `pos` enters the statically
-//! filtered trigger region). Unlike the Python port, every filter function
-//! here returns `(Vec<Region>, OptCond)` uniformly -- `None` plays the role
-//! Python's `k_true` sentinel played (see `condition_parser`'s `Op::apply`
-//! for where the two sides of an `&`/`@` get recombined).
 
 use std::collections::HashMap;
 
@@ -20,17 +10,10 @@ use crate::race_solver::RaceSolver;
 use crate::region::{rmap_multi, rmap_one, union, Region};
 
 pub type CondResult<T> = Result<T, String>;
-/// `field` is `None` during the pre-race "gate skill" activation round
-/// (before the roster's `RaceField` exists) and `Some` afterward -- passed
-/// explicitly rather than stored on `RaceSolver` so no self-referential
-/// pointer/unsafe is needed anywhere in this port; every call site that has
-/// a `RaceField` already has it in scope to pass down.
 pub type DynCond = Box<dyn Fn(&RaceSolver, Option<&RaceField>) -> bool>;
 pub type OptCond = Option<DynCond>;
 pub type FilterFn = Box<dyn Fn(&[Region], f64, &CourseData, &HorseParameters, &RaceParametersWithSkillId) -> CondResult<(Vec<Region>, OptCond)> + Send + Sync>;
 
-// ---------------------------------------------------------------------------
-// Condition / Operator framework
 
 pub struct Condition {
     pub sample_policy: SamplePolicy,
@@ -145,10 +128,6 @@ fn passthrough_static(regions: &[Region], _arg: f64, _c: &CourseData, _h: &Horse
     regions.to_vec()
 }
 
-/// Port of `_live_condition`: builds a full six-comparator Condition whose
-/// runtime value comes from `get_value(state, field)` each tick (`field`
-/// `None` -> condition is "not yet determinable", i.e. false, matching the
-/// pre-race gate-skill activation round where no field exists yet).
 fn live_condition(get_value: LiveValueFn, transform_arg: TransformArgFn, static_filter: StaticFilterFn) -> Condition {
     fn mk(get_value: LiveValueFn, transform_arg: TransformArgFn, static_filter: StaticFilterFn, cmp: fn(f64, f64) -> bool) -> FilterFn {
         Box::new(move |regions, arg, course, horse, extra| {
@@ -192,15 +171,9 @@ fn order_get_pos(arg: f64, _s: &RaceSolver, _f: Option<&RaceField>) -> f64 {
 }
 fn order_rate_get_pos(rate: f64, _s: &RaceSolver, field: Option<&RaceField>) -> f64 {
     let n = field.map(|f| f.n as f64).unwrap_or(0.0);
-    (n * (rate / 100.0)).round_ties_even() // Python round(): ties to even
+    (n * (rate / 100.0)).round_ties_even()
 }
 
-/// `order_rate_inXX_continue` / `_outXX_continue`: true once the horse has
-/// been continuously in/out of the band since at least accumulatetime t=5s.
-/// Per-solver continuity state lives in one of the seven named `Cell`s on
-/// `RaceSolver` (`order_band_*`) rather than Python's dynamic
-/// `setattr`/`getattr`, since Rust has no equivalent dynamic-attribute
-/// mechanism and this codebase only ever needs these seven fixed bands.
 fn order_in_filter(rate: f64, band: fn(&RaceSolver) -> &std::cell::Cell<Option<f64>>) -> Condition {
     let feq: FilterFn = Box::new(move |regions, one, _c, _h, _e| {
         if one != 1.0 {
@@ -261,8 +234,6 @@ fn section_random(start: f64, end: f64) -> Condition {
     random_cond().eq(mk()).neq(mk()).lt(mk()).lte(mk()).gt(mk()).gte(mk())
 }
 
-// ---------------------------------------------------------------------------
-// Skill-id tables transcribed verbatim from ActivationConditions.ts.
 
 const ACCUMULATETIME_FULL_COURSE_SKILLS: &[&str] = &[
     "100302211", "100403111", "100501111", "101001211", "101002111", "101021", "101802111", "101901111", "102002211", "102302111",
@@ -297,8 +268,6 @@ fn is_sorted_by_start<T>(items: &[T], start: impl Fn(&T) -> f64) -> bool {
     true
 }
 
-// ---------------------------------------------------------------------------
-// Static filter functions (one section per Python function, same order).
 
 fn accumulatetime_filter_gte(regions: &[Region], t: f64, course: &CourseData, _h: &HorseParameters, extra: &RaceParametersWithSkillId) -> CondResult<(Vec<Region>, OptCond)> {
     let allowed_region = if ACCUMULATETIME_FULL_COURSE_SKILLS.contains(&extra.skill_id.as_str()) {
@@ -432,8 +401,6 @@ fn hp_per_filter_gte(regions: &[Region], hp_per: f64, _c: &CourseData, _h: &Hors
     Ok((regions.to_vec(), Some(check)))
 }
 
-// Has THIS horse activated a recovery (effect type 9) skill yet? See the
-// Python filter's docstring.
 fn is_activate_heal_skill_filter_eq(regions: &[Region], flag: f64, _c: &CourseData, _h: &HorseParameters, _e: &RaceParametersWithSkillId) -> CondResult<(Vec<Region>, OptCond)> {
     let want = flag == 1.0;
     let check: DynCond = Box::new(move |s: &RaceSolver, _field: Option<&RaceField>| (s.activate_count_heal > 0) == want);
@@ -491,8 +458,6 @@ fn is_dirtgrade_filter_neq(regions: &[Region], flag: f64, course: &CourseData, _
     Ok((if !DIRT_GRADE_TRACK_IDS.contains(&course.race_track_id) { regions.to_vec() } else { Vec::new() }, None))
 }
 
-// Doc: tight-corner tracks -- Sapporo, Hakodate, Fukushima, Kokura, Kawasaki,
-// Funabashi (track_id, not course_set_id).
 const TIGHT_TRACK_IDS: &[i32] = &[10001, 10002, 10004, 10010, 10103, 10104];
 
 fn is_tight_track_filter_eq(regions: &[Region], flag: f64, course: &CourseData, _h: &HorseParameters, _e: &RaceParametersWithSkillId) -> CondResult<(Vec<Region>, OptCond)> {
@@ -933,8 +898,6 @@ fn activate_count_heal_filter_gte(regions: &[Region], n: f64, _c: &CourseData, _
     Ok((regions.to_vec(), Some(check)))
 }
 
-// Skills THIS horse activated past the halfway mark of the course -- the
-// DISTANCE half, not a phase. See the Python filter's docstring.
 fn activate_count_later_half_filter_gte(regions: &[Region], n: f64, _c: &CourseData, _h: &HorseParameters, _e: &RaceParametersWithSkillId) -> CondResult<(Vec<Region>, OptCond)> {
     let n = n as i32;
     let check: DynCond = Box::new(move |s: &RaceSolver, _field: Option<&RaceField>| s.activate_count_later_half >= n);
@@ -953,8 +916,6 @@ fn activate_count_start_filter_gte(regions: &[Region], n: f64, _c: &CourseData, 
     Ok((regions.to_vec(), Some(check)))
 }
 
-// -- value_filter getters (all capture nothing / a fixed Copy value, so are
-// plain function pointers -- see `ValueFn`) ---------------------------------
 
 fn v_base_power(_c: &CourseData, h: &HorseParameters, _e: &RaceParametersWithSkillId) -> f64 { h.power }
 fn v_base_speed(_c: &CourseData, h: &HorseParameters, _e: &RaceParametersWithSkillId) -> f64 { h.speed }
@@ -978,7 +939,6 @@ fn v_time(_c: &CourseData, _h: &HorseParameters, e: &RaceParametersWithSkillId) 
 fn v_track_id(c: &CourseData, _h: &HorseParameters, _e: &RaceParametersWithSkillId) -> f64 { c.race_track_id as f64 }
 fn v_weather(_c: &CourseData, _h: &HorseParameters, e: &RaceParametersWithSkillId) -> f64 { e.params.weather as i32 as f64 }
 
-// -- live_condition value getters --------------------------------------
 
 fn lv_bashin_diff_behind(s: &RaceSolver, field: Option<&RaceField>) -> f64 {
     match field {
@@ -1041,8 +1001,6 @@ fn lv_temptation_count_infront(s: &RaceSolver, field: Option<&RaceField>) -> f64
     field.map(|f| f.temptation_count_infront(s.field_index.unwrap()) as f64).unwrap_or(0.0)
 }
 fn running_style_temptation_count_live(strategy: Strategy) -> Condition {
-    // Condition needs a plain fn pointer (LiveValueFn), not a closure over
-    // `strategy` -- dispatch through the small match below instead.
     fn nige(s: &RaceSolver, field: Option<&RaceField>) -> f64 { field.map(|f| f.running_style_temptation_count(Strategy::Nige, s.field_index.unwrap(), s.is_kakari) as f64).unwrap_or(0.0) }
     fn senko(s: &RaceSolver, field: Option<&RaceField>) -> f64 { field.map(|f| f.running_style_temptation_count(Strategy::Senkou, s.field_index.unwrap(), s.is_kakari) as f64).unwrap_or(0.0) }
     fn sashi(s: &RaceSolver, field: Option<&RaceField>) -> f64 { field.map(|f| f.running_style_temptation_count(Strategy::Sasi, s.field_index.unwrap(), s.is_kakari) as f64).unwrap_or(0.0) }
@@ -1066,15 +1024,7 @@ fn cell_order_band_out_400(s: &RaceSolver) -> &std::cell::Cell<Option<f64>> { &s
 fn cell_order_band_out_500(s: &RaceSolver) -> &std::cell::Cell<Option<f64>> { &s.order_band_out_500 }
 fn cell_order_band_out_700(s: &RaceSolver) -> &std::cell::Cell<Option<f64>> { &s.order_band_out_700 }
 
-// ---------------------------------------------------------------------------
 
-/// Looks up `name` in `table`. `table` itself must be `'static` -- both
-/// condition tables are built once and leaked (see `conditions_table`/
-/// `conditions_table_acr` in race_solver_builder.rs) -- so `HashMap::get`
-/// already hands back a `&'static Condition` on its own; no unsafe lifetime
-/// extension needed. That `'static`-ness is what lets `Op::Cmp` hold a bare
-/// `&'static Condition` with no lifetime parameter threaded through the
-/// rest of the engine.
 pub fn lookup_condition(table: &'static HashMap<String, Condition>, name: &str) -> Option<&'static Condition> {
     table.get(name)
 }
@@ -1151,9 +1101,6 @@ pub fn make_or(left: Op, right: Op) -> CondResult<Op> {
     let sp = left.sample_policy().reconcile(right.sample_policy())?;
     Ok(Op::Or(Box::new(left), Box::new(right), sp))
 }
-
-// ---------------------------------------------------------------------------
-// The condition tables.
 
 
 fn context_number(ctx: &std::collections::BTreeMap<String, crate::json::Value>, key: &str) -> f64 {
@@ -1305,19 +1252,13 @@ pub fn build_conditions() -> HashMap<String, Condition> {
     c.insert("is_dirtgrade".into(), immediate().eq(Box::new(is_dirtgrade_filter_eq)).neq(Box::new(is_dirtgrade_filter_neq)));
     c.insert("is_tight_track".into(), immediate().eq(Box::new(is_tight_track_filter_eq)));
     c.insert("is_exist_skill_id".into(), noop_immediate());
-    // a runner with this character id is in the race (Silence Suzuka's
-    // friends' skills) -- the roster is known before the race, so static
     c.insert(
         "is_exist_chara_id".into(),
         immediate()
             .eq(Box::new(|regions, cid, _c, _h, extra| Ok((if extra.params.chara_ids.contains(&(cid as i32)) { regions.to_vec() } else { Vec::new() }, None))))
             .neq(Box::new(|regions, cid, _c, _h, extra| Ok((if !extra.params.chara_ids.contains(&(cid as i32)) { regions.to_vec() } else { Vec::new() }, None)))),
     );
-    // the remaining distance of the VIEWER's own horse (the player's), not
-    // the skill user's
     c.insert("remain_distance_viewer_id".into(), live_simple(lv_viewer_remain_distance));
-    // another runner activated a skill carrying this (positive) ability type
-    // on the previous frame -- "==9": someone used a recovery skill
     c.insert(
         "is_other_character_activate_advantage_skill".into(),
         immediate().eq(Box::new(|regions, ability_type, _c, _h, _e| {
@@ -1410,8 +1351,6 @@ pub fn build_conditions() -> HashMap<String, Condition> {
     c.insert("running_style_temptation_count_senko".into(), running_style_temptation_count_live(Strategy::Senkou));
     c.insert("running_style_temptation_count_sashi".into(), running_style_temptation_count_live(Strategy::Sasi));
     c.insert("running_style_temptation_count_oikomi".into(), running_style_temptation_count_live(Strategy::Oikomi));
-    // "opponent" variants: no team concept exists in this engine, see the
-    // comment on running_style_temptation_count_live's Python counterpart.
     c.insert("running_style_temptation_opponent_count_nige".into(), running_style_temptation_count_live(Strategy::Nige));
     c.insert("running_style_temptation_opponent_count_senko".into(), running_style_temptation_count_live(Strategy::Senkou));
     c.insert("running_style_temptation_opponent_count_sashi".into(), running_style_temptation_count_live(Strategy::Sasi));
@@ -1487,9 +1426,6 @@ fn acr_activate_count_start_filter_gte(regions: &[Region], _n: f64, course: &Cou
     Ok((rmap_one(regions, |r| r.intersect(&bounds)), None))
 }
 
-/// Port of `_build_conditions_with_activate_counts_as_random` (used via
-/// `.withActivateCountsAsRandom()`): the same table with six entries
-/// swapped for probabilistic-activation-count variants.
 pub fn build_conditions_with_activate_counts_as_random() -> HashMap<String, Condition> {
     let mut c = build_conditions();
     c.insert(

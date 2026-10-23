@@ -1,0 +1,310 @@
+{
+ "title": "ぷちヴィブちゃんと！",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "お出かけからの帰り道。\nヴィブロスからのおねだりを受け、\nゲームセンターに寄り道をしていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、見て見て！\nとれたーっ♪",
+   "choice_data_list": [
+    "おおっ、すごいな！",
+    "わっ、すごいね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でしょ♪\n私、すっごーい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ふふん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……『ぷちヴィブちゃんだよ！\nトレっち。次はプリ行きたいな♪』",
+   "choice_data_list": [
+    "……何をしているんだ？",
+    "……何をしているの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "小っちゃい私とおっきい私で、\nトレっちにダブルかわいいアタックちゅー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……効いた？\nいつもの私、2人分だよ？",
+   "choice_data_list": [
+    "はたしてどうかな？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "……そしてWヴィブロスのお願いを聞き、\nプリントシール機の前までやってきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ど・れ・に・し・よ・う、かな！\nんー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "決めたっ、こっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "グッと腕に重さがかかり、重心がズレる。\n気づくとヴィブロスが\n自分の腕に抱きついていた。",
+   "choice_data_list": [
+    "えっ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あはっ♡\n中もかわちぃ♪",
+   "choice_data_list": [
+    "ヴィブロス！？さっきの腕組みは……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん？　お出かけならするでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それより、ハート作ろ！\nお姉ちゃんともよく作るんだよ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちの右手と私の左手を合わせて、ね♡",
+   "choice_data_list": [
+    "い、いやいやいや！それは――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "先ほどの腕組みもそうだが、\nヴィブロスは距離が近すぎる。\n節度を持って接しなければ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ふむん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……よし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『ぷちヴィブちゃんもそうしたい！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ダメ？",
+   "choice_data_list": [
+    "ぐっ……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ。\nトレっち、ありがと♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それじゃあ次はっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "アイスショップ店員",
+   "text": "同時新発売！\nピスタチオクリームはちみーラテと、\nゆずりんごはちみースムージーでーす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わっ、どっちもおいしそ……！\nでもどっちもけっこー大き……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、トレっち！\n今度はドリンクを半分ずつ――",
+   "choice_data_list": [
+    "いやいやいや！それはさすがに！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ダメ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………。\n……よし。",
+   "choice_data_list": [
+    "ぷちヴィブちゃんのお願いでもダメ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……あれをどっちも飲めたら\n次のレース、ちょーがんばれそうなのになぁ。",
+   "choice_data_list": [
+    "（……それはずるい！！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ぷちヴィブちゃんも、ほら。\n『おねがい♡　飲みたいな♡』って。",
+   "choice_data_list": [
+    "……じゃあ提案があるんだけど",
+    "ぷちヴィブちゃんは飲めないだろ",
+    "ぷちヴィブちゃんは飲めないでしょ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ぷちヴィブちゃんも、ほら。\n『おねがい♡　飲みたいな♡』って。",
+   "choice_data_list": [
+    "……じゃあ提案があるんだけど",
+    "ぷちヴィブちゃんは飲めないだろ",
+    "ぷちヴィブちゃんは飲めないでしょ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "？　提案？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "まあ、よろしいのですか？\n通りすがりの私の分まで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "苦肉の策は、この近くにいた\nヴィブロスの友人を何とか見つけて、\n彼女と分け合ってもらうというものだった。",
+   "choice_data_list": [
+    "ああ、ヴィブロスと半分こしてあげて",
+    "うん、ヴィブロスと半分こしてあげて"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねねっ、サトノ！\nそっちの、ちょっとちょうだい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ふふっ、はい♪\n少し待っていてくださいね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへぇ。…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちは自分の分を買わないの？\n私、トレっちの分のひと口もほしーな？",
+   "choice_data_list": [
+    "だ、ダメダメ！半分こもひと口もなし！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わ。厳しっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むむむ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『厳しいぞぉ、トレっち！』。\nもー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そしてヴィブロスは\n“ぷちヴィブちゃん”の小さな手で、\nこちらをぽかぽかと叩き続けるのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

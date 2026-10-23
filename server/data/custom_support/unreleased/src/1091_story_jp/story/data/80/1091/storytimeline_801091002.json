@@ -1,0 +1,121 @@
+{
+ "title": "いつの日にかキラキラセレブ♪",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "海外レースの情報を得るため、\n海外情報誌を読んでいると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "えー！　プライベートジェット！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "さすがサトノ家！　セレブぅ～～♡\n他にはどんなのあるのー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁ♡　サトノ家の話、すごかったなー。\nやっぱセレブって、ときめ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あーっ！！　その雑誌！！",
+   "choice_data_list": [
+    "え、これ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そう、セレブ特集だよね！　私も買ったよ！\nトレーナーさんもセレブ好きなの～？",
+   "choice_data_list": [
+    "いや……君は好きなのか？",
+    "いや……貴方は好きなの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！　だって私、\nキラキラセレブになりたいんだもんっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "家族旅行で行ったドバイで\nときめいちゃって♡　セレブってね――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "欲しいものはぜ～んぶ手に入れてて！\n余裕があって、かっこいいの♡",
+   "choice_data_list": [
+    "なるほど"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それに、きっと毎日パーティーしてて！\n人生まるごとぜ～んぶ思いどおりだろうし♡",
+   "choice_data_list": [
+    "ふむ……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でねでねっ！\n宇宙で乾杯だってすると思うんだ♪\nあのキラキラは地球じゃ収まんないもん！",
+   "choice_data_list": [
+    "う、うーん……？？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁ～やっぱセレブってすご～い♡\nキラキラで～ときめくぅ～～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "セレブとは本当にそんなものなのか？\n疑問が浮かんだが、\n夢みる瞳を前に野暮は言うまい。",
+   "choice_data_list": [
+    "その夢に一直線に突き進もう！",
+    "セレブ力を高めていこう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！　レースに出て活躍して\n目指すはドバイ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やるぞキラキラセレブライフ♪\nがんばるぞ！　おーっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふふ～ん♪　それなら任せて！\n元々セレブの素質はあるんだから♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もっともーっとセレブに近づくために……\nあ、新作のバッグ買っちゃおうかな♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

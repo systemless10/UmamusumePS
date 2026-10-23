@@ -1,0 +1,177 @@
+{
+ "title": "エンディング（ノーマル）",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヴィブロスと駆け抜けた、\nトゥインクル・シリーズの最初の3年間も\nひと区切りがつき――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち！\nこっちこっち～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "次の夢であるドバイに向かう前に、\n3年間のお疲れ様会をすることになった。\n学園が用意してくれた船上パーティーだ。",
+   "choice_data_list": [
+    "あれ、ご家族は？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな向こうで待ってるよ！\n私がトレっちを迎えにきたの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねね、これちょーおいしいよ！\nしゅわしゅわですっきりしてる♪",
+   "choice_data_list": [
+    "俺もそれにしようかな",
+    "私もそれにしようかな"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ひとくちどうぞ♡",
+   "choice_data_list": [
+    "……先にご家族のところへ行こうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え～、いいのに！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ま、いっか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ついでに、\nちょこっとお散歩しよ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、ヴィブロスと船内の様子を見つつ、\nご家族の待つところへ向かうことにした。\nすると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "船内の客A",
+   "text": "ヴィブロスさん！\n素晴らしいご活躍、おめでとうございます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "船内の客B",
+   "text": "ドバイに挑戦するんですって？\n向こうの知り合いに連絡しておきますわね。\n案内にはぜひその方を頼ってくださいな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わあ、ありがとうございます♪\nがんばってきまーす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへー、\n知り合いもたくさん増えちゃった。",
+   "choice_data_list": [
+    "すっかりセレブだな",
+    "すっかりセレブだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、うれし～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もっとちょー有名な人たちとも、\n知り合いになって～、ウマスタ交換して～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "セレブって言えば私！\nみたいになりたいな♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そしたらさ！\n家族もちょー注目されるでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "セレブ一家みたいな感じで、\n番組やっちゃったり～！？",
+   "choice_data_list": [
+    "夢が膨らむな！",
+    "夢が膨らむね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんかヒトゴトだけど、\nもちろんトレっちも出るんだよ？",
+   "choice_data_list": [
+    "俺も！？",
+    "私も！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "当たり前じゃんっ。\nぜーんぶの回にいてくれないと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって大事な、\n私のトレーナーさんだもん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――ヴィブロス！　トレーナーさん！\nこっちよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はーい！\n今行く～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちも！\n――ほら、いっしょに行こ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

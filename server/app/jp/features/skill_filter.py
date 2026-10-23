@@ -1,20 +1,3 @@
-"""Two JP-only career-screen endpoints that had no handler (audit B5). Global's
-client has neither (no SaveSkillFilterSetRequest / FactorReloadRequest in its
-dump.cs).
-
-save_skill_filter_set {setting_array: [{set_type, set_value}]} -- the skill
-learning screen's filter. The reply is empty (dump: the CommonResponse has no
-fields); the client reads the setting back from the career's start/load
-common, skill_filter_setting_array. The real server sends it on every
-start/load (171 real JP replies); untouched it is the default below, and we
-used to send []. Saved per account (the setting belongs to no one career)
-and served back on the next start/load.
-
-factor_reload {lottery_count} -- re-reads the spark screen (dump:
-SingleModeFactorReloadRequestCommon.lottery_count, reply
-SingleModeFactorLotteryCommon). Never captured; it rolls nothing and spends
-nothing, and serves the career's rolls exactly as factor_lottery last did.
-"""
 
 from __future__ import annotations
 
@@ -30,7 +13,6 @@ log = logging.getLogger("uma-server")
 
 STATE_KEY = "jp_skill_filter_setting"
 _COMMONS = ("single_mode_load_common", "single_mode_start_common")
-# The real server's untouched filter (every one of 171 real start/load replies).
 DEFAULT = [{"set_type": 101, "set_value": 0}, {"set_type": 102, "set_value": 0},
            {"set_type": 103, "set_value": 0}, {"set_type": 104, "set_value": 1},
            {"set_type": 105, "set_value": 1}, {"set_type": 201, "set_value": 0},
@@ -46,7 +28,6 @@ def handle_save(payload: dict) -> dict:
              for r in rows if isinstance(r, dict)]
     viewer_id = payload["viewer_id"]
     full_state = state_store.get_state(viewer_id) or {}
-    # Merge by set_type so a partial save keeps the rest of the setting.
     merged = {r["set_type"]: r for r in full_state.get(STATE_KEY) or DEFAULT}
     merged.update({r["set_type"]: r for r in saved})
     full_state[STATE_KEY] = sorted(merged.values(), key=lambda r: r["set_type"])
@@ -65,7 +46,6 @@ def handle_factor_reload(payload: dict) -> dict:
 
 
 def after(endpoint: str, payload: dict, resp: dict) -> None:
-    """Serve the account's filter on every career start/load."""
     data = resp.get("data")
     if not isinstance(data, dict) or not endpoint.startswith("single_mode"):
         return

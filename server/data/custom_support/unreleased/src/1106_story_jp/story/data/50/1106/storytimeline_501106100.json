@@ -1,0 +1,344 @@
+{
+ "title": "ヒシミラクル登場！",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "普通……。\nみんな、よく普通、普通って言うけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレセン学園の普通って、\nあんまり普通じゃないような～？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トレセン学園"
+   ]
+  },
+  {
+   "name": "マチカネタンホイザ",
+   "text": "さあ、普通に練習、するぞするぞするぞ～！\nむんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "キタサンブラック",
+   "text": "ダッシュに筋トレ、ゲート練習……って、\nこれ1日で全部やるんですか……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナイスネイチャ",
+   "text": "ううう～、3着3着、また3着～。普通から\n抜けられない。どうしても勝てない……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナイスネイチャ",
+   "text": "『有馬記念』に！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "有馬記念"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（みんなみ～んな、普通の基準が高すぎる～。\n“ふつ～”ってのは、\nわたしみたいな娘だよね）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（毎日の努力が当たり前！なんて思えない。\n思えば小さいときから――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクルの母親",
+   "text": "クーちゃん、駆けっこ、がんばったね！\n将来はレースとか出ちゃう～？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クー"
+   ]
+  },
+  {
+   "name": "幼いヒシミラクル",
+   "text": "れーす……。\nたのしいのかな～……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレセン学園……\n本当に合格できちゃうなんて。\n夢じゃないよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "新入生ウマ娘",
+   "text": "ねぇねぇミラ子。\nミラ子はどうしてここに？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ミラ子"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どうして？　いや～、周りからちょっぴり\n応援されたってか、期待されたってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "進路も決められなかったし、\n超有名なとこで青春やれたらな～みたいな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "模擬レース……。\n今回はパスかな。忙しいし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ああぅ、そんなことよりテストどうしよぉ～。\nもし悪い点取って、\nおこづかい減らされたら～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（自分の意志なんてあんまりなくて、\nただ楽しそうな方へ流されてきた……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（トレセン学園に入ってはみたものの、\n当然トゥインクル・シリーズに\n出られるなんて、思ってもいなくて）",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トゥインクル・シリーズ"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "（ふつ～に学生してた。\nそれなのに……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……会っちゃったんだよねぇ、いきなり。\n毎日を変える、あの人に。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これから、どうなっちゃうんだろ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ、はぁ、はぁ～……。",
+   "choice_data_list": [
+    "もっとだ、ヒシミラクル！",
+    "もっとだよ、ヒシミラクル！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は、は、はひぃ～……！",
+   "choice_data_list": [
+    "よっ、ポテンシャルの鬼！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はっ、はっ、またそれ～！",
+   "choice_data_list": [
+    "やればできる娘！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぅ～、そんなに言われたら――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やるしかないじゃん……！\nはぁぁぁぁああああ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜぇ、ぜぇ……しんど～……。\nお水……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "このウマ娘はヒシミラクル。自分が可能性を\n見込んで、専属契約を結んだウマ娘だ。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ヒシミラクル"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まったく、どうしてこんなズブい娘に\n目をつけたんだか。ハッパかけるのも\nメンドくないですか～？",
+   "choice_data_list": [
+    "でも応えてくれるから！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ズブい……。つまり自分からは動けず、\nエンジンのかかりも遅い。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "声をかけ、グイグイ褒めて押しまくらないと\nヘタれてしまう。でも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はあっ、はあっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "……っ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はあっ……はあっ……あれ……？\nなんか……勝負になった……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "すでにデビュー済みの優等生ウマ娘、\nナリタトップロード相手に併走し\n健闘してみせた。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ナリタトップロード"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "それまで学園内のレースでは9連敗。\nしかし強い期待をかければ応えてくれるのが\nこのヒシミラクルだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、トゥインクル・シリーズに\nデビューするってことは～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "これまで通りの学生生活……ってわけには、\nいかないんですよね？",
+   "choice_data_list": [
+    "ああ！",
+    "うん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そっか～。レースはそこそこにしといて、\nスポーツ系の大学に入って、\nスポーツ系の企業に就職……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなささやかな道にも、さよならかぁ。",
+   "choice_data_list": [
+    "もしかして……いや？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや……ではないですね。\nそもそも、いいも悪いもないっていうか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、なんとなく、いい感じになって\nうまくいったらいいな……くらいなんで。\nいつも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――やる気はあるけど、たくさんはない。\n――そこそこ頑張るけど、無理はできない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "それがどこまでも普通なウマ娘、\nいや、どこまでも普通な“ただの少女”\nヒシミラクルだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ところで～……トレーナーさん。\nもしかしてデビューするからには\n勝利を……とか思っちゃってます？",
+   "choice_data_list": [
+    "もちろん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あくまで希望……ですよね？",
+   "choice_data_list": [
+    "いや、勝ちたい！",
+    "ううん、勝ちたい！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わあ、なんか、やる気スゴ！\nまあわたしも勝てたらいいなとは\n思いますけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "無事デビューできて、\n1つか2つは勝てたらいいですよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それできたらミラクルってことで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "追えば光るが……追わなければ光らない。\n約束されたものも、されていないものも\n何もない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そんな『ふつ～』なヒシミラクルがどこまで\nできるのか。等身大の挑戦が始まる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,77 +1,3 @@
-"""Master career tool for the private Umamusume server -- one place to move a
-run to any turn, keep every turn-dependent piece of state consistent with it,
-inspect/undo/redo career events, and edit any career property by path.
-
-admin.py stays the general account cheat CLI (wallet, cards, roster, mail);
-THIS tool owns the in-progress career: turn, goals, race history, the event
-ledger and the training screen's unlock state.
-
-Usage (run from anywhere; --viewer picks the account):
-
-    python career.py show                 # everything about the active career
-    python career.py goals                # route goals + cleared/pending
-    python career.py races                # race history
-    python career.py events               # active / queued / fired ledger
-    python career.py props                # editable property aliases
-
-  TURN
-    python career.py set-turn 45          # move to turn 45, reconcile all state
-    python career.py set-turn 45 --fill-races          # ...and count every goal
-                                                       #    race before 45 as WON
-    python career.py set-turn 45 --fill-races --with-rewards   # + pay their
-                                                       #    stat/SP rewards
-    python career.py set-turn 12 --reset-fired         # rewind AND wipe the
-                                                       #    non-turn-keyed
-                                                       #    fired sets
-    python career.py set-turn 60 --keep-races          # don't prune history
-    python career.py set-turn 60 --keep-events         # don't drop the queue
-
-  PROPERTIES  (dotted paths into the career's own `data`, JSON values;
-               `--full-state` addresses the whole per-viewer state instead)
-    python career.py get chara_info.speed
-    python career.py get                       # the whole career data tree
-    python career.py set speed 900             # alias -> chara_info.speed
-    python career.py set chara_info.speed 900  # ...the same thing
-    python career.py set fans +50000           # relative (+/-) on numbers
-    python career.py set chara_info.proper_ground_dirt 8      # aptitude S
-    python career.py set chara_info.skill_array '[{"skill_id":200011,"level":1}]'
-    python career.py del chara_info.foo
-    python career.py set --full-state --create unlocked_versus_npcs '[[102,1],[103,1]]'
-                                               # --create: the key isn't there yet
-
-  EVENTS  (the career_events pipeline: one queue, one fired set)
-    python career.py events --fired
-    python career.py event-undo --turn 30      # un-fire everything from turn 30 on
-    python career.py event-undo duel:31 rest:31:7009
-    python career.py event-done gl:202002      # mark fired without playing it
-    python career.py event-drop --all          # clear queue + active event
-    python career.py event-queue 10002 --story 400000040 --choices 2
-
-  RACES
-    python career.py race-add 1005 --rank 1    # record program 1005 as won
-    python career.py race-del --from-turn 40   # drop history from turn 40 on
-
-  MAINTENANCE
-    python career.py reconcile                 # recompute every derived piece
-    python career.py unlock --all              # force-enable this turn's commands
-
-WHAT A REWIND UNDOES: the turn-keyed event ledger, race history at/after the
-target turn and the fans those races paid, the career-FAILED marker, and every
-derived snapshot below. It does NOT roll back stats/SP/skills/bonds gained on
-those turns -- nothing in the career gates on those the way fans and race
-history gate goals, so subtracting them would be invention, not restoration.
-Edit them directly (`career.py set speed 600`) if you want them rolled back.
-
-WHY THE RECONCILE STEP EXISTS (admin.py learned it the hard way): turn is not
-a scalar the client re-derives. home_info's command lock state, the goal
-banner's cleared count, the class (chara_grade), the race-condition list and
-the event ledger are all persisted snapshots that only ever get rebuilt as a
-side effect of a real exec_command/race_out. Writing chara_info.turn alone
-leaves every one of them describing the OLD turn -- a fully locked training
-screen on a normal turn being the loudest symptom. Every mutating command here
-ends in _reconcile(), which rebuilds all of them the same way the server's own
-turn-advance path does.
-"""
 
 import argparse
 import json
@@ -79,47 +5,37 @@ import os
 import re
 import sys
 
-# The server package lives next to this file (same resolution as admin.py, so
-# a Windows checkout at the old path still works).
 _HERE = os.path.dirname(os.path.abspath(__file__))
 for _candidate in (os.path.join(_HERE, "server"),
-                   r"C:\\Users\\USER\Documents\private server\server"):
+                   r"c:\Users\Trainer\Documents\private server\server"):
     if os.path.isdir(_candidate):
         sys.path.insert(0, _candidate)
         break
 
-# The region has to be known before `app` is imported (app.region fixes the
-# process region from UMA_REGION at import, and master_data picks that
-# region's master.mdb), so --region is read ahead of argparse.
 for _i, _arg in enumerate(sys.argv):
     if _arg == "--region" and _i + 1 < len(sys.argv):
         os.environ["UMA_REGION"] = sys.argv[_i + 1]
     elif _arg.startswith("--region="):
         os.environ["UMA_REGION"] = _arg.split("=", 1)[1]
 
-from app import career_events as CE                     # noqa: E402
-from app import event_engine                            # noqa: E402
-from app import master_data                             # noqa: E402
-from app import region  # noqa: E402
-from app import state as state_store                    # noqa: E402
-from app.scenarios.grand_live.producers import GRAND_LIVE_BEATS  # noqa: E402
-from app.scenarios.ura.producers import URA_FIXED_BEATS        # noqa: E402
-from app.scenarios.grand_live import impl as GL          # noqa: E402
-from app.handlers import single_mode_events as E        # noqa: E402
-from app.handlers import single_mode_team as T          # noqa: E402
+from app import career_events as CE
+from app import event_engine
+from app import master_data
+from app import region
+from app import state as state_store
+from app.scenarios.grand_live.producers import GRAND_LIVE_BEATS
+from app.scenarios.ura.producers import URA_FIXED_BEATS
+from app.scenarios.grand_live import impl as GL
+from app.handlers import single_mode_events as E
+from app.handlers import single_mode_team as T
 
-# Each region's own default account (Global: the Steam client's viewer id).
-DEFAULT_VIEWERS = {"global": "900000000001", "jp": "900000000002"}
-DEFAULT_VIEWER = DEFAULT_VIEWERS[region.PROCESS_REGION]
+from app import default_viewer as _default_viewer
+DEFAULT_VIEWER = _default_viewer.get()
 STATS = ("speed", "stamina", "power", "guts", "wiz")
 CAREER_END_TURN = 78
 
-# chara_info.state, from the server's own writers: 0 in progress, 2 career
-# failed (missed goal / finals loss), 3 completed (turn-78 finals win).
 STATE_NAMES = {0: "in progress", 2: "FAILED", 3: "completed"}
 
-
-# ============================================================== plumbing ===
 
 def _load(viewer):
     full_state = state_store.get_state(viewer)
@@ -140,20 +56,7 @@ def _save(viewer, full_state):
     state_store.save_state(viewer, full_state)
 
 
-# ================================================== derived-state rebuild ===
-
 def _transient_keys() -> tuple:
-    """Contexts describing an action IN FLIGHT (a race being run, an event on
-    screen, a rolled-but-unapplied rest/hint/duel outcome). None of them
-    survive a turn move: they name a turn or event that no longer applies, and
-    a stale one hijacks the next check_event -- which is why admin.py's
-    set-turn already had to drop RACE_CTX_KEY by hand."""
-    # RESOLVED BY NAME, and a name that no longer exists is skipped rather than
-    # raising. These constants live in modules that get refactored (the
-    # scenario split moved several), and this tool is the thing you reach for
-    # when a career is already wedged -- having it die on an AttributeError for
-    # one stale name is the worst possible time to find out. T.RACE_FLOW_STATE_KEY
-    # was exactly that: removed upstream, and it took set-turn down with it.
     names = [
         (T, "RACE_CTX_KEY"), (T, "RACE_FLOW_STATE_KEY"), (T, "RACE_REWARD_KEY"),
         (T, "DISPLAY_EVENT_KEY"), (T, "GOAL_EVENT_KEY"), (T, "APPRAISAL_CTX_KEY"),
@@ -165,20 +68,12 @@ def _transient_keys() -> tuple:
         (E, "PENDING_EVENTS_KEY"), (E, "EXTRA_EVENTS_KEY"),
     ]
     keys = [getattr(mod, name) for mod, name in names if hasattr(mod, name)]
-    # Every registered scenario's own per-turn caches. Unity Cup's partner
-    # preview is keyed to a turn and decides who trains with you and whose soul
-    # gauge ticks -- carrying one across a turn move pays the OLD turn's roll.
     for scen in _scenario_transient_keys():
         keys.append(scen)
     return tuple(keys)
 
 
 def _scenario_transient_keys() -> list:
-    """The turn-scoped cache keys every registered scenario declares.
-
-    Read off the registry so a new scenario needs no edit here: state_keys
-    names the scenario's persistent state, and anything ending in the preview
-    suffix is a per-turn roll rather than career-long state."""
     out = []
     try:
         from app import scenarios as _scen
@@ -195,9 +90,6 @@ def _clear_transient(full_state: dict) -> list:
     gone = [k for k in _transient_keys() if k in full_state]
     for k in gone:
         del full_state[k]
-    # Grand Live's "the client is backstage on turn N" hold has no release
-    # condition of its own -- left set, every later response keeps reporting
-    # that turn (see career_producers' GRAND_CONCERT_ENDS_EVENT note).
     gl = full_state.get(GL.STATE_KEY)
     if isinstance(gl, dict) and gl.get("concert_turn"):
         gl["concert_turn"] = 0
@@ -206,11 +98,6 @@ def _clear_transient(full_state: dict) -> list:
 
 
 def _refresh_home(full_state: dict, career: dict) -> bool:
-    """Rebuild home_info.command_info_array (the training screen's per-command
-    lock/preview state) for chara_info.turn, with the SAME arguments the
-    server's own turn-advance passes -- Grand Live's live bonuses included, so
-    a refreshed screen never disagrees with what the next exec_command
-    applies."""
     data = career["data"]
     ci = data["chara_info"]
     home = data.get("home_info")
@@ -231,8 +118,6 @@ def _refresh_home(full_state: dict, career: dict) -> bool:
 
 
 def _reconcile(full_state: dict, career: dict, *, grade: bool = True) -> list:
-    """Recompute every piece of career state DERIVED from turn / fans / race
-    history, then rebuild the training screen. Safe to run at any time."""
     data = career["data"]
     ci = data["chara_info"]
     turn = ci.get("turn") or 1
@@ -251,8 +136,6 @@ def _reconcile(full_state: dict, career: dict, *, grade: bool = True) -> list:
             notes.append(f"class {ci.get('chara_grade')} -> {new_grade}")
         ci["chara_grade"] = new_grade
 
-    # Goal banner: which goals are cleared AND due (a passive goal met early is
-    # not announced until its deadline turn -- _goals_cleared_count's rule).
     goals = T._route_all_goals(tuple(ci.get("route_race_id_array") or ()))
     announced = sorted({g[1] for g in goals
                         if T._goal_is_cleared(g, ci, history, goals)
@@ -262,8 +145,6 @@ def _reconcile(full_state: dict, career: dict, *, grade: bool = True) -> list:
     full_state[T.GOAL_ANNOUNCED_KEY] = announced
     full_state[T.GOAL_MARKED_KEY] = T._goals_cleared_count(ci, history, turn)
 
-    # Pure Passion's per-condition expiry is turn-keyed; a rewind must not
-    # leave a condition immune past its window.
     pp = full_state.get(T.PURE_PASSION_KEY)
     if isinstance(pp, dict):
         kept = {k: v for k, v in pp.items() if int(v or 0) >= turn}
@@ -274,8 +155,6 @@ def _reconcile(full_state: dict, career: dict, *, grade: bool = True) -> list:
     if isinstance(last_duel, int) and last_duel >= turn:
         full_state[E.DUEL_LAST_TURN_KEY] = max(0, turn - 1)
 
-    # Rebuilt by _sync_chara_info on the next request too, but a stale list
-    # here is what the very next /load would serve.
     if "race_condition_array" in data:
         data["race_condition_array"] = T._build_race_condition_array(
             ci, turn, history)
@@ -287,10 +166,6 @@ def _reconcile(full_state: dict, career: dict, *, grade: bool = True) -> list:
     return notes
 
 
-# ============================================= the turn-keyed event ledger ===
-
-# once_keys that carry their turn in the key itself (career_events' dedupe
-# identities). Everything else needs a schedule lookup -- see _once_key_turn.
 _TURN_IN_KEY = re.compile(
     r"^(duel|rest|hint_reveal|facility_levelup|appraisal|training_failure):(\d+)")
 
@@ -311,7 +186,6 @@ def _ura_fixed_turn(story_id: int):
 
 
 def _once_key_turn(key: str):
-    """The turn a fired once_key belongs to, or None when it isn't turn-keyed."""
     m = _TURN_IN_KEY.match(key or "")
     if m:
         return int(m.group(2))
@@ -329,9 +203,6 @@ def _once_key_turn(key: str):
 
 
 def _unfire_from(full_state: dict, career: dict, turn: int) -> list:
-    """Mark every turn-keyed event at or after `turn` as NOT fired, so a rewind
-    lets those turns play out again. Keys whose turn can't be derived are left
-    alone (--reset-fired is the blunt instrument for those)."""
     st = CE.state(full_state)
     fired = list(st.get("fired") or ())
     kept, dropped = [], []
@@ -355,12 +226,6 @@ def _unfire_from(full_state: dict, career: dict, turn: int) -> list:
 
 
 def _mark_past_fired(full_state: dict, career: dict, turn: int) -> list:
-    """Bookkeeping for a FORWARD jump: record the scheduled beats of the turns
-    being skipped as fired.
-
-    This changes no behaviour -- every producer keys on an exact turn, so a
-    skipped beat could never fire later anyway -- it only makes `events`
-    report a ledger that matches the run's actual history."""
     marked = []
     ci = career["data"]["chara_info"]
     gl_active = GL.is_active(ci)
@@ -390,8 +255,6 @@ def _mark_past_fired(full_state: dict, career: dict, turn: int) -> list:
 
 
 def _legacy_fired_keys() -> tuple:
-    """The fired sets that are NOT turn-derivable (story ids, event ids, race
-    outcomes). --reset-fired wipes them; nothing else here touches them."""
     return (T.GOAL_STORIES_FIRED_KEY, T.UNIQUE_LEVEL_FIRED_KEY,
             T.DIRECTOR_FAN_FIRED_KEY, T.POST_RACE_FIRED_KEY,
             T.SCENARIO_EVENTS_DONE_KEY, T.SCENARIO_FIXED_FIRED_KEY,
@@ -399,16 +262,12 @@ def _legacy_fired_keys() -> tuple:
             event_engine.FIRED_EVENTS_KEY)
 
 
-# ================================================================= races ===
-
 def _race_name(program_id) -> str:
     info = T._race_info_for_program(program_id) or {}
     return info.get("story_name") or f"program {program_id}"
 
 
 def _goal_schedule(ci: dict) -> list:
-    """[(turn, program_id, name)] for every DETERMINED goal race on the route,
-    group goals (URA finals / JBC) resolved to the member this career runs."""
     out = []
     for t, cid, kind, _cv1 in T._route_goal_rows(
             tuple(ci.get("route_race_id_array") or ())):
@@ -421,8 +280,6 @@ def _goal_schedule(ci: dict) -> list:
 
 def _add_race(career: dict, program_id: int, turn: int, rank: int,
               with_rewards: bool) -> dict:
-    """Append one race to race_history in the same shape _append_race_history
-    writes, credit its real fan gain, and optionally pay its stat/SP reward."""
     data = career["data"]
     ci = data["chara_info"]
     history = data.setdefault("race_history", [])
@@ -446,15 +303,6 @@ def _add_race(career: dict, program_id: int, turn: int, rank: int,
 
 def _tally_fill_races(career: dict, up_to_turn: int, taken_turns: set,
                      rank: int) -> list:
-    """[(turn, program_id, rank)] to record so every ct=2 GRADE-TALLY goal whose
-    deadline is behind `up_to_turn` reads as met.
-
-    --fill-races' job is "count every goal", and a tally goal is not a race on
-    the route: it is N races of a grade, run inside the goal's own window (see
-    T._goal_window / T._grade_tally). Filling only the ct=1 rows left Oguri
-    Cap's turn-60 'top 3 in 2 G1s' unmet on a jumped-to turn, and the live
-    server then failed the career on the next turn. Picks real programs whose
-    calendar slot falls in the window, on turns nothing else is using."""
     ci = career["data"]["chara_info"]
     history = career["data"].get("race_history") or []
     goals = T._route_all_goals(tuple(ci.get("route_race_id_array") or ()))
@@ -463,11 +311,7 @@ def _tally_fill_races(career: dict, up_to_turn: int, taken_turns: set,
         if g[2] != 2 or g[0] >= up_to_turn:
             continue
         after, by = T._goal_window(g, goals)
-        # What the route's own goal races already contributed counts -- only
-        # the shortfall gets invented.
         need = (g[5] or 1) - T._grade_tally(g, history, goals)
-        # A tally that asks for a WIN (Smart Falcon's cv1=1) is not satisfied
-        # by --rank 3, so the fill never places worse than the goal requires.
         place = min(rank, g[4] or rank)
         used = set(taken_turns)
         for turn in range(after + 1, by + 1):
@@ -496,9 +340,6 @@ def _tally_fill_races(career: dict, up_to_turn: int, taken_turns: set,
 
 
 def _refund_fans(ci: dict, races) -> int:
-    """Take back what these races paid. Un-running a race has to un-pay it, or
-    the class/goal reconcile reads a trainee who never ran them yet somehow
-    carries their following."""
     total = 0
     for h in races:
         gain = T._fan_gain_for_race(ci, h.get("program_id"), h.get("result_rank") or 1)
@@ -507,10 +348,6 @@ def _refund_fans(ci: dict, races) -> int:
     return total
 
 
-# ================================================================= paths ===
-
-# Short aliases for the properties that actually get edited, so the common case
-# is `career.py set speed 900` rather than a path nobody remembers.
 ALIASES = {
     "turn": "chara_info.turn",
     "state": "chara_info.state",
@@ -533,11 +370,8 @@ ALIASES = {
     "facility-levels": T.FACILITY_LEVELS_KEY,
     "facility-trains": T.FACILITY_TRAINS_KEY,
 }
-for _f in T._APTITUDE_FIELDS:                 # turf/dirt/mile/nige/... aptitudes
+for _f in T._APTITUDE_FIELDS:
     ALIASES[_f.replace("proper_", "").replace("_", "-")] = f"chara_info.{_f}"
-    # ...and the bare name ("dirt", "mile", "nige"), which is what anyone
-    # actually types. A typo must NOT silently create a junk key, so `set`
-    # refuses to invent a path unless --create says to.
     ALIASES.setdefault(_f.rsplit("_", 1)[-1], f"chara_info.{_f}")
 
 
@@ -554,8 +388,6 @@ def _resolve_path(path: str) -> list:
 
 
 def _dig(root, parts, create=False):
-    """(container, last_key) for a dotted path, so the caller can read, write
-    or delete the leaf."""
     node = root
     for i, key in enumerate(parts[:-1]):
         nxt = parts[i + 1]
@@ -581,8 +413,6 @@ def _dig(root, parts, create=False):
 
 
 def _parse_value(raw: str, current):
-    """JSON, with two conveniences: a bare word stays a string, and +N/-N is a
-    relative change when the current value is a number."""
     if isinstance(current, (int, float)) and not isinstance(current, bool) \
             and re.fullmatch(r"[+-]\d+(\.\d+)?", raw or ""):
         return current + (float(raw) if "." in raw else int(raw))
@@ -607,8 +437,6 @@ def _turn_label(turn) -> str:
     return (f"turn {turn} ({year} Year, "
             f"{'Early' if row['half'] == 1 else 'Late'} month {row['month']})")
 
-
-# ============================================================== commands ===
 
 def cmd_show(viewer, args):
     full_state = _load(viewer)
@@ -668,9 +496,6 @@ def cmd_goals(viewer, args):
         if ctype == 1:
             what = _race_name(cid)
         elif ctype == 2:
-            # Progress AND the window it is counted over -- a tally only counts
-            # races run after the previous goal (T._grade_tally), so "which
-            # turns count" is the first thing to check when one reads pending.
             after, by = T._goal_window(g, goals)
             what = (f"{T._grade_tally(g, history, goals)}/{cv2} top-{cv1} in "
                     f"grade {cid}, turns {after + 1}-{by}")
@@ -858,7 +683,6 @@ def cmd_set_turn(viewer, args):
                 continue
             filled.append(_add_race(career, program_id, t, int(args.rank),
                                     args.with_rewards))
-        # ...and the ct=2 grade tallies, which are not route races at all.
         taken = {h.get("turn") for h in (career["data"].get("race_history") or [])}
         taken |= {f["turn"] for f in filled}
         for t, program_id, place in _tally_fill_races(career, new, taken,
@@ -877,9 +701,6 @@ def cmd_set_turn(viewer, args):
         print(f"  {note}")
     _save(viewer, full_state)
     print(f"turn {old} -> {new}  [{_turn_label(new)}]")
-    # A client already sitting in this career still holds the OLD turn, and the
-    # server refuses actions stamped with it rather than rewinding the run to
-    # match (single_mode_team._client_turn_conflict) -- reload before playing.
     print("   reload the career in the client (title -> Continue) before acting")
 
 
@@ -918,17 +739,11 @@ def cmd_set(viewer, args):
     node, key = _dig(root, parts, create=args.create)
     exists = isinstance(key, int) or key in node
     if not exists and not args.create:
-        # A mistyped path used to land as a brand-new top-level key that
-        # nothing reads -- the edit silently did nothing at all.
         sys.exit(f"no existing key {'.'.join(map(str, parts))} "
                  f"-- pass --create to add it (see `career.py props`)")
     current = node[key] if exists else None
     value = _parse_value(args.value, current)
     node[key] = value
-    # A property edit can change what the rest of the state must say (fans ->
-    # goals, a condition or facility level -> the training screen), so the same
-    # reconcile set-turn runs happens here. chara_grade is left alone: `set
-    # grade N` has to survive its own command.
     for note in _reconcile(full_state, career, grade=False):
         print(f"  {note}")
     _save(viewer, full_state)
@@ -961,7 +776,7 @@ def cmd_props(viewer, args):
             node, key = _dig(data, _resolve_path(path))
             value = json.dumps(node[key], ensure_ascii=False)
         except (SystemExit, KeyError, IndexError, TypeError):
-            value = "-"          # not on this career (or no career at all)
+            value = "-"
         print(f"  {alias:<18} {path:<35} {value[:44]}")
     print("\nany other dotted path under the career's `data` works too; "
           "--full-state addresses the whole viewer state.")
@@ -1005,12 +820,6 @@ def cmd_race_del(viewer, args):
 
 
 def cmd_unlock(viewer, args):
-    """Force command_info_array entries enabled for the CURRENT turn.
-
-    Deliberately a one-shot override, not a persistent flag: the screen is
-    rebuilt from the route on every turn advance (and by every other command
-    here), so this survives exactly until the next action -- which is what you
-    want for poking at a locked mandatory-race turn."""
     full_state = _load(viewer)
     career = _career(full_state)
     home = career["data"].get("home_info") or {}
@@ -1127,9 +936,6 @@ def main():
     sp.add_argument("--lock", action="store_true", help="disable them instead")
 
     args = p.parse_args()
-    # Same whitespace strip as admin.py: a trainer id pasted from the game's UI
-    # arrives grouped ("802 445 340 143") and would otherwise mint a phantom
-    # account row instead of touching the real one.
     args.fn("".join(str(args.viewer).split()), args)
 
 

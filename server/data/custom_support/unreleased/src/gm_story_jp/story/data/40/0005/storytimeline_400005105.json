@@ -1,0 +1,654 @@
+{
+ "title": "今を駆ける者たちの祖",
+ "text_block_list": [
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ふぅ～～……！\nどうかな、今の走りは自信があるんだけど！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "なにより、トレーナーと一緒に\n磨いてきた、とっておきの武器だからな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "わたしからすれば、まだまだ！\nもっと磨いていきましょう、子羊くん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ひっど！　いつまでも子羊呼ばわりして！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "いつか、あっと言わせてやるから！\nそんじゃ、もう1本いこうかっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "よく聞け。体力が限界を迎えても\n心まで限界を迎えるな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "は……はいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "壁に当たっても負の心に飲まれる必要はない。\n強くなれ！　また明日、走れるように！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "……もっと強く！\n私の……私たちの走りが……\n皆に深く刻まれるほどにっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふぅ……ふぅ……。このくらいなら、\nこなせるようになりました～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "うん、やっぱりあなたをレースの世界へ\n連れてきて正解だったみたい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "本当に……わたしを見つけてくれて――\n見守っててくれて、ありがとうございます。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "ふふっ……だって走りたそうな顔だったもの。\n走ることが好きなんだろうなって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "これからも一緒に走っていきましょう。\nずっと横で見守っているわ、シャムちゃん――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『SWBC』で結果を残し、いよいよ\n『グランドマスターズ』が間近に迫っていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "元々は、足りない知識を補うために\nシミュレーターを使用していたけれど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "三女神との交流、\nウマ娘たちが残した歴史のやりとりは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "時代を超えて、今を走るウマ娘たちに\n多くのものを残している。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘とトレーナーをサポートする\n究極のAI、『メガドリームサポーター』。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その知識もさることながら、トレーナーが\nウマ娘と走り続けるために大事なものを\n三女神は教えてくれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ならば、『グランドマスターズ』で\n三女神に示したい――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分たちを育ててくれた三女神に、\n成長した姿をしっかりと見届けてもらいたい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そのためにも、今1番必要とする\n知識を持つ女神の名は――",
+   "choice_data_list": [
+    "ダーレーアラビアン",
+    "ダーレーアラビアン",
+    "ゴドルフィンバルブ",
+    "ゴドルフィンバルブ",
+    "バイアリーターク",
+    "バイアリーターク"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "やあ、来たか。\n太陽も――うん。中天に達したようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "――では、始めようか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "さて、どうしようか。\n君たちはどうしたい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "はははっ、そんなことはもう決まっているか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "うん。君たちの意思を尊重しよう。\nひいては――鮮やかなその個性を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "知っての通り、ひとたび絶えてしまった\n可能性が蘇ることはない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "1度失われた個性は、\n闇の中に消えてなくなる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "だから、繋ぎ続ければいい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "君たちが引き継ぎ、繋ぐんだ。\n君の個性は君だけのもの。\nそして後世の者たちへ託すもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "君が架け橋となることで、これからも\n多彩な未来が待っていることだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "さあ、手を伸ばして。\n――未来は、始まったばかりだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "",
+   "text": "三女神から授かった叡智――彼女たちの\n想いをしっかり受け取ったという証明を\n『グランドマスターズ』でしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "やあ、来たか。\n太陽も――うん。中天に達したようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "――では、始めようか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "さて、どうしようか。\n君たちはどうしたい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "はははっ、そんなことはもう決まっているか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "うん。君たちの意思を尊重しよう。\nひいては――鮮やかなその個性を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "知っての通り、ひとたび絶えてしまった\n可能性が蘇ることはない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "1度失われた個性は、\n闇の中に消えてなくなる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "だから、繋ぎ続ければいい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "君たちが引き継ぎ、繋ぐんだ。\n君の個性は君だけのもの。\nそして後世の者たちへ託すもの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "君が架け橋となることで、これからも\n多彩な未来が待っていることだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "さあ、手を伸ばして。\n――未来は、始まったばかりだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "",
+   "text": "三女神から授かった叡智――彼女たちの\n想いをしっかり受け取ったという証明を\n『グランドマスターズ』でしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "風が、あなたたちの訪れを告げていました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "さあ、行きましょう。\n風の源へ。原初の場所へ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "――ここが、風の生まれる場所。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ここに至るまで、\n素晴らしい願いや想いがたくさんあったわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "遥か彼方まで、見守りたいという想い。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "どんな場所、時代でも、\n健やかに暮らしてほしいという願い。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そして今、わたしは願っている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "みんなの願いを、見守りたいという想いを、\n素晴らしい願いを――届けたいと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたの幸せを願う\n多くの存在がいたことを、\n決して、忘れないでほしいと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ゴドルフィンバルブの言葉を受け、\n担当ウマ娘と共に頷いた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……ありがとう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたという存在に祝福を。\n永久なる幸福を……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "",
+   "text": "三女神から授かった叡智――彼女たちの\n想いをしっかり受け取ったという証明を\n『グランドマスターズ』でしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "風が、あなたたちの訪れを告げていました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "さあ、行きましょう。\n風の源へ。原初の場所へ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "――ここが、風の生まれる場所。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ここに至るまで、\n素晴らしい願いや想いがたくさんあったわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "遥か彼方まで、見守りたいという想い。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "どんな場所、時代でも、\n健やかに暮らしてほしいという願い。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "そして今、わたしは願っている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "みんなの願いを、見守りたいという想いを、\n素晴らしい願いを――届けたいと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたの幸せを願う\n多くの存在がいたことを、\n決して、忘れないでほしいと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ゴドルフィンバルブの言葉を受け、\n担当ウマ娘と共に頷いた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "……ありがとう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "あなたという存在に祝福を。\n永久なる幸福を……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "",
+   "text": "三女神から授かった叡智――彼女たちの\n想いをしっかり受け取ったという証明を\n『グランドマスターズ』でしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "……ふ。\n大地を駆ける音が聞こえてきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――行くぞ。\n万物が根づく場所へと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――原初より、ウマ娘という種族には\n『走りたい』という本能があった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "そして尚、我々は駆け続けている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "この本能を支えるものは何か。それは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――強さだ。単なる膂力だけでなく、\n信念の固さだけでもない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "多くの歴史が折り重なったことで、\n我々ウマ娘は真の強さを得た。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "受け継ぎ、続けることで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "強さが揺るがぬ限り、\n長きに渡る栄光は約束されるだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "さあ、受け取れ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――この、力の限りを。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "",
+   "text": "三女神から授かった叡智――彼女たちの\n想いをしっかり受け取ったという証明を\n『グランドマスターズ』でしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "……ふ。\n大地を駆ける音が聞こえてきた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――行くぞ。\n万物が根づく場所へと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――原初より、ウマ娘という種族には\n『走りたい』という本能があった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "そして尚、我々は駆け続けている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "この本能を支えるものは何か。それは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――強さだ。単なる膂力だけでなく、\n信念の固さだけでもない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "多くの歴史が折り重なったことで、\n我々ウマ娘は真の強さを得た。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "受け継ぎ、続けることで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "強さが揺るがぬ限り、\n長きに渡る栄光は約束されるだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "さあ、受け取れ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――この、力の限りを。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "",
+   "text": "三女神から授かった叡智――彼女たちの\n想いをしっかり受け取ったという証明を\n『グランドマスターズ』でしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "title": "SWBCへの招待状",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "桐生院トレーナー、そして樫本トレーナーは\nウマ娘たちとこれまで以上に寄り添い、\nそれによりウマ娘たちの調子も上向いてくる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "リトルココンもまた、ダーレーアラビアンと\n樫本トレーナーのサポートにより、\nさらに己の武器を磨き続ける。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘の歴史には、必ずその隣に\nトレーナーという存在がある。\nそのことを胸に刻んだのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして、ウマ娘たちが再び前を向いて\n走り出したのを讃えるかのように、\nそれぞれに『SWBC』招待状が届くのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

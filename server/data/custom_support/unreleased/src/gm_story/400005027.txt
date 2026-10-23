@@ -1,0 +1,14 @@
+#title Showdown! The Grandmasters
+0 At last, the day has come! The Grandmasters!
+1 Gathered on this stage are the truly mighty—elite racers who conquered the SWBC!
+2 And now, they take on the challenge of grasping the ultimate summit!
+3 The race taking place in VR is also being broadcast on the Turf Visions at every racecourse!
+4 The stands are engulfed in excitement, just like a real G1 race!
+4{ G1 race
+5 (Whoaaaaaaaaa!!)
+6 The underground passage, in VR—
+7 Even in this passage leading to the stage of the Grandmasters, great cheers echo.
+8 The sun rises, and then it sets. Toward a horizon far, far away.
+9 Yet it will always rise again. Again and again, it comes back around.
+10 Show us the hopes of those who ran before, which we have passed on to you.
+11 The running of the Umamusume who run today—

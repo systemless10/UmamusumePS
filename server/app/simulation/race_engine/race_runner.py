@@ -1,13 +1,3 @@
-"""Port of tools/raceRunner.ts -- multi-horse race harness.
-
-Builds one RaceSolver per horse (distinct-but-deterministic per-horse seed,
-same `spec.seed + i*7919` derivation as the TS bridge), steps the whole
-field together in lockstep at DT=float32(0.0666)s, and returns
-`{seed, frames, results, skillEvents, raceEvents, distanceDiffMax}` -- the
-sole integration point with `race_simulator.run_simulation`, so the contract
-must not change without updating that caller (and race_engine_rs/src/main.rs,
-which returns exactly the same shape).
-"""
 
 from __future__ import annotations
 
@@ -30,8 +20,6 @@ _STRATEGY_IDS = {"Nige": 1, "Senkou": 2, "Sasi": 3, "Oikomi": 4, "Oonige": 5}
 
 
 def _skill_id_and_level(entry) -> tuple[str, int]:
-    """Accepts either a plain skill-id string (older/test callers) or the
-    {"skillId", "level"} shape race_simulator.build_horse_spec sends."""
     if isinstance(entry, dict):
         return str(entry["skillId"]), int(entry.get("level") or 1)
     return str(entry), 1
@@ -67,21 +55,12 @@ def _new_builder(spec: dict, h: dict, i: int) -> RaceSolverBuilder:
             "surfaceAptitude": h["surfaceAptitude"],
             "strategyAptitude": h["strategyAptitude"],
         })
-        # Doc's "Charge Up / Conserve Power" and "Stamina Limit Break" --
-        # both already ported (RaceSolverBuilder.withAsiwotameru/
-        # withStaminaSyoubu in the original TS) but never enabled by the
-        # upstream raceRunner.ts bridge. Real Global mechanics, so enabled
-        # here. Must come after .horse()/.mood() (both read from them).
         .with_asiwotameru()
         .with_stamina_syoubu()
     )
 
 
 def _wire_duration(t: float, effects, timed_duration) -> float:
-    """The Skill event's duration the way the real server writes it: the
-    skill's own scaled duration if it has one, -1 for a permanent one (every
-    gate-time passive in a real capture is -1), 0 for an instant one (a
-    heal)."""
     if timed_duration is not None:
         return timed_duration
     if t <= 0.0 or any(ef.type in _STAT_TYPES for ef in effects):
@@ -92,11 +71,6 @@ def _wire_duration(t: float, effects, timed_duration) -> float:
 def run_race(spec: dict) -> dict:
     course = get_course(spec["courseId"])
 
-    # Whether a skill id can actually be built for this race. Some skills'
-    # conditions reference tokens this engine doesn't implement and those
-    # throw from inside build() (not addSkill()), so a single bad skill
-    # would otherwise abort the whole horse's build. Memoized across the
-    # roster (most horses share most of their skills).
     skill_usable: dict[tuple, bool] = {}
     skipped_skills = []
 
@@ -158,8 +132,6 @@ def run_race(spec: dict) -> dict:
                     'hp': max(0.0, s.hp.hp) if hasattr(s.hp, 'hp') else 0.0,
                     'lane': s.lane, 'tempt': 0, 'block': -1} for s in solvers],
     }]
-    # Largest leader-to-last gap before the leader finishes -- the scenario
-    # header's distance_diff_max (matches every real capture to the metre).
     distance_diff_max = 0.0
 
     t = 0.0
@@ -184,8 +156,6 @@ def run_race(spec: dict) -> dict:
             positions = [s.pos for s in solvers]
             distance_diff_max = max(distance_diff_max, max(positions) - min(positions))
 
-        # Record every tick; race_simulator (or the Rust side) thins them to
-        # the real server's recording cadence.
         frames.append({
             "t": t,
             "horses": [
@@ -211,12 +181,10 @@ def run_race(spec: dict) -> dict:
 
     results = []
     for i, s in enumerate(solvers):
-        # Where she actually went into the last spurt; -1 = never did (a
-        # plan that only starts at the planner's 60m margin is no spurt).
         lst = s.last_spurt_start_pos
         spurted = 0 < lst < course.distance - 60 - 1e-6
         results.append({
-            "finishOrder": order_index[i],  # 0-based
+            "finishOrder": order_index[i],
             "finishTime": finished_step[i],
             "finishTimeRaw": finished[i],
             "startDelayTime": s.start_delay if isinstance(s.start_delay, (int, float)) else 0,
@@ -241,12 +209,8 @@ def run_race(spec: dict) -> dict:
                 "t": at,
                 "duration": _wire_duration(at, effects, timed_duration),
                 "isUnique": 1 if skill_id in unique_ids[i] else 0,
-                # horses the skill landed on: herself for a buff, the targets
-                # for a debuff (the event's target bitmask on the wire)
                 "targets": targets if targets else [i],
             })
-        # Rushed episodes, under the non-numeric "kakari" sentinel skill id
-        # team_stadium's PvP scoring and the career epithets read.
         spans = list(s.kakari_log)
         if s.is_kakari:
             spans.append((s._kakari_started_at, t))

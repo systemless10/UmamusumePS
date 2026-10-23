@@ -1,0 +1,160 @@
+{
+ "title": "ファンレター",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "んん～どっちのペンにしよっかなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "キラキラか……でもこっちのブルーのほうが\n鮮やかで読みやすいかも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "かれこれもう1時間以上、\nああしてファンレターの返事を書いている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "トレーニング前の空き時間に書くと言い、\nやり始めたのだが……\nそろそろトレーニングの時間だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そだ！　ペンをブルーにして、\nキラキラはシール貼っちゃえばいいんだ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "～～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "楽しげな時間の腰を折るのは気が引けた。\nあと1通分のようだし、待ったとて\n数十分もかかるものではないだろう。なら――",
+   "choice_data_list": [
+    "（もう少し、待ってみるか）",
+    "（もう少し、待ってみようかな）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、いい感じ。\nちょーときめく♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふうー！　お待たせ、トレっち――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……って、もうこんな時間！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ごめんトレっち、気づかなくて！\nもしかして、声かけてくれてた……！？",
+   "choice_data_list": [
+    "いや、楽しそうなのが嬉しくて"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "見られてたの、照れちゃうな♡\n私、そんなに楽しそうだった？",
+   "choice_data_list": [
+    "こういうの、好きなんだな？",
+    "こういうの、好きなんだね？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、だーい好きっ！\nキラキラさせたり、カラフルにしたり♪\nだって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そしたら、いっぱいときめいてくれるもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私ね、ときめいてほしいの！\n私から渡すもの――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "走りでも、言葉でも！\nぜーんぶキラキラさせて、ときめかせたいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……だって、私知ってるもん。\nときめきのパワー♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "キツいトレーニングだってがんばれちゃう。\n止められないドキドキ――！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こうやって、ファンのみんなも\n応援の手紙で私をときめかせてくれる。\nだから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなも、この手紙でときめけるように。\nドキドキのときめきで、\n勉強も、お仕事ももっとがんばれるように――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "丁寧に積み上げた封筒。\nそこにはヴィブロスのファンへの想いが\n詰まっているのだ。",
+   "choice_data_list": [
+    "ときめく心遣いだな",
+    "ときめく心遣いだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！　……えへへ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "さっ、トレーニングもがんばっちゃおっ！\n走りでもみんなをときめかせられるように♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ファンレターのおかげで、いっそう\nやる気をみなぎらせたヴィブロスだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

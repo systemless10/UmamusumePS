@@ -1,5 +1,3 @@
-//! Independently generated Global client-core candidate. Missing server logic is
-//! reported explicitly in diagnostics; this module never reads replay outcomes.
 use std::collections::{BTreeSet,HashMap};
 use serde_json::{Value,json};
 use crate::{data::{Assets,Master,RaceIn,HorseIn,Tree,ival,sval,f32_of},course::Course,geometry::Geometry,
@@ -15,21 +13,16 @@ struct Detail {
 }
 #[derive(Clone)]
 struct Skill { id:i32, level:i32, row:HashMap<String,Value>, enabled:bool, details:Vec<Detail>, cooldown:f32 }
-/// AroundHorse snapshot (Global field layout 0x10..0x30), taken in PreUpdate.
 #[derive(Clone,Copy)]
 struct Around { i:usize, gap:f32, gap_abs:f32, lane:f32, lane_abs:f32, speed_gap:f32, back:bool }
-/// Research toggles for measuring each lane port separately (default on).
 fn flag(name:&str)->bool {
     thread_local!(static FLAGS:std::cell::RefCell<HashMap<String,bool>>=Default::default());
     if let Some(v)=FLAGS.with(|f|f.borrow().get(name).copied()) {return v;}
     let v=std::env::var(name).map_or(true,|v|v!="0");FLAGS.with(|f|f.borrow_mut().insert(name.to_string(),v));v
 }
-/// Opt-in research toggles (`RX_D*=1`): C# statement evaluated in double,
-/// rounded to float on assignment or float argument passing.
 fn opt(name:&str)->bool {
     thread_local!(static FLAGS:std::cell::RefCell<HashMap<String,bool>>=Default::default());
     if let Some(v)=FLAGS.with(|f|f.borrow().get(name).copied()) {return v;}
-    // Adopted after measurement (on unless `=0`); see RACE_GLOBAL_SOURCE_SEARCH.md.
     const ADOPTED:&[&str]=&["RX_D3A","RX_D3C","RX_D4","RX_D5C","RX_D7","RX_NEARPRE","RX_COMPETE","RX_T21","RX_TEND","RX_SLOPEMUL","RX_T4","RX_RESLOT","RX_SKCD","RX_GOALSPD","RX_GOALKEEP","RX_GOALLANE2","RX_GOALLANE3","RX_GOALLANE4","RX_GOALBLOCK","RX_GOALOT","RX_CT_EXPIRED_PEER","RX_SKILL_GAP_FLOOR","RX_PM_RANGE_LEAD","RX_GLOBAL_EVENT_FIRST","RX_GLOBAL_FINISH_GAP","RX_GLOBAL_TOP_EVENT_ORDER","RX_GLOBAL_PM_RECALC"];
     let v=match std::env::var(name) {Ok(v)=>v=="1",Err(_)=>ADOPTED.contains(&name)};
     FLAGS.with(|f|f.borrow_mut().insert(name.to_string(),v));v
@@ -37,7 +30,6 @@ fn opt(name:&str)->bool {
 #[derive(Clone)]
 struct Horse {
     input:HorseIn, base:[f32;5], adjusted:[f32;5], mods:Modifiers, skills:Vec<Skill>,
-    /// IsOrderInContinueArray / IsOrderOutContinueArray (OrderIn10..90, OrderOut10..90).
     order_continue:[[bool;9];2],
     distance:f32, prev_distance:f32, lane:f32, prev_lane:f32, lane_max:f32, target_lane:f32, lane_speed:f32,
     position:[f32;3], pos64:[f64;3], speed:f32, cf_speed:f32, cf_hp:f32, cf_pos:[f32;2], self_speed:f32, min_speed:f32, hp:f32, max_hp:f32,
@@ -45,11 +37,9 @@ struct Horse {
     order:usize, prev_order:usize, guts_order:usize, wiz_order:usize,
     front:Option<usize>, inside:Option<usize>, outside:Option<usize>, near_count:usize,
     front_time:f32, side_time:f32, near_front_time:f32, near_behind_time:f32,
-    /// _behindHorseNearLaneContinueTimeArray (Skill.BehindNearParamArray sets).
     near_behind_set:Vec<f32>, surround:[bool;3], reserved:Vec<i32>,
     corner:i32, corner_end:f32, final_corner:bool, straight:bool, front_type:i32,
     slope:f32, slope_end:f32, called_event:i32,
-    /// Upper race-stat clamp: 2000 on Global; JP removed it (RX_JP_STATCAP=1 restores 2000).
     stat_max:f32,
     force_in:f32, ex:bool, style_rate:f32, dist_speed:f32, dist_power:f32, ground_coef:f32,
     section_speed:[f32;24], section_base:[f32;24], sec_rand:[f32;3], sec_drawn:u32, temptation_section:i32, temptation_mode:i32, temptation_active:bool,
@@ -57,33 +47,24 @@ struct Horse {
     downhill:bool, downhill_check:f32, spurt_result:i32, spurt_start:f32, spurt_speed:f32,
     spurt_calculated:bool, skill_time:f32, target_speed:f32, after_goal:f32, extra_lane:Option<f32>, force_lane:bool, raw_time:f32, scaled_time:f32,
     around:Vec<Around>, visible:Vec<usize>, in_space:f32, out_space:f32, overtake:Vec<usize>, ot_cool:f32, move_time:f32, move_dir:i32,
-    /// HorseOrderChangeCounterUp: [PhaseStart, PhaseMiddle, PhaseEndAfter, Corner,
-    /// CornerPhaseEndAfter, LastSpurt, Distance1, FinalCornerAfter] and per-runner cooldowns.
     order_up:[i32;8], order_up_cool:Vec<f32>, ot_target_time:f32, fight_count:i32, lane_move:f32,
-    /// HorseDefeatCalculator inputs: IsHpEmptyOnRace, BlockFrontAccumulateTime, ActiveProper{Distance,GroundType}.
     hp_empty:bool, block_front_acc:f32, apt_distance:i32, apt_ground:i32,
     dbg:[f32;16], activate_count:i32, activate_phase:[i32;4], activate_half:[i32;2], heal_count:i32, keep:crate::position_keep::Keep, cp:Conserve,
 }
-/// Server-only ConservePower (脚をためる / 脚色十分) state; inferred from replays.
 #[derive(Clone,Default)]
 struct Conserve { end:Option<[f32;6]>, top:bool, pow:f32, mt:[f32;10], log:Vec<u32>, value:f32, timer:f32, released:bool, accel:f32, left:f32, dbg_p2:bool, dbg_sp:bool,
-    /// RX_CPSPEC: KuromiAK-spec credit, cooldown ticks, previous rushed/CompeteTop flags.
     spec:f32, scd:i32, ctimer:f32, last_credit:f32, s_init:bool, s_tm:bool, s_tp:bool, probe_keep_mode:i32, lag_mode:i32,
-    /// RX_CPDBG: per-tick [distance, self speed, target speed, pacemaker gap] alongside `log`.
     dlog:Vec<[f32;18]> }
 impl Horse {
-    // Native IsTemptation is independent of Mode (Senko can draw Null).
     fn tempted(&self)->bool {if opt("RX_TEMPT_ACTIVE") {self.temptation_active} else {self.temptation_mode!=0}}
     fn stat(&self,i:usize)->f32 {self.mods.apply(i,self.adjusted[i]).clamp(1.0,self.stat_max)}
     fn ex(&self)->bool {self.ex || self.mods.apply(20,0.0)!=0.0}
-    /// JP servers encode lane/speed in single precision (speed 16.4899997 -> 1649, not 1648).
     fn frame(&self,jp:bool)->Value {
         if std::env::var("RX_HPDBG").is_ok() && (self.hp-self.hp.floor()<0.01 || self.hp.ceil()-self.hp<0.01) && self.hp.fract()!=0.0 {eprintln!("HPF {} d={}",self.hp,self.distance);}
         let mut v=json!({"distance":self.distance,
         "lane":if jp {(self.lane*10000.0) as i32} else {(self.lane as f64*10000.0) as i32},
         "speed":if jp {(self.speed*100.0) as i32} else {(self.speed as f64*100.0) as i32},"hp":self.hp as i32,"tempt":self.temptation_mode,
         "block":self.front.map_or(-1,|i|i as i32)});
-        // RX_FRAMEDBG (debug only): x = [capped, corner, lane, self_speed, movement, speed].
         if std::env::var("RX_FRAMEDBG").is_ok() {v["x"]=json!([self.dbg[5],self.corner,self.lane,self.self_speed,self.dbg[6],self.speed]);v["dbg"]=json!(self.dbg);}
         v }
 }
@@ -91,7 +72,6 @@ pub struct Simulator<'a> {
     input:RaceIn, master:&'a Master, assets:&'a Assets, course:Course, geometry:Geometry,
     horses:Vec<Horse>, random:RaceRandom, time:f32, events:Vec<Value>,
     unsupported:BTreeSet<String>, distance_diff_max:f32, compete:crate::compete::State, pacemaker:usize, pm_ready:bool, pm_section:i32, pm_not_forward:i32, pm_handed:bool, cur_skill:i32,
-    /// JP is_activate_other_skill_detail: bitmask of details fired per (runner, skill); current detail.
     fired:HashMap<(usize,i32),u32>, cur_detail:usize,
 }
 impl<'a> Simulator<'a> {
@@ -118,7 +98,6 @@ impl<'a> Simulator<'a> {
         let geometry=Geometry::load(assets,&course,input.region.as_deref()==Some("jp"))?;
         let mut s=Self {random:RaceRandom::new(input.seed as i32,trace),input,master,assets,course,geometry,
             horses:vec![],time:0.0,events:vec![],unsupported:BTreeSet::new(),distance_diff_max:0.0,compete:crate::compete::State::new(0),pacemaker:0,pm_ready:false,pm_section:0,pm_not_forward:0,pm_handed:false,cur_skill:0,fired:HashMap::new(),cur_detail:0};
-        // Null in the client. Do not invent activation rules or consume guessed draws.
         for mechanic in ["server:CompeteTop","server:CompeteFight","server:ConservePower","server:PaseMaker",
             "client:overtake_lane_search","results:defeat","skills:additional_activation","client:post_goal_targets","events:score",
             "skills:random_reservations","skills:event_target_flags"] {
@@ -133,8 +112,6 @@ impl<'a> Simulator<'a> {
         for d in 1..=2 {
             let text=sval(row,&format!("condition_{d}"));if text.is_empty() {continue;}
             let tag=format!("h{hi}:{id}:detail{d}");
-            // Global replay 259f542a: skill trigger windows round the double-scaled draw once
-            // (RX_LOT_WIDE=0 keeps float arithmetic).
             self.random.wide=!self.jp() && flag("RX_LOT_WIDE");
             let pre=triggers::build(sval(row,&format!("precondition_{d}")),&self.course,&mut self.random,&tag);
             let condition=triggers::build(text,&self.course,&mut self.random,&tag);
@@ -142,9 +119,6 @@ impl<'a> Simulator<'a> {
             details.push(Detail {pre_passed:pre.is_empty(),pre,condition,active:false,left:0.0,cooldown:0.0,
                 uid:((hi as u64)<<48)|((id as u64)<<8)|d as u64,number:d,additional_seen:0,additional_used:[0;3]});
         }
-        // JP: detail 2 random tokens reuse detail 1's window for the same token name (draws are
-        // still consumed, so the RNG stream is unchanged). Two-detail fallbacks such as 203992
-        // otherwise fired detail 2 early; CP runners matched through section 10: 120 -> 213.
         if self.jp() && flag("RX_JP_SHAREWIN") && details.len()==2 {
             let first:Vec<(String,Vec<(f32,f32)>)>=details[0].condition.iter().flatten().filter(|t|t.randomized).map(|t|(t.name.clone(),t.windows.clone())).collect();
             for t in details[1].condition.iter_mut().flatten().filter(|t|t.randomized) {
@@ -153,7 +127,6 @@ impl<'a> Simulator<'a> {
         }
         details
     }
-    /// JP probe: every activation lot first, then triggers only for skills that passed.
     fn jp_lots_then_triggers(&mut self,lot_pass:&impl Fn(&mut RaceRandom,&std::collections::HashMap<String,Value>,f32,String)->bool) {
         for hi in 0..self.horses.len() {
             for si in 0..self.horses[hi].skills.len() {
@@ -176,7 +149,6 @@ impl<'a> Simulator<'a> {
     }
     fn rate(&self,table:&str,id:i32,column:&str)->Result<f32,String> {
         let r=self.master.find(table,"id",id as i64).ok_or_else(||format!("missing {table}:{id}"))?;
-        // RX_RATE_DIV: master per-mille rates as int/10000 (0.6f, not 6000f*0.0001f = 0.59999996).
         Ok(match std::env::var("RX_RATE_DIV").ok().as_deref() {
             Some("1")=>ival(r,column) as f32/10000.0,
             Some("2")=>(ival(r,column) as f64*0.0001) as f32,
@@ -193,10 +165,6 @@ impl<'a> Simulator<'a> {
             let mood=self.rate("race_motivation_rate",h.motivation,"motivation_rate")?;
             let bonus=if h.team_rank==0 {0} else {self.master.rows("race_single_mode_team_status").iter()
                 .find(|r|(h.team_rank as i64)<ival(r,"team_rank_threshold")).map_or(0,|r|ival(r,"add_status"))};
-            // Server conversion, before mood and career additions. Retain raw
-            // input stats for mechanics that explicitly use unhalved power.
-            // Corpus probe: 187/187 initial HP and 1766/1775 opening movement
-            // samples, with the latter's residuals all missing Groundwork.
             let base=[h.speed,h.stamina,h.pow,h.guts,h.wiz].map(|v|{
                 let raw=if v>1200 {1200.0+(v-1200) as f32*0.5} else {v as f32};
                 ((bonus as f32+raw)*mood).clamp(1.0,stat_max)
@@ -220,10 +188,6 @@ impl<'a> Simulator<'a> {
             let ground=Tree(&p.arr(if c.ground==1 {"_groundModifierParamTurf"} else {"_groundModifierParamDirt"})[self.input.ground_condition as usize-1]);
             let mode=matches!(self.input.race_type,6|7);
             let add=|name:&str|if mode {p.f(&format!("Global.SingleModeAdd{name}"))} else {0.0};
-            // InitBaseStatusAdjust (Global client 0x3436430) stores each adjusted
-            // field after the full expression. Global server retains the product
-            // and additions in double until that store. Premature product rounding
-            // shifts career wisdom/speed by one ULP (1fd80833 / 3f359e91).
             let wide=self.input.region.as_deref()!=Some("jp") && flag("RX_GLOBAL_ADJUSTED_STAT");
             let adjusted=[
                 adjusted_stat(base[0],course_coef,ground.f("addSpeed"),add("Speed"),wide,stat_max),
@@ -239,9 +203,6 @@ impl<'a> Simulator<'a> {
             if !h.item_id_array.is_empty() {self.unsupported.insert("init:race_items".into());}
             let ex=h.running_style==1 && h.skill_array.iter().any(|sk|self.master.find("skill_data","id",sk.skill_id as i64)
                 .is_some_and(|r|(1..=2).any(|d|(1..=3).any(|a|ival(r,&format!("ability_type_{d}_{a}"))==6))));
-            // ConservePower stat: motivation scales only the halved base; the other half of the
-            // excess over 1200 is added unscaled (KuromiAK; 117 Global CP-release divergences
-            // fit). RX_CPPOW=0 restores raw*mood.
             let raw=h.pow as f32;
             let cp_pow=if flag("RX_CPPOW") && raw>1200.0 {(1200.0+(raw-1200.0)*0.5)*mood+(raw-1200.0)*0.5} else {raw*mood};
             horses.push(Horse {input:h.clone(),base,adjusted,mods:Modifiers::default(),skills:vec![],distance:0.0,prev_distance:0.0,
@@ -254,26 +215,16 @@ impl<'a> Simulator<'a> {
                 dist_power:self.rate("race_proper_distance_rate",distance_apt,"proper_rate_power")?,
                 ground_coef:self.rate("race_proper_ground_rate",ground_apt,"proper_rate")?,section_speed:[0.0;24],section_base:[0.0;24],sec_rand:[0.0;3],sec_drawn:0,
                 temptation_section:0,temptation_mode:0,temptation_active:false,temptation_count:0,temptation_timer:0.0,temptation_check:0.0,temptation_forced:false,temptation_end:0,
-                // HorseRaceAIBase ctor leaves the downhill countdown at zero.
                 downhill:false,downhill_check:0.0,spurt_result:8,spurt_start:-1.0,spurt_speed:0.0,spurt_calculated:false,skill_time:-1.0,target_speed:0.0,after_goal:0.0,extra_lane:None,force_lane:false,
                 raw_time:-1.0,scaled_time:-1.0,dbg:[0.0;16],activate_count:0,activate_phase:[0;4],activate_half:[0;2],heal_count:0,keep:crate::position_keep::Keep::default(),cp:Conserve {pow:cp_pow,..Default::default()}});
         }
         self.horses=horses;
         self.compete=crate::compete::State::new(self.horses.len());
-        // Opening server evidence selects the first gate of the most forward
-        // strategy (Oonige before normal Nige). Retain that initial reference;
-        // server switching rules remain explicitly unsupported. Dynamic leader
-        // selection prematurely changed the reference in two no-Nige races.
         self.pacemaker=self.horses.iter().enumerate().min_by_key(|(i,h)|
             (if h.ex() {0} else {h.input.running_style},*i)).unwrap().0;
-        // Probe: RX_PMFIX=i pins runner i (gate order) as the pacemaker.
         if let Some(i)=std::env::var("RX_PMFIX").ok().and_then(|v|v.parse::<usize>().ok()) {
             if i<self.horses.len() {self.pacemaker=i;}
         }
-        // CreateSkill for the entire gate-ordered field before CreateAI.
-        // RX_JP_LOTFIRST (JP probe): 1 = per skill, activation lot then triggers only if
-        // it passed; 2 = force-in, all lots, then triggers for passed skills;
-        // 3 = all lots, triggers for passed skills, then force-in. 0 = Global order.
         let lot_first=if self.jp() {std::env::var("RX_JP_LOTFIRST").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(0)} else {0};
         let lot_k={let p=self.assets.params();(p.f("Skill.LotActivatePerVal1"),p.f("Skill.LotActivatePerVal2"),p.i("Skill.ActivatePerMin") as f32)};
         let lot_pass=move |r:&mut RaceRandom,row:&std::collections::HashMap<String,Value>,wiz:f32,tag:String|ival(row,"activate_lot")!=1 || r.float_max(100.0,&||tag.clone())<
@@ -305,9 +256,6 @@ impl<'a> Simulator<'a> {
         }
         self.skills_pass(0.0,1);self.skills_pass(0.0,0);
         if self.jp() {
-            // JP StaminaLimitBreakBuff: two raw samples per runner whose f32(raw stamina * mood)
-            // plus guaranteed basis-distance stamina passives exceeds 1200, on every course,
-            // just before the start delays (RACE_SERVER_MECHANICS.md section 2).
             let basis=((self.course.distance as i32)%400<100) as i64;
             for hi in 0..self.horses.len() {
                 let h=&self.horses[hi];
@@ -331,9 +279,6 @@ impl<'a> Simulator<'a> {
         let race_base=self.race_base();
         for (hi,h) in self.horses.iter_mut().enumerate() {
             let style=if h.ex() {"OoNige"} else {STYLE_NAMES[h.input.running_style as usize-1]};
-            // Server rounds once after this expression. Float32 intermediate
-            // products left one early HP sample one unit too high; preserving
-            // them in double precision matches all 21,864 opening HP samples.
             h.max_hp=(h.stat(1) as f64*p.f("Hp.HpInitialVal1") as f64*
                 p.f(&format!("Hp.HpMaxCoef{style}")) as f64+self.course.distance as f64) as f32;
             h.hp=h.max_hp;
@@ -343,10 +288,6 @@ impl<'a> Simulator<'a> {
             for i in 0..24 {
                 let phase=self.course.phase(i as f32*(self.course.distance/24.0));
                 let per=if phase<4 {p.f(&format!("BasetTargetSpeed.{array}.{}",PHASE_NAMES[phase]))} else {0.0};
-                // CalcPhaseEndAdd (0x34273b0): sqrt has float argument/result;
-                // remaining products round at the float helper return. Isolated
-                // Global corpus: 436 -> 440 perfect, 0 earlier/lost; dense misses
-                // 127 -> 97 (docs/RACE_ULP_PARITY_2026-10-08.md).
                 let add=if phase==2 || phase==3 {
                     let v=(h.stat(0)*p.f("BasetTargetSpeed.PhaseEndBaseTargetSpeedCoef")).sqrt();
                     if self.input.region.as_deref()!=Some("jp") && flag("RX_ULP_PHASE_END_RETURN") {
@@ -354,8 +295,6 @@ impl<'a> Simulator<'a> {
                     } else {v*h.dist_speed*p.f("addSpeedParamCoef")}
                 } else {0.0};
                 let l=math::log10(h.stat(4)*0.1);
-                // JP probe RX_JP_SECRAND: 1 = draw section i's random on entry (section 0 at
-                // init), 2 = every section on entry. Section speeds hold the base until drawn.
                 let lazy=if jp_secrand==0 {false} else {jp_secrand==2 || i>0};
                 if lazy {
                     let c=0.01f32 as f64;
@@ -366,19 +305,12 @@ impl<'a> Simulator<'a> {
                     continue;
                 }
                 h.sec_drawn|=1<<i;
-                // Global replays fit the section random in double: bounds l*wiz/val (+val1) rounded once,
-                // then the float draw scaled in double and rounded once (30 later / 0 earlier on 673).
-                // RX_SECRAND_WIDE=0 restores float arithmetic; JP is unchanged.
                 let wide=self.input.region.as_deref()!=Some("jp") && flag("RX_SECRAND_WIDE");
                 let (w,v2,v1,p1)=(h.stat(4) as f64,p.f("BasetTargetSpeed.BaseTargetSpeedRandomMinusVal2") as f64,p.f("BasetTargetSpeed.BaseTargetSpeedRandomMinusVal1") as f64,p.f("BasetTargetSpeed.BaseTargetSpeedRandomPlusVal1") as f64);
                 let (lo,up)=if wide {((l as f64*w/v2+v1) as f32,(l as f64*w/p1) as f32)}
                     else {(l*(h.stat(4)/p.f("BasetTargetSpeed.BaseTargetSpeedRandomMinusVal2"))+p.f("BasetTargetSpeed.BaseTargetSpeedRandomMinusVal1"),
                     l*(h.stat(4)/p.f("BasetTargetSpeed.BaseTargetSpeedRandomPlusVal1")))};
                 let random=self.random.float_range_with(lo,up,if wide {crate::rng::Wide::FloatDraw} else {crate::rng::Wide::Float},&||format!("base{hi}:section{i}"));
-                // BaseSpeedInfo fields (client 0x3426fa0: r*0.01f*raceBase and
-                // per*0.01f*raceBase+add). Server replays fit these products
-                // evaluated in double and rounded once at each field store:
-                // steady pace-down speeds were 1-5 ULP high with float32 steps.
                 let c=0.01f32 as f64;
                 h.section_base[i]=(per as f64*c*race_base as f64+add as f64) as f32;
                 h.section_speed[i]=(random as f64*c*race_base as f64) as f32+h.section_base[i];
@@ -402,7 +334,6 @@ impl<'a> Simulator<'a> {
     }
     fn query(&self,hi:usize,n:&str,rhs:i32)->Option<f32> {
         let v=self.query_inner(hi,n,rhs);
-        // Research: RX_QDBG=hi logs every condition value queried for that runner.
         if std::env::var("RX_QDBG").ok().and_then(|x|x.parse::<usize>().ok())==Some(hi) {
             let h=&self.horses[hi];eprintln!("Q {:.4} sk{} {}={:?} d={} ord={}",self.time,self.cur_skill,n,v,h.distance,h.order);
         }
@@ -420,19 +351,14 @@ impl<'a> Simulator<'a> {
             "running_style"=>h.input.running_style as f32,"post_number"=>post_number(hi,self.horses.len()) as f32,
             "popularity"=>((h.input.popularity-1).max(0)+1) as f32,"phase"=>h.phase as f32,"corner"=>h.corner as f32,
             "is_finalcorner"=>boolean(h.final_corner),"is_finalcorner_laterhalf"=>boolean(h.final_corner && c.final_corner().is_some_and(|s|h.distance>=(s.start+s.end)*0.5)),
-            // Global: remain_distance = course length - integer-truncated distance (b708d901; 643 -> 644,
-            // 0 lost; truncating or rounding the float remainder instead loses 500+).
             "remain_distance"=>if self.input.region.as_deref()!=Some("jp") && flag("RX_REMAIN_INT") {c.distance-(h.distance as i32) as f32} else {c.distance-h.distance},"distance_rate"=>{
                 let threshold=(rhs as f32/100.0*c.distance+0.5) as i32;
                 return Some((h.distance as i32-threshold+rhs) as f32);
             },
             "distance_diff_top"=>{
                 let gap=self.horses.iter().map(|h|h.distance).fold(0.0,f32::max)-h.distance;
-                // SkillTriggerDistanceDiffTop.GetValueLh (0x35dd090) floors to int.
                 if opt("RX_SKILL_GAP_FLOOR") {gap.floor()} else {gap}
             },
-            // SkillTriggerHorseDistanceDiffRate (0x35df5d0): against the current first-to-last
-            // spread (CurOrder 0 and last), 0 when approximately zero, else truncated to int.
             "distance_diff_rate" if flag("RX_DDRATE")=>{
                 let first=self.horses.iter().find(|o|o.order==0)?.distance;
                 let last=self.horses.iter().find(|o|o.order==self.horses.len()-1)?.distance;
@@ -444,7 +370,6 @@ impl<'a> Simulator<'a> {
             "grade"=>ival(self.master.find("race","id",self.input.race_id as i64)?,"grade") as f32,
             "is_dirtgrade"=>ival(self.master.find("race","id",self.input.race_id as i64)?,"is_dirtgrade") as f32,
             "order"=>h.order as f32+1.0,"order_rate"=>{
-                // Compare internal order against a once-rounded runner-count threshold.
                 let threshold=(rhs as f32/100.0*self.horses.len() as f32+0.5) as i32;
                 return Some((h.order as i32+1-threshold+rhs) as f32);
             },
@@ -452,17 +377,12 @@ impl<'a> Simulator<'a> {
                 let out=n.starts_with("order_rate_out");let rate:usize=n.trim_start_matches(if out {"order_rate_out"} else {"order_rate_in"}).trim_end_matches("_continue").parse().ok()?;
                 boolean(h.order_continue[usize::from(out)][rate/10-1])
             },
-            // SkillTriggerHorseBehindIn (0x35e0560): false for the last runner, else whether the
-            // runner at CurOrder+1 has a smaller lane distance than the owner.
             "is_behind_in" if flag("RX_BEHINDIN")=>{
                 match self.horses.iter().find(|o|o.order==h.order+1) {Some(b)=>boolean(b.lane<h.lane),None=>return None}
             },
             "hp_per"=>if h.max_hp>0.0 {(h.hp/h.max_hp*100.0) as i32 as f32} else {100.0},
             "is_last_straight_onetime"=>boolean(h.straight && c.final_corner().is_some_and(|s|h.distance>=s.end)),
             "base_speed"=>h.base[0],"base_stamina"=>h.base[1],"base_power"=>h.base[2],"base_guts"=>h.base[3],"base_wiz"=>h.base[4],
-            // lastspurt (unlike is_lastspurt) is 2 for a full max-speed spurt and 1 for a reduced one
-            // (JP detail choice of e.g. 204122: 87 -> 12 mismatches). RX_LASTSPURT=0 restores the
-            // boolean; =2 probes the raw calc result.
             "lastspurt" if std::env::var("RX_LASTSPURT").map_or(true,|v|v!="0")=>{
                 let on=h.spurt_start>0.0 && h.spurt_result&12==0 && h.distance>=h.spurt_start;
                 if !on {0.0} else if std::env::var("RX_LASTSPURT").as_deref()==Ok("2") {h.spurt_result as f32} else if h.spurt_result==1 {2.0} else {1.0}
@@ -470,18 +390,13 @@ impl<'a> Simulator<'a> {
             "is_lastspurt"|"lastspurt"=>boolean(h.spurt_start>0.0 && h.spurt_result&12==0 && h.distance>=h.spurt_start),
             "slope"=>if h.slope>0.0 {1.0} else if h.slope<0.0 {2.0} else {0.0},
             "is_badstart"=>boolean(h.original_delay>=0.08),"is_temptation"=>boolean(h.tempted()),
-            // HorseRaceAIBase.IsOverTake (0x3431370): OverTakeHorseList.Count > 0.
             "is_overtake" if flag("RX_ISOT")=>boolean(!h.overtake.is_empty()),
             "temptation_opponent_count_infront"|"temptation_opponent_count_behind"|"temptation_count_infront"|"temptation_count_behind" if flag("RX_TINF")=>{
-                // SkillTriggerTemptationInfront/Behind (0x35e2ae0/0x35e2920): runners in
-                // temptation ahead of / behind the owner's CurOrder; opponent filter by team.
                 let opp=n.contains("opponent");let team=h.input.team_id;let infront=n.ends_with("infront");
                 self.horses.iter().filter(|o|o.tempted() && (!opp || team==0 || o.input.team_id==0 || o.input.team_id!=team) &&
                     if infront {o.order<h.order} else {o.order>h.order}).count() as f32
             },
             "is_surrounded" if flag("RX_SURR")=>boolean(h.surround.iter().all(|b|*b)),
-            // SkillTriggerRunningStyleTemptationCount (0x35e2c70): opponents
-            // (other runner; no shared non-zero team) of the style in temptation.
             "running_style_temptation_opponent_count_nige"|"running_style_temptation_opponent_count_senko"|
             "running_style_temptation_opponent_count_sashi"|"running_style_temptation_opponent_count_oikomi" if flag("RX_TCNT")=>{
                 let style=if n.ends_with("nige") {1} else if n.ends_with("senko") {2} else if n.ends_with("sashi") {3} else {4};
@@ -498,7 +413,6 @@ impl<'a> Simulator<'a> {
             "activate_count_end_after"=>(h.activate_phase[2]+h.activate_phase[3]) as f32,
             "activate_count_laterhalf"|"activate_count_later_half"=>h.activate_half[1] as f32,
             "infront_near_lane_time"=>h.near_front_time as i32 as f32,"behind_near_lane_time"=>h.near_behind_time as i32 as f32,
-            // SkillTriggerHorseBehindNearLaneTimeParamSet (0x35e0500): floor of the set's timer.
             n if n.starts_with("behind_near_lane_time_set") && flag("RX_NEARSET")=>{
                 let k:usize=n.trim_start_matches("behind_near_lane_time_set").parse().ok()?;
                 (*h.near_behind_set.get(k.checked_sub(1)?)?).floor()
@@ -509,19 +423,13 @@ impl<'a> Simulator<'a> {
             "change_order_up_lastspurt" if flag("RX_ORDERUP")=>h.order_up[5] as f32,
             "change_order_up_finalcorner_after" if flag("RX_ORDERUP")=>h.order_up[7] as f32,
             "overtake_target_time" if flag("RX_OTTIME")=>h.ot_target_time,
-            // HorseRaceInfo.get_Lane (0x3439900).
             "lane_type" if flag("RX_LANETYPE")=>if h.lane<=0.2 {0.0} else if h.lane<=0.4 {1.0} else if h.lane<=0.6 {2.0} else {3.0},
             "is_activate_any_skill" if flag("RX_ANYSKILL")=>h.activate_count as f32,
-            // HorseRaceInfo.CompeteFightCount (server-incremented; assumed +1 per CompeteFight start).
             "compete_fight_count" if flag("RX_FIGHTCNT") && opt("RX_COMPETE")=>h.fight_count as f32,
             "change_order_onetime"=>(h.order as i32-h.prev_order as i32) as f32,
-            // JP-only tokens (JP client triggers are Null; semantics inferred, RX_JP_TOK=0 disables).
-            // JP: another detail of this skill has activated earlier in the race.
             "is_activate_other_skill_detail" if self.jp() && flag("RX_JP_TOK")=>boolean(self.fired.get(&(hi,self.cur_skill)).is_some_and(|m|m & !(1u32<<self.cur_detail)!=0)),
             "is_last_straight" if self.jp() && flag("RX_JP_TOK")=>boolean(h.straight && c.final_corner().is_some_and(|s|h.distance>=s.end)),
             "furlong" if self.jp() && flag("RX_JP_TOK")=>{
-                // JP replay boundaries use whole-metre rounding: 199.5 m enters furlong 1.
-                // RX_JP_FURLONG_ROUND=0 restores the unrounded distance boundary.
                 let d=h.distance+if self.jp() && flag("RX_JP_FURLONG_ROUND") {0.5} else {0.0};
                 ((d/200.0) as i32+i32::from(opt("RX_JP_FURLONG1"))) as f32
             },
@@ -540,8 +448,6 @@ impl<'a> Simulator<'a> {
             "is_exist_chara_id"=>boolean(self.horses.iter().any(|n|n.input.chara_id==rhs)),
             "running_style_count_same"=>self.horses.iter().filter(|n|n.input.running_style==h.input.running_style).count() as f32,
             "running_style_count_same_rate"=>{
-                // SkillTriggerRunningStyleCountSameRate ctor (0x35e0e10)
-                // rounds the RHS into a runner count, then compares integers.
                 let threshold=(rhs as f32/100.0*self.horses.len() as f32+0.5) as i32;
                 let count=self.horses.iter().filter(|n|n.input.running_style==h.input.running_style).count() as i32;
                 return Some((count-threshold+rhs) as f32);
@@ -550,17 +456,10 @@ impl<'a> Simulator<'a> {
                 let style=if n.contains("nige") {1} else if n.contains("senko") {2} else if n.contains("sashi") {3} else {4};
                 self.horses.iter().enumerate().filter(|(i,n)|*i!=hi && n.input.running_style==style).count() as f32
             },
-            // SkillTriggerRunningStyleEqualPopularityOne ctor (0x35e0ef0):
-            // RaceInfo.InitHorseIndexByPopularity (0x35fdad0) stores
-            // index[max(popularity-1,0)] = gate index (last write wins;
-            // unset entries stay 0); compares RunningStyle, not Ex.
             "running_style_equal_popularity_one"=>{
                 let one=self.horses.iter().rposition(|n|(n.input.popularity-1).max(0)==0).unwrap_or(0);
                 boolean(self.horses[one].input.running_style==h.input.running_style)
             },
-            // SkillTriggerSameSkillHorseCount (0x35e3f50): runners, self
-            // included, whose SkillManager.GetSkill(owner skill id) is set.
-            // The evaluating horse's skills are detached during the pass.
             "same_skill_horse_count"=>self.horses.iter().enumerate().filter(|(i,n)|*i==hi || n.skills.iter().any(|k|k.id==self.cur_skill)).count() as f32,
             _=>return None,
         })
@@ -570,35 +469,15 @@ impl<'a> Simulator<'a> {
             if opt("RX_GOALSKILL") && self.horses[hi].finished {continue;}
             if priority==0 {self.horses[hi].mods.update_timed(dt);}
             let mut skills=std::mem::take(&mut self.horses[hi].skills);
-            // Exact Global expiry evidence: 174ef16df8e466ef h7 at 73.52652 s,
-            // and 78/81 late evok+dbig cases follow a type-22 skill end.
-            // Fold the current-speed add into self speed, then decelerate normally.
-            // Isolated 673-race corpus: 447 -> 582 perfect, 4 later / 0 earlier,
-            // 136 exact-frame gains / 0 losses. RX_GLOBAL_CS22FOLD=0 reverts.
             let jp_fold=if self.jp() {flag("RX_JP_CS22FOLD")} else {flag("RX_GLOBAL_CS22FOLD")};
-            // SkillManagerSimulate.UpdateRandomActivateSkillIdList (0x35d4760): clear, then
-            // pass 1 (modifier 0x19, ability 37) and pass 2 (0x18, ability 36) each pick
-            // min(count, candidates) skills with GetRandom(0, n) without replacement.
-            // IsRandomActivateTargetSkill (0x35d45a0): rarity in the pass list,
-            // FloatAbilityTime1 != -1, cooldown <= 0, IsGeneralSkill == 1.
-            // UpdateSecondGroup (0x35d4150) draws the reservations after the priority-0 skills
-            // (same tick as the granting skill); RX_RANDEND=0 restores the next-tick
-            // first-group draw (28 of 707 corpus picks wrong).
             if priority==1 && !flag("RX_RANDEND") {self.reserve_random(hi,&skills);}
             for skill in &mut skills {
                 if ival(&skill.row,"priority")!=priority {continue;}
-                // SkillBase.Update (0x35d1f30): while any detail is active, only update
-                // active details (expiry sets the *skill* cooldown) and skip activation;
-                // otherwise tick the skill cooldown and activate the first passing detail.
                 let skill_cd=opt("RX_SKCD");
                 if skill_cd && skill.details.iter().any(|d|d.active) {
                     for d in &mut skill.details {
                         if d.active && d.left>=0.0 {
                             if !self.jp() && flag("RX_GLOBAL_ADDITIONAL") {
-                                // SkillBase.Update removes each detail from the previous-activation
-                                // list before updating it. Activations since this detail's last
-                                // update therefore include later skills on the activation tick,
-                                // but exclude the owner and skills preceding its initial activation.
                                 let now=self.horses[hi].activate_count;
                                 let pending=(now-d.additional_seen).max(0);
                                 d.additional_seen=now;
@@ -634,25 +513,17 @@ impl<'a> Simulator<'a> {
                         }
                     } else if d.cooldown>0.0 {d.cooldown=(d.cooldown-dt).max(0.0);}
                     let reserved=d.number==1 && self.horses[hi].reserved.contains(&skill.id);
-                    // IsReservedRandomActivate bypasses the ordinary activation
-                    // lottery, including a failed pre-race skill lottery.
                     if (!skill.enabled && !(reserved && opt("RX_RESLOT"))) || d.active || d.cooldown>0.0 || self.horses[hi].finished {continue;}
                     self.cur_skill=skill.id;self.cur_detail=d.number;
                     let mut unsupported=std::mem::take(&mut self.unsupported);
                     if !d.pre_passed {d.pre_passed=triggers::evaluate(&mut d.pre,self.horses[hi].distance,&|n,r|self.query(hi,n,r),&mut unsupported);}
-                    // SkillDetail.IsReservedRandomActivate (0x35cfc80): detail 0 of a reserved skill.
                     let activate=reserved || d.pre_passed && triggers::evaluate(&mut d.condition,self.horses[hi].distance,&|n,r|self.query(hi,n,r),&mut unsupported);
                     self.unsupported=unsupported;
                     if activate {
                         let raw=ival(&skill.row,&format!("float_ability_time_{}",d.number));
                         d.left=if raw==-1 {-1.0} else {raw as f32*0.0001*(self.course.distance/self.p().i("Skill.AbilityTimeDivideDistance") as f32)};
-                        // Probe: RX_SKEND=k shifts every timed skill end by k ticks.
                         if raw!=-1 && let Some(k)=std::env::var("RX_SKEND").ok().and_then(|v|v.parse::<f32>().ok()) {d.left+=k*dt;}
                         let usage=ival(&skill.row,&format!("ability_time_usage_{}",d.number));
-                        // Global SkillAbilityTimeMultiplyRemainHp.GetMultiply (0x35ca8a0):
-                        // IHorseRaceInfo slot 16 is GetHp (absolute HP), sampled by
-                        // SkillDetail.Activate before installing the abilities.
-                        // The first strict threshold wins; exhaustion returns 1.
                         if !self.jp() && usage==3 && flag("RX_GLOBAL_TIME_HP") {
                             let mult=global_hp_duration_multiplier(self.p(),self.horses[hi].hp);
                             if raw!=-1 {d.left*=mult;}
@@ -666,21 +537,12 @@ impl<'a> Simulator<'a> {
                         let mut mask=0i64;
                         for a in 1..=3 {
                             let targets=self.ability(hi,skill.id,skill.level,&skill.row,d,a);
-                            // SkillDetail.CalcTargetFlags (0x35cf050) uses FirstOrDefault
-                            // ability, then its AbilityTargets. Later effects still apply.
-                            // JP replays also record only the first ability's targets (RX_JP_SKILLPARAM).
                             if (self.jp() && !flag("RX_JP_SKILLPARAM")) || (!self.jp() && !opt("RX_GLOBAL_EVENT_FIRST")) || a==1 {
-                                // The replay mask is int32: runners past gate 32 cannot be flagged.
                                 for t in targets {if t<32 {mask|=1<<t;}}
                             }
                         }
-                        // Global replay convention: skills activated on the pre-race tick (t = 0) record
-                        // duration -1 and an empty target mask (5411/5411 corpus events). JP records the
-                        // real duration and mask, encoded as int(f32(duration * 10000)) (236/236 distinct
-                        // JP base-time/distance pairs; the f64 product truncates one lower).
                         let jp_enc=self.jp() && flag("RX_JP_SKILLPARAM");
                         let t0=self.time==0.0 && !jp_enc;
-                        // JP t = 0: passives (-1) and zero-duration skills record an empty mask.
                         if jp_enc && self.time==0.0 && raw<=0 {mask=0;}
                         let enc=if jp_enc {(d.left*10000.0) as i32} else {(d.left as f64*10000.0) as i32};
                         self.horses[hi].skill_time=self.time;
@@ -693,11 +555,6 @@ impl<'a> Simulator<'a> {
             self.horses[hi].skills=skills;
         }
     }
-    /// SkillManagerSimulate.UpdateRandomActivateSkillIdList (0x35d4760): clear, then
-    /// pass 1 (modifier 0x19, ability 37) and pass 2 (0x18, ability 36) each pick
-    /// min(count, candidates) skills with GetRandom(0, n) without replacement.
-    /// IsRandomActivateTargetSkill (0x35d45a0): rarity in the pass list,
-    /// FloatAbilityTime1 != -1, cooldown <= 0, IsGeneralSkill == 1, not active.
     fn reserve_random(&mut self,hi:usize,skills:&[Skill]) {
         if !flag("RX_RANDACT") {return;}
         self.horses[hi].reserved.clear();
@@ -717,7 +574,6 @@ impl<'a> Simulator<'a> {
             }
         }
     }
-    /// Returns the runners this ability targeted (for the event's target bitmask).
     fn ability(&mut self,hi:usize,id:i32,level:i32,row:&HashMap<String,Value>,detail:&Detail,a:usize)->Vec<usize> {
         self.ability_activate(hi,id,level,row,detail,a,false)
     }
@@ -726,8 +582,6 @@ impl<'a> Simulator<'a> {
         let target=ival(row,&format!("target_type_{suffix}"));let tv=ival(row,&format!("target_value_{suffix}"));
         let mut targets=match target {
             1=>vec![hi],2=>(0..self.horses.len()).collect(),3=>(0..self.horses.len()).filter(|i|*i!=hi).collect(),
-            // SkillTargetVisible: visible prefix sorted by world-position
-            // distance (selector 0x35d64d0), capped by target_value.
             4 if opt("RX_T4")=>{
                 let pos=self.horses[hi].position;
                 let mut v=self.horses[hi].visible.clone();
@@ -748,16 +602,11 @@ impl<'a> Simulator<'a> {
                 } selected
             },
             6|7|8=>self.horses.iter().enumerate().filter(|(_,h)|match target {6=>h.order as i64+1==tv,7=>(h.order as i64+1)<tv,_=>tv<h.order as i64+1}).map(|(i,_)|i).collect(),
-            // SkillTargetSelfInfront/SelfBehind (0x35d70b0/0x35d72e0): the next target_value
-            // runners by CurOrder ahead of / behind the owner, stopping at the field's end.
             9|10 if flag("RX_T910")=>{
                 let o=self.horses[hi].order as i64;let n=self.horses.len() as i64;
                 (1..=tv).map(|k|if target==9 {o-k} else {o+k}).take_while(|x|*x>=0 && *x<n)
                     .filter_map(|x|self.horses.iter().position(|h|h.order as i64==x)).collect()
             },
-            // SkillTargetSelf{Infront,Behind}Temptation (0x35d78e0/0x35d7e10): GetTemptationHorseList
-            // filtered to runners ahead of / behind the owner, then target_value draws without
-            // replacement (RaceRandom.GetValue(count), RemoveAt).
             19|20 if flag("RX_T1920")=>{
                 let o=self.horses[hi].order;
                 let mut pool:Vec<usize>=(0..self.horses.len()).filter(|i|self.horses[*i].tempted()
@@ -771,10 +620,7 @@ impl<'a> Simulator<'a> {
             13=>{let mut v=vec![hi];if let Some(i)=self.horses[hi].front {v.push(i);}v},
             14=>[self.horses[hi].inside,self.horses[hi].outside].into_iter().flatten().collect(),
             17=>self.horses.iter().enumerate().filter(|(_,h)|h.input.running_style as i64==tv).map(|(i,_)|i).collect(),
-            // SkillTargetRunningStyleOtherSelf (0x35d9c70): running-style list minus the owner.
             18 if flag("RX_T18")=>self.horses.iter().enumerate().filter(|(i,h)|*i!=hi && h.input.running_style as i64==tv).map(|(i,_)|i).collect(),
-            // RunningStyleTemptationOtherSelf (0x35d7550): style list,
-            // filtered by IsTemptation. The owner's skill requires !IsTemptation.
             21 if opt("RX_T21")=>self.horses.iter().enumerate().filter(|(i,h)|*i!=hi && h.input.running_style as i64==tv && h.tempted()).map(|(i,_)|i).collect(),
             22=>self.horses.iter().enumerate().filter(|(_,h)|h.input.chara_id as i64==tv).map(|(i,_)|i).collect(),
             _=>{self.unsupported.insert(format!("skill_target:{target}"));vec![]},
@@ -792,9 +638,6 @@ impl<'a> Simulator<'a> {
         let coef=self.master.rows("skill_level_value").iter().find(|r|ival(r,"ability_type")==kind && ival(r,"level")==level as i64)
             .map_or(1.0,|r|ival(r,"float_ability_value_coef") as f32*0.0001);
         match ival(row,&format!("ability_value_level_usage_{suffix}")) {1=>value=coef*value,3=>value=(1.0/coef)*value,_=>()};
-        // Global MultiplySingleModeWinCount.GetMultiply (0x35cc390):
-        // first strict count threshold, exhaustion returns 1. Saved HorseData
-        // count is used directly, including zero outside career races.
         if usage==10 && flag("RX_USAGE10") {
             let wins=self.horses[hi].input.single_mode_win_count;
             let mult=self.p().arr("Skill.RaceWinCountCoefAscArray").iter()
@@ -802,8 +645,6 @@ impl<'a> Simulator<'a> {
                 .map_or(1.0,|r|f32_of(&r["Multiply"]));
             value*=mult;
         }
-        // SkillAbilityValueMultiplyFanCount (usage 12): first strict FanCountThreshold
-        // in Skill.FanCountCoefAscArray; exhaustion or a missing table returns 1.
         if usage==12 && flag("RX_USAGE12") {
             let fans=self.horses[hi].input.fan_count;
             let mult=self.p().arr("Skill.FanCountCoefAscArray").iter()
@@ -811,9 +652,6 @@ impl<'a> Simulator<'a> {
                 .map_or(1.0,|r|f32_of(&r["Multiply"]));
             value*=mult;
         }
-        // SkillAbilityValueMultiplyMaximumRawStatus (usage 13, ctor 0x35cc7c0): Max of
-        // IRaceParameter.Raw{Speed,Guts,Pow,Stamina,Wiz}; first strict BaseStatusThreshold
-        // in Skill.MaximumRawStatusCoefAscArray, exhaustion 1.
         if usage==13 && flag("RX_USAGE13") {
             let h=&self.horses[hi].input;
             let max=[h.speed,h.guts,h.pow,h.stamina,h.wiz].into_iter().max().unwrap() as f32;
@@ -822,9 +660,6 @@ impl<'a> Simulator<'a> {
                 .map_or(1.0,|r|f32_of(&r["Multiply"]));
             value*=mult;
         }
-        // SkillAbilityValueMultiplyTeamTotalStatus{Speed..Wiz} (usage 3-7, ctor 0x35cbd60):
-        // sum IRaceParameter.Base<stat> over the team (team 0 = self only), then the
-        // first TeamTotalStatusCoefAscArray row with sum < StatusThreshold; else 1.
         if (3..=7).contains(&usage) && flag("RX_USAGE") {
             let k=(usage-3) as usize;let team=self.horses[hi].input.team_id;
             let sum=if team==0 {self.horses[hi].base[k]} else {
@@ -833,9 +668,6 @@ impl<'a> Simulator<'a> {
                 .find(|r|sum<f32_of(&r["StatusThreshold"])).map_or(1.0,|r|f32_of(&r["Multiply"]));
             value*=mult;
         }
-        // SkillAbilityValueMultiplyRandom (usage 8/9, 0x35cbaa0): GetRandom(sum of Per)
-        // then subtract each Per until the remainder is < 1 (Skill.AbiiltyValueUsageRandom{1,2}Array).
-        // Nothing Ventured / Risky Business: -100% max HP x {0, 0.02, 0.04}.
         if matches!(usage,8|9) && flag("RX_USAGE8") {
             let arr=self.assets.params().arr(if usage==8 {"Skill.AbiiltyValueUsageRandom1Array"} else {"Skill.AbiiltyValueUsageRandom2Array"}).clone();
             let total=arr.iter().map(|r|r["Per"].as_i64().unwrap() as i32).sum::<i32>();
@@ -843,17 +675,12 @@ impl<'a> Simulator<'a> {
             for row in &arr {r-=row["Per"].as_i64().unwrap() as i32;if r<1 {mult=f32_of(&row["AbilityValueCoef"]);break;}}
             value*=mult;
         }
-        // SkillAbilityValueMultiplySpeed (usage 22/23, 0x35ccfd0): first row of
-        // Skill.SpeedAbilityValueCoefAscArray{1,2} with IHorseRaceInfo.Speed < SpeedThreshold.
         if matches!(usage,22|23) && flag("RX_USAGE22") {
             let sp=self.horses[hi].stat(0);
             let mult=self.p().arr(if usage==22 {"Skill.SpeedAbilityValueCoefAscArray1"} else {"Skill.SpeedAbilityValueCoefAscArray2"}).iter()
                 .find(|r|sp<r["SpeedThreshold"].as_i64().unwrap() as f32).map_or(1.0,|r|f32_of(&r["Multiply"]));
             value*=mult;
         }
-        // JP scenario value usages: the runner's scenario_data value (type = scenario * 1000 + 1)
-        // against that scenario's LevelThreshold table, first strict row, like the Global usages.
-        // Usage <-> scenario matched by which scenario data every owner carries.
         let scen=match usage {27=>Some(("Skill.CookCookingPtCoefArray",8001)),31=>Some(("Skill.PioneerTotalPointCoefArray",11001)),
             32=>Some(("Skill.OnsenRyokanRankCoefArray",12001)),37=>Some(("Skill.BreedersTeamRankCoefArray",13001)),
             40=>Some(("Skill.RamenTotalPointCoefArray",14001)),_=>None};
@@ -862,14 +689,6 @@ impl<'a> Simulator<'a> {
             let mult=self.p().arr(table).iter().find(|r|v<r["LevelThreshold"].as_i64().unwrap()).map_or(1.0,|r|f32_of(&r["Multiply"]));
             value*=mult;
         }
-        // JP WizLimitBreakBuff (JP-only RaceParamDefine block): speed (27) and current-speed (22)
-        // values of rarity 2-6 skills (rarity 6 excluding succession) scale by
-        // 1 + PhaseCoef(phase, style) * WizCoef(wiz - 1200) * CourseDistanceCoef.
-        // RX_JP_WLB: 10 = ceil(raw wiz * mood) + passive skill wiz (default). Passives: best for
-        // runners with wiz passives in every mood group. Ceil: 246 runners later, 40 earlier vs
-        // unrounded (1443 * 1.04 = 1500.7 must reach the 301 row). Probes: 9 round, 6 floor,
-        // 5 unrounded, 7 (raw + passives) * mood, 2 raw * mood, 1 raw, 3 raw + passives,
-        // 4 full stat, 0 off.
         let wlb=if self.jp() {std::env::var("RX_JP_WLB").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(10)} else {0};
         if wlb!=0 && value>0.0 {
             let p=self.p();let w=Tree(p.get("WizLimitBreakBuff"));
@@ -896,7 +715,6 @@ impl<'a> Simulator<'a> {
         if ival(row,&format!("additional_activate_type_{suffix}"))!=0 {
             if !is_additional {return targets;}
         }
-        // SkillDetail.Activate (0x35cf2d0): owner's heal count +1 when a type-9 value is positive.
         if kind==9 && value>0.0 && flag("RX_HEALCNT") {self.horses[hi].heal_count+=1;}
         for &i in &targets {
             let h=&mut self.horses[i];let uid=detail.uid;
@@ -907,8 +725,6 @@ impl<'a> Simulator<'a> {
                 10=>Some((15,Operation::Set,true,value.max(0.0))),11=>Some((16,Operation::Set,false,1.0)),12=>Some((17,Operation::Set,false,1.0)),
                 13=>Some((14,Operation::Set,true,value)),14=>Some((22,Operation::Set,true,value)),
                 21=>Some((5,Operation::Add,false,value)),22=>{
-                    // CurrentSpeed is a lasting add on top of self speed, not also a one-time self-speed
-                    // jump (647 races: 64 later / 0 earlier). RX_CS22=0 restores both; =1 keeps only the jump.
                     let m=std::env::var("RX_CS22").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(2);
                     if m!=2 {h.mods.add(23,value,Operation::Add,uid,true);}
                     if m==1 {None} else {Some((23,Operation::Add,false,value))}},
@@ -939,9 +755,6 @@ impl<'a> Simulator<'a> {
             let s=(h.stat(3)*p.f("Hp.HpGutsCoefSqrt")).sqrt() as f64;
             return (v as f64*(p.f("Hp.HpGutsCoef") as f64/s+1.0)) as f32;
         }
-        // Global: gap^2/SpeedGapParam1Pow stays float; the rest of the drain
-        // (*HpDecBase*rate*ground) is a double expression rounded once.
-        // 1073 races: +6 (all hp), none lost or earlier. RX_HP_DEC_LOCAL=0 reverts.
         let hpv=std::env::var("RX_HPV").ok().and_then(|x|x.parse::<i32>().ok())
             .unwrap_or(if self.input.region.as_deref()!=Some("jp") && flag("RX_HP_DEC_LOCAL") {3} else {0});
         let mut v=if hpv>0 {
@@ -967,9 +780,6 @@ impl<'a> Simulator<'a> {
             else {math::pow(speed-base+p.f("Hp.SpeedGapParam1"),2.0)/p.f("Hp.SpeedGapParam1Pow")*
             p.f("Hp.HpDecBase")*rate*self.ground_multi()};
         if h.phase>=2 {
-            // Global: the guts factor is a float local evaluated in double (coef/sqrt+1 rounded
-            // once; sqrt keeps its float argument and result), then float * drain.
-            // 657 races: +4, none lost or earlier. RX_HP_GUTS_LOCAL=0 reverts.
             if self.input.region.as_deref()!=Some("jp") && flag("RX_HP_GUTS_LOCAL") {v*=(p.f("Hp.HpGutsCoef") as f64/(h.stat(3)*p.f("Hp.HpGutsCoefSqrt")).sqrt() as f64+1.0) as f32;}
             else if opt("RX_HPG3") {v*=(p.f("Hp.HpGutsCoef") as f64/((h.stat(3)*p.f("Hp.HpGutsCoefSqrt")) as f64).sqrt()+1.0) as f32;}
             else if opt("RX_HPGUTS_D") {v=(v as f64*(p.f("Hp.HpGutsCoef") as f64/(h.stat(3)*p.f("Hp.HpGutsCoefSqrt")).sqrt() as f64+1.0)) as f32;}
@@ -980,11 +790,6 @@ impl<'a> Simulator<'a> {
     fn spurt(&mut self,hi:usize) {
         let h=&self.horses[hi];let p=self.p();let base=self.race_base();
         let normal=h.section_base.iter().enumerate().find(|(i,_)|self.course.phase(*i as f32*(self.course.distance/24.0))==h.phase).map_or(base,|(_,v)|*v);
-        // CalcBaseTargetSpeedAndStatusSpeed (0x342a390): base+cached add crosses
-        // a float argument store; pow/sqrt return floats, then the helper's
-        // expression rounds once on return. Global replay evidence: 016e4ad9 h2
-        // and 19e82683 h4 had opposite one-ULP speed errors; 264 -> 436 perfect,
-        // 19 later / 0 earlier (docs/RACE_ULP_PARITY_2026-10-08.md).
         let max=if !self.jp() && flag("RX_ULP_SPURT_ARGS") {
             let guts=math::pow(h.stat(3)*p.f("LastSpurtTargetSpeedGutsCoef1"),p.f("LastSpurtTargetSpeedGutsPow"));
             let speed=(h.stat(0)*p.f("LastSpurtTargetSpeedCoefSqrt")).sqrt();
@@ -1010,8 +815,6 @@ impl<'a> Simulator<'a> {
                     while d>0.0 {
                         let spurt_time=d/speed;let normal_time=(remain-d)/normal;
                         if std::env::var("RX_HDBG").ok().and_then(|v|v.parse::<usize>().ok())==Some(hi) {eprintln!("CAND sp={speed} st={} need={} hp={} sr={spurt_rate} nr={normal_rate}",goal-d,spurt_rate*spurt_time+normal_time*normal_rate,h.hp);}
-                        // Global: the HP feasibility sum is evaluated in double from the distances
-                        // (two exact-zero f32 margins, 1e4397d3 and 43305753, split by it; 646 -> 647, 0 lost).
                         let fits=if wide {d as f64/speed as f64*spurt_rate as f64+(remain as f64-d as f64)/normal as f64*normal_rate as f64<=h.hp as f64}
                             else {spurt_rate*spurt_time+normal_time*normal_rate<=h.hp};
                         if fits && goal-d<self.course.distance-p.f("lastSpurtDistanceMaxFromGoal") {
@@ -1051,7 +854,6 @@ impl<'a> Simulator<'a> {
     fn around(&mut self,hi:usize,dt:f32) {
         let p=self.p();let h=&self.horses[hi];let mut front=None;let mut inside=None;let mut outside=None;let mut nearest=f32::MAX;let mut near=0;
         let mut near_front=false;let mut near_behind=false;
-        // HorseRaceAIBase.UpdateAroundHorsesParam (Global 0x342ff40).
         let side_gap=p.f("Block.SideBlockDistanceGap");let zero_fix=flag("RX_SIDE0");
         let mut around=Vec::with_capacity(self.horses.len());let mut visible=vec![];
         let mut in_space=h.lane;let mut out_space=h.lane_max-h.lane;
@@ -1065,7 +867,6 @@ impl<'a> Simulator<'a> {
             if gap>0.0 && gap<p.f("Block.FrontBlockDistanceGap") && abs<=(1.0-gap/p.f("Block.FrontBlockDistanceGap")*0.6)*p.f("Block.FrontBlockLaneGap") && gap<nearest {
                 nearest=gap;front=Some(i);
             }
-            // _CheckSideBlock (0x34305e0): a runner at exactly laneGap 0 is no side block.
             if gap.abs()<side_gap && abs<p.f("Block.SideBlockLaneGap") && (!zero_fix || lane!=0.0) {
                 if lane<0.0 {inside=Some(i);} else {outside=Some(i);}
             }
@@ -1073,7 +874,6 @@ impl<'a> Simulator<'a> {
                 if gap.abs()<side_gap {
                     if lane<0.0 {if abs<in_space {in_space=abs;}} else if lane>0.0 && abs<out_space {out_space=abs;}
                 }
-                // HorseVisibleCalculator.CheckVisible (0x3445100).
                 if vis>0.0 && gap>=0.0 && gap<=vis &&
                     abs<=((gap/vis)*f32::from_bits(0x3f238e39)+f32::from_bits(0x3de38e39))*0.5 {visible.push(i);}
             }
@@ -1081,8 +881,6 @@ impl<'a> Simulator<'a> {
             if abs<=p.f("Skill.BehindHorseNearLaneDistance") && gap<0.0 && -gap<=p.f("Skill.BehindHorseNearDistance") {near_behind=true;}
         }
         let h=&mut self.horses[hi];h.front=front;h.inside=inside;h.outside=outside;h.near_count=near;
-        // HorseRaceAISimulate.UpdateSurrounded (0x3432cc0): flags 1 and 3 reset
-        // each update; flag 2 (runner ahead) is never cleared by the client.
         let sp=self.assets.params();
         let (g1,l1,g2,l2)=(sp.f("Surrounded.DistanceGapAbs1"),sp.f("Surrounded.LaneGap1"),sp.f("Surrounded.DistanceGap2"),sp.f("Surrounded.LaneGapAbs2"));
         let h=&mut self.horses[hi];
@@ -1102,17 +900,13 @@ impl<'a> Simulator<'a> {
             h.near_behind_time=if near_behind {h.near_behind_time+dt} else {0.0};
         }
     }
-    /// HorseRaceInfoSimulate.PostUpdate (0x343e430) / UpdateBehindHorseNearTime
-    /// (0x343efc0): only the order-adjacent runner counts; an order change resets.
     fn compete_runner(&self,hi:usize,stale:bool)->crate::compete::Runner {
         use crate::compete::Style;
         let h=&self.horses[hi];let c=&self.course;
         crate::compete::Runner {style:if h.ex() {Style::Oonige} else if h.input.running_style==1 {Style::Nige} else {Style::Other},
             distance:if stale {h.cf_pos[0]} else {h.distance},lane:if stale {h.cf_pos[1]} else {h.lane},speed:if stale {h.cf_speed} else {h.speed},hp:if stale && opt("RX_CFHP") {h.cf_hp} else {h.hp},max_hp:h.max_hp,guts:h.stat(3),strategy_proficiency:h.style_rate,
-            // Probe RX_CFRANK: rank from this tick's distances instead of the previous order.
             rank:h.order+1,final_straight:h.straight && c.final_corner().is_some_and(|s|h.distance>=s.end),tempted:h.tempted()}
     }
-    /// Server-only CompeteTop/CompeteFight (docs/RACE_GLOBAL_COMPETE.md prototype).
     fn compete_step(&mut self,dt:f32) {
         let runners=(0..self.horses.len()).map(|i|self.compete_runner(i,false)).collect::<Vec<_>>();
         let params=crate::compete::Params{
@@ -1120,22 +914,16 @@ impl<'a> Simulator<'a> {
             fight_select_before_history: !self.jp() && flag("RX_CF_TARGET_HISTORY"),
             top_cohort:!self.jp() && flag("RX_CT_COHORT"),top_end_exit:!self.jp() && flag("RX_CT_END_EXIT"),top_requires_lead:std::env::var("RX_CTLEAD").ok().and_then(|v|v.parse().ok()).unwrap_or(1),..Default::default()};
         let (mut next,mut changes)=crate::compete::step(&self.compete,&runners,self.course.distance,dt,&params);
-        // CompeteFight reads the start-of-tick snapshot (positions/speed before this
-        // tick's movement); CompeteTop keeps current values. RX_CFSTALE=0 reverts.
         if flag("RX_CFSTALE") {
             let stale=(0..self.horses.len()).map(|i|self.compete_runner(i,true)).collect::<Vec<_>>();
             let (fs,_)=crate::compete::step(&self.compete,&stale,self.course.distance,dt,&params);
             changes.retain(|c|!matches!(c,crate::compete::Change::FightEnter(_)|crate::compete::Change::FightExit(_)));
-            // Entry uses the snapshot; exit (hp / 5 m separation) keeps current values (RX_CFEXIT=1 makes exit stale too).
             for i in 0..runners.len() {
                 if !self.compete.modes[i].fight || opt("RX_CFEXIT") {next.modes[i].fight=fs.modes[i].fight;next.modes[i].fight_count=fs.modes[i].fight_count;next.modes[i].fight_group=fs.modes[i].fight_group;}
                 if self.compete.modes[i].fight!=next.modes[i].fight {
                     changes.push(if next.modes[i].fight {crate::compete::Change::FightEnter(i)} else {crate::compete::Change::FightExit(i)});
                 }
             }
-            // Global: a fighter whose same-group partner entered this tick within the
-            // exit distance keeps fighting (73ca040f: runner 2 joins 16 as 16's last
-            // peer drops back). RX_CF_JOIN_KEEP=0 restores the separate exit check.
             if !self.jp() && flag("RX_CF_JOIN_KEEP") {
                 for i in 0..runners.len() {
                     if !(self.compete.modes[i].fight && !next.modes[i].fight) || runners[i].hp<runners[i].max_hp*params.fight_exit_hp_percent/100.0 {continue;}
@@ -1148,11 +936,8 @@ impl<'a> Simulator<'a> {
                 }
             }
             next.near=fs.near;
-            // compete::step emits per runner: top change, then fight change.
             changes.sort_by_key(|c|match c {crate::compete::Change::TopEnter(i)|crate::compete::Change::TopExit(i)=>(*i,0),
                 crate::compete::Change::FightEnter(i)|crate::compete::Change::FightExit(i)=>(*i,1)});
-            // Global emits CompeteFight entries in pairing order: each entrant, then its target
-            // (14 frame-exact races swapped same-tick events). RX_CFSEQ=0 keeps gate order.
             if flag("RX_CFSEQ") {
                 let seq:Vec<usize>=fs.enter_seq.iter().copied().filter(|i|changes.contains(&crate::compete::Change::FightEnter(*i))).collect();let mut seq=seq.into_iter();
                 for c in &mut changes {
@@ -1160,17 +945,11 @@ impl<'a> Simulator<'a> {
                 }
             }
         }
-        // Preserve the original cohort for separation checks even after a
-        // partner's timer expires. Natural expiry alone still permits solo time.
         if opt("RX_CT_EXPIRED_PEER") {
             let params=crate::compete::Params::default();
             for i in 0..runners.len() {
                 if !self.compete.modes[i].top || !next.modes[i].top {continue;}
                 let peers=(0..runners.len()).filter(|&j|j!=i && self.compete.modes[j].top_group==self.compete.modes[i].top_group).collect::<Vec<_>>();
-                // Expired peers use the same symmetric separation as live peers.
-                // Global 2e8ffe7d / f2c84706 kept draining HP with an expired
-                // partner >5 m behind; full corpus: 585 -> 592, no losses/earlier.
-                // RX_CT_EXPIRED_ABS=0 restores the signed-gap control; JP is unchanged.
                 if !peers.is_empty() && peers.iter().all(|&j|
                     (if !self.jp() && flag("RX_CT_EXPIRED_ABS") {(runners[j].distance-runners[i].distance).abs()}
                         else {runners[j].distance-runners[i].distance})>=params.top_exit_distance ||
@@ -1185,10 +964,8 @@ impl<'a> Simulator<'a> {
         for h in &mut self.horses {h.cf_speed=h.speed;h.cf_hp=h.hp;h.cf_pos=[h.distance,h.lane];}
         if !self.jp() && opt("RX_GLOBAL_TOP_EVENT_ORDER") {
             let mut entering=changes.iter().filter_map(|c|match c {crate::compete::Change::TopEnter(i)=>Some(*i),_=>None}).collect::<Vec<_>>();
-            // Leader as in the trigger: best cached rank (RX_CTRANKLEAD=0: greatest distance).
             let leader=if flag("RX_CTRANKLEAD") {entering.iter().copied().min_by_key(|i|(runners[*i].rank,*i))}
                 else {entering.iter().copied().max_by(|a,b|runners[*a].distance.total_cmp(&runners[*b].distance).then(b.cmp(a)))};
-            // Global groups emit their leader first, then the remaining gate list.
             entering.sort_by_key(|i|(Some(*i)!=leader,*i));
             let mut ordered=entering.into_iter();
             for change in &mut changes {
@@ -1198,7 +975,6 @@ impl<'a> Simulator<'a> {
         for ch in changes {
             let (ty,name,i)=match ch {crate::compete::Change::TopEnter(i)=>(4,"CompeteTop",i),crate::compete::Change::FightEnter(i)=>(5,"CompeteFight",i),_=>continue};
             if ty==5 {self.horses[i].fight_count+=1;}
-            // RX_CFDBG: per-partner near time, speed gap, rank, hp% and final-straight at entry.
             let extra=if ty==5 && std::env::var("RX_CFDBG").is_ok() {
                 let r=&runners[i];
                 json!((0..runners.len()).filter_map(|j|self.compete.near[i][j].map(|t|{let q=&runners[j];
@@ -1228,9 +1004,6 @@ impl<'a> Simulator<'a> {
                 let a=&self.horses[by_order[o+1]];let gap=d-a.distance;
                 b=Some(if gap<=bd {Some((l-a.lane).abs()<=bl)} else {None});
             }
-            // UpdateBehindHorseNearTimeParamSet (0x343f200): per Skill.BehindNearParamArray set,
-            // reset when last or the order changed, else reset if the runner behind is more
-            // than Distance back or more than LaneDistance aside, otherwise += dt.
             let sets=self.assets.params().arr("Skill.BehindNearParamArray").iter().map(|r|(f32_of(&r["Distance"]),f32_of(&r["LaneDistance"]))).collect::<Vec<_>>();
             let behind=(o!=n-1 && o==po).then(||{let a=&self.horses[by_order[o+1]];(d-a.distance,(l-a.lane).abs())});
             let h=&mut self.horses[hi];
@@ -1245,9 +1018,6 @@ impl<'a> Simulator<'a> {
     fn temptation(&mut self,hi:usize,dt:f32) {
         let p=self.assets.params();let h=&mut self.horses[hi];
         if h.finished {return;}
-        // One-time TemptationEndTime Set from a skill switches termination
-        // to a fixed countdown, suppressing the regular end lotteries.
-        // Global class layout has _isForceEndTimeBySkillEnable / _forceEndTimeBySkill.
         if opt("RX_TEND") && h.mods.has(14) {
             h.temptation_timer=h.mods.consume(14,0.0);h.temptation_forced=true;
         }
@@ -1282,25 +1052,21 @@ impl<'a> Simulator<'a> {
         let threshold=if h.downhill {p.f("Slope.DownSlopeAddSpeedEndPer")} else {(h.stat(4)*p.f("Slope.DownSlopeAddSpeedStartWizRate")).min(100.0)};
         if self.random.float_range(0.0,100.0,&||format!("downhill{hi}"))<threshold {h.downhill=!h.downhill;}
     }
-    /// HorseOvertakeTargetCalculator.CheckOvertakeTarget (Global 0x342d9a0).
     fn ot_check(&self,hi:usize,o:usize)->bool {
         let h=&self.horses[hi];
         let Some(a)=h.around.iter().find(|a|a.i==o).copied() else {return false};
         if a.gap< -1.0 {return false;}
         let other=&self.horses[o];
-        // GetTargetSpeedWithSkill (0x34387f0) applies modifier 5 to the cached AI target; Global 209 -> 256, 75 later / 0 earlier.
         let own_target=if flag("RX_OT_SKILL_TARGET") {h.mods.apply(5,h.target_speed)} else {h.target_speed};
         if h.front==Some(o) {return own_target>other.speed;}
         if a.gap<1.0 || a.gap>20.0 || a.speed_gap<0.0 {return false;}
         if a.gap/a.speed_gap>self.p().f("overTakeDistPerSpeed") {return false;}
         own_target>if other.front.is_some() {other.speed} else if flag("RX_OT_SKILL_TARGET") {other.mods.apply(5,other.target_speed)} else {other.target_speed}
     }
-    /// HorseRaceAIBase.UpdateOverTake (0x34311b0) + CollectOvertakeTarget (0x342d670).
     fn update_overtake(&mut self,hi:usize,dt:f32) {
         let mut list=std::mem::take(&mut self.horses[hi].overtake);
         for v in self.horses[hi].visible.clone() {if self.ot_check(hi,v) && !list.contains(&v) {list.push(v);}}
         list.retain(|&o|self.ot_check(hi,o));
-        // GetBlockHorse is appended unconditionally after RemoveAll.
         if let Some(f)=self.horses[hi].front {if !list.contains(&f) {list.push(f);}}
         let cool=self.p().f("overTakeCoolDownTime");let h=&mut self.horses[hi];
         if !list.is_empty() {h.ot_cool=cool;}
@@ -1309,14 +1075,12 @@ impl<'a> Simulator<'a> {
     }
     fn enable_in(&self,hi:usize)->bool {let h=&self.horses[hi];h.inside.is_none() && h.lane>0.0001}
     fn enable_out(&self,hi:usize)->bool {let h=&self.horses[hi];h.outside.is_none() && h.lane<h.lane_max}
-    /// TargetLaneStrategyOverTake.CheckEnableMoveLane (0x34520d0).
     fn ot_enable(&self,hi:usize,l:f32)->bool {
         let h=&self.horses[hi];
         if l<0.0 || l>self.course.lane_max {return false;}
         let d=l-h.lane;
         if d<0.0 {self.enable_in(hi) && -d<=h.in_space} else if d<=0.0 {true} else {self.enable_out(hi) && d<=h.out_space}
     }
-    /// CalcIn/OutHorseRecursively (0x34526b0 / 0x3452880).
     fn ot_chain(&self,mut x:usize,inward:bool)->usize {
         let range=f32::from_bits(0x3de38e39);
         loop {
@@ -1330,11 +1094,9 @@ impl<'a> Simulator<'a> {
             match next {Some(n)=>x=n,None=>return x}
         }
     }
-    /// TargetLaneStrategyOverTake.CheckHorseExist (0x3452230) over the visible list.
     fn ot_exist(&self,hi:usize,d0:f32,d1:f32,l0:f32,l1:f32)->bool {
         self.horses[hi].visible.iter().any(|&v|{let n=&self.horses[v];d0<=n.distance && n.distance<=d1 && l0<=n.lane && n.lane<=l1})
     }
-    /// TargetLaneStrategyOverTake.Search (0x3451150), asm-checked.
     fn ot_search(&self,hi:usize,fixed:f32)->f32 {
         let p=self.p();let h=&self.horses[hi];
         let c1=f32::from_bits(0x3d638e3a);let c2=f32::from_bits(0x3d638e39);let w=f32::from_bits(0x3d360b62);
@@ -1371,16 +1133,12 @@ impl<'a> Simulator<'a> {
         let p=self.assets.params();let h=&mut self.horses[hi];
         let enable_in=h.inside.is_none() && h.lane>0.0001;let enable_out=h.outside.is_none() && h.lane<h.lane_max;
         let end=self.course.final_corner().map(|c|c.start+(c.end-c.start)*p.f("LastMoveOutStartFinalCornerRate"));
-        // HorseTargetLaneCalculatorRace.Update (0x34422a0) also searches
-        // again when the current target's direction has become blocked.
         let blocked_target=(h.target_lane<h.lane && !enable_in) ||
             (h.target_lane>h.lane && !enable_out);
-        // HorseRaceAISimulate.CreateTargetLaneCalculator (0x34323e0): without
-        // IsEmptyInMove the Null calculator keeps the initial target lane.
         if plan && flag("RX_NULLLANE") && !(self.course.empty_in_move && self.course.first_move>0.0) {return;}
         let ot=flag("RX_OT");let fix=flag("RX_FIX");
         let overtaking=ot && !h.overtake.is_empty();
-        
+
         if plan && (h.force_lane || blocked_target || overtaking || (h.target_lane-h.lane).abs()<0.02777777798473835) {
             h.force_lane=false;h.target_lane=h.lane;
             if h.extra_lane.is_none() && end.is_some_and(|d|h.distance>=d) {
@@ -1390,7 +1148,6 @@ impl<'a> Simulator<'a> {
             }
             let fixed=h.mods.apply(11,0.0);
             let first=self.course.first_move;
-            // HorseTargetLaneCalculatorRace.Update (0x34422a0) strategy choice.
             let use_ot=ot && (!h.overtake.is_empty() || h.ot_cool>0.0) &&
                 !(h.phase<2 && h.distance<=first && first-200.0<=h.distance);
             if use_ot {
@@ -1400,22 +1157,16 @@ impl<'a> Simulator<'a> {
             }
             let h=&mut self.horses[hi];
             if fix && !math::approximately(fixed,0.0) {
-                // TargetLaneStrategyFixed.Search (0x34505c0): no hp test.
                 h.target_lane=if fixed<h.lane {if enable_in {fixed.max(h.lane-0.05)} else {h.lane}}
                     else if h.lane<fixed {if enable_out {fixed.min(h.lane+0.05)} else {h.lane}} else {h.lane};
             } else if h.hp>0.0 {
                 if !math::approximately(fixed,0.0) {h.target_lane=h.lane+(fixed-h.lane).clamp(-0.05,0.05);}
-                // TargetLaneStrategyNormal.Search, Global RVA 0x3450800.
                 else if h.keep.mode==4 {h.target_lane=p.f("PositionKeep.PositionKeepPaseDownTargetLane");}
                 else if let Some(extra)=h.extra_lane {if extra>h.lane && enable_out {h.target_lane=extra.min(h.lane+0.05);}}
                 else if h.phase<2 && enable_in {h.target_lane=h.lane-0.05;}
-                // TargetLaneStrategyNormal.Search: during the middle phase,
-                // create room beside an inside blocker that is sufficiently
-                // far away laterally. Actual movement still checks blocking.
                 else if h.phase==1 {
                     if let Some(lane)=inside_lane {
                         let gap=p.f("Block.SideBlockLaneGap");
-                        // Client tests the in-blocker's tick-start laneGapAbs < gap - 1/72.
                         let snap=h.inside.and_then(|i|h.around.iter().find(|a|a.i==i)).map_or((lane-h.lane).abs(),|a|a.lane_abs);
                         let room=if fix {snap<gap-f32::from_bits(0x3c638e39)} else {(lane-h.lane).abs()>gap-0.013888888992369175};
                         if room {
@@ -1430,10 +1181,8 @@ impl<'a> Simulator<'a> {
         let h=&mut self.horses[hi];
         h.prev_lane=h.lane;
         if math::approximately(h.lane,h.target_lane) {h.lane=h.lane.clamp(0.0,h.lane_max);h.move_time=0.0;return;}
-        // HorseRaceInfo.MoveLane (0x34372c0): MoveLaneContinueDirection/Time.
         let prev_dir=h.move_dir;h.move_dir=(h.lane<=h.target_lane) as i32;
         if h.finished && h.after_goal>=1.0 && opt("RX_GOALLANE4") {
-            // HorseRaceInfo.MoveLane (0x34372c0) in IsOverRunSpeedDownMode: _laneMoveSpeed = +-deltaTime.
             let old=h.lane;let m=if h.target_lane<old {-dt} else {dt};h.lane_move=m;
             let next=if opt("RX_GOALLANE4F") {dt*m+old} else {(dt as f64*m as f64+old as f64) as f32};
             let next=if h.target_lane<old {next.max(h.target_lane)} else {next.min(h.target_lane)}.clamp(0.0,h.lane_max);
@@ -1448,9 +1197,6 @@ impl<'a> Simulator<'a> {
             base=if !a {(h.stat(2)*p.f("laneMoveSpeedPowCoef")+p.f("laneMoveSpeedAdd"))*p.f("laneMoveSpeedBase")} else {((h.stat(2) as f64*p.f("laneMoveSpeedPowCoef") as f64+p.f("laneMoveSpeedAdd") as f64)*p.f("laneMoveSpeedBase") as f64) as f32};
             if h.phase<2 && h.distance<=self.course.first_move && opt("RX_D7B2") {base*=((h.lane as f64/h.lane_max as f64*p.f("laneMoveSpeedOutCoef") as f64+1.0) as f32);}
             else if h.phase<2 && h.distance<=self.course.first_move {base=if !b {base*(h.lane/h.lane_max*p.f("laneMoveSpeedOutCoef")+1.0)} else {
-                // CalcLaneMoveSpeedBeforeFirstMoveLanePoint (0x362c840): the lane
-                // ratio crosses a float local before the remaining double expression.
-                // 1073 Global races: +13 exact, zero lost or earlier; =0 reverts.
                 let ratio=if !jp && flag("RX_LANE_RATIO_LOCAL") {(h.lane/h.lane_max) as f64}
                     else {h.lane as f64/h.lane_max as f64};
                 (base as f64*(ratio*p.f("laneMoveSpeedOutCoef") as f64+1.0)) as f32
@@ -1469,12 +1215,9 @@ impl<'a> Simulator<'a> {
         h.lane_speed=h.lane_speed.max(0.0);
         let speed=h.mods.apply(7,h.lane_speed).clamp(0.0,0.6);
         let old=h.lane;
-        // HorseRaceInfo._laneMoveSpeed (signed, per second) as last applied by MoveLane.
         if h.target_lane<old && enable_in {h.lane_move=((old as f64+1.0)*(-speed as f64)) as f32;}
         else if h.target_lane>old && enable_out {h.lane_move=speed;}
         if opt("RX_D3C") {
-            // HorseRaceInfo.MoveLane (0x34372c0): _laneMoveSpeed is a field
-            // (rounded), then dt*_laneMoveSpeed + prev in one statement.
             let m=if h.target_lane<old {((old as f64+1.0)*(-speed as f64)) as f32} else {speed};
             let next=(dt as f64*m as f64+old as f64) as f32;
             if h.target_lane<old && enable_in {h.lane=next.max(h.target_lane).clamp(0.0,h.lane_max);}
@@ -1492,10 +1235,6 @@ impl<'a> Simulator<'a> {
         let front_min=self.horses[hi].front.map(|i|self.horses[i].min_speed);
         let h=&mut self.horses[hi];
         h.min_speed=if h.finished {5.0} else if h.start_dash {p.f("StartSpeed")} else {
-            // Preserve the server expression's final multiply/add until its
-            // float32 result; sqrt retains its float32 argument and result.
-            // JP UpdateMinSpeed (0x3c2d180) uses sqrtss, mulss and addss.
-            // Global's replay-supported double expression remains regional.
             let v=if self.input.region.as_deref()==Some("jp") && flag("RX_JP_MIN_FLOAT") {
                 default_min+(h.stat(3)*p.f("Speed.MinSpeedGutsCoefSqrt")).sqrt()*p.f("Speed.MinSpeedGutsCoef")
             } else {(default_min as f64+(h.stat(3)*p.f("Speed.MinSpeedGutsCoefSqrt")).sqrt() as f64*
@@ -1506,15 +1245,8 @@ impl<'a> Simulator<'a> {
         let recalc=heal>0.0 && h.phase>=2;
         if h.delay>0.0 {h.delay-=dt;if h.delay>0.0 || dt==0.0 {return;}}
         if dt==0.0 {return;}
-        // Real Global replays: after the finish tick, speed, lane and HP stay frozen and the
-        // runner advances speed*dt through the ordinary world-displacement cap.
         if self.horses[hi].finished && flag("RX_GOALRUN") {
             if opt("RX_GOALSPD") {
-                // _UpdateSelfSpeed (0x3437970) once finished: accel 1/s (CalcAccelPerSec),
-                // decel a flat 4/s (no declBase), toward the frozen target: the server's
-                // HorseRaceAISimulate over-run calculator is HorseTargetSpeedCalculatorNull,
-                // which returns the AI's current target. Min speed 5.
-                // The front-block cap (RaceUtil.CalcMaxSpeedBlock) still applies (RX_GOALBLOCK).
                 let max=match self.horses[hi].front.filter(|_|opt("RX_GOALBLOCK")) {
                     Some(i)=>{
                         let (h,front)=(&self.horses[hi],&self.horses[i]);let p=self.assets.params();
@@ -1530,10 +1262,6 @@ impl<'a> Simulator<'a> {
                 if v<target {v=(v+dt).min(target);} else if v>target {v=(v-4.0*dt).max(target);}
                 v=v.clamp(5.0,max.max(5.0));h.self_speed=v;h.speed=(h.mods.apply(23,0.0)+h.mods.apply(5,0.0)+v).clamp(5.0,max.max(5.0));
             }
-            // HorseRaceAIBase.UpdateAfterGoalTime (0x342fc40): the race lane calculator keeps
-            // running until afterGoalTime reaches 1 s, then switches to the over-run one.
-            // HorseRaceAISimulate.CreateTargetLaneCalculatorOverRun (0x3433a30) builds
-            // HorseTargetLaneCalculatorNull: the target freezes, MoveLane continues (RX_GOALLANE3).
             let plan=self.horses[hi].after_goal<1.0;
             let lane_ai=opt("RX_GOALLANE2") && (plan || opt("RX_GOALLANE3"));
             if lane_ai && plan && opt("RX_GOALOT") && flag("RX_OT") {self.update_overtake(hi,dt);}
@@ -1564,10 +1292,6 @@ impl<'a> Simulator<'a> {
                 &runners,hi,self.pacemaker,&mut self.random,dt,!(opt("RX_PMFIRST") && !self.pm_ready));
         }
         if flag("RX_CP") && !self.horses[hi].finished && !self.horses[hi].cp.released {
-            // Inferred accumulation (284 verified durations; see RACE_GLOBAL_SOURCE_SEARCH.md):
-            // seconds of normal position keep (mode 0) and pace-down (mode 4) in sections
-            // 0..9, not while rushed, weighted by the fitted per-second activity time and
-            // ConservePowerRunningStyleCoef.
             if self.compete.modes.get(hi).is_some_and(|m|m.top) {self.horses[hi].cp.top=true;}
             let cp=Tree(p.get("ConservePower"));let h=&self.horses[hi];
             let section=(h.distance/(self.course.distance/24.0)) as i32;
@@ -1579,11 +1303,6 @@ impl<'a> Simulator<'a> {
                 self.horses[hi].cp.value+=inc*sc*dt;
             }
             if flag("RX_CPSPEC") {
-                // KuromiAK spec (4.2/s normal, 6.7/s pace-down, x style, sections 0..9, x0.8 on
-                // rushing entry, x0.95 on CompeteTop entry) with tick cooldowns fitted on 341
-                // verified durations: 32 after speed-up/overtake/pace-up EX, 28 after pace-up,
-                // 23 (1.5 s) after rushing/CompeteTop, 8 at race start. Duration offset -0.5 tick
-                // (RX_CPSPECB) maximises corpus boost coverage (260 vs 137 runners matched 4.5 s on).
                 let h=&self.horses[hi];let style=h.input.running_style as i64;
                 let sc=cp.arr("ConservePowerRunningStyleCoefArray").iter().find(|r|r["RunningStyle"].as_i64()==Some(style)).map_or(1.0,|r|f32_of(&r["Coef"]));
                 let rate=|m:i64|cp.arr("ConservePowerIncreaseCoefArray").iter().find(|r|r["Mode"].as_i64()==Some(m)).map_or(0.0,|r|f32_of(&r["Coef"]));
@@ -1596,23 +1315,13 @@ impl<'a> Simulator<'a> {
                 let end_kind=self.horses[hi].temptation_end;
                 let m0=!self.jp() && flag("RX_CP_RUSH_EXIT_M0");
                 let c=&mut self.horses[hi].cp;
-                // Research-only tick probes; defaults retain the measured model.
                 let cooldown=|name:&str,default:i32|std::env::var(name).ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(default).max(0);
                 if !c.s_init {c.s_init=true;c.scd=cooldown("RX_CPSPECSTART",8);}
-                // Rush entry is visible to accrual on its own tick (Global): a whole-second credit
-                // earned on the tick before rushing begins is withdrawn before the x0.8 decay.
-                // Corpus-supported inference (+3 / 0 lost); CompeteTop and pace-mode entries do not.
                 if tm && !c.s_tm && rush_prev {c.spec-=c.last_credit;}
                 if tm && !c.s_tm {c.spec*=d_tm;}
                 c.last_credit=0.0;
-                // Likewise a rush ended by TemptationForceEndTime expiry is visible on its own tick
-                // (one extra tick of accrual); a lottery end is not (+1/-2 when included).
-                // Global: also for a lottery end when the previous tick had no keep mode (2a661b2d; the three
-                // lottery exits that lose all leave keep mode 1 on the exit tick). Timer exits are
-                // neutral under the same gate. 673 races: +1, none lost. RX_CP_RUSH_EXIT_M0=0 reverts.
                 let rush_exit=!tm && c.s_tm && rush_timer_exit && (if m0 {matches!(end_kind,1|2) && c.lag_mode==0} else {end_kind==1});
                 if tp && !c.s_tp {c.spec*=d_tp;}
-                // Opt-in structural screens: fixed cost or decay on pace-up entry.
                 let cost=std::env::var("RX_CP_PACE_COST").ok().and_then(|v|v.parse::<f32>().ok());
                 let decay=std::env::var("RX_CP_PACE_ENTRY_DECAY").ok().and_then(|v|v.parse::<f32>().ok())
                     .filter(|_| !opt("RX_CP_PACE_ENTRY_LONG") || self.course.distance>=3000.0);
@@ -1622,10 +1331,6 @@ impl<'a> Simulator<'a> {
                 }
                 c.s_tm=tm;c.s_tp=tp;
                 if flag("RX_CPSEC") {
-                    // Whole-second credit (1544 exact JP labels: 98.3% tick-exact, 99.4% on 1 cm runners).
-                    // Any blocker sets the timer to -ConservePowerDefaultCoolDownTime (1.5 s); each eligible
-                    // tick adds dt; each full second earns one second of the current mode's rate. Accrual ends
-                    // at section 10 of integer-length sections: distance >= (L / 24, integer) * 10.
                     let lag=opt("RX_CP_PACE_LAG") && std::env::var("RX_CPLAGM").ok().and_then(|v|v.parse::<i32>().ok()).map_or(matches!(m,1|2|3|5),|x|x==m) && !matches!(c.lag_mode,1|2|3|5) && !tm && !tp;
                     let m_eff=if lag {c.lag_mode} else {m};c.lag_mode=m;
                     if tm || tp || (!lag && matches!(m,1|2|3|5)) {c.ctimer=-cp_cool;}
@@ -1663,7 +1368,6 @@ impl<'a> Simulator<'a> {
                 |((h.corner!=0) as u32)<<21|((h.slope>0.0) as u32)<<22|((h.slope<0.0) as u32)<<23|(h.downhill as u32)<<30|(h.straight as u32)<<31;
             h.cp.log.push(code);let dl=[h.distance,h.self_speed,h.target_speed,pm_d-h.distance,h.keep.wanted as f32,h.keep.cooldown,h.order as f32,h.lane,h.hp,self.pacemaker as f32,h.keep.rng_probe_state()[4],h.keep.rng_probe_state()[3],near_ahead,near_any,gap_ahead,h.cp.ctimer,h.cp.spec,self.time];h.cp.dlog.push(dl);
         }
-        // HorseRaceAISimulate.Update: position keep -> UpdateOverTake -> temptation -> lane.
         if flag("RX_OT") {self.update_overtake(hi,dt);}
         self.temptation(hi,dt);
         self.move_lane(hi,dt,true);
@@ -1678,25 +1382,20 @@ impl<'a> Simulator<'a> {
                 let coef=cp.arr("ReleaseConservePowerAccelRunningStyleAndDistanceTypeCoefArray").iter()
                     .find(|r|r["RunningStyle"].as_i64()==Some(style) && r["DistanceType"].as_i64()==Some(dt_)).map_or(1.0,|r|f32_of(&r["Coef"]));
                 let dc_=cp.arr("ReleaseConservePowerActivityTimeDistanceTypeCoefArray").iter().find(|r|r["DistanceType"].as_i64()==Some(dt_)).map_or(1.0,|r|f32_of(&r["Coef"]));
-                // Empirical fit (284 verified durations, median error 0.055 s); exact server rule unresolved.
                 let sc=cp.arr("ConservePowerRunningStyleCoefArray").iter().find(|r|r["RunningStyle"].as_i64()==Some(style)).map_or(1.0,|r|f32_of(&r["Coef"]));
                 let mut dur=std::env::var("RX_CPDUR").ok().and_then(|v|v.parse::<f32>().ok()).unwrap_or(dc_*(h.cp.value-2.262*sc).max(0.0));
                 if flag("RX_CPSPEC") {dur=h.cp.spec*self.course.distance.sqrt()*dc_/cp.f("ReleaseConservePowerActivityTimeCoef")+std::env::var("RX_CPSPECB").ok().and_then(|v|v.parse::<f32>().ok()).unwrap_or(if flag("RX_CPSEC") {0.0} else {-0.5})*dt;}
-                // Probe: RX_CPOFF="c0,c1" replaces the -0.5 tick offset with (c0 + c1*DistanceTypeCoef) ticks.
                 if flag("RX_CPSPEC") && let Some((c0,c1))=std::env::var("RX_CPOFF").ok().and_then(|v|{let (a,b)=v.split_once(',')?;Some((a.parse::<f32>().ok()?,b.parse::<f32>().ok()?))}) {
                     dur=h.cp.spec*self.course.distance.sqrt()*dc_/cp.f("ReleaseConservePowerActivityTimeCoef")+(c0+c1*dc_)*dt;
                 }
-                // Probe: RX_CPOFF1=x sets the offset (ticks) for DistanceType 1 (<=1400 m) only.
                 if flag("RX_CPSPEC") && dt_==1 && let Some(x)=std::env::var("RX_CPOFF1").ok().and_then(|v|v.parse::<f32>().ok()) {
                     dur=h.cp.spec*self.course.distance.sqrt()*dc_/cp.f("ReleaseConservePowerActivityTimeCoef")+x*dt;
                 }
-                // Probe: RX_CPDURFILE={sha:{horse:seconds}} per-runner duration override.
                 if let Ok(f)=std::env::var("RX_CPDURFILE") {
                     let v:Value=serde_json::from_slice(&std::fs::read(f).unwrap_or_default()).unwrap_or(Value::Null);
                     if let Some(d)=v[self.input.replay_sha.as_str()][hi.to_string()].as_f64() {dur=d as f32;}
                 }
                 let rushed=h.temptation_count>0 && flag("RX_CPRUSH");
-                // ConservePowerDecreaseAccelCoef: mode 3 after a lead competition (CompeteTop), mode 4 after rushing.
                 let dec=|m:i64|cp.arr("ConservePowerDecreaseAccelCoefArray").iter().find(|r|r["Mode"].as_i64()==Some(m)).map_or(1.0,|r|f32_of(&r["Coef"]));
                 let mode_coef=(if h.cp.top && flag("RX_CPTOP") {dec(3)} else {1.0})*(if rushed {dec(4)} else {1.0});
                 let accel=if std::env::var("RX_CPORD").as_deref()==Ok("3") {
@@ -1721,9 +1420,6 @@ impl<'a> Simulator<'a> {
             if h.spurt_start>0.0 && h.distance>=h.spurt_start && !h.cp.dbg_sp {h.cp.dbg_sp=true;self.events.push(json!({"t":t,"type":107,"name":"DbgSpurt","params":[hi,h.input.pow,h.base[2],h.adjusted[2],h.stat(2),h.mods.apply(2,0.0)],"horse":hi,"extra":""}));}
         }
         self.downhill(hi,dt);
-        // Global: divide in f64, but retain the float _sectionChangeDistance
-        // field store. Keeping the length in double delays section 16 at the
-        // exact 3200 m phase boundary (7a0b6189). The cached phase timing stays intact.
         let section=(if !self.jp() && flag("RX_SEC_DIVL") {
             let length=if flag("RX_SECTION_LENGTH_LOCAL") {(self.course.distance/24.0) as f64}
                 else {self.course.distance as f64/24.0};
@@ -1746,21 +1442,13 @@ impl<'a> Simulator<'a> {
         if self.course.empty_in_move && h.phase==0 && h.lane>=p.f("forceInMoveLaneThreshold") && (h.inside.is_some() || h.lane<=0.0001) {target+=h.force_in;dbg[2]=h.force_in;}
         target=h.mods.apply(6,target);
         let ce=self.compete_effects(hi);let h=&self.horses[hi];
-        // Global adds the compete (CompeteTop/CompeteFight) target bonus after the slope
-        // term; float order changes the last bit (32 one-ULP replays, 0 lost).
-        // RX_CE_AFTER_SLOPE=0 restores the earlier order; JP is unchanged.
         let ce_late=!self.jp() && flag("RX_CE_AFTER_SLOPE");
         if !ce_late {target+=ce.target_speed_add;}
-        // HorseTargetSpeedCalculatorRace.Update (0x3443320) / CalcAddTargetSpeedOnLaneMove
-        // (0x3443750): lane changed in the last MoveLane and HasModifier(0x15) ->
-        // + Pow(Pow * LaneMoveAddParam1, LaneMoveAddParam2).
         if flag("RX_LANEADD") && !math::approximately(h.lane,h.prev_lane) && h.mods.apply(21,0.0)!=0.0 {
             target+=math::pow(h.stat(2)*p.f("Skill.LaneMoveAddParam1"),p.f("Skill.LaneMoveAddParam2"));
         }
         dbg[3]=target;
         if h.slope>0.0 {
-            // Server arithmetic fit: float multiply before divide, rather
-            // than slope * (coefficient / power). See 647-race ablation.
             if opt("RX_U1") {target+=((-(h.slope.abs() as f64)*p.f("Slope.UpSlopeAddSpeedVal1") as f64/h.stat(2) as f64) as f32).min(0.0);}
             else if opt("RX_SLOPEMUL") {target+=(-h.slope.abs()*p.f("Slope.UpSlopeAddSpeedVal1")/h.stat(2)).min(0.0);}
             else {target+=(-h.slope.abs()*(p.f("Slope.UpSlopeAddSpeedVal1")/h.stat(2))).min(0.0);}
@@ -1775,15 +1463,9 @@ impl<'a> Simulator<'a> {
         let max=if let Some(i)=h.front {
             let front=&self.horses[i];
             if opt("RX_D5B") || opt("RX_D5C") {
-                // RaceUtil.CalcMaxSpeedBlock (0x362c5e0): the AroundHorse snapshot
-                // gap (PreUpdate), Clamp01(gap/blockGap); D5B evaluates the rate
-                // expression in double, D5C in float.
                 let g=h.around.iter().find(|a|a.i==i).map_or(front.distance-h.distance,|a|a.gap);
                 let t=(g/p.f("Block.FrontBlockDistanceGap")).clamp(0.0,1.0);
                 let (mx,mn)=(p.f("Block.FrontBlockMaxSpeedRateMax"),p.f("Block.FrontBlockMaxSpeedRateMin"));
-                // Global: the rate is a float local evaluated in double ((max-min)*t+min rounded
-                // once), then float * front speed. 1f2cb7c4 runner 3 was 1 ULP slow after a
-                // block clamp at 8.59 s; 673 races: +10, none lost or earlier. RX_BLOCK_RATE_D=0 reverts.
                 let v=if !self.jp() && flag("RX_BLOCK_RATE_D") {front.speed*(((mx as f64-mn as f64)*t as f64+mn as f64) as f32)} else if opt("RX_D5B") {(front.speed as f64*((mx as f64-mn as f64)*t as f64+mn as f64)) as f32} else {front.speed*((mx-mn)*t+mn)};
                 v.max(h.min_speed)
             } else if opt("RX_D5") {
@@ -1805,15 +1487,12 @@ impl<'a> Simulator<'a> {
                 h.ground_coef*h.dist_power*p.f(&format!("Speed.{array}.{}",PHASE_NAMES[h.phase.min(3)]))
         };
         if std::env::var("RX_ACCDBG").ok().and_then(|v|v.parse::<usize>().ok())==Some(hi) {eprintln!("ACC {:.4} acc={:e} pow={:e} gc={:e} dp={:e} m10={:e} ce={:e} cp={:e} sd={} slope={}",self.time,accel,h.stat(2),h.ground_coef,h.dist_power,h.mods.apply(10,accel),ce.acceleration_add,h.cp.accel*(h.cp.left>0.0) as i32 as f32,h.start_dash,h.slope);}
-        // Probe RX_CPORD: 1 = CP added before skills, 2 = CP before compete add.
         let cpo=std::env::var("RX_CPORD").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(0);
         let cpa=if h.cp.left>0.0 {h.cp.accel} else {0.0};
         if !h.finished && cpo==1 {accel=h.mods.apply(10,accel+cpa)+ce.acceleration_add;if h.start_dash {accel+=p.f("StartAccelAdd");}accel=accel.max(0.0);}
         else if !h.finished && cpo==2 {accel=h.mods.apply(10,accel)+cpa+ce.acceleration_add;if h.start_dash {accel+=p.f("StartAccelAdd");}accel=accel.max(0.0);}
         else if !h.finished {accel=h.mods.apply(10,accel)+ce.acceleration_add;if h.cp.left>0.0 {accel+=h.cp.accel;}if h.start_dash {accel+=p.f("StartAccelAdd");}accel=accel.max(0.0);}
         let rate=if h.finished {4.0/p.f("declBase")} else {
-            // _UpdateSelfSpeed, Global RVA 0x3437970: pace-down overrides
-            // the phase rate before the exhausted-HP floor is applied.
             let rate=p.f(if h.keep.mode==4 {"DeclRatePositionKeepPaseDown"}
                 else if h.phase==0 {"declRateStart"} else if h.phase==1 {"declRateMiddle"} else {"declRateEnd"});
             if h.hp<=0.0 {rate.max(p.f("declRateHpZero"))} else {rate}
@@ -1830,8 +1509,6 @@ impl<'a> Simulator<'a> {
         else if v<target && !h.start_dash && opt("RX_D1B") {v=((v as f64+(accel*dt) as f64) as f32).min(target);}
         else if v<target {v=(v+accel*dt).min(target);} else if v>target {v=(v-rate*p.f("declBase")*dt).max(target);}
         if h.start_dash {v=v.min(default_min);}v=v.clamp(h.min_speed,max);
-        // Diagnostic RX_PERTURB="horse,tick,ulps[,field]": nudge one runner's latent value on one tick
-        // (field 0 = self speed, 1 = movement). Research only; never set in validation runs.
         let perturb=std::env::var("RX_PERTURB").ok().and_then(|v|{let x:Vec<i64>=v.split(',').filter_map(|a|a.parse().ok()).collect();(x.len()>=3).then(||x)})
             .filter(|x|x[0]==hi as i64 && x[1]==(self.time/dt).round() as i64);
         if let Some(x)=&perturb && x.get(3).copied().unwrap_or(0)==0 {v=f32::from_bits((v.to_bits() as i64+x[2]) as u32);}
@@ -1841,11 +1518,6 @@ impl<'a> Simulator<'a> {
         let mut movement=h.speed*dt;
         if let Some(x)=&perturb && x.get(3).copied()==Some(1) {movement=f32::from_bits((movement.to_bits() as i64+x[2]) as u32);}
         if h.delay<0.0 {
-            // Global server replay evidence: preserve the fractional gate tick
-            // in double precision. The Windows client uses divss/mulss here;
-            // that path differs by one ULP in 430 corpus opening samples.
-            // JP server: single precision movement*(|delay|/dt) (1530 races later, 0 earlier
-            // vs the Global double path). RX_JP_GATE=0/2 keep the alternatives as probes.
             movement=match if self.input.region.as_deref()==Some("jp") {std::env::var("RX_JP_GATE").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(1)} else {0} {
                 1=>movement*(h.delay.abs()/dt),
                 2=>movement*h.delay.abs()/dt,
@@ -1872,10 +1544,7 @@ impl<'a> Simulator<'a> {
         let d64=if p64mode>0 {Some(((np64[0]-h.pos64[0]).powi(2)+(np64[2]-h.pos64[2]).powi(2)).sqrt() as f32)} else {None};
         let h=&mut self.horses[hi];if p64mode>0 {h.pos64=np64;}
         let dx=position[0]-h.position[0];let dz=position[2]-h.position[2];
-        // Server fit (Session 5, 331 capped ticks): squares summed in double,
-        // disp rounded to float, then movement*cap/disp in double, rounded once.
         let server_cap=flag("RX_CAP");
-        // RX_JP_CAP3D=1 (research): include the height delta in the displacement.
         let dy=if std::env::var("RX_JP_CAP3D").is_ok_and(|v|v=="1") {position[1]-h.position[1]} else {0.0};
         let displacement=if self.geometry.jp {(dx*dx+dz*dz).sqrt()} else if opt("RX_SQ1") {(((dx as f64)*(dx as f64)+(dy as f64)*(dy as f64)+(dz as f64)*(dz as f64)) as f32).sqrt()}
             else if opt("RX_SQ2") {((dx*dx+dz*dz) as f64).sqrt() as f32}
@@ -1885,7 +1554,6 @@ impl<'a> Simulator<'a> {
         let displacement=d64.unwrap_or(displacement);
         let cap=movement*self.geometry.distance_to_world;
         h.dbg[6]=movement;h.dbg[7]=h.position[0];h.dbg[8]=h.position[1];h.dbg[9]=h.position[2];h.dbg[10]=position[0];h.dbg[11]=position[1];h.dbg[12]=position[2];h.dbg[13]=self.geometry.distance_to_world;h.dbg[14]=h.distance;h.dbg[15]=h.lane;
-        // Diagnostic: RX_FLIPCAP="runner,time" inverts the cap decision on that one tick.
         static FLIP:std::sync::OnceLock<Option<(usize,f32)>>=std::sync::OnceLock::new();
         let flip=FLIP.get_or_init(|| std::env::var("RX_FLIPCAP").ok().and_then(|v|{let (a,b)=v.split_once(',')?;Some((a.parse().ok()?,b.parse().ok()?))}))
             .is_some_and(|(fh,ft)|fh==hi && (self.time-ft).abs()<0.005);
@@ -1914,8 +1582,6 @@ impl<'a> Simulator<'a> {
         if !h.finished && h.distance>self.course.distance {
             h.finished=true;
             let fraction=((h.distance-self.course.distance)/(h.distance-h.prev_distance)).clamp(0.0,1.0);
-            // The finish-time store rounds once: time - fraction*dt in double (ed5ecd6e461b9bfd
-            // runner 16 was 1 ULP late; 673 races: +1, none lost). RX_FINT64=0 keeps float.
             h.raw_time=if flag("RX_FINT64") {(self.time as f64-fraction as f64*dt as f64) as f32} else {self.time-fraction*dt};h.scaled_time=h.raw_time*p.f("Global.FinishTimeCoef");
             if !opt("RX_GOALKEEP") {for sk in &mut h.skills {for d in &mut sk.details {if d.active {h.mods.stop(d.uid);d.active=false;}}}}
         }
@@ -1930,7 +1596,6 @@ impl<'a> Simulator<'a> {
                     (0,[number,..])=>{
                         h.corner=*number;h.straight=false;
                         if flag("RX_CORNERSEG") {
-                            // The segment this event starts (corner numbers repeat on long courses).
                             let seg=self.course.corners.iter().find(|s|s.number==*number && s.start==e.distance);
                             h.corner_end=seg.map_or(e.distance+200.0,|s|s.end);
                             h.final_corner=self.course.final_corner().is_some_and(|f|f.start==e.distance);
@@ -1939,12 +1604,7 @@ impl<'a> Simulator<'a> {
                         h.final_corner=self.course.corners.iter().any(|s|s.number==*number && s.number>=4 && self.course.distance-s.end<=1000.0);
                         }
                     },
-                    // A straight start inside a corner's nominal length ends that corner
-                    // (course 11102: corner 2 500-650, straight 2 from 600; Sparkly Stardom
-                    // corner==0 fires at 600). RX_STRAIGHT_CLR=0 keeps the corner to its end.
                     (2,[1,front,..])=>{h.straight=true;h.front_type=*front;if !jp && flag("RX_STRAIGHT_CLR") {h.corner=0;}},
-                    // RaceManager.EventStraightChange (0x3602f00): a start with < 2 values is
-                    // ignored; an end clears IsStraight and CurStraightFrontType.
                     (2,[1]) if flag("RX_STRAIGHT0")=>(),
                     (2,_)=>{h.straight=false;if flag("RX_STRAIGHT0") {h.front_type=0;}},
                     (11,[per,_])=>{
@@ -1962,66 +1622,41 @@ impl<'a> Simulator<'a> {
             if h.finished {h.after_goal+=dt;}
             if h.distance>h.corner_end {h.corner=0;}
         }
-        // Pacemaker hypotheses (server-only PaseMakerCalculator): RX_PM=1 frontmost
-        // runner of the most forward style, RX_PM=2 overall frontmost (by order).
         let pm=std::env::var("RX_PM").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(6);
         if pm>=6 && dt>0.0 {
-            // Public-oracle evidence: the pacemaker is re-selected when the leader
-            // (RX_PM=6) or the current pacemaker (RX_PM=7) enters a new section.
             let style=|h:&Horse|if h.ex() {0} else {h.input.running_style};
             let sec=self.course.distance/24.0;
             let probe=if pm==6 {self.horses.iter().map(|h|h.distance).fold(f32::MIN,f32::max)} else {self.horses[self.pacemaker].distance};
             let s=if !self.jp() && opt("RX_PMSEC_D") {(probe as f64/(self.course.distance as f64/24.0)) as i32} else {(probe/sec) as i32};
-            // First re-selection probes: a fixed check time/distance replaces only
-            // section one; later sections retain the oracle-supported trigger.
             let fixed_first=opt("RX_PM_TIME3_LEAD") || opt("RX_PM_DISTANCE60_LEAD");
             let first_due=(opt("RX_PM_TIME3_LEAD") && self.time>=3.0) || (opt("RX_PM_DISTANCE60_LEAD") && probe>=60.0);
             let select=if fixed_first && self.pm_section==0 {first_due} else {s>self.pm_section};
             let first_selection=self.pm_section==0;
             if select {
                 self.pm_section=if fixed_first && first_selection {s.max(1)} else {s};
-                // RX_PMR=1: the most forward style is taken only among runners within
-                // PaseMakerChangeMostForwardStyleRange of the leader.
                 let lead=self.horses.iter().map(|h|h.distance).fold(f32::MIN,f32::max);
                 let range=self.p().f("PositionKeep.PaseMakerChangeMostForwardStyleRange");
                 let rr=std::env::var("RX_PMR").map_or(false,|v|v=="1");
                 let near=|h:&Horse|!rr || lead-h.distance<=range;
-                // A selected slower style persists in this probe; later section checks
-                // still choose its frontmost runner without reverting to Nige.
                 let retained_style=if opt("RX_PM_EARLY_STYLE") && !first_selection {style(&self.horses[self.pacemaker])} else {0};
                 let best=self.horses.iter().filter(|h|!h.finished && near(h) && style(h)>=retained_style).map(style).min().unwrap_or(1);
-                // A check whose leader is not the most forward style keeps the current pacemaker
-                // (early pace-down HP fits, e.g. 787b27849eeab91f; 673 races: 5 later / 0 earlier).
-                // RX_PMKEEP=0 re-selects the most forward style's frontmost runner every check.
                 let lead_i=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|h.order).map(|(i,_)|i);
                 let keep=flag("RX_PMKEEP") && lead_i.is_some_and(|i|style(&self.horses[i])!=best);
-                // The frontmost runner is taken from the order one update older (PrevOrder): near-tied
-                // Nige keep the earlier front runner (842ecad72f8d03f6, 9d9e2516b6863eca; 673 races:
-                // 6 later / 0 earlier). RX_PMPREVORDER=0 uses the current order.
                 let po=flag("RX_PMPREVORDER");
-                // Re-selection stops at PositionKeepEndSection (10): position keep is over, so a Nige
-                // that edges ahead later does not take the pacemaker (fdf73d4a9af4546a, 6accc5f7,
-                // 20a9d1ff; 673 races: 3 later / 0 earlier). RX_PMENDSEC=0 re-selects every section.
                 let ended=flag("RX_PMENDSEC") && s>=self.p().f("PositionKeep.PositionKeepEndSection") as i32;
                 if !keep && !ended {if let Some((i,_))=self.horses.iter().enumerate().filter(|(_,h)|style(h)==best && near(h)).min_by_key(|(_,h)|if po {h.prev_order} else {h.order}) {self.pacemaker=i;}}
-                // Probe: RX_PMLEAD=1 re-selects the overall frontmost runner instead.
                 if std::env::var("RX_PMDBG").is_ok() {
                     let cur=self.pacemaker;let cd=self.horses[cur].distance;
                     let lead_i=self.horses.iter().enumerate().min_by_key(|(_,h)|h.order).unwrap().0;
                     let ahead:Vec<_>=self.horses.iter().enumerate().filter(|(_,h)|h.distance>cd).map(|(i,h)|json!([i,style(h),h.distance-cd])).collect();
                     let t=self.time;self.events.push(json!({"t":t,"type":109,"name":"DbgPm","params":[cur,lead_i,s],"horse":cur,"extra":"","ahead":ahead}));
                 }
-                // Pacemaker recovery probes: restrict the leader override by check time,
-                // section, or the unused server forward-style distance/count parameters.
                 let early_lead=(opt("RX_PM_EARLY_LEAD") || opt("RX_PM_EARLY_STYLE")) && self.time<=3.2 && s==1;
                 let first_lead=opt("RX_PM_FIRST_LEAD") && s==1;
                 let forward_gap=self.horses.iter().filter(|h|!h.finished).map(|h|h.distance).fold(f32::MIN,f32::max)-self.horses[self.pacemaker].distance;
                 let range_lead=opt("RX_PM_RANGE_LEAD") && forward_gap>self.p().f("PositionKeep.PaseMakerChangeForwardRunningStyleRange");
                 let count_lead=opt("RX_PM_COUNT_LEAD") && self.horses.iter().filter(|h|!h.finished && h.distance>self.horses[self.pacemaker].distance && style(h)!=best).count() as f32>=self.p().f("PositionKeep.PaseMakerChangeTopHorseNotMostForwardStyleCount");
                 if opt("RX_PMLEAD") || early_lead || first_lead || range_lead || count_lead || (fixed_first && first_selection) {if let Some((i,_))=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|h.order) {self.pacemaker=i;}}
-                // Global parameter prose distinguishes the recalculation trigger
-                // from the selection rule for Sashi/Oikomi leaders. Native prose
-                // plus corpus validation: docs/RACE_GLOBAL_PACEMAKER_RECALC.md.
                 if !self.jp() && opt("RX_GLOBAL_PM_RECALC") {
                     let runners=self.horses.iter().map(|h|crate::pacemaker::Runner {
                         style:style(h),order:h.order,distance:h.distance,finished:h.finished,
@@ -2030,20 +1665,14 @@ impl<'a> Simulator<'a> {
                         self.assets.params().f("PositionKeep.PaseMakerChangeTopHorseNotMostForwardStyleCount") as i32,
                         self.assets.params().f("PositionKeep.PaseMakerChangeForwardRunningStyleRange"),crate::pacemaker::Rules {
                         early_forward:self.pm_handed && flag("RX_PM_RECALC_RESET"),
-                        // Corpus: a Nige-led check does not clear the count (f065ef65; 644 -> 645, 0 lost).
                         reset_on_forward:!flag("RX_PM_NORESET"),
-                        // Corpus: every threshold recalculation clears the count and the frontmost
-                        // eligible runner wins by order (fbfaa56d; 645 -> 646, 0 lost).
                         reset_on_recalc:flag("RX_PM_RESET_RECALC"),order_first:flag("RX_PM_RESET_RECALC"),
-                        // Forward exception needs a Nige field (3d6f7f6a; 2,379 races: +1, 0 lost). RX_PM_FORWARD_NIGE=0 reverts.
                         forward_nige_only:flag("RX_PM_FORWARD_NIGE")}) {
                         if std::env::var("RX_PMLOG").is_ok() && (i!=self.pacemaker || std::env::var("RX_PMLOG").as_deref()==Ok("2")) {eprintln!("PMLOG {} {} recalc {}->{} lead_d {} pm_d {} styles {:?}",self.input.replay_sha,self.time,self.pacemaker,i,self.horses.iter().map(|h|h.distance).fold(0.0,f32::max),self.horses[self.pacemaker].distance,runners.iter().map(|r|(r.style,r.order,r.distance)).collect::<Vec<_>>());}
                         self.pacemaker=i;
-                        // Corpus: a handover restarts the not-forward count (RX_PM_RECALC_RESET=0 keeps counting).
                         if flag("RX_PM_RECALC_RESET") && runners[i].style!=runners.iter().filter(|r|!r.finished).map(|r|r.style).min().unwrap_or(1) {self.pm_not_forward=0;self.pm_handed=true;}
                     }
                     if std::env::var("RX_PMLOG").as_deref()==Ok("3") {let li=self.horses.iter().enumerate().min_by_key(|(_,h)|h.order).unwrap().0;eprintln!("PMCHK {} s={} pm={} lead={} lstyle={} cnt={} handed={}",self.time,s,self.pacemaker,li,style(&self.horses[li]),self.pm_not_forward,self.pm_handed);}
-                // Retain the earlier experiment for isolated ablation runs.
                 } else if opt("RX_IPA_PM_COUNT") {
                     let leader=self.horses.iter().enumerate().filter(|(_,h)|!h.finished)
                         .min_by_key(|(_,h)|h.order).map(|(i,_)|i);
@@ -2055,8 +1684,6 @@ impl<'a> Simulator<'a> {
                         }
                     }
                 }
-                // Probe: RX_PMCLEAR=1 ends every runner's pace-down/up at re-selection;
-                // =2 ends all position-keep modes.
                 let pc=std::env::var("RX_PMCLEAR").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(0);
                 if pc!=0 {
                     let kp=self.assets.params();let kt=Tree(kp.get("PositionKeep"));
@@ -2081,9 +1708,6 @@ impl<'a> Simulator<'a> {
                 }
             }
         }
-        // After a recalculation hands the pacemaker to a slower style, it reverts on the tick the
-        // most forward style leads again, not at the next section check (1cfcf88f94f9ca38: Nige 15
-        // retakes the lead at 11.52 s; 673 races: 2 later / 0 earlier). RX_PMREVERT=0 disables.
         if dt>0.0 && !self.jp() && flag("RX_PMREVERT") && !(!self.jp() && flag("RX_PMREVERT_LATE")) && (self.pm_handed || self.pm_not_forward>=self.p().f("PositionKeep.PaseMakerChangeTopHorseNotMostForwardStyleCount") as i32) {
             let st=|h:&Horse|if h.ex() {0} else {h.input.running_style};
             let best=self.horses.iter().filter(|h|!h.finished).map(st).min().unwrap_or(1);
@@ -2094,8 +1718,6 @@ impl<'a> Simulator<'a> {
         self.skills_pass(dt,1);self.skills_pass(dt,0);
         for hi in 0..self.horses.len() {
             self.update_horse(hi,dt);
-            // HorseRaceInfoSimulate.UpdateOvertakeTargetTime (0x343e960), inside the runner's
-            // Update: += dt if the first runner (index order) behind that lists self; else 0.
             if dt>0.0 && flag("RX_OTTIME") {
                 let o=self.horses[hi].order;
                 let hit=self.horses.iter().any(|n|o<n.order && n.overtake.contains(&hi));
@@ -2109,9 +1731,6 @@ impl<'a> Simulator<'a> {
                 if st(&self.horses[i])==best && (!opt("RX_PMREVERT_SLOW") || st(&self.horses[self.pacemaker])>=3) {self.pacemaker=i;self.pm_not_forward=0;self.pm_handed=false;}
             }
         }
-        // HorseRaceInfoSimulate._UpdateBlockTime (0x343ec10) runs inside Update,
-        // after this tick's skill checks.
-        // No finished check in _UpdateBlockTime (RX_BLOCKFIN=0 stops accumulating at the goal).
         if dt>0.0 {for h in &mut self.horses {if h.front.is_some() && (flag("RX_BLOCKFIN") || !h.finished) {h.block_front_acc+=dt;}}}
         if flag("RX_BLOCKT") {for h in &mut self.horses {
             h.front_time=if h.front.is_some() {h.front_time+dt} else {0.0};
@@ -2127,14 +1746,10 @@ impl<'a> Simulator<'a> {
         }
         let mut order=(0..self.horses.len()).collect::<Vec<_>>();
         order.sort_by(|a,b|self.horses[*b].distance.total_cmp(&self.horses[*a].distance).then(a.cmp(b)));
-        // RaceHorseManagerSimulate.UpdateHorse: UpdateOverlap -> CompeteTop/Fight (server).
         if dt>0.0 && opt("RX_COMPETE") {self.compete_step(dt);}
         if dt>0.0 && flag("RX_NEAR") && opt("RX_NEARPRE") {self.near_times(dt);}
-        // HorseOrderCalculator.UpdateHorseOrder (0x342c2d0): PrevOrder = old CurOrder.
         let po=flag("RX_PO");
         for (i,hi) in order.iter().copied().enumerate() {let h=&mut self.horses[hi];if po {h.prev_order=h.order;}h.order=i;}
-        // RaceHorseManagerBase.CalcHorseOrder (0x3447440) -> UpdateOrderChangeCount per runner:
-        // HorseOrderChangeCounterBase.Update (0x342cb00) + Up.CheckChange (0x342d190).
         if flag("RX_ORDERUP") {
             let cool=self.p().f("overTakeCountCoolDownTime");
             for hi in 0..self.horses.len() {
@@ -2158,8 +1773,6 @@ impl<'a> Simulator<'a> {
         if let (Some(max),Some(min))=(unfinished.iter().copied().reduce(f32::max),unfinished.iter().copied().reduce(f32::min)) {
             self.distance_diff_max=self.distance_diff_max.max(max-min);
         }
-        // HorseRaceInfoSimulate.UpdateOrder{In,Out}Continue (0x343e070/0x343e250): from 5 s,
-        // flag i (rate (i+1)*10) clears for good once CurOrder+1 > / < (int)(rate/100*N+0.5).
         if dt>0.0 && self.time>=5.0 && flag("RX_ORDCONT") {
             let n=self.horses.len() as f32;
             for h in &mut self.horses {
@@ -2199,13 +1812,10 @@ impl<'a> Simulator<'a> {
                 "max_hp":h.max_hp,"lane":h.lane,"section_speed":h.section_speed,"section_base":h.section_base,"temptation_section":h.temptation_section})).collect::<Vec<_>>(),
             "unsupported":self.unsupported,"rng_trace":self.random.trace})
     }
-    /// HorseDefeatCalculator.CalcDefeat (0x3429290), per runner after finish order.
     fn defeats(&self,finish:&[usize])->Vec<i32> {
         let d=Tree(self.assets.params().get("Defeat"));let n=self.horses.len();
         let mut finish_order=vec![0usize;n];for (o,&i) in finish.iter().enumerate() {finish_order[i]=o;}
         let per=|p:&str|((d.i(p) as f32/100.0)*n as f32+0.5) as i32;
-        // CalcTopPassiveSkillNumAverage (0x34296a0): the first three finishers (98.9% vs 94.8%
-        // for gate order over 7780 matched-order runners), excluding self; skill-array lengths.
         let top=|hi:usize|{
             let pick=|k:usize|finish[k];
             let (mut sum,mut cnt)=(0,0);
@@ -2219,7 +1829,6 @@ impl<'a> Simulator<'a> {
                 let prev=&self.horses[finish[fo-1]];
                 let diff=h.scaled_time-prev.scaled_time;let x=diff*15.0;
                 let b=if 0.0>x {0.0} else {x/2.5} as f64;
-                // func_0x828260: (int)f(double); floor fits best (99.13% vs ceil 98.9, round 99.0).
                 let b=b.floor() as i32;
                 if b<=d.i("DefeatLoseBashinDiff") as i32 {return 2;}
             }
@@ -2240,8 +1849,6 @@ impl<'a> Simulator<'a> {
     }
     pub fn run(mut self,max_ticks:usize)->Result<Value,String> {
         self.tick(0.0);let mut frames=vec![self.record()];let mut interval=0.0;let mut all=false;
-        // Handler scoring needs complete rushing episodes, including between wire samples.
-        // These observations do not enter the race wire or any physics calculation.
         let mut rush_start=self.horses.iter().map(|h|if h.tempted() {Some(self.time)} else {None}).collect::<Vec<_>>();let mut rushing_events=Vec::new();
         for _ in 0..max_ticks {
             self.time+=DT;self.random.now=self.time;self.tick(DT);interval-=DT;all=self.horses.iter().all(|h|h.finished);
@@ -2253,7 +1860,6 @@ impl<'a> Simulator<'a> {
                     rushing_events.push(json!({"horse":hi,"t":start,"duration":(end-start).max(0.0)}));
                 }
             }
-            // Research: RX_HDBG=<horse index> prints that runner's per-tick state to stderr.
             if let Some(i)=std::env::var("RX_HDBG").ok().and_then(|v|v.parse::<usize>().ok()) {
                 let h=&self.horses[i];
                 eprintln!("HDBG {:.4} pm={} pmd={:.4} tg={:.4} ed={:.3} d={:.6} v={:.6} tv={:.6} ln={:.6} tl={:.6} pk={} tm={} ph={} sec={:.6} slope={} front={:?} fs={:.3} mods={:.6} dbg={:?} sl={} dh={} hp={:.6}",
@@ -2283,8 +1889,6 @@ impl<'a> Simulator<'a> {
         let mut results=vec![Value::Null;self.horses.len()];
         for (order,hi) in finish.iter().copied().enumerate() {
             let h=&self.horses[hi];let diff=if order==0 {0.0} else if !self.jp() && opt("RX_GLOBAL_FINISH_GAP") {
-                // CalcFinishOrder (0x344e610) stores scaled-time differences before
-                // RaceUtil.CalcClampedFinishTime subsequently adjusts finish times.
                 original_finish_times[hi]-original_finish_times[finish[order-1]]
             } else {h.scaled_time-self.horses[finish[order-1]].scaled_time};
             results[hi]=json!({"order":order,"time":h.scaled_time,"diff":diff,"delay":h.original_delay,
@@ -2301,8 +1905,6 @@ impl<'a> Simulator<'a> {
     }
 }
 
-/// JP StandaloneSimulator.HorseInitialLaneCalculator.CalcInitialLane
-/// (0x2533690). The ordinary branch is identical to the Global calculator.
 pub fn initial_lane(gate:i32,lane_type:i64,half:bool,lane_max:f32,runners:i32,outside:bool)->f32 {
     let mut lane=if outside {lane_max-(runners-gate) as f32*(1.0/18.0)} else {gate as f32*(1.0/18.0)};
     match lane_type {
@@ -2315,9 +1917,6 @@ pub fn initial_lane(gate:i32,lane_type:i64,half:bool,lane_max:f32,runners:i32,ou
     lane
 }
 
-/// Ends a skill detail's effects. With `fold`, a type-22 current-speed add (index 23)
-/// enters self speed at expiry and decelerates naturally. Exact replay evidence:
-/// Global 174ef16df8e466ef h7 at 73.52652 s; JP 0174deaf483d70ef h4 at 17.2 s.
 fn stop_effect(horses:&mut [Horse],uid:u64,fold:bool) {
     for h in horses {
         if fold {h.self_speed+=h.mods.entries.iter().filter(|m|m.owner==uid && (m.index==23 || (m.index==5 && std::env::var("RX_JP_FOLD5").is_ok_and(|v|v=="1"))) && !m.once).map(|m|m.value).sum::<f32>();}
@@ -2325,8 +1924,6 @@ fn stop_effect(horses:&mut [Horse],uid:u64,fold:bool) {
     }
 }
 
-/// Global static table at HorsePostNumberCalculator..cctor, verified by the
-/// SHA256 field names of all sixteen serialized int arrays (counts 3..18).
 pub fn post_number(index:usize,count:usize)->usize {
     if count<=8 {return index+1;}
     let (q,r)=(count/8,count%8);let mut end=0;
@@ -2334,7 +1931,6 @@ pub fn post_number(index:usize,count:usize)->usize {
     1
 }
 
-// The native calculator consumes absolute current HP, not HP percent/max HP.
 fn global_hp_duration_multiplier(params:Tree<'_>,hp:f32)->f32 {
     params.arr("Skill.TimeRemainHpCoefAscArray").iter()
         .find(|r|hp<f32_of(&r["HpThreshold"]))
@@ -2369,8 +1965,6 @@ mod global_skill_tests {
     }
 }
 
-// The native additional calculator's budget belongs to the ability instance,
-// so restarting a timed detail must not replenish it.
 fn take_additional_count(pending:i32,cap:i32,used:&mut i32)->i32 {
     let count=pending.max(0).min((cap-*used).max(0));
     *used+=count;
@@ -2382,8 +1976,6 @@ fn global_additional_cap(params:Tree<'_>,kind:i64)->i32 {
         .map_or(0,|r|r["AdditionalActivateMaxCount"].as_i64().unwrap_or(0) as i32)
 }
 
-/// Motivation-adjusted base is already a float field; round again only when
-/// storing the complete course/ground/career adjustment on the Global server.
 fn adjusted_stat(base:f32,coef:f32,ground:f32,career:f32,wide:bool,max:f32)->f32 {
     if wide {(base as f64*coef as f64+ground as f64+career as f64).clamp(1.0,max as f64) as f32}
     else {(base*coef+ground+career).clamp(1.0,max)}
@@ -2394,14 +1986,12 @@ mod adjusted_stat_tests {
     use super::adjusted_stat;
     #[test]
     fn career_wisdom_preserves_the_aptitude_product_until_the_field_store() {
-        // Aoharu 1fd80833, runner 11: B style aptitude, neutral mood.
         let coef=8500.0f32*0.0001;
         assert_eq!(adjusted_stat(352.0,coef,0.0,400.0,true,2000.0).to_bits(),0x442ecccd);
         assert_eq!(adjusted_stat(352.0,coef,0.0,400.0,false,2000.0).to_bits(),0x442ecccc);
     }
     #[test]
     fn career_speed_keeps_the_motivation_field_store() {
-        // Grand Live 3f359e91, runner 1: mood 4 then the course coefficient.
         let base=177.0f32*(10200.0f32*0.0001);
         assert_eq!(adjusted_stat(base,1.05,0.0,400.0,true,2000.0).to_bits(),0x44136449);
         assert_eq!(adjusted_stat(base,1.05,0.0,400.0,false,2000.0).to_bits(),0x4413644a);

@@ -1,23 +1,3 @@
-"""豊食祭 (scenario 8, JP only) -- the mechanics.
-
-docs/JP_FOOD_FESTIVAL_SCENARIO.md is the spec this implements; it records
-where every rule and number came from (the five capture files, master.mdb, the
-JP client). This module holds the career state and the rules that move it:
-
-    garden harvest, cares, care points     §3   (care_preview, apply_care)
-    failed-training care                   §3a  (care_preview(failure=True))
-    cooking                                §4   (cook)
-    tasting                                §5   (tasting_result, commit_tasting)
-    dish / garden effects                  §6   (dish_effect_rows)
-    friends-power effects, training gain   §7   (formula.py)
-    dish unlocks and flags                 §8   (unlock_after_tasting)
-
-and builds the cook_data_set every career response carries (data_set).
-
-GRADES. Every rule is Exact against the captures unless its comment says
-otherwise. The rest is listed in the guide's §R / §20 "Not exact (as built)"
-table; each such spot here is marked NOT EXACT.
-"""
 
 from __future__ import annotations
 
@@ -33,58 +13,49 @@ log = logging.getLogger("uma-server")
 
 SCENARIO_ID = 8
 STATE_KEY = "cook"
-ACCOUNT_KEY = "cook_account"            # carried across careers (§8 unlock_degree_type, flavour texts)
+ACCOUNT_KEY = "cook_account"
 
 CAMP_TURNS = frozenset({37, 38, 39, 40, 61, 62, 63, 64})
 FINALS_FIRST_TURN = 73
-CYCLE = 4                               # cares per harvest (§3)
-COIN_BASE = 100                         # care points = 100 x coin_rate / 100
-SUCCESS_BASE_POINT = 1500               # cook_info.cooking_success_base_point
-FRIENDS = 7                             # cooking friends after 208006 (§13)
-OPENING_MATERIALS = 50                  # 208006: +50 each (+75 with a link trainee)
+CYCLE = 4
+COIN_BASE = 100
+SUCCESS_BASE_POINT = 1500
+FRIENDS = 7
+OPENING_MATERIALS = 50
 OPENING_MATERIALS_LINK = 75
-YAYOI_MATERIALS = 40                    # 208054: +40 each (0 when capped)
+YAYOI_MATERIALS = 40
 YAYOI = 9002
-NO_RACE_ROW_TURNS = frozenset({13})     # T13 lists no race care row (54/54 replies)
+NO_RACE_ROW_TURNS = frozenset({13})
 
-# single_mode_special_chara scenario 8: the link charas (harvest weight 3 as
-# cards of any rarity, the cooking-friend draw's first picks).
 LINK_CHARAS = (1001, 1028, 1030, 1051, 1104, 9002)
 LINK_TRAINEES = (1001, 1028, 1030, 1051, 1104)
 
-# The tag (全力お手入れ) roll for rest / outing (one shared roll) and for the
-# race row. NOT EXACT: measured 28/192 turns (~15%) and ~36%; no master table.
 REST_TAG_RATE = 0.15
 RACE_TAG_RATE = 0.36
 
-# Friends power crossing these queues 食意開眼 (every training facility +1).
 AWAKEN = ((2000, 208026), (7000, 208027), (12000, 208028))
 
-# DISH SETS BY TASTING (§8): cook_type -> (set on success, set on failure);
-# an upgrade tasting (2, 4) replaces its tier's set on success only.
 TIER_OF_TASTING = {1: 2, 2: 2, 3: 3, 4: 3, 5: 4}
 NEW_SET = {1: (11, 10), 3: (21, 20)}
 UPGRADE_SET = {2: 12, 4: 22}
-FINALS_DISH = {3: 32, 2: 31, 1: 30}     # result_state -> set (35 / 34 / 33)
+FINALS_DISH = {3: 32, 2: 31, 1: 30}
 
-
-# ================================================================ state ===
 
 def _blank() -> dict:
     return {
         "started": False,
         "materials": {str(m): 0 for m in M.MATERIALS},
-        "garden": {str(m): 1 for m in M.MATERIALS},       # facility_info_array
+        "garden": {str(m): 1 for m in M.MATERIALS},
         "garden_level": 1,
         "care_point": 0,
         "power": 0, "success_point": 0, "success_rate": 0,
-        "history": [],                 # [{material_id, boost_type, add}]
-        "sets": {"1": 1},              # tier -> dish_set_id
+        "history": [],
+        "sets": {"1": 1},
         "results": [], "new_result": 0,
-        "cook_num": [],                # [[dish_group_id, n]] in first-cooked order
-        "dish": {},                    # this turn's dish: turn, id, result, lasting, ...
+        "cook_num": [],
+        "dish": {},
         "friends": [], "roster": False,
-        "rolls": {},                   # turn -> {rest_mat, rest_tag, race_mat, race_tag}
+        "rolls": {},
         "preview": {"turn": 0, "rows": {}},
         "last_cmd": {},
         "cook_flags": {"new_dish": 0, "dish_effect_up": 0, "garden_level_up": 0},
@@ -121,7 +92,6 @@ def turn_of(chara_info: dict) -> int:
 
 
 def flag(st: dict, name: str, value=None):
-    """A one-shot response flag: set with a value, read-and-clear without."""
     if value is not None:
         st["flags"][name] = value
         return value
@@ -160,8 +130,6 @@ def ensure_started(st: dict, chara_info: dict) -> bool:
     return True
 
 
-# ============================================================== garden ===
-
 def garden_lv(st: dict, material_id) -> int:
     return int(st["garden"].get(str(int(material_id)), 1))
 
@@ -198,9 +166,6 @@ def coin(period: int, n_tags: int) -> int:
 
 
 def shown_pool(st: dict, turn: int) -> dict:
-    """material_harvest_info_array: the pool as it stands. Camp / finals
-    harvest every care, so their standing pool is the halved base
-    (NOT EXACT: the display there is inferred from the preview form)."""
     if zone(turn) != "normal":
         return {m: passive(st, m) // 2 for m in M.MATERIALS}
     rate = quantity_rate(tags(st))
@@ -216,9 +181,6 @@ def care_point_gain_num(st: dict, turn: int) -> int:
 
 def care_preview(st: dict, turn: int, material_id: int, add: int, tag: bool,
                  failure: bool = False) -> dict:
-    """One care as the preview shows it (§3, §3a): the pool after it, its
-    boost, its care points and the rate used. A failure drops the tag and
-    keeps the rate at the current tag count."""
     material_id = int(material_id)
     z = zone(turn)
     tag = bool(tag) and not failure
@@ -247,9 +209,6 @@ def _harvest(st: dict, pool: dict, points: int) -> None:
 
 
 def apply_care(st: dict, care: dict, turn: int) -> None:
-    """A care lands (§3): it joins the cycle; the fourth harvests the pool and
-    credits its care points. Camp / finals harvest every care. The reply it
-    lands on carries gain_material_info."""
     flag(st, "gain", {"material_id": care["material_id"], "boost_type": care["boost_type"],
                       "material_harvest_info_array": _pool_rows(care["pool"]),
                       "care_point": care["care_point"], "material_quantity_rate": care["rate"]})
@@ -265,7 +224,6 @@ def apply_care(st: dict, care: dict, turn: int) -> None:
 
 
 def add_materials(st: dict, n: int) -> list:
-    """+n of every material, each capped; the event_gain_material rows."""
     out = []
     for m in M.MATERIALS:
         have = int(st["materials"].get(str(m), 0))
@@ -276,16 +234,10 @@ def add_materials(st: dict, n: int) -> list:
 
 
 def _pool_rows(pool: dict) -> list:
-    """Pool keys are ints when fresh and strings once persisted."""
     return [{"material_id": m, "harvest_num": int(pool.get(m, pool.get(str(m), 0)))} for m in M.MATERIALS]
 
 
-# ================================================================ rolls ===
-
 def rolls(full_state: dict, turn: int) -> dict:
-    """This turn's rest / outing material and tag (one shared roll) and the
-    race row's. NOT EXACT: server RNG; materials measured uniform (n=223), the
-    tag rates above measured."""
     st = state(full_state)
     key = str(int(turn))
     if key not in st["rolls"]:
@@ -296,8 +248,6 @@ def rolls(full_state: dict, turn: int) -> dict:
     return st["rolls"][key]
 
 
-# ============================================================ partners ===
-
 def _bond(chara_info: dict, target: int) -> int:
     for e in chara_info.get("evaluation_info_array") or ():
         if isinstance(e, dict) and int(e.get("target_id") or 0) == int(target):
@@ -306,8 +256,6 @@ def _bond(chara_info: dict, target: int) -> int:
 
 
 def partner_weight(chara_info: dict, partner: int) -> int:
-    """A body's harvest weight (§3): a card 1, a link chara's card 3 (any
-    rarity), the Director / Reporter as NPCs 0, any other NPC 1."""
     partner = int(partner)
     by_pos = formula.RF.deck(chara_info)
     if partner in by_pos:
@@ -318,8 +266,6 @@ def partner_weight(chara_info: dict, partner: int) -> int:
 
 
 def is_tag_training(chara_info: dict, command_id: int, partners) -> bool:
-    """全力お手入れ on a training (§3, 5,165/5,165): a support card at bond 80+
-    whose own facility this is -- a friendship training."""
     base = formula.base_of(command_id)
     by_pos = formula.RF.deck(chara_info)
     for p in partners or ():
@@ -329,12 +275,7 @@ def is_tag_training(chara_info: dict, command_id: int, partners) -> bool:
     return False
 
 
-# ============================================================= friends ===
-
 def recruit_friends(full_state: dict, chara_info: dict) -> list:
-    """208006's cooking friends: the link charas the deck and trainee do not
-    bring, topped up to seven at random. The random fill is NOT EXACT (server
-    draw); uses the drawable pool as Ramen / Mecha do."""
     st = state(full_state)
     if st["roster"]:
         return list(st["friends"])
@@ -397,12 +338,7 @@ def evaluation_array(st: dict, chara_info: dict) -> list:
     return out
 
 
-# ========================================================== dish math ===
-
 def dish_effect_rows(st: dict, dish_id: int, lasting_only: bool = False) -> list:
-    """A dish's effects with the garden's boosts (§6): type 2 + garden 100,
-    type 21 + garden 150, type 201 + garden 140 (appended when the dish has
-    none). dish_info keeps the lasting types 2 / 21 only."""
     dish = M.dishes()[int(dish_id)]
     group = dish["dish_group_id"]
     bonus = {M.GE_DISH_TRAINING: 0, M.GE_DISH_RACE: 0, M.GE_DISH_ENERGY: 0}
@@ -449,20 +385,16 @@ def can_afford(st: dict, dish_id: int) -> bool:
     return all(int(st["materials"].get(str(m), 0)) >= n for m, n in cost.items())
 
 
-# ============================================================= cooking ===
-
 def _eligible(row: dict, chara_info: dict) -> bool:
     ct, cv = row["condition_type"], row["condition_value_1"]
-    if ct == 3:     # some card's bond under 100 (Exact over 70 great successes)
+    if ct == 3:
         return any(_bond(chara_info, p) < cv for p in formula.RF.deck(chara_info))
-    if ct == 5:     # max energy under 120 (Exact)
+    if ct == 5:
         return int(chara_info.get("max_vital") or 100) < cv
-    return True     # 0 none; 4 not read from the client -- NOT EXACT (never blocks)
+    return True
 
 
 def pick_success_effects(rows: list, chara_info: dict, rng) -> list:
-    """§4: one first pick weighted by rate, then each other row by odds/10000.
-    The structure fits 31/31; the RNG weights are Exact-after-verify."""
     ok = [r for r in rows if _eligible(r, chara_info)]
     weighted = [r for r in ok if r["rate"] > 0]
     if not weighted:
@@ -482,7 +414,6 @@ def pick_success_effects(rows: list, chara_info: dict, rng) -> list:
 
 
 def cook(full_state: dict, chara_info: dict, dish_id: int, turn: int) -> dict:
-    """The cooking call (§4, §6). Returns {"not_up": [...]} for the reply."""
     st = state(full_state)
     dish = M.dishes()[int(dish_id)]
     rng = rng_for(full_state, "cook", turn)
@@ -494,8 +425,6 @@ def cook(full_state: dict, chara_info: dict, dish_id: int, turn: int) -> dict:
         if before_power < edge <= st["power"] and event_id not in st["awakened"]:
             st["awakened"].append(event_id)
             st["due"].append({"kind": "awaken", "event_id": event_id})
-    # Great success: certain at a shown 100; else a roll at the shown rate
-    # (Exact-after-verify, 15 of 75 rolls vs 13.5 expected).
     great = int(st["success_rate"]) >= 100 or rng.random() * 100 < int(st["success_rate"])
     prev_point = int(st["success_point"])
     st["success_point"] = prev_point + dish["gain_power"]
@@ -509,7 +438,6 @@ def cook(full_state: dict, chara_info: dict, dish_id: int, turn: int) -> dict:
     skill_chara = 0
     if great:
         skill_chara = _great_hint(chara_info, rng)
-    # cook_num_array: cumulative per dish group, first-cooked order (180/180)
     for row in st["cook_num"]:
         if row[0] == dish["dish_group_id"]:
             row[1] += 1
@@ -531,8 +459,6 @@ def cook(full_state: dict, chara_info: dict, dish_id: int, turn: int) -> dict:
 
 
 def _apply_dish(full_state, chara_info, effects, picks, turn, rng) -> list:
-    """The one-shot parts (§6): energy (dish 201 + garden 140 + success 201),
-    motivation, max energy, bond to every card (cap 100)."""
     energy = sum(e["effect_value_1"] for e in effects if e["effect_type"] == M.EFF_ENERGY)
     mood = sum(e["effect_value_1"] for e in effects if e["effect_type"] == M.EFF_MOTIVATION)
     bond = sum(e["effect_value_1"] for e in effects if e["effect_type"] == M.EFF_BOND)
@@ -570,8 +496,6 @@ def _apply_dish(full_state, chara_info, effects, picks, turn, rng) -> list:
 
 
 def _great_hint(chara_info: dict, rng) -> int:
-    """dish_skill_info: a normal deck card pays one hint at 1 + its effect 17
-    (+1 for a link chara's card, cap 5). Which card: NOT EXACT (server pick)."""
     from ... import event_engine
     by_pos = formula.RF.deck(chara_info)
     cards = [sid for _p, sid in sorted(by_pos.items()) if formula.RF.is_normal_card(sid)]
@@ -589,8 +513,6 @@ def _great_hint(chara_info: dict, rng) -> int:
 
 
 def place_extra_cards(full_state: dict, chara_info: dict, dish: dict, n: int, turn: int, rng) -> None:
-    """Success effect 204 (§9): n deck cards join a facility the dish boosts,
-    for the turn. The facility and cards drawn: NOT EXACT."""
     st = state(full_state)
     cmds = [c for row in M.dish_effects().get(dish["effect_group_id"], ()) if row[0] == M.EFF_TRAINING
             for c in row[2:5] if c]
@@ -615,8 +537,6 @@ def extra_partners(st: dict, turn: int) -> dict:
 
 
 def _flavor(full_state: dict, chara_info: dict, dish: dict, great: bool) -> None:
-    """display_flavor_text_id (§9): the dish_name row of the dish's group and
-    result, the trainee's own variant where one exists."""
     rows = [r for r in M.dish_names()
             if r["dish_group_id"] == dish["dish_group_id"] and r["great_success_flag"] == (1 if great else 0)]
     own = [r for r in rows if r["chara_id"] == trainee_chara(chara_info)]
@@ -637,11 +557,7 @@ def read_flavors(full_state: dict, ids) -> None:
     acc["unread"] = [i for i in acc["unread"] if i not in gone]
 
 
-# ========================================================== facilities ===
-
 def level_up(st: dict, requests) -> str:
-    """facility_level_up (§3): each listed facility to its new level, paying
-    garden_level.coin_num per step; the garden level gates it. '' or why not."""
     plan = {}
     for r in requests or ():
         fid, lv = int(r.get("facility_id") or 0), int(r.get("facility_level") or 0)
@@ -665,8 +581,6 @@ def level_up(st: dict, requests) -> str:
     return ""
 
 
-# ============================================================= tasting ===
-
 def tasted(st: dict, cook_type: int) -> int:
     return next((int(r["result_state"]) for r in st["results"] if int(r["cook_type"]) == int(cook_type)), 0)
 
@@ -677,7 +591,6 @@ def tasting_pending(st: dict, turn: int) -> bool:
 
 
 def tasting_result(st: dict, cook_type: int) -> int:
-    """§5 (11/11): 3 at the great threshold (T72 only), 2 at success_num, else 1."""
     row = M.power_data()[int(cook_type)]
     power = int(st["power"])
     if row["great_success_num"] and power >= row["great_success_num"]:
@@ -690,7 +603,6 @@ def commit_tasting(st: dict, cook_type: int) -> int:
     st["results"] = [r for r in st["results"] if int(r["cook_type"]) != int(cook_type)] + [
         {"cook_type": int(cook_type), "result_state": result}]
     st["new_result"] = int(cook_type)
-    # new_dish / dish_effect_up live until this, the next tasting reply (§8)
     st["cook_flags"]["new_dish"] = 0
     st["cook_flags"]["dish_effect_up"] = 0
     log.info("cook: tasting %s -> %s (power %s)", cook_type, result, st["power"])
@@ -698,8 +610,6 @@ def commit_tasting(st: dict, cook_type: int) -> int:
 
 
 def unlock_after_tasting(full_state: dict, cook_type: int, result: int) -> None:
-    """What the result's check_event lands (§5, §8): the garden level (even on
-    a failure), the dish set, the flags, unlock_degree_type."""
     st = state(full_state)
     ct = int(cook_type)
     row = M.power_data()[ct]
@@ -735,17 +645,12 @@ def last_result(st: dict) -> int:
     return tasted(st, 5)
 
 
-# ============================================================ previews ===
-
 def _home_rows(commands) -> dict:
     return {(int(c.get("command_type") or 0), int(c.get("command_id") or 0)): c for c in commands or ()}
 
 
 def refresh_preview(full_state: dict, chara_info: dict, commands, card_levels=None,
                     turn: int | None = None) -> None:
-    """This turn's overlay from the facilities about to be served: each
-    training's bonus line (§7) and its care (§3), and the rest / outing /
-    race cares. exec_command pays exactly what it said."""
     st = state(full_state)
     turn = int(turn or turn_of(chara_info))
     power = int(st["power"])
@@ -776,8 +681,6 @@ def refresh_preview(full_state: dict, chara_info: dict, commands, card_levels=No
 
 
 def care_spec(st: dict, key: str, turn: int, command_id=None) -> dict | None:
-    """What a care event will land, frozen when the command is taken: its
-    material, amount and tag. The pool is recomputed when it lands."""
     if key == "fail":
         care = training_row(st, command_id, turn).get("care")
         return care and {"material_id": care["material_id"], "add": care["add"],
@@ -807,8 +710,6 @@ def training_row(st: dict, command_id, turn: int) -> dict:
     return {}
 
 
-# ============================================================ envelope ===
-
 def _care_row(ctype: int, cid: int, care: dict, fail: dict | None = None) -> dict:
     fail = fail or care
     return {"command_type": ctype, "command_id": cid, "material_id": care["material_id"],
@@ -819,10 +720,6 @@ def _care_row(ctype: int, cid: int, care: dict, fail: dict | None = None) -> dic
 
 
 def care_rows(st: dict, commands, turn: int, start: bool = False) -> list:
-    """command_material_care_info_array (§3): trainings by command id, then
-    the outing (3, 0), the race (4, 401) when enabled, rest (7, 701) outside
-    the camp. A race-only turn lists only the race; start lists home order
-    without the race."""
     if not st["preview"].get("rows") or int(st["preview"].get("turn") or 0) != int(turn):
         return []
     home = _home_rows(commands)

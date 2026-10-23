@@ -1,29 +1,20 @@
-"""GRAND MASTERS (scenario 5) -- the event calendar and its resolvers.
-
-Every beat here is on docs/JP_GRAND_MASTERS_SCENARIO.md §10's calendar, read
-off 7 real careers: the turn it fires on, the response that carried it, its
-play_timing, its choices and what resolving it paid. `ctx.turn` is the turn
-just PLAYED (the beats closing a turn, timing 3/6 from the response) and
-`ctx.advanced_turn` the turn arrived at (timing 1).
-"""
 
 from __future__ import annotations
 
 import logging
 
 from ... import career_events as CE
-from ... import event_engine
+from ... import event_engine, master_data
 from ...handlers.career_producers import story_playable
 from . import impl, master as M
 from .impl import SCENARIO_ID
 
 log = logging.getLogger("uma-server")
 
-OPENING = (205001, 400005001)        # closes turn 1; the Director appears
-WORLD = (205002, 400005002)          # closes turn 2; the goddesses' card appears
-TUTORIAL = (205028, 400005000)       # turn 3 arrival; fragments start
-REPORTER = (205034, 400000100)       # closes turn 13, after 205003
-# (event, story) closing the played turn, 0 choices.
+OPENING = (205001, 400005001)
+WORLD = (205002, 400005002)
+TUTORIAL = (205028, 400005000)
+REPORTER = (205034, 400000100)
 STORY_BEATS = {13: (205003, 400005003), 16: (205004, 400005004), 18: (205005, 400005005),
                20: (205006, 400005006), 29: (205010, 400005010), 35: (205011, 400005011),
                40: (205014, 400005013), 43: (205029, 400005014), 49: (205018, 400005018),
@@ -34,39 +25,35 @@ ANNOUNCE = {24: (205007, 400005007), 48: (205015, 400005015), 72: (205020, 40000
 RESULT = {24: ((205008, 400005008), (205009, 400005009)),
           48: ((205016, 400005016), (205017, 400005017)),
           72: ((205021, 400005024), (205022, 400005025))}
-RESULT_TIMING = 13                   # SingleModeEventPlayTiming.GRSEnd
-RESULT_SHOW_CLEAR = 6                # EventContentsShowClear.VenusRaceList
+RESULT_TIMING = 13
+RESULT_SHOW_CLEAR = 6
 KNOWLEDGE = {M.DARLEY: (205106, 400005101), M.GODOLPHIN: (205107, 400005102),
              M.BYERLEY: (205108, 400005103)}
 FIRST_WISDOM = (205109, 400005104)
 LEVEL_UP = (205110, 205111, 400005100)
 GODOLPHIN = (205112, 400005106)
-LEGACY = (205023, 400005105)         # 今を駆ける者たちの祖, turn 77
-FINAL_ENTRY = (205024, 400005027)    # at the final's race_entry
+LEGACY = (205023, 400005105)
+FINAL_ENTRY = (205024, 400005027)
 FINAL_WIN = (205025, 400005028)
 FINAL_WIN_AFTER = (205026, 400005029)
 FINAL_LOSS_AFTER = (205027, 400005030)
 MAGAZINE = (2, 400000091)
-CARD_ENDING = {True: (24, 830137030), False: (23, 830137031)}   # every chain walked / not
-# The goddess card's repeatable after-training event (§9.2): 21074 before the
-# meeting or with Pure Passion down, 21084 while it is up.
+CARD_ENDING = {True: (24, 830137030), False: (23, 830137031)}
 CARD_TRAINING = (21074, 21084, 830137003)
-CARD_TRAINING_CHANCE = 0.3           # ~10 per career [INFERRED]
+CARD_TRAINING_CHANCE = 0.3
 TRAINEE_ENDING_WIN, TRAINEE_ENDING_LOSS = 6, 5
 
-# 400005105's rewards (§8): gold 叡智 x1 / normal 加護 x2 per goddess.
 LEGACY_SKILLS = {M.DARLEY: (210261, 210262), M.GODOLPHIN: (210271, 210272),
                  M.BYERLEY: (210281, 210282)}
-GOOD_GROUND = 200152                 # 良バ場, 400005029's fixed hint
+GOOD_GROUND = 200152
 FINAL_WIN_BASE = (20, 80)
 FINAL_AFTER_WIN = (20, 60)
 FINAL_AFTER_LOSS = (15, 40)
 CARD_ENDING_PAY = {True: (12, 12), False: (8, 0)}
 
-# Events that open a screen: the served chain must be empty behind them.
 SCREEN_EVENTS = frozenset(e for e, _s in ANNOUNCE.values())
 PRIO_LAST = CE.PRIO_TRAILING + 40
-PRIO_ARRIVAL = PRIO_LAST + 20        # turn-start beats, behind the played turn's chain
+PRIO_ARRIVAL = PRIO_LAST + 20
 
 
 def _ack(n: int = 1) -> list:
@@ -88,8 +75,6 @@ def beat(event_id, story_id, *, choices=None, timing=1, from_endpoint=False,
         payload=payload or {}, source="venus", show_clear=show_clear,
         show_clear_sort_id=sort_id, hold_until=hold)
 
-
-# ============================================================ builders ===
 
 def knowledge_event(goddess: int, sid: int, count: int, tag: str) -> CE.Event | None:
     event_id, story = KNOWLEDGE[goddess]
@@ -139,9 +124,6 @@ def result_event(full_state: dict, chara_info: dict, turn: int, won: bool,
 
 def godolphin_event(full_state: dict, chara_info: dict, command_id: int, partners,
                     turn: int) -> CE.Event | None:
-    """400005106 成長のヒント (§4.2): each normal card on the trained facility
-    pays its stat group once, SP +20 and a pool hint +2..+5; one more stat
-    payout at ~30% [INFERRED]. None when no such card stood there."""
     from ..ramen import formula as RF
     rng = impl.rng_for(full_state, "godolphin", turn)
     by_pos = RF.deck(chara_info)
@@ -164,6 +146,9 @@ def godolphin_event(full_state: dict, chara_info: dict, command_id: int, partner
             if rng.random() < 0.3:
                 effects += [dict(e) for e in stats[0][1]]
         effects.append({"type": "skill_points", "value": "+20"})
+        chara = master_data.support_card_chara(sid)
+        if chara:
+            effects.append({"type": "bond", "char_id": chara, "value": "+5"})
         if skills:
             effects.append({"type": "skill_hint", "skill_id": rng.choice(skills),
                             "value": f"+{rng.randint(2, 5)}"})
@@ -174,7 +159,6 @@ def godolphin_event(full_state: dict, chara_info: dict, command_id: int, partner
 
 
 def _merge(effects: list) -> list:
-    """Sum same-stat lines so the reward card reads as one gain per stat."""
     out: list = []
     index: dict = {}
     for e in effects:
@@ -194,10 +178,6 @@ def _merge(effects: list) -> list:
 
 
 def card_training_event(full_state: dict, chara_info: dict, turn: int) -> CE.Event | None:
-    """三女神の気分転換トレーニング (§9.2): three choices, a goddess each, every one
-    bond +5 and a random fragment of her colour. (a) before the meeting and
-    (c) after it with Pure Passion down serve 21074 -- (c) also grants Pure
-    Passion and cures 夜ふかし/なまけ癖; (b) with Pure Passion up serves 21084."""
     k = impl.link_card(chara_info)
     if not k:
         return None
@@ -225,9 +205,6 @@ def card_training_event(full_state: dict, chara_info: dict, turn: int) -> CE.Eve
 
 
 def legacy_entry_and_event(full_state: dict, chara_info: dict) -> CE.Event | None:
-    """400005105 (§8): one choice per goddess; its gain_select_id_index is
-    2g-1 at level 4+ and 2g below, and that index is the choice_number the
-    client sends back. Served raw so the indexes reach the wire."""
     st = impl.state(full_state)
     if not story_playable(LEGACY[1]):
         return None
@@ -247,7 +224,6 @@ def legacy_entry_and_event(full_state: dict, chara_info: dict) -> CE.Event | Non
 
 
 def legacy_effects(st: dict, gain_index: int) -> list:
-    """What choosing gain index `gain_index` pays (§8)."""
     g_index = (int(gain_index) + 1) // 2
     if not 1 <= g_index <= 3:
         return []
@@ -265,7 +241,6 @@ def legacy_effects(st: dict, gain_index: int) -> list:
 
 
 def final_events(full_state: dict, chara_info: dict, won: bool, sort_id: int) -> list:
-    """The GM final's chain (§8), in the real order."""
     from ...handlers import single_mode_team as smt
     chara = int(chara_info.get("card_id") or 0) // 100
     out = []
@@ -288,14 +263,8 @@ def final_events(full_state: dict, chara_info: dict, won: bool, sort_id: int) ->
         out.append(beat(*FINAL_LOSS_AFTER, timing=3, priority=prio + 2, choices=[CE.Choice(effects=[
             {"type": "all_stats", "value": f"+{FINAL_AFTER_LOSS[0]}"},
             {"type": "skill_points", "value": f"+{FINAL_AFTER_LOSS[1]}"}])]))
-    # Pal-card sendoffs (shared rule, see smt.friend_endings) sit with the
-    # group card's, before the trainee's own event.
     out.extend(smt.friend_ending_ce_events(full_state, chara_info, prio + 3, "venus"))
     if impl.link_card(chara_info):
-        # The goddesses' card closes by COMPLETION, not by the GM result: a
-        # career that LOST the final but had walked every member's chain (+21)
-        # got 030, one that won-less without +21 got 031 (3 real careers,
-        # sweep 2026-10-11) -- the same complete/incomplete rule as pal cards.
         done = bool(smt._pal_state(full_state).get(str(M.LINK_CARD), {}).get("finale"))
         stats, sp = CARD_ENDING_PAY[done]
         eff = [{"type": "all_stats", "value": f"+{stats}"}]
@@ -305,7 +274,6 @@ def final_events(full_state: dict, chara_info: dict, won: bool, sort_id: int) ->
                         support_card_id=M.LINK_CARD, choices=[CE.Choice(effects=eff)]))
     hot = 500000000 + chara * 1000 + smt._HOT_SPRING_SUFFIX
     if chara and won and full_state.get(smt.HOT_SPRING_KEY):
-        # Hot Spring Getaway (event 7) ahead of the won ending (real GM career).
         out.append(beat(smt._HOT_SPRING_EVENT_ID, hot, timing=3, priority=prio + 4,
                         once="venus:hot_spring"))
     story = 500000000 + chara * 1000 + (111 if won else 110)
@@ -317,8 +285,6 @@ def final_events(full_state: dict, chara_info: dict, won: bool, sort_id: int) ->
                                  if won else [])))
     return [e for e in out if e is not None]
 
-
-# ============================================================ calendar ===
 
 @CE.producer("venus_calendar", priority=CE.PRIO_SCENARIO, scenario=SCENARIO_ID)
 def venus_calendar(ctx: CE.Ctx) -> list:
@@ -332,8 +298,7 @@ def venus_calendar(ctx: CE.Ctx) -> list:
                             int(final.get("sort_id") or 1))
     if int(ctx.chara_info.get("state") or 0) == 2:
         st["due"] = []
-        return out                   # a failed career plays only its fail chain
-    # ---- the turn just played (timing from the response: 6, or 3 after a race)
+        return out
     if played == 1:
         out.append(beat(*OPENING, from_endpoint=True, priority=CE.PRIO_TRAILING))
     if played == 2:
@@ -364,8 +329,6 @@ def venus_calendar(ctx: CE.Ctx) -> list:
         out.append(legacy_entry_and_event(ctx.full_state, ctx.chara_info))
     if impl.sprace_pending(st, played):
         out.append(announce_event(played))
-    # ---- the turn arrived at (timing 1)
-    # (after every beat closing the played turn)
     if arrived == impl.FIRST_OFFER_TURN:
         out.append(beat(*TUTORIAL, choices=[], priority=PRIO_ARRIVAL))
     if arrived in ARRIVAL_BEATS:
@@ -378,11 +341,8 @@ def venus_calendar(ctx: CE.Ctx) -> list:
     return [e for e in out if e is not None]
 
 
-# ============================================================ resolvers ===
-
 @CE.resolver("venus_world")
 def _world(full_state, chara_info, event, choice_number, **kw):
-    """205002: the goddesses' card steps into training (§9.4)."""
     k = impl.link_card(chara_info)
     if k:
         for row in chara_info.get("evaluation_info_array") or ():
@@ -400,8 +360,6 @@ def _knowledge(full_state, chara_info, event, choice_number, **kw):
 
 
 def _after_fragments(full_state: dict, chara_info: dict) -> None:
-    """New fragments may have filled the wisdom (its tutorial opens the next
-    turn) or crossed a facility level (its banner likewise)."""
     st = impl.state(full_state)
     turn = impl.turn_of(chara_info)
     if impl.wisdom_ready(st) and not st.get("wisdom_seen"):
@@ -431,8 +389,6 @@ def _announce(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("venus_result")
 def _result(full_state, chara_info, event, choice_number, **kw):
-    """The special race's result resolves: the held turn is released, the
-    next turn's beats follow, then the post-race level-ups (§2.3)."""
     st = impl.state(full_state)
     turn = int((event.payload or {}).get("turn") or 0)
     st["hold_turn"] = 0
@@ -446,16 +402,12 @@ def _result(full_state, chara_info, event, choice_number, **kw):
 
 @CE.hold_gate("venus_arrivals_done")
 def _arrivals_done(full_state) -> bool:
-    """The post-race level-ups wait for the arrived turn's own beats (New
-    Year 3001, the card's New Year date) -- the legacy queue they ride."""
     from ...handlers import single_mode_events as sme
     return not (full_state.get(sme.EXTRA_EVENTS_KEY) or full_state.get(sme.PENDING_EVENTS_KEY))
 
 
 @CE.resolver("venus_card_training")
 def _card_training(full_state, chara_info, event, choice_number, **kw):
-    """The chosen goddess's random-type fragment; variant (c) also grants
-    Pure Passion (the shared machinery owns its expiry)."""
     idx = max(1, min(3, int(choice_number or 1)))
     goddess = M.GODDESSES[idx - 1]
     rng = impl.rng_for(full_state, "card003", event.payload.get("turn"), idx)

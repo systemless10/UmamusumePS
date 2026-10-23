@@ -1,0 +1,5 @@
+#title After the Nakayama Kinen: Choice
+0 Vivlos got a splendid result in the Nakayama Kinen. But she was so worn out she sat down on the spot and couldn't move.
+1 To be safe, the Trainer suggests putting off the Dubai run. Hearing words of concern for her, Vivlos agrees.
+2 Instead, Vivlos aims for the Victoria Mile, which her sister Verxina won twice in a row. A new challenge at home begins.
+2{ Victoria Mile

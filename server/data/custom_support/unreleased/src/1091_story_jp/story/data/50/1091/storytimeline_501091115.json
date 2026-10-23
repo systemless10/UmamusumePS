@@ -1,0 +1,541 @@
+{
+ "title": "Keep Going",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "クラシック級に入り、ヴィブロスは、\nティアラ路線に向けて少しずつ\nトレーニングの強度を上げていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "は～～～～……。",
+   "choice_data_list": [
+    "少し休憩する？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううん、だいじょぶ……。\nもう1ぽん～……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "トレーニングの強度が上がれば、当然\n疲労度も高くなる。ヴィブロスの疲れも、\nそれが理由だと考えていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "しかし……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――……うっ……んん……。\nヒュウ、ヒュウ……。",
+   "choice_data_list": [
+    "（……あれ？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスは無意識なようだが、\nお腹をさすっているし、\n呼吸音もいつもとは違っている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ぜひゅっ……はぁっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はぁ……ねぇトレっち、やっぱ、\nちょっと休憩しよっかな……？",
+   "choice_data_list": [
+    "いや、今日はここまでだ",
+    "いや、今日はここまでだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え？",
+   "choice_data_list": [
+    "保健室で診てもらおう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……大丈夫だよ？\n少し休めば。",
+   "choice_data_list": [
+    "大丈夫なことを確認しよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でも――",
+   "choice_data_list": [
+    "お願い、聞いてもらえるか？",
+    "お願い、聞いてもらえる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "保健室の先生",
+   "text": "うーん……病院で、詳しく\n検査してもらったほうがいいかもしれません。",
+   "choice_data_list": [
+    "！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "保健室の先生",
+   "text": "度重なる腹痛に、呼吸音の異変……\n複数の症状を患っている可能性があります。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "保健室の先生",
+   "text": "しばらく様子を見たほうがよさそうですね。\n所見ですが……完治に半年はかかるかと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "半年、って……\nそれじゃ、やっぱり……。",
+   "choice_data_list": [
+    "……ヴィブロス、ごめん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え……。",
+   "choice_data_list": [
+    "異変に気づけなくてごめん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "兆候を軽く見ていた甘さと、ヴィブロスに\n相談したいと思わせられなかった頼りなさ……\nこうなったのは自分の責任だ。",
+   "choice_data_list": [
+    "本当にごめん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……違うの。\nあのね、トレーナーさん――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん？\nどうして……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさんから連絡をもらったの。\nそれよりも、大丈夫なの！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、今は落ち着いてる。\nだいじょうぶ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "そう、よかった……。\n……ねえ、ヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "貴方……本当は、わかってたんでしょう？\n自分の調子が悪いこと。",
+   "choice_data_list": [
+    "！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "貴方は賢い子だもの。\n気づいてなかったはずはないわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……本当に、\n大丈夫だと思ってたから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……そう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさん、\nちょっと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "――トレーナーさん、わかりますか？\nあの子が隠していた理由……。",
+   "choice_data_list": [
+    "ティアラ路線を走りたかったのかも"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスのティアラ路線への想いは、\n日々深くなっていた。言えば間に合わないと、\nわかっていたのだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……そこまで、\n重くなっていたなんて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……競技者の先輩として、\n私の考えを述べさせてください。",
+   "choice_data_list": [
+    "聞かせてくれ",
+    "聞かせて"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロスには、レースを\n走らせないほうがいいかもしれません。",
+   "choice_data_list": [
+    "！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トゥインクル・シリーズとは過酷なものです。\n今のあの子には耐えられるかどうか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "治療と並行しつつ、というのも非現実的です。\n完全に回復するまでは休むのがよいかと。",
+   "choice_data_list": [
+    "……それも1つの道だな",
+    "……それも1つの道だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ちょうど自分も似たようなことを考えていた。\n直近の『桜花賞』『オークス』は回避して、\n状況次第では『秋華賞』も休む――",
+   "choice_data_list": [
+    "1番の夢であるドバイに進むために――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "！\n貴方、聞いて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、絶対に！\nティアラ路線を走るもん！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "あっ！",
+   "choice_data_list": [
+    "追いかけよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、やだから！\n絶対休まない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……勝手に相談してたのはごめんね。\nけれどちゃんと貴方が納得できるように、\n話すつもりで――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "イヤっ！\n聞きたくない～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "いつも素直なヴィブロス……\nしかし今の彼女は頑なだった。",
+   "choice_data_list": [
+    "ヴィブロス……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ねえ、少しだけ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ダメ！！\nトリプルティアラをとりたいの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって！　だって、お姉ちゃんは……\nもう、できないじゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "え……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私も、ずっと見てたんだよ？\nお姉ちゃんのこと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "どれだけティアラが欲しかったか……\nどれだけ、がんばってたか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私には……ずっと、お姉ちゃんが1番！\nかっこよかったの！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "！\nヴィブロス……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……私はお姉ちゃんじゃない。でも、\nお姉ちゃんになれるのは、きっと私だけ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんを大好きなみんなも、\n私に託してくれてる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんの夢を、私が叶えるの！\nじゃなきゃ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃなきゃ、\n私の夢だけ叶えるなんて、できない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "それは初めて知る、ヴィブロスの心の奥の\n情熱だった。『姉のリベンジをする』……\nその言葉には確かな姉への愛があったのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねぇ、トレーナーさんは……\nわかってくれるよね？",
+   "choice_data_list": [
+    "……覚悟はできてるんだな",
+    "……覚悟はできてるんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "今の体調でも、レースへの出走自体は可能だ。\nしかし彼女が目指すのはトリプルティアラ……\n勝利のために相当な努力が必要だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "体調と付き合いつつ、負荷をかけすぎず\n強くなる……これまでよりも高い集中力が\n求められる。将来に影響も出るかもしれない。",
+   "choice_data_list": [
+    "それでも、やるんだな？",
+    "それでも、やるんだね？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っ、うん！\nやる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ちょっと、トレーナーさん……！",
+   "choice_data_list": [
+    "どうか一緒に頑張らせてほしい"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……実績のない貴方の言葉を、\nどう信用しろというのですか？",
+   "choice_data_list": [
+    "妹のことは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "え？",
+   "choice_data_list": [
+    "ヴィブロスのことなら信じられないか？",
+    "ヴィブロスのことなら信じられない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん……！\n私、絶対に無茶はしない！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トリプルティアラも、ドバイも諦めない！\nだから……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "………………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ずるいわ。これでダメって言ったら、\n貴方を信じてないみたいじゃない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃん……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさん。もしこの子に\nなにかあったら……私、貴方を許しません。",
+   "choice_data_list": [
+    "……ああ！",
+    "……うん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス。貴方も、\nトレーナーさんの言うことをよく聞くのよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "この方が全ての責任を負うのだから。\n……それが担当契約なのよ。わかったわね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーナーさん！\n……よろしくお願いします！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "翌日――ヴィブロスが予定通り、\nティアラ路線を走ることを正式に表明した。\nファンたちは、大いに喜んだのだった――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+#title Get Well Soon!
+0 Vivlos got injured, so I went with her to the infirmary.
+1 Geez, Tore-cchi, I told you I'm fine～. It only hurts a little... but thanks♪
+2 More importantly, let's hurry back to practice～. There's still some of today's menu left, right?
+3 My times have been super good lately, and I wanna run while I'm on a roll!
+3> No. If you make it worse, that good streak is ruined | If you insist, we'll do a different menu
+4 Ehh, I can't～? A little bit's fine, c'mon～, let me run～.
+5 If she pushes herself and makes it worse, she'll be out of running for longer. I insisted it was a necessary sacrifice for the future.
+6 Mmm... But if you're saying it that strongly, Tore-cchi, I guess I'd better rest quietly.
+7 Okay! I'm taking the rest of today off.
+8 Oh, since I've got time, maybe I'll go buy chocolate dates at the shop by the station♪
+9 Come with me, Tore-cchi～. ...No good?
+9> ...I'll buy them, so you stay put and rest
+10 Tch. Oh well, I'll wait quietly～.
+11 To be safe, we cut practice short and had her spend the time resting.
+12 Geez, you worry too much～. But that's fine, let's practice!
+13 ...Phew.
+14 ...Mmmmm...
+15 Is the spot I hurt... starting to hurt?
+16 Seeing her start to fuss over the injured spot, I rushed over right away.
+16> ...Does it hurt? | ...Does it hurt?
+17 Yeah... Sorry. Maybe I should have rested after all...
+18 It seems her injury got worse. We'll need to rethink our plans for the time being.
+19 ...Yeah, this much is fine!
+20 My times were finally getting faster, and if I don't move for days, I'll get rusty.
+21 Okay, I've still got lots more in me～♪ I can't stop in a place like this!
+22 After that, I kept up Vivlos's conditioning while making use of lighter training menus.

@@ -1,4 +1,3 @@
-//! Port of region.py -- half-open interval [start, end) set algebra.
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Region {
@@ -26,9 +25,6 @@ impl Region {
     }
 }
 
-/// Port of RegionList.rmap/union. Plain `Vec<Region>` elsewhere; these two
-/// operations get free functions since Rust has no subclassing to hang them
-/// off of.
 pub fn rmap_one(regions: &[Region], f: impl Fn(&Region) -> Region) -> Vec<Region> {
     let mut out = Vec::new();
     for r in regions {
@@ -40,8 +36,6 @@ pub fn rmap_one(regions: &[Region], f: impl Fn(&Region) -> Region) -> Vec<Region
     out
 }
 
-/// `rmap` when `f` maps one input region to several output regions (e.g.
-/// intersecting against a list of corners/slopes/straights).
 pub fn rmap_multi(regions: &[Region], f: impl Fn(&Region) -> Vec<Region>) -> Vec<Region> {
     let mut out = Vec::new();
     for r in regions {
@@ -60,8 +54,6 @@ pub fn union(a: &[Region], b: &[Region]) -> Vec<Region> {
     if u.is_empty() {
         return r;
     }
-    // Python's list.sort is stable; f64 has a total order here since region
-    // bounds are never NaN, so partial_cmp().unwrap() matches sorted(key=...).
     u.sort_by(|x, y| x.start.partial_cmp(&y.start).unwrap());
 
     let mut acc = u[0];

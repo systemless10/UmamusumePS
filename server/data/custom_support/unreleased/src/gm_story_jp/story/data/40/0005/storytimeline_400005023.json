@@ -1,0 +1,165 @@
+{
+ "title": "SWBCにむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『SWBC』開催日――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "よーしッ！　体調もバッチリ！\n今日は思いっきり走れるッ！　やれるッ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "シミュレーター内で勝手に着替えるから、\nわざわざ勝負服着なくていいのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "気分が違うだろ！\nそれだけこのレースに本気ってことだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……むん。\n…………気合い充分。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "アンタまで着てるし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "まあでも、本気って言うならアタシだって。\nアタシとトレーナーの武器、見せてやる……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "3人揃って、担当のウマ娘を\n出走させることが叶いましたね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "紆余曲折ありましたが、\nここまでたどり着くことができました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "それが私とあの子たちの歩んできた道――\n歴史なんですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "いつか私たちの歴史も、知識となって\n誰かの支えとなる日が来るんでしょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ふふっ、そうなるために\nこれからもたくさん結果を残さなくては。",
+   "choice_data_list": [
+    "ええ、そうですね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "さあさあ！　いよいよ『SWBC』の\n火ぶたが切られる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "君の担当するウマ娘は、ここまで華々しい\n成長を遂げた……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "しかーし！　それは他のウマ娘たちも同様！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "渾身ッ！　選び抜かれた優駿たちを相手に、\n持てるものすべてをぶつけて挑んでほしいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "駿川たづな",
+   "text": "『WBC』以上に、実力を試される\n過酷なレースになると思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "駿川たづな",
+   "text": "ですが、これまで歩んできたことを信じて\nぜひ、勝利を掴んでくださいね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "以前よりも多くのギャラリーに見送られ、\n<chrname>と共に\nVRシミュレーターの世界へと向かった――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "待ってたぞ、『SWBC』へようこそ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "いよいよ傾斜が厳しくなってくる。\n準備はいいかい？",
+   "choice_data_list": [
+    "もちろん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふ、2人ともいつも以上に\n気合いが入っているみたい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "大丈夫、走りたいという気持ちを\n持ってすれば、勝機は訪れるわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "しっかり見極めてちょうだい。\n担当するウマ娘の、これからの未来を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "それではレースを始めよう。\n……全力で、頂を獲りにいけ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてついに『SWBC』が幕を開ける！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

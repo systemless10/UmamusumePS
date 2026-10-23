@@ -1,0 +1,35 @@
+{
+ "title": "お肌の調子が……",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "えっ、うそうそうそっ、肌荒れしてる～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんで？　おやつ食べすぎ？\nデーツなら大丈夫って思ったのに～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "チョコいっぱいかかってたからかな……。\nそれともナッツ入りがダメだった……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううー、おやつ断ち……できるかなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "肌荒れして落ち込んでしまう\nヴィブロスなのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

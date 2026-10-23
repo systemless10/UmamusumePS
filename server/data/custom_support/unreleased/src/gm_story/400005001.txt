@@ -1,0 +1,84 @@
+#title Born from a Grand History
+0 The Twinkle Series—a place where Umamusume run toward their dreams, hearts ablaze.
+0{ Twinkle Series
+1 And it's a trainer's role to support and guide them.
+2 That's why trainers must build up knowledge and experience every day, and keep running alongside their Umamusume.
+3 "Happy Meek. New record set—"
+3{ Happy Meek
+4 Good work, Meek. You're not feeling VR-sick, are you?
+4{ Meek | VR
+5 ...Peace.
+6 Hehe, I'm glad. Thanks to you, we were able to gather new data. With this, I think we can handle the current regimen!
+7 —Ah, Trainer <username>!
+8 The one who noticed me and called out was Trainer Aoi Kiryuin, who started at the same time as me.
+8{ Aoi Kiryuin
+9 We were just using the VR Umalator to analyze how Meek runs.
+9{ VR Umalator
+10 We're new trainers, after all. We have to make use of whatever we can!
+11 Trainer <username>, let's both do our best for our trainees!
+11> Yes, let's do our best!
+12 The sky was perfectly clear, as if heralding the start of our journey into the Twinkle Series with our Umamusume—
+13 Those clear blue skies seemed ready to welcome whatever challenges we would take on.
+14 "Assemble!"
+15 After classes, an announcement rang out across the academy, and the trainers gathered in the gymnasium.
+16 Silence! Each and every one of you supports and guides our Umamusume every day so that they may shine!
+17 Sometimes you pore over textbooks, sometimes you dig through data. You have made allies of all manner of things to guide them.
+18 Behold! Today, you instructors shall gain a new ally!
+19 (Murmur...!)
+20 Trainers, the explanation from here on will be given by me, Satono Diamond, and—
+20{ Satono Diamond
+21 —Satono Crown.
+21{ Satono Crown
+22 The Satono Group's software development division has always been ahead of its time—so far ahead that people say we've gone too far.
+23 And here, born from the culmination of our technology, is a training support AI system—
+23{ training support AI system
+24 By the name of "Mega Dream Supporter"!
+24{ Mega Dream Supporter
+25 (Murmur, murmur...!)
+25> Mega Dream Supporter?
+26 Does this mean we'll be able to do new things with the VR Umalator?
+27 Since becoming responsible for an Umamusume, haven't there been times you weren't sure what to do?
+28 For example, whether it's okay to train hard right before a race, or whether she can still compete at a distance slightly outside her aptitude—
+29 We've now completed an AI system that can support you in making those decisions!
+30 It gathers and analyzes all kinds of data, from the very beginning of Umamusume racing—
+31 Drawing on countless cases and statistics, it's the ultimate AI for finding the best possible answer!
+32 I'm sure it will be a reassuring ally for all you trainers!
+33 Seeing is believing. Let's explain the details while you actually try out the software. ♪
+34 An AI that finds the best possible answer...
+35 To train our Umamusume, it can't hurt to try it out.
+36 I didn't even need to think about it. The answer was obvious. As a new trainer, if I'm going to chase dreams together with my Umamusume—
+36> Let's take part!
+37 And so, seeking every advantage for my Umamusume's training, I dove into the world of VR.
+38 Welcome to the Mega DreamSupporter...Get Ready!
+39 What appeared before my eyes was Tracen Academy, recreated in a VR space.
+39{ Tracen Academy, recreated in a VR space
+40 Welcome, and thank you for coming. ♪
+41 You've probably experienced recreated buildings and tracks in other VR software, so that might not surprise you, but—
+42 This software has something that will really surprise you! Come on, let me show you around!
+43 Like we explained, this software is packed with an enormous amount of data—information on Umamusume from long ago to the present day.
+44 The AIs that process all of it are given a way of thinking about how to interpret that data—in other words, a personality—
+45 And after AIs with the dispositions of "Valor," "Discipline," and "Affection" went through repeated learning—
+46 Something really fascinating happened!
+47 Each of the three AIs developed a personality—no, you could even say a soul!
+48 In that moment, the room was filled with a dazzling light. And soon, before my eyes—
+49 The sun rises, and countless stars begin to shine. Yet no two of them shine the same.
+50 Let us embrace the children drifting in the vast sea with gentle waves, and protect them.
+51 The earth stands unshaken, even as it bears all things. Become strong, and tread upon it so firmly your mark is carved in.
+52 I'm Darley Arabian. Every Umamusume is different, and every one of them is the star of her own story. Let's polish each of them with care!
+52{ Darley Arabian
+53 My name is Godolphin Barb. Please let me watch over the hoofprints each Umamusume leaves behind.
+53{ Godolphin Barb
+54 My name is Byerley Turk. To carve out your own path, you have no choice but to become strong. Once you've started running, steel yourself.
+54> Th-those names...?!
+54{ Byerley Turk
+55 Before me stood three Umamusume I'd never seen before—yet whose names I knew.
+56 Did you notice? These ladies' names!
+57 The ones said to be the forebears of all of us Umamusume who've kept running for so long!
+57> The Three Goddesses...!
+58 That's right! The three AIs began calling themselves by the names of the Three Goddesses!
+59 No need to be so stiff, little lamb! We may be goddesses, but we're support AIs. In other words, we're your friendly neighbors.
+60 Hesitation isn't just unnecessary—it's foolish. Consult us actively, and devote yourselves to raising your Umamusume. We won't hold back our knowledge.
+61 Hehe, feel free to rely on us as much as you like. The history woven by Umamusume—our Divine Wisdom—will always support you.
+61{ Divine Wisdom
+62 A training support AI, brought in as a powerful ally for Umamusume and trainers alike.
+63 With the "Three Goddesses," keepers of an enormous wealth of data, on our side, three years of heated races begin!

@@ -1,0 +1,356 @@
+{
+ "title": "中山記念にむけて",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "『中山記念』に挑む、\n少し前のこと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "――ヴィルシーナさんから聞いてるよ。\nドバイに行った時のこと、聞きたいんだよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィルシーナの勧めもあり、海外遠征を\n体験したウマ娘――ホッコータルマエから、\n当時のことを聞くことになった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ、教えてほしいの！\nどんな感じだったのか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……タルマエさんがよければ、だけど！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "タルマエ"
+   ]
+  },
+  {
+   "name": "",
+   "text": "以前、ヴィブロスを診てもらった時、\n先生の口からも彼女の名前が出たが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ホッコータルマエはダートを主戦場にし、\nGⅠレースを10勝という偉大な記録を持つ\nウマ娘だ。ヴィルシーナの同室でもある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "彼女は以前、海外遠征に挑み……結果は大敗。\nそれまで戦績もよかったが、\n帰国後、長期療養を余儀なくされてしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "もちろん、大丈夫だよ！\nあの頃は、さすがにキツかったけどね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "う……そうだよね。\nお休み、長かったんでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "そうだね、\n結局半年以上かかっちゃった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "さんざんだったよ。国内では、\nGⅠを5勝とかしてるタイミングでね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "この勢いなら！　と思って、\n海外に挑戦してみたんだけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "……すごくキツかった。\n話には聞いてたけど、環境もなにもかも違う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そんなに違うの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "うん、とっても。自分自身も、\n慣れない環境で気が立ってるし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "今までにないくらい、体調を崩しちゃって。\n帰国してからも、治すのに苦労したの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "結局、ドバイでは最高で5着。\nその上、大事な期間を棒に振ってしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "挑まなければ、もっともっと\n勝利記録を伸ばせたのかも……\nそんな考えさえ頭をよぎった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そう、なんだ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "もちろん、挑戦したことに意味はあるし、\n全然後悔はしてないよ！　でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "ヴィルシーナさんから聞いたけど、\nヴィブロスちゃんも\nドバイを目指してるんだよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "そっか！\nがんばってね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "でも……もし少しでも不安があるなら、\n焦らないほうがいいとは思う、かな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "万全の状態で行っても、大変だったから……\n私はね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "夢もだけど、自分のことも大切にしてね。\n応援してるよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、\nありがとう、タルマエさん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "タルマエさんから、\nお話聞けてよかった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんから聞いてたけど、\nほんとにしっかり者だね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "……ううんっ？\nうっかりも……するよっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ホッコータルマエ",
+   "text": "だから誰かに私のことを言う時は、\n『裏表がなくてカワイイ』……って、\nぜひ伝えてね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "？\nうんっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――そしていよいよ、レース当日を迎えた。\n今日の走り次第で、海外遠征――\nドバイへ出発できるかを判断する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……は～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "未来へ向けた大事な一戦となるため、\nヴィブロスも少し緊張しているようだ。",
+   "choice_data_list": [
+    "（少しリラックスさせてあげたい）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "くす……\n甘えん坊なんだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そういえば、ヴィブロスは\n誰かに甘えている時は、\nとてもリラックスしている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふぅ……。",
+   "choice_data_list": [
+    "ヴィブロス"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん？",
+   "choice_data_list": [
+    "俺に何かしてほしいことはある？",
+    "私に何かしてほしいことはある？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "してほしいこと……？",
+   "choice_data_list": [
+    "1つだけおねだりを聞くよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあ、ハグして！",
+   "choice_data_list": [
+    "それ以外で"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なでなで！",
+   "choice_data_list": [
+    "それもちょっと……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "全部ダメなの？\nじゃあ、聞かないでよ～。",
+   "choice_data_list": [
+    "……確かに"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もう。\n……ふふ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "仕方ないなぁ。\nトレっち、両手を広げて？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そしたら、\n前の空気をぎゅーって抱きしめて？",
+   "choice_data_list": [
+    "……こう？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……エアハグっ♡",
+   "choice_data_list": [
+    "！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ！\nパワー、もらっちゃった♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、\n大丈夫！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――しっかり、見ててね。\n私の走り……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

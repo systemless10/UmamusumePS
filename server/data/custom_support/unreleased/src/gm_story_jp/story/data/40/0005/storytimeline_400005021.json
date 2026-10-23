@@ -1,0 +1,353 @@
+{
+ "title": "信じる者",
+ "text_block_list": [
+  {
+   "name": "樫本理子",
+   "text": "お疲れ様です、ビターグラッセ。\nそれでは次のメニューに移りましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "スローペースのレースと仮定して、\nまずは向こう正面で徐々にスピードを――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……あ、あの！　樫本トレーナー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……なんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "樫本トレーナーが、私を勝たせたいって\n気持ちはすごく嬉しいし、私自身も\n勝ちたい気持ちはあるんですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……やっぱり勝つなら、\n自分らしく走って勝ちたいです……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "レースを支配して、強いって言われるような\nこれまでの走りで勝ちたいです……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ビターグラッセ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……貴方がこれまでやってきたことを\n貫きたい気持ちはわかります。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ですが、前の走りを貫こうとすれば\nトレーニングはよりハードになり、\nどうしてもリスクが生じてしまう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "たとえ優れたAIが味方にいても、\nケガのリスクをゼロにはできないのです。\n……私は、それを看過することはできません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "あの、樫本トレーナー。\n今からタイムを見てもらえませんか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "リトルココン、すみませんが今は\nビターグラッセと大事な話を――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "だからこそ先にアタシの走りを見てください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "アタシの武器がどこまで成長したのかを。\nお願いします。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "リトルココン……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "リトルココン、用意はいいですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……できてます。\nずっと、磨き続けてきたんだし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "それでは、よーい……スタート！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "ふっ！！！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "はあああああぁぁぁ～～～～っ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……っ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "このタイム……正直、信じられません……。\nリトルココン、貴方はいったい何を――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "さっきも言ったとおり、\n武器を磨き続けてきただけです。\n……樫本トレーナーに言われたとおりに。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "もし、今の記録が想定外なんだったら……\nそれは、樫本トレーナーのおかげですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "樫本トレーナーがアタシをちゃんと見て、\nしっかり管理してくれたからなんです。\nだからアタシは想定以上に育つことができた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……これって、ううん、これこそが\nトレーナーの武器なんじゃないですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "私の武器……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "ビターグラッセが、前の走りで勝つためには\nこれまで以上のトレーニングを\nしないといけないのはわかります。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "ただでさえ他のウマ娘より過酷だったのに、\nそれよりもってなればケガのリスクも上がる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "でも、樫本トレーナーの武器が……\nアタシたちをよく見て、管理してくれる\nその武器さえあれば、できると思います！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "だって樫本トレーナーは、いつでもそれを\n磨き続けてきたじゃないですか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "その武器でアタシをここまで強くしてくれた！\n今みたいに想定を超えられるウマ娘を育てた！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "アタシは、自分とアナタの武器を信じたから、\nここまでの走りができるようになったんです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "だから……アタシの出した結果を信じて。\n自分たちの武器もちゃんと信じてください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "樫本トレーナーの武器も、\nビターグラッセの武器も、\nどちらも、ちゃんと使ってあげてください！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……私の武器……。\n……ビターグラッセの武器……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――なるほど、そんなことがあったのか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "言われて気づきました。\nたしかにビターグラッセに対しては、\n管理するよりも知識に頼りきっていたと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "そして思い直しました。\nいくら適切な知識があったとしても、\n信じてきた武器以上のものは生み出せないと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ビターグラッセやリトルココンを見習って、\n私も強くならねばなりませんね。\n……己を信じるという、心の強さを。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "……心の強さ、か……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "ならば、あるウマ娘の話を聞かせよう。\n歴史に名を残す、強きウマ娘の話だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "――そのウマ娘は線は細く華奢で、\nけっして丈夫な見た目はしていなかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "デビューしてしばらくは大した成績も残せず、\n平凡なウマ娘だと評価をされていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "しかし彼女には並ならぬ強さがあった。\nそれは、見た目にそぐわぬ頑健さ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "彼女の強さを信じ、トレーナーは徹底的に\n管理し、注意を払い、愛し、\nそして鍛え上げた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "最終的な戦歴は100戦以上。\nそして勝利数は70を超える歴史的な記録。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "彼女たちの走りは、やがてある一国の\nウマ娘史にも大きな影響を与えるに至る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "管理とは、即ち規律――\nそれはルールで縛り付けることだけではない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "ウマ娘ひとりひとりに深い愛情をもって\n管理できるのだとすれば、\n何よりウマ娘の力となるだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "今の話は、これからお前たちが\nやらんとすること。目指すべき目標だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "そして、見方を変えれば希望ともいえる。\n決して不可能なことではないと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "不可能ではない……希望……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "強き心を持て。お前とビターグラッセならば、\n歴史に名を残したウマ娘ほどの――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "いや……それ以上のことさえ\n起こしうるのではと、期待しているぞ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……ええ、期待に応えてみせましょう。\n必ずビターグラッセに夢を掴ませてみせます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

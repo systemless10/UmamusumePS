@@ -375,7 +375,7 @@
             "support_card_id": 30010,
             "limit_break_count": 4,
             "exp": 118185,
-            "owner_viewer_id": 900000000054
+            "owner_viewer_id": 507379161379
           }
         ],
         "succession_trained_chara_id_1": 176,
@@ -1161,7 +1161,7 @@
           {
             "frame_order": 5,
             "viewer_id": "<redacted>",
-            "trainer_name": "Trainer0002",
+            "trainer_name": "Trainer",
             "owner_viewer_id": 0,
             "owner_trainer_name": "",
             "single_mode_chara_id": 601,
@@ -4250,7 +4250,7 @@
               "support_card_id": 30010,
               "limit_break_count": 4,
               "exp": 118185,
-              "owner_viewer_id": 900000000054
+              "owner_viewer_id": 507379161379
             }
           ],
           "succession_trained_chara_id_1": 176,
@@ -5036,7 +5036,7 @@
             {
               "frame_order": 5,
               "viewer_id": "<redacted>",
-              "trainer_name": "Trainer0002",
+              "trainer_name": "Trainer",
               "owner_viewer_id": 0,
               "owner_trainer_name": "",
               "single_mode_chara_id": 601,

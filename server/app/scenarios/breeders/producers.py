@@ -1,12 +1,3 @@
-"""BEYOND DREAMS (scenario 13) -- the event calendar and its resolvers.
-
-Every beat here is on docs/JP_BEYOND_DREAMS_SCENARIO.md §8's calendar, read
-off the real careers: the turn it fires on, which response carried it, its
-play_timing, its choices and what resolving it paid. As in Onsen, two turn
-numbers are in play (career_events.Ctx): `ctx.turn` is the turn just PLAYED
--- the beats closing a turn's chain (timing 3/6) key off it -- and
-`ctx.advanced_turn` the turn arrived at, for the turn-start beats (timing 1).
-"""
 
 from __future__ import annotations
 
@@ -19,44 +10,34 @@ from .impl import SCENARIO_ID
 
 log = logging.getLogger("uma-server")
 
-INVITE = (213009, 400013000)          # T1 behind Tazuna's tips -> ps 41, BC selection
-FORMED = (213001, 400013001)          # served by select_bc_race: the team forms
+INVITE = (213009, 400013000)
+FORMED = (213001, 400013001)
 TUTORIAL = (213031, 400013002)
-SEASON_START = (213002, 400013003)    # T3 arrival: starting DP, stock -> ps 40
-REPORTER = (213816, 400000100)        # 変人記者、登場！？ (played T13) -- unlocks 103
-PLUS_ONE = (213807, 400013114)        # 留守は万全: rest / outing / infirmary / goal race
-SUMMER_PLUS_ONE = (213808, 400013116)  # ここが伸ばしどき！: each summer-camp turn start
+SEASON_START = (213002, 400013003)
+REPORTER = (213816, 400000100)
+PLUS_ONE = (213807, 400013114)
+SUMMER_PLUS_ONE = (213808, 400013116)
 STORY_BEATS = {5: (213022, 400013004), 21: (213023, 400013008), 33: (213024, 400013012),
                45: (213026, 400013017), 54: (213027, 400013021), 65: (213021, 400013026)}
 ARRIVAL_STORIES = {37: (213025, 400013016), 61: (213028, 400013025)}
-LINK_BEAT = (213029, 400013027)       # played T66: six choices, the scenario-link hint
-BC_DAY = (213020, 400013028)          # bc_race_entry, timing 23
+LINK_BEAT = (213029, 400013027)
+BC_DAY = (213020, 400013028)
 BC_WIN = (213903, 400013029)
 ENDING = (213905, 400013030)
 GOAL_REWARD_EVENTS = {1: 213900, 2: 213901, 3: 213902, 4: 213904, 5: 213907}
-GOAL_REWARD_STORY = 400013104         # この調子でいこう！
-CASINO_ENDING = {True: (40, 801139022), False: (41, 801139023)}   # all 5 dates / not
+GOAL_REWARD_STORY = 400013104
+CASINO_ENDING = {True: (40, 801139022), False: (41, 801139023)}
 CASINO_OUTINGS = frozenset({21229, 21230, 21231, 21232, 21233})
-SKILL_BEYOND = 210381                 # 情熱と挑戦の先の栄光, the ending's scenario skill
+SKILL_BEYOND = 210381
 PRIO_ARRIVAL = CE.PRIO_TRAILING + 5
 
-# 213029's choices, in wire order: (chara, the hint unlinked, the gold one
-# linked) -- Espoir, Loves Only You, Red Desire, Forever Young, Marche Lorraine,
-# Casino. Choice 1 paid 202952 パイオニア in every captured career without her.
 LINK_HINTS = ((1081, 202952, 202951), (1132, 204112, 204111), (1136, 202092, 202091),
               (1138, 203502, 203501), (1140, 203102, 203101), (1139, 201661, 201662))
 
-# Goal reward bases (all stats, SP) before race bonus, by place (§8). Wins:
-# stats 9 everywhere, SP 107 at goals 1-2 and 137 at goals 3-5 -- captured
-# 13/155 and 13/199 at 45% race bonus; the place scaling is from career 7
-# [INFERRED where uncaptured]. Goals 1-2 raise 4 random stats, 3-5 all five.
 GOAL_BASE = {1: (9, 107, 137), 2: (6, 90, 90), 3: (3, 90, 90), 4: (3, 75, 75), 5: (3, 75, 75)}
-BC_WIN_BASE = (41, 153)                # 59 / 222 at 45%
-# Fans the goal event pays on top of the race's own, by goal (25/25 captured
-# goal events, every race and place): the BC pays none.
+BC_WIN_BASE = (41, 153)
 GOAL_FANS = {1: 2000, 2: 14000, 3: 40000, 4: 60000, 5: 30000}
 
-# Events that open a screen: the served chain must be empty behind them.
 SCREEN_EVENTS = frozenset({INVITE[0], SEASON_START[0],
                            *(e for e, _s in impl.REVIEW_PRE.values()),
                            *(e for e, _s in impl.REVIEW_EXCELLENT.values()),
@@ -111,7 +92,6 @@ def _stat_effects(pay: dict) -> list:
 
 
 def goal_reward_event(full_state: dict, chara_info: dict, sort_id: int, rank: int, turn: int):
-    """この調子でいこう！ -- a cleared goal's reward (§8), scaled by race bonus."""
     from ...handlers import single_mode_team as smt
     event_id = GOAL_REWARD_EVENTS.get(sort_id)
     if not event_id:
@@ -130,14 +110,13 @@ def goal_reward_event(full_state: dict, chara_info: dict, sort_id: int, rank: in
 
 
 def bc_win_events(full_state: dict, chara_info: dict) -> list:
-    """The BC won: 祭典の勝者 -> Casino's ending -> Beyond Dreams (§9)."""
     from ...handlers import single_mode_team as smt
     st = impl.state(full_state)
     skill = M.bc_programs().get(int(st["bc_program"]), (0, 0, 0))[2]
     stat = smt._scale_race_reward(BC_WIN_BASE[0], chara_info, full_state)
     sp = smt._scale_race_reward(BC_WIN_BASE[1], chara_info, full_state)
     win = [{"type": "all_stats", "value": f"+{stat}"}, {"type": "skill_points", "value": f"+{sp}"},
-           {"type": "unique_skill_level", "value": "+1"}]   # see impl.UNIQUE_LEVEL_REVIEWS
+           {"type": "unique_skill_level", "value": "+1"}]
     if skill:
         win.append({"type": "skill_hint", "skill_id": skill, "value": "+3"})
     out = [_beat(*BC_WIN, timing=3, priority=CE.PRIO_FRONT, choices=[CE.Choice(effects=win)],
@@ -161,7 +140,6 @@ def bc_win_events(full_state: dict, chara_info: dict) -> list:
 
 
 def _blocked(turn: int) -> bool:
-    """No team beat on a summer-camp turn, a Reflection turn or the BC."""
     return turn in impl.SUMMER_TURNS or turn in M.review_turns() or turn >= impl.FINAL_TURN
 
 
@@ -170,7 +148,6 @@ def breeders_calendar(ctx: CE.Ctx) -> list:
     played, arrived = int(ctx.turn or 0), int(ctx.advanced_turn or 0)
     st = impl.state(ctx.full_state)
     out = []
-    # ---- the turn arrived at (timing 1) ----
     if arrived == M.MEETING_TURN:
         out.append(_beat(*SEASON_START, resolver="breeders_season_start", priority=PRIO_ARRIVAL))
     if arrived in ARRIVAL_STORIES:
@@ -185,7 +162,7 @@ def breeders_calendar(ctx: CE.Ctx) -> list:
                 continue
             if n == 2 and arrived != impl.UNION_TURN[2]:
                 if arrived > impl.UNION_TURN[2]:
-                    st["union_done"].append(2)          # missed: skipped for good
+                    st["union_done"].append(2)
                 continue
             if n == 3 and arrived < impl.UNION3_FROM:
                 continue
@@ -203,7 +180,6 @@ def breeders_calendar(ctx: CE.Ctx) -> list:
                                  priority=PRIO_ARRIVAL + 3, payload={"index": i},
                                  choices=[CE.Choice(effects=_stat_effects(impl.BUILDING_PAY[i]))]))
                 break
-    # ---- the turn just played (timing 3/6) ----
     if played in STORY_BEATS:
         out.append(_beat(*STORY_BEATS[played], choices=[], timing=6, from_endpoint=True,
                          priority=CE.PRIO_TRAILING))
@@ -235,8 +211,6 @@ def breeders_calendar(ctx: CE.Ctx) -> list:
     return [e for e in out if e is not None]
 
 
-# ============================================================ resolvers ===
-
 def _ps(chara_info: dict, value: int) -> None:
     chara_info["playing_state"] = value
 
@@ -249,8 +223,6 @@ def _invite(full_state, chara_info, event, choice_number, **kw):
 
 @CE.resolver("breeders_formed")
 def _formed(full_state, chara_info, event, choice_number, **kw):
-    """213001: the team, Casino's card (or the advisor) joins training, and the
-    tutorial and the formation cutscene follow."""
     st = impl.state(full_state)
     impl.form_team(full_state, chara_info)
     k = impl.casino_card(chara_info)

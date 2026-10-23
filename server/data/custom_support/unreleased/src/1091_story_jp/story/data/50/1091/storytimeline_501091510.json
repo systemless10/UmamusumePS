@@ -1,0 +1,281 @@
+{
+ "title": "愛のたまもの♡",
+ "text_block_list": [
+  {
+   "name": "ゴールドシチー",
+   "text": "髪と尻尾のケア、ですか……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "そうなんです……、雨の日が特にひどくって！\n髪も尻尾もばさばさになっちゃうんですよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴールドシチー",
+   "text": "あ～、湿気で広がっちゃう系ですね。\nそれだとアタシが使ってるヤツは\n合わないかも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴールドシチー",
+   "text": "フラッシュ先輩はどうしてます？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "エイシンフラッシュ",
+   "text": "私は故郷のものを取り寄せていますよ。\nそれを同じ時間、同じグラム数、\n同じお湯の温度で使用しています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "そっ、そこまで正確に！？　やっぱり綺麗な\n毛並みにはそれなりの理由があるんですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "うう……、でも私の大雑把な性格じゃ、\nとてもそんなこと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "エイシンフラッシュ",
+   "text": "なるほど。\n手軽で毛質に合う効果的なケアとなると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "エイシンフラッシュ",
+   "text": "ああ、そういえば以前\n寮のロビーでヴィブロスさんが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『あら、また新しいトリートメント？\n本当によく見つけてくるのね』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『SNSでいっぱい紹介されてるんだもん♪\n塗るだけラクチン！　どんな髪にも合うって！\nね、お姉ちゃんもいっしょに使お～♡』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『いいわよ。じゃあまずは、\n一緒に説明書を読みましょうか。\n使い方が違うと、効果も薄れるでしょうし』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『さっすがお姉ちゃん！　頼りになる～♡』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴールドシチー",
+   "text": "あ、そういえばアタシも駅前で――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『サロンの予約、\n取ってくれてありがと～、お姉ちゃん♡』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "『フェイシャルもヘッドスパも入れた\nオールインのコースでよかったのよね？』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『ぜ～んぶお姉ちゃんといっしょがいい♡\nサラつやになったらデートしようね♡』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "なるほど～！　プロに任せるという手も！\n……いや！　でも、前にこの場所で――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『あのね、このコームでとかすと\nつやつやサラサラになるんだって！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『ねーお姉ちゃん、やってやってー！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "……というのを見かけまして！\nプロでなくとも、誰かにやってもらうのが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "……いや、というより……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "あの……、確かに色々\nやってらっしゃるみたいですが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "エイシンフラッシュ",
+   "text": "そうですね。\n本当の秘訣は、きっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "お姉ちゃ～んっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねねっ、今日もお風呂いっしょにはいろ♡\nあとで髪も乾かしてほしいな♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "いいわよ。……ふふっ、\n貴方ったらいつまでも甘えん坊なんだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "誰にでもじゃないもん、\nお姉ちゃんだからだもん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "櫛で優しーくといてくれるのも、\nドライヤーで丁寧に乾かしてくれるのも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんのぜーんぶ\nあったかくって、だいすきなんだからっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……しかたのない子ね。\nいいわ、いらっしゃい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴールドシチー",
+   "text": "……ははっ。アレはさすがに、\nアタシたちじゃ参考にできなさそうかな～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "トレーナー室へと入ってきたヴィブロスの\n髪と尻尾が、今日は一段と輝いて見える――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ん？　どしたのトレっち？\nじーっと見てるけど。",
+   "choice_data_list": [
+    "いや、今日は何だかキラキラして見えて"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "っ！　でしょでしょっ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんがケアしてくれたんだよ！\nお姉ちゃんのラブ、いっぱい感じちゃった♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いっしょにいてくれて～、\nキレイにもしてくれて～、\n私もお姉ちゃんだーいすき♡",
+   "choice_data_list": [
+    "賢く甘えてるんだな",
+    "賢く甘えてるんだね",
+    "コツコツ、ケアしてくれてるんだな",
+    "コツコツ、ケアしてくれてるんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いっしょにいてくれて～、\nキレイにもしてくれて～、\n私もお姉ちゃんだーいすき♡",
+   "choice_data_list": [
+    "賢く甘えてるんだな",
+    "賢く甘えてるんだね",
+    "コツコツ、ケアしてくれてるんだな",
+    "コツコツ、ケアしてくれてるんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ♪\n今日もまた、お願いしちゃうんだ～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "できたらシュヴァちも捕まえて～\nつやつやサラサラな三姉妹になっちゃお♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして今日も、栗東寮では\n仲睦まじい姉妹の様子が見られたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょー優しーでしょ？　だからね、見て――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――――ふふっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "美しくなびく髪と尻尾に、\nしばし見惚れてしまったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

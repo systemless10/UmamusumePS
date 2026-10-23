@@ -1,0 +1,294 @@
+{
+ "title": "目標達成の後に・ノーカウントな努力",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "目標の期間。クラシック級の5月までを\n無事終えた、ヒシミラクルは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんのおかげで、どうにか\nここまで来られました。でも～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱり違いますよねぇ。\nレースに人生賭けてるウマ娘は。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "活躍しつつも、相変わらず\n同期のウマ娘を一歩引いた目線で見ていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まずはおなじみ、タニノギムレットちゃん。\nよく柵を壊して怒られてるけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ついに『まずムリ』っていう柵まで壊して、\n本当に『MCローテ』を\nやり遂げちゃいました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それからシンボリクリスエスちゃん。\nあの会長さんと同じ、シンボリのウマ娘。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "シンボリクリスエス"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "海外からの留学生で、掲げた目標や\n与えられた目的は、必ずやり遂げる……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あだ名は“仕事人”。\n仕事人かぁ。かっこいいなぁ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしなんて、あだ名“ミラ子”だもんねぇ。\nあだ名からしてレベチってか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、この秋はやっぱり\nクリスエスちゃんとギムレットちゃんの\n争いなんでしょうか。",
+   "choice_data_list": [
+    "そこに、ヒシミラクルも？"
+   ],
+   "color_text_info_list": [
+    "クリスエス"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは……。な～に言ってるんですか。\n冗談きついですって。だってこの先は……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ますます、たくさんのものが問われる\n特別な世界じゃないですか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まずは～『覚悟』でしょ。どのくらい\n本気で走ってるかが、もろに出そう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それから～『努力』……。わたしがしてる\nふつ～の感じのじゃ、してるうちにも\n入らないでしょうし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ますます強くなるクリスエスちゃんや\nギムレットちゃんは、\nやっぱ別世界のウマ娘ですって。",
+   "choice_data_list": [
+    "…………"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、あれ？　トレーナーさん、\nもしかして情けないやつって思ってます？",
+   "choice_data_list": [
+    "いや……",
+    "ううん……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――逆だった。ヒシミラクルは『努力』の\nうちにも入らないと言っていたが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "そんなことはない。たとえ受け身でも、\n他ウマ娘と同等のメニューを\n一生懸命こなしていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "だからこそ、ここまで来られたし、\nこの先もやっていける。それなのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、わたしはわたしなりに\nがんばりたいよね。うんうん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "他ウマ娘と同じぐらい努力している自覚が\nまったくなかった。この自覚のなさが\n明らかに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『自信のなさ』に繋がっている。\nこのままでは、前向きに勝負など\nできるわけがない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "解消するには、やり方を変える必要が\nありそうだ。まずはレース選択の方針から。",
+   "choice_data_list": [
+    "ヒシミラクル、次の目標レースだけど"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、はい。\n引き続き、のんびりやりますか？",
+   "choice_data_list": [
+    "いや、しっかりと決めよう",
+    "ううん、しっかりと決めよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "しっかりとって……まさか……。",
+   "choice_data_list": [
+    "ああ、そこそこ大きい目標レースを！",
+    "うん、そこそこ大きい目標レースを！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あっちゃ～、マジか～。\nなんかプレッシャーがぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "しっかり目標を定めたほうがいい。\nそして、そこに向けて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "やった努力を、強烈に『自覚』させないと、\n自信は養われなさそうだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とはいえ、自分から決めるとかは\nさすがに……。度胸も知識もありませんし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\nそこそこのところをひとつ～。",
+   "choice_data_list": [
+    "GⅠ『菊花賞』！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……！？　トレーナーさん！？\nそこ、ちゃう！　そこそこ、ちゃう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "胃のチクチクで倒れますよ～。\nもう少しお手軽なところで～。",
+   "choice_data_list": [
+    "GⅡ『神戸新聞杯』あたり？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『菊花賞』の前哨戦ですか。\nでも～、でもでも～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "重賞を目標にするのも、\nだいぶ背伸びですよ？\nそこまで行けないウマ娘だって多いし。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "重賞"
+   ]
+  },
+  {
+   "name": "",
+   "text": "――背伸び。その緊張感こそ、\n今のヒシミラクルに必要なものだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "高めのハードルに向け、準備する。\nその準備の自覚こそが自信に繋がる。",
+   "choice_data_list": [
+    "『神戸新聞杯』……いい？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、いえ～……。",
+   "choice_data_list": [
+    "目標は勝利じゃなく、頑張ること！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "な、なるほど～。そう言われると、\n少しはいけそうな……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、だまされてる？　チョロいのかな、\nもしかして。でも～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうですね。『神戸新聞杯』に向けて、\nがんばる！　それならできそうです。\n目標『がんばる』で！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "神戸新聞杯"
+   ]
+  },
+  {
+   "name": "",
+   "text": "なんだかんだ言いつつ、同意してくれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "目標は『神戸新聞杯』。そこへ向けて\nヒシミラクルの意識を改革していこう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

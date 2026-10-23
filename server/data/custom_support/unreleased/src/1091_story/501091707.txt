@@ -1,0 +1,32 @@
+#title Praying at the Shrine!
+0 Vivlos has been out of sorts lately. She said she wanted to go to a shrine that's a power spot, so I went with her, but...
+1 Suuuu... haaaah!
+1> ...How is it?
+2 Yeah, I feel like it's working! That's a power spot for you!
+3 ...
+4 ...It's working? Right? Right? It was going viral on social media, so... ...........
+5 Ugh, geez～～! Saying stuff like that just proves I'm still all gloomy!!
+6 Uuu～! I hate it, I hate it, I hate it～! This isn't the usual me at all～!
+7 I know! If it's come to this—
+8 Hmm! With the current flow of qi, green is good for you! Look at the trees and take slow, deep breaths—
+9 Hannyaka～...! Funnyaka～...!
+10 —It's come out! Vivlos-san's lucky spot is in front of the station!
+11 Look at the green on the wall～...
+12 Suuu... fuuu...
+13 ...........And then—
+14 Hannyaka～ funnyaka～～! Honnyaka～ bunchaka～～!!
+15 Yeah, this feels good...! The more I do it, the better it feels...!
+15> (Isn't she getting way too influenced...?)
+16 I was worried, but decided to keep watching over her for now.
+17 Okaaay! Next is—
+18 Hm?
+19 Huh, no way...!
+19> Wh-what's wrong? | Wh-what's wrong?
+20 ～～Yaaay!! The limited cosmetics I couldn't buy 'cause they sold out are back in stock from a cancellation!
+21 This is 'cause I prayed and did all that stuff, right! It worked! Amaaazing!
+22 Now I'm totally fine♪ Peace♪
+23 She was so simple it was worrying... but from that day on, Vivlos got back into form.
+24 Today was the release day for those cosmetics!!
+25 They sold out... What... Normally I'd never... ever forget...
+26 ......................I'm done. Flop.
+27 She clung to all sorts of things, but Vivlos stayed out of sorts after that...

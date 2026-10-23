@@ -1,0 +1,348 @@
+{
+ "title": "My Loving Family♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "トゥインクル・シリーズでの最初の3年間を、\n家族への愛をもって駆け抜けたヴィブロス。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "世間からも認められる活躍を見せた彼女が、\nこの先目指す道は、1つしかない。\nそれは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――ママ～！\nドレスって新しいの買う？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "そうね～、せっかくだから、\nみんなで新調しちゃおっか～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "“ドバイのレースを走る”――\nその大きな夢に向け、ヴィブロスは\n家族とともに遠征の準備を進めていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "トレーナーさん、\nこの後お時間あるよね～？",
+   "choice_data_list": [
+    "はい、ありますけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃ、いっしょに選びにいこ！\nペアルックっぽくしてもいいし♡",
+   "choice_data_list": [
+    "……俺も買うのか！？",
+    "……私も買うの！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、そうだよ？\nだって、持ってないでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイのレースで勝ったら、たくさん\nドレスアップする機会もあるだろうしー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私の担当トレーナーとして、\nびしっと決めてもらわなくちゃ♡",
+   "choice_data_list": [
+    "……じゃあ、自分で買います！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "あら、買ってあげるのに？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ねえママ。パパの青紫色のネクタイ知らない？\nドバイに持っていきたいらしいんだけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "あら、ないの？\n最近見た気がするけど……？",
+   "choice_data_list": [
+    "あ、自分が持ってきました"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え？\nトレっちが……なんで！？",
+   "choice_data_list": [
+    "先日、ご両親と食事をした時に……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "あー！　そうそう、思い出した～。\nパパってばお話に興奮しちゃって、\nネクタイとっちゃったのよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、ご飯食べに行くって言ってたね！\n大人の会だっけ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "もうパパってば、トレーナーさんのこと\nすっかり気に入っちゃって！",
+   "choice_data_list": [
+    "自分も楽しかったですよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ふふ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえママ、ドバイから帰ってきたら……\n客室、トレーナーさんのお部屋にしちゃう？",
+   "choice_data_list": [
+    "……え！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "あら！　いいわね～。\nそうしよっか？",
+   "choice_data_list": [
+    "いやいやいやいや！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって毎週末来てるしー、\nもう家族だしー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "変な話してないで、\n早く準備、進めなよ。",
+   "choice_data_list": [
+    "変な話だよな……",
+    "変な話だよね……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "変なの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……じゃあトレっちは、\n私のこと……家族だと思ってないの！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えーやだ、\nそんなの寂しいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねぇ、ほんとに、\n家族って思ってないの……？",
+   "choice_data_list": [
+    "うっ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっちぃ～……？",
+   "choice_data_list": [
+    "うう……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……なんていうか、\nお疲れさま……です。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、ドバイへ進むまでの日々は\nあっという間に過ぎ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスの家族全員と一緒に、\n直行便で約12時間のフライトの後、\nドバイに早朝に到着した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "疲れをとるため、\nホテルでゆっくり休み――夜。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、まだダメだよ？\nちゃーんと目をつむってて？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………ついたっ。\nいいよ、目を開けて――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイへようこそ、\nトレっち！",
+   "choice_data_list": [
+    "わぁ……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "目の前に広がる、煌びやかな世界……\n確かにそこは、ドバイだった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、ね、すごいよねっ！\nキレイだよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "抜け駆けしたこと、\nみんなには内緒ね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "明日また、\nちゃーんと初見のリアクションするんだよ？",
+   "choice_data_list": [
+    "何度見たって、感動するよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへ、\nそうだねっ。",
+   "choice_data_list": [
+    "連れてきてくれてありがとう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こちらこそっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いっしょに辿りついてくれて、\nありがとう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、ほんとに……\nやっっ……と来られたぁ～！",
+   "choice_data_list": [
+    "ここから君の夢が始まったんだな",
+    "ここから貴方の夢が始まったんだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょーキラキラの、\nすっごいセレブな夢……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "叶えに、\n戻ってきたよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのときのみんなと、\n新しい家族といっしょに！",
+   "choice_data_list": [
+    "プライベートジムも作っちゃおうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ドバイに？\nあはっ、それってさいこー♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、ちょーセレブになる\n心の準備はできてる？",
+   "choice_data_list": [
+    "もちろん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "さすがっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あのね、私……\nちょー欲しいものがあるの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――世界のトップに立っちゃうよ！\n最強で、だーいすきなみんなといっしょに♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

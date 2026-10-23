@@ -1,0 +1,341 @@
+{
+ "title": "キラキラって、だーいすき♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "“そこ”はね、キラキラの国だったの――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "世界一のタワーに、ショーみたいな噴水、ゴールドに光る砂漠！\n目に入るなにもかもが、ゴージャスでちょ～セレブ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "なのに、全然イヤミじゃない。洗練されてて、かっこいい！\n世界中のみんなが憧れる、その国は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ある子どものウマ娘",
+   "text": "『パパ、ママ！　私、ここが好き！\n私……ここで暮らす～～っ！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ある休日、なんとなく街を歩いていると……目の前に車が停まった。\n見たところ、とんでもない高級車のようだ。その中から――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "よととっ……。ママ、送ってくれてありがと♡\nねえねえ、次はいつデートしてくれる？　……うん、うん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "ほんとだよ？　お仕事がんばって、すぐ会いに来てねっ！\nママ大好き～、ちゅ！　ばいばーい♪",
+   "choice_data_list": [
+    "（なんだか派手な子だなぁ……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――……ん？\nあれ？　あなたは……。",
+   "choice_data_list": [
+    "…………俺？",
+    "…………私？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "ゆ～！\nあなた、学園のトレーナーさんだよね？",
+   "choice_data_list": [
+    "そうだけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやら、この子はトレセン学園の生徒のようだ。バッジを見れば、\nトレーナーだとはわかるが……彼女は顔で判断したように感じる。",
+   "choice_data_list": [
+    "どこかで話したっけ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "ううん！　私ね、今ね～、\nトレーナーさんはみーんなチェックしてるんだ！",
+   "choice_data_list": [
+    "チェック？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "うん！　あなたにも、ちゃんと目をつけてたんだよ？\nだって……あ、そうだっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、ヴィブロスって言います♪\n今からいっしょに、お買い物しませんか？",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "大丈夫、おねだりしないから！\n1人じゃなくて、誰かといっしょがいいの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんとはママといっしょのはずだったんだけど、お仕事でー。\nお願い、寂しいの……ねえ、いいでしょ？　ねえねえ？",
+   "choice_data_list": [
+    "え、えーと……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ダメって言わないんだね？　じゃあいいってことだよね！\n決まりっ♪　こっちこっち～！",
+   "choice_data_list": [
+    "あ……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてなし崩し的に、彼女――\nヴィブロスの買い物に付き合うことになったのだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～っ、あのショルダーバッグかわいー！\nね、ちょーよくない？",
+   "choice_data_list": [
+    "（ちょ、超ハイブランドじゃないか……！）",
+    "（ちょ、超ハイブランドじゃない……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "他の形も見てみたいなー……って、トレーナーさん？\nだいじょぶ？　顔、がちがちになってるよ？",
+   "choice_data_list": [
+    "……こういうブランドが好きなのか？",
+    "……こういうブランドが好きなの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、大好き♡　だってー、デザインも質もすてきだしー、\nすっごいセレブじゃない？",
+   "choice_data_list": [
+    "セレブ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、セレブ！　いいよね～、かっこいいよね！\n華やかでー、みんなの憧れ！　私も早くセレブになりたいな～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "で～、あのバッグ、私にちょーぴったりだと思うんだよね！\n見に行こ、トレーナーさん！　ほーら、こっち～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやらヴィブロスはセレブらしく振る舞うのが好きなようで、\nその後に入った別のお店でも……。",
+   "choice_data_list": [
+    "（VIPルームに通された……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "店員",
+   "text": "それで、以前お気に召していたスカートがちょうど入荷したんです！\n試着されますか？　一応、サイズはXSがございますけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとうございます！　ん～やっぱりかわいいー！　けど……\n見た感じ、まだおっきいかも。ウエストぶかぶかになりそー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "店員",
+   "text": "そうですよねぇ。ヴィブロスさん、とてもスリムで\nいらっしゃいますから……後で少し詰めましょうか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うんっ、お願いしまーす！　トレーナーさん、\n私が試着したらなんて言うかわかる？",
+   "choice_data_list": [
+    "……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『似合ってるね！』とか～、『かわいいね！』みたいな♡\nちゃんと準備しておいてねっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん～……あんま～♪\nごちそうさま、トレーナーさん！",
+   "choice_data_list": [
+    "まあ、これくらいは……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ハイブランドの店をいくつか回った後だと、\n数百円のアイスなんて安いものに感じる……。",
+   "choice_data_list": [
+    "（さて……そろそろ解散かな？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえねえ、次はコスメ見たいなー！\n今日は予定ないんでしょ？",
+   "choice_data_list": [
+    "な、なんで……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だって最初に会ったとき、あてのない感じしたしー。\n予定あるけど切り出せないって顔は～……してないしー？",
+   "choice_data_list": [
+    "（この子、結構鋭い……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねっ、大丈夫だもんね？　アイス食べたら続き行こ！\nオススメのリップクリームとか、教えてあげる♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "結局、元気いっぱいなヴィブロスの買い物に\n1日中ずるずると付き合うことになり……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "は～、楽しかった♪\nありがとう、トレーナーさんっ。",
+   "choice_data_list": [
+    "（つ、疲れた……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふふ、ずーっといっしょにいてくれたね♪\nだから……トレーナーさん、私――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "――ヴィブロス！\nと、貴方は……学園のトレーナーさんですか？",
+   "choice_data_list": [
+    "君は……ヴィルシーナ！",
+    "貴方は……ヴィルシーナ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィルシーナ――精鋭集うトゥインクル・シリーズの中でも、\n輝く戦績を残しているウマ娘だ。彼女はトリプルティアラ路線――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "つまり『桜花賞』『オークス』『秋華賞』全てで2着という\n好成績を収め、その後『ヴィクトリアマイル』を連覇している。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへ、さっすが私のお姉ちゃん！\nちょー有名人～。セレブぅ♪",
+   "choice_data_list": [
+    "お姉ちゃん、ってことは……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、そーだよ！\nヴィルシーナは、私の自慢のお姉ちゃん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――ヴィブロスは、あのヴィルシーナの妹だったのだ。\nそういえば以前、彼女には優秀な妹が2人いると聞いていたが……。",
+   "choice_data_list": [
+    "（確かによく見ると……激似！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "妹がお世話になったようで。ありがとうございます。\nこらヴィブロス、トレーナーさんたちはお忙しいんだから――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むぅ、ただ遊んでただけじゃないもーん！\n前に話したでしょ？　トレーナーさんを探してるって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょー偶然、候補に挙げてた人と会ったから～、\n1日かけてしっかり見極めてたの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――この人は私をあの国に連れてってくれる、\n王子様なのかなーって！",
+   "choice_data_list": [
+    "あの国……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それでね、トレーナーさん。\n私……決めたよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あなたと――ドバイに行く～～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

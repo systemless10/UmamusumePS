@@ -1,0 +1,43 @@
+{
+ "title": "クレーンゲーム成功！",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "ありがと、トレっち！\nこの子、大事にする♡",
+   "choice_data_list": [
+    "もっと獲れたらよかったんだけど……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへっ！　ねね、トレっちトレっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、見てたよ？\nむむむ～って、アームと睨めっこしてる――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私のために、がんばってる横顔！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だからこの子、大事にしたいんだっ！\nトレっちががんばって獲ってくれた、\n特別な子だもん♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――それなりの結果だった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

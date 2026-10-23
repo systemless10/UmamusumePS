@@ -1,0 +1,324 @@
+{
+ "title": "宝塚記念の後に・お腹いっぱいの夢",
+ "text_block_list": [
+  {
+   "name": "実況",
+   "text": "さあ最終直線！　この豪華メンバーの中、\n突き抜けてきたのは……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "たぁぁぁぁ～～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "ヒシミラクル！　ヒシミラクルだ！\nまたまたミラクルだー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜはぁ、ぜはぁ……。\nぶはぁ……ふひゅ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やったぁぁぁぁぁ……あ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……げほっ、こほっ、ぶえっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "勝利の雄叫びすら、満足には上げられない\n疲れ具合。それでも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――まさにミラクル。ヒシミラクルは\n史上最強のメンバーが集った『宝塚記念』で\n見事勝利した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "シンボリクリスエスも呆然！\n『天皇賞（春）』を制し、そして\nこの『宝塚記念』でも快勝！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "長距離だけのステイヤーではありません。\nもしかしたら現役最強は……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "全部入り、最高ー！！\nごちそうさまでしたーっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それから、わたしにいっぱい夢を\n懸けてくれた人、\nおめでとうございました～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客たち",
+   "text": "おおおお……！？\nマジで勝っちまった……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "観客のおじさん",
+   "text": "うおおおおっ、やったぁぁぁ！\n俺ぁ……俺ぁ信じてたぞー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その姿に、自分を重ね合わせるファンたち。\nヒシミラクルの勝利によって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "レース場全体が、\n『誰でも夢は見られる』という\n温かな希望に包まれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハハハッ。クリスエス、\nまんまとやられたな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "懸けてくれた夢に応える、か。\nなかなかのロマンじゃないか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "But――まだ、それだけだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ん、それだけ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "ああ。\nやり遂げたいMissionは――見えない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "おそらく……彼女自身にも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "タップダンスシチー",
+   "text": "ハッ、堅物だな。ま、そのうちにわかるさ。\nヤツの求めるお宝はなんなのか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "歴史に残るような勝利を成し遂げた、\nその夜――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\nあの～ちょっとお話が……。",
+   "choice_data_list": [
+    "何、ヒシミラクル？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "笑顔一色……かと思いきや、\nその表情は少し真剣だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\nわたし、気づきました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今まで、代わりに覚悟決めてくれてたのは\nトレーナーさんだったんだって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それに応えたいって思ったから、\n今日は迷いなく走れました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "応えられて、ちょっとよかったけど、\nでも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱりわたしは、\nトレーナーさんみたいには\nなれないと思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "全部なくすとか、恨まれるとか、\nそんな覚悟で進むなんて、とても……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふわふわしてるところは\n完全にはなくならないかも。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも、これからは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんと\n一緒に背負えるわたしになりたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "その覚悟だけは決めました。\nですから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ここからは……見てもらえますか？\nわたしの本気。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いっぱいいっぱいまで覚悟を決めた\nわたしなりの全力。",
+   "choice_data_list": [
+    "ああ……見せてほしい",
+    "うん……見せてほしい"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……はい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "やっとヒシミラクルが笑う。\nこの『宝塚記念』で、\n何かを振り切れたようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それでトレーナーさん、\n次のレースなんですけどっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "また中距離のGⅠがいいかなって。\n今回は勝てましたけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まだクリスエスちゃんほどは\n安定して走れませんから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "秋の中距離GⅠ第1弾と言えば、\n2000mの『天皇賞（秋）』だが……。",
+   "choice_data_list": [
+    "じゃあ『天……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "待ったぁ。トレーナーさん、一緒にっ。\n一緒に言いましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "さっき一緒に背負おうって言いましたよね。\nだから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして声をそろえて言うことにした。\nそう次走は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "せーの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "2人",
+   "text": "『天皇賞（秋）』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、なんかいいですね～、こういうの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もうひとりには背負わせません。ここからは、\nわたしにどーんと肩を預けてください。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして覚悟を決めた新生ヒシミラクルは、\nやる気満々で『天皇賞（秋）』へと\n向かうのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

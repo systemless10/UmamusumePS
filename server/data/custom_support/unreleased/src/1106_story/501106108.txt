@@ -1,0 +1,113 @@
+#title Fan Appreciation Festival
+0 The Fan Appreciation Festival. A fun event where fans are invited into Tracen Academy, but...
+0{ Tracen Academy
+1 Kris S... is probably super popular today too. Surrounded by tons of fans...
+2 Ahh, don't think about it, don't think about it...
+3 ...Ever since entering the Senior class, Hishi Miracle had often fretted over the gap between her and Symboli Kris S.
+4 She still lacks confidence. If she could make up for it at this Fan Appreciation Festival...
+4> Hey, why don't you enter this event? | Hey, why don't you enter this event?
+5 Huh, this event... You mean the one on this poster? It's called...
+6 "Thrilling and Exciting☆3000millions." I'm not really sure what that means, but...
+7 It sounds kinda fun. Sure.
+8 Of course, I already knew the event's details and its entrants. The two of us head to the venue.
+9 H-huh? Isn't everyone getting ready to run pretty seriously?
+10 It's not really giving "thrilling and exciting" vibes...
+11 Mira-ko!
+12 Huh, who's that?
+13 Top Road? Are you entering this event?
+13{ Top Road
+14 Yes! Even if it's a festival event, I think what the fans want to see most is a race run for real.
+15 This was about the only event where we can run seriously. A 3,000m race on the actual course.
+16 A 3,000m race on the actual course... And my opponent is Top Road, going all out...
+17 Wait! That's basically a mock race!
+18 It's not just any mock race. Because her opponent, Narita Top Road...
+19 Is a true stayer who, in the Classic class, beat powerhouses like T.M. Opera O and Admire Vega in the Kikuka Sho.
+20 Competing with Narita Top Road over 3,000m is practically a G1-level race, and that's no exaggeration.
+20{ G1
+21 Trainer...? You didn't happen to know about this, did you?
+21> ~~~♪
+22 Why are you whistling?! Ugh, I wanted to have fun...
+23 It's not thrilling or exciting at all... But...
+24 Fine. I'll go run with Top Road.
+25 Honestly, of course... I'd like to let her enter something more relaxed. But...
+26 This was all to somehow give her confidence and put her mind at ease.
+27 All runners, take your marks!
+28 (Top Road... When it comes to the "resolve" she puts into racing, she's on par with Kris S...)
+29 (Always serious, always going all out... The total opposite of me. But...)
+30 (What is this... I kinda don't want to lose... I do have that feeling.)
+31 Mira-ko, let's have a good race!
+32 Top Road... Yeah...!
+33 Get set!!
+34 Ugh, whatever happens, happens!! I'll stop thinking and just try my best!!
+35 Go!!
+36 Hup!!
+37 Narita Top Road's strategy was the same as always. Run as a Pace Chaser and keep a good position near the front.
+38 A true honor-student race. Meanwhile, Hishi Miracle...
+39 Hah, hah, hoh, hoh...
+40 Same as always too. From a slow start, she somehow keeps up at her own pace.
+41 The race continues at a relaxed pace, and then, in the final stretch...
+42 Before the final straight, I'll pull away!! Haaaaaaaaaah!!
+43 Whoa, Top Road, at this timing?!
+44 A preemptive strike. Narita Top Road accelerates without mercy. Then...
+45 (Is it too early to chase...? No, Trainer would say I can make it.)
+46 A long spurt from here! Haaaaaaaaaah!!!!!!
+47 ...?! Mira-ko...?! She's spurting already?!
+48 This boldness and confidence...?!
+49 And so the two of them, neck and neck...
+50 Finish!! The winner is...
+51 Narita Top Road! The winner is Narita Top Road!
+52 (Waaaaaaaaaah!)
+53 Hishi Miracle fell just short of winning. However...
+54 The applause for her was no less than for the winner. The fans must have been moved by her strong run.
+55 Wheeze... wheeze... So frustrating! But I was so close...
+56 Even someone with no resolve like me almost won.
+57 No... resolve?
+58 Hearing Hishi Miracle's offhand remark, Narita Top Road...
+59 Mira-ko, I don't think that's true at all. Absolutely not.
+60 Huh? Top Road...?
+61 Someone with no resolve couldn't make such a fearless move.
+62 That spurt is something only someone who's taken on challenges by their own will and pushed their limits could pull off.
+63 If you think you "don't have any resolve," Mira-ko, then...
+64 You just haven't noticed it yourself. It's not that you don't have any.
+65 And you definitely have what it takes to be a first-class stayer, one who can hold her own in the Senior class. So...
+66 I think you should be more confident! That was an amazing run!
+67 Top Road...
+68 Narita Top Road declared it boldly. Hearing that, Hishi Miracle...
+69 Couldn't even say thank you, and just stood there.
+70 Hishi Miracle! The winner is Hishi Miracle!!!!
+71 (Waaaaaaaaaah!)
+72 It was just an exhibition. But the thunderous applause wasn't the kind meant for an exhibition.
+73 The fans must have felt it too. The feelings of the two who ran for real.
+74 Wheeze... wheeze... I won... I actually won...
+75 Me, with no resolve at all, beat Top Road, the queen of resolve...
+76 No... resolve?
+77 Hearing Hishi Miracle's offhand remark, Narita Top Road...
+78 Mira-ko, I don't think that's true at all. Absolutely not.
+79 Huh? Top Road...?
+80 Someone with no resolve couldn't make such a fearless move.
+81 That spurt is something only someone who's taken on challenges by their own will and pushed their limits could pull off.
+82 If you think you "don't have any resolve," Mira-ko, then...
+83 You just haven't noticed it yourself. It's not that you don't have any.
+84 And you definitely have what it takes to be a first-class stayer, one who can hold her own in the Senior class. So...
+85 I think you should be more confident! Congratulations on your win!!
+86 Top Road...
+87 Narita Top Road declared it boldly. Hearing that, Hishi Miracle...
+88 Couldn't even say thank you, and just stood there.
+89 Woohoo! Trainer, let's dance, let's dance!
+90 And then came the after-party. Hishi Miracle was in high spirits.
+91 Trainer. Maybe I did have it. At least a little "resolve"!
+92 And, and, she said I definitely have what it takes to be a stayer. Top Road said that, of all people.
+92> Yeah, of course you do! | Yeah, of course you do!
+93 Ehehe, when lots of people say it, you start to think maybe it's true, huh.
+94 I still can't think I could beat Kris S in resolve, though...
+95 But this spring... maybe things will go pretty well.
+96 I felt like the carefree look had returned to Hishi Miracle's eyes.
+97 First up... is the Tenno Sho (Spring), right?
+97> Right. | Yeah.
+98 Kris S won't be running in that one, right?
+98> Yeah, probably not. | Yeah, probably not.
+99 Last year, Symboli Kris S passed on the 3,000m Kikuka Sho. She seems to think middle distance suits her better than long.
+100 Judging by what I've heard of her plans so far, there seemed to be almost no chance she'd enter the Tenno Sho (Spring).
+101 Then I'm sure I can make it through. The Tenno Sho (Spring)!
+102 Alright, I'm totally gonna win!! I already said I'd win, after all!!
+103 Hishi Miracle's spirited cry, as fierce as she could muster, echoed into the after-party sky.

@@ -1,6 +1,3 @@
-// Race workshop: a library of race setups and the game's practice-race
-// shelf, an editor (race settings → runners → results), and sending an
-// exact simulated race to a practice slot or the next practice start.
 
 import { act, ago, call, esc, gameIcon, icon, loadExtra, store, toast } from './core.js';
 import { STATS, STYLES, ask, empty, modal, targetPicker } from './widgets.js';
@@ -12,11 +9,8 @@ import { mountCourseMap, mountViewer } from './race-viewer.js';
 
 const CONDITIONS = [['season', 'Season', SEASONS], ['weather', 'Weather', WEATHERS], ['ground_condition', 'Track', GROUNDS],
   ['motivation', 'Default mood', ['Random', 'Awful', 'Bad', 'Normal', 'Good', 'Great']]];
-// The client treats entries 0-2 as the practice race's Main slots
-// (ExhibitionRaceDefine.PRACTICE_RACE_RACE_MAIN_CHARA_NUM).
 const MAIN_RUNNERS = 3;
 const TABS = [['race', 'Race'], ['runners', 'Runners'], ['results', 'Results'], ['replay', 'Replay']];
-// The lobby stamps saves as local "YYYY-MM-DD HH:MM:SS" strings.
 const savedAgo = (t) => { const ms = Date.parse(String(t).replace(' ', 'T')); return Number.isNaN(ms) ? esc(t) : ago(ms / 1000); };
 const blankSettings = (courses) => ({ race_instance_id: courses[0]?.id || 0, season: 1, weather: 1, ground_condition: 1, motivation: 3 });
 
@@ -29,8 +23,8 @@ export const racesWin = {
     let view = 'library', tab = 'race';
     let draft = null, name = '', templateId = null, baseJSON = '', replay = null, dirty = false;
     let selected = 0, runnerQuery = '', courseQuery = '';
-    let stopPane = null;                // the replay viewer's or course map's teardown
-    const courses = new Map();          // race_instance_id -> course profile (or a pending promise)
+    let stopPane = null;
+    const courses = new Map();
 
     const runnerName = (h) => cardById.get(h.card_id)?.name || (h.mob_id ? 'Mob ' + h.mob_id : 'Card ' + h.card_id);
     const courseName = (id) => courseById.get(id)?.name || `Race ${id}`;
@@ -79,7 +73,6 @@ export const racesWin = {
       return [...tmp.childNodes];
     }
 
-    // -------------------------------------------------------------- shell
     function stopPaneView() { stopPane?.(); stopPane = null; }
     function render() {
       stopPaneView();
@@ -113,7 +106,7 @@ export const racesWin = {
     }
     function renderPane() {
       const pane = body.querySelector('[data-pane]');
-      pane.onclick = pane.onchange = null;      // drop the breakdown's handlers
+      pane.onclick = pane.onchange = null;
       stopPaneView();
       for (const b of body.querySelectorAll('[data-tab]')) b.classList.toggle('on', b.dataset.tab === tab);
       if (tab === 'race') { pane.innerHTML = raceTab(); mountMap(); }
@@ -133,7 +126,6 @@ export const racesWin = {
       if (pane) renderPane(); else renderChrome();
     }
 
-    // -------------------------------------------------------------- library
     function renderLibrary() {
       const shelf = catalog.saved, q = catalog.queued;
       const avatars = (runners) => `<span class="rw-stack">${runners.slice(0, 6).map((h) => gameIcon('card', h.card_id, 'sm')).join('')}${runners.length > 6 ? `<b>+${runners.length - 6}</b>` : ''}</span>`;
@@ -179,7 +171,6 @@ export const racesWin = {
       render();
     }
 
-    // -------------------------------------------------------------- race tab
     function profileHTML(p) {
       if (!p) return '<p class="faint">Loading course…</p>';
       return `<div class="rw-chips">${courseFacts(p).map((f) => `<span class="chip">${esc(f)}</span>`).join('')}</div>${courseStrip(p)}
@@ -215,7 +206,6 @@ export const racesWin = {
         <div class="rw-next"><button class="btn primary" data-tab="runners">Next: runners ›</button></div>`;
     }
 
-    // -------------------------------------------------------------- runners tab
     function runnerCard(h, i) {
       const card = cardById.get(h.card_id), equipped = h.skill_array || [];
       const bars = STATS.map(([key, label]) => `<i class="st-${key}" style="--v:${Math.min(100, statOf(h, key) / 20)}%" title="${label} ${statOf(h, key)}"></i>`).join('');
@@ -274,7 +264,6 @@ export const racesWin = {
       });
     }
 
-    // -------------------------------------------------------------- actions
     async function simulate(btn) {
       if (!draft.runners.length) throw Error('Add at least one runner first.');
       const label = btn?.innerHTML;

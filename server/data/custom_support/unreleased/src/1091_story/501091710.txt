@@ -1,0 +1,14 @@
+#title Defeat
+0 ...I'm back～... Sigh.
+1 Hey, Tore-cchi～... I couldn't run the way I wanted at all...
+2 I was just no good today～...
+2> Even so, you didn't give up on the race until the end | Let's retrain so you can run like yourself!
+3 Her will to win came through in her running. I reassured her that it would surely lead to results someday.
+4 ...Fufu, you're so nice, Tore-cchi. But you're right, I've been practicing sooo much too.
+5 I can't stop in a place like this. Next time I'll place higher... no, I'll win!
+6 Tore-cchi, I'll try my best one more time!
+7 Retrain, huh... But everyone was strong, so you're right.
+8 ...Yeah, I wanna be able to run like myself.
+9 I'll practice lots and win next time for sure!
+9> I'll make you win. I'll lay out the path for it
+10 Yeah! Okaaay, that's enough moping! I'm gonna get stronger and stronger～～～!

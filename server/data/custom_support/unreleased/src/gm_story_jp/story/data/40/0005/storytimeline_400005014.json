@@ -1,0 +1,173 @@
+{
+ "title": "WBCへの招待状",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "（ポロロン♪）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ある日のこと、三女神から\n1通のメールが届いた。その内容は――",
+   "choice_data_list": [
+    "“WBC招待状”――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "去年は『グロウアップレース』、\nそして今年は『WBC』……\nこれってすごいことなんじゃない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "数多くのデビューを果たしたウマ娘の中で、\n抜け出た新星のみが出走できる\n『グロウアップレース』――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "そして、クラシック級の中でも三女神さまに\n認められるほどの素質をもったウマ娘が\n舞台に上がることを許される『WBC』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "ある意味、クラシックレースの舞台に\n上がるのと同じくらい、すごいことかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "栄誉あるレースのため、ウマ娘たちが\n力を付けて競い合うのがクラシック級だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その中で<chrname>が選ばれたのは\n自分も素直に嬉しかった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "ふふっ、出走の権利を手にしただけでも\nとても名誉なことでしょうけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "レースなんだもの、\nやっぱり1着を獲らなくちゃねっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "最高のレースをしちゃいましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "“WBC”選出に気持ちが入る中、学園内を\n歩いていると樫本トレーナーに出会った。\n……どこか考えこんでいる様子にも見える。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "…………。",
+   "choice_data_list": [
+    "どうかしましたか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "あ……いえ、今しがた連絡がきまして。\nビターグラッセとリトルココン、\n2人とも『WBC』への招待状が届いたのです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "同じく招待状を受け取っていたようだ。\nしかし、自分はあれほど喜んだというのに、\n樫本トレーナーの表情はやはり硬く見える。",
+   "choice_data_list": [
+    "あまり嬉しくないですか……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "いえ、非常に喜ばしいこととは思います。\nただ――。…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……この前出走した、\nビターグラッセのレースなのですが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "ビターグラッセ、前がふさがっている！\nその間に後続が一気に追い上げるっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "実況",
+   "text": "ようやく外に出るが、これはもう届かない！\n1番人気ビターグラッセ、手痛い敗戦ー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "合宿でもこれまで以上のトレーニングをして、\nしっかり鍛え上げてきました。……しかし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "それ以上に他のウマ娘のレベルが高かった。\n経験が備わったというのが正確でしょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "これまでは持ち前の力で押し切りましたが、\nレースは単純な力比べではありません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "彼女に今以上の力を鍛えさせるか、それとも\nレースの理解力か、スピードに舵を切るか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……いえ、悩んでばかりではいけない。\n三女神にも意見を聞いてみることにします。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ああ、それに……\nまずは2人に教えてあげなければ。\n『WBC』への招待おめでとう、と。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "すぐに気持ちを切り替えるあたりは\nさすが先輩トレーナーなだけはある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ただ、ウマ娘を支えるというのは\n経験だけではないのだとも思うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

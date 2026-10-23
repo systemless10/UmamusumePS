@@ -1,0 +1,15 @@
+#title Toward the WBC
+0 The day of the WBC—
+1 Apparently what happens inside the simulator can be watched on monitors, and a crowd had gathered.
+2 Long-awaited! The day has finally come!
+3 The Three Goddesses, who govern an enormous wealth of data and could be said to know everything there is to know about Umamusume—
+4 A heated race between the elite racers they have chosen! By all means! Deliver us inspiration and excitement!
+5 I think this race is a stage that will test everything you two have done so far.
+6 Good luck, <chrname> and Trainer <username>!
+7 Seen off by a large crowd, <chrname> and I headed into the world of the VR simulator—
+8 Welcome to the WBC, little lamb.
+9 Now, you're about to aim for the summit of a lofty mountain. Are you ready?
+9> We're ready!
+10 Hehe, you've worked so hard to get here.
+11 Let us see how you run, built up through everything you've done so far.
+12 And so, at last, the WBC begins!

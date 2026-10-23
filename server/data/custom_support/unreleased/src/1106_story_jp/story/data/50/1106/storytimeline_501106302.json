@@ -1,0 +1,493 @@
+{
+ "title": "福引チャンス！",
+ "text_block_list": [
+  {
+   "name": "化粧品店の店員",
+   "text": "福袋、残り5点！　残り5点でーす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "服屋の店員",
+   "text": "もうすぐでタイムセールが始まりまーす！\n70％引きの商品を2つ買うと、\nさらに10％引きになりまーーす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ～、お正月ムードですねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんか買って帰っちゃおうかな～。\nでも今月は財布が厳しいし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "けどお買い物したーい。\nお得をおすそ分けされたーい。",
+   "choice_data_list": [
+    "じゃあトレーニング用品を見にいくか",
+    "じゃあトレーニング用品を見にいこうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ、トレーナーさん？\nいやいや、そういう\n真面目な方向じゃなくて～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そしてヒシミラクルとトレーニング用品を\nお得に買った後――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "さあさ、新春・大福引祭り開催中だよ～！\n特賞はなんと『温泉旅行券』！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "温泉旅行券"
+   ]
+  },
+  {
+   "name": "商店街の人",
+   "text": "1等は『特上にんじんハンバーグ』\n2等は『にんじん山盛り』\n3等は『にんじん1本』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "さあさ、楽しい楽しい福引だよ！\nどなたでもどうぞ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おおっ、福引！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\n券ならさっきもらいましたよね？",
+   "choice_data_list": [
+    "ああ、1枚な",
+    "うん、1枚ね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それにかけましょ～。\nせめて3等。幸せ気分で帰りたーい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルと福引の列に並ぶ。\nそして順番が訪れ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルが勇んで\n抽選器のレバーを回した！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その結果は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "なんとっ！　おめでとうございまぁぁぁす！！\n特賞『温泉旅行券』、出ましたぁ～～～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ。\n……え？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えーっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "温泉！　温泉ですよ！\nトレーナーさん、温泉！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "旅館の名前も見ました？\nめちゃ有名なとこですよっ。\nこの前テレビにも出てて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クチコミも星5！\n部屋からの夜景はピカイチ、\nお料理も有名シェフが監修してるんです～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女は目を輝かせてまくし立てる。\n温泉は最高のゴホウビになりそうだ。",
+   "choice_data_list": [
+    "じゃあ今年頑張ったら行こうか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はーい、今年――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今年って始まったばっかりですけど……？",
+   "choice_data_list": [
+    "“今年1年”君の頑張りを期待しているぞ",
+    "“今年1年”貴方の頑張りを期待しているね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えーっ。\nじゃあがんばれなかったら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぅ～、ひど～。\n鬼、悪魔、プールの先生～……。",
+   "choice_data_list": [
+    "でも頑張ったら専用の療養期間もとるから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "本当ですか？　…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……お休み、少なくとも5日はくださいね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "行く前の準備期間で2日、\n帰ってきた後ごろごろするための2日。\nそれは譲れません。",
+   "choice_data_list": [
+    "もちろん！約束する"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "むぅ～……わかりました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "絶対ですよ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "レーススケジュールをメモする手帳に、\n彼女の休暇予定を書き込む。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今年が終わる頃には\nたくさん休みを与えたくなるくらい、\n彼女は頑張るに決まっているのだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "おめでとうございます、1等賞～！\n賞品は『特上にんじんハンバーグ』です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えーっ、やったーーっ！\n1等ですっ！　1等！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ヤバ。今日のわたし、豪運かも。\n別のくじもチャレンジします？",
+   "choice_data_list": [
+    "このまま波に乗れるかもな",
+    "このまま波に乗れるかもね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おぉ～、わかってますね\nトレーナーさん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "では夢を買いに行きますか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "お嬢さん！　景品、忘れてるよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おっとっと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "エヘヘ、すみませんねぇ……。\nどうもどうも、失礼しました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして上機嫌で商店街をめぐる\nヒシミラクルに付き添い――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えーっ、スクラッチカードも全ハズレー？\nうそー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "むむむ、こうなったら――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "帰りますか。\nにんじんハンバーグもありますし。",
+   "choice_data_list": [
+    "（あっさり！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして部屋に戻った後ヒシミラクルは、\nもぐもぐと美味しそうにハンバーグを\n食べたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "2等賞～！！\n賞品は『にんじん山盛り』です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっ、わっ。すご！\nめちゃ量あるじゃないですか。",
+   "choice_data_list": [
+    "誰かに分ける？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～、確かに。\nアリかもしれませんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とりあえずクラスの子と、\nあと友だちに持っていってみようかな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～、結構配ったはずなんだけどな～。\nまだぜんぜん……はぁ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でも今日は、も～ムリ。\n疲れたし、いったんキューケー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ベッドふかふか～。\n幸せ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ぐぅ～……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あぁ～、腹の虫～。\nでも食堂まで歩くのも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "こういうときのためか……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "後日、山盛りのにんじんはとても便利だった\nとヒシミラクルが報告してきたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "3等賞～！\n賞品は『にんじん1本』です！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あっ、すごい。当たった！\nやりました！",
+   "choice_data_list": [
+    "おめでとう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "エヘヘ、どうもどうも。\nちょいラッキーでした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "この調子でもう1度チャレンジしたら\nもっといい賞が当たったりしませんかね？",
+   "choice_data_list": [
+    "ハズレを引く可能性もあるかもよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわっ、その可能性めちゃある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "では気分良く帰るためにも、\n今日はこれで終わりにしときますか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "商店街の人",
+   "text": "残念、はずれ！\n参加賞は『ティッシュ』だよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあ、こういうのってだいたい\nティッシュかアメですもんねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "けど、ハズレかぁ。はぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "がっくりと肩を落とす\nヒシミラクルなのであった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

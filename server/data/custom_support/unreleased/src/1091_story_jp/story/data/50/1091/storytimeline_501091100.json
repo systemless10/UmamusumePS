@@ -1,0 +1,559 @@
+{
+ "title": "ヴィブロス登場！",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "キラキラのセレブが集まる国……\n“ドバイ”――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私の憧れの国！　そこで行われるレースは……\nもちろん、ちょ～～セレブ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私もいつか、キラキラでいっぱいの、\nドバイのレースを走りたい――勝ちたい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね？\nちょー！　すてきな夢でしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "トゥインクル・シリーズに向けて、\nヴィブロスとトレーナー契約を結んだ。\nその翌日――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トゥインクル・シリーズ",
+    "ヴィブロス"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち！\nおはよっ♡",
+   "choice_data_list": [
+    "トレっち……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん？\nなぁに？",
+   "choice_data_list": [
+    "やっぱりその呼び方やめない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええ？\nイヤなの～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………ほんとにイヤ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえ～……？",
+   "choice_data_list": [
+    "嫌というか……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "イヤじゃないんだねっ？\nじゃ、いいでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あなたはトレっち♡\nもう決まりっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "……ヴィブロスは三姉妹の末っ子だ。\nその立場も影響してか、とても甘え上手……\nこの先、上手に付き合っていかなければ。",
+   "choice_data_list": [
+    "ひとまず今日からトレーニング、よろしくな",
+    "ひとまず今日からトレーニング、よろしくね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、よろしくお願いしまーす！\nすっごく楽しみにしてたよっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まずはなにする？\nとりあえず～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "プライベートジムとか、\nつくっちゃおーよ！",
+   "choice_data_list": [
+    "……ん？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレセン学園のもすごいけど、\nもーっとすごい感じの！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トレセン学園"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "広くて、最新のマシンもいっぱいでー、\n壁がぜーんぶガラス張りになってるの！\nなんなら外が大砂漠とかっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃーっ、\nちょーセレブ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスは“セレブ”なものに憧れがある。\n華やかで煌びやかなものを好む、\nその理由は……彼女の夢にあった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いつかドバイに行くんだもん！\nセレブ感あげてかないとねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ドバイでは、国際GⅠが開催される日がある。\nその日は様々なカテゴリのGⅠが行われ、\n世界中のウマ娘が集まりとても盛り上がる。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "GⅠ"
+   ]
+  },
+  {
+   "name": "",
+   "text": "そのドバイのレースで走ることが、\nヴィブロスの夢だと、\n契約前に教えてもらった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、トレっち！\nプライベートジム、導入しよ～？",
+   "choice_data_list": [
+    "……学園のジムはトップオブセレブだぞ！",
+    "……学園のジムはトップオブセレブだよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お？\nん～……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……まあ、そっか！\nじゃあ、ジムはいいかなっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "とりあえず、今はね♡",
+   "choice_data_list": [
+    "！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でね、セレブなジムに行く前に、\n紹介したい人たちがいるの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まずは、\nトレっちもご存じのこの方々！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "トレーナーさん、\nこんにちは。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……ど、どうも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "現れたのは、ヴィブロスの姉たち……\nヴィルシーナと、シュヴァルグランだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ヴィルシーナ",
+    "シュヴァルグラン"
+   ]
+  },
+  {
+   "name": "",
+   "text": "1番上の姉、ヴィルシーナ。\n彼女はかつてティアラ路線で活躍し、\nGⅠを連覇した偉大なウマ娘だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "2番目の姉、シュヴァルグラン。\n彼女は昨年デビューし、重賞勝利を目指して\n結果を残そうと頑張っている。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "重賞"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私の大好きなお姉ちゃんズでーす♡\nねね、2人ともちょーいいでしょ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日はね、さらに！\n私の大切な人たちを紹介しまーす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスたちに連れられ、\n訪れたのは……彼女たちの実家だった。\nそこで待っていたのは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "こんにちは！\nヴィブロスの母です～♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "ヴィブロスの父です！\nいらっしゃい、トレーナーさん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "若々しい華やいだ雰囲気のウマ娘と、\n体格のいい爽やかな男性……ヴィブロスの\nご両親が、仲睦まじく寄り添っていた。",
+   "choice_data_list": [
+    "（おお、2人とも本物だ……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスのご両親は、\nどちらも世間的に有名な方々だ。\nテレビで何度も見たことがある。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "父親は現役の野球選手で、\n豪放磊落な愛妻家として知られている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "母親はかつてアイドル的な人気を誇った\nウマ娘で、重賞勝利経験こそないものの、\nレース界で存在感を放った。",
+   "choice_data_list": [
+    "（そして何より――）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "パパ～？　トレーナーさんのコップ、\n1番右のやつがいいと思うな～？",
+   "choice_data_list": [
+    "（ヴィブロスに雰囲気がそっくり！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ～、トレっち！\nママばっかりそんなに見ないで？",
+   "choice_data_list": [
+    "えっ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねぇパパも、\nダメって言って～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "いやぁ、かわいいなぁヴィブロスは！\nさすが私たちの娘！　よしよしよしよし！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "や、やめなよ、恥ずかしい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ずーっとこうでしょう？\n今さらよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "どうやらヴィブロスの家族仲はとても\n良好なようだ。彼女の人懐っこい性格も、\nこの温かさの中で醸成されたのだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "ワハハ！　いやー、しかし\nみんな元気そうで何よりだ！",
+   "choice_data_list": [
+    "最近会ってなかったんですか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "そうなんです！　ほら、みんな今は\n寮生活でしょう？　そのうえ、私も妻も\n自分の仕事がありますから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こうやってみんなで集まるの、\nちょー！　久しぶりなんだよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "ヴィブロスもデビューするので、\n上2人もそうだったように、\n会える時間はますます減ってしまうでしょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "なので、トレーナーさんが頼りです！\n何卒ヴィブロスを、よろしくお願いします！！",
+   "choice_data_list": [
+    "は、はい……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ねえねえっ。あのね、\nパパとママに聞いてほしいことがあるの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私がドバイに行きたいのは、\n知ってるよね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "もちろんよ～。みんなが小さい頃、\n家族旅行に行ってから……もー夢中だもんね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "『絶対にドバイに住む！』って、\nす～っごく大騒ぎだったの、よく覚えてるよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへへっ。今度はね、自分の力で\nドバイのレースを目指そうと思ってるの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "そうかそうか！　すごい目標だな！\n応援してるぞ、ヴィブロス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとうっ♡\nでもね、その前に……もう1つ目標があって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――私、ティアラ路線に進みます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんのリベンジ……\nトリプルティアラをとるよ！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トリプルティアラ"
+   ]
+  },
+  {
+   "name": "",
+   "text": "クラシック級の主要レースは、\nクラシック三冠路線、そして\n――ティアラ路線にわけられる。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "クラシック級",
+    "クラシック三冠"
+   ]
+  },
+  {
+   "name": "",
+   "text": "後者は『桜花賞』『オークス』『秋華賞』\nから成る華やかな路線……それら全ての\n勝者を、トリプルティアラウマ娘と呼ぶ――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "桜花賞",
+    "オークス",
+    "秋華賞"
+   ]
+  },
+  {
+   "name": "",
+   "text": "その峻険な道を踏破し、\nティアラの栄誉を手にした者はこれまで4人。\nそして、そのうちの1人が――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――ジェンティルドンナ。\n当時のティアラ路線で、ヴィルシーナを\n2着に押し込め続けた最強のウマ娘。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ジェンティルドンナ"
+   ]
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……ヴィブロス。\n本当にいいの？　私のためだなんて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいよ？\n私、お姉ちゃんのこと大好きだもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それにトリプルティアラウマ娘って、\nちょーセレブじゃない？　ドバイっぽい♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……そう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "私たちはもちろん、ヴィブロスちゃんの\n決めたことを応援するだけだよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "頑張れ、ヴィブロス！\n私たちはどこにいても、\n君の夢を応援しているからな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとうっ！\n私、がんばるね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、ご家族にも改めて\n夢の説明をしたあと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――で、またご飯～？",
+   "choice_data_list": [
+    "君はちょっと華奢すぎるから",
+    "貴方はちょっと華奢すぎるから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスは、同世代の他の子と比べても、\n体つきがやや頼りない。本格的な\nトレーニングと並行して、体づくりも必須だ。",
+   "choice_data_list": [
+    "海外遠征にも耐えられる体を作ろう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "海外遠征……\nそうだよね、ドバイに行くんだもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "わかった！\n私、食べるっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "丈夫なちょーすごいウマ娘になって！\n夢もぜーんぶ叶えちゃうもんっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よろしくね、トレっち！\n……いただきまーす！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、元気で人懐っこいウマ娘、\nヴィブロスと一緒に……\nトゥインクル・シリーズへの挑戦が始まった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

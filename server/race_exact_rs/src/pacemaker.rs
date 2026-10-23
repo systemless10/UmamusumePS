@@ -1,31 +1,18 @@
-//! Global server pacemaker recalculation inferred from native parameter prose
-//! and independently checked against real replays. Cadence is owned by the caller.
-//! This module consumes no RNG and never reads reference trajectories.
 
 #[derive(Clone, Copy)]
 pub struct Runner {
-    /// Oonige = 0, then the ordinary running styles 1 through 4.
     pub style: i32,
     pub order: usize,
     pub distance: f32,
     pub finished: bool,
 }
 
-/// Rule switches for corpus-tested variants; `Rules::default()` is the original fit.
 #[derive(Clone, Copy)]
 pub struct Rules {
-    /// Below the threshold, still hand the pacemaker back when the
-    /// recalculated choice is of the most forward style.
     pub early_forward: bool,
-    /// A check led by the most forward style clears the count.
     pub reset_on_forward: bool,
-    /// Every recalculation at the threshold clears the count, even when it
-    /// re-picks the current pacemaker.
     pub reset_on_recalc: bool,
-    /// Pick the frontmost eligible runner by order regardless of style.
     pub order_first: bool,
-    /// The below-threshold forward exception applies only when the most
-    /// forward style is Nige (or Oonige).
     pub forward_nige_only: bool,
 }
 
@@ -35,8 +22,6 @@ impl Default for Rules {
     }
 }
 
-/// Count consecutive section checks whose leader is not the most forward style.
-/// Reaching the threshold permits recalculation until that style leads again.
 pub fn recalculate(runners: &[Runner], count: &mut i32, threshold: i32,
                    forward_range: f32) -> Option<usize> {
     recalculate_with(runners, count, threshold, forward_range, Rules::default())
@@ -55,18 +40,9 @@ pub fn recalculate_with(runners: &[Runner], count: &mut i32, threshold: i32,
     let below = *count < threshold;
     if below && !rules.early_forward { return None; }
     if !below && rules.reset_on_recalc { *count = 0; }
-    // Native parameter description: a Sashi/Oikomi leader prefers a runner
-    // of a more forward style within PaseMakerChangeForwardRunningStyleRange.
-    // Senko leaders are eligible directly; applying this fallback to them
-    // incorrectly prevents the observed promotion from Nige to Senko.
-    // Global 3d6f7f6a (no Nige in the field): the lone Senko is not handed the
-    // pacemaker below the threshold; the Sashi pacemaker keeps it.
     let pick = |i: usize| if below && (runners[i].style != forward || rules.forward_nige_only && forward > 1) { None } else { Some(i) };
     if runners[leader].style < 3 { return pick(leader); }
     let lead = runners[leader];
-    // Corpus fit (inferred, server-only): with a lone runner of the most forward style the
-    // frontmost eligible runner wins by order, else the most forward style first
-    // (673 races with RX_PMKEEP: 3 later / 0 earlier). RX_PMLONE=0 always prefers style.
     let by_order = rules.order_first || std::env::var("RX_PMLONE").map_or(true, |v| v != "0")
         && runners.iter().filter(|h| !h.finished && h.style == forward).count() == 1;
     Some(runners.iter().enumerate().filter(|(_, h)| !h.finished && h.style < lead.style
@@ -97,7 +73,6 @@ mod tests {
 
     #[test]
     fn cumulative_count_survives_forward_led_checks() {
-        // f065ef655df9fe5b-like: Senko leads, Nige retakes the lead, Senko leads again.
         let global = Rules { reset_on_forward: false, ..Rules::default() };
         let mut runners = [runner(1, 1, 99.0), runner(2, 0, 100.0)];
         let mut count = 0;
@@ -111,7 +86,6 @@ mod tests {
 
     #[test]
     fn late_leader_prefers_most_forward_style_within_inclusive_range() {
-        // A second, distant Nige keeps the most forward style from being lone.
         let runners = [runner(3, 0, 100.0), runner(2, 1, 99.0), runner(1, 2, 90.0), runner(1, 3, 50.0)];
         let mut count = 1;
         assert_eq!(recalculate(&runners, &mut count, 2, 10.0), Some(2));
@@ -122,7 +96,6 @@ mod tests {
 
     #[test]
     fn lone_most_forward_style_yields_to_frontmost_eligible_runner() {
-        // 8266015ef5283d78-like: lone Nige behind a Senko, both within range of a Sashi leader.
         let runners = [runner(3, 0, 100.0), runner(2, 1, 99.6), runner(1, 2, 99.2)];
         let mut count = 1;
         assert_eq!(recalculate(&runners, &mut count, 2, 10.0), Some(1));
@@ -155,7 +128,6 @@ mod tests {
 
     #[test]
     fn global_rules_reset_on_recalc_and_pick_frontmost_by_order() {
-        // fbfaa56d2585ab2e-like: Oikomi leader; Sashi ahead of a non-lone Senko pair.
         let rules = Rules { reset_on_forward: false, reset_on_recalc: true, order_first: true, ..Rules::default() };
         let runners = [runner(4, 0, 351.2), runner(3, 1, 346.2), runner(2, 2, 345.0), runner(2, 5, 342.0)];
         let mut count = 1;

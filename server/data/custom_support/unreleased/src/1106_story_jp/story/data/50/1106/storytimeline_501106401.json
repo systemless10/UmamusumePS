@@ -1,0 +1,29 @@
+{
+ "title": "やる気出しすぎ、甘えすぎ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "他ウマ娘に影響され、\n急にやる気を出すヒシミラクル。\nが、はりきり過ぎて脚を痛める。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "やむを得ず、しばらく休養。\nだんだんダラけ始め……\nついにトレーニングに来なくなる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "信じて待ち続けるトレーナー。\nかろうじて心を入れ替え、\n戻ってくるヒシミラクル。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかし正直に謝罪する勇気もない。\n今回のマイナスは、\n行動で少しずつ返すと誓うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

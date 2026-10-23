@@ -1,0 +1,6 @@
+#title After the Victoria Mile: Torch
+0 In the Victoria Mile, Vivlos ran well enough to earn Verxina's acknowledgment. The two cheerfully praise each other's efforts.
+1 And her other big sister, Cheval Grand, who watched quietly, is moved by her sisters' fierce battle and resolves to get stronger too.
+2 To get closer to her dream of Dubai, Vivlos and the Trainer turn their eyes to the next race.
+3 To gain experience against girls who've raced overseas or aim to, they decide to enter the Takarazuka Kinen.
+3{ Takarazuka Kinen

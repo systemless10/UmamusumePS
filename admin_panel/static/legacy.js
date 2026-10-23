@@ -1,10 +1,6 @@
-// Legacy umas (veterans): the trained_chara roster with filters (aptitudes,
-// sparks, rank, scenario, style...), bulk actions, adding new ones, and a full
-// editor for one record: stats, aptitudes, rank, skills, sparks, parents and
-// grandparents, plus the raw JSON for anything else.
 
 import { act, call, esc, gameIcon, icon, keepScroll, loadCatalog, loadExtra, reportError, store } from "./core.js";
-import { APT_FIELDS, APT_LABELS, STATS, STYLES, aptRow, ask, empty, factorRow, factorSearch, gradeOptions, modal, opts,
+import { APT_FIELDS, APT_LABELS, STATS, STYLES, aptRow, ask, empty, factorRow, factorSearch, gradeOptions, modal, openBrowser, opts,
   picker, skillRow, skillSearch, targetPicker, umaRow, umaSearch } from "./widgets.js";
 import { openUmaMoe } from "./umamoe.js";
 
@@ -90,29 +86,37 @@ export const legacyWin = {
       return out.sort(by);
     }
 
-    const sparkChips = (ids) => `<div class="sparks">${ids.map((id) => {
-      const x = fac(id);
-      return `<span class="spark kind-${x.kind}" title="${esc(x.kind)}">${esc(x.name)} <b>${"★".repeat(x.stars)}</b></span>`;
-    }).join("")}</div>`;
+    const TILE_SPARKS = 6;
+    const sparkChips = (ids) => {
+      const chip = (id) => { const x = fac(id); return `<span class="spark kind-${x.kind}" title="${esc(x.kind)}">${esc(x.name)} <b>${"★".repeat(x.stars)}</b></span>`; };
+      const rest = ids.slice(TILE_SPARKS);
+      return `<div class="sparks">${ids.slice(0, TILE_SPARKS).map(chip).join("")}${rest.length
+        ? `<span class="spark more" title="${esc(rest.map((id) => fac(id).name).join(", "))}">+${rest.length}</span>` : ""}</div>`;
+    };
 
+    const STAT_ABBR = ["Spd", "Sta", "Pow", "Gut", "Wit"];
+    const short = (n) => n >= 1e6 ? `${+(n / 1e6).toFixed(1)}M` : n >= 1e4 ? `${Math.floor(n / 1e3)}k` : String(n);
+    const splitName = (n) => { const m = /^\[(.*?)\]\s*(.*)$/.exec(n || ""); return m ? [m[1], m[2]] : ["", n || ""]; };
     const whiteCount = (v) => {
       const w = v.factors.filter((id) => !["blue", "pink", "green"].includes(fac(id).kind));
-      return w.length ? `<span class="faint">+${w.length} white spark${w.length > 1 ? "s" : ""} (${w.reduce((n, id) => n + fac(id).stars, 0)}★) · ${v.skills} skills</span>` : `<span class="faint">${v.skills} skills</span>`;
+      return w.length ? `<span class="faint">+${w.length} white (${w.reduce((n, id) => n + fac(id).stars, 0)}★) · ${v.skills} skills</span>` : `<span class="faint">${v.skills} skills</span>`;
     };
     function render() {
       if (!data) return;
       const vs = shown();
       order = vs.map((v) => v.id);
       keepScroll(list, () => {
-        list.innerHTML = vs.map((v) => `<div class="vrow ${sel.has(v.id) ? "on" : ""}" data-id="${v.id}">
-          <input type="checkbox" data-pick ${sel.has(v.id) ? "checked" : ""}>
-          ${gameIcon("card", v.card_id)}
-          <div class="vn"><b>${esc(v.name)}</b><span class="faint">#${v.id} <span class="band ${v.band}">${v.band}</span>
-            ${v.locked ? "🔒" : ""} · ${esc(cat.misc.scenarios[v.scenario] || `scenario ${v.scenario}`)} · ${esc(v.created || "")}</span></div>
-          <div class="vs"><span><span class="rank-badge">${esc(v.rank_label)}</span> <b>${v.score.toLocaleString()}</b></span>
-            <span class="faint">${v.stats.join(" / ")}</span></div>
-          <div class="vk">${aptRow(v.apt)}${sparkChips(v.factors.filter((id) => ["blue", "pink", "green"].includes(fac(id).kind)))}${whiteCount(v)}</div>
-          <div class="row"><button class="btn icon-btn" data-edit title="Edit">${icon("edit")}</button>
+        list.innerHTML = vs.map((v) => `<div class="vrow vtile ${sel.has(v.id) ? "on" : ""}" data-id="${v.id}">
+          <div class="vt-head"><input type="checkbox" data-pick ${sel.has(v.id) ? "checked" : ""}>
+            ${gameIcon("card", v.card_id)}
+            <div class="vn"><b>${esc(splitName(v.name)[1])}</b><span class="faint vt">${esc(splitName(v.name)[0]) || "&nbsp;"}</span></div>
+            <div class="vs" title="#${v.id} · score ${v.score.toLocaleString()}"><span class="rank-badge big">${esc(v.rank_label)}</span>
+              <span class="faint">${v.score.toLocaleString()}</span></div></div>
+          <div class="faint vm">${v.locked ? `${icon("lock")} ` : ""}<span class="band ${v.band}">${v.band}</span> ${esc(cat.misc.scenarios[v.scenario] || `scenario ${v.scenario}`)} · ${esc(String(v.created || "").slice(0, 10))}</div>
+          <div class="vst">${v.stats.map((n, i) => `<span><i>${STAT_ABBR[i]}</i>${short(n)}</span>`).join("")}</div>
+          ${aptRow(v.apt)}
+          <div class="vk">${sparkChips(v.factors.filter((id) => ["blue", "pink", "green"].includes(fac(id).kind)))}</div>
+          <div class="vt-foot">${whiteCount(v)}<span class="grow"></span><button class="btn icon-btn" data-edit title="Edit">${icon("edit")}</button>
             <button class="btn icon-btn" data-clone title="Clone">${icon("copy")}</button></div></div>`).join("") || empty("No veterans match.");
       });
       top.querySelector("[data-count]").innerHTML = `<span><b>${vs.length}</b> shown of ${data.veterans.length} / ${data.capacity}</span>
@@ -164,8 +168,7 @@ export const legacyWin = {
       }
     }
 
-    // ------------------------------------------------------------ editor
-    async function editOne(id) {
+    async function editOne(id, onSaved) {
       const m = modal(win, empty("Loading…"), { wide: true });
       let rec, band;
       try { ({ record: rec, band } = await call("legacy.get", { id })); } catch (ex) { m.box.innerHTML = empty(esc(ex.message)); return; }
@@ -173,20 +176,87 @@ export const legacyWin = {
       rec.skill_array ||= []; rec.factor_info_array ||= []; rec.succession_chara_array ||= [];
       let autoRank = false;
       const nick = cat.misc.nicknames;
-      const parent = (pos) => rec.succession_chara_array.find((p) => p.position_id === pos);
-      const sparkEditor = (arr, where) => `<div class="sparks" style="gap:6px">${arr.map((fi, i) => {
+      const GROUPS = [["blue", "Stats"], ["pink", "Aptitudes"], ["green", "Unique"], ["race", "Race"], ["scenario", "Scenario"], ["white", "Skills"], ["other", "Other"]];
+      const closed = new Set();
+      const filt = {};
+      const poolHead = (key, count, extra) => `<div class="pool-head"><label class="search sm">${icon("search")}<input type="text" data-pq="${key}" placeholder="Filter ${count}…" value="${esc(filt[key] || "")}" spellcheck="false"></label>${extra}</div>`;
+      const poolGroup = (key, gk, label, rows, cls = "") => {
+        if (!rows.length) return "";
+        const id = `${key}/${gk}`;
+        return `<div class="pool-group ${closed.has(id) ? "closed" : ""}"><button type="button" class="pool-gh ${cls}" data-pg="${id}">${icon("chevron")}<b>${esc(label)}</b><span class="faint">${rows.length}</span></button>
+          <div class="pool-rows">${rows.join("")}</div></div>`;
+      };
+      const sparkEditor = (arr, where) => {
+        const groups = new Map(GROUPS.map(([k]) => [k, []]));
+        const seen = new Map();
+        arr.forEach((fi) => { const g = fac(fi.factor_id).group; seen.set(g, (seen.get(g) || 0) + 1); });
+        const dupes = [...seen.values()].some((n) => n > 1);
+        arr.forEach((fi, i) => {
           const x = fac(fi.factor_id);
-          const starsAvail = factors.filter((y) => y.group === x.group).map((y) => y.stars);
-          return `<span class="spark-ed spark kind-${x.kind}">${esc(x.name)}
-            <select data-fstar="${where}:${i}">${opts((starsAvail.length ? starsAvail : [x.stars]).map((s) => [s, "★".repeat(s)]), x.stars)}</select>
-            <button class="wbtn" data-frm="${where}:${i}" title="Remove">${icon("close")}</button></span>`;
-        }).join("")}<span data-fpick="${where}"></span></div>`;
-      const sparkArr = (where) => where === "own" ? rec.factor_info_array : (parent(+where).factor_info_array ||= []);
+          const avail = factors.filter((y) => y.group === x.group).map((y) => y.stars).sort((a, b) => a - b);
+          const stars = (avail.length ? avail : [x.stars]).map((s) => `<button type="button" class="pstar ${s <= x.stars ? "on" : ""}" data-fset="${where}:${i}:${s}" title="${s}★">★</button>`).join("");
+          (groups.get(x.kind) || groups.get("other")).push(`<div class="pool-row ${seen.get(x.group) > 1 ? "dupe" : ""}" data-name="${esc(x.name.toLowerCase())}">
+            <span class="ellipsis spark-name kind-${x.kind}" title="${esc(x.name)} · ${fi.factor_id}${seen.get(x.group) > 1 ? " · duplicate" : ""}">${esc(x.name)}</span>
+            <span class="pstars">${stars}</span><button class="wbtn" data-frm="${where}:${i}" title="Remove">${icon("close")}</button></div>`);
+        });
+        const total = arr.reduce((n, fi) => n + fac(fi.factor_id).stars, 0);
+        return `<div class="pool">${poolHead(`f${where}`, `${arr.length} sparks`, `<span class="faint">${arr.length} sparks · ${total}★</span><span class="grow"></span>
+            <span data-fpick="${where}"></span><button class="btn sm" data-fbrowse="${where}">${icon("search")} Browse…</button>
+            ${dupes ? `<button class="btn sm" data-fdedupe="${where}" title="Keep the highest-star copy of each spark">Remove duplicates</button>` : ""}
+            ${arr.length ? `<button class="btn sm" data-fclear="${where}">Clear</button>` : ""}`)}
+          <div class="pool-body" data-pb="f${where}">${GROUPS.map(([k, l]) => poolGroup(`f${where}`, k, l, groups.get(k), `kind-${k}`)).join("") || empty("No sparks.")}</div></div>`;
+      };
+      const sparkArr = () => rec.factor_info_array;
 
+      const skillPool = () => {
+        const tiers = { unique: [], gold: [], white: [] };
+        rec.skill_array.forEach((sk, i) => {
+          const x = skills.byId.get(sk.skill_id);
+          tiers[x ? tier(x) : "white"].push(`<div class="pool-row" data-name="${esc((x?.name || String(sk.skill_id)).toLowerCase())}">
+            ${gameIcon("skill", x?.icon, "xs")}<span class="ellipsis ${x?.rarity >= 2 ? "r2" : ""}" title="${esc(x?.name || "")} · ${sk.skill_id}">${esc(x?.name || sk.skill_id)}</span>
+            <input type="number" class="num xs" data-slv="${i}" value="${sk.level ?? 1}" min="1" max="10" title="Level">
+            <button class="wbtn" data-srm="${i}" title="Remove">${icon("close")}</button></div>`);
+        });
+        return `<div class="pool">${poolHead("sk", `${rec.skill_array.length} skills`, `<span class="faint">${rec.skill_array.length} skills</span><span class="grow"></span><span data-skillpick></span>
+            <button class="btn sm" data-skbrowse>${icon("search")} Browse…</button>${rec.skill_array.length ? `<button class="btn sm" data-clearskills>Clear</button>` : ""}`)}
+          <div class="pool-body" data-pb="sk">${[["unique", "Unique"], ["gold", "Gold"], ["white", "White"]].map(([k, l]) => poolGroup("sk", k, l, tiers[k], k === "gold" ? "r2" : "")).join("") || empty("No skills.")}</div></div>`;
+      };
+      const lineage = () => {
+        const vById = new Map(data.veterans.map((v) => [v.id, v]));
+        const snap = (pos) => rec.succession_chara_array.find((p) => p.position_id === pos);
+        const card = (cls, label, v, s, k) => {
+          const cid = v ? v.card_id : s?.card_id;
+          const u = cat.umaById.get(cid);
+          const ids = v ? v.factors : (s?.factor_info_array || []).map((fi) => fi.factor_id);
+          const tools = k ? `<span data-vpick="${k}"></span>${v ? `<button class="btn sm" data-punlink="${k}">Unlink</button>` : ""}` : "";
+          return `<div class="parent ${cls}"><div class="row">${cid ? gameIcon("card", cid, "sm") : ""}<div class="grow"><b>${label}</b>
+              <div class="faint">${cid ? `${esc(u?.name || cid)} · ${esc(u?.title || "")}` : "none"}${v ? ` · #${v.id} <span class="rank-badge">${esc(v.rank_label)}</span>`
+                : s ? ` · <span class="warn-t">not a roster veteran (generated)</span>` : ""}</div></div>
+              ${tools}${v ? `<button class="btn sm" data-pedit="${v.id}">${icon("edit")} Edit</button>` : ""}</div>
+            ${ids.length ? sparkChips(ids) : ""}</div>`;
+        };
+        return `<div class="ed-sec"><div class="section">Lineage</div><div class="parent-grid">${[1, 2].map((k) => {
+          const pid = rec[`succession_trained_chara_id_${k}`] || 0, v = vById.get(pid), pos = k * 10;
+          const gps = [1, 2].map((g) => {
+            const gv = v && vById.get(v[`p${g}`]);
+            const gs = v ? (v.parents[String(g * 10)] && { card_id: v.parents[String(g * 10)].card_id, factor_info_array: v.parents[String(g * 10)].factors.map((id) => ({ factor_id: id })) }) : snap(pos + g);
+            return gv || gs ? card(`gp gp${g}`, `Grandparent ${g}`, gv, gs) : "";
+          }).join("");
+          return card("root", `Parent ${k}`, v, v ? null : snap(pos), k) + gps;
+        }).join("")}</div></div>`;
+      };
+      const applyFilters = () => {
+        for (const body of m.box.querySelectorAll("[data-pb]")) {
+          const q = (filt[body.dataset.pb] || "").trim().toLowerCase();
+          for (const r of body.querySelectorAll(".pool-row")) r.hidden = !!q && !r.dataset.name.includes(q);
+          for (const g of body.querySelectorAll(".pool-group")) g.classList.toggle("filtered", !!q && !g.querySelector(".pool-row:not([hidden])"));
+        }
+      };
       const draw = () => {
         const chara = Math.floor(rec.card_id / 100);
         const nicks = nick.filter((n) => !n.chara || n.chara === chara);
         const skillById = skills.byId;
+        const keep = [m.box, ...m.box.querySelectorAll("[data-pb]")].map((el) => el.scrollTop);
         m.box.innerHTML = `<div class="editor">
           <div class="ed-head">${gameIcon("card", rec.card_id)}<div class="grow"><h3>${esc(cat.umaById.get(rec.card_id)?.name || rec.card_id)}
             <span class="faint">${esc(cat.umaById.get(rec.card_id)?.title || "")}</span></h3>
@@ -219,31 +289,12 @@ export const legacyWin = {
             <div class="apt-grid">${APT_FIELDS.map((k, i) => `<label>${APT_LABELS[i]}<select data-n="${k}">${gradeOptions(rec[k])}</select></label>`).join("")}</div></div>
 
           <div class="ed-sec"><div class="row section-row"><div class="section">Skills · ${rec.skill_array.length}</div>
-            <button class="btn sm" data-clearskills>Clear all</button></div>
-            <div class="skill-chips">${rec.skill_array.map((s, i) => {
-              const x = skillById.get(s.skill_id);
-              return `<span class="skill-chip ${x?.rarity >= 2 ? "r2" : ""}">${esc(x?.name || s.skill_id)}
-                <input type="number" class="num xs" data-slv="${i}" value="${s.level ?? 1}" min="1" max="10" style="width:46px;padding:1px 4px" title="Level">
-                <button class="wbtn" data-srm="${i}" title="Remove">${icon("close")}</button></span>`;
-            }).join("")}<span data-skillpick></span></div></div>
+            </div>
+            ${skillPool()}</div>
 
           <div class="ed-sec"><div class="section">Sparks</div>${sparkEditor(rec.factor_info_array, "own")}</div>
 
-          <div class="ed-sec"><div class="section">Lineage</div>
-            <div class="ed-row"><label>Parent 1 veteran id<input type="number" class="num wide" data-n="succession_trained_chara_id_1" value="${rec.succession_trained_chara_id_1 ?? 0}"></label>
-              <label>Parent 2 veteran id<input type="number" class="num wide" data-n="succession_trained_chara_id_2" value="${rec.succession_trained_chara_id_2 ?? 0}"></label></div>
-            <div class="parent-grid">${POSITIONS.map(([pos, label]) => {
-              const p = parent(pos);
-              if (!p) return `<div class="parent"><div class="row"><b class="grow">${label}</b><button class="btn sm" data-addparent="${pos}">${icon("plus")} Add</button></div></div>`;
-              return `<div class="parent"><div class="row">${gameIcon("card", p.card_id, "sm")}<div class="grow"><b>${label}</b>
-                  <div class="faint">${esc(cat.umaById.get(p.card_id)?.name || p.card_id)} · ${esc(cat.umaById.get(p.card_id)?.title || "")}</div></div>
-                  <button class="wbtn" data-rmparent="${pos}" title="Remove">${icon("trash")}</button></div>
-                <div class="ed-row"><span data-ppick="${pos}"></span>
-                  <label>Rank<input type="number" class="num xs" data-pn="${pos}:rank" value="${p.rank ?? 1}"></label>
-                  <label>Stars<input type="number" class="num xs" data-pn="${pos}:rarity" value="${p.rarity ?? 3}"></label>
-                  <label>Pot.<input type="number" class="num xs" data-pn="${pos}:talent_level" value="${p.talent_level ?? 1}"></label></div>
-                ${sparkEditor(p.factor_info_array || [], pos)}</div>`;
-            }).join("")}</div></div>
+          ${lineage()}
 
           <details class="ed-sec"><summary class="section" style="cursor:pointer">Raw record (everything else: race results, saddles, support cards…)</summary>
             <textarea class="code" data-raw spellcheck="false">${esc(JSON.stringify(rec, null, 2))}</textarea>
@@ -253,34 +304,57 @@ export const legacyWin = {
             <span class="grow"></span><button class="btn sm" data-x="close">Cancel</button>
             <button class="btn primary sm" data-x="save">${icon("save")} Save</button></div></div>`;
 
-        // pickers
         m.box.querySelector("[data-cardpick]").replaceWith(picker({ placeholder: "Change card…", width: 170, search: umaSearch(cat), row: umaRow,
           pick: (c) => { rec.card_id = c.id; draw(); } }));
         m.box.querySelector("[data-skillpick]").replaceWith(picker({ placeholder: "Add skill…", width: 200, search: skillSearch(skills), row: skillRow,
           pick: (s) => { if (!rec.skill_array.some((x) => x.skill_id === s.id)) rec.skill_array.push({ skill_id: s.id, level: s.rarity >= 3 ? 6 : 1 }); draw(); } }));
         for (const ph of m.box.querySelectorAll("[data-fpick]")) {
           const where = ph.dataset.fpick;
-          ph.replaceWith(picker({ placeholder: "Add spark…", width: 170, search: factorSearch(factors), row: factorRow,
+          ph.replaceWith(picker({ placeholder: "Add spark…", width: 160, search: factorSearch(factors), row: factorRow,
             pick: (x) => {
               const best = factors.filter((y) => y.group === x.group).sort((a, b) => b.stars - a.stars)[0] || x;
               sparkArr(where).push({ factor_id: best.id, level: 0 });
               draw();
             } }));
         }
-        for (const ph of m.box.querySelectorAll("[data-ppick]")) {
-          const pos = +ph.dataset.ppick;
-          ph.replaceWith(picker({ placeholder: "Change uma…", width: 150, search: umaSearch(cat), row: umaRow,
-            pick: (c) => { parent(pos).card_id = c.id; draw(); } }));
+        for (const ph of m.box.querySelectorAll("[data-vpick]")) {
+          const k = ph.dataset.vpick;
+          ph.replaceWith(picker({ placeholder: "Pick veteran…", width: 170,
+            search: (q) => data.veterans.filter((v) => v.id !== rec.trained_chara_id && (v.name.toLowerCase().includes(q) || String(v.id).includes(q))),
+            row: (v) => `${gameIcon("card", v.card_id, "xs")}<span>${esc(v.name)}</span><span class="faint">${esc(v.rank_label)} · #${v.id}</span>`,
+            pick: (v) => { rec[`succession_trained_chara_id_${k}`] = v.id; draw(); } }));
         }
+        applyFilters();
+        [m.box, ...m.box.querySelectorAll("[data-pb]")].forEach((el, i) => { if (keep[i]) el.scrollTop = keep[i]; });
       };
 
+      const tier = (s) => s.rarity >= 3 ? "unique" : s.rarity === 2 ? "gold" : "white";
+      const browseSkills = () => openBrowser(win, { title: "Skills", items: skills,
+        filters: [["", "All", null], ["white", "White", (s) => tier(s) === "white"], ["gold", "Gold", (s) => tier(s) === "gold"], ["unique", "Unique", (s) => tier(s) === "unique"]],
+        tile: (s) => `${gameIcon("skill", s.icon, "xs")}<span class="ellipsis ${s.rarity >= 2 ? "r2" : ""}">${esc(s.name)}</span>`,
+        isOn: (s) => rec.skill_array.some((x) => x.skill_id === s.id),
+        toggle: (s, on) => {
+          if (on) rec.skill_array.push({ skill_id: s.id, level: s.rarity >= 3 ? 6 : 1 });
+          else rec.skill_array = rec.skill_array.filter((x) => x.skill_id !== s.id);
+        }, onDone: draw });
+      const browseSparks = (where) => {
+        const best = new Map();
+        for (const x of factors) if (!best.has(x.group) || x.stars > best.get(x.group).stars) best.set(x.group, x);
+        const inArr = (x) => sparkArr(where).findIndex((fi) => fac(fi.factor_id)?.group === x.group);
+        openBrowser(win, { title: where === "own" ? "Sparks" : `Sparks · ${POSITIONS.find(([p]) => p === +where)?.[1]}`, items: [...best.values()],
+          filters: KINDS.map(([v, l]) => [v, v ? l : "All", v ? (x) => x.kind === v : null]),
+          tile: (x) => `<span class="spark kind-${x.kind}">${esc(x.name)}</span><span class="faint">${"★".repeat(x.stars)}</span>`,
+          isOn: (x) => inArr(x) >= 0,
+          toggle: (x, on) => { const arr = sparkArr(where); if (on) arr.push({ factor_id: x.id, level: 0 }); else arr.splice(inArr(x), 1); },
+          onDone: draw });
+      };
       const num = (v) => (v === "" || v === null ? 0 : Number(v));
       m.box.addEventListener("input", (e) => {
         const t = e.target;
-        if (t.dataset.n) rec[t.dataset.n] = num(t.value);
+        if (t.dataset.pq) { filt[t.dataset.pq] = t.value; applyFilters(); }
+        else if (t.dataset.n) rec[t.dataset.n] = num(t.value);
         else if (t.dataset.b) rec[t.dataset.b] = t.checked ? 1 : 0;
         else if (t.dataset.slv) rec.skill_array[+t.dataset.slv].level = num(t.value);
-        else if (t.dataset.pn) { const [pos, k] = t.dataset.pn.split(":"); parent(+pos)[k] = num(t.value); }
         else if (t.dataset.fstar) {
           const [where, i] = t.dataset.fstar.split(":");
           const arr = sparkArr(where);
@@ -294,23 +368,32 @@ export const legacyWin = {
         if (!t) return;
         const d = t.dataset;
         if (d.srm !== undefined) { rec.skill_array.splice(+d.srm, 1); draw(); }
-        else if (d.frm) { const [where, i] = d.frm.split(":"); sparkArr(where).splice(+i, 1); draw(); }
+        else if (d.pg) { closed.has(d.pg) ? closed.delete(d.pg) : closed.add(d.pg); t.parentElement.classList.toggle("closed"); }
+        else if (d.fset) {
+          const [where, i, st] = d.fset.split(":");
+          const arr = sparkArr(where);
+          const to = factors.find((y) => y.group === fac(arr[+i].factor_id).group && y.stars === +st);
+          if (to) { arr[+i].factor_id = to.id; draw(); }
+        } else if (d.fclear) { sparkArr(d.fclear).length = 0; draw(); }
+        else if (d.fdedupe) {
+          const arr = sparkArr(d.fdedupe), best = new Map();
+          for (const fi of arr) { const x = fac(fi.factor_id); if (!best.has(x.group) || x.stars > fac(best.get(x.group).factor_id).stars) best.set(x.group, fi); }
+          arr.splice(0, arr.length, ...arr.filter((fi) => best.get(fac(fi.factor_id).group) === fi));
+          draw();
+        } else if (d.frm) { const [where, i] = d.frm.split(":"); sparkArr(where).splice(+i, 1); draw(); }
         else if (d.allstat) { for (const [k] of STATS) rec[k] = +d.allstat; draw(); }
         else if (d.allapt) { for (const k of APT_FIELDS) rec[k] = +d.allapt; draw(); }
+        else if (d.skbrowse !== undefined) browseSkills();
+        else if (d.fbrowse) browseSparks(d.fbrowse);
         else if (d.clearskills !== undefined) { rec.skill_array = []; draw(); }
-        else if (d.addparent) {
-          const pos = +d.addparent;
-          rec.succession_chara_array.push({ position_id: pos, card_id: rec.card_id, rank: 1, rarity: 3, talent_level: 1,
-            factor_info_array: [], win_saddle_id_array: [], owner_viewer_id: 0 });
-          rec.succession_chara_array.sort((a, b) => a.position_id - b.position_id);
-          draw();
-        } else if (d.rmparent) { rec.succession_chara_array = rec.succession_chara_array.filter((p) => p.position_id !== +d.rmparent); draw(); }
+        else if (d.punlink) { rec[`succession_trained_chara_id_${d.punlink}`] = 0; draw(); }
+        else if (d.pedit) editOne(+d.pedit, async () => { await load(); draw(); });
         else if (d.applyraw !== undefined) {
           try { rec = JSON.parse(m.box.querySelector("[data-raw]").value); rec.skill_array ||= []; rec.factor_info_array ||= []; rec.succession_chara_array ||= []; draw(); }
           catch (ex) { reportError("Not valid JSON", ex); }
         } else if (d.x === "close") m.close();
         else if (d.x === "save") {
-          if (await act(t, "Save veteran", () => call("legacy.save", { id, record: rec, auto_rank: autoRank }), (r) => `Saved · rank ${r.rank_label}`)) { m.close(); load(); }
+          if (await act(t, "Save veteran", () => call("legacy.save", { id, record: rec, auto_rank: autoRank }), (r) => `Saved · rank ${r.rank_label}`)) { m.close(); onSaved ? onSaved() : load(); }
         } else if (d.x === "clone") {
           const r = await act(t, "Clone veteran", () => call("legacy.clone", { id }), (r) => `Cloned as #${r.id}`);
           if (r) { m.close(); await load(); editOne(r.id); }

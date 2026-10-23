@@ -1,0 +1,253 @@
+{
+ "title": "WBCの後に・勝利",
+ "text_block_list": [
+  {
+   "name": "ダーレーアラビアン",
+   "text": "はははっ！　やるなあ！\n陽の如き輝きを見せてくれたな！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "このハイレベルなレースを制したことは、\nお前たちの成長を証明したことにもなる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "今は純粋に、その素質を讃えよう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "このレースで、あなたも担当ウマ娘も\n大きな経験を積むことができたと思うわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "だからまた……\n今度はより強豪を揃えた『SWBC』への\n出走を目指して、がんばりましょう～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘の全てを知り尽くしているAIが、\n素質あるものだけを選出したレース――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そこで結果を残した<chrname>は、\n歴史に名を残すほどの存在に\n至るのではと胸が躍るのだった。",
+   "choice_data_list": [
+    "（次も招待状を受け取ってみせる！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（コンコンコン……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "……失礼します、樫本トレーナー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ビターグラッセ……どうしましたか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "あの……最近結果が出せなくて、すみません。\n今日の『WBC』も納得の走りができなくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……貴方の責任ではありません。\n貴方は十分に努力をしています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "いえ、もっと努力できることがあるはずです。\nトレーニングも座学も、いろいろ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "私、もっともっと頑張ります！\n頑張って、それで次こそ勝ってみせます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "それだけを言いに来ました。\n自分に気合いを入れるためにも……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "……わかりました。頑張っていきましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "はいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "（……努力が必要なのは、私のほうだ。\nなんとしても結果を与えなければ……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "なんだか、あっという間に\n1年が過ぎてしまいましたね、ミーク。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "でもこれも、ミークと一緒に走っているのが\n充実しているからだと思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……私も、あっという間でした。\n…………もっと長ければいいのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "目標……間に合わなかった……。\n……時間……待ってくれなくてイジワルです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……ミーク。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……ううん、それでもミークは頑張りました。\n目標を立てて、目指したからこそです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "大事なのは、目標に向かって走ること！\nそして成果がいよいよ花開こうとしています！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ここ最近は明らかに体つきも変わってきて、\n持久力やタイムだって上向いています。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ピークは確実に来ている――\nだから、この調子で一緒に頑張りましょう！\n来年こそ、私たちの積み重ねを見せましょう！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……。\n…………わかりました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ふふっ。それじゃあ、おやすみなさい。\nよいお年を、ミーク。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……はい。\n…………よいお年を。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "……ここまでコツコツと頑張ってきたんです。\n絶対に花を開かせましょう、ミーク……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……私も……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "リトルココン",
+   "text": "……ふふ、やってやりました。\n樫本トレーナー……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "最後まで強い走りでした、リトルココン。\n……やってやりましたね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ビターグラッセ",
+   "text": "さっきは私、そして今度はリトルココン！\n同じ日に2人が勝利なんて、すごい！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "樫本理子",
+   "text": "ええ、本当に。2人とも大したものです。\n心から――誇らしく思います。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……私も、早く勝ちたい……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……早く……。\n……トレーナーに喜んでもらいたい……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

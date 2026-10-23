@@ -1,0 +1,29 @@
+{
+ "title": "決戦！グランドマスターズ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "三女神たちとの直接対決――\n『グランドマスターズ』開催の日を迎えた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "これまでの<chrname>との\n二人三脚の成果を見せるため――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして、ウマ娘の頂点を目指すため――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>と共に\n勝利を掴んでみせる……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

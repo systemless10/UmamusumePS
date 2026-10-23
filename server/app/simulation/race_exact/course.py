@@ -1,8 +1,3 @@
-"""Course geometry built from CourseParamTable events the way the client does.
-
-RaceUtil.CalcCornerList / CalcSlopeList, RaceUtil.CalcCornerDistance /
-CalcFinalCornerDistance and RaceManager._CacheStraights (decompiled, Global).
-"""
 
 from __future__ import annotations
 
@@ -48,14 +43,13 @@ class Course:
     turn: int
     lane_max: float
     master: object
-    corner_events: list = field(default_factory=list)   # (start, values) in table order
+    corner_events: list = field(default_factory=list)
     corners: list = field(default_factory=list)
     straights: list = field(default_factory=list)
     slopes: list = field(default_factory=list)
     lane_max_changes: list = field(default_factory=list)
     move_lane_point: float | None = None
 
-    # RaceUtil.CalcCornerDistance: the LAST corner event with this number.
     def corner_distance(self, number: int):
         if number <= 0:
             return None
@@ -65,8 +59,6 @@ class Course:
                 return start, f32(float(length) + start)
         return None
 
-    # RaceUtil.CalcFinalCornerDistance: last corner event with number > 3 whose
-    # START is within 1000 m of the goal.
     def final_corner_distance(self):
         for start, values in reversed(self.corner_events):
             if len(values) > 1 and f32(float(self.distance) - start) <= 1000.0 and values[0] > 3:

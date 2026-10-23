@@ -1,0 +1,6 @@
+#title Introducing Vivlos!
+0 Vivlos: an Umamusume who longs to be a celebrity and dreams of racing in Dubai. But she had one more goal.
+0{ Vivlos
+1 To take the Tiara path, win the Triple Tiara, and get revenge for her big sister, Verxina.
+1{ Triple Tiara | Verxina
+2 First, since her build was frail compared to others her age, we decided to build up her body alongside her training.

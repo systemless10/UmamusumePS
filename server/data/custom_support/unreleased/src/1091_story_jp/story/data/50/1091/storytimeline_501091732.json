@@ -1,0 +1,29 @@
+{
+ "title": "想いの継承",
+ "text_block_list": [
+  {
+   "name": "ヴィブロス",
+   "text": "う～ん……、誰もいない。\n呼ばれた気がしたんだけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――あ、三女神さま。\nいつもちょびっと親近感なんだよね♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "“勇敢”担当のシュヴァちと～、\n“規律”担当のヴィルシーナお姉ちゃん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "で、で、私が“愛情”担当♪\n2人のこと、だ～いすきだもん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

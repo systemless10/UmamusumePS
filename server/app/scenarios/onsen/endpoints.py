@@ -1,15 +1,3 @@
-"""ONSEN (scenario 12) -- the endpoints only this scenario has.
-
-    single_mode_onsen/select_dig_onsen  {current_turn, onsen_id, item_id}   pick a spring + upgrade a tool
-    single_mode_onsen/bathing           {current_turn}                       use a ticket
-    single_mode_onsen/assistant_exec    {current_turn}                       PR activity (uses the turn)
-    single_mode_onsen/check_dug_result  {current_turn}                       the bathing party
-    single_mode_onsen/onsen_live        {current_turn}                       the ending live
-
-Shapes are dump.cs's and the captures' (docs/JP_ONSEN_SCENARIO.md §1). The
-onsen_data_set every response carries is attached at the response chokepoint
-(Onsen.attach), like on every shared endpoint.
-"""
 
 from __future__ import annotations
 
@@ -59,9 +47,6 @@ def _envelope(career: dict, keys) -> dict:
 
 
 def _null_home_params(data: dict) -> None:
-    """The party and live replies carry home_info mid-chain: the real server
-    sends each command's params_inc_dec_info_array as null there, and the
-    client keeps what it has."""
     for c in (data.get("home_info") or {}).get("command_info_array") or ():
         c["params_inc_dec_info_array"] = None
 
@@ -77,9 +62,6 @@ def _refused(where: str, why) -> dict:
 
 
 def _blue_groups(viewer_id, chara_info: dict) -> list:
-    """The lineage's blue factors, one entry per factor (stars ignored, §5):
-    both parents and their parents, read off the roster like the inheritance
-    roll does."""
     from ... import master_data
     smt = _smt()
     roster = smt._roster_by_trained_id(viewer_id)
@@ -103,8 +85,6 @@ def _blue_groups(viewer_id, chara_info: dict) -> list:
     return groups
 
 
-# ------------------------------------------------------------ selection ---
-
 def handle_select_dig_onsen(payload: dict) -> dict:
     got = _career(payload)
     if got is None:
@@ -124,7 +104,7 @@ def handle_select_dig_onsen(payload: dict) -> dict:
         st["enabled"] = True
         try:
             st["blue"] = _blue_groups(viewer_id, chara_info)
-        except Exception:                              # noqa: BLE001
+        except Exception:
             log.exception("onsen: lineage blue factors unreadable; no gene bonus")
             st["blue"] = []
     st["selected"] = onsen
@@ -132,7 +112,7 @@ def handle_select_dig_onsen(payload: dict) -> dict:
     st["flags"].pop("not_gain_ticket", None)
     hold = int(st.get("hold_turn") or 0)
     if hold and impl.party_pending(st, hold):
-        chara_info["playing_state"] = 5          # the party comes next, same turn
+        chara_info["playing_state"] = 5
     else:
         st["hold_turn"] = 0
         chara_info["playing_state"] = 1
@@ -151,8 +131,6 @@ def handle_select_dig_onsen(payload: dict) -> dict:
     log.info("onsen: spring %s selected, tool %s -> level %s", onsen, item, st["items"][str(item)])
     return response
 
-
-# -------------------------------------------------------------- bathing ---
 
 def handle_bathing(payload: dict) -> dict:
     got = _career(payload)
@@ -175,12 +153,7 @@ def handle_bathing(payload: dict) -> dict:
     return response
 
 
-# -------------------------------------------------------------------- PR ---
-
 def handle_assistant_exec(payload: dict) -> dict:
-    """PR uses the turn like a training: it runs through the shared
-    exec_command pipeline as command_type 12, whose gains the scenario hands
-    over (Onsen.scenario_command)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -201,8 +174,6 @@ def handle_assistant_exec(payload: dict) -> dict:
                 data.pop(key, None)
     return response
 
-
-# --------------------------------------------------------------- parties ---
 
 def handle_check_dug_result(payload: dict) -> dict:
     got = _career(payload)
@@ -231,7 +202,6 @@ def handle_check_dug_result(payload: dict) -> dict:
 
 
 def handle_onsen_live(payload: dict) -> dict:
-    """The ending live (turn 78): its chain continues with Kiyoko's ending."""
     got = _career(payload)
     if got is None:
         return refuse()

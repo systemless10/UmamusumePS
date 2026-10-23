@@ -1,6 +1,6 @@
 {
   "servertime": "now",
-  "resource_version": "10008100",
+  "resource_version": "10008400",
   "scenario_ids": [
     1,
     2,
@@ -15,9 +15,9 @@
   "_legend_race": "Periodic Legend Races -- see app/handlers/legend_race.py. These are the EVENT legend races (ticket item 97), not the permanent daily ones (item 168). Every window in Global's master.mdb schedule has already closed (the last ended 2026-09-09), so leave legend_race_id null for honest real-date behaviour, or set it to a legend_race row id (e.g. 53) to force that race open for testing.",
   "legend_race_id": null,
   "_tp_rp": "TP/RP pools -- see app/handlers/stamina.py. Intervals and the career base cost are the measured real values; set career_tp_cost to a number to pin it and ignore campaigns/boosts entirely.",
-  "tp_recovery_seconds": 1,
+  "tp_recovery_seconds": 600,
   "rp_recovery_seconds": 7200,
-  "career_tp_cost": 30,
+  "career_tp_cost": null,
   "team_trials_rp_cost": 1,
   "_tp_rp_refill": "Paid (carat) pool refills. tp_refill_amount/rp_refill_amount of 0 means 'fill the pool'. The carat prices are OUR choice -- the real ones are client-side and were never captured.",
   "tp_refill_carat_cost": 10,
@@ -31,5 +31,6 @@
   "specialty_priority_bonus": null,
   "hint_rate_multiplier": null,
   "bond_gain_multiplier": null,
-  "energy_cost_multiplier": null
+  "energy_cost_multiplier": null,
+  "race_simulator": "exact_test"
 }

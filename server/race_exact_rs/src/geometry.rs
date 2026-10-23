@@ -1,7 +1,5 @@
-//! CourseLaneAnim / CourseLane, preserving float32 operation order.
 use crate::data::{Assets, f32_of};
 use crate::course::Course;
-/// Default-on toggles (Session 5 server fit): `RX_G1=0` / `RX_G2=0` revert.
 fn gon(n:&str)->bool {std::env::var(n).map_or(true,|v|v!="0")}
 fn gflag(n:&str)->bool {
     thread_local!(static FLAGS:std::cell::RefCell<std::collections::HashMap<String,bool>>=Default::default());
@@ -30,7 +28,6 @@ fn qlerp(a: Q, b: Q, t: f32) -> Q {
         else {(q[0]*q[0]+q[1]*q[1]+q[2]*q[2]+q[3]*q[3]).sqrt()};
     if gflag("RX_Q5") {let inv=1.0/n;for v in &mut q { *v*=inv; }} else {for v in &mut q { *v/=n; }} q
 }
-/// JP server (System.Numerics.Quaternion.Lerp): t1*a ± t*b, then * (1/sqrt(lengthSq)), all float.
 fn qlerp_jp(a: Q, b: Q, t: f32) -> Q {
     let t=t.clamp(0.0,1.0);let t1=1.0-t;
     let dot=a[0]*b[0]+a[1]*b[1]+a[2]*b[2]+a[3]*b[3];
@@ -38,7 +35,6 @@ fn qlerp_jp(a: Q, b: Q, t: f32) -> Q {
     let inv=1.0/(q[0]*q[0]+q[1]*q[1]+q[2]*q[2]+q[3]*q[3]).sqrt();
     q.map(|v|v*inv)
 }
-/// JP server (System.Numerics.Quaternion.Multiply operation order).
 fn qmul_jp(a: Q, b: Q) -> Q {
     let [ax,ay,az,aw]=a; let [bx,by,bz,bw]=b;
     let (cx,cy,cz)=(ay*bz-az*by,az*bx-ax*bz,ax*by-ay*bx);
@@ -55,11 +51,8 @@ fn qlerp64(a: Q, b: Q, t: f64) -> Q {
 }
 pub struct Geometry {
     keys: Vec<V3>, rotations: Vec<Q>, distance: f32, fix: Q,
-    /// JP server arithmetic: System.Numerics Lerp/Quaternion/Vector3.Transform in float32.
-    /// Fit on 104 Onsen first-cap ticks: 99 bit-exact (Global forms: 0). RX_JP_GEOM=0 disables.
     pub jp: bool,
     goal: V3, goal_rot: Q, goal_dir: V3, pub distance_to_world: f32,
-    /// CourseOverRunLaneAnim (`..._01_0000_{inout}_0_{variant}`): keys, rotations, Distance.
     overrun: Option<(Vec<V3>,Vec<Q>,f32)>,
 }
 type Keys=(Vec<V3>,Vec<Q>);
@@ -81,7 +74,6 @@ impl Geometry {
     pub fn load(a: &Assets, c: &Course, jp_region: bool) -> Result<Self,String> {
         let name=a.course_set(c.id)["normal_lane_asset"].as_str().ok_or("normal lane asset")?;
         let (keys,rotations)=lane_keys(a,name)?;
-        // GameDefine.OverRunLaneBasePath: an_pos_race{track}_01_0000_{inout:00}_0_{variant}.
         let overrun=(|| {
             let (dir,file)=name.rsplit_once('/')?;let p=file.split('_').collect::<Vec<_>>();
             if p.len()!=8 {return None;}
@@ -90,7 +82,6 @@ impl Geometry {
             let d=a.lane_asset(&o)["Distance"].as_f64()? as f32;
             lane_keys(a,&o).ok().map(|(k,r)|(k,r,d))
         })().filter(|_|gon("RX_OVERRUN"));
-        // CourseLane._InitRotationFix (0x33fdd50) uses this exact constant.
         let h=(if c.turn==1 {180.0f32} else {0.0}) * 0.01745329238474369 * 0.5;
         let mut g=Self { keys, rotations, distance:c.distance, fix:[0.0,h.sin(),0.0,h.cos()], jp:jp_region && gon("RX_JP_GEOM"),
             goal:[0.0;3],goal_rot:[0.0;4],goal_dir:[0.0;3],distance_to_world:0.0,overrun:None };
@@ -104,7 +95,6 @@ impl Geometry {
             else if gon("RX_K1") {((dy as f64)*(dy as f64)+(dx as f64)*(dx as f64)+(dz as f64)*(dz as f64)).sqrt() as f32}
             else if gflag("RX_K2") {((dx as f64)*(dx as f64)+(dz as f64)*(dz as f64)).sqrt() as f32}
             else {((dy*dy+dx*dx+dz*dz) as f64).sqrt() as f32};
-        // Research: RX_D2WMUL scales it; RX_D2WSPAN=s measures it over [0, s] instead of [0, 1].
         if let Some(s)=std::env::var("RX_D2WSPAN").ok().and_then(|v|v.parse::<f32>().ok()) {
             let b=g.world(s,0.0);let d:[f32;3]=std::array::from_fn(|i|a[i]-b[i]);
             g.distance_to_world=((d[0]*d[0]+d[1]*d[1]+d[2]*d[2]) as f64).sqrt() as f32/s;
@@ -115,8 +105,6 @@ impl Geometry {
         Ok(g)
     }
     fn transform(&self,d:f32)->(V3,Q) {
-        // CourseLane.GetLaneTransform (0x33fe700): past the goal, sample the over-run
-        // lane at Repeat(d - Distance, overRun.Distance) when one is loaded.
         if d>self.distance && let Some((keys,rots,od))=&self.overrun {
             let r=(d-self.distance)%od;
             let t=if !self.jp && gon("RX_OVERRUN64") {((r as f64)/(*od as f64)*1000.0) as f32} else {r/od*1000.0};
@@ -127,7 +115,6 @@ impl Geometry {
         }
         if self.jp {return self.sample(&self.keys,&self.rotations,self.distance_jp_t(d));}
         if gflag("RX_G4") {
-            // Server-style sampling: curve parameter and fraction kept in double.
             let t=(d as f64)/(self.distance as f64)*1000.0;let i=t as usize;
             let f=(t-i as f64).clamp(0.0,1.0);
             let p=if i<self.keys.len()-1 {std::array::from_fn(|j|(((self.keys[i+1][j] as f64)-(self.keys[i][j] as f64))*f+self.keys[i][j] as f64) as f32)}
@@ -161,7 +148,6 @@ impl Geometry {
     }
     fn sample_i(&self,keys:&[V3],rotations:&[Q],t:f32,i:usize)->(V3,Q) {
         if self.jp {
-            // System.Numerics.Vector3.Lerp: a*(1-f) + b*f.
             let p=if i<keys.len()-1 {let f=(t-i as f32).clamp(0.0,1.0);std::array::from_fn(|j|keys[i][j]*(1.0-f)+keys[i+1][j]*f)} else {keys[keys.len()-1]};
             let r=if i<rotations.len()-1 {qlerp_jp(rotations[i],rotations[i+1],t-i as f32)} else {rotations[rotations.len()-1]};
             return (p,qmul_jp(r,self.fix));
@@ -176,7 +162,6 @@ impl Geometry {
             else {rotations[rotations.len()-1]};
         (p,qmul(r,self.fix))
     }
-    /// Research (RX_POS64=1/2): world position with the final origin add kept in double.
     pub fn world64(&self,d:f32,lane:f32,mode:i32)->[f64;3] {
         let (o,[x,y,z,w])=self.transform(d);let l=lane*11.25;
         let [x2,y2,z2]=[x+x,y+y,z+z];let yy=y2*y;let zz=z2*z;let l64=l as f64;
@@ -192,16 +177,12 @@ impl Geometry {
         let f=(t-i as f32).clamp(0.0,1.0) as f64;
         Some(std::array::from_fn(|j|((keys[i+1][j] as f64)-(keys[i][j] as f64))*f+(keys[i][j] as f64)))
     }
-/// Correctly rounded f32 of a*b (+c) for doubles, using the FMA error term to break
-/// the double-rounding ties that a plain double product would settle wrongly.
 fn mul_f32_exact(a:f64,b:f64)->f32 {
     let p=a*b;let e=a.mul_add(b,-p);
     let r=p as f32;let lo=f32::from_bits(r.to_bits()-1);let hi=f32::from_bits(r.to_bits()+1);
-    // p exactly halfway between r and a neighbour -> use e's sign
     for n in [lo,hi] { if (r as f64+n as f64)*0.5==p { let up=(n as f64>p)==(e>0.0); return if e==0.0 {r} else if up {n} else {r}; } }
     r
 }
-    /// Research: world position under named precision variants (index into a fixed list).
     pub fn world_variants(&self,d:f32,lane:f32)->Vec<V3> {
         let (o,[x,y,z,w])=self.transform(d);let l=lane*11.25;let l64=l as f64;
         let [x2,y2,z2]=[x+x,y+y,z+z];let yy=y2*y;let zz=z2*z;
@@ -218,7 +199,6 @@ fn mul_f32_exact(a:f64,b:f64)->f32 {
     }
     pub fn world(&self,d:f32,lane:f32)->V3 {
         let (o,[x,y,z,w])=self.transform(d);
-        // RX_LANEW (research): override the 11.25 world units per lane unit.
         static LW:std::sync::OnceLock<f32>=std::sync::OnceLock::new();
         let l=lane*LW.get_or_init(||std::env::var("RX_LANEW").ok().and_then(|v|v.parse().ok()).unwrap_or(11.25));
         if gflag("RX_G3") {
@@ -227,16 +207,12 @@ fn mul_f32_exact(a:f64,b:f64)->f32 {
             return [((1.0-(yy+zz))*l+o[0] as f64) as f32,((x2*y+z2*w)*l+o[1] as f64) as f32,((x2*z-y2*w)*l+o[2] as f64) as f32];
         }
         if self.jp {
-            // Vector3.Transform(Vector3(l,0,0), q) + origin, float32.
             let [x2,y2,z2]=[x+x,y+y,z+z];
             let v=[1.0-y*y2-z*z2,x*y2+w*z2,x*z2-w*y2];
             return std::array::from_fn(|k|o[k]+l*v[k]);
         }
         let [x2,y2,z2]=[x+x,y+y,z+z];let yy=y2*y;let zz=z2*z;
         if gon("RX_G7") {
-            // Server fit (Session 5, 3640/3641 capped ticks): Quaternion*Vector3
-            // products stay float, but each component's sum and the lane scale are
-            // evaluated in double and rounded once (x87-style); then float add.
             let (l64,f)=(l as f64,|a:f32,b:f32,sgn:f64|((a as f64+sgn*b as f64)));
             if gflag("RX_G12") {let c=[(1.0-f(yy,zz,1.0)) as f32,f(x2*y,z2*w,1.0) as f32,f(x2*z,y2*w,-1.0) as f32];return [c[0]*l+o[0],c[1]*l+o[1],c[2]*l+o[2]];}
             if gflag("RX_G13") {let c=[(1.0-f(yy,zz,1.0)) as f32,f(x2*y,z2*w,1.0) as f32,f(x2*z,y2*w,-1.0) as f32];return [((c[0] as f64*l64) as f32)+o[0],((c[1] as f64*l64) as f32)+o[1],((c[2] as f64*l64+o[2] as f64) as f32)];}

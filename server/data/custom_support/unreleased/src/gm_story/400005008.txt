@@ -1,0 +1,25 @@
+#title After the Growth Race: Victory
+0 Whoa, whoa~! Not bad, little lamb!
+1 You made great use of her individuality. That was a good race.
+2 Yes, it seems you and <chrname> have been running together well.
+3 You're growing steadily as a trainer, too. Engrave today in your heart as confidence.
+4 And as a trainer, you should understand that the real test for Umamusume starts now.
+5 The classic year—battles between Umamusume challenging for honored titles await.
+6 The trainer's support will matter more than ever, so be sure to watch over her.
+6> Yes...!
+7 And so, the final race of junior year, the Growth Race, came to a close.
+8 I got to watch your trainees run, both of you!
+9 They've only just debuted, but they had such presence, so full of confidence—
+10 Meek wasn't invited this time, but it made me want us to run in it together someday!
+11 Let's take it one step at a time, without rushing. I'm sure she'll bloom.
+12 Bitter Glasse and Little Cocon both achieved excellent results as well.
+13 Thanks to them, it looks like I can greet classic year in good spirits.
+14 For me too, junior year was really fulfilling—I learned so much.
+15 More than anything, the knowledge the Three Goddesses teach us keeps opening my eyes.
+16 Precisely because there's so much data, the problems and how to fix them become all the more accurate.
+17 We need to soak up lots of knowledge too and become proper trainers.
+18 And most of all, we need to be able to properly support our trainees!
+18> Let's both do our best
+19 Yes!
+20 Hehe, indeed.
+21 And so, with the Three Goddesses' knowledge on our side, <chrname> and I raced through junior year.

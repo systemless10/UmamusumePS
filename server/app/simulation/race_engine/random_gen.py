@@ -1,17 +1,3 @@
-"""Bit-exact port of uma-skill-tools' Random.ts (Rule30CARng).
-
-A custom 64-bit two-lane elementary-cellular-automaton PRNG (Wolfram Rule
-30), NOT a standard algorithm (not Mersenne Twister / xorshift / PCG). Every
-race result downstream of this class is a deterministic function of its
-exact bit manipulation, so this must reproduce the JS implementation
-bit-for-bit, not just "equivalent quality" -- see Random.ts's own comments
-for why this specific (unusual) construction was chosen.
-
-All JS bitwise operators (``<<`` ``>>>`` ``|`` ``&`` ``^``) implicitly
-truncate to 32 bits; since Python ints don't do that, every left-shift
-result is masked with ``& _MASK32`` immediately, and hi/lo are always kept
-in the range [0, 0xFFFFFFFF] so plain Python ``>>`` behaves like JS ``>>>``.
-"""
 
 from __future__ import annotations
 
@@ -35,13 +21,6 @@ class Rule30CARng:
 
     @classmethod
     def seeded(cls, seed: int) -> "Rule30CARng":
-        """A generator whose state is `seed` run through splitmix64. Seeding
-        the raw state directly (lo=seed, hi=0) is broken: the automaton only
-        spreads bits one cell per step and the outputs are read from `hi`, so
-        its first draws are near-constant -- every horse (seeds seed+i*7919)
-        drew solver-rng seed 0 or 1, i.e. the SAME rushing section, the same
-        section modifiers and the same spurt rolls. Every derived stream is
-        seeded through this."""
         z = (seed + 0x9E3779B97F4A7C15) & _MASK64
         z = ((z ^ (z >> 30)) * 0xBF58476D1CE4E5B9) & _MASK64
         z = ((z ^ (z >> 27)) * 0x94D049BB133111EB) & _MASK64
@@ -82,23 +61,9 @@ class Rule30CARng:
         return ((hi & mask_hi) * exp + (lo & mask_lo)) / mant
 
     def uniform(self, upper) -> int:
-        # `upper` is sometimes a non-integer float here (e.g. a region
-        # length derived from course distances); JS's `|` operator
-        # implicitly ToInt32-truncates (toward zero) before the bitwise op,
-        # so replicate that explicitly -- Python raises on `float | int`.
         mask = _MASK32 >> _clz32(int(upper - 1) | 1)
         while True:
             n = self.int32() & mask
-            # JS's `&` always yields a SIGNED int32, and `while (n >= upper)`
-            # compares that signed value. This is only observable when `mask`
-            # includes bit 31 -- the degenerate upper<=0 case (a region
-            # exactly 10 units long feeding `uniform(length-10)==uniform(0)`
-            # in ActivationSamplePolicy's AllCornerRandomPolicy, confirmed to
-            # occur in real skill/course combinations). There, roughly half
-            # of all draws are negative and exit the loop immediately; an
-            # unsigned interpretation here would retry forever instead. For
-            # every legitimate (upper>=1, small) call `mask` never reaches
-            # bit 31, so this reinterpretation is a no-op there.
             if n >= 0x80000000:
                 n -= 0x100000000
             if n < upper:

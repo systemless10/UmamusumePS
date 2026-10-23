@@ -1,16 +1,3 @@
-"""豊食祭 (scenario 8) -- the endpoints only this scenario has.
-
-    single_mode_cook/cooking            {dish_id, care_point, current_turn}           cook (ps 1)
-    single_mode_cook/facility_level_up  {facility_level_up_info_array, care_point,
-                                         current_turn}                                garden (ps 1)
-    single_mode_cook/tasting            {current_turn}                                the tasting (ps 23)
-    single_mode_cook/tasting_live       {current_turn}                                the T72 live (ps 24)
-    single_mode_cook/flavor_text_read   {current_turn, flavor_text_id_array}          dish directory
-
-Shapes are the captures' (docs/JP_FOOD_FESTIVAL_SCENARIO.md §1). The
-cook_data_set every reply carries is attached at the response chokepoint
-(Cook.attach).
-"""
 
 from __future__ import annotations
 
@@ -67,11 +54,7 @@ def _refused(where: str, why) -> dict:
     return refuse()
 
 
-# -------------------------------------------------------------- cooking ---
-
 def handle_cooking(payload: dict) -> dict:
-    """§4: one dish a turn, from the materials; the reply carries the boosted
-    previews and cook_num_array."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -97,8 +80,6 @@ def handle_cooking(payload: dict) -> dict:
     return response
 
 
-# ---------------------------------------------------- facility_level_up ---
-
 def handle_facility_level_up(payload: dict) -> dict:
     got = _career(payload)
     if got is None:
@@ -118,11 +99,7 @@ def handle_facility_level_up(payload: dict) -> dict:
     return response
 
 
-# -------------------------------------------------------------- tasting ---
-
 def handle_tasting(payload: dict) -> dict:
-    """§5: the outcome off friends power; the result event (timing 16) on this
-    reply, its rewards on its check_event."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -151,11 +128,7 @@ def handle_tasting(payload: dict) -> dict:
     return response
 
 
-# --------------------------------------------------------- tasting_live ---
-
 def handle_tasting_live(payload: dict) -> dict:
-    """The T72 festival live: back to the training screen on turn 73 with its
-    arrival beats; add_music 1092 the account's first time."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -179,11 +152,7 @@ def handle_tasting_live(payload: dict) -> dict:
     return response
 
 
-# ----------------------------------------------------- flavor_text_read ---
-
 def handle_flavor_text_read(payload: dict) -> dict:
-    """The dish directory's tap (R-A3, probed): the ids leave the unread list;
-    the reply is the cook_data_set alone."""
     got = _career(payload)
     if got is None:
         return refuse()

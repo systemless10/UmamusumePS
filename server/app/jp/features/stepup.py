@@ -1,29 +1,3 @@
-"""JP select step-up banners (gacha_data.type 14): a ladder of five ten-pulls,
-each its own gacha id, climbed in order and repeated draw_limit times.
-
-`DUMP` master gacha_stepup maps stepup_id (= the step-1 gacha id) to its rungs
-by stepup_step. Rungs 2-5 have no gacha_available rows: gacha_odds_id points
-them at step 1's pool. That pool's SSRs are ten stand-in slots (301-310, 3000
-odds each = the whole 3% SSR mass), which gacha/select_stepup fills with SSRs
-from master select_pickup (keyed by stepup_id). cost_type 92 = paid carats
-only; cost_single x 10 is the ten-pull price (500/700/1000/1300/1500).
-draw_guarantee_rarity puts an SR (steps 1-2) or one of the picked SSRs
-(steps 3-5) in the last slot; draw_guarantee_type 1 (step 5) makes that slot
-the pick the client names in draw_guarantee_card_id.
-
-`WIRE` CarrotJuicer 2026-09-02, two full loops of stepup 50240 (draw_limit 2):
-- gacha/index lists only the rung the player is on (50240, then 50241 ...),
-  and gacha_select_stepup_info_array carries {stepup_id, loop_count (1-based),
-  selected_info_array, before_selected_info_array}; a fresh account gets
-  loop_count 1 and empty arrays.
-- every exec is draw_type 1, draw_num 10. Only coin (paid) drops; fcoin is
-  untouched. limit_item_info.num stays 0 (no exchange points).
-- after step 5 the ladder returns to step 1: loop_count + 1, the picks move to
-  before_selected_info_array and selected_info_array empties. Once the last
-  loop is done, the banner and its stepup info are gone from the index.
-- the select_stepup request sends loop_count 0; the reply carries the server's
-  own loop_count and before_selected_info_array.
-"""
 
 from __future__ import annotations
 
@@ -35,10 +9,10 @@ from ... import state as state_store
 from ...handlers import gacha
 from ...result_codes import ResultCode, refuse
 
-STEPUP_KEY = "jp_gacha_select_stepup"   # {str(stepup_id): {loop_count, step, selected_info_array, before_selected_info_array}}
-PAID_COIN = 92                          # gacha_data.cost_type: paid carats only
-PROMISED_CARD = 1                       # gacha_data.draw_guarantee_type: the named pick
-_SLOT_MAX = 1000                        # real card ids start at 10001 / 100101
+STEPUP_KEY = "jp_gacha_select_stepup"
+PAID_COIN = 92
+PROMISED_CARD = 1
+_SLOT_MAX = 1000
 
 
 def _ok(data: dict) -> dict:
@@ -47,7 +21,6 @@ def _ok(data: dict) -> dict:
 
 @functools.lru_cache(maxsize=1)
 def _ladders() -> dict:
-    """{stepup_id: [rung gacha ids by step]}. Cached: master is read-only."""
     out: dict = {}
     for r in master_data.query(
             "SELECT stepup_id, target_gacha_id FROM gacha_stepup ORDER BY stepup_id, stepup_step"):
@@ -57,12 +30,10 @@ def _ladders() -> dict:
 
 @functools.lru_cache(maxsize=1)
 def _rung_index() -> dict:
-    """{rung gacha id: (stepup_id, step index)}."""
     return {gid: (sid, i) for sid, rungs in _ladders().items() for i, gid in enumerate(rungs)}
 
 
 def ladder_of(gacha_id: int):
-    """(stepup_id, step index) for a rung, or None if the banner is no ladder."""
     return _rung_index().get(int(gacha_id))
 
 
@@ -87,7 +58,6 @@ def _candidates(stepup_id: int) -> frozenset:
 
 
 def _progress(full_state: dict, stepup_id: int) -> dict:
-    """The account's place on the ladder, defaults for one never touched."""
     stored = (full_state.get(STEPUP_KEY) or {}).get(str(stepup_id)) or {}
     return {"loop_count": max(1, int(stored.get("loop_count") or 1)),
             "step": int(stored.get("step") or 0),
@@ -96,7 +66,6 @@ def _progress(full_state: dict, stepup_id: int) -> dict:
 
 
 def _info(stepup_id: int, prog: dict) -> dict:
-    """GachaSelectStepupInfo on the wire."""
     return {"stepup_id": stepup_id, "loop_count": prog["loop_count"],
             "selected_info_array": copy.deepcopy(prog["selected_info_array"]),
             "before_selected_info_array": copy.deepcopy(prog["before_selected_info_array"])}
@@ -107,11 +76,7 @@ def _finished(stepup_id: int, prog: dict) -> bool:
     return bool(limit) and prog["loop_count"] > limit
 
 
-# ------------------------------------------------------------ gacha hooks
 def rung_banner(banner: dict) -> dict:
-    """gacha.BANNER_HOOKS entry: a rung draws from step 1's pool at its own
-    paid-only price, earns no exchange points, and on step 5 promises the
-    named pick."""
     hit = ladder_of(banner["gacha_id"])
     if not hit:
         return banner
@@ -129,8 +94,6 @@ def rung_banner(banner: dict) -> dict:
 
 
 def picked_pool(full_state: dict, gacha_id: int, pool: list) -> list:
-    """gacha.POOL_HOOKS entry: each SSR slot becomes the card the player put
-    in it, at the slot's odds. An unfilled slot is never drawn."""
     hit = ladder_of(gacha_id)
     if not hit:
         return pool
@@ -152,10 +115,7 @@ if picked_pool not in gacha.POOL_HOOKS:
     gacha.POOL_HOOKS.append(picked_pool)
 
 
-# ---------------------------------------------------------------- gacha/index
 def decorate_index(full_state: dict, data: dict) -> None:
-    """Show each ladder as the rung the player is on, drop finished ladders,
-    and add gacha_select_stepup_info_array for the ones still listed."""
     listed, infos = [], []
     for g in data.get("gacha_info_list") or []:
         hit = ladder_of(g["id"])
@@ -175,12 +135,7 @@ def decorate_index(full_state: dict, data: dict) -> None:
     data["gacha_select_stepup_info_array"] = infos
 
 
-# ---------------------------------------------------------------- endpoints
 def handle_select_stepup(payload: dict) -> dict:
-    """Store the player's SSR picks for a ladder: every slot filled, each with
-    a different card from the ladder's candidates. The reply is the server's
-    view: its own loop_count and before_selected_info_array, never the
-    client's (which sends loop_count 0)."""
     info = payload.get("select_stepup_info") or {}
     stepup_id = int(info.get("stepup_id") or 0)
     if stepup_id not in _ladders():
@@ -207,9 +162,6 @@ def handle_select_stepup(payload: dict) -> dict:
 
 
 def handle_exec(payload: dict) -> dict:
-    """gacha/exec: a rung pulls only as the player's current step, as a
-    ten-pull, with every slot picked; then the ladder moves on. Every other
-    banner is Global's pull untouched."""
     gacha_id = int(payload.get("gacha_id") or 0)
     hit = ladder_of(gacha_id)
     if not hit:

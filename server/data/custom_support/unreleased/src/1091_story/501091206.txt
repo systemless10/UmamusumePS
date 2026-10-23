@@ -1,0 +1,78 @@
+#title Toward the Victoria Mile
+0 The day of the Victoria Mile.
+1 —When that girl won the Shuka Sho and achieved the Triple Tiara.
+2 Over and over, it even appeared in my dreams—that enormous back overlapped with hers.
+3 —Gentildonna. The Triple Tiara Umamusume who shattered everything—my career that should have been glorious, and my confidence.
+4 This is, of course, a race for you, Vivlos.
+5 —But since it's a race, it can't help but be for me as well.
+6 Because you worked so hard for me and won the Triple Tiara—
+7 I, too... as your sister, will overcome the humiliation of that day.
+8 The younger sister who became a Triple Tiara Umamusume, facing the older sister who was once the Mile Queen. At this drama, the stands—
+9 (Waaaaah...!)
+10 It's amazing, huh? Sisters both being this successful!
+11 I wonder which one will win...! It's gotta be the younger sister, right? She's in her prime!
+12 She's a Triple Tiara Umamusume, after all. Isn't that like a trauma for Verxina?
+13 —Hold on just a moment...! I can't let that remark slide!
+14 Who are you?!
+15 Verxina's greatest charm is, above all, her indomitable grit! She overcame the nightmare of the Tiara races and won the Victoria Mile twice in a row.
+16 She's so stoic, I'm sure she's gotten herself back to her peak form. ...No, perhaps even—
+17 Faced with the Triple Tiara Umamusume she must surpass, she may have become even stronger than before...!
+18 And Vivlos, too, is truly the finest Umamusume in name and in deed... This race could go either way!
+19 I see...! I'm getting fired up!!
+20 ...What an atmosphere.
+21 ...I wonder if it got this lively when Sis and I raced, too.
+22 ...What do you two want to show me—
+23 Haaaa～!
+24 My heart's pounding～!
+24> Is that nerves?
+25 Nuh-uh!
+26 It's like I'm suuuper excited♡
+27 After the Nakayama Kinen, Vivlos had been gradually building up training to match her body's condition. Her form seemed good, too.
+27> How confident are you?
+28 Hmm, let's see～. Onee-chan's suuuper amazing, but...
+29 I'm confident! I became a Triple Tiara Umamusume, after all!
+29> Let's show her how much you've grown!
+30 Yeah!
+31 I'm gonna go show Onee-chan!
+32 A dream showdown between sisters... At this drama, the stands—
+33 (Waaaaah...!)
+34 It's amazing, huh? Sisters both being this successful!
+35 I wonder which one will win...! It's gotta be the younger sister, right? She's in her prime!
+36 —Hold on just a moment...! I'd like to correct one misunderstanding!
+37 Who are you?!
+38 Verxina's greatest charm is, above all, her indomitable grit! She overcame the nightmare of the Tiara races and won the Victoria Mile twice in a row.
+39 She's so stoic, I'm sure she's gotten herself back to her peak form. ...No, perhaps even—
+40 Faced with the little sister she must show the way, she may have become even stronger than before...!
+41 And Vivlos, too, is truly the finest Umamusume in name and in deed... This race could go either way!
+42 I see...! I'm getting fired up!!
+43 ...What an atmosphere.
+44 ...I wonder if it got this lively when Sis and I raced, too.
+45 ...What do you two want to show me—
+46 Haaaa～!
+47 My heart's pounding～!
+47> Is that nerves?
+48 Nuh-uh!
+49 It's like I'm suuuper excited♡
+50 After the Nakayama Kinen, Vivlos had been gradually building up training to match her body's condition. Her form seemed good, too.
+50> How confident are you?
+51 Hmm... Onee-chan really is suuuper amazing, after all.
+52 I don't know, but right now I'm maybe just excited.
+52> Go enjoy it to the fullest
+53 Yeah!
+54 I'm gonna go show Onee-chan!
+55 —Welcome, Vivlos.
+56 Onee-chan!
+57 Ehehe, this feels kinda weird.
+58 Does it? I had a feeling this day would come.
+59 Vivlos. I won't be spoiling you today.
+60 The Victoria Mile is my race... and precisely because it's you, I won't give it up.
+61 I won't gently let you catch up like when we were children.
+62 That's fine!
+63 I love being spoiled by you, and I love leaning on you!
+64 But... when it comes to racing, I wanna be the one spoiling you!
+65 !
+66 Come at me with everything you've got, for real!
+67 I'll take all of it♡
+68 ...—
+69 ...Then I'll do just that. Let's have a good race, Vivlos!
+70 Yeah. Let's play with everything we've got, Onee-chan!

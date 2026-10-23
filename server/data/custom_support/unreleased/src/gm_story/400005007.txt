@@ -1,0 +1,18 @@
+#title The Growth Race Begins!
+0 It was a day near the end of the year—
+1 (Ding♪)
+2 "Growth Race Invitation"—
+3 <chrname> had been invited to the first of the Three Goddesses' special races: the Growth Race.
+4 Being chosen by the Three Goddesses—our reliable supporters, and the ones we're aiming to surpass—was a joy, and it fired us up too.
+5 Welcome to the Growth Race.
+6 This past year, you and <chrname> have been truly remarkable.
+7 That's why we chose to have you step onto this stage.
+8 But the other Umamusume have also grown a great deal, and they're close to the top—
+9 Are you confident that, as her one and only partner, you've devoted yourself to your Umamusume, walked alongside her, and grown more than anyone?
+9> I... am confident!
+10 ...Yeah, a great answer. I'll take that as resolve!
+11 You and <chrname> seem to have built a good relationship, even in this short time.
+12 Now, it's time for the race. I pray <chrname> fights well.
+13 The strength that shakes the earth—
+14 A presence that can never be forgotten—
+15 An individuality that shines brighter in the sun than anyone's—show us all of it!

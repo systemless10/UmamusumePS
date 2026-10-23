@@ -1,0 +1,29 @@
+{
+ "title": "I'm With You♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "トレーニングに励むヴィブロスの元に、\n彼女の両親とヴィルシーナが\n差し入れをしにやってくる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その中には、1人トレーニングを続ける\nシュヴァルグランからの贈り物もあった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "邪魔しないようトレーナーを介しお返しする\nヴィブロス。受け取ったシュヴァルグランは、\n渡すのを迷っていた手紙をトレーナーに託す。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『お互い頑張ろう』――内容を見た\nヴィブロスは、シュヴァルグランに\n駆け足で会いに行くのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

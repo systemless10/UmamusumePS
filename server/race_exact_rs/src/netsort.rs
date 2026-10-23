@@ -1,4 +1,3 @@
-//! .NET ArraySortHelper introsort; equal keys deliberately retain its tie behavior.
 pub fn sort<T: Clone>(a: &mut [T], cmp: &impl Fn(&T,&T)->i32) {
     if a.len()<2 {return;}
     let depth=2*(usize::BITS-a.len().leading_zeros()) as usize;

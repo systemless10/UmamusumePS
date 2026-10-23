@@ -1,0 +1,128 @@
+{
+ "title": "追加の自主トレ",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "トレーニングを終え、ヒシミラクルと\nクールダウンをしていたところ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――あっ、バンブーちゃんとヤエノちゃんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "はぁ……はぁ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヤエノムテキ",
+   "text": "かなり走りましたね……。\nそろそろ戻りましょうか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "いや――まだまだっス！\n夕日が沈むまで、アタシは走り続けるっスよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヤエノムテキ",
+   "text": "わかりました。\nどこまでもお付き合いいたしましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……まだ走るんだ。\n2人とも、がんばってるなぁ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………。\nわたしより才能のある2人が、あんなに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なら、わたしはもっとやらないと\nマズいんじゃないでしょうか……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どうしよ、自主トレに\nまぜてもらおうかな……。",
+   "choice_data_list": [
+    "行きたいなら、行っておいで",
+    "オーバーワークになるからやめよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい。……やっぱり行ってきます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "バンブーちゃん、ヤエノちゃーん！\nわたしも一緒に走っていいかな～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヤエノムテキ",
+   "text": "ヒシミラクルさん。\nもちろん構いませんよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えへへ……2人を見たら、\nわたしもがんばらなきゃって思って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "うおおおっ！　夕日、河原、友との切磋琢磨！\n熱いっス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "それじゃあ3人で、\n夕日に向かって全力ダッシュするっス！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "2人",
+   "text": "お～！\n押忍！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうしてヒシミラクルは2人と一緒に、\n追加のトレーニングに汗を流したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "オーバーワーク……そうですよね。\n今日はいっぱいトレーニングしましたし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "じゃあ、今日は帰って\nしっかり休むことにします。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

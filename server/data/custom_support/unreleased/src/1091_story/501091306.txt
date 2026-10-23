@@ -1,0 +1,42 @@
+#title After the Oka Sho: Never Again!
+0 Huff... Huff...
+1 *cough*... *cough*...!
+2 Huff... Ahh...
+3 I finally got to run in it. And I promised...
+4 ...I'm sorry, everyone. Onee-chan...
+5 I... ...
+6 (Clap clap clap...!)
+7 Good work, Vivlos! And... thank you.
+8 For working so hard. For showing us such a wonderful run...!
+9 Thank you!
+10 ...You'll surely be all right.
+11 ...That's right, Vivlos worked so hard for us.
+12 Thank you for letting us dream!! I'll cheer for you in the next race too!
+13 The Tiara races aren't over yet! Vivlos, great work～!
+14 If you win even one crown, that's revenge!
+15 Everyone...
+16 ...Yeah, that's right. I can still get Onee-chan's revenge...!
+17 The Japanese Oaks, the Shuka Sho...— I wanna win!
+18 Vivlos showed heavy exhaustion right after the race, but after a little while—
+18> Are you feeling okay?
+19 Yeah!
+20 Actually, I feel better than before the race! I feel like I could run another one!
+20> Absolutely not
+21 Aww. But I'm in suuuper good shape, you know?
+22 I'm not tired at aaall right now! I could even train!
+23 I've gotta get my revenge, after all!
+24 She doesn't seem to feel anything right now because of the race excitement... but giving in to that would be dangerous.
+24> Let's rest a little longer before we head out
+25 Aww? Tore-cchi, are you a bit of a worrywart?
+25> You're just that precious to me | You're just that precious to me
+26 ...
+27 Huh!?
+27> Let's rest your body properly until the Japanese Oaks
+28 Oh, that's what you meant... right... You scared me.
+29 Ehehe, understood.
+30 For the sake of me, who's suuuper precious to Tore-cchi, I'll rest properly today♡
+31 Our next goal is the second crown of the Triple Tiara... the Japanese Oaks.
+32 "The much-watched Vivlos couldn't avenge her sister Verxina, but showed a promising run. Keep your eyes on her—"
+33 ...Promising, huh.
+34 Ever since you were little, you could do anything.
+35 ...Unlike me—

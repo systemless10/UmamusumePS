@@ -1,0 +1,65 @@
+{
+ "title": "グランドマスターズ・勝利",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "夢のようであり、それでも信じていた、\n『グランドマスターズ』勝利……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ここに集った強豪たちと、そんな彼女たちに\n惜しみなく知識を注いできた三女神――\nその頂点に<chrname>は輝いたのだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "あははっ！　大したものだ！\n最高の走りを見させてもらったよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "叡智を繋ぎ走るウマ娘、その頂点の姿――\nこれがまさに三女神の望んだ姿だ。\nよく乗り越えたな、俺たちを……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "かつてを走ったウマ娘とトレーナーの歴史は、\nあなたを通してウマ娘にしっかり伝わった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "やっぱりあなたは、あの子にとって\n最高のトレーナーであるようね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "そして、これからも走り続け、\nお前たちの歴史を深く刻んでいくんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "……本当に、よくここまで成長した。\n心から祝おう――おめでとう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして『グランドマスターズ』という\n大舞台は幕を閉じた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "三女神から授かった叡智という名の歴史は、\n<chrname>によって\nまた新たな歴史を形作ったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,309 @@
+{
+ "title": "嫌よ嫌よは本当に",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "足音……は、しないよね。うん。\nよし、この調子なら――",
+   "choice_data_list": [
+    "……ヒシミラクル？何してるんだ？",
+    "……ヒシミラクル？何してるの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ！　ト、トレーナーさんこんにちは～。\nえ～と、その、これはですねぇ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "ミラ子ーー！　どこっスかーー！\n観念して止まるっス！　ミーラ子ーー！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もっもう来た！？\nじゃ、じゃあまたトレーニングでぇ～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（とたとたとた……）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……急ぎつつも、ステイヤーらしい\nペースで遠ざかるヒシミラクルを見送る。\nしかし、その後も――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "ん？　そこにいるのは――？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "みゃ、みゃ～お。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "あ～～～その……ミラ子ちゃん？\n言いにくいんだけど、耳、丸見えかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヤエノムテキ",
+   "text": "！　ヒシミラクルさん、ここですか！？\n今度こそ逃がしません……！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぎゃーっ！　そこをなんとかー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今日は至るところで、『何か』から\n逃げ回っていたヒシミラクルを目撃した。",
+   "choice_data_list": [
+    "（何かあったのかな？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわ～ん、裏切り者～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "アリバイ作ってくれるって言ったのに～！\nわたしたちの友情はどこいったのさ～～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "友人A",
+   "text": "友だちだからこそ、だよ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "友人B",
+   "text": "ほらほら、いい加減諦めなって。\n悪いようにはしないから――",
+   "choice_data_list": [
+    "ちょ、ちょっと待った！",
+    "ちょ、ちょっと待って！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ト、トレーナーさん……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "普段何事にも『ほどほど』な彼女が、\nここまで必死になっているのは変だ。\n一旦、話くらいは聞かせてほしいが……。",
+   "choice_data_list": [
+    "一体どうしたんだ？",
+    "一体どうしたの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "友人A",
+   "text": "いやいや、トレーナーさん。それが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "先生",
+   "text": "――はい全員プールに入って。\n『水泳実技テスト』よーい……ピー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ガボガボ……ブハッ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ゴボゴボ……ブへッ！",
+   "choice_data_list": [
+    "これを嫌がってたのかぁ……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "いやー、協力グッジョブっスね！\nこのテストを受けられなかったら、\nトレーニングに制限入っちゃいますから！",
+   "choice_data_list": [
+    "え、そうなのか！？",
+    "え、そうなの！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヤエノムテキ",
+   "text": "ええ。補講を受けることになりますから。\n故に、全力で追いかけてしまいました。",
+   "choice_data_list": [
+    "そうだったのか……ありがとう",
+    "そうだったんだ……ありがとう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "ミラ子ーーー！　あと少しっスよ！\nがんばるっスーー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヤエノムテキ",
+   "text": "貴方なら必ず、成し遂げられます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その後、ヒシミラクルは半ば漂流する形で、\nなんとか合格ラインの25mを泳ぎ切った！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ゼェ……ゼェ……。",
+   "choice_data_list": [
+    "ヒシミラクル、本当にお疲れ――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――……つ……は……せる……。",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "次こそは、絶対逃げ切ってみせる……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "この、プールテストから！！！",
+   "choice_data_list": [
+    "う、う～ん……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "いつになくやる気に満ち溢れている\nヒシミラクルに度肝を抜かれつつ――",
+   "choice_data_list": [
+    "それなら、知識をつけて克服しよう！",
+    "そのやる気が、泳ぎに向けば……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "苦手なものを避けたい気持ちもわかる。\nそういう時は、苦手な意識を\n知識で払拭するのも手のひとつだ。",
+   "choice_data_list": [
+    "今度は座学から攻めていこう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～座学から、ですか～？\nわたし理論から入るタイプとかでも……。",
+   "choice_data_list": [
+    "大丈夫！君ならできる！",
+    "大丈夫！貴方ならできる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいや！　毎度毎度、\nその手には乗りませんから～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなこと言われても、\nわたしにとっていいことゼロですもん～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どんなにがんばっても上手くならないし、\n下手だから余計に疲れるし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "尻尾も髪も乾かすの大変だし、\n鼻に水入って痛いし……。",
+   "choice_data_list": [
+    "まぁそうだよな……",
+    "まぁそうだよね……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "苦手なのには苦手なりの理由がある。\nだからと言って、『じゃあ泳がなくていいよ』\nとも言ってあげられない――",
+   "choice_data_list": [
+    "泳いだ日はおいしい物食べに行こっか！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……おいしいものですか～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "スイーツビュッフェ、寿司、焼き肉、\nそれにお好み焼き。\n何でもいいよと提案する。",
+   "choice_data_list": [
+    "1個でもいいことを作って頑張ろう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～……たしかにそれなら\nちょっとやる気でる……かなぁ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……とりあえず、それが今日から有効なら、\n焼き肉いっぱい食べに行きたいかもです。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そうして、その日は焼き肉を食べに行き……\nその後は『ご褒美』を糧に、プール授業を\nなんとか乗り切るヒシミラクルなのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

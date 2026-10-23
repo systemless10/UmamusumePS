@@ -1,6 +1,3 @@
-//! Standalone Global CompeteTop/CompeteFight research prototype.
-//! See docs/RACE_GLOBAL_COMPETE.md for evidence and unresolved server ordering.
-//! No RNG is consumed. Inputs are snapshots; effects apply to the NEXT movement.
 
 pub const TICK: f32 = 0.0666;
 
@@ -11,15 +8,12 @@ pub enum Style { Other, Nige, Oonige }
 pub struct Runner {
     pub style: Style,
     pub distance: f32,
-    /// Course-width fractions (wire LaneDistance / 10000), not metres.
     pub lane: f32,
     pub speed: f32,
     pub hp: f32,
     pub max_hp: f32,
-    /// Effective, mood/passive-adjusted guts; strategy aptitude is separate.
     pub guts: f32,
     pub strategy_proficiency: f32,
-    /// One-based order cached by the caller; server cache timing is unresolved.
     pub rank: usize,
     pub final_straight: bool,
     pub tempted: bool,
@@ -35,24 +29,17 @@ pub struct Params {
     pub fight_speed_gap: f32, pub fight_order_percent: usize,
     pub fight_exit_distance: f32, pub fight_entry_hp_percent: f32,
     pub fight_exit_hp_percent: f32,
-    /// Global retains a duel partner at exactly the continuation distance.
     pub fight_exit_inclusive: bool,
-    /// Select the oldest eligible near partner before checking its duel history.
     pub fight_select_before_history: bool,
     pub fight_speed: [f32; 3], pub fight_accel: [f32; 3],
     pub top_hp: [f32; 4],
-    /// Real-corpus fit: the style's frontmost runner must lead the race.
-    /// 0 = no requirement, 1 = cached rank 1, 2 = greatest distance.
     pub top_requires_lead: u8,
-    /// Separation counts the whole entry cohort, expired members included.
     pub top_cohort: bool,
-    /// Reaching EndSection counts as a separation exit for the group collapse.
     pub top_end_exit: bool,
 }
 
 impl Default for Params {
     fn default() -> Self {
-        // Serialized Global float32 constants, NOT JP parameters.
         Self {
             start_distance: 150.0, check_end_section: 6, end_section: 9,
             top_distance: 3.75, top_lane: 0.165,
@@ -74,7 +61,6 @@ pub struct Mode {
     pub top: bool, pub top_remaining: f32, pub top_group: Option<usize>,
     pub top_distance_exit: bool,
     pub fight: bool, pub fight_count: u32,
-    /// Duel group id (index of the founding runner); exit separation counts only this group.
     pub fight_group: Option<usize>,
 }
 
@@ -82,9 +68,7 @@ pub struct Mode {
 pub struct State {
     pub modes: Vec<Mode>,
     pub top_fired: [bool; 2],
-    /// Directional AroundHorse timers: None = not in nearby list.
     pub near: Vec<Vec<Option<f32>>>,
-    /// Runners in the order this step set them fighting (entrant, then its target).
     pub enter_seq: Vec<usize>,
 }
 impl State {
@@ -105,8 +89,6 @@ pub fn top_duration(r: &Runner, p: &Params) -> f32 {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Effects {
     pub target_speed_add: f32, pub acceleration_add: f32,
-    /// Replacement base rate for the ordinary HP calculator. Not a product
-    /// with temptation or pace-down. None delegates to ordinary HP behavior.
     pub hp_base_rate: Option<f32>,
 }
 pub fn effects(r: &Runner, m: &Mode, p: &Params) -> Effects {
@@ -124,10 +106,6 @@ pub fn effects(r: &Runner, m: &Mode, p: &Params) -> Effects {
     }
 }
 
-/// Pure end-of-tick transition. Caller supplies post-movement snapshots and
-/// previously cached ranks. No trajectory integration or clock ownership.
-/// Candidate selection is deterministic as a prototype policy, not decoded
-/// server target selection. All exit decisions use a shared snapshot.
 pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
             p: &Params) -> (State, Vec<Change>) {
     let n = runners.len();
@@ -136,9 +114,6 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
     let mut next = old.clone();
     next.enter_seq.clear();
     let mut changes = Vec::new();
-    // EndSection is 1-based: CompeteTop ends on entering the 9th section, at 8/24
-    // (647 races: 5 later / 0 earlier; RX_CTEND1=0 reverts). CheckEndSection stays at
-    // 6/24 (RX_CTCHK1=1 probe: 16 earlier).
     let one = |n: &str| std::env::var(n).is_ok_and(|v| v == "1");
     let end = course_distance / 24.0 * (p.end_section - std::env::var("RX_CTEND1").map_or(true, |v| v != "0") as u32) as f32;
     for i in 0..n {
@@ -151,8 +126,6 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
             } else {
                 let peers: Vec<usize> = (0..n).filter(|&j| j != i &&
                     (p.top_cohort || old.modes[j].top) && old.modes[j].top_group == m.top_group).collect();
-                // A naturally expired peer must not collapse a remaining mode.
-                // Separation is symmetric: the leader also exits once 5 m clear (RX_CTABS, 5 / 0).
                 if !peers.is_empty() && peers.iter().all(|&j|
                     (if std::env::var("RX_CTABS").map_or(true, |v| v != "0") {(runners[j].distance - r.distance).abs()} else {runners[j].distance - r.distance}) >= p.top_exit_distance ||
                     (runners[j].lane - r.lane).abs() >= p.top_exit_lane) {
@@ -161,14 +134,10 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
                 }
             }
         }
-        // Separation counts only the runner's own duel group (KuromiAK; RX_CFGROUP=0 counts any duelist).
         let group = std::env::var("RX_CFGROUP").map_or(true, |v| v != "0");
         if m.fight && (r.hp < r.max_hp * p.fight_exit_hp_percent / 100.0 ||
             !(0..n).any(|j| j != i && old.modes[j].fight_count > 0 &&
                 (!group || old.modes[j].fight_group == m.fight_group) &&
-                // Four Global replays cross exactly 5.0 m one tick before
-                // exceeding it (docs/RACE_FIGHT_EXIT_PARITY_2026-10-08.md).
-                // Equality retains the effect; HP/history/group gates still apply.
                 (if p.fight_exit_inclusive {
                     (runners[j].distance - r.distance).abs() <= p.fight_exit_distance
                 } else {
@@ -198,9 +167,6 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
     if runners.iter().any(|r| r.distance >= p.start_distance) {
         for (group, style) in [Style::Nige, Style::Oonige].into_iter().enumerate() {
             if next.top_fired[group] { continue; }
-            // The style's leader is its best cached rank, not the greatest current distance:
-            // on a lead-change tick the server still groups around the cached leader
-            // (4330575337d9bb06, d623e22bd7ed4306). RX_CTRANKLEAD=0 reverts.
             let leader = if std::env::var("RX_CTRANKLEAD").map_or(true, |v| v != "0") {
                 (0..n).filter(|&i| runners[i].style == style).min_by_key(|&i| (runners[i].rank, i))
             } else {
@@ -226,7 +192,6 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
                     for i in members {
                         next.modes[i].top = true;
                         next.modes[i].top_group = Some(group);
-                        // Controlled oracle: enter tick 124, expire tick 277.
                         next.modes[i].top_remaining = top_duration(&runners[i], p) - dt;
                     }
                 }
@@ -234,17 +199,9 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
         }
     }
     let top_rank = (n * p.fight_order_percent).div_ceil(100);
-    // Entry (2026-10-09, 673 races: 164 -> 188, none earlier): in gate order, each runner
-    // that may enter picks the first qualifying partner in its NearList (longest proximity
-    // time, ties in gate order); the 50% rank rule passes if either runner is in it. The
-    // entrant, then its partner, are emitted. Group = partner's group, else entrant's, else
-    // the lower index. RX_CFMODEL (research) = [target r=min rank, g=first gate, a=all,
-    // n=NearList] [rank t=target, e=entrant, b=both, x=either] [s=either direction] [r=group
-    // from min-rank partner]; "rt-" was the previous prototype.
     let model: Vec<char> = std::env::var("RX_CFMODEL").unwrap_or_else(|_| "nx-".into()).chars().collect();
     let in_rank = |j: usize| runners[j].rank <= top_rank;
     let hp_ok = |i: usize| runners[i].hp >= runners[i].max_hp * p.fight_entry_hp_percent / 100.0;
-    // Snapshot eligibility prevents runner iteration from changing entry checks.
     let target_ok: Vec<bool> = (0..n).map(|j| hp_ok(j) &&
         (old.modes[j].fight || old.modes[j].fight_count == 0) &&
         (!old.modes[j].fight || next.modes[j].fight)).collect();
@@ -256,21 +213,17 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
     let q = |i: usize, j: usize| candidate(i,j) && target_ok[j];
     for i in 0..n {
         if !can_enter(i) { continue; }
-        // Global replay 88fcfd7e: an expired oldest partner blocks fallback;
-        // the later entrant then starts the pair in the recorded event order.
         let qualified: Vec<usize> = (0..n).filter(|&j|
             if p.fight_select_before_history && model[0] == 'n' && model[2] != 's' {candidate(i,j)}
             else {q(i, j) || (model[2] == 's' && q(j, i))}).collect();
         let targets: Vec<usize> = match model[0] {
             'a' => qualified.clone(),
             'g' => qualified.first().copied().into_iter().collect(),
-            // NearList order: earliest inserted (longest continue time), ties in gate order.
             'n' => qualified.iter().copied().min_by(|&a, &b| next.near[i][b].unwrap_or(0.0).total_cmp(&next.near[i][a].unwrap_or(0.0)).then(a.cmp(&b))).into_iter().collect(),
             _ => qualified.iter().copied().min_by_key(|&j| (runners[j].rank, j)).into_iter().collect(),
         };
         if std::env::var("RX_CFPAIR").is_ok() && !targets.is_empty() {eprintln!("CFPAIR {} {:?} {:?} {} | {:?}", i, targets, qualified, runners[i].distance,
             qualified.iter().map(|&j|(j,runners[j].rank,next.modes[j].fight_group,next.modes[j].fight,runners[j].distance-runners[i].distance,runners[j].lane-runners[i].lane,next.near[i][j],next.near[j][i])).collect::<Vec<_>>());}
-        // RX_CFGRP=r: group comes from the min-rank qualified partner, not the entry target.
         let grp_partner = if model.get(3) == Some(&'r') {qualified.iter().copied().min_by_key(|&j| (runners[j].rank, j))} else {None};
         for j in targets {
             if !target_ok[j] {continue;}
@@ -307,8 +260,6 @@ mod tests {
     }
     #[test]
     fn controlled_oracle_top_tick_124_to_277() {
-        // Synthetic threshold crossing on tick 124; exact accumulated f32 clock
-        // and duration are tested, not a replay-fed simulator trajectory.
         let mut state = State::new(3); let mut t = 0.0f32;
         let p = Params::default(); let mut boundaries = Vec::new();
         for tick in 1..=278 {
@@ -325,8 +276,6 @@ mod tests {
     }
     #[test]
     fn controlled_oracle_fight_tick_1706_to_1755() {
-        // Synthetic proximity and late rank crossing isolate conditions. These
-        // snapshots do not purport to recover the hidden oracle trajectories.
         let p=Params::default(); let mut s=State::new(9); let mut t=0.0f32;
         let mut start=None; let mut end=None;
         for tick in 1..=1756 {
@@ -334,7 +283,6 @@ mod tests {
             let mut r:Vec<_>=(0..9).map(|i|runner(i as f32*20.0,i+1)).collect();
             for q in &mut r { q.style=Style::Other; }
             r[1].distance=2200.0; r[1].rank=7;
-            // Synthetic separation crosses beyond the inclusive boundary.
             r[5].distance=if tick<1755 {2202.0} else {f32::from_bits(2205.0f32.to_bits()+1)};
             r[5].rank=if tick<1706 {6} else {5};
             r[1].final_straight=tick>=1650; r[5].final_straight=tick>=1650;
@@ -375,7 +323,6 @@ mod tests {
         let p=Params::default();let mut s=State::new(2);
         s.modes[0].fight=true;s.modes[0].fight_count=1;s.modes[0].fight_group=Some(0);
         s.modes[1].fight_count=1;s.modes[1].fight_group=Some(0);
-        // A former partner still retains the duel, ahead or behind.
         for distance in [195.0,205.0] {
             let mut r=[runner(200.0,1),runner(distance,2)];
             for q in &mut r {q.style=Style::Other;}
@@ -396,7 +343,6 @@ mod tests {
         let next=step(&s,&r,2500.0,TICK,&p).0;
         assert_eq!(next.enter_seq,vec![2,0]);
         assert!(!next.modes[1].fight);
-        // Below the HP gate, the former partner is filtered before selection.
         r[1].hp=149.0;
         assert_eq!(step(&s,&r,2500.0,TICK,&p).0.enter_seq,vec![0,2]);
         r[1].hp=1000.0;p.fight_select_before_history=false;
@@ -425,7 +371,6 @@ mod tests {
         r[0].hp=150.0;r[1].hp=150.0;r[1].speed=20.0;r[1].rank=1;
         s=step(&s,&r,2500.0,TICK,&p).0;
         assert!(s.modes[0].fight && s.modes[1].fight);
-        // Exactly 5% remains active; below 5% exits.
         r[0].hp=50.0;s=step(&s,&r,2500.0,TICK,&p).0;
         assert!(s.modes[0].fight);
         r[0].hp=49.9;s=step(&s,&r,2500.0,TICK,&p).0;

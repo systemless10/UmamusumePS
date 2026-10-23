@@ -1,0 +1,25 @@
+{
+ "title": "オークスの後に・On Fire!",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『桜花賞』を逃したヴィブロスであったが\n『オークス』は見事、獲得してみせた。\n観客は二冠獲得へ期待を寄せている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスはその声に応えるためにも、\n夏合宿に加えてもう1つ自信を持てるすべが\n欲しいとトレーナーに願い出る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "さらなる飛躍を目指し、\nヴィブロスとトレーナーは次の目標を\n『紫苑ステークス』に定めるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "紫苑ステークス"
+   ]
+  }
+ ]
+}

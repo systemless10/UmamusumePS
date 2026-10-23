@@ -1,0 +1,54 @@
+{
+ "title": "壮大な歴史よりいづるもの",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "担当するウマ娘と共に、\nトゥインクル・シリーズへの挑戦が\nいよいよ始まろうとしていた――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トゥインクル・シリーズ"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "トレーナーもまた、夢に駆ける彼女たちを\n二人三脚で支えるために、\n全力で駆けなくてはならないのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そんなある日、トレーナーとウマ娘の\n強い味方として『メガドリームサポーター』\nというサポートAIが導入される。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "メガドリームサポーター",
+    "サポートAI"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "ウマ娘のレースというものが始まって以来の\nさまざまなデータを集積、分析し、\n最善のサポートを行う、究極のAI。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "担当するウマ娘のため、トレーナーたちは\nVRの世界へと足を踏み入れたのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "VR"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "そこで待っていたのは、\n3つのAIが自らを形成して誕生した、\n三女神の名を冠するウマ娘たちだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "膨大なデータを司る彼女たちを味方に、\nトゥインクル・シリーズが幕を開ける。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,4 +1,3 @@
-//! Port of race_parameters.py.
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum GroundCondition {
@@ -104,9 +103,6 @@ pub fn parse_grade(s: &str) -> Result<Grade, String> {
     }
 }
 
-/// Mutable "partial" race parameters, mirroring RaceSolverBuilder's
-/// `PartialRaceParameters` (everything except `skill_id`, filled in
-/// per-skill when building skill data -- see `RaceParametersWithSkillId`).
 #[derive(Clone, Debug)]
 pub struct RaceParameters {
     pub mood: i32,
@@ -118,7 +114,6 @@ pub struct RaceParameters {
     pub popularity: i32,
     pub order_range: Option<(i32, i32)>,
     pub num_umas: Option<i32>,
-    /// every runner's character id (is_exist_chara_id)
     pub chara_ids: Vec<i32>,
     pub context: std::collections::BTreeMap<String, crate::json::Value>,
 }
@@ -141,9 +136,6 @@ impl Default for RaceParameters {
     }
 }
 
-/// The `extra` object passed to condition filters: RaceParameters plus the
-/// currently-being-built skill's own id (self-referential conditions like
-/// is_activate_other_skill_detail).
 #[derive(Clone, Debug)]
 pub struct RaceParametersWithSkillId {
     pub params: RaceParameters,

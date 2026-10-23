@@ -1,0 +1,35 @@
+#title Summer's Harvest
+0 With only a little time left in the training camp, the Umamusume were working up a sweat as if making their final spurt.
+1 All right, let's do five round trips along the beach. Prioritize finishing over your time.
+2 ...Okay. .........I'm off.
+3 That's right, finishing the regimen is what matters. If you push too hard and slack off in the second half, the whole regimen falls out of balance.
+4 That's true...! I'll keep that firmly in mind from now on.
+5 ...Um, and if it's all right, I'd love to hear your thoughts on her next training as well...!
+6 After that day's training was done, we trainers were exchanging opinions.
+7 Camp's almost over... And right after that, the real fall races begin.
+8 Yes. Bitter Glasse and Little Cocon both had a very productive training camp.
+9 Come to think of it, you seemed quite enthusiastic as well, Trainer Kiryuin.
+10 You saw that?! Ahaha... I'm reflecting a little on whether I got a bit too excited...
+11 But I'm really feeling Meek's growth lately!
+12 Compared to the others, they might be small steps, but we're both so happy to be moving forward...
+13 The real sprouting is surely yet to come. We promised each other we'd keep doing our best together like this—
+14 And actually, we even set a goal together!
+14> What kind of goal?
+15 Yes! It's—"Win a graded race by the end of the year"!
+16 Of course, we're not planning to rush, but having a goal makes us feel more positive.
+17 Plus... we have the Three Goddesses' support, so I don't think it's an impossible goal!
+18 (Ding♪)
+19 Excuse me... Ah, it's from Darley Arabian. I was asking about a training regimen.
+20 "Cardiopulmonary strengthening on the hill course," 89% fit... "Full-body conditioning in the pool," 33% fit...
+21 Is that Little Cocon's training regimen?
+22 Yes. I had her produce the best possible regimen for the first race of the fall.
+23 Each passing month, the Umamusume's data is updated, and the support becomes more precise.
+24 ...The Three Goddesses truly bring us closer to our goals.
+25 They really do...! Okay, I'll ask Godolphin Barb about Meek again too...!
+26 Thanks to the Three Goddesses' knowledge, we trainers were getting the best results we could ask for.
+27 Their support was so reliable, calling it a blessing almost seemed too convenient.
+28 ......... ...Hehe, I cut my time again today...
+29 Goooal!! The time is... 85 seconds flat! Last furlong, 12.5!
+30 Phew~... I ran out of steam in the last furlong~! 85.8~!
+31 .........
+32 ...It's okay. .........My own pace, my own pace.

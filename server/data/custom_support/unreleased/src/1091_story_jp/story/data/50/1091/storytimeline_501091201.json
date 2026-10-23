@@ -1,0 +1,223 @@
+{
+ "title": "桜花賞にむけて",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『桜花賞』当日、\nレース場にやってくると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンたち",
+   "text": "ヴィブロスちゃん、\n頑張れ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――たくさんのファンが、\n朝早くからヴィブロスを待っていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "お姉ちゃんのリベンジするんだよね！\n応援してるよー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンB",
+   "text": "ヴィブロスちゃんのセンター、\n見せてね～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "まずは一冠……！\n自分も精一杯、祈ります……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "保健室の先生",
+   "text": "――うん、悪くないですね。\n事前の検査通り、大きな不安はないです。",
+   "choice_data_list": [
+    "そうですか……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "今回は、ヴィブロスの体調に\n大きな問題はないか確認のため、\n保健室の先生に同行してもらっていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "保健室の先生",
+   "text": "ただし、今のところ……です。\nレースでは何が起こるかわかりません。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "保健室の先生",
+   "text": "ヴィブロスさん、\nくれぐれも無理はしないように。\nそれでは、頑張ってくださいね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はーいっ！\nありがとうございます！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……はー、\nよかったぁ。",
+   "choice_data_list": [
+    "あとは本番、頑張るだけだな",
+    "あとは本番、頑張るだけだね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……なんか、\nついに来た！　って感じ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "お姉ちゃんも見に来てるし！\nかっこいいところ見せて、\nまずはほっとしてもらいたいな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスはいつもどおり明るいが、\n少しだけ……表情がこわばっている気がする。",
+   "choice_data_list": [
+    "……もしかして緊張してる？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへ。\nうん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょこっとね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんなの……お姉ちゃんの気持ちも、\n預かるって決めたんだもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "なんかそー考えたら……。\nちょこっとじゃ、ないかも？",
+   "choice_data_list": [
+    "君ならできる、大丈夫",
+    "貴方ならできる、大丈夫"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうかな……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ほんとにそう思う？",
+   "choice_data_list": [
+    "ああ！",
+    "うん！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスはここ数か月、\n体調を見つつ頑張ってきた。\nその姿を間近で見てきたから言える――",
+   "choice_data_list": [
+    "努力は裏切らない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "大丈夫よ、ヴィブロス……。\n私が証明してみせるわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "努力は裏切らないってことを……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うんっ。\nありがとう、トレっち！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、絶対勝ってくるよ！\nお姉ちゃんの、妹として！",
+   "choice_data_list": [
+    "頑張れ！",
+    "頑張って！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスの背中を見送り、少し息をつく。\n彼女と同様に、自分も少し緊張していた。",
+   "choice_data_list": [
+    "（どうか……無事に）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "ヴィブロス……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……とにかく無事に。\n何事もなく、走り切れますように――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

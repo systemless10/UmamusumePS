@@ -15,7 +15,6 @@ fn additional_modifier_uses_its_own_remaining_time_after_detail_stop() {
     let dt=0.0666_f32;
     let mut detail_left=dt*2.0;
     m.add(6,0.25,Add,7,false);
-    // Installed during UpdateSkill, before the detail decrements its timer.
     m.add_timed(6,0.025,Add,7,false,detail_left);
     detail_left-=dt;
     m.update_timed(dt);

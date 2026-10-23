@@ -1,0 +1,425 @@
+{
+ "title": "やります、やりますってば",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "この日のミーティング、\nヒシミラクルへある提案をすることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "参考用動画を自分で探してみる……ですか？",
+   "choice_data_list": [
+    "そう、自分に足りないものを考えながら"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルの指導では、\n今はこちら側から彼女の走りに合わせた\nフォームの矯正や、筋トレを指示している。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "だがこちらから教え与えられることに、\n慣れてしまうのもよくない。自分で\n欠点について考える力も養わなければ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "んー、わかりました。\nやってみますー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして時間を設け、\n動画を探させていたのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うっわ～、おいしそ～……。\nこのウマチューバー、チャンネル登録だなー。",
+   "choice_data_list": [
+    "……何の動画を見ているんだ？",
+    "……何の動画を見ているの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はっ！？\nあっ、えっと。いえ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今のはたまたま！　たまたま箸休めで\nふわとろオムライスを見ただけというか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "本当、5分前まではちゃんとした動画を\n見てたんです。『加速に必要な筋力』とか\n有名トレーナーがアップしてた動画で～！",
+   "choice_data_list": [
+    "…………"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぅ、本当ですって～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "――そして30分後。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふん……ふん、ふん……♪",
+   "choice_data_list": [
+    "（また関係なさそうな動画の音がする……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかもヒシミラクルは、ソファに\n寝転がり始めている。この取り組みは\n中止すべきか。そう頭によぎり――",
+   "choice_data_list": [
+    "（いや、奇跡を期待して彼女に懸けよう！）",
+    "（……諦めて、座学に切り替えよう）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ここからの一発逆転だってあるかもしれない、\nそう信じて、彼女を見守ることにしたのだが。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ん……すぅ……むにゃぁ……。",
+   "choice_data_list": [
+    "（ついに寝た……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "次の瞬間、ヒシミラクルの両手から、\nするりと勢いよくスマートフォンが落ち――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へぶっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "は、鼻が……いったぁ～！\nうぅ～……スマホ……。",
+   "choice_data_list": [
+    "寝落ちした天罰だな",
+    "寝落ちした天罰だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……。",
+   "choice_data_list": [
+    "眠って休んだ分、トレーニングしようか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、あはは……えと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ～い……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして予定を切り上げ、普通に\nトレーニングをすることにしたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ここからの一発逆転だってあるかもしれない、\nそう信じて、彼女を見守ることにし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "次のおすすめ動画は～……ん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\nこの動画なんですけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルが見つけてきた動画は、\n小学生が、現役で活躍中のウマ娘に\n“差し”について教わる内容だった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、自分の脚質は『なんとなく』\n“差し”だと思っていたんですよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "でもこの動画は、その『なんとなく』を\n『しっかり』理解するのが目的なんです。\nしかも小さい子向けだからわかりやすくて。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ちょっとだけ反省しちゃいました。\nふわっとしか理解してなかった自分を。",
+   "choice_data_list": [
+    "……！いい動画を見つけたな！",
+    "……！いい動画を見つけたね！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやいや、動画を通して\n自分のダメダメなところを自覚したというか。",
+   "choice_data_list": [
+    "それが大事！やっぱり君はやればできる！",
+    "それが大事！やっぱり貴方はやればできる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えぇ～？　ほめすぎはよくないですよ？\n調子に乗っちゃいますって。",
+   "choice_data_list": [
+    "調子に乗っていいよ、成長しているんだから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もぉ～、トレーナーさんってば。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあ、反省した分は、\n成長したかもしれませんね？",
+   "choice_data_list": [
+    "だからもっと成長したいよな？",
+    "だからもっと成長したいよね？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ん～、そうですね。\nンフフ。",
+   "choice_data_list": [
+    "よし、早速トレーニングに行こう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "へ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "も～、トレーナーさんの意地悪～！\n実践なら明日でもいいじゃないですか～！",
+   "choice_data_list": [
+    "君の努力した成果を今日見たいんだ",
+    "貴方の努力した成果を今日見たいの"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……はぁ～。その成果、\n少ししかでなくても勘弁してくださいねーっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ここからの一発逆転だってあるかもしれない、\nそう信じて、彼女を見守ることにし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひひっ……あっ。――ん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうだ、トレーナーさん。\nズバリコラボです、コラボ！",
+   "choice_data_list": [
+    "コラボ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ウマチューバーさんの\nコラボ動画を見ててピンときたんです。\n他の人の視点や考えを取り入れるのは大事！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "つまりわたしでいうと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……模擬レースに参加するとか？",
+   "choice_data_list": [
+    "（ふ、普通のトレーニングだ……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "だが着目点は悪くない。\nここからさらに頭を使わせて、\nより有用なトレーニングにするには――",
+   "choice_data_list": [
+    "例えばどんな人とコラボしたらいいかな？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あっ、わたしと同じような子たちを\n誘ってみる！　……とか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "メジロライアン",
+   "text": "じゃあ今日はよろしくね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あのぉ～、トレーナーさん？\nわたしとぜんぜん似ていない子\nばっかりなんですけど～？",
+   "choice_data_list": [
+    "君と同じ、差しが得意な子だ",
+    "貴方と同じ、差しが得意な子だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちゃう、ちゃう！\nそこ以外に大事な違いありますって。\nスター性、スター性！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……それにたぶん、わたしは勝てませんよ？\nミラクルかなにかが起きない限りは。",
+   "choice_data_list": [
+    "君ならミラクルを起こせる",
+    "貴方ならミラクルを起こせる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ～……トレーナーさんって、\nガチのテンションでそう言うんだよなぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしまで過信したらどうするんです？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "この日の模擬レース、\nヒシミラクルにとって少しだけ、ちょっぴり。\n……奇跡の結果になったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そしてソファでくつろぐ、\nヒシミラクルのもとに近づくと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふん……すぅ……、ふすぅ……♪\nすぅ～……。",
+   "choice_data_list": [
+    "（鼻歌を歌いながら寝ている！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "しかも器用に両手でスマートフォンを\n握りしめながら。普段前髪で隠れている\n彼女のおでこもぴかぴかと輝いている。",
+   "choice_data_list": [
+    "まったく……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "んん～……！\nあら、毛布……？",
+   "choice_data_list": [
+    "起きたか？そしたら勉強するぞ",
+    "起きた？そしたら勉強するよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あっ……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "すっ、すみません～。\nえっと、ええっと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "…………毛布かけてくれて、\nありがとうございました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "そして普段よりも長めに、\nヒシミラクルのための特別座学を\n行うことにしたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

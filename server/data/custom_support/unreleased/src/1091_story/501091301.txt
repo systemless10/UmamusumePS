@@ -1,0 +1,44 @@
+#title Summer Camp (Year 3) Complete
+0 The heated summer camp was over, and Vivlos was—
+1 Mama, Papa～! Give Tore-cchi some meat?
+2 Coming right up! Trainer, your plate over here!
+2> Ah, thank you very much...
+3 —having a barbecue with her family. They'd supported us throughout camp too, which was a huge help, but...
+3> (Is it really okay to be doing this...?)
+4 Father prepared the finest meat just for this.
+5 Please, help yourself.
+5> Then, thank you for the meal—
+6 Tore-cchi, is it good?
+6> ...It's delicious!!
+7 Kyaa～. So cuuute～♡
+7> What part...?
+8 The way you look so happy munching away.
+9 Hehe. Vivlos really is fond of her trainer, isn't she～.
+10 Trainer～, could you hand over that plate?
+10> Ah, yes
+11 ...Your trainer has really fit right in.
+12 Told you, right? They're already family～.
+13 ...Oh, huh?
+14 Chevacchi! What's up, you're barely eating?
+15 Is it really okay to be doing this...
+16 We got permission, you know?
+17 That's not what I mean... ...Never mind.
+18 ...How was camp?
+19 ...Like, your health and stuff.
+20 Suuuper good! 'Cause I worked hard with Tore-cchi!
+21 In my classic year, my body still wasn't really ready, so I collapsed, but...
+22 Now it seems like I've gotten sturdy! Looks like I can aim for Dubai next year♪
+23 ...I see.
+24 How about you, Chevacchi?
+25 I'm...
+26 ...getting stronger.
+27 ! I see.
+28 But... Kitasan's running, after all. It feels like it's not enough.
+28{ Kita
+29 I plan to get in even better shape before the race.
+30 Okay, then I'll work even harder too!
+31 Don't you think if we push each other, we can get stronger than on our own?
+32 ...Yeah.
+33 Right! I can't wait for the race.
+34 ...Yeah.
+35 And so, the third year's summer camp came to a lively end too.

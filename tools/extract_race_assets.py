@@ -1,19 +1,16 @@
 #!/usr/bin/env python3
-"""Read installed JP race bundles without modifying the installation.
-Dependencies: UnityPy==1.25.4 apsw-sqlite3mc==3.53.4.0.
-Usage: python tools/extract_race_assets.py --persistent PATH
-"""
 import argparse
 import hashlib
 import json
+import os
 import sqlite3
 import struct
+import tempfile
 from pathlib import Path
 import apsw
 import UnityPy
 
 META_KEY = '9c2bab97bcf8c0c4f1a9ea7881a213f6c9ebf9d8d4c6a8e43ce5a259bde7e9fd'
-# Global meta key: UmaViewer Config.GlobalDBKey XOR DBBaseKey[i % 13] (same derivation gives META_KEY for JP).
 _DB_BASE = bytes([0xF1,0x70,0xCE,0xA4,0xDF,0xCE,0xA3,0xE1,0xA5,0xD8,0xC7,0x0B,0xD1])
 _GLOBAL_DB = bytes([0x36,0x23,0x6b,0x4c,0x2a,0x39,0x21,0x75,0x52,0x26,0x32,0x76,0x25,0x50,0x3f,0x35,0x5d,0x77,
                     0x58,0x6d,0x40,0x71,0x38,0x5e,0x4c,0x31,0x28,0x74,0x29,0x59,0x37,0x24,0x53])
@@ -51,6 +48,23 @@ def bundle(persistent, row):
         objects.append({'path_id': o.path_id, 'class': script.get('m_ClassName'), 'namespace': script.get('m_Namespace'), 'fields': tree})
     return {'source': source, 'objects': objects}
 
+def write_json_atomic(data, output):
+    output.parent.mkdir(parents=True, exist_ok=True)
+    staged = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', newline='\n',
+                                         prefix=output.name + '.', suffix='.tmp',
+                                         dir=output.parent, delete=False) as tmp:
+            staged = Path(tmp.name)
+            json.dump(data, tmp, ensure_ascii=False, separators=(',', ':'), allow_nan=False)
+            tmp.write('\n')
+        os.replace(staged, output)
+        staged = None
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--persistent', type=Path, required=True)
@@ -81,8 +95,6 @@ def main():
     for course in result['course_sets'].values():
         m = course.get('master')
         if not m: continue
-        # Straight courses have one lane animation, even when the master marks
-        # the race as outside (Niigata 1000 m). The installed asset uses variant 0.
         variant = 0 if m['turn'] == 4 else m.get('run_outside', 0)
         stem = f'race/course/{m["race_track_id"]}/pos/an_pos_race{m["race_track_id"]}_00_{m["distance"]:04}_{m["ground"]-1:02}_{m["inout"]-1}_{variant}'
         course['normal_lane_asset'] = stem if stem in result['lane_assets'] else None
@@ -92,7 +104,7 @@ def main():
             course['serialized_lane_start'] = {'position': {axis: key['value'+axis.upper()][0] for axis in ('x','y','z')}, 'rotation': key['rotation'][0]}
         course['gate_positions'] = {'status': 'runtime_derived_not_serialized_in_course_or_lane_asset'}
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result,ensure_ascii=False,separators=(',',':'),allow_nan=False)+'\n')
+    write_json_atomic(result,args.output)
     print(f'Wrote {args.output}: {len(result["course_sets"])} course sets, {len(result["lane_assets"])} lanes')
 
 if __name__ == '__main__': main()

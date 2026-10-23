@@ -1,0 +1,329 @@
+{
+ "title": "正直まんざらでもないです",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、また来てる。どうも～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルというウマ娘が、何故気になるのか……\nその理由を探るためにトレーニングに顔を出すようになって数日。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "今日は走り込みがメインで～す。\n終わったらまた勉強みてくださいねぇ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "あれ、あのトレーナーさんまた来てんじゃん！\nお～い！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "最近ずっと見に来てくれてんじゃん。\nミラ子～あんたもついにデビューかー？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "フ……ど～する？　わたしに実はメチャスゴ才能が秘められてて、\nこっから三冠ウマ娘になったりしたら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "友人たち",
+   "text": "ないない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひど～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルはいつも通り、\n友人たちとのんびり走っているようだった。しかし――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "ふ～……うちらこの次からペース上げるけど、\nミラ子はどーする？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～……いつも通り、ゆっくりいく～。\nまだあんまエンジンかかってないし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "あいよ。また時間外まで走って教官に怒られないようになー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あは。は～い。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "完全に置いてきぼりをくらったヒシミラクル。しかし――\n他のウマ娘がゴールし始めた頃のこと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふっ、ふっ、ふっ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふぅ……やっとあったまってきた。\nよ～しっ！",
+   "choice_data_list": [
+    "（やっぱり……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "思った通り、ヒシミラクルはいい伸びを見せ始めた。\nすでに場所を移動した他のウマ娘たちは、それには全く気づかない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "朗らかなウマ娘",
+   "text": "だ～疲れた！　柔軟はゆっくりやっちゃお～っと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "この後また筋トレなの、きつすぎる～……\nてかさ、先週の英語のプリント持ってる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シニカルなウマ娘",
+   "text": "持ってるけど……またどっかやったの？\nあれそのままテストの問題になるって先生言ってたじゃん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いやぁ～……あの先生のプリント、紙がペラいから\nうっかり他のものと一緒に捨てちゃいがちなんだよねぇ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "友人たちとおしゃべりをしながらのんびりとストレッチ。\nその後、やはりのんびりと筋トレ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "最後にもう1度軽くストレッチをして、\n放課後トレーニングは終わりのはずなのだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "グラウンドの人影がまばらになった夕方、\nヒシミラクルはまだトレーニングを続けている。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "確かにスローペースではある、基礎的な内容でもある。\nしかし、よくよく観察すると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……よし、と。それじゃあ次は……。",
+   "choice_data_list": [
+    "お疲れ様！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほぁあ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "びっくりしたぁ、トレーナーさんかぁ～……。\nどうしたんですか、こんな時間まで？",
+   "choice_data_list": [
+    "君の今日までのトレーニングを見て……",
+    "貴方の今日までのトレーニングを見て……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "思うところはたくさんあった。\n1度しっかりと話をしたいと思い、声をかけたのだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "げ、もしかしてお叱り？\n確かにダラダラやってるように見えたと思うんですけどぉ……。",
+   "choice_data_list": [
+    "いや、力がしっかり身についてるなと"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ほぁ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "例えば、今の筋トレだって――ゆっくり進めてはいたが、\n時間が経つごとに負荷が上がるようになっていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あはは、いつも時間内に終わらないんで～。\nせめて負荷だけは上げないとまずいかな～って。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "以前の併走、今日の様子、そして『時間内に終わらない』\nという言葉を聞いて、やっと確信する。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "この、ヒシミラクルというウマ娘は――素質は素晴らしいが、\nエンジンのかかりが遅い……『超ズブい』タイプだ！",
+   "choice_data_list": [
+    "本当に『素質は』素晴らしい……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え～？\nエヘヘ、そんな褒めてもらえるとは～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ちょっぴりやる気も出るってもんですよねぇ。\nそれで勝てたらもっといいんですけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "エンジンがかかるのは確かに遅い。\nだから出遅れてそのまま、順位を上げられないのだろう。しかし――",
+   "choice_data_list": [
+    "丁寧に作戦を考えれば、きっと勝てる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝てる……。勝てる、かぁ。\nふふ、なんか普通にうれし～な。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "あの日感じた『ひっかかり』は、これだったのかもしれない。\nポテンシャルを活かしてさえあげられれば、きっと彼女は花開く。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "今のところ素直に喜んでくれているし、このまま押せば\nトレーニングをつけさせてもらえるかもしれない……！",
+   "choice_data_list": [
+    "だから10敗目は来ない！今度こそ勝とう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふふっ、ありがとーございます。\nおかげで元気が出てきたような――",
+   "choice_data_list": [
+    "任せて、勝たせてみせる！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……ん？　『勝たせて』みせる？",
+   "choice_data_list": [
+    "よければ専属契約を結びたい！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "い、いつの間にか話が大きくなってません！？\n急にそんなこと言われても現実味がないっていうか～！",
+   "choice_data_list": [
+    "君に『期待』してるから",
+    "貴方に『期待』してるから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "期待……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……期待、ですか～……。そっか。\nんんん、それじゃあ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、でも！　あくまで『勝てたら』でお願いします！\n次の選抜レースで勝てたら契約――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝てなかったら……この話はナシで。\n……それじゃ！",
+   "choice_data_list": [
+    "えっ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "契約に条件を提示してきたヒシミラクル。\nこちらのトレーナーとしての実力を測りたいということだろうか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "それとも、何か他の理由があるのだろうか――\nこれからのトレーニングで、もっと彼女を知っていかなければ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

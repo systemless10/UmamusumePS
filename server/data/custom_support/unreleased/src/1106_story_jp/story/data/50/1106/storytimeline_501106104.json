@@ -1,0 +1,368 @@
+{
+ "title": "夏合宿（2年目）にて",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヒシミラクルに努力を実感してもらうため、\n合宿期間中は、\n毎朝ランニングさせることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ピィィィッ！）",
+   "choice_data_list": [
+    "おはよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふえ～ん、早いですよぉ。\nまだ8時じゃないですか～。\n今日は自由行動日なのに～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "起きるのはだいたい11時くらいにして、\n朝ご飯の残りのおにぎりもらって、\nスタートって思ってたのに。",
+   "choice_data_list": [
+    "……遅すぎない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "思っていたよりずっと、\nヒシミラクルの予定はズブかった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "えっほ、えっほ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ、しんど～。体……まだ、ぜんぜん\nあったまってないかも～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（リンリーン！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わ、トレーナーさん、それは～？",
+   "choice_data_list": [
+    "ロードワーク用の自転車だ",
+    "ロードワーク用の自転車だよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええっ、じゃあ\nずっとついてくるんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それじゃ、こっそり休んだりも\nできないじゃないですか～。",
+   "choice_data_list": [
+    "ああ、させないぞ",
+    "うん、させないよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "休めばその分、頑張ってる実感は薄れる。\nこれもヒシミラクルのためだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふえ～ん、本当にきっついよぉ。\nわたしの夏、どこ～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とっもだちと！　海水浴……。\nのんびりと！　おっ散歩……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とっもだちと！　海水浴……。\nのんびりと！　おっ散歩……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ランニングの最中、ヒシミラクルはずっと、\n己が欲望を歌にして、口ずさんでいた。",
+   "choice_data_list": [
+    "海水浴や散歩、したいのか？",
+    "海水浴や散歩、したいの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "したいに決まってるじゃないですかぁ。\nめそめそめそ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ついでについでに夏祭り！\n海水浴、おっ散歩！",
+   "choice_data_list": [
+    "させてあげてもいいけど"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほんとですかっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "唐突に立ち止まるヒシミラクル。\nあわや追突しそうになった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ほんとにさせてくれるんですか。\n海水浴、お散歩、夏祭り！",
+   "choice_data_list": [
+    "ああ、じゃあ明日は別メニューで",
+    "うん、じゃあ明日は別メニューで"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "明日！　約束ですよ。\nで、どれをさせてくれるんですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "確か今年の夏祭りは8月終わりのはず。\nならば、そこは保留として――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "にぎやかな海水浴か、ゆっくりと散歩か。\nどっちをさせることにしよう？",
+   "choice_data_list": [
+    "超ゆっくりな散歩",
+    "超にぎやかな海水浴"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "超ゆっくり……。なんか、普通の散歩と\n少し違う気がしますけれど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わかりました。約束ですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――そして翌日。今日はランニング代わりに、\nのんびり散歩をさせることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "むぎぃ、むぎぎぎぎぎ、むぐぅ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、これ持ってお散歩とか、\nありえないですよぉ。\nなんkgあるんですか～？",
+   "choice_data_list": [
+    "……かなり"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "かなりって……。これランニングより、\nキツいじゃないですかぁ。",
+   "choice_data_list": [
+    "その代わり、ゆっくりでいいから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "言われなくても、ゆっくりしか\n歩けませんよぉ。ううう～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ、はぁ、はぁ……腕がちぎれそうです。\nこんなにがんばったの、いつぶりだろ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "幼稚園のお遊戯会で、\n民謡『シュンサク節』のソロを\n任されたとき以来かも～。",
+   "choice_data_list": [
+    "よく頑張ったな",
+    "よく頑張ったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ううう……まあおかげで\n力はついたかもですけど。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "超重量の箱を持ち運ぶことにより、\nヒシミラクルは心身ともに\nたくましくなったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "超にぎやか……。なんか、普通の海水浴と\n少し違う気がしますけれど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わかりました。約束ですよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "――そして翌日。今日はランニングの\n代わりに、海水浴dayにしたが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふっふふ～ん、ふっふふっふふ～ん♪",
+   "choice_data_list": [
+    "泳がないのか？",
+    "泳がないの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いや～実はですね。\nわたし、泳ぐのめちゃきらいなんですよ。\n溺れるレベルで苦手すぎて、も～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "海水浴で1番好きなのは、浜辺ゴロゴロで。\n癒しの砂風呂ですよね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "よく見ると、水着に砂がついていた。\nであるならば……。",
+   "choice_data_list": [
+    "泳いで、落とすしかないな",
+    "泳いで、落とすしかないね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え？　トレーナーさん。\nなんですか、その手に持ってるの？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（カン！　カン！　カン！　カン！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃああああ、缶？\nそれ使って、なにするんですか？",
+   "choice_data_list": [
+    "ヒシミラクルを追い回して、泳がせる"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひぃぃぃっ、泳ぐの超苦手って\n言ったじゃないですか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（カン！　カン！　カン！　カン！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃああああああああ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ずっと浜辺にいたら、ダラけてしまう。\n心を鬼にして、ヒシミラクルを\n海へと追い立てた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ぜぇ、ぜぇ……生きた心地がしません……。\nもう、トレーナーさんってば～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "結局トレーニングさせる気、\n満々だったんじゃないですか。ひっど～。",
+   "choice_data_list": [
+    "水泳、よく頑張ったな",
+    "水泳、よく頑張ったね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ううう、だってがんばらないと\nカンカンされるんですも～ん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まあおかげで少しは神経も\n図太くなった気がしますけれど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは、こうして\n海水浴……に偽装した\n水泳トレーニングを乗り切ったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

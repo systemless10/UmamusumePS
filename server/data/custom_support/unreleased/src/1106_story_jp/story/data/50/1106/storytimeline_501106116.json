@@ -1,0 +1,413 @@
+{
+ "title": "Bet It All on You",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "直前に迫った秋のGⅠラッシュ。\nそこに向けて、猛トレーニングする\nヒシミラクルだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "痛ぁっ、あいたたた……？",
+   "choice_data_list": [
+    "どうしたヒシミラクル？",
+    "どうしたのヒシミラクル？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "いえ大したことじゃないです。\nきっと気のせい……。",
+   "choice_data_list": [
+    "いいから見せて！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ちょっとしたトラブルが発生。\n痛みの原因を調べてみると……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ふぅ、よかった～。\nただのオーバーワークで。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自主練、ちょっと\nやりすぎたかもしれませんね。",
+   "choice_data_list": [
+    "こっそり、やってたのか？",
+    "こっそり、やってたの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "たくさんしてたわけじゃないですよ？\nただ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "夜、寝る前に、ふとランニングしなきゃとか、\n筋トレしなきゃって思ったりして……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "なんか『やらなきゃ』って気持ちが\nぶわっと湧いてくるんですよね……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "気持ちが――ぶわっと湧いてくる。\nヒシミラクルが夏以降、\nたびたび口にする言葉だ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "その正体は、覚悟が決まったことで\n湧き上がる“やる気”と思っていたが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "心配かけちゃって、本当にすみません。\nでも大丈夫！　大丈夫ですからっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "もしかして、その気持ちの正体は……。",
+   "choice_data_list": [
+    "焦ってるのか、ヒシミラクル？",
+    "焦ってるの、ヒシミラクル？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "焦って？\n焦って……るんですかねぇ、わたし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "焦りとかは、そんなにないかも。\nただ～……。",
+   "choice_data_list": [
+    "ただ……何？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "本気のわたしを、\nしっかり見せなきゃとは思ってます……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "覚悟を決めてやったのに、\nそれでもダメだったら……\n本当にダメってことになっちゃうし。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もし、そうなったら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "失敗だったことになりますよね。\nトレーナーさんが、わたしを選んだこと。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "思ったほどじゃないって、\nわかったら、きっと……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "未整理のまま、口から流れ出る気持ち。\nそれをつなぎ合わせて、やっと想像がついた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "もしかしたらヒシミラクルは……。",
+   "choice_data_list": [
+    "全力を見せるのが怖いのか？",
+    "全力を見せるのが怖いの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え……見せるのが……こわい？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そんなこと……思ってるのかな？\nえぇと～……。",
+   "choice_data_list": [
+    "見限られたくないって思ってない？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "見限られる……？　そ、それは……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "イヤ……かも？　かなりイヤ……。\nってか……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それサイアクじゃないですか～……！\n見限ります？　できなかったら？\nえ、ちょっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "まだやれますっ……！　もっとできるっ！\nまだ全力とは言えませんから……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "うろたえぶりを見て確信した。\n湧き上がる気持ちの正体は――“恐怖”。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "全力を出してダメだったら……\n言い訳のしようがないと\n思っているようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ううう、自分じゃわからなかったですけど、\nそんなこと思ってたんですね、わたし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "本気でやってダメだったら、\n本気出してないだけって\n言えなくなるし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "全部を見せるのが、\nこんなにもこわいなんて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "他のみんなは、ずっとこれやってるんですね。\n勇気、めちゃすご～……。",
+   "choice_data_list": [
+    "ヒシミラクルだってできるよ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "できますか？　だってわたし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "見限られるのとか、ほんとにいやですよ？\nひとりぼっちは苦手ですし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさんがわたしを選んでくれたのは\n『なにか秘めたものがあるかも』って\n思ってくれたから……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それが『この先はない』って\nわかっちゃったら、\n期待もそこで終わりっていうか～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "可能性のすべてが明らかになれば、\n賭けは終わり。確かにそうかもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "何がなんでも期待を裏切りたくないのかも\nしれない。だが……。",
+   "choice_data_list": [
+    "ダメでもいいんだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、ダメでもいいって……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしの中身が、ここ止まりの\nもうおしまいでもいいってことですか？",
+   "choice_data_list": [
+    "ああ、これは“賭け”だから",
+    "うん、これは“賭け”だから"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "賭けに必勝はありえない。\n賭ける時に大切なのは――\n“負けても構わない”と腹をくくること。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "自分はずっとそう思い、\nヒシミラクルに賭けてきたと伝えた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ダメでもかまわない。\n負けても……かまわない？",
+   "choice_data_list": [
+    "ああ",
+    "うん"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしの実力がここ止まりでも、\n呆れたりしません？",
+   "choice_data_list": [
+    "しない、するわけがない",
+    "しないよ、するわけがない"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "元より、そんな思い上がった態度で、\n担当ウマ娘の隣に立ったりしていない。",
+   "choice_data_list": [
+    "一緒に勝ち、一緒に負けよう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "――！？\n一緒に勝ち、一緒に……負ける……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん……。\nトレーナーさんが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "本当にそう思ってくれるなら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あぁぁぁぁ～、よかったぁぁぁ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "悲鳴とも嗚咽ともわからない叫びが、\nその口から漏れた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、よかったぁ～。\nめっちゃラクになった～～～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そっか、ダメでもいいんだ。\n全力でやってダメでも～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そう思うと、肩の荷が～～～……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "心からほっとしたような表情を見せる\nヒシミラクル。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "背負いこんだ荷物、背負わなくていい荷物を\nやっと降ろすことができたようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そうですよね。考えてみれば\nわたしは結局わたしですし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "どうやっても、別のわたしには\nなれないですもんね。",
+   "choice_data_list": [
+    "ああ、そのままのヒシミラクルでいこう！",
+    "うん、そのままのヒシミラクルでいこう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい！　このままのわたしが、\nトレーナーさんの賭けてくれたわたし！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "見栄とか張らない！　しんどいときは\nしんどい！　でもがんばる！　これで！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "シニア級、秋の決戦前に、\nやっとヒシミラクルは\n自然体の自分を取り戻せたようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

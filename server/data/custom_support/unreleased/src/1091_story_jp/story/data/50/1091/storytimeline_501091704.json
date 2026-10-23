@@ -1,0 +1,283 @@
+{
+ "title": "ひみつのいつも♡",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "おでかけの帰り道、\nヴィブロスにカフェへ行こうと誘われた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『SNS投稿のため』ということなので、\nてっきり今日も先生がいると思っていたが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううん、トレっちだけ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日はそういう日だもん♡　ね、はやく行こ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ここね、かわいーからよく来るんだよ♪\nトレっちにもオススメ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――って、トレっち見て見て！\n期間限定・チャレンジメニューだって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『2人の絆を試せ！\n豪華デラックスセレブ盛りパフェ』♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こんなの、ぜ～ったい挑戦しないと♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "どうやら、行きつけの店で過ごす写真を\n今日は投稿するつもりのようだ。\nとなれば――",
+   "choice_data_list": [
+    "ああ、協力するよ！",
+    "うん、協力するよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "『豪華デラックスセレブ盛り』の名前どおり、\n注文したパフェはかなりの強敵だった――！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ピピピピピピ――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううっ……もっ、もう時間切れ……っ！？\nで、でも～～っ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "残すのしつれーだし！\nクリアじゃなくても、食べきるぞーーっ！！",
+   "choice_data_list": [
+    "おーーっ！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "パフェ、ちょー大変だったぁ～！\nお腹くるしすぎ～っ。",
+   "choice_data_list": [
+    "しばらく、パフェはいい……かな……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレ～っち♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（パシャ――）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あはっ♡　トレっちってば泣きそうな顔！\n私、にやにやしちゃってるしっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ね、この写真投稿してもいーよね♡",
+   "choice_data_list": [
+    "へ、変な顔してたんだよな……？",
+    "へ、変な顔してたんだよね……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ううん、すてきな写真だったよ♡\nトレっちとい～っぱいがんばった証拠♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日はね、これが撮りたかったの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……劇観に行ったときにさ、わかったじゃん？\nみんな、私を知りたがってるって。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから今日は、“いつもの私”を――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "背伸びしてない、いつもどおりの私を\n伝えたいって思ったんだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレーニングして、レースに出て、\nまたトレーニングして――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ときどきおでかけして、笑い合ったりする――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうやって、トレっちといる私を！",
+   "choice_data_list": [
+    "ヴィブロス……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "くすっ♡　この写真のトレっち、いーなぁ。\nいっぱいがんばってくれたもんね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だからかな？　見てると、きゅんって――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ん～～～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やっぱり、投稿やめよっかな……。",
+   "choice_data_list": [
+    "え……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "む～……たしかにこれって、\n私たちの“いつも”だけど～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私の“いつも”って、\nトレっちが作ってくれたものだもん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私のためだけに、\nいっぱいいーっぱいがんばってさ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん、だからやめとく。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ウマスタは別のことも話せるもん。\n私たちの“いつも”は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "2人だけが、知ってればいーよね♡",
+   "choice_data_list": [
+    "助かった……！",
+    "また特別な“いつも”を過ごそう",
+    "代わりに投稿できるもの、探す？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "このトレっちの顔、バズりそうだけどね～♪\n……やっぱり投稿しちゃう？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "それだけは勘弁と、\nヴィブロスに頼み込んだのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うんっ♡　これからもずっとね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "微笑むヴィブロスと、\n夕暮れの道をゆっくり歩いたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ほんと！？　じゃあじゃあっ！\n今度はジャンボお好み焼きチャレンジへ――",
+   "choice_data_list": [
+    "これ以上入らないよ！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヴィブロスの冗談に\n慌てさせられたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "title": "グロウアップレース開催！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "それは、年の瀬も迫ったある日のこと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（ポロロン♪）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "“グロウアップレース招待状”――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "三女神が開催する“特別レース”の1つ目、\n『グロウアップレース』に\n<chrname>は招待された。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "心強いサポーターであり、そして目指すべき\n存在の三女神に選出されたことは、\n喜ばしくもあり、また気合いも入る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ようこそ、『グロウアップレース』へ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "この1年、<chrname>ちゃんと\nあなたの活躍は、とても目覚ましかったわ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "ゆえに、この舞台に上がってもらうことを\n俺たちは選んだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "だが、他のウマ娘たちもまた\n大きな成長を遂げ、頂点に近い存在――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "唯一無二のパートナーとして、\nウマ娘に尽くし、共に歩み、誰にも負けぬ\n成長をしてきた自信はあるか？",
+   "choice_data_list": [
+    "自信は……あります！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "……うん、覚悟とも取れるいい返事だ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "<chrname>ちゃんとは、\nまだ短い期間ながら、\nよい関係を築けているようね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "では、レースの時間だ。\n<chrname>の健闘を祈る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "大地を震わす、その強さを――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "忘れることのできない存在を――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "誰よりも陽に照らされ輝く個性を――\nしっかり示してこいよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

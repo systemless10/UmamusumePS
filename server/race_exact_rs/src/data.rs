@@ -1,12 +1,8 @@
-//! Input loading: master bundle, RaceParamDefine asset tree (exact float32 bits),
-//! course tables and the per-race input produced by tools/race_exact/gl_prepare.py.
 
 use serde::Deserialize;
 use serde_json::Value;
 use std::collections::HashMap;
 
-/// Dotted-path view of the serialized RaceParamDefine / CourseParamTable trees.
-/// Floats are read from their float32 bit pattern, never re-rounded from decimal.
 pub struct Tree<'a>(pub &'a Value);
 
 pub fn f32_of(v: &Value) -> f32 {
@@ -38,8 +34,6 @@ impl<'a> Tree<'a> {
         v
     }
     pub fn f(&self, path: &str) -> f32 {
-        // Memoised per thread: the dotted walk and hex parse dominated batch runtime.
-        // Keyed by tree root, then by path; lookups borrow the path (no allocation).
         thread_local!(static CACHE: std::cell::RefCell<HashMap<usize, HashMap<String, f32>>> = Default::default());
         let root = self.0 as *const Value as usize;
         if let Some(v) = CACHE.with(|c| c.borrow().get(&root).and_then(|m| m.get(path)).copied()) { return v; }
@@ -79,7 +73,6 @@ impl Assets {
     }
 }
 
-/// master.mdb tables as row maps (see gl_prepare.py TABLES).
 pub struct Master {
     pub tables: HashMap<String, Vec<HashMap<String, Value>>>,
 }
@@ -112,7 +105,6 @@ pub struct SkillRef {
     pub level: i32,
 }
 
-/// One entry of race_horse_data (response field names).
 #[derive(Deserialize, Clone, Debug)]
 pub struct HorseIn {
     pub frame_order: i32,
@@ -165,7 +157,6 @@ pub struct HorseIn {
     pub rarity: i32,
     #[serde(default)]
     pub talent_level: i32,
-    /// JP scenario results (type = scenario id * 1000 + 1) read by scenario skill value usages.
     #[serde(default, deserialize_with = "null_vec")]
     pub scenario_data_array: Vec<ScenarioData>,
 }
@@ -185,8 +176,6 @@ fn null_i32<'de, D: serde::Deserializer<'de>>(d: D) -> Result<i32, D::Error> {
     Ok(Option::<i32>::deserialize(d)?.unwrap_or(0))
 }
 
-// Sanitized captures retain the fact that a runner belongs to a player. This
-// field is only used as a zero/nonzero player marker by the client-core port.
 fn viewer_marker<'de, D: serde::Deserializer<'de>>(d: D) -> Result<i64, D::Error> {
     let v = Value::deserialize(d)?;
     if let Some(id) = v.as_i64() { return Ok(id); }
@@ -212,7 +201,6 @@ pub struct RaceIn {
     pub weather: i32,
     pub ground_condition: i32,
     pub horses: Vec<HorseIn>,
-    /// "jp" enables the JP server-only rules (docs/RACE_SERVER_MECHANICS.md); default Global.
     #[serde(default)]
     pub region: Option<String>,
 }

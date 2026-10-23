@@ -1,0 +1,38 @@
+{
+ "title": "Sisters♡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィルシーナはヴィブロスと対決するため、\n『ヴィクトリアマイル』出走を表明した。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ティアラ路線を走ったことでヴィブロスの\n夢が遠のいた……ならば、自分はドバイの\nレースと同じくらい心満たすレースを贈ると。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "夢にも思わなかった姉との真剣勝負に、\nヴィブロスは喜びを露わにする。\nそんな彼女に、トレーナーがかけた言葉は――",
+   "choice_data_list": [
+    "全力で立ちはだかろう！",
+    "めいっぱい楽しもう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスも本気でぶつかることを決意し、\n姉に勇ましく宣戦布告するのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『ヴィルシーナに勝てたら超セレブ』。\nそんなトレーナーの言葉に、\nヴィブロスは活力を漲らせるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

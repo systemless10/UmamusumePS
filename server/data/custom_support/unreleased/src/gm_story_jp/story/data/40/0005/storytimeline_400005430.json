@@ -1,0 +1,150 @@
+{
+ "title": "今を駆ける者たちの祖",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『グランドマスターズ』が間近に迫っていた。\n三女神に並び、さらに先を目指すレース。\nウマ娘の頂点を目指すレース。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "三女神は、その知識もさることながら、\nトレーナーとしてウマ娘と共に走るために\n大事なものを教えてくれた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ならば、自分たちを支えた三女神に\n成長した姿をしっかりと見届けてもらいたい。\nそのために、1番必要な知識を持つ女神は――",
+   "choice_data_list": [
+    "ダーレーアラビアン",
+    "ダーレーアラビアン",
+    "ゴドルフィンバルブ",
+    "ゴドルフィンバルブ",
+    "バイアリーターク",
+    "バイアリーターク"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ダーレーアラビアンの想いを継ぎ、\n<chrname>は自分の武器を信じて\n『グランドマスターズ』を走り抜くだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女たちの想いをしっかり受け取った証明を\n必ずしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ダーレーアラビアンの想いを継ぎ、\n<chrname>は自分の武器を信じて\n『グランドマスターズ』を走り抜くだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女たちの想いをしっかり受け取った証明を\n必ずしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ゴドルフィンバルブの想いを継ぎ、\n<chrname>は寄り添う存在を感じて\n『グランドマスターズ』を走り抜くだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女たちの想いをしっかり受け取った証明を\n必ずしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ゴドルフィンバルブの想いを継ぎ、\n<chrname>は寄り添う存在を感じて\n『グランドマスターズ』を走り抜くだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女たちの想いをしっかり受け取った証明を\n必ずしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "バイアリータークの想いを継ぎ、\n<chrname>は大地に強く刻むように\n『グランドマスターズ』を走り抜くだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女たちの想いをしっかり受け取った証明を\n必ずしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "バイアリータークの想いを継ぎ、\n<chrname>は大地に強く刻むように\n『グランドマスターズ』を走り抜くだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『<itemname>』を獲得した",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "<itemname>"
+   ]
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女たちの想いをしっかり受け取った証明を\n必ずしてみせる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

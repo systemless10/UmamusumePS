@@ -1,0 +1,185 @@
+{
+ "title": "ダンスレッスン",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "ヒシミラクルがダンススタジオにいた。\n何かに悩んでいる様子だ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～～～ん……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……やっぱ今日は帰ろっと。",
+   "choice_data_list": [
+    "待て待て！練習するんじゃないのか！？",
+    "待って待って！練習するんじゃないの！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……あ～いや、\nそのつもりだったんですけど～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ここに来て、ジャージに着替えたあたりで、\nなんか、やる気がなくなっちゃって……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "自主練だし……絶対、やらなきゃいけない\nやつじゃないよな～……って。",
+   "choice_data_list": [
+    "でも、練習は必要だと思ったんだろう？",
+    "でも、練習は必要だと思ったんでしょ？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "それは、はい。\nステージに立って、へたっぴな\nダンスは見せたくないですし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "だから、がんばろうって……\n来たんですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "どうやら、偶に発生する“サボりたい気分”\nのようだ。だが、せっかくここまで来たのだ。\nやる気を取り戻してほしい……！",
+   "choice_data_list": [
+    "行動に移せただけでも偉いよ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "その通り！　自主練しようと考えた時点で、\n1歩前進してるんっスよ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "話は聞かせてもらったっス！\nきっと、1人だからやる気が出ないんっスよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "よければアタシが付き合うっス！\n一緒に練習やりましょう！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "バ、バンブーちゃん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "え、ええ～っと……\nじゃあ、日を改めてまた明日――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "明日もやるんっスね！　了解っス！\nなら、今日は追い込み過ぎない\nくらいにするっス！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー………………だね～。",
+   "choice_data_list": [
+    "おお、すごいやる気だな！",
+    "おお、すごいやる気だね！",
+    "ペース配分には気をつけろよ",
+    "ペース配分には気をつけてね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー………………だね～。",
+   "choice_data_list": [
+    "おお、すごいやる気だな！",
+    "おお、すごいやる気だね！",
+    "ペース配分には気をつけろよ",
+    "ペース配分には気をつけてね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "はい……。\nもう、こうなったらやりますよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "とことんやって、\n自信をつけてみせるんですからっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "気合い入ってるっスね！\nアタシも燃えてきたっス！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "その後、バンブーメモリーに引っ張られる\n形で、ヒシミラクルはダンスレッスンを\nこなしたのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "はい！　自主練で明日に疲れを残しちゃ、\n元も子もないっスもんね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええ、本当に明日もやるの～？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バンブーメモリー",
+   "text": "もちろんっス……っていうか、\nミラ子が言い始めたんじゃないっスか！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……まあ、明日のわたしの気分次第かなぁ。\nとりあえず、今日はちゃんとやる！\nバンブーちゃんがいてくれるしね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "バンブーメモリーの協力もあり、\nダンスレッスンをしっかり行った\nヒシミラクルなのであった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

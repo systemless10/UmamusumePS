@@ -1,22 +1,3 @@
-"""THE TWINKLE LEGENDS (scenario 10) -- the scenario's own master.mdb tables, read once.
-
-docs/JP_TWINKLE_LEGENDS_SCENARIO.md §3-§6 and §9 say what each table and code means:
-
-    single_mode_10_buff               the 57 knowledge buffs (心得)
-    single_mode_10_buff_condition     a buff's trigger condition
-    single_mode_10_buff_effect        a buff's / guidance's effects
-    single_mode_10_buff_num           gauge band -> offers per lottery
-    single_mode_10_lottery_turn       the 11 lottery turns
-    single_mode_10_masterly           the three guidances (導き)
-    single_mode_10_9047_reward        Challenge Zone end payouts
-    single_mode_10_9048_bonus/_guest  Haiseiko's partner levels
-    single_mode_10_sprace             the Dream Fests' race groups and turns
-    single_mode_10_cm_detail          the Legend CM rows
-    single_mode_10_group_outing_eff   the group card's date gauge gains
-
-The numbers master does NOT carry (facility base values, race rewards, the
-field's stat factors) are in formula.py and impl.py with their evidence.
-"""
 
 from __future__ import annotations
 
@@ -27,21 +8,20 @@ from ..venus import master as VM
 
 ST_LITE, SPEED, HAISEIKO = 9046, 9047, 9048
 LEGENDS = (ST_LITE, SPEED, HAISEIKO)
-GROUP_CARD = 30241            # 伝説の体現者【導きの光】
-PASSION = 104                 # 情熱ゾーン：伝説の体現者
-GAUGE_MAX = 8                 # BUFF_GAUGE_LIMIT
-BUFF_LIMIT = 10               # BUFF_LIST_LIMIT
-RANK2_HELD, RANK3_HELD = 2, 4  # BUFF_RANK_2/3_ACTIVATION_COUNT
-ALMOND_EYE_ROWS = (91129901, 91129902)   # RIVAL_NPC_ID_1/2 (mile, middle)
+GROUP_CARD = 30241
+PASSION = 104
+GAUGE_MAX = 8
+BUFF_LIMIT = 10
+RANK2_HELD, RANK3_HELD = 2, 4
+ALMOND_EYE_ROWS = (91129901, 91129902)
 
-# BuffEffectType (SingleModeScenarioLegendDefine) + the immediate bond gain 30
 EFF_TRAINING = 1
 EFF_HINT = 2
 EFF_SPECIALTY = 3
 EFF_FAILURE_DOWN = 5
 EFF_HP_DOWN = 6
-EFF_GUEST_LEVEL = 7           # Haiseiko's masterly row
-EFF_SUPER_MOOD = 8            # St Lite's masterly row (mood term 55)
+EFF_GUEST_LEVEL = 7
+EFF_SUPER_MOOD = 8
 EFF_ADD_SUPPORT = 10
 EFF_BOND_UP = 15
 EFF_FRIENDSHIP = 17
@@ -49,26 +29,24 @@ EFF_APPEAR = 24
 EFF_HINT_COUNT = 25
 EFF_HINT_FIXED = 26
 EFF_MOOD = 28
-EFF_IMMEDIATE = 29            # value_1 20 = motivation
+EFF_IMMEDIATE = 29
 EFF_BOND_NOW = 30
 
-# single_mode_10_buff_condition types
-COND_COMMAND = 2              # values: command types (1 training, 3/7/8 rest)
+COND_COMMAND = 2
 COND_FRIENDSHIP = 8
-COND_SUPPORTERS = 13          # value_2: at least N supporters
-COND_MOTIVATION = 14          # value_1: motivation >= N
+COND_SUPPORTERS = 13
+COND_MOTIVATION = 14
 
 
 def _rows(sql: str, params: tuple = ()) -> list:
     try:
         return [dict(r) for r in master_data.query(sql, params)]
-    except Exception:                                  # noqa: BLE001
+    except Exception:
         return []
 
 
 @functools.lru_cache(maxsize=1)
 def buffs() -> dict:
-    """{buff_id: row} -- 57 rows."""
     return {int(r["buff_id"]): r for r in _rows("SELECT * FROM single_mode_10_buff ORDER BY buff_id")}
 
 
@@ -109,7 +87,6 @@ def _effects() -> dict:
 
 
 def effects(group: int) -> list:
-    """[(effect_type, value_1, value_2, legend_id, bonus_value)] of a group."""
     return list(_effects().get(int(group or 0), ()))
 
 
@@ -119,7 +96,6 @@ def buff_effects(buff_id) -> list:
 
 @functools.lru_cache(maxsize=1)
 def buff_num() -> dict:
-    """{legend: [(gauge_min, gauge_max, num, highest_num, link_num)]}."""
     out: dict = {}
     for r in _rows("SELECT * FROM single_mode_10_buff_num ORDER BY id"):
         out.setdefault(int(r["legend_id"]), []).append(
@@ -129,7 +105,6 @@ def buff_num() -> dict:
 
 
 def offers_for(legend: int, gauge: int) -> tuple:
-    """(num, highest_num) a legend contributes at this gauge (§3.3)."""
     for lo, hi, num, highest, _link in buff_num().get(int(legend), ()):
         if lo <= int(gauge) <= hi:
             return num, highest
@@ -144,7 +119,6 @@ def lottery_turns() -> frozenset:
 
 @functools.lru_cache(maxsize=1)
 def masterly() -> dict:
-    """{legend: effect group} -- the guidance's own effect rows."""
     rows = _rows("SELECT legend_id, effect_group_id FROM single_mode_10_masterly")
     return {int(r["legend_id"]): int(r["effect_group_id"]) for r in rows} or {
         g: g for g in LEGENDS}
@@ -157,13 +131,11 @@ def masterly_value(legend: int, effect_type: int) -> int:
 
 @functools.lru_cache(maxsize=1)
 def zone_rewards() -> list:
-    """[(min_turn, max_turn, end_type, gain_type, value)] (§6.3)."""
     return [(int(r["min_turn"]), int(r["max_turn"]), int(r["end_type"]), int(r["gain_type"]),
              int(r["gain_value"])) for r in _rows("SELECT * FROM single_mode_10_9047_reward ORDER BY id")]
 
 
 def zone_reward(n: int, end_type: int) -> tuple:
-    """(all stats, SP) the zone pays when it ends at zone turn n."""
     stats = sp = 0
     for lo, hi, et, gt, v in zone_rewards():
         if et == end_type and lo <= n <= (hi or 99):
@@ -181,7 +153,6 @@ def _card_levels() -> list:
 
 
 def card_level_bonus(level: int) -> int:
-    """A deck card partner's training effect by Haiseiko level (§6.4)."""
     for lo, hi, v in _card_levels():
         if lo <= level <= hi:
             return v
@@ -195,7 +166,6 @@ def _guest_levels() -> list:
 
 
 def guest_level_bonus(level: int) -> tuple:
-    """(training effect, friendship bonus while full) of a guest (§6.4)."""
     for lo, hi, a, b in _guest_levels():
         if lo <= level <= hi:
             return a, b
@@ -204,7 +174,6 @@ def guest_level_bonus(level: int) -> tuple:
 
 @functools.lru_cache(maxsize=1)
 def sprace_turns() -> dict:
-    """{turn: race group}: 24 Stella 100001, 48 Pride 100002, 72 Legend 100003."""
     rows = _rows("SELECT race_group_id, turn_num FROM single_mode_10_sprace")
     return ({int(r["turn_num"]): int(r["race_group_id"]) for r in rows}
             or {24: 100001, 48: 100002, 72: 100003})
@@ -224,7 +193,6 @@ def cm_details() -> list:
 
 @functools.lru_cache(maxsize=1)
 def outing_effects() -> dict:
-    """{(chara, step): (effect_type, value)} (§3.2)."""
     return {(int(r["chara_id"]), int(r["step"])): (int(r["effect_type"]), int(r["effect_value"]))
             for r in _rows("SELECT * FROM single_mode_10_group_outing_eff")}
 

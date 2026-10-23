@@ -1,0 +1,68 @@
+#title Summer Camp (Year 3) Begins!
+0 Summer camp, all for raising ability, came around again this year. As for Vivlos...
+1 Tore-cchi, brace yourself♡
+1> ?!
+2 Huh, I missed! And I was so confident!
+2> ...What are you doing? | ...What are you doing?
+3 I wanna play a little before training.
+4 I mean, last year was super serious, right?
+5 We were at the beach and everything! So just a little! Please, can't I?
+6 I'll work hard after, I promise! Please♡
+6> ...Just a little. | ...Just a little.
+7 Yay♡ That's my Tore-cchi!
+8 Everyone! We got permission!
+9 Thank you, Trainer! Now, shall we play?
+10 Looking toward the voice, I saw Vivlos's parents and her two older sisters as well. Everyone was dressed for the beach...
+10> ...A beach day?
+11 There's a swimsuit for you too, Tore-cchi! Onee-chan and I picked it out!
+11> For me too?! | For me too?!
+12 Yep! Listen, listen!
+13 Marine-color surf shorts! They're stylish and work in the city too♪
+14 I went with a frilly marine-style bikini♪ The sailor collar is suuuper cute.
+15 It'll totally suit you. Great choice, right?
+15> It's stylish, but...! | I-isn't it way too cute?!
+16 Vivlos absolutely insisted.
+17 You're already family, Tore-cchi.
+18 Right, Chevacchi♡
+19 ...Isn't this weird after all? Being so relaxed like this.
+20 We're rivals who'll clash in the Japan Cup...
+21 ! Rivals...!
+22 Ehehe.
+23 ...Stop grinning.
+24 Can't♡
+25 ......
+25> You look happy. | You look happy.
+26 Yes, I'm happy. Because the way those two are...
+27 It's like we've gone back to the old days.
+28 And so, the fun time before training flew by...
+29 Trainer, I'm in your care once again!
+29> Likewise.
+30 Vivlos was full of energy. She's in good shape heading into the Japan Cup ahead... but we can't let our guard down.
+31 It's not so much worry about her health, but rather...
+31> Strong opponents will be in the Japan Cup.
+32 Chevacchi, right!
+33 Being with her just makes me so happy, but...
+34 She's gotten really strong lately, hasn't she?
+34> Yeah. | Yeah.
+35 Cheval Grand has shown remarkable growth lately. Her sister's success lit a fire under her...
+36 Cheval Grand has set her sights solely on the Japan Cup and focused on it. She'll likely be a tremendous opponent.
+36> And then there's Satono Crown.
+37 Satono Crown, who she also faced in the Takarazuka Kinen. As someone who can cleverly analyze her losses, she's surely even stronger than back then.
+38 Crown too, huh! She's definitely a tough opponent.
+38> And then...
+39 And then?! Hmm, who else is there...?
+40 ...You don't mean... Kitasan, do you?
+40> Yes, Kitasan Black. | Yes, Kitasan Black.
+40{ Kitasan
+41 Whaaat!
+42 Kitasan is the strongest Umamusume right now!
+43 Kitasan Black, an Umamusume a generation above Vivlos. She won the Kikuka Sho and blossomed even further after entering the Senior class.
+43{ Kitasan Black | Kikuka Sho
+44 She's won G1s back-to-back, and it's no exaggeration to say she's the strongest Umamusume of this era.
+45 Whoa, I see. Chevacchi, Crown, and Kitasan...
+46 That's super amazing! I can't wait♪
+46> You're looking forward to it, huh. | You're looking forward to it, huh.
+47 Yeah! 'Cause they're all super strong, right? So that means they're celebrities.
+48 If I beat everyone, I'll be the biggest celebrity!
+49 Then, then! Don't you think I could become a me who can win in Dubai too?
+50 See, simple♡ Let's do our best at summer camp!

@@ -1,0 +1,276 @@
+{
+ "title": "天皇賞（秋）の後に・ゴールの向こう側",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "はぁ、ひぃ、ふぅ～……。長距離と比べると、\nやっぱ2000mは忙しい～。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もう毎回、好勝負できるよね。\nうんうん……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "またしても、この脚……。\nMiddle distanceで……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――ヒシミラクル。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、クリスエスちゃん、お疲れ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "見えたか――Missionは？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "う～ん、ミッション……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱりさ、走りながらわかるわけないよ。\n目の前のことに必死だし……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "そうか、見えないなら――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Next.\n――次も、その次も走ろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "同じMissionを追うのもいい。\nすなわち――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "『レース界を盛り上げる』。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "レース界を……盛り上げる……。\nそれがクリスエスちゃんのミッション……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "って、えええ？\nわたしも一緒に～～～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Yes, together.",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ムリムリムリムリっ。\nってか似合わないって～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "レース界とか、\nそんなの背負いきれないってば。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "フッ。ならば……いつか聞かせてくれ。\n――Missionを。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、クリスエスちゃん……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたしの……わたしだけのミッションかぁ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、\nあの～質問なんですけれど～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そもそもわたし、\nなんのために走ってました？",
+   "choice_data_list": [
+    "え、知らない……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "いきなり投げかけられる根源的な問い。\nそんなことを聞かれても困る。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うーん、自分じゃわかんないし、\nトレーナーさんにもわかんないんじゃ……\nもうわかんないですよね……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ、今思いつきました。\nもしかしたら『勝つため』とか？",
+   "choice_data_list": [
+    "問題は“勝利の先”だと思うけど"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "勝利の先に何かがあるから、\nウマ娘は勝ちたいと願う。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "勝利はあくまで途中経路であって、\n最終目的とはまた少し違う気がした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "勝利の先……。勝利の先にあるものと\nいえば、たとえば……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ゴホウビの……お好み焼き。\n他には……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ゴホウビの……お休み……。\n動物園とかめちゃ楽しそ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわ、やば……。\nわたし、目先のことしか考えてなさすぎ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もうちょっと考えたほうがいいのかな？\nでも、そんなこと言われても～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヒシミラクルは夢への手がかりを\n求めているようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "夢や目的はそれぞれで、決まった形が\nあるわけでもない。それでも――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "参考にできる場所はある。\n世界中の夢見るウマ娘が集う場所が。",
+   "choice_data_list": [
+    "行くか？夢の見本市に",
+    "行く？夢の見本市に"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "夢の見本市って……？",
+   "choice_data_list": [
+    "つまり『ジャパンカップ』へ！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『ジャパンカップ』……。\n世界中のウマ娘が集まる、国際GⅠ……。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ジャパンカップ"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あー、あそこには\nいろんな夢が集まりそうですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "『国の代表って呼ばれたい』とか、\n『世界一になってドヤりたい』とか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、行きたいです、\n『ジャパンカップ』！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "で、いろんなウマ娘の夢を\n見てみたいってか！　今までなんとなく\nがんばってきちゃった分！",
+   "choice_data_list": [
+    "よし、じゃあ決まりで！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "芽生え始めた自覚。\n世界中の夢が集う場所――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "『ジャパンカップ』で、ヒシミラクルは\n自分だけの夢を見つけられるだろうか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

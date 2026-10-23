@@ -1,0 +1,428 @@
+{
+ "title": "壮大な歴史よりいづるもの",
+ "text_block_list": [
+  {
+   "name": "",
+   "text": "トゥインクル・シリーズ――\nそこは、ウマ娘が夢に心を燃やし\n夢に向かって駆ける場である。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トゥインクル・シリーズ"
+   ]
+  },
+  {
+   "name": "",
+   "text": "そして、彼女たちを支え導くのが\nトレーナーの役割となる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "だからトレーナーは日々、知識や経験を積み、\nウマ娘と共に駆け続けなくてはならない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シミュレーター音声",
+   "text": "『ハッピーミーク、記録更新しました――』",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ハッピーミーク"
+   ]
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "お疲れ様、ミーク。\nVR酔いはないですか？",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ミーク",
+    "VR"
+   ]
+  },
+  {
+   "name": "ハッピーミーク",
+   "text": "……ピース。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ふふっ、よかったです。\nおかげで新しいデータを集められました。\nこれなら今のメニューもこなせそうですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "――あ、<username>トレーナー！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こちらに気づき、声をかけてきたのは\n同期の桐生院葵トレーナーだった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "桐生院葵"
+   ]
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "今、“VRウマレーター”を使用して\nミークの走りを分析していたところなんです。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "VRウマレーター"
+   ]
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "なにせ私たちは新人トレーナーなわけですし、\nこうして使えるものは使っていかないと！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "<username>トレーナー、\n担当ウマ娘のためにも\nお互いに頑張っていきましょう！",
+   "choice_data_list": [
+    "ええ、頑張りましょう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "まるで、ウマ娘とトゥインクル・シリーズへ\n臨む、その幕開けを示すかのような快晴――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "澄み渡った空が、我々の挑戦を\n受け入れようとしているかのようだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "『招集ッ！』",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "放課後、呼び出しの放送が学園内に鳴り響き、\nトレーナーたちは体育館へと集められていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "静聴ッ！　諸君はウマ娘たちの活躍のため、\n日々支えとなり、指導してくれている！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "時に教本をめくり、時にデータを漁り、\nウマ娘を導くため様々なものを味方にした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "秋川理事長",
+   "text": "刮目ッ！　そして今日、\n指導者である皆に新たな味方が加わるのだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "トレーナーたち",
+   "text": "（ざわ……っ！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "トレーナーのみなさま、ここからの説明は\n私、サトノダイヤモンドと――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "サトノダイヤモンド"
+   ]
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "サトノクラウンがさせていただきます。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "サトノクラウン"
+   ]
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "サトノグループのソフト開発部門は\nつねに時代を先取りし、先取りしすぎと\n言われるほどに発展してまいりました。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "そしてここに、技術を結集して誕生したのが\nトレーニングサポートAIシステム――",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "トレーニングサポートAIシステム"
+   ]
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "その名も『メガドリームサポーター』です！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "メガドリームサポーター"
+   ]
+  },
+  {
+   "name": "トレーナーたち",
+   "text": "（ざわざわざわ……っ！）",
+   "choice_data_list": [
+    "メガドリームサポーター？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "VRウマレーターで新しいことが\nできるようになる、ということでしょうか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "ウマ娘を担当するにあたり、これまで\n何かと迷った場面はありませんでしたか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "たとえばレース前のトレーニングを強めに\nやっていいものか、適性距離から少しだけ\n外れた場合、それでも勝負になるか、など――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "そんな時、判断のサポートとなる\nAIシステムを、このたび完成させました！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ウマ娘のレースが始まって以来の\nさまざまなデータを集積、分析し――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "多くの事例、多くの統計により、\n最善のアンサーを導き出す、究極のAI！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "トレーナーのみなさんにとって、\nきっと心強い味方になることかと思います！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "百聞は一見にしかず。詳しい説明は\nソフトを実際に触りながら行いましょう♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "最善のアンサーを導き出すAI……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "桐生院トレーナー",
+   "text": "ウマ娘育成のため、触れておいて\n損はなさそうですね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "考えるまでもなく、すぐに答えは出た。\n新人トレーナーである自分が、\nウマ娘と共に夢を追いかけるためにも――",
+   "choice_data_list": [
+    "参加しましょう！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "こうして、ウマ娘育成のメリットを求め\nVRの世界へ飛び込んだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "Welcome to the Mega Dream\nSupporter...Get Ready!",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "目の前に映し出されたのは、\nVR空間に再現されたトレセン学園だった。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "VR空間に再現されたトレセン学園"
+   ]
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "ようこそ、おいでくださいました♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "建物だったりコースの再現は、\n他のVRソフトで体験しているだろうから\n驚きはないかもしれないけれど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "このソフトにはびっくりすることがあるの！\nさあ、案内するわね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "説明した通り、このソフトは膨大なデータ――\n昔から今に至るウマ娘の情報が詰まってるの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "それらを処理するAIには、\nどのようにデータを解釈するのかの思考、\nつまり性格を持たせるんだけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "『勇敢』『規律』『愛情』の思考性を持った\nAIが、ラーニングを繰り返した結果――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "とっても面白いことが起きたんです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "3つのAIそれぞれに人格が――いえ、\n魂が生まれたとも言える、そんなことが！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "その時、部屋がまばゆい光に包まれた。\nやがて目の前には――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "太陽は昇り、数多の星々は輝き始める。\nだがその輝きに1つとして同じものはない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "広大な海にたゆたう子たちを、\n優しい波で包み、護りましょう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "あらゆるものを支えてなお、揺るがぬ大地。\n強者となり、刻み込むほどに踏みしめよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "俺はダーレーアラビアン。\nウマ娘はみんな違って、みんな主役だ。\nそれぞれを大事に磨いていこうな！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ダーレーアラビアン"
+   ]
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "わたしはゴドルフィンバルブというの。\nウマ娘の辿る蹄跡、見守らせてもらうわね。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ゴドルフィンバルブ"
+   ]
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "私の名はバイアリーターク。\n己の道を切り拓くには、強き者となる他ない。\n走り始めたのならば、覚悟を決めろ。",
+   "choice_data_list": [
+    "そ、その名前って……！？"
+   ],
+   "color_text_info_list": [
+    "バイアリーターク"
+   ]
+  },
+  {
+   "name": "",
+   "text": "そこには初めて見たはずの――だけど\n聞いたことのある名の、3人のウマ娘がいた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "お気づきですか、こちらの方々のお名前！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノクラウン",
+   "text": "長きにわたって走り続けてきたウマ娘、\nその私たちの祖と言われている存在！",
+   "choice_data_list": [
+    "三女神……！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "サトノダイヤモンド",
+   "text": "そうなんです！　3つのAIは\n三女神お三方の名を、名乗り始めたのです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ダーレーアラビアン",
+   "text": "そんなに固くなるなって、子羊くん！\n女神と言っても、俺たちはサポートAI。\nつまりはよき隣人ってことだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "バイアリーターク",
+   "text": "遠慮は無用どころか愚行だ。\n積極的に相談し、ウマ娘の育成に尽力しろ。\n我々は知識を授けることを惜しまない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ゴドルフィンバルブ",
+   "text": "ふふっ、たくさん頼ってね。\n紡がれたウマ娘たちの歴史――女神の叡智は、\nいつだってあなたたちを支えるから。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "女神の叡智"
+   ]
+  },
+  {
+   "name": "",
+   "text": "ウマ娘とトレーナーの強い味方として\n導入された、トレーニングサポートAI。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "膨大なデータを司る“三女神”を味方に加え、\n3年間の熱きレースが始まる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

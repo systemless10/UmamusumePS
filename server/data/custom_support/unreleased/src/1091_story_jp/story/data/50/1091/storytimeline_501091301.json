@@ -1,0 +1,235 @@
+{
+ "title": "夏合宿（3年目）終了",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "熱い夏合宿も終わり、\nヴィブロスは――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ママ、パパ～！\nトレっちにお肉あげて？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "はいよ！\nトレーナーさん、お皿をこっちに！",
+   "choice_data_list": [
+    "あ、ありがとうございます……"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ご家族と一緒に、BBQをしていた。\nみなさん合宿中もサポートをしてくれて、\n大いに助かっていたが……。",
+   "choice_data_list": [
+    "（いいのかな、こんなことして……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "父がこのために、\n最高級のお肉を用意してくれたの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "遠慮せずに召し上がって。",
+   "choice_data_list": [
+    "じゃあ、いただきます――"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち、\nおいしい？",
+   "choice_data_list": [
+    "……美味しい！！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "きゃ～っ。\nかわいい～♡",
+   "choice_data_list": [
+    "どこが……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もぐもぐ、\nうれしそーなところっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の母親",
+   "text": "ふふ。ヴィブロスちゃんは本当に、\nトレーナーさんがお気に入りなのね～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "姉妹の父親",
+   "text": "トレーナーさ～んっ、\nこっちのお皿を出してくれるか？",
+   "choice_data_list": [
+    "あ、はいっ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナ",
+   "text": "……トレーナーさん、\nすっかり馴染んでるわね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "言ったでしょ？\nもう家族だもーん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……っと、あれ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちー！\nどしたの、全然食べてなくない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "いいのかな、\nこんなことして……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちゃんと許可はとってるよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "そうじゃなくて……。\n……もういいや。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……合宿、\nどうだった？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……体調とか、さ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ちょーいい感じ！\nトレっちとがんばったからね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "クラシック級のときは、\n体がまだまだな感じだったのもあって、\n倒れちゃったけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今はしっかりしてきたみたい！\n来年のドバイは目指せそう♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……そっか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "シュヴァちは？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "僕は……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……強く、なってるよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "！\nそっか。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "けど……やっぱり、\nキタさんが出るし。足りない気はする。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "キタ"
+   ]
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "本番までに、\nもっと仕上げるつもり。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、じゃあ\n私ももっとがんばる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "2人でがんばりあえたら、\n1人より強くなれるって思わない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……うん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねっ！　レース、\n楽しみだねっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シュヴァルグラン",
+   "text": "……うん。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、\n3年目の夏合宿も賑やかに終わっていった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,5 +1,3 @@
-// Support cards: every card in the region's master, owned or not, with filters,
-// multi-select (click / shift-click / select shown) and bulk give / set / remove.
 
 import { act, call, esc, gameIcon, icon, keepScroll, loadCatalog, store } from "./core.js";
 import { RARITY, SUPPORT_TYPES, empty, lbDiamonds, modal, ask, opts, selection, selectionBar, targetPicker } from "./widgets.js";
@@ -9,7 +7,7 @@ const blank = () => ({ q: "", types: [], rar: [], own: "all", lb: "", lvl: "", f
 const TYPE_ORDER = Object.fromEntries(SUPPORT_TYPES.map(([k], i) => [k, i]));
 
 export const supportsWin = {
-  title: "Support cards", icon: "cards", size: [720, 520], place: [0.12, 0.03, 0.86, 0.94], key: "3",
+  title: "Support cards", icon: "cards", size: [720, 520], place: [0.12, 0.03, 0.86, 0.94], key: "6",
   tools(win) { return [targetPicker(win)]; },
   mount(body, win) {
     win.state.f = { ...blank(), ...(win.state.f || {}) };
@@ -39,7 +37,7 @@ export const supportsWin = {
           <label>Sort <select data-f="sort">${opts(SORTS, f.sort)}</select></label>
         </div>
         <div class="filters">
-          <button class="btn sm" data-open="customSupport">${icon("sparkle")} Custom studio</button>
+          <button class="btn sm" data-open="more" data-open-arg='{"tab":"custom"}'>${icon("sparkle")} Custom studio</button>
           <span class="chips">${SUPPORT_TYPES.map(([k, t]) => chip("types", k, `<span class="type-dot t-${k}"></span>${t}`, f.types.includes(k))).join("")}</span>
           <span class="chips">${[1, 2, 3].map((r) => chip("rar", r, RARITY[r], f.rar.includes(r))).join("")}</span>
         </div>

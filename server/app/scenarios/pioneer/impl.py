@@ -1,20 +1,3 @@
-"""DESIGN YOUR ISLAND (scenario 11, JP only) -- 無人島へようこそ -- the mechanics.
-
-docs/JP_DESIGN_YOUR_ISLAND_SCENARIO.md is the spec this implements, section
-for section; it records where every rule and number came from (the umacap
-careers, 28 headless research careers on the real server, the
-single_mode_11_* master tables and the JP client dump). This module holds the
-career state and the rules that move it:
-
-    development points                 §3   (add_points, *_points)
-    plans, building                    §4   (validate_plan, commit_plan, build)
-    normal-training levels             §5.1 (count_training, levels)
-    Island Training, tickets           §7-8 (island_map, grant_ticket)
-    the island team                    §9   (form_team, grow_team)
-    evaluations                        §10  (commit_check_point, result_rewards)
-
-and builds the pioneer_data_set every career response carries (data_set).
-"""
 
 from __future__ import annotations
 
@@ -40,20 +23,15 @@ FINALS_RACE_TURNS = frozenset({74, 76, 78})
 LIVE_TURN = 72
 TICKET_CAP, LATE_TICKET_CAP, LATE_FREE_TICKETS = 1, 3, 2
 TEAM_SIZE = 11
-TEAM_GROWTH = 3                          # at evaluations 2 and 4, 大好評 only
+TEAM_GROWTH = 3
 LEVEL_UP_EVALUATIONS = (2, 4)
-RESULT_GREAT, RESULT_GOOD = 2, 1          # 大好評 / 好評
-# The five scenario-link charas (§9, §12), 211036's order.
+RESULT_GREAT, RESULT_GOOD = 2, 1
 LINK_CHARAS = (1031, 1040, 1027, 1069, 1021)
 LINK_HINTS = ((1031, 203112, 203111), (1040, 202662, 202661), (1027, 202452, 202451),
               (1069, 203222, 203221), (1021, 201611, 201612), (M.TUCKER_CHARA, 200462, 200461))
-# Scenario NPC rows the real wire carries from turn 1 (§9), minus any whose
-# chara is in the deck: target_id -> chara_id.
 NPC_ROWS = {101: 9001, 102: 9002, 103: 9003, 104: 9004, 106: 9006, 108: 9008, 109: 9040,
             110: 9043, 111: 9044, 112: 9047, 113: 9049, 114: 9050, 115: 1139}
 
-# Evaluation results (§10): (all stats, SP) by (check point, result). 好評 =
-# the previous 大好評 stats, half this one's SP.
 RESULT_REWARD = {
     (1, 2): (10, 60), (2, 2): (15, 120), (3, 2): (20, 150), (4, 2): (25, 200), (5, 2): (35, 300),
     (1, 1): (5, 30), (2, 1): (10, 60), (3, 1): (15, 75), (4, 1): (20, 100), (5, 1): (25, 150),
@@ -64,11 +42,9 @@ RESULT_EVENTS = {(1, 2): (211011, 400011004), (1, 1): (211012, 400011005),
                  (4, 2): (211017, 400011017), (4, 1): (211018, 400011018),
                  (5, 2): (211019, 400011021), (5, 1): (211020, 400011022)}
 RESULT_TIMING, RESULT_SHOW_CLEAR = 20, 1101
-DIRECTOR_BOND = 5                        # 大好評 result events only
-SKILL_ZENSHIN = (200511, 200512)         # 全身全霊 gold Lv1 / white Lv3 (evaluation 5)
+DIRECTOR_BOND = 5
+SKILL_ZENSHIN = (200511, 200512)
 
-
-# ================================================================ state ===
 
 def _blank() -> dict:
     return {
@@ -116,7 +92,6 @@ def facilities(st: dict) -> dict:
 
 
 def island_turn(turn: int) -> bool:
-    """The five trainings are the island versions (camp and URA finals)."""
     return turn in SUMMER_TURNS or turn in FINALS_TURNS
 
 
@@ -124,14 +99,11 @@ def period(turn: int) -> int:
     return M.PERIOD_FINALS if turn in FINALS_TURNS else M.PERIOD_CAMP
 
 
-# ========================================================== the deck ===
-
 def deck(chara_info: dict) -> dict:
     return RF.deck(chara_info)
 
 
 def tucker_card(chara_info: dict):
-    """(position, support_card_id, rarity) of the deck's Tucker card, or None."""
     for pos, sid in deck(chara_info).items():
         _k, _c, rarity, chara = RF.card_meta(sid)
         if chara == M.TUCKER_CHARA:
@@ -140,8 +112,6 @@ def tucker_card(chara_info: dict):
 
 
 def compute_deck_id(chara_info: dict, card_levels=None) -> int:
-    """0 without Tucker, 1 with the R card, 2 with the SSR below Lv41, 3 with
-    it at Lv41+ (§4.1)."""
     t = tucker_card(chara_info)
     if not t:
         return 0
@@ -172,11 +142,7 @@ def normal_deck_charas(chara_info: dict) -> list:
     return out
 
 
-# ======================================================= check points ===
-
 def current_plan(st: dict) -> int:
-    """The check point (1-5) the running plan is judged at; 0 once all five
-    are done."""
     n = len(st["results"]) + 1
     return n if n <= 5 else 0
 
@@ -211,7 +177,6 @@ def latest(st: dict):
 
 
 def passive(st: dict, effect_type: int) -> int:
-    """The latest evaluation's row -- it REPLACES the previous one (§5.3, §10)."""
     got = latest(st)
     return M.check_point_effect(got[0], got[1], effect_type) if got else 0
 
@@ -241,10 +206,7 @@ def all_great(st: dict) -> bool:
     return len(st["results"]) == 5 and great_count(st) == 5
 
 
-# ============================================================ plans ===
-
 def next_step(facilities_now: dict, facility: int, target: int):
-    """The cost of taking `facility` to `target` from where it stands, or None."""
     for tgt, cost in M.lv_up().get(int(facilities_now.get(facility, facility * 100)), ()):
         if tgt == int(target):
             return cost
@@ -252,16 +214,11 @@ def next_step(facilities_now: dict, facility: int, target: int):
 
 
 def available_steps(facilities_now: dict) -> dict:
-    """{facility: [(target, cost)]} -- every facility's possible next level."""
     return {f: list(M.lv_up().get(int(facilities_now.get(f, f * 100)), ()))
             for f in M.FACILITIES if M.lv_up().get(int(facilities_now.get(f, f * 100)))}
 
 
 def validate_plan(full_state: dict, chara_info: dict, rows) -> list | None:
-    """The plan as stored ([{priority, facility_id, prev_state_id,
-    target_state_id}] by priority), or None when the real server would answer
-    205: one legal level per facility, summing EXACTLY to the plan's cost
-    (§4.2) -- or to everything still buildable when that is less."""
     st = state(full_state)
     facs = facilities(st)
     cost = planning_cost(full_state, chara_info)
@@ -293,8 +250,6 @@ def commit_plan(full_state: dict, chara_info: dict, plan: list, turn: int) -> No
 
 
 def plan_batches(full_state: dict, chara_info: dict) -> tuple:
-    """(first batch, second batch) of the running plan: everything whose
-    cumulative cost fits the first ticket threshold, then the rest (§4.3)."""
     st = state(full_state)
     first_pt = thresholds(full_state, chara_info)[0]
     running, first, second = 0, [], []
@@ -306,7 +261,6 @@ def plan_batches(full_state: dict, chara_info: dict) -> tuple:
 
 
 def build(full_state: dict, chara_info: dict, batch: int) -> list:
-    """Build batch 1 or 2 of the plan (idempotent). Returns the built rows."""
     st = state(full_state)
     if int(st["built"]) >= batch:
         return []
@@ -322,12 +276,7 @@ def build(full_state: dict, chara_info: dict, batch: int) -> list:
     return rows
 
 
-# ============================================================ points ===
-
 def add_points(full_state: dict, chara_info: dict, amount: int, how: str, turn: int) -> list:
-    """Bank development points; returns the ticket thresholds this crossed
-    (1 and/or 2). `how` is "train" (a training paid them: 211067) or
-    "event" (an event's points: 211076)."""
     st = state(full_state)
     if amount <= 0 or not points_active(st, turn):
         return []
@@ -340,8 +289,6 @@ def add_points(full_state: dict, chara_info: dict, amount: int, how: str, turn: 
     for i in crossed:
         st["crossed"] = i
         if turn in SUMMER_TURNS:
-            # A camp crossing plays nothing: the facilities build now, the
-            # ticket waits for 211068 on turn 41 (§8).
             build(full_state, chara_info, i)
             st["rights"] = i
             st["camp_ticket"] = int(st["camp_ticket"]) + 1
@@ -352,25 +299,18 @@ def add_points(full_state: dict, chara_info: dict, amount: int, how: str, turn: 
 
 
 def grant_ticket(st: dict, n: int = 1) -> None:
-    """Holding limit 1 (3 from turn 65): a ticket gained on a full stock
-    replaces the one held (§8)."""
     st["tickets"] = min(int(st["ticket_cap"]), int(st["tickets"]) + n)
     st["gain"] = n
 
 
 def ticket_reached(full_state: dict, chara_info: dict, batch: int) -> None:
-    """A ticket event resolved: its batch builds, a ticket is granted."""
     st = state(full_state)
     build(full_state, chara_info, batch)
     st["rights"] = batch
     grant_ticket(st)
 
 
-# ============================================================ team ===
-
 def form_team(full_state: dict, chara_info: dict) -> list:
-    """211079 (turn 3): the normal-type deck cards' charas, the five link
-    charas not already brought, then random extras to eleven (§9)."""
     st = state(full_state)
     if st["team"]:
         return st["team"]
@@ -406,7 +346,6 @@ def _draw_extras(full_state: dict, chara_info: dict, team: list, n: int, salt: s
 
 
 def islanders(full_state: dict, chara_info: dict) -> list:
-    """Team members who stand in training as bodies of their own (no card)."""
     brought = {RF.card_meta(sid)[3] for sid in deck(chara_info).values()}
     return [c for c in state(full_state)["team"] if c not in brought]
 
@@ -431,8 +370,6 @@ def on_team(full_state: dict, chara_info: dict, target_id: int) -> bool:
     return bool(sid) and RF.card_meta(sid)[3] in st["team"]
 
 
-# ======================================================= levels ===
-
 def count_training(st: dict, command_id: int) -> None:
     base = M.ISLAND_TO_TRAINING.get(int(command_id), int(command_id))
     if base in RI.EXEC_INFO_ORDER:
@@ -440,14 +377,11 @@ def count_training(st: dict, command_id: int) -> None:
 
 
 def level_for(st: dict, base_cmd: int) -> int:
-    """§5.1: 1 + exec_count // 4 + one per 大好評 at evaluations 2 and 4."""
     exec_count = int(st["exec_counts"].get(str(base_cmd), 0))
     return min(5, 1 + exec_count // 4 + great_count(st, LEVEL_UP_EVALUATIONS))
 
 
 def sync_levels(full_state: dict, chara_info: dict) -> list:
-    """Write the levels into the career's facility levels and the served
-    training_level_info_array. Returns the base commands that rose."""
     from ...handlers import single_mode_team as smt
     st = state(full_state)
     career = (full_state.get(smt.STATE_KEY) or {}).get("data") or {}
@@ -472,15 +406,12 @@ def training_exec_info(st: dict) -> list:
             for c in RI.EXEC_INFO_ORDER]
 
 
-# ===================================================== check points ===
-
 def check_point_due(st: dict, turn: int) -> bool:
     cp = M.check_point_for_turn(turn)
     return bool(cp) and not any(r["check_point_type"] == cp for r in st["results"])
 
 
 def commit_check_point(full_state: dict, chara_info: dict, turn: int):
-    """Hold the evaluation: its result and the result Event (§3.4, §10)."""
     st = state(full_state)
     cp = M.check_point_for_turn(turn)
     cost = planning_cost(full_state, chara_info)
@@ -523,8 +454,6 @@ def result_rewards(full_state: dict, chara_info: dict, cp: int, result: int, ene
 
 
 def random_hint(full_state: dict, chara_info: dict, salt: str) -> list:
-    """One random support-card hint, as that card's own hint event pays it
-    (a skill, or its stat variant) -- the ticket and evaluation events (§8)."""
     pool = [sid for sid in deck(chara_info).values() if RF.is_normal_card(sid)]
     if not pool:
         return []
@@ -532,12 +461,7 @@ def random_hint(full_state: dict, chara_info: dict, salt: str) -> list:
     return RI.card_hint_effects(chara_info, rng.choice(pool), rng)
 
 
-# ======================================================== previews ===
-
 def refresh_preview(full_state: dict, chara_info: dict, home_commands, card_levels=None) -> bool:
-    """Recompute this turn's bonus line, point previews and Island Training
-    board from the facilities about to be served; exec_command and
-    shima_training_exec pay exactly these."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     facs = facilities(st)
@@ -569,9 +493,6 @@ def refresh_preview(full_state: dict, chara_info: dict, home_commands, card_leve
 
 def island_preview(full_state: dict, chara_info: dict, home_commands, turn: int,
                    card_levels=None) -> dict:
-    """Island Training's board, button, bonus line and points for this turn.
-    Its partners (and so a partner-dependent number) only while a ticket is
-    held; otherwise the no-partner value (§7.3)."""
     st = state(full_state)
     facs = facilities(st)
     pmap = island_map(full_state, chara_info, home_commands, turn) if int(st["tickets"]) > 0 else {}
@@ -598,11 +519,7 @@ def island_partner_map(st: dict, turn: int) -> dict:
     return {int(f): list(ids) for f, ids in (stored(st, turn).get("island") or {}).get("map", {}).items()}
 
 
-# ======================================================== envelope ===
-
 def evaluation_array(full_state: dict, chara_info: dict) -> list:
-    """pioneer_data_set.evaluation_info_array: every row chara_info carries --
-    deck positions, the NPCs 101-115, the islanders -- with its team flag."""
     by_pos = deck(chara_info)
     out = []
     for e in chara_info.get("evaluation_info_array") or ():
@@ -626,14 +543,11 @@ def evaluation_array(full_state: dict, chara_info: dict) -> list:
 
 
 def npc_rows(chara_info: dict) -> list:
-    """[(target_id, chara_id)] of the NPC rows to carry: all of NPC_ROWS but
-    those whose chara is in the deck."""
     brought = {RF.card_meta(sid)[3] for sid in deck(chara_info).values()}
     return [(t, c) for t, c in sorted(NPC_ROWS.items()) if c not in brought]
 
 
 def point_rows(full_state: dict, chara_info: dict, home_commands, turn: int) -> list:
-    """pioneer_point_gain_info_array: one row per ENABLED command (§1)."""
     st = state(full_state)
     if not points_active(st, turn) or turn < FIRST_PLAN_TURN:
         return []
@@ -664,7 +578,7 @@ def goal_race_turn(chara_info: dict, turn: int) -> bool:
     from ...handlers import single_mode_team as smt
     try:
         forced = smt._forced_race_turns(tuple(chara_info.get("route_race_id_array") or ()))
-    except Exception:                                  # noqa: BLE001
+    except Exception:
         forced = frozenset()
     return turn in forced
 
@@ -682,7 +596,6 @@ def race_points_for(full_state: dict, chara_info: dict, turn: int, cp=None, goal
 
 
 def data_set(full_state: dict, chara_info: dict, home_info: dict, start: bool = False) -> dict:
-    """pioneer_data_set -- sent complete on every career response (§1)."""
     st = state(full_state)
     turn = served_turn(full_state, chara_info)
     commands = list((home_info or {}).get("command_info_array") or ())
@@ -701,7 +614,7 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict, start: bool = 
     island_on = island_turn(turn) or (st.get("complete") and turn >= LIVE_TURN)
     pmap = island_partner_map(st, turn)
     if island_on:
-        shima_info = []                          # the real PHP-empty-array quirk (§1)
+        shima_info = []
     else:
         shima_info = {"remain_num": int(st["tickets"]),
                       "shima_training_partner_info_array": [
@@ -749,7 +662,6 @@ def auto_planning_info(st: dict) -> dict:
 
 
 def facility_snapshots(st: dict) -> list:
-    """pioneer_complete's check_point_facility_info_array: evaluations 1, 3, 5."""
     out = []
     for cp in (1, 3, 5):
         snap = st["snapshots"].get(str(cp))
@@ -761,5 +673,4 @@ def facility_snapshots(st: dict) -> list:
 
 
 def total_points(st: dict) -> int:
-    """Σ the five plan totals -- 本能の懸け橋's scenario value (§12)."""
     return sum(int(t) for t in st["totals"])

@@ -1,0 +1,92 @@
+#title Sisters♡
+0 —At the beginning of March, the news broke.
+1 I, Verxina... will run in this year's Victoria Mile.
+2 (Ooh～...!?)
+3 An emergency press conference—I wondered what was going on... but who'd have thought it'd be an announcement like this!
+4 We get to see it again...! One of Verxina's races that sets your heart on fire!
+5 The former "Mile Queen," who had stepped back from the front lines in recent years, was returning—the news set the world abuzz.
+5{ Mile Queen
+6 Furthermore—
+7 In this year's Victoria Mile... her younger sister, Vivlos, has also announced she'll run! In other words—
+8 Yes. I chose this race in order to face my sister.
+9 Everyone knows how strong my sister is now. ...I've seen it too.
+10 —All this time, up close... I've watched over her growth.
+11 As her sister... and as an Umamusume. My heart was set.
+12 —Vivlos, I'm giving you a race that will make your heart dance.
+13 —Onee-chan!
+14 Vivlos, who'd been watching Verxina's press conference with me, rushed to her sister's side right after it ended.
+15 Hey, you're running in the Victoria Mile...!
+16 Just as I declared.
+17 But why?!
+18 Oh my. You don't want to race me?
+19 !
+20 Nuh-uh, I'm super happy!
+21 'Cause I've never run against you when you're serious!
+22 Are you excited?
+23 Totally!
+24 ...Hehe. Then deciding to run was the right choice.
+25 ?
+26 ...Vivlos, you worked so hard for my sake.
+27 But because of that... your most important dream drifted farther away.
+28 In that case, as your big sister... there was only one thing I should do.
+29 —Give you a race that will fill your heart just as much as a race in Dubai.
+30 Onee-chan...
+31 —Now then, are you ready?
+32 As everyone knows, I am strong.
+33 I have no intention of letting you take the spotlight. I'll be stronger than I was back then when I face you.
+34 Can you surpass me?
+35 ...!
+36 Heh. ...I'm looking forward to it.
+37 Hey, hey, I get to race Onee-chan! Isn't that craaazy?!
+38 After Verxina's declaration, Vivlos seemed to have completely regained her energy.
+38> You're that happy? | You're that happy?
+39 I'm suuuper happy! 'Cause I'd never even thought about it!
+40 When we were little, we ran together a lot, but Onee-chan always went easy on me...
+41 I was always the one chasing her. Even after I came to Tracen Academy—
+42 I watched her from outside the turf. That was just how it was...
+43 But... I get to really run against her for real, huh.
+44 I'm allowed to run, huh!
+45 Seeing how happy Vivlos is, Verxina's feelings clearly got through. Then I'll give her one more push—
+45> If you beat Verxina, you'll be super glamorous | If you beat Verxina, you'll be super glamorous
+46 !! You're riiight～!
+47 That's right, if I'm doing this anyway... I'll become way more glamorous than now and go to Dubai!
+48 All right. I'm gonna do my best at the Victoria Mile!
+49 ...Oh, right. Before that...
+50 My race with Onee-chan... I need one more person to see it!
+51 "I, Verxina... will run in this year's Victoria Mile."
+52 ...—
+53 "—With this, a dream sister showdown is set! The Victoria Mile is looking more exciting than ever."
+54 ...A "sister" showdown, huh.
+55 .........Of course. Someone like me who can't get results...
+56 Cheval.
+57 ...! Wh-what?
+58 Will you come watch this year's Victoria Mile?
+59 ...If I go, I'll just feel... even more miserable.
+60 I know. How big the gap between me and the two of you is—
+61 That's not it, Cheval. I'm certain of it.
+62 Our race won't drive you into a corner.
+63 —It will light a fire in your heart.
+64 ...? What do you mean...?
+65 You'll understand when you see it. ...Listen, Cheval, you're my precious little sister too.
+66 And—...No, I'll leave this to her.
+67 I'll be waiting at Tokyo Racecourse.
+68 ...Sigh. What was that about—
+69 —Chevacchiii!
+70 Listen, listen, you've gotta come watch the Victoria Mile, okay?
+71 ...Did Sis put you up to this?
+72 Huh? Why?
+73 ...Never mind. Sorry, but I...—
+74 Nooo～! You have to come!
+75 I'm gonna fight Onee-chan. That suuuper strong Onee-chan!
+76 ...Good for you. You... love Sis, after all.
+77 Yeah! So I want my other big sister who I love to come too!
+78 !
+79 To my sister who I love and who's precious to me! I want her to see it!
+80 ...I could work hard because I'm your little sister, both of you.
+81 So I wanna show you too, Chevacchi...
+82 ...I'll be waiting!
+83 Ah...
+84 ...How can the two of them just... say things like that so easily?
+85 Cheval! Come here!
+86 Chevacchiii～♡ I love you!
+87 ...I... I do too...—

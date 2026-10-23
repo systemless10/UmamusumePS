@@ -1,0 +1,180 @@
+{
+ "title": "神社でお祈り！",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "最近調子が悪いヴィブロス。\nパワースポットの神社に行きたいというので\n付き合ったのだが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "すう～……はぁ～～！",
+   "choice_data_list": [
+    "……どう？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、効く気がする！\nさすがパワースポット！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……………………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……効く？　よね？　ね？\nSNSでもバズってた、し……。…………。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "んも～～っ！　とか言って、\nまだモヤモヤしてる証拠じゃん！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うう～！　やだやだやだやだ～！\nこんなのいつもの私じゃないよ～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうだ！　こうなったら――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "コパノリッキー",
+   "text": "ふむ！　今の氣の流れだと、緑がいいよ！\n樹を見ながら、ゆっくり深呼吸して――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マチカネフクキタル",
+   "text": "はんにゃか～……！\nふんにゃか～……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "マチカネフクキタル",
+   "text": "――出ましたっ！\nヴィブロスさんのラッキースポットは\n駅前ですね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "壁の緑を見て～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "すー……ふー……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "…………からの――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "はんにゃか～ふんにゃか～～！\nほんにゃか～ぶんちゃか～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、いい感じ……！\nやればやるほどいい感じ……！",
+   "choice_data_list": [
+    "（影響されすぎでは……？）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "心配するものの、\nひとまずは引き続き見守ることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よーしっ！　次は――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え、ウソ……！",
+   "choice_data_list": [
+    "ど、どうしたんだ？",
+    "ど、どうしたの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "～～やったぁ！！　売り切れで買えなかった\n限定コスメ、キャンセルで入荷したって！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これ、お祈りとかいろいろしたからだよね！\n効いたー！　すごーいっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "これでもう、私、だいじょうぶ♪\nぶいっ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "単純すぎて心配になったが……\nその日からヴィブロスは\n調子を取り戻していったのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日、コスメの発売日だったんだ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "完売しちゃった……って……。\n……いつもなら、絶対……忘れないのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……………………もう、ダメ。ぱたり。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "いろんなものに縋りついてみたものの、\nその後もヴィブロスの調子は\nよくないままだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

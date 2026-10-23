@@ -1,0 +1,122 @@
+{
+ "title": "追加の自主トレ",
+ "text_block_list": [
+  {
+   "name": "キタサンブラック",
+   "text": "はあ、はあ……くっ……！\n……もう1回！　今度は負けないよ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "おー♡　見て見て、トレっち！\nキタサンたち、アオハルしてるくない？？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいなー。\n私にはないなー、あーいうの。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "って、ほよっ？　通知？？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ふふっ！　あははっ！\nそっか、今日のも勝ったんだ～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "見て見て！　友だちの写真！\n海外目指してる子なんだけど――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "鬼盛りバナナパフェを前に、かわちい笑顔♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "この子ね！　レースに勝つと、\nぜったいこのパフェ食べるんだって～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『おいしそっ♡　ひとくちちょーだい』っと。\n……あっ！　もう返事来た。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "『一緒に、ドバイでバナナパフェ食べるまで\nお預け』……ドバイで、バナナパフェ……！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……トレっち！\n私、もーちょいトレーニングやってく！\nバナナパフェ食べたいもんっ！！",
+   "choice_data_list": [
+    "バナナパフェのため、一緒に頑張ろう！",
+    "今日は体を休めよう"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え！　トレっちも、いっしょしてくれるの？？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……えへへっ。\n友だちと、トレっちと並んでがんばる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "バチバチする相手はいなくても……\nこれが私のアオハルなのかも、ね♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは楽しげに\n追加トレーニングをこなしたのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "無理をしてケガをしたら、\nドバイに行くどうこうの話ではなくなる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "むぅ～…………たしかに～～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "じゃあじゃあっ！\nそのかわり、寮まで送って♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こーいうのも、アオハルっぽいし♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

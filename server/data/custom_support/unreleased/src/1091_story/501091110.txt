@@ -1,0 +1,33 @@
+#title Ending (Normal)
+0 The first three years of the Twinkle Series I raced through with Vivlos came to a close...
+1 Tore-cchi! Over here, over here~!
+2 Before heading for her next dream, Dubai, we decided to hold a party celebrating our three years of hard work. It's a party aboard a ship the academy prepared for us.
+2> Huh, where's your family?
+3 They're all waiting over there! I came to get you, Tore-cchi.
+4 Hey, hey, this is suuuper tasty! It's all fizzy and refreshing♪
+4> Maybe I'll have that too | Maybe I'll have that too
+5 Sure!
+6 Have a sip♡
+6> ...Let's go see your family first
+7 Aww, you didn't have to!
+8 Well, whatever!
+9 Let's take a little walk on the way♡
+10 And so, Vivlos and I decided to head to where her family was waiting while looking around the ship. Then...
+11 Vivlos-san! Congratulations on your wonderful success!
+12 I hear you're taking on Dubai? I'll contact an acquaintance over there. Please do rely on them to show you around.
+13 Wow, thank you so much♪ I'll do my best!
+14 Ehehe, I've made so many new acquaintances.
+14> You're a total celebrity now | You're a total celebrity now
+15 Right, I'm so happy~♡
+16 I wanna get to know even more suuuper famous people, and swap Umastagrams with them~.
+17 I wanna be like, celebrity? That means me! ♪
+18 And then! My family would get suuuper famous too, right?
+19 We could be like a celebrity family and have our own show~!?
+19> The dream keeps getting bigger! | The dream keeps getting bigger!
+20 You're acting like it's not about you, but of course you'll be on it too, Tore-cchi?
+20> Me too?! | Me too?!
+21 Obviously. You have to be in every single episode!
+22 'Cause you're my precious trainer♡
+23 Vivlos! Trainer! Over here!
+24 Coming~!
+25 You too, Tore-cchi! Come on, let's go together♡

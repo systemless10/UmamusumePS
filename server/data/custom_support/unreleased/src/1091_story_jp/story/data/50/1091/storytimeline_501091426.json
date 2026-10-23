@@ -1,0 +1,17 @@
+{
+ "title": "紫苑Sの後に・Next!",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『紫苑S』を見事、走りきったヴィブロス。\n体調の異変も見られず、\n彼女は自信に満ち溢れていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "次はいよいよ最後の一冠『秋華賞』。\nティアラ獲得へ向けて、\nヴィブロスは決意を新たにするのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

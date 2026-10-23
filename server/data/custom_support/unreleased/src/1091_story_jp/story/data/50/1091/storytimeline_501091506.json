@@ -1,0 +1,210 @@
+{
+ "title": "ダンスレッスン",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスにダンスを見てほしいと言われ、\nダンススタジオへ行くと――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "――もうやだ！　なんなのよこれぇ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれ、どしたの？　スイープ。\nなんか荒れてる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "このダンスの振りよ！\n魔女御用達のダンスだって言うから\n踊ってるのに……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "ごちゃごちゃしてて、へんてこなんだもん！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ～っ！　SNSでバズってるやつだ♡\nちゃんと見たことなかったけどー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ふーむ。なるほど……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ルンルンしたら♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "次はタッタッタで……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "その次はちょっとかっこいいやつで～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "最後は……はい、かわいくポーズ♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "なっ……！！\nなんでアンタができるのよ！？",
+   "choice_data_list": [
+    "覚え方のコツとかあるのか？",
+    "覚え方のコツとかあるの？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あんまり意識したことないけど……\nんん～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あっ！　ほらほら、魔法といっしょだよ～！\n魔法も、効果に合わせて名前つけるでしょ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "このダンスも振りに『るんるん』とか\n名前つけて～、順番どーり踊るだけ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "！　魔法と、同じ……。",
+   "choice_data_list": [
+    "つまり、コツは『魔法』ってことか！",
+    "つまり、コツは『魔法』ってことだね！",
+    "ヴィブロスって、教え上手だな",
+    "ヴィブロスって、教え上手だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "！　魔法と、同じ……。",
+   "choice_data_list": [
+    "つまり、コツは『魔法』ってことか！",
+    "つまり、コツは『魔法』ってことだね！",
+    "ヴィブロスって、教え上手だな",
+    "ヴィブロスって、教え上手だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "……！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そうそう～♡\nだから、スイープもできるできる！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "……見せなさい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もう1回踊る？\nえー、じゃあご褒美とか――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "アンタの魔法を、よ！　使えるんでしょ！？\n魔法にあれだけ詳しいんだもんっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え、そっち……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えへ、褒められちゃったぁ♪\nスイープも、褒めて褒めて～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "……ふんっ！　未来の大魔女の、\nこのアタシよりすぐできたのよ。\nもっと偉そうにすればいいじゃないっ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "えー？　するわけないじゃんっ！\nそんなのしても、うれしくないし～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それより、褒めて甘やかしてもらうほうが\nがんばれるもん♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "ふうん、そう……じゃあ……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "だから、ねっ！　褒めて褒めて～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "――ほめてあげてもいいわよ！\n数日後、アタシより上手に踊れたらねっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "スイープトウショウ",
+   "text": "アタシはスイープトウショウ！\n未来の大魔女……\n絶対に、負けたままでいないんだから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ふふっ！\nじゃあ、がんばっちゃおっかな♪",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

@@ -1,55 +1,24 @@
-//! Port of race_field.py -- multi-horse field coordination. Not part of the
-//! original TS engine (which runs every RaceSolver in isolation, oblivious
-//! to other horses).
-//!
-//! `RaceField` owns every solver in `RefCell`s so one can be borrowed
-//! mutably (to step it) while its own methods borrow the others
-//! immutably to answer blocking/lane/order queries -- the same access
-//! pattern Python gets for free via shared references. Solvers do not hold
-//! a reference back to the field: instead `field: Option<&RaceField>` is
-//! threaded as an explicit parameter through `RaceSolver::step` and every
-//! condition-checking closure (see `activation_conditions::DynCond`), so
-//! nothing here needs a self-referential pointer or unsafe code.
-//!
-//! Ported already carrying the perf fixes validated on the Python engine:
-//! each solver's own roster index is stored on it directly (`field_index`)
-//! rather than found by a linear scan, `side_room`/`is_surrounded` early-out
-//! once both/all flags are set, and `pacemaker()` is computed once per tick
-//! and cached rather than recomputed per asking horse.
 
 use std::cell::{Cell, RefCell};
 
 use crate::horse_types::{strategy_matches, Strategy};
 use crate::race_solver::{ skill_target, Perspective, RaceSolver, SkillEffect};
 
-/// 1 horse-lane = 1/18 course-width (doc). `lane` fields elsewhere are
-/// stored in course-width units; this converts a horse-lane count into
-/// that unit wherever the doc states a threshold in horse-lanes.
 pub const HORSE_LANE: f64 = 1.0 / 18.0;
 
-/// Doc's pacemaker strategy groups, most-forward first.
 const PACEMAKER_GROUPS: &[&[Strategy]] = &[&[Strategy::Nige, Strategy::Oonige], &[Strategy::Senkou], &[Strategy::Sasi], &[Strategy::Oikomi]];
 
 pub struct RaceField {
     pub solvers: Vec<RefCell<RaceSolver>>,
     pub n: usize,
-    /// Each solver's fixed strategy, mirrored outside its `RefCell` so
-    /// `pacemaker()` can scan every horse's strategy -- including the one
-    /// currently mid-`step()` and thus already mutably borrowed -- without
-    /// re-entering that `RefCell`.
     strategies: Vec<Strategy>,
     rank_of: RefCell<Vec<usize>>,
     order: RefCell<Vec<usize>>,
     prev_rank_of: RefCell<Vec<usize>>,
     pacemaker_idx: Cell<Option<usize>>,
     pacemaker_valid: Cell<bool>,
-    /// Effects aimed at other horses (debuffs), applied once the whole field
-    /// has stepped: (target_index, effect, duration, skill_id).
     external: RefCell<Vec<(usize, SkillEffect, f64, String)>>,
-    /// Spot struggle happens at most once per strategy group.
     compete_top_done: RefCell<Vec<Strategy>>,
-    /// ability types of the skills each runner activated on the previous
-    /// tick (is_other_character_activate_advantage_skill, target 23)
     advantage_prev: RefCell<Vec<(usize, Vec<i32>)>>,
 }
 
@@ -74,8 +43,6 @@ impl RaceField {
             advantage_prev: RefCell::new(Vec::new()),
         };
         field.update();
-        // effects aimed at others that fired at the gate, before this field
-        // existed (a friend's passive for Silence Suzuka, say)
         for i in 0..n {
             let (deferred, pos, lane, chara_id, vision, team, cancel) = {
                 let mut s = field.solvers[i].borrow_mut();
@@ -103,9 +70,6 @@ impl RaceField {
         field
     }
 
-    /// Remaining distance of the viewer's (the player's) own horse; NaN (every
-    /// comparison false) when she isn't in the race. `i` is the asking horse,
-    /// mid-step and already borrowed -- the caller checks her itself.
     pub fn viewer_remain_distance(&self, i: usize) -> f64 {
         for j in 0..self.n {
             if j == i {
@@ -123,8 +87,6 @@ impl RaceField {
         self.advantage_prev.borrow().iter().any(|(j, types)| *j != i && types.contains(&ability_type))
     }
 
-    /// Recompute live order/rank from each solver's current `pos`. Call
-    /// once after every horse has been stepped for this tick.
     pub fn update(&self) {
         let mut prev = self.prev_rank_of.borrow_mut();
         let rank = self.rank_of.borrow();
@@ -143,10 +105,6 @@ impl RaceField {
         *self.order.borrow_mut() = idx;
     }
 
-    /// Step every still-racing solver by `dt`, then resolve what happens
-    /// BETWEEN horses this tick (debuffs, overlaps, spot struggles) and
-    /// refresh the shared order/rank snapshot. Doing the between-horse part
-    /// after everyone has stepped keeps it independent of stepping order.
     pub fn step_all(&self, dt: f64, active_indices: &[usize]) {
         for &i in active_indices {
             self.solvers[i].borrow_mut().step(dt, Some(self));
@@ -165,20 +123,13 @@ impl RaceField {
         *self.advantage_prev.borrow_mut() = prev;
     }
 
-    /// Other horses still running (a finished horse sits frozen on the line
-    /// and must not block or crowd the ones still running). Never borrows
-    /// `i`, which may be mid-`step()`.
     fn running_others(&self, i: usize) -> impl Iterator<Item = (usize, std::cell::Ref<'_, RaceSolver>)> + '_ {
         (0..self.n).filter(move |&j| j != i).map(move |j| (j, self.solvers[j].borrow())).filter(|(_, s)| !s.finished)
     }
 
-    // -- effects on other horses (debuffs) ---------------------------------
 
-    /// Doc's Skill Target: which horses an effect aimed at others lands on,
-    /// nearest first where the target type is a count.
     pub fn select_targets(&self, i: usize, pos: f64, lane: f64, chara_id: i32, vision: f64, team: i64, target_type: i32, target_value: i32) -> Vec<usize> {
         if target_type == skill_target::UMA_ID {
-            // that character, whoever carries the skill (herself included)
             return (0..self.n)
                 .filter(|&j| if j == i { chara_id == target_value } else {
                     let s = self.solvers[j].borrow();
@@ -219,8 +170,6 @@ impl RaceField {
                     .take(take)
                     .collect()
             }
-            // ALL_ALLIES / UMA_ID / USED_RECOVERY / AHEAD_OF_POSITION: need
-            // team or character data this engine does not carry.
             _ => Vec::new(),
         }
     }
@@ -245,13 +194,7 @@ impl RaceField {
         }
     }
 
-    // -- spot struggle (doc: Spot Struggle / Lead Competition, CompeteTop) ---
 
-    /// Between two or more Front Runners (or two or more Oonige -- never
-    /// mixed) close to the frontmost of their group, once the leader is 150m
-    /// out, while one of them is still before section 6. At most once per
-    /// group. Participants drop out when more than 5m behind every other
-    /// struggler or 0.416 course-widths away laterally.
     fn update_compete_top(&self) {
         for group in [Strategy::Nige, Strategy::Oonige] {
             let active: Vec<usize> = (0..self.n)
@@ -314,10 +257,7 @@ impl RaceField {
         }
     }
 
-    // -- overlapping (doc: Overlapping) -------------------------------------
 
-    /// Two horses within 0.4m and 0.4 horse-lanes: the outer one is bumped
-    /// 0.4 horse-lanes further out and re-picks her target lane.
     fn resolve_overlaps(&self) {
         let running: Vec<usize> = (0..self.n).filter(|&j| !self.solvers[j].borrow().finished).collect();
         for ai in 0..running.len() {
@@ -349,10 +289,6 @@ impl RaceField {
         self.prev_rank_of.borrow()[i]
     }
 
-    /// `my_pos`/`my_lane` below are the querying horse `i`'s own current
-    /// values, passed in by the caller instead of re-borrowed here -- `i`
-    /// may be the solver currently mid-`step()` and thus already mutably
-    /// borrowed via its `RefCell`, so this must never index `self.solvers[i]`.
     pub fn distance_to_leader(&self, i: usize, my_pos: f64) -> f64 {
         let leader = self.order.borrow()[0];
         let leader_pos = if leader == i { my_pos } else { self.solvers[leader].borrow().pos };
@@ -395,15 +331,10 @@ impl RaceField {
         Some(my_lane - self.solvers[behind].borrow().lane)
     }
 
-    /// True on the tick this solver's rank improved (took over at least one
-    /// other horse) versus the previous tick.
     pub fn did_overtake(&self, i: usize) -> bool {
         self.rank_of.borrow()[i] < self.prev_rank_of.borrow()[i]
     }
 
-    /// Doc: front block = 0 < distGap < 2m AND |laneGap| <= a tolerance that
-    /// shrinks from 0.75 horse-lanes at 0m to 0.3 at 2m. Lowest
-    /// distance-gap qualifying horse wins. Returns (other_index, dist_gap).
     pub fn front_blocker(&self, i: usize, pos: f64, lane: f64) -> Option<(usize, f64)> {
         let mut best: Option<(usize, f64)> = None;
         for (j, other) in self.running_others(i) {
@@ -420,9 +351,6 @@ impl RaceField {
         best
     }
 
-    /// Doc: side block = |distGap| < 1.05m AND |laneGap| < 2 horse-lanes.
-    /// Returns (inner_blocked, outer_blocked) -- inner = lower lane (toward
-    /// the rail), outer = higher lane.
     pub fn side_room(&self, i: usize, pos: f64, lane: f64) -> (bool, bool) {
         let mut inner_blocked = false;
         let mut outer_blocked = false;
@@ -451,8 +379,6 @@ impl RaceField {
         (inner_blocked, outer_blocked)
     }
 
-    /// Doc: true if ALL THREE of Out/Front/Behind each find another horse
-    /// (the same horse may satisfy more than one direction).
     pub fn is_surrounded(&self, i: usize, pos: f64, lane: f64) -> bool {
         let mut out = false;
         let mut front = false;
@@ -480,11 +406,6 @@ impl RaceField {
         !self.running_others(i).any(|(j, _)| strategy_matches(self.strategies[j], Strategy::Nige))
     }
 
-    /// Doc's pre-1.5-anniversary pacemaker rule: the 1st-place horse among
-    /// the field's most-forward strategy group that's actually present.
-    /// Depends only on `order` (refreshed once per tick by `update`) and
-    /// solvers' fixed strategies, so it is computed once per tick and
-    /// cached rather than recomputed per asking horse.
     pub fn pacemaker(&self) -> Option<usize> {
         if self.pacemaker_valid.get() {
             return self.pacemaker_idx.get();
@@ -514,7 +435,6 @@ impl RaceField {
         }
     }
 
-    /// Doc: near = |distGap| < 3m AND |laneGap| < 3 horse-lanes.
     pub fn near_count(&self, i: usize, pos: f64, lane: f64) -> i32 {
         let lane_tol = 3.0 * HORSE_LANE;
         let mut count = 0;
@@ -526,8 +446,6 @@ impl RaceField {
         count
     }
 
-    /// Doc: near_infront_count -- same "near" definition as near_count
-    /// (|distGap|<3m, |laneGap|<3 horse-lanes) but restricted to horses AHEAD.
     pub fn near_infront_count(&self, i: usize, pos: f64, lane: f64) -> i32 {
         let lane_tol = 3.0 * HORSE_LANE;
         let mut count = 0;
@@ -540,30 +458,18 @@ impl RaceField {
         count
     }
 
-    /// Doc: temptation_count_behind -- the number of horses ranked behind
-    /// `i` (by finishing-position rank, not physical distance) that are
-    /// currently rushing (kakari).
     pub fn temptation_count_behind(&self, i: usize) -> i32 {
         let r = self.rank_of.borrow()[i];
         let order = self.order.borrow();
         order[r..].iter().filter(|&&j| self.solvers[j].borrow().is_kakari).count() as i32
     }
 
-    /// Doc: temptation_count_infront -- the number of horses ranked ahead
-    /// of `i` that are currently rushing (kakari).
     pub fn temptation_count_infront(&self, i: usize) -> i32 {
         let r = self.rank_of.borrow()[i];
         let order = self.order.borrow();
         order[..r - 1].iter().filter(|&&j| self.solvers[j].borrow().is_kakari).count() as i32
     }
 
-    /// Doc: running_style_temptation_count_{nige,senko,sashi,oikomi} -- the
-    /// number of horses in the field (the querying horse counts too) with
-    /// the given running strategy that are currently rushing. `self_idx`/
-    /// `self_is_kakari` come from the caller directly (rather than
-    /// re-borrowing `self.solvers[self_idx]`) since this is called from a
-    /// condition check while that very solver is already mutably borrowed
-    /// mid-`step()`.
     pub fn activated_any_advantage(&self, index: usize) -> bool {
         self.advantage_prev.borrow().iter().any(|(i,types)|*i==index && !types.is_empty())
     }

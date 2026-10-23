@@ -1,0 +1,29 @@
+{
+ "title": "ウマ娘とトレーナーの蹄跡",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "『グランドマスターズ』の激戦は\n見る者に大きな印象を与え、幕を閉じた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>を始め、\n今を走るウマ娘たちは、\nこれからを走るウマ娘の支えとなるのだろう。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>との二人三脚は、\nこれからもまだまだ続く。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "この先のウマ娘のために――\nそして何よりも自分たちの歩む蹄跡を\n今以上に残したいと思うのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

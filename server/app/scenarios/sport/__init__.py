@@ -1,23 +1,3 @@
-"""UAF Ready GO! (scenario 7, JP only) -- "Sport".
-
-Built on the URA base (base.Scenario's defaults ARE URA, URA finals included);
-this class is the whole seam between the scenario and the shared career code,
-which only ever calls hooks.
-
-WHAT LIVES WHERE
-    impl.py       the mechanics -- offered sports, sport ranks, stances,
-                  competitions, items, and the sport_data_set
-    formula.py    the training numbers (rank gains, home preview, the bonus line)
-    endpoints.py  competition, competition_live, use_item
-    producers.py  the event calendar and its resolvers
-
-docs/JP_UAF_SCENARIO.md is the spec: every rule, number and event here is
-traced there to the real server's captures, master.mdb or the client, and its
-"Not exact (as built)" list names every rule shipped on a measurement.
-
-JP ONLY BY CONSTRUCTION: Global's master.mdb has no single_mode_sport_*
-tables, so the released-and-implemented intersection never advertises it there.
-"""
 
 from __future__ import annotations
 
@@ -25,7 +5,7 @@ import copy
 
 from ..base import Scenario
 from ..registry import register
-from . import endpoints, formula, impl, producers  # noqa: F401  (producers registers)
+from . import endpoints, formula, impl, producers
 
 
 def _npc_rows() -> tuple:
@@ -40,14 +20,9 @@ class Sport(Scenario):
     name = "Sport"
     endpoint_prefix = "single_mode_sport"
     data_set_key = "sport_data_set"
-    data_set_on_race_start = True       # every real race_start carries sport_data_set (83/83)
+    data_set_on_race_start = True
     state_keys = (impl.STATE_KEY,)
 
-    # ------------------------------------------------- shared-content gates --
-    # The Director and Ryoka arrive with 207019 (T1), the Reporter with
-    # 101007 (T13's close): single_mode_events.NPC_UNLOCKS. The real turn-78
-    # chain is 101006 -> 2 or 10 -> the ending (207027 / 207028) -> the deck
-    # cards' and the trainee's own endings: no Director or Reporter sendoff.
     uses_fixed_schedule = False
     has_versus_npc = False
     debut_reporter_event = 0
@@ -60,13 +35,11 @@ class Sport(Scenario):
     }
     _FINALS_POST = {101002: 74, 101004: 76, 101006: 78}
 
-    # 21 the competition, 22 the T72 live.
     playing_states = frozenset({5, impl.PS_COMPETITION, impl.PS_COMPETITION_LIVE})
     turn_end_hold_state = 5
     locked_npc_rows = _npc_rows()
     npc_targets = frozenset(t for t, _c in locked_npc_rows)
 
-    # Ryoka (111) pays skill points like the Director, by bond tier (§11).
     sp_appraisers = frozenset({102, 111})
 
     def appraisal_events(self):
@@ -75,20 +48,17 @@ class Sport(Scenario):
                 111: [(70, 207102, 4), (40, 207101, 3), (0, 207100, 2)]}
 
     def base_command(self, command_id) -> int:
-        """A sport stands for its stat facility (2101 -> 101, ...)."""
         cid = int(command_id or 0)
         if cid in formula.SPORTS:
             return formula.STATCMD[formula.main_stat(cid)]
         return super().base_command(cid)
 
     def levels_facilities_by_training(self) -> bool:
-        return False                    # the level is the sport's rank (§4)
+        return False
 
-    # ------------------------------------------------------------ endpoints --
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 
-    # ------------------------------------------------------------- response --
     def home_commands(self, full_state, chara_info, turn, commands) -> list:
         from ...handlers import single_mode_team as smt
         return impl.convert_commands(full_state, chara_info, turn, commands,
@@ -118,12 +88,8 @@ class Sport(Scenario):
             for c in (chara_info, load_ci):
                 if isinstance(c, dict) and int(c.get("playing_state") or 1) == 1:
                     c["playing_state"] = 5
-        # Career start clears scenario state after the first screen is built:
-        # build it again so the overlay and the award have their rows.
         if call == "start" and int(st["preview"].get("turn") or 0) != impl.turn_of(ci):
             impl.rebuild(full_state)
-        # Ranks banked after the shared exec rebuilt the next turn's screen:
-        # serve the rebuilt one (impl.rebuild).
         if st["flags"].pop("rebuilt", None) and isinstance(data.get("home_info"), dict):
             home = ((full_state.get(smt.STATE_KEY) or {}).get("data") or {}).get("home_info")
             if isinstance(home, dict):
@@ -134,7 +100,6 @@ class Sport(Scenario):
         for holder in (data.get("single_mode_start_common"), data.get("single_mode_load_common")):
             if isinstance(holder, dict):
                 holder.pop("sport_data_set", None)
-        # Mid-chain the real home_info carries null previews (§1).
         if not full and isinstance(data.get("home_info"), dict):
             data["home_info"] = dict(data["home_info"])
             data["home_info"]["command_info_array"] = [
@@ -149,11 +114,6 @@ class Sport(Scenario):
 
     @staticmethod
     def _sport_levels(data: dict, ranks: dict) -> None:
-        """chara_info.training_level_info_array as the real server sends it
-        (13,982/13,982 replies): the camp rows 601-605 then all 15 sports at
-        level_of(rank), no 1xx facility. The client looks each sport up here;
-        the shared 101-106 rows hung the phone on the first home screen
-        (live-reported 2026-10-11)."""
         for ci in (data.get("chara_info"),
                    (data.get("single_mode_load_common") or {}).get("chara_info"),
                    (data.get("single_mode_start_common") or {}).get("chara_info")):
@@ -166,9 +126,6 @@ class Sport(Scenario):
 
     @staticmethod
     def _reply_is_full(call: str, data: dict, chara_info: dict) -> bool:
-        """home_info's previews ride only the reply that leaves the client on
-        its training screen: start, load, use_item, competition_live, and a
-        check_event / exec_command ending the chain at playing_state 1."""
         if impl.career_over(chara_info) and call != "load":
             return False
         if call in ("start", "load", "use_item", "competition_live"):
@@ -178,10 +135,7 @@ class Sport(Scenario):
         return (not data.get("unchecked_event_array")
                 and int(chara_info.get("playing_state") or 1) == 1)
 
-    # ------------------------------------------------------------- training --
     def training_award_bonus(self, full_state, chara_info, command_id) -> list:
-        """The bonus line the client saw on this sport (§6), paid on top of
-        home_info's (2,044/2,044 realised gains)."""
         row = impl.training_row(impl.state(full_state), command_id, impl.turn_of(chara_info))
         return [dict(p) for p in row.get("bonus") or ()]
 
@@ -197,8 +151,6 @@ class Sport(Scenario):
         impl.rebuild(full_state)
 
     def on_training_failed(self, full_state, chara_info, payload) -> None:
-        """A failed sport training gains no rank (375/375) but still counts
-        down the stances and loses the +3."""
         st = impl.state(full_state)
         impl.after_training(st, int(payload.get("command_id") or 0), [])
         impl.rebuild(full_state)
@@ -208,7 +160,6 @@ class Sport(Scenario):
         st["raced_turn"] = int(race_ctx.get("turn") or impl.turn_of(chara_info))
         impl.after_other(st, 401)
 
-    # ----------------------------------------------------------------- flow --
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
         turn = int(turn or 0)
         if impl.compe_pending(impl.state(full_state), turn):
@@ -216,8 +167,6 @@ class Sport(Scenario):
         return producers.closing_pending(full_state, chara_info, turn)
 
     def begin_hold(self, full_state, turn) -> None:
-        """Only a competition holds the served turn (until its result); a
-        closing story rides the shared turn-end hold."""
         st = impl.state(full_state)
         if impl.compe_pending(st, int(turn or 0)):
             st["hold_turn"] = int(turn or 0)
@@ -249,7 +198,6 @@ class Sport(Scenario):
                 CE.emit(full_state, ev)
         return {}
 
-    # ------------------------------------------------------------------ run --
     def snapshot(self, full_state) -> dict:
         st = impl.state(full_state)
         return {"sport_results": [dict(r) for r in st["results"]],

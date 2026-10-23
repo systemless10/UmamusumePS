@@ -1,0 +1,134 @@
+{
+ "title": "有馬記念にむけて",
+ "text_block_list": [
+  {
+   "name": "ヒシミラクル",
+   "text": "トレーナーさん、もしかして、\nもしかするとなんですけど……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "わたし、自分が思うより\nすごいウマ娘だったってこと、ありません？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "もしそうだとしたら、スゴ強ウマ娘が集まる\n『有馬記念』でも～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "そこそこやれるかも！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "ヒシミラクルは『菊花賞』好走によって、\nやや強気になっていた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "どこまでできるかはわからない。\nそれでも期待を込めて、送り出すことにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ワアアアアアアアアア！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "おっきな歓声～！\nさすがは人気ウマ娘が集まるステージ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "注目候補は……いろいろいるよね。\nいろいろいる……。でも……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "その中で1番視線を集めてるウマ娘は？\nあるいは、まさか、もしかすると～！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "（ワアアアアアアアアア！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "――フッ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ～、やっぱそっちか～。\nクラシック級にして、\n天皇賞ウマ娘だもんねぇ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "シンボリクリスエス。その実力が規格外で\nあることは『天皇賞（秋）』で実証された。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ナリタトップロード",
+   "text": "負けた……。まだクラシック級で\nどうして、これほどの走りが……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "シンボリクリスエス",
+   "text": "Classなどない。\nただ――射止めるのみ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "",
+   "text": "あのナリタトップロードを上回っての優勝。\n常識破りのローテーションで、\n見事、主役に輝いた。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "クリスエスちゃんがすごいのは知ってる。\nでも～、わたしのことも\n少しは見てほしいよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "輝きだって、そこそこは並べてるはず。\nひとりやふたりは、\nこっちを見てくれる人がいても……。",
+   "choice_data_list": [
+    "よっ、期待してるぞー！",
+    "よっ、期待してるよー！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あの人はっ！　いつも通りとしてっ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "よぉし、ちょっとでも\nファンの視線を奪っちゃおっと。\nクリスエスちゃんから、少しでも～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

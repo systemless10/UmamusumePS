@@ -1,28 +1,3 @@
-"""PROJECT L'ARC (scenario 6, JP only) -- Reach for the stars プロジェクトL'Arc.
-
-Built on the URA base (base.Scenario's defaults ARE URA); this class is the
-whole seam between the scenario and the shared career code, which only ever
-calls hooks.
-
-WHAT LIVES WHERE
-    impl.py       the mechanics -- members, star gauges, SS matches, points and
-                  expectation, aptitudes, races, and the arc_data_set
-    formula.py    the training numbers (home, scenario line, overseas points)
-    master.py     the single_mode_arc_* tables and the slot constants
-    endpoints.py  selection_exec, potential_level_up, arc_race_*
-    producers.py  the event calendar and its resolvers
-
-docs/JP_LARC_SCENARIO.md is the spec: every rule, number and event here is
-traced there to the real server's captures, master.mdb or the client, and §22
-lists what is measured or unknown.
-
-THE CAREER: 67 turns, no URA finals; the senior Arc at T67 ends it (state 3 at
-its race_end). The expedition (T37-43, T61-67) serves 1101-1105 / 1106 in
-place of the five and the outings, the way a camp serves 601-605 / 304.
-
-JP ONLY BY CONSTRUCTION: Global's master.mdb has no single_mode_arc_* tables,
-so the released-and-implemented intersection never advertises it there.
-"""
 
 from __future__ import annotations
 
@@ -36,14 +11,9 @@ class Arc(Scenario):
     name = "Arc"
     endpoint_prefix = "single_mode_arc"
     data_set_key = "arc_data_set"
-    data_set_on_race_start = True       # every real race_start carries arc_data_set
+    data_set_on_race_start = True
     state_keys = (impl.STATE_KEY,)
 
-    # ------------------------------------------------- shared-content gates --
-    # The Director and Mei from 206002 (T2), the Reporter from 206100 (T10):
-    # single_mode_events.NPC_UNLOCKS. The career ends on the senior Arc: no
-    # URA finals, no URA ending chain, no trainee calendar beats (none in 23
-    # careers), no chapter stories (GameTora).
     uses_fixed_schedule = False
     has_versus_npc = False
     debut_reporter_event = 0
@@ -53,36 +23,29 @@ class Arc(Scenario):
     has_ending_chain = False
     plays_calendar_stories = False
     has_chapter_stories = False
-    camp_lists_rest = True              # 701 / 801 listed, disabled, on the expedition
+    camp_lists_rest = True
     camp_rest_group = M.EXPED_REST
-    camp_rest_energy = 50               # 1106: +50 energy, +1 mood (V6 settled)
+    camp_rest_energy = 50
     sp_appraisers = frozenset({102, M.MEI_TARGET})
     passive_goal_types = frozenset({11})
 
-    # 16-19: ArcRaceTop / Paddock / InGame / Result (§2.4).
     playing_states = frozenset({5, 16, 17, 18, 19})
     turn_end_hold_state = 5
     locked_npc_rows = M.npc_partners()
     npc_targets = frozenset(t for t, _c in M.npc_partners())
 
     LEVELUP_EVENTS = {101: 206102, 105: 206105, 102: 206103, 103: 206104, 106: 206106}
-    # Goal races whose result story is the scenario's own (§12.1).
     OWN_RESULTS = frozenset({M.DERBY, M.TAKARAZUKA, *M.LONGCHAMP})
 
     def facility_levelup_event(self, command_id) -> tuple:
         return (self.LEVELUP_EVENTS.get(formula.base_of(command_id), 206102), 400000005)
 
     def appraisal_events(self):
-        """The Director's L'Arc copies (206133-206136), the Reporter's URA
-        series, Mei's own (206124 / 206152-206154, SP like the Director's;
-        tiers above the second INFERRED)."""
         return {102: [(90, 206136, 5), (70, 206135, 4), (40, 206134, 3), (0, 206133, 2)],
                 103: [(90, 1010, 5), (70, 1009, 4), (40, 1008, 3), (0, 1007, 2)],
                 M.MEI_TARGET: [(90, 206154, 5), (70, 206153, 4), (40, 206152, 3), (0, 206124, 2)]}
 
     def career_route(self, chara_info: dict):
-        """Route 20000 (§3.1) with the trainee's own debut row in place of
-        master's type-8 'make a debut' (every real route_race_id_array)."""
         from ... import master_data
         from ..breeders import impl as BI
         chara = int((chara_info or {}).get("card_id") or 0) // 100
@@ -93,17 +56,14 @@ class Arc(Scenario):
         return M.ROUTE_ID, ([debut] if debut else []) + rows
 
     def goal_condition(self, chara_info: dict, goal):
-        """Type 11: the trainee's own supporter points (§3.1)."""
         if int(goal[2]) != 11:
             return None
         pt = int(((chara_info or {}).get(impl.MIRROR_KEY) or {}).get("pt") or 0)
         return pt >= int(goal[4] or 0)
 
     def npc_supporters(self, full_state, chara_info) -> list:
-        """The members off the deck stand on facilities by chara id (§5, M17)."""
         return impl.npc_members(impl.state(full_state), chara_info)
 
-    # ------------------------------------------------------------ endpoints --
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 
@@ -115,8 +75,6 @@ class Arc(Scenario):
         return M.EXPED.get(cid, super().base_command(cid))
 
     def scenario_command(self, full_state, chara_info, payload):
-        """selection_exec (endpoints.SS_COMMAND_TYPE): the match, then its stat
-        preview and the beaten members' bonus line as the gains to apply."""
         if int(payload.get("command_type") or 0) != endpoints.SS_COMMAND_TYPE:
             return None
         turn = int(payload.get("current_turn") or impl.turn_of(chara_info))
@@ -132,8 +90,6 @@ class Arc(Scenario):
         return [{"target_type": tt, "value": v} for tt, v in sorted(merged.items())]
 
     def home_commands(self, full_state, chara_info, turn, commands) -> list:
-        """The expedition's board (§10): 1101-1105 at level 5, then 1106,
-        401 and the disabled 701 / 801."""
         turn = int(turn or 0)
         if not impl.is_expedition(turn):
             return commands
@@ -157,11 +113,7 @@ class Arc(Scenario):
                 entry(7, 701, 0), entry(8, 801, 0)]
         return out
 
-    # ------------------------------------------------------------- response --
     def command_info(self, full_state, chara_info, home_commands):
-        """The scenario line for the board about to be served. The turn's
-        upkeep (members, lineup) runs in attach() once the served turn is
-        known; a pending one asks for the save that follows attach()."""
         if not isinstance(chara_info, dict):
             return None, False
         from ...handlers import single_mode_team as smt
@@ -201,8 +153,6 @@ class Arc(Scenario):
             home = ((full_state.get(smt.STATE_KEY) or {}).get("data") or {}).get("home_info") or {}
         commands = list(home.get("command_info_array") or ())
         turn = self._served_turn(full_state, ci, data)
-        # The turn's upkeep lands on the reply that shows the turn (the real
-        # rate moves on the arrival reply, not the exec one: U1 T3 73 -> 78).
         if impl.upkeep(full_state, impl.live_chara(full_state) or ci, target=turn):
             impl.refresh_preview(full_state, ci, commands, smt._support_card_levels(full_state),
                                  impl.turn_of(ci))
@@ -218,8 +168,6 @@ class Arc(Scenario):
         lc = data.get("single_mode_load_common")
         if call == "load" and isinstance(lc, dict) and isinstance(load_ci, dict) \
                 and int(load_ci.get("playing_state") or 1) in (17, 18, 19):
-            # A reload mid-exhibition puts the client back in its race
-            # [INFERRED: never captured; Grand Masters' rule].
             sp = st.get("sprace") or {}
             if sp.get("race_start_info"):
                 import copy as _copy
@@ -232,9 +180,6 @@ class Arc(Scenario):
         return response
 
     def _served_turn(self, full_state: dict, chara_info: dict, data: dict) -> int:
-        """The turn the client is shown (Mecha's rule): the exhibition's hold,
-        else the turn-end hold the chokepoint is about to apply, else the run's
-        turn. Read without side effects."""
         from ...handlers import single_mode_team as smt
         held = int(impl.state(full_state).get("hold_turn") or 0)
         if held:
@@ -249,9 +194,6 @@ class Arc(Scenario):
 
     @staticmethod
     def _reply_is_full(call: str, data: dict, chara_info: dict) -> bool:
-        """The command rows ride only a reply that leaves the client on its
-        training screen (§2.3): start, load, and a check_event / exec_command /
-        race_out / potential_level_up / arc_race_out ending the chain at ps 1."""
         if call in ("start", "load"):
             return True
         if call not in ("check_event", "exec_command", "race_out", "potential_level_up",
@@ -263,8 +205,6 @@ class Arc(Scenario):
 
     @staticmethod
     def _drop_carried_partners(chara_info: dict) -> None:
-        """A partner a deck card carries has no row of its own (110 with
-        Mei's card, 101 with Tazuna's)."""
         deck = impl.deck_all_charas(chara_info)
         carried = {t for t, c in M.npc_partners() if c in deck}
         if carried:
@@ -272,7 +212,6 @@ class Arc(Scenario):
                 e for e in chara_info.get("evaluation_info_array") or ()
                 if not (isinstance(e, dict) and e.get("target_id") in carried)]
 
-    # ------------------------------------------------------------- training --
     def training_gains(self, full_state, chara_info, command_id, facility_level, camp, partners):
         from ...handlers import single_mode_team as smt
         base = self.base_command(command_id)
@@ -282,21 +221,14 @@ class Arc(Scenario):
                                   smt._support_card_levels(full_state))
 
     def training_award_bonus(self, full_state, chara_info, command_id) -> list:
-        """The scenario line the client saw on this facility (§8.2), paid on
-        top of home_info's -- with 強心臓's energy refund."""
         st = impl.state(full_state)
         turn = impl.turn_of(chara_info)
         row = impl.preview_row(st, command_id, turn)
         return [dict(p) for p in row.get("line") or ()]
 
     def award_training_gains(self, full_state, chara_info, payload) -> None:
-        """A successful training (§5, §9.1): the gauges of the members on the
-        facility, the expedition's overseas points. (Not called on a failure,
-        which raises nothing.)"""
         st = impl.state(full_state)
         if int(payload.get("command_type") or 0) == endpoints.SS_COMMAND_TYPE:
-            # 206057 SSマッチ終了！ leads the reply (194/194), ahead of the
-            # next turn's beats the shared handler queues after this.
             from ... import career_events as CE
             due = impl.flag(st, "ss_end") or {}
             ev = producers.ss_end_event(due)
@@ -316,10 +248,6 @@ class Arc(Scenario):
         return bool(impl.flag(impl.state(full_state), "lead"))
 
     def on_race_result(self, full_state, chara_info, race_ctx, result_rank) -> None:
-        """Every shared-flow race (§11): supporter points to the trainee and the
-        members who ran; 206101 when members ran a Japanese race; the goal
-        races' own result stories; the classic Arc's win; the senior Arc ends
-        the career (state 3) when it meets its goal (top 5)."""
         st = impl.state(full_state)
         program = int(race_ctx.get("program_id") or 0)
         turn = int(race_ctx.get("turn") or impl.turn_of(chara_info))
@@ -335,7 +263,6 @@ class Arc(Scenario):
         ok = need is None or not need or rank <= need
         mirror = chara_info.setdefault(impl.MIRROR_KEY, {})
         mirror["own_result"] = bool(program in self.OWN_RESULTS and ok)
-        # The result story first, then 206101 (U1 T34 / T60).
         if program in self.OWN_RESULTS and ok:
             st["due"].append({"kind": "race_result", "program_id": program, "rank": rank, "turn": turn})
         if places and program not in M.LONGCHAMP:
@@ -354,8 +281,6 @@ class Arc(Scenario):
         return None
 
     def owns_goal_race_result(self, chara_info: dict, program_id) -> bool:
-        """The scenario's own result story when the goal was met; a missed
-        placement falls to the shared failure path."""
         return bool(int(program_id or 0) in self.OWN_RESULTS
                     and ((chara_info or {}).get(impl.MIRROR_KEY) or {}).get("own_result"))
 
@@ -363,8 +288,6 @@ class Arc(Scenario):
         return producers.goal_race_entry_events(full_state, chara_info, program_id)
 
     def race_field_for(self, viewer_id, chara_info, program_id, count):
-        """§11.2: the overseas races are the scenario's own fields; a Japanese
-        race carries the members scheduled for it, then the shared mobs."""
         from ...handlers import single_mode_team as smt
         program_id = int(program_id or 0)
         full_state = smt.state_store.get_state(viewer_id) or {}
@@ -386,10 +309,7 @@ class Arc(Scenario):
     def race_player(self, viewer_id, chara_info, player, program_id) -> None:
         impl.apply_player_race_stats(chara_info, player, int(program_id or 0))
 
-    # ----------------------------------------------------------------- flow --
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
-        """An exhibition turn whose race has not run: the next turn's opening
-        beats wait behind it."""
         turn = int(turn or 0)
         st = impl.state(full_state)
         return turn in M.EXHIBITIONS and turn not in [int(t) for t in st["done_exhibitions"]] \
@@ -420,7 +340,6 @@ class Arc(Scenario):
             impl.mei_resolved(full_state, int(ctx["story_id"]))
         return {}
 
-    # ------------------------------------------------------------------ run --
     def snapshot(self, full_state) -> dict:
         st = impl.state(full_state)
         return {"arc_races": [dict(r) for r in st["races"]],

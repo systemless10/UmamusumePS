@@ -1,16 +1,3 @@
-"""DESIGN YOUR ISLAND (scenario 11) -- the endpoints only this scenario has.
-
-    single_mode_pioneer/planning             {planning_info_array, current_turn}   a construction plan
-    single_mode_pioneer/check_point          {current_turn}                        the evaluation
-    single_mode_pioneer/shima_training_exec  {current_turn, exec_auto_play_plan_id} Island Training
-    single_mode_pioneer/pioneer_live         {current_turn}                        turn 72's live
-    single_mode_pioneer/pioneer_complete     {current_turn}                        72 -> 73
-    single_mode_pioneer/priority_facility_save, auto_planning_dialog_checked   auto-plan settings
-
-Shapes are dump.cs's and the captures' (docs/JP_DESIGN_YOUR_ISLAND_SCENARIO.md
-§1). The pioneer_data_set every response carries is attached at the response
-chokepoint (Pioneer.attach), like on every shared endpoint.
-"""
 
 from __future__ import annotations
 
@@ -58,8 +45,6 @@ def _envelope(career: dict, keys) -> dict:
 
 
 def _null_home_params(data: dict) -> None:
-    """Mid-chain replies carry each command's params as null (the client
-    keeps what it has) -- the planning reply at a check point, the live."""
     for c in (data.get("home_info") or {}).get("command_info_array") or ():
         c["params_inc_dec_info_array"] = None
 
@@ -77,11 +62,7 @@ def _ok(data: dict | None = None) -> dict:
     return {"response_code": 1, "data_headers": {"result_code": 1}, "data": data or {}}
 
 
-# ------------------------------------------------------------ planning ---
-
 def handle_planning(payload: dict) -> dict:
-    """A construction plan (§4). On turn 3 it opens the first one; after an
-    evaluation it also ends the evaluation's turn -- the served turn moves on."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -112,8 +93,6 @@ def handle_planning(payload: dict) -> dict:
     return response
 
 
-# --------------------------------------------------------- check point ---
-
 def handle_check_point(payload: dict) -> dict:
     got = _career(payload)
     if got is None:
@@ -138,12 +117,7 @@ def handle_check_point(payload: dict) -> dict:
     return response
 
 
-# ------------------------------------------------------ Island Training ---
-
 def handle_shima_training_exec(payload: dict) -> dict:
-    """Island Training uses the turn like a training: it runs through the
-    shared exec_command pipeline as command 3101, whose gains the scenario
-    hands over (Pioneer.scenario_command)."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -168,11 +142,6 @@ def handle_shima_training_exec(payload: dict) -> dict:
         data["result_bonus_params_inc_dec_info_array"] = [
             dict(p) for p in pv.get("bonus") or ()]
         data["command_result"] = {"command_id": M.ISLAND_TRAINING, "sub_id": 1, "result_state": 2}
-        # Every deck card whose bond was already maxed, in deck order (all
-        # real replies). Left empty, the Island Training cut's bond-up window
-        # never closes once the whole deck is at 100 (softlocks T47/59/71,
-        # 2026-09-30).
-        # (exec_command saved its own copy of the state; read that one back.)
         after = _smt().state_store.get_state(_viewer) or {}
         capped = impl.state(after)["flags"].pop("not_up_bond", None)
         if capped is not None:
@@ -190,10 +159,7 @@ def handle_shima_training_exec(payload: dict) -> dict:
     return response
 
 
-# ---------------------------------------------------------------- live ---
-
 def handle_pioneer_live(payload: dict) -> dict:
-    """Turn 72's live: the song, then pioneer_complete."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -206,8 +172,6 @@ def handle_pioneer_live(payload: dict) -> dict:
     career["data"]["chara_info"] = chara_info
     response = _envelope(career, ("chara_info", "home_info", "unchecked_event_array"))
     data = response["data"]
-    # Completing the island unlocks Tucker's Grindin' Island (CAPTURE: add_music
-    # 1154 on pioneer_live). Once per account -- null on every later run.
     from ... import concerts
     data["add_music"] = concerts.on_scenario(full_state, "pioneer_live")
     _null_home_params(data)
@@ -218,8 +182,6 @@ def handle_pioneer_live(payload: dict) -> dict:
 
 
 def handle_pioneer_complete(payload: dict) -> dict:
-    """72 -> 73: the island is finished; the facility snapshots of
-    evaluations 1, 3 and 5, and 211070."""
     got = _career(payload)
     if got is None:
         return refuse()
@@ -229,7 +191,7 @@ def handle_pioneer_complete(payload: dict) -> dict:
     st = impl.state(full_state)
     st["complete"] = 1
     st["hold_turn"] = 0
-    st["tickets"] = 0                        # every ticket expires after Senior December (§8)
+    st["tickets"] = 0
     chara_info["playing_state"] = 1
     from . import producers
     ev = producers.complete_event()
@@ -247,11 +209,7 @@ def handle_pioneer_complete(payload: dict) -> dict:
     return response
 
 
-# ---------------------------------------------------------- auto plans ---
-
 def handle_priority_facility_save(payload: dict) -> dict:
-    """Stored and echoed back in auto_planning_info (§13 #14: what the real
-    server does with it is not captured)."""
     got = _career(payload)
     if got is None:
         return refuse()

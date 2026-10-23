@@ -1,0 +1,803 @@
+{
+ "title": "あんし～ん笹針師、参☆上",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "ある日、<chrname>の体の調子を\n見てもらうため、保健室へやって来ると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "あっ、はいはーい！　お客さ……じゃない、\n生徒さんね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "ケガ？　病気？　それともメンタルケア？\nま、ぜーんぶドドンと任せちゃってよ！",
+   "choice_data_list": [
+    "……誰ですか！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "え？　そりゃー保健室にいるんだから……\nちょっぴりファンタスティックな保健の先生？\n的な？",
+   "choice_data_list": [
+    "違いますよね……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "あっはっは、さすがに騙されないか。\nやっぱ普通に名乗る感じでいくわね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "ぉほん！　何を隠そう、このあたしこそ――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "？？？",
+   "text": "数多のウマ娘を（たぶん）導く救世主！\n奇跡の腕を持つ（自称）伝説的笹針師！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "その名も、『安心沢　刺々美』よっ！！\nワォ、あんし～ん☆",
+   "choice_data_list": [
+    "…………"
+   ],
+   "color_text_info_list": [
+    "安心沢　刺々美"
+   ]
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うわ……普通じゃなさすぎじゃないですか？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ワォ、あんし～んしてなさそ～う☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "まあまあまあまあ、とりあえずね。\n自己紹介も済んだし、ブスッといっとく？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ええっ！？　絶対イヤです！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あっはっは！　怖がらなくていいのよ？\n秘伝の笹針でちょっと秘孔的なのを突くだけ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "そしたらもー、メキメキと……モリモリと……\nとにかくすんんんごいことになるんだから！",
+   "choice_data_list": [
+    "（ものすごく怪しい……）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あ！　言っとくけど怪しくないわよ！\n失敗したことなんか1度もないんだから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……師匠は。",
+   "choice_data_list": [
+    "師匠『は』！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "まーまーあたしだってこれが初仕事なんだし\n広義じゃ失敗したことないわよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "伝説の師匠のもとで10年もの間お茶くみ……\nじゃない、修行した経験もあるんだから。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ワォ、あんし～ん☆",
+   "choice_data_list": [
+    "（迸るほどに怪しい……！）"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "さすがにこんな話に乗るわけにはいかない。\n<chrname>を連れ、\n出て行こうとしたのだが――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ま、待って待って待って、待ってってば！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あなたヒシミラクルちゃんでしょっ！？\n普通で平凡と感じながらも、自分にできる\nことを自分なりに頑張り続けているウマ娘！",
+   "choice_data_list": [
+    "……知ってるんですか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "そりゃ知ってるわよ！　見たもの！！\nファンだものっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あたし、あなたたちを応援しに来たの！\n手助けしに来たのよ、これでもっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "だからお願いぃ～～～！！\nあたしにチャンスをちょうだいよぉ～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ファン……なのは、嬉しいですけど……。\nやっぱり、怪しい気がするなぁ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "お願いお願いお願いっ！\n秘孔の場所も選ばせてあげるから！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ぜ～ったい失敗しないからぁ～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……多分。",
+   "choice_data_list": [
+    "多分！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あーいや多分に程近い絶対？　みたいな？\n……まあ細かいことはいいのよ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "それよりどんな秘孔を狙っちゃう！？\n能力アップに健康度アップ……\n魅力アップな～んてのもあるわよ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……恐ろしく危険な香りもするのだが、\nひょっとするとすごい効果が出る可能性も\nなくはない……かもしれない。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうしようか……？",
+   "choice_data_list": [
+    "強いウマ娘になれる秘孔を狙う",
+    "レースで勝てる秘孔を狙う",
+    "元気で健康になれる秘孔を狙う",
+    "魅力アップの秘孔を狙う",
+    "不安なのでやめておく"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ほむほむ、\n『強いウマ娘になれる秘孔』ね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "じゃあブスッといくわよ？　いいのね？\n……本ッッッッッッッ当に、いいのね？",
+   "choice_data_list": [
+    "はい",
+    "いいえ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "おっけーおっけー任しといて！\n出でよ笹針！　見つかれ秘孔！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "さあ力を抜いて～……ワォ、あんし～ん☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ブスッとな！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ブスッと大成功！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……あれ？　なんだか\n力が湧きあがってきたかも……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うそ……！　ホンモノだったんだ……。\nなんか疑っちゃって、ごめんなさい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……えっ、成功？　マジ！？　え！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "うっそ～～～！！\nあたし、どうやったんだろ～！？！？\n天才～～～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>は見違えるほど\n力をみなぎらせていた！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやら可能性を掴み取ったようだ。\n夢に向けて大きく前進したのを感じた……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぅ～……ふらふらする……\nこれ、ダメです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……だから、怪しいって、\nわたし言ったのにぃ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>は、目に見えて\n調子を崩していた……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あ～……まあ、その……ね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……ワォ、さようなら～☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "怪しい誘いになど乗るべきでなかった……と、\n大いに後悔したのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ほむほむ、\n『レースで勝てる秘孔を狙う』ね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "じゃあブスッといくわよ？　いいのね？\n……本ッッッッッッッ当に、いいのね？",
+   "choice_data_list": [
+    "はい",
+    "いいえ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "おっけーおっけー任しといて！\n出でよ笹針！　見つかれ秘孔！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "さあ力を抜いて～……ワォ、あんし～ん☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ブスッとな！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ブスッと大成功！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……あれ？　なんだか\n力が湧きあがってきたかも……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うそ……！　ホンモノだったんだ……。\nなんか疑っちゃって、ごめんなさい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……えっ、成功？　マジ！？　え！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "うっそ～～～！！\nあたし、どうやったんだろ～！？！？\n天才～～～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>の技量が\n大きくアップしているのを感じた！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやら可能性を掴み取ったようだ。\n夢に向けて大きく前進したのを感じた……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぅ～……ふらふらする……\nこれ、ダメです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……だから、怪しいって、\nわたし言ったのにぃ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>は、目に見えて\n調子を崩していた……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あ～……まあ、その……ね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……ワォ、さようなら～☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "怪しい誘いになど乗るべきでなかった、と\n大いに後悔したのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ほむほむ、\n『元気で健康になれる秘孔を狙う』ね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "じゃあブスッといくわよ？　いいのね？\n……本ッッッッッッッ当に、いいのね？",
+   "choice_data_list": [
+    "はい",
+    "いいえ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "おっけーおっけー任しといて！\n出でよ笹針！　見つかれ秘孔！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "さあ力を抜いて～……ワォ、あんし～ん☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ブスッとな！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ブスッと大成功！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……あれ？　なんだか\n力が湧きあがってきたかも……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うそ……！　ホンモノだったんだ……。\nなんか疑っちゃって、ごめんなさい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……えっ、成功？　マジ！？　え！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "うっそ～～～！！\nあたし、どうやったんだろ～！？！？\n天才～～～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>の全身が、今にも\n光り輝きそうなほどツヤツヤしていた！\n健康的なエネルギーが迸っている……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやら可能性を掴み取ったようだ。\n夢に向けて大きく前進したのを感じた……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぅ～……ふらふらする……\nこれ、ダメです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……だから、怪しいって、\nわたし言ったのにぃ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>は、目に見えて\n調子を崩していた……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あ～……まあ、その……ね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……ワォ、さようなら～☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "怪しい誘いになど乗るべきでなかった、と\n大いに後悔したのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ほむほむ、\n『魅力アップの秘孔を狙う』ね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "じゃあブスッといくわよ？　いいのね？\n……本ッッッッッッッ当に、いいのね？",
+   "choice_data_list": [
+    "はい",
+    "いいえ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "おっけーおっけー任しといて！\n出でよ笹針！　見つかれ秘孔！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "さあ力を抜いて～……ワォ、あんし～ん☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ブスッとな！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "ひゃっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ブスッと大成功！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "あ……あれ？　なんだか\n力が湧きあがってきたかも……？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うそ……！　ホンモノだったんだ……。\nなんか疑っちゃって、ごめんなさい。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……えっ、成功？　マジ！？　え！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "うっそ～～～！！\nあたし、どうやったんだろ～！？！？\n天才～～～～！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>は、道行く誰もが\n振り返りたくなる魅力を溢れさせていた！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "どうやら可能性を掴み取ったようだ。\n夢に向けて大きく前進したのを感じた……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "うぅ～……ふらふらする……\nこれ、ダメです……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "……だから、怪しいって、\nわたし言ったのにぃ～……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "<chrname>は、目に見えて\n調子を崩していた……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "あ～……まあ、その……ね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……ワォ、さようなら～☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "怪しい誘いになど乗るべきでなかった、と\n大いに後悔したのだった……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ええ！？　そ、そう言わずに～……。",
+   "choice_data_list": [
+    "やめておく",
+    "考え直す"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "駿川たづな",
+   "text": "――こらっ、あなた！\n学園に不法侵入しましたねっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ぎゃはー！？　やば、見つかった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……ワォ、退散～☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "駿川たづな",
+   "text": "あ！？　ま、待ちなさぁーいっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "やっぱり不審者だったんだ……。\n危なかったー。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヒシミラクル",
+   "text": "世の中、悪い意味でふつーじゃない人も、\n結構いるんですね～。",
+   "choice_data_list": [
+    "だな",
+    "だね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "安心沢とは何者だったのか……\n考えても仕方がなさそうなので、\n今日の一件は忘れることにした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ありゃま、間違えちゃった？\nまーあるある、あるわよねーそういうの！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "じゃ、もう1回教えてちょーだいな。\nどの秘孔狙っちゃう！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "焦らすわね～！？\nいやでも待って、こんな時間かけてると――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "駿川たづな",
+   "text": "――こらっ、あなた！\n学園に不法侵入しましたねっ！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "ぎゃはー！？　やば、見つかった！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "安心沢刺々美",
+   "text": "……ワォ、退散～☆",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "駿川たづな",
+   "text": "あ！？　ま、待ちなさぁーいっ！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……いつまでも悩んでいたら、\nなんだかうやむやになってしまった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "いったいなんだったのか……\n<chrname>と顔を見合わせ、\n首をひねるのだった。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

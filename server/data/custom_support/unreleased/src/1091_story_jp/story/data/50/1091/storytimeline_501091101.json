@@ -1,0 +1,501 @@
+{
+ "title": "新年の抱負",
+ "text_block_list": [
+  {
+   "name": "モノローグ",
+   "text": "新年を迎え、いよいよクラシック級に入り――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな、あけましておめでとう～！\n今年もよろしくお願いしまーす♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "（パチパチパチパチ……！）",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスは、ファンを増やす活動の一環で、\nファンミーティングを行っていた。\n今日は1対1でヴィブロスとお話ができる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "集まってくれたファンのみんなに対して、\nヴィブロスは分け隔てなく接し――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "わ～……！　生、かわ……！\nい、いつもウマトック見てます！",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "ウマトック"
+   ]
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとう～！\nレースも応援してくれる？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "ギャッ……もちろんです！！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ありがとう～♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "私、目がいいから……\nちゃーんと、見つけるからね？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ファンA",
+   "text": "ギャギャッ！\nぜ、絶対います！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、約束♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "以前はヴィルシーナのファンや、\nミーハーな興味を持つ人たちが多かったが、\nヴィブロス自身のファンもついてきたようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "と、そこに――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "ヴィブロス！\nこんにちは！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれ、あなた……\n私のデビュー戦も来てくれてた？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "！\n覚えてくれてたんですか！？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "もちろん！\nお姉ちゃんのファンの人だよね。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "それでー、\n今は私のファンだもんねっ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "ど、どっちもです！　ヴィブロスが、\nティアラ路線を走ってくれるので……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "僕、ヴィルシーナのレースは全部、\n現地で見守りました。\n……もちろん、ティアラ路線も。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "『秋華賞』、直線でジェンティルドンナが\n差してきた時……あまりにも猛然とした\n走りに、彼女の勝ちだと思いました。",
+   "choice_data_list": [],
+   "color_text_info_list": [
+    "秋華賞",
+    "ジェンティルドンナ"
+   ]
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "僕は諦めたんです。でも……\nかわされるはずだったヴィルシーナが、\n食らいつくところを目の前で見た！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "――『勝ちたい』という意地で、\n写真判定にまで持ち込んだ。\nあの時の彼女の表情……目に焼きついてる。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……うん。\n私も……忘れたこと、ないよ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "……本当は、重荷になると思って、\n悩んだんですけど……でも！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "――ヴィルシーナのリベンジ、\nしてくれるんですよね！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "なら今度こそ、\n僕の全部を懸けて……応援します！\nどうか、よろしくお願いします……！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……――",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィルシーナのファン",
+   "text": "あっ！　すみません、熱くなって……！\nとにかく、来年はより一層応援します！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ……う、うん、ありがとう～！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ごくごく……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ひゃ～、いっぱい喋った！\nおくちからから！",
+   "choice_data_list": [
+    "お疲れ様"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、ありがと～。\n……。",
+   "choice_data_list": [
+    "……疲れた？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ、そうじゃなくて……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……お姉ちゃんのファンの人、\nすごい熱量だったなって！",
+   "choice_data_list": [
+    "ああ……デビュー戦もいた？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "その人もだし、\nお姉ちゃんきっかけで来てくれた人みんな。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "みんな、ほんっっ……とーに、\nお姉ちゃんのことが大好きなんだね！",
+   "choice_data_list": [
+    "偉大なお姉ちゃんだからな",
+    "偉大なお姉ちゃんだからね"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "うん、ほんとに！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……お姉ちゃんがいっぱい心配してた理由、\nちょっとわかったかも。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "でもね、トレっち。\n私、うれしいんだ！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "家族な私と同じくらい、\nお姉ちゃんのことを好きな人がたくさんいて！",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トリプルティアラとるところ、\n見せてあげたいね♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "ヴィブロスの前向きな表情を見ると、\nプレッシャーではなく、\nエールをもらえたようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "よしっ、休憩終わり！\nこのあとはどーしよっか？",
+   "choice_data_list": [
+    "元気のほどは？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いー感じ♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "まだお正月っぽいことしてないし～、\nセレブっぽいこと、したいな？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち的に、なんかある～？",
+   "choice_data_list": [
+    "セレブっぽくワークアウト",
+    "セレブっぽく余暇を楽しむ",
+    "セレブっぽくトーク術を磨く"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ワークアウト……って、\n結局トレーニングだよね～！？",
+   "choice_data_list": [
+    "軽くだよ"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "いつものトレーニングよりも負荷を落とし、\n軽く体を動かすだけのイメージだ。\n新年からすっきりできると思ったのだが……。",
+   "choice_data_list": [
+    "休みたいならやめておこうか？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ん、ちょっと待って～。\n新年からワークアウト……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……『#workout』でポスト……。\nお、いい感じ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "やっちゃうか♡\nなんかちょー、『っぽい』し♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トレっち！　撮ろ？\nウマスタに『#workout』で♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "こうして、素直なヴィブロスは\n新年から楽しくワークアウトをした。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "余暇……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……もしかして、\nリゾートに連れてってくれるの！？",
+   "choice_data_list": [
+    "え！？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……じゃ、なさそうだね？\nんー、場所じゃないなら……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！\nトレっちがおつきになってくれるとか！？",
+   "choice_data_list": [
+    "おつき……？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "――……。",
+   "choice_data_list": [
+    "ヴィブロス様、紅茶をお持ちしました"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ええ、ありがとう。",
+   "choice_data_list": [
+    "ドーナツもご用意がございます"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "そこに置いておいて。\n……。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ね～～これ、ちょーいい！\n続けて続けて♡",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "……よくわからないが、ヴィブロスは\nとてもリラックスできたようだ。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "トーク術？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "モノローグ",
+   "text": "彼女の誰とでも分け隔てなく話せる\nトークスキルは、素晴らしいものがある。\nとはいえセレブには気品も必要だろう。",
+   "choice_data_list": [
+    "公の場に相応しい話し方とか"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "……ほんとに？",
+   "choice_data_list": [
+    "え？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "ねえねえトレっち……\nほんとは、寂しかったんでしょ？",
+   "choice_data_list": [
+    "え？？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いろいろタテマエで～。\nほんとは私とお喋りしたかったんじゃない？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "いいよ！\n今からトレっちと1on1トークね！",
+   "choice_data_list": [
+    "え？？？"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "こんにちは～♡",
+   "choice_data_list": [
+    "こ、こんにちは"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あれ、緊張してる？\nフツーにしていいよ？",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "今日は来てくれてありがとう！\nキミは私のどこが好きっ？",
+   "choice_data_list": [
+    "走りかな！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "え～、それだけ？\nもっとちょーだい？",
+   "choice_data_list": [
+    "……あっ、剥がされる～！"
+   ],
+   "color_text_info_list": []
+  },
+  {
+   "name": "ヴィブロス",
+   "text": "あ！\n逃げた～。",
+   "choice_data_list": [],
+   "color_text_info_list": []
+  }
+ ]
+}

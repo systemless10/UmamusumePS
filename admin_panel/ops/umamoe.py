@@ -1,26 +1,3 @@
-"""uma.moe import: fetch a trainer's umas from uma.moe and add them to the
-legacy roster (state key legacy_roster), where the game's veteran list,
-practice races and the race builder's "Import racer" all pick them up.
-
-Three sources on a trainer profile (/api/v4/user/profile/{account_id}):
-  inheritance   the trainer's star uma (the featured legacy friends borrow).
-                uma.moe has its card, both parents, every spark, race wins,
-                rating (parent_rank) and rank id (parent_rarity), but no
-                stats, skills or aptitudes. If a veteran or Team Trials
-                member is the same uma (same card + same own sparks) that
-                fuller record is used and marked as the star instead; else
-                stats/skills/aptitudes are generated from the character.
-                Grandparents are never published, so they stay generated.
-  veterans      full trained_chara records; is_pinned marks the ones the
-                trainer pinned on uma.moe.
-  team_stadium  Team Trials members. Skills come as skill_id*10+level and
-                there is no ancestry, so imports keep generated parents.
-A single veteran can also be fetched by its uma.moe UUID.
-
-The API key is supplied by the panel user on each call (never stored here).
-Imports get ids in the manual-inject band like legacy.add, and remember
-their uma.moe origin in IMPORTS_KEY so re-importing can skip or replace.
-"""
 
 from __future__ import annotations
 
@@ -46,8 +23,6 @@ _UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12
 _ACCOUNT = re.compile(r"(?<!\d)\d{9,12}(?!\d)")
 _PARENT_POSITIONS = (10, 20, 11, 12, 21, 22)
 
-
-# ------------------------------------------------------------ HTTP
 
 def _key(args) -> str:
     key = str(args.get("api_key") or "").strip()
@@ -78,7 +53,6 @@ def _get(path: str, key: str):
 
 
 def _target(args):
-    """('veteran', uuid) or ('profile', account_id), from an id or a pasted URL."""
     raw = str(args.get("target") or "").strip()
     m = _UUID.search(raw)
     if m:
@@ -90,7 +64,6 @@ def _target(args):
 
 
 def _fetch_sources(args) -> tuple[dict, list[tuple[str, str, dict]]]:
-    """(trainer info, [(key, kind, raw)]) for the requested target."""
     key = _key(args)
     kind, ident = _target(args)
     if kind == "veteran":
@@ -103,7 +76,6 @@ def _fetch_sources(args) -> tuple[dict, list[tuple[str, str, dict]]]:
     for v in vets:
         out.append((f"vet:{v.get('id')}", "veteran", v))
         seen.add(v.get("trained_chara_id"))
-    # Team Trials members are usually also veterans; the veteran record is richer.
     for t in prof.get("team_stadium") or []:
         if t.get("trained_chara_id") in seen:
             continue
@@ -135,12 +107,9 @@ def _own_factor_ids(kind: str, raw: dict) -> list[int]:
 
 
 def _star_factor_ids(inh: dict, side: str) -> list[int]:
-    """One uma's own sparks from the inheritance record; side is main/left/right."""
     ids = [inh.get(f"{side}_{c}_factors") for c in ("blue", "pink", "green")]
     return [f for f in ids + list(inh.get(f"{side}_white_factors") or []) if isinstance(f, int) and f > 0]
 
-
-# ------------------------------------------------------------ master lookups
 
 @functools.lru_cache(maxsize=None)
 def _ids(table: str, column: str = "id") -> frozenset:
@@ -148,7 +117,6 @@ def _ids(table: str, column: str = "id") -> frozenset:
 
 
 def _jsonish(v):
-    """The schema documents some arrays as strings; accept either."""
     if isinstance(v, str):
         try:
             return json.loads(v)
@@ -226,11 +194,8 @@ def _parents(entries) -> list[dict] | None:
             "win_saddle_id_array": _saddles(_jsonish(p.get("win_saddle_id_array"))),
             "owner_viewer_id": 0,
         }
-    # Real records always carry all six; anything less keeps generated parents.
     return [by_pos[p] for p in _PARENT_POSITIONS] if len(by_pos) == 6 else None
 
-
-# ------------------------------------------------------------ conversion
 
 def _problem(kind: str, raw: dict) -> str | None:
     card_id = _card(kind, raw)
@@ -240,8 +205,6 @@ def _problem(kind: str, raw: dict) -> str | None:
 
 
 def _star_parents(rec: dict, inh: dict) -> None:
-    """Swap the real parents (card, sparks, wins) into rec's ancestry. Their
-    rank/rarity/awakening aren't published, so those stay as generated."""
     by_pos = {p.get("position_id"): p for p in rec.get("succession_chara_array") or []}
     for pos, side in ((10, "left"), (20, "right")):
         card_id = _int(inh.get(f"parent_{side}_id"))
@@ -280,7 +243,7 @@ def _build(viewer, kind: str, raw: dict, tid: int) -> dict:
     scenario = _int(raw.get("scenario_id"))
     if scenario in _ids("single_mode_scenario"):
         rec["scenario_id"] = scenario
-    rec["is_locked"] = 1        # imported on purpose: don't let it be sold off by accident
+    rec["is_locked"] = 1
 
     if kind == "star":
         _build_star(rec, raw)
@@ -316,7 +279,6 @@ def _build(viewer, kind: str, raw: dict, tid: int) -> dict:
         rec["factor_info_array"] = _factors(raw.get("factors") or [])
         rec["create_time"] = rec["register_time"] = _time(raw.get("creation_time"))
         if raw.get("_star"):
-            # The star uma's record: Team Trials has no ancestry, the star does.
             rec["win_saddle_id_array"] = _saddles(raw["_star"].get("main_win_saddles") or [])
             rec["wins"] = _int(raw["_star"].get("win_count"), 0, 0)
             _star_parents(rec, raw["_star"])
@@ -348,13 +310,10 @@ def _summary(key: str, kind: str, raw: dict, imported: dict) -> dict:
 
 
 def _imported(full_state) -> dict:
-    """source key -> roster id, for imports still in the roster."""
     live = {r.get("trained_chara_id") for r in full_state.get(KEY) or []}
     return {v["source"]: int(tid) for tid, v in (full_state.get(IMPORTS_KEY) or {}).items()
             if int(tid) in live and isinstance(v, dict)}
 
-
-# ------------------------------------------------------------ ops
 
 @op("umamoe.fetch")
 def fetch(viewer, args):

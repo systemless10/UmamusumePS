@@ -1,53 +1,3 @@
-"""ROOM MATCH -- player-hosted races that other trainers on this server enter,
-watch, and replay.
-
-Built from a real session against the Global server (captures/20260924_195146,
-40 room_match calls: index, room_list, room_search, create_room(_simple),
-edit_room, change_allow_display, force_race_start, destroy_room, watch_room,
-enter_waiting_room, get_entry_room_list, race_start, race_end_result and the
-saved-result shelf). The endpoints that session did not hit (entry_room,
-leave_room, leave_watching, polling, room_detail, get_friend_list,
-change_lock_race_result, the preset trio) are read field-by-field off dump.cs
-(RoomMatch*Request / RoomMatch*Response.CommonResponse); the enums behind the
-room settings are ExhibitionRaceDefine's (StartTime, Season, Weather,
-GroundCondition, Motivation, UserJoinType, JoinType, RankRestrictionType,
-PrivateEntryStatus, PrivateSetting).
-
-HOW A ROOM RUNS
----------------
-  create_room / create_room_simple   host + up to 3 of their umas; the room
-                                     starts 30 min .. 1 day later (start_time_type)
-  room_list / room_search            other trainers find it
-  entry_room / watch_room            ... and enter umas (join_type 1) or watch (2)
-  enter_waiting_room / polling       the lobby; entrants listed, audience not
-  force_race_start                   host pulls start_time forward to now
-  race_start                         the race, simulated ONCE and stored, so
-                                     every member and watcher sees the same one
-  race_end_result                    each viewer marks it seen, optionally saving
-                                     it to their own shelf; once everyone has,
-                                     the room is gone
-
-Empty gates are filled with room-match mobs (race_mobs.room_mobs), which --
-unlike practice race's -- scale with the room's entrants, as the captures show.
-
-WHY ITS OWN STORE
------------------
-A room is shared by up to 18 entrants' owners plus an audience, and every join
-or leave writes to it from a viewer who is not its host -- the same
-cross-account write social.py's docstring explains cannot go through the
-per-viewer state.py blobs. So rooms and saved results live in their own SQLite
-file with their own lock.
-
-TIME
-----
-Room times are stored as REAL epochs and served shifted onto the servertime
-the client is told (patch._servertime), so the lobby countdown is right even
-when servertime is frozen; with "servertime": "now" the shift is zero. Served
-strings are UTC, like the captures'.
-
-HOUSE NUMBERS (no capture or master row behind them): SAVED_RESULT_LIMIT,
-AUDIENCE_LIMIT, ROOM_LIST_SIZE, ROOM_LINGER.
-"""
 
 from __future__ import annotations
 
@@ -68,34 +18,28 @@ from . import directory, practice_race, practice_race_lobby, race_mobs, registry
 
 log = logging.getLogger("uma-server")
 
-POLLING_INTERVAL = 3               # capture: every lobby response
-MAX_CHARAS_PER_USER = 3            # capture: 3 entrants per guest, member_id 1..3
-SAVED_RESULT_KEEP = 365 * 86400    # capture: expiration_time = start_time + 1 year
+POLLING_INTERVAL = 3
+MAX_CHARAS_PER_USER = 3
+SAVED_RESULT_KEEP = 365 * 86400
 
-# --- house numbers -----------------------------------------------------------
 SAVED_RESULT_LIMIT = 20
 AUDIENCE_LIMIT = 100
 ROOM_LIST_SIZE = 10
-# A finished room nobody gets round to checking is dropped this long after its
-# start, so the "joined rooms" badge cannot stick forever.
 ROOM_LINGER = 7 * 86400
 
-# ExhibitionRaceDefine.StartTime -> seconds after creation.
 _START_DELAY = {1: 30 * 60, 2: 3600, 3: 3 * 3600, 4: 6 * 3600, 5: 12 * 3600, 6: 86400}
-START_TIME_TYPE_SIMPLE = 1         # capture: create_room_simple starts 30 min out
+START_TIME_TYPE_SIMPLE = 1
 
-# ExhibitionRaceDefine.UserJoinType / JoinType / PrivateEntryStatus.
 USER_ENTRY, USER_AUDIENCE = 1, 2
 ENTRY_NORMAL, ENTRY_PRIVATE = 1, 2
 PRIVATE_NONE, PRIVATE_ENABLE, PRIVATE_DISABLE = 0, 1, 2
 PRIVATE_FRIEND, PRIVATE_CIRCLE = 1, 2
 RESTRICT_LOWER, RESTRICT_UPPER = 1, 2
 
-NPC_TYPE_ENTRANT = 11              # capture: every trainer's uma in race_horse_data
+NPC_TYPE_ENTRANT = 11
 
-STATUS_WAITING = 0                 # the only status any capture shows
+STATUS_WAITING = 0
 
-# ================================================================== store ===
 
 _lock = RLock()
 _conns: dict[str, sqlite3.Connection] = {}
@@ -107,7 +51,6 @@ def _db_path():
 
 @contextmanager
 def _db():
-    """The region's connection, under the store lock, in one transaction."""
     with _lock:
         key = region.CURRENT_REGION.get()
         conn = _conns.get(key)
@@ -152,15 +95,11 @@ def _all_rooms(conn) -> list[dict]:
 
 
 def _new_room_id(conn) -> int:
-    """8 digits, like every captured room_id -- inside int32, which the wire
-    declares room_id as."""
     while True:
         rid = random.randint(10_000_000, 99_999_999)
         if not conn.execute("SELECT 1 FROM room WHERE room_id=?", (rid,)).fetchone():
             return rid
 
-
-# ================================================================== time ===
 
 def _shift() -> float:
     return patch._servertime() - time.time()
@@ -173,8 +112,6 @@ def _stamp(real_ts: float) -> str:
 def _started(room: dict) -> bool:
     return time.time() >= room["start_ts"]
 
-
-# =========================================================== wire shapes ===
 
 def _ok(data: dict | None = None) -> dict:
     return {"response_code": 1,
@@ -197,7 +134,6 @@ def _user_head(vid) -> dict:
 
 
 def _room_user(room: dict, vid, join_type: int) -> dict:
-    """RoomMatchUser."""
     head = _user_head(vid)
     return {"viewer_id": head["viewer_id"], "room_id": room["room_id"],
             "name": head["name"], "leader_chara_id": head["leader_chara_id"],
@@ -222,9 +158,6 @@ def _qualifies_private(room: dict, vid) -> bool:
 
 
 def _private_status(room: dict, vid) -> int:
-    """0 inside a room you are already in or watching (captures 0017/0029),
-    2 on a room you are browsing (every room_list row), 1 when you could take
-    one of its private gates."""
     if _join_type(room, vid) or room["host"] == str(vid):
         return PRIVATE_NONE
     if not room["private_entry_type"]:
@@ -235,7 +168,6 @@ def _private_status(room: dict, vid) -> int:
 
 
 def _room_info(room: dict, vid) -> dict:
-    """RoomMatchRoomInfo, in the field order edit_room/room_list serve it."""
     raced = room.get("race")
     return {
         "room_id": room["room_id"],
@@ -265,8 +197,6 @@ def _room_info(room: dict, vid) -> dict:
 
 
 def _user_details(room: dict, vid) -> list[dict]:
-    """RoomMatchUserDetail for every ENTRANT (the audience is never listed --
-    capture 0029, entered as a watcher, lists only the two entrants)."""
     out = []
     for member_vid, m in room["members"].items():
         head = _user_head(member_vid)
@@ -309,12 +239,7 @@ def _my_rooms(conn, vid) -> list[dict]:
     return [r for r in _all_rooms(conn) if _unchecked(r, vid)]
 
 
-# ================================================================ entries ===
-
 def _entry_charas(vid, entries, room: dict | None) -> list[dict] | int:
-    """Snapshot the caller's picked umas as RoomMatchTrainedChara, or a result
-    code. A snapshot, not a reference: the room must race the horse as it was
-    entered, whatever happens to the roster afterwards."""
     entries = [e for e in (entries or []) if e.get("trained_chara_id")]
     if not entries or len(entries) > MAX_CHARAS_PER_USER:
         return ResultCode.PARAM_ERROR
@@ -338,9 +263,6 @@ def _entry_charas(vid, entries, room: dict | None) -> list[dict] | int:
 
 
 def _allowed(room: dict, chara: dict) -> bool:
-    """The room's rank limit and chara/outfit allow-list. restrict_chara_info_
-    array is an ALLOW-list: a room captured as "TECHYON" listed exactly
-    Agnes Tachyon (1032) and her outfits."""
     limit, kind = room["trained_chara_restriction"], room["restriction_type"]
     rank = chara.get("rank") or 1
     if limit and kind == RESTRICT_LOWER and rank < limit:
@@ -362,8 +284,6 @@ def _course_entry_num(race_instance_id) -> int | None:
     return info[2] if info else None
 
 
-# ================================================================= create ===
-
 def _create(payload: dict, simple: bool) -> dict:
     vid = str(payload.get("viewer_id"))
     race_instance_id = int(payload.get("race_instance_id") or 0)
@@ -372,7 +292,6 @@ def _create(payload: dict, simple: bool) -> dict:
         return refuse(ResultCode.PARAM_ERROR)
 
     if simple:
-        # capture 0017: season 5, everything else random, full field, 30 min.
         settings = {"entry_num": course_max, "start_time_type": START_TIME_TYPE_SIMPLE,
                     "is_allow_watching": 1, "private_entry_type": 0,
                     "private_entry_num": 0, "season": 5, "weather": 0,
@@ -435,21 +354,14 @@ def handle_create_room_simple(payload: dict) -> dict:
     return _create(payload, simple=True)
 
 
-# ================================================================ browse ===
-
 @registry.endpoint("room_match/index")
 def handle_index(payload: dict) -> dict:
-    """join_watch_room_num: rooms the caller is in or watching whose race they
-    have not yet seen through race_end_result (capture 0023: still 1 after the
-    host force-started a room and had not yet watched it)."""
     with _db() as conn:
         return _ok({"join_watch_room_num": len(_my_rooms(conn, payload.get("viewer_id")))})
 
 
 @registry.endpoint("room_match/get_entry_room_list")
 def handle_get_entry_room_list(payload: dict) -> dict:
-    """The caller's rooms, each with its host's row and the caller's own
-    (capture 0031: own row first, join_type 2 for a watched room)."""
     vid = str(payload.get("viewer_id"))
     with _db() as conn:
         rooms = _my_rooms(conn, vid)
@@ -464,9 +376,6 @@ def handle_get_entry_room_list(payload: dict) -> dict:
 
 @registry.endpoint("room_match/room_list")
 def handle_room_list(payload: dict) -> dict:
-    """Open rooms other trainers have made public (is_allow_display), not yet
-    started, not full, and not already the caller's. Shuffled -- the capture's
-    three back-to-back calls each returned a different set."""
     vid = str(payload.get("viewer_id"))
     with _db() as conn:
         rooms = _all_rooms(conn)
@@ -483,8 +392,6 @@ def handle_room_list(payload: dict) -> dict:
 
 @registry.endpoint("room_match/room_search")
 def handle_room_search(payload: dict) -> dict:
-    """By room ID -- how an undisplayed room is reached. Unknown id answers
-    5106 ROOM_MATCH_NO_ROOM_ERROR (capture 0027)."""
     vid = str(payload.get("viewer_id"))
     with _db() as conn:
         room = _load_room(conn, payload.get("room_id"))
@@ -508,7 +415,6 @@ def handle_room_detail(payload: dict) -> dict:
 
 @registry.endpoint("room_match/get_friend_list")
 def handle_get_friend_list(payload: dict) -> dict:
-    """The caller's friends, for the room's invite screen."""
     vid = str(payload.get("viewer_id"))
     friends = social.friend_list(vid)
     ids = [str(f["friend_viewer_id"]) for f in friends]
@@ -517,8 +423,6 @@ def handle_get_friend_list(payload: dict) -> dict:
         directory.summary(f_id, cards[f_id], f["state"])
         for f_id, f in zip(ids, friends) if f_id in cards]})
 
-
-# ================================================================= lobby ===
 
 def _lobby_endpoint(payload: dict) -> dict:
     vid = payload.get("viewer_id")
@@ -541,9 +445,6 @@ def handle_polling(payload: dict) -> dict:
 
 @registry.endpoint("room_match/entry_room")
 def handle_entry_room(payload: dict) -> dict:
-    """Enter up to 3 umas into somebody's room. Normal gates first; the
-    private gates (friends / circle mates of the host, private_entry_num of
-    them) take the overflow for those who qualify."""
     vid = str(payload.get("viewer_id"))
     with _db() as conn:
         room = _load_room(conn, payload.get("room_id"))
@@ -554,7 +455,6 @@ def handle_entry_room(payload: dict) -> dict:
         charas = _entry_charas(vid, payload.get("entry_chara_array"), room)
         if isinstance(charas, int):
             return refuse(charas)
-        # Re-entering replaces what the caller had in, it does not stack.
         room["members"].pop(vid, None)
         normal_cap = room["entry_num"] - room["private_entry_num"]
         normal_free = normal_cap - _entrant_count(room, private=False)
@@ -583,7 +483,7 @@ def handle_leave_room(payload: dict) -> dict:
         if room is None:
             return refuse(ResultCode.ROOM_MATCH_NO_ROOM_ERROR)
         if room["host"] == vid:
-            return refuse(ResultCode.PARAM_ERROR)   # the host destroys instead
+            return refuse(ResultCode.PARAM_ERROR)
         if _started(room):
             return refuse(ResultCode.ROOM_MATCH_CANCLE_OVERTIME_ERROR)
         room["members"].pop(vid, None)
@@ -620,11 +520,7 @@ def handle_leave_watching(payload: dict) -> dict:
     return _ok()
 
 
-# ================================================================== host ===
-
 def _host_room(conn, payload: dict, overtime_code: int):
-    """(room, None) when the caller hosts a not-yet-started room, else
-    (None, refusal)."""
     room = _load_room(conn, payload.get("room_id"))
     if room is None:
         return None, refuse(ResultCode.ROOM_MATCH_NO_ROOM_ERROR)
@@ -660,8 +556,6 @@ def handle_change_allow_display(payload: dict) -> dict:
 
 @registry.endpoint("room_match/force_race_start")
 def handle_force_race_start(payload: dict) -> dict:
-    """Pull the start forward to now (capture 0018: start_time became the
-    request's own time, 13 s after the room was made)."""
     with _db() as conn:
         room, err = _host_room(conn, payload,
                                ResultCode.ROOM_MATCH_FORCE_START_OVERTIME_ERROR)
@@ -683,17 +577,11 @@ def handle_destroy_room(payload: dict) -> dict:
     return _ok()
 
 
-# ================================================================== race ===
-
 def _resolve_conditions(room: dict, rng: random.Random) -> tuple[int, int, int]:
-    """Random (0) season/weather/ground rolled once, at race time -- the
-    room keeps showing 0 (capture 0033: room weather 0, race weather 1)."""
     return practice_race.resolve_conditions(room, rng)
 
 
 def _run_race(room: dict) -> dict | None:
-    """Simulate the room's race once. Everything the replay needs is stored,
-    so every member, watcher and saved copy shows the same race."""
     rng = random.Random(room["random_seed"])
     season, weather, ground = _resolve_conditions(room, rng)
 
@@ -716,10 +604,6 @@ def _run_race(room: dict) -> dict | None:
     field = min(room["entry_num"], course_max)
     mobs = race_mobs.room_mobs(entrants, max(0, field - len(entrants)),
                                room["race_instance_id"], rng, room["motivation"])
-    # Gates 1..field, not spread over the course's full gate count: a
-    # 15-horse room (capture 0010) ran from gates 1-15.
-    # Matches simulate_race's own field size: every entrant always runs, even
-    # past the course's gate count.
     runners = max(len(entrants), min(field, len(entrants) + len(mobs)))
     result = race_simulator.simulate_race(
         entrants[0], mobs, room["race_instance_id"],
@@ -734,12 +618,11 @@ def _run_race(room: dict) -> dict | None:
             "race_horse_data_array": rows,
             "trained_chara_array": trained,
             "season": season, "weather": weather, "ground_condition": ground,
-            "app_version": str(config.get("app_version", "1.35.1")),
+            "app_version": str(config.get("app_version", "1.35.2")),
             "resource_version": str(config.get("resource_version", "10007900"))}
 
 
 def _raced_room(conn, room_id) -> tuple[dict | None, dict | None]:
-    """(room, None) with its race run and stored, or (None, refusal)."""
     room = _load_room(conn, room_id)
     if room is None:
         return None, refuse(ResultCode.ROOM_MATCH_NO_ROOM_ERROR)
@@ -773,7 +656,6 @@ def handle_race_start(payload: dict) -> dict:
 
 def _saved_info(room: dict, own_join_type: int, register_id: int,
                 favorite: int = 0) -> dict:
-    """RoomMatchSavedRoomInfo -- the room as it stood, plus the shelf fields."""
     info = _room_info(room, room["host"])
     out = {"saved_room_id": room["room_id"], "room_id": room["room_id"],
            "register_id": register_id}
@@ -793,10 +675,6 @@ def _saved_info(room: dict, own_join_type: int, register_id: int,
 
 @registry.endpoint("room_match/race_end_result")
 def handle_race_end_result(payload: dict) -> dict:
-    """The caller has watched the race. is_save_result 1 files it on their
-    shelf; a non-zero saved_room_id/register_id names the shelf entry to
-    overwrite (what the client offers when the shelf is full). Once every
-    member and watcher has been through here, the room is gone."""
     vid = str(payload.get("viewer_id"))
     with _db() as conn:
         room, err = _raced_room(conn, payload.get("room_id"))
@@ -823,8 +701,6 @@ def handle_race_end_result(payload: dict) -> dict:
 
 
 def _save_result(conn, vid: str, room: dict, join: int) -> None:
-    # register_id is the race's own start epoch in every capture
-    # (1790213515 == start_time 2026-09-24 01:31:55).
     register_id = int(room["start_ts"] + _shift())
     entry = {"room": room, "own_join_type": join, "favorite_flag": 0}
     conn.execute("INSERT OR REPLACE INTO saved_result VALUES (?,?,?,?,?)",
@@ -842,8 +718,6 @@ def _save_result(conn, vid: str, room: dict, join: int) -> None:
         excess -= 1
 
 
-# ========================================================== saved results ===
-
 def _saved_rows(conn, vid: str):
     return conn.execute("SELECT saved_room_id, register_id, data FROM saved_result "
                         "WHERE viewer_id=? ORDER BY save_ts", (vid,)).fetchall()
@@ -859,8 +733,6 @@ def _saved_one(conn, vid: str, payload: dict):
 
 @registry.endpoint("room_match/get_saved_race_result_list")
 def handle_get_saved_race_result_list(payload: dict) -> dict:
-    """room_user_array carries the caller's own row per saved race (capture
-    0006: one row per result, all the caller)."""
     vid = str(payload.get("viewer_id"))
     with _db() as conn:
         rows = _saved_rows(conn, vid)
@@ -905,8 +777,6 @@ def handle_delete_race_result(payload: dict) -> dict:
 
 @registry.endpoint("room_match/change_lock_race_result")
 def handle_change_lock_race_result(payload: dict) -> dict:
-    """A locked result is the shelf's favourite_flag: it survives the shelf
-    filling up."""
     vid = str(payload.get("viewer_id"))
     with _db() as conn:
         row = _saved_one(conn, vid, payload)
@@ -920,13 +790,6 @@ def handle_change_lock_race_result(payload: dict) -> dict:
     return _ok({"saved_room_id": row["saved_room_id"], "register_id": row["register_id"],
                 "is_locked": entry["favorite_flag"]})
 
-
-# =============================================================== presets ===
-# Room match keeps its own entry presets (RoomMatchRace*Preset), the same
-# PresetInfo shape as practice race's but a separate list. The URLs are
-# room_match/get_preset_array, save_preset and change_preset_name in both
-# clients' string tables (Global and JP global-metadata.dat); the request class
-# names' "Race" is not in them, so the race_* routes this used were never hit.
 
 PRESET_KEY = "room_match_presets"
 
@@ -985,11 +848,7 @@ def handle_change_preset_name(payload: dict) -> dict:
     return _ok({"preset_info": _preset_wire(preset)})
 
 
-# ============================================================ elsewhere ===
-
 def entered_chara_ids(viewer_id) -> list[int]:
-    """trained_chara/load's room_match_entry_chara_id_array: the caller's umas
-    currently entered in a room that has not raced yet."""
     vid = str(viewer_id)
     try:
         with _db() as conn:

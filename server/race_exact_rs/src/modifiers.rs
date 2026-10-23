@@ -1,4 +1,3 @@
-//! Ordered Add/Set receiver and separately consumed one-time effects.
 #[derive(Clone,Copy,Debug)]
 pub enum Operation {Add,Set}
 #[derive(Clone,Debug)]
@@ -9,7 +8,6 @@ impl Modifiers {
     pub fn add(&mut self,index:usize,value:f32,operation:Operation,owner:u64,once:bool) {
         self.entries.push(Modifier{index,value,operation,owner,once,remaining:None});
     }
-    /// Additional effects copy the detail's remaining time before its tick decrement.
     pub fn add_timed(&mut self,index:usize,value:f32,operation:Operation,owner:u64,once:bool,remaining:f32) {
         self.entries.push(Modifier{index,value,operation,owner,once,remaining:Some(remaining)});
     }

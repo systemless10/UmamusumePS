@@ -1,0 +1,82 @@
+#title New Year's Shrine Visit
+0 The year turned over, and Hishi Miracle entered the Senior class.
+1 Today, we promised to go on our first shrine visit of the year together. Before heading out to meet her, I casually turn on the TV...
+2 It's the "UMA-TV" New Year's Special!
+3 First, let's pick out this year's hottest prospects! The Umamusume everyone's expecting big things from is none other than...
+4 Symboli Kris S!
+5 Last year, while still in the Classic class, she conquered the Tenno Sho (Autumn)!
+6 Not only is she skilled, but her stoicism and her look have captured fans' hearts.
+7 This year, she'll surely grow even stronger and become the center of the Twinkle Series.
+7{ Twinkle Series
+8 A message... for the viewers?
+9 No cross, no crown. That is all.
+10 She was covered differently from the other Umamusume. Her remarkable achievements, and her noble resolve...
+11 Hishi Miracle showed up a little too, but the gap in coverage was huge. Then...
+12 (Bzzz, bzzz...)
+13 A message arrived from Hishi Miracle. Did she see the show just now and get upset?
+14 Trainer, I fell back asleep! [sweat][sweat] But I'm up now so it's all good (^^)V
+15 ...A weirdly old-man-like message. But she seems to be in good spirits.
+16 I get changed and head out for the shrine visit.
+17 If Hishi Miracle didn't see that show, that's a relief. Then she won't be bummed about the difference in coverage...
+18 ...Traaainer...
+19 ...Her expression had sunk all the way down. Could it be...
+19> ...You saw it?
+20 I saw it. My friend told me "Mira-ko was featured too," so I watched it on UmaTube afterward.
+20{ Mira-ko | UmaTube
+21 I was kinda hoping, you know. That they'd cover me a lot.
+22 But it was almost all Kris S, and I was basically just in a little corner window...
+22{ Kris S
+23 The difference in how they treat us... I worked pretty hard too, you know.
+24 Well, I get it. There's a difference in how we run...
+25 But it hurts when someone says it straight to your face!
+26 She knows, but it still hurts to hear it. Hishi Miracle was a thoroughly ordinary girl.
+27 Dear gods, please. Please give me some energy.
+28 At least enough to make up for how bummed I got... Something like that.
+29 Enough energy to make up for feeling down. I think we can manage that without relying on the gods.
+29> Okay, then let's do something to cheer you up.
+30 Huh, you're gonna come up with something for me, Trainer?
+31 Yay! Then I'm counting on you.
+32 The first treat of the New Year. What should I have Hishi Miracle do to cheer her up?
+32> A royal tea party | Watching soccer | DIY carpentry
+33 A royal tea party... That's not really my kind of thing, but...
+34 Anyone I know who'd host something like that... Oh, there's one. That girl from my year...
+35 Here you go, Mira-ko! It's my special Irish milk tea♪
+36 Straight tea is nice too, but lots of milk is the best! Go ahead, go ahead.
+37 Whoa, this teacup... It's too pretty. Well then...
+38 Mm... mm... mm...
+39 How is it? Do you like it?
+40 Th-this is...!
+40> How does it taste?
+41 How?! I have no idea?! It's kinda, like, smooth, and sleek, and...
+42 But it's delicious! That much I know! I feel like I've become a slightly fancier Umamusume.
+43 Oh, I'm so glad you liked it! Have as much as you want.
+44 And so, Hishi Miracle spent a moment of peace and comfort.
+45 Watching soccer! Right, right, the high school soccer tournament is on around New Year's.
+46 Let's definitely go watch it. Everyone in my family loves soccer.
+47 And after the match ended...
+48 Huh? That Umamusume over there, could it be...
+49 Mira-ko!
+50 Top Road...! You came to watch soccer too, Top Road?
+50{ Top Road
+51 Yes! I love watching and playing it. I wanted to see people working hard to motivate myself.
+52 If you'd like, why don't we talk about it? That match just now!
+53 And so the three of us came to a family restaurant.
+54 That was kinda amazing, huh. They kept going even when they were totally worn out in the second half...
+55 Yes, no matter how tired they got, they kept pressing the whole time...
+56 But Mira-ko, you really love soccer, don't you? If you'd like, let's talk more!
+57 Yeah! I'm happy I get to talk with you too, Top Road.
+58 The soccer talk never ran dry. The two of them talked at length about all things soccer.
+59 DIY carpentry... I don't think I've done much of it. But it sounds kinda fun.
+60 And so, we headed to a certain place. The ones doing carpentry there were...
+61 Sorry, Akebono, for making you help. Could you bring over that wooden box?
+62 Sure, this is heavy. I wonder if we can make some buono furniture?
+63 Miho Dorm leader Hishi Amazon and the big Umamusume Hishi Akebono were hard at work.
+64 Um, is it okay if I join in? I'm a total beginner, though.
+65 Sure, if you wanna try, you're more than welcome. Make whatever you like!
+66 Amazon, Akebono, and Miracle! All three Hishis together, bang bang clang!!
+66{ Miracle
+67 And so, following their lead, Hishi Miracle took on DIY carpentry...
+68 Oh, I think I made something kinda like a bookshelf! It's a little bumpy, though.
+69 This is super fun. Next time I wanna make something even bigger.
+70 Hahaha, sure! Next time let's all work together and build a shed or somethin'!
+71 Thanks to carpentry with all three Hishis together, Hishi Miracle learned all sorts of techniques.

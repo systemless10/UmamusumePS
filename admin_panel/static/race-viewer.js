@@ -1,16 +1,13 @@
-// Race replay viewer: a top-down map of the real course (the client's lane
-// anim path, see tools/build_course_paths.py) with an exact replay played
-// back on it — runners, skill activations, slopes, phases and landmarks.
 
 import { act, call, esc, gameIcon, icon, ICON_VERSION } from './core.js';
 import { STYLES } from './widgets.js';
 import { PHASES, courseStrip, landmarks, skillTier } from './race-breakdown.js';
 
-const COURSE_WIDTH = 11.25;        // metres per lane unit (one course width; a horse lane is 1/18)
-const LENGTH = 2.5;                // one horse length (bashin) in metres
-const RUNOUT = 80;                 // metres drawn past the goal
+const COURSE_WIDTH = 11.25;
+const LENGTH = 2.5;
+const RUNOUT = 80;
 const SPEEDS = [0.25, 0.5, 1, 2, 4, 8];
-const POPUP = 2.2;                 // seconds a skill call-out stays on the map
+const POPUP = 2.2;
 const EVENT_NAMES = { 4: 'Spot struggle', 5: 'Dueling', 6: 'Conserve power' };
 const MOODS = ['', 'Awful', 'Bad', 'Normal', 'Good', 'Great'];
 const TIER = { white: '#e8e4da', gold: '#f0cf7a', unique: '#c6b4f0', '': '#cfc8d8' };
@@ -21,8 +18,7 @@ const m = (v) => `${Math.round(v).toLocaleString()} m`;
 const clock = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
 const runnerColor = (i) => `hsl(${(i * 137.508 + 20) % 360} 62% 64%)`;
 
-// -------------------------------------------------------------- data
-const tracks = new Map();          // race_instance_id -> layout promise
+const tracks = new Map();
 export function loadTrack(id) {
   if (!tracks.has(id)) tracks.set(id, call('races.track', { id }).catch((ex) => { tracks.delete(id); throw ex; }));
   return tracks.get(id);
@@ -40,10 +36,8 @@ function image(kind, id) {
   return img.complete && img.naturalWidth ? img : null;
 }
 
-// -------------------------------------------------------------- geometry
 const pairs = (flat) => { const out = []; for (let i = 0; i + 1 < flat.length; i += 2) out.push([flat[i], -flat[i + 1]]); return out; };
 
-// Without a client path: a schematic where every corner turns 90°.
 function schematic(c) {
   const n = 1001, step = c.distance / (n - 1), sign = c.turn === 2 ? -1 : 1, out = [];
   let x = 0, y = 0, a = 0;
@@ -61,8 +55,6 @@ export function geometry(track, course) {
   const exact = !!track?.route;
   const route = exact ? pairs(track.route) : schematic(course);
   const outline = exact ? track.outline.map(pairs) : [];
-  // Map coordinates are metres seen from above (Unity x, −z). Turn the
-  // principal axis horizontal and put the finish along the bottom.
   const all = [...route, ...outline.flat()];
   const mx = all.reduce((s, p) => s + p[0], 0) / all.length, my = all.reduce((s, p) => s + p[1], 0) / all.length;
   let sxx = 0, syy = 0, sxy = 0;
@@ -80,13 +72,11 @@ export function geometry(track, course) {
     const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
     T.push([dx / l, dy / l]);
   }
-  // Lanes grow away from the side the course turns towards.
   let turn = 0;
   for (let i = 0; i + 1 < n; i++) turn += T[i][0] * T[i + 1][1] - T[i][1] * T[i + 1][0];
   const side = Math.abs(turn) > 0.5 ? -Math.sign(turn) : -1;
   for (const [tx, ty] of T) N.push([-ty * side, tx * side]);
 
-  // A point `off` metres outward from the lane-0 line, `d` metres into the race.
   const at = (d, off = 0) => {
     if (d <= 0 || d >= dist) {
       const k = d <= 0 ? 0 : n - 1, e = d <= 0 ? d : d - dist;
@@ -121,8 +111,6 @@ export function geometry(track, course) {
   const xs = all.length ? [...route, ...outline.flat()] : route;
   const bounds = [Math.min(...xs.map((p) => p[0])), Math.min(...xs.map((p) => p[1])), Math.max(...xs.map((p) => p[0])), Math.max(...xs.map((p) => p[1]))];
 
-  // Strips outside (slopes) and inside (phases, sections) keep a readable
-  // on-screen width, so they are rebuilt per zoom bucket.
   const stripCache = new Map();
   function strips(scale) {
     const key = Math.round(Math.log2(scale) * 4);
@@ -146,7 +134,6 @@ export function geometry(track, course) {
     ...(course.slopes || []).map((sl) => ({ d: sl.start + sl.length / 2, side: 1, text: `${sl.slope > 0 ? '▲ Uphill' : '▼ Downhill'} ${Math.abs(sl.slope / 10000).toFixed(1)}%`, kind: sl.slope > 0 ? 'up' : 'down' })),
   ];
 
-  // What lies at distance d: for the hover read-out.
   function describe(d) {
     const ph = PHASES.find(([a, b]) => d / dist >= a && d / dist < b);
     const corner = (course.corners || []).findIndex((k) => d >= k.start && d < k.start + k.length);
@@ -155,7 +142,6 @@ export function geometry(track, course) {
       corner >= 0 ? `Corner ${cornerNo(corner, course.corners)}` : (course.straights || []).some((st) => d >= st.start && d < st.end) ? 'Straight' : '',
       slope ? `${slope.slope > 0 ? 'Uphill' : 'Downhill'} ${Math.abs(slope.slope / 10000).toFixed(1)}%` : 'Flat'].filter(Boolean);
   }
-  // Nearest course distance to a map point, if it is on the track.
   function locate(x, y) {
     let best = Infinity, k = -1;
     for (let i = 0; i < n; i++) { const e = (route[i][0] - x) ** 2 + (route[i][1] - y) ** 2; if (e < best) { best = e; k = i; } }
@@ -172,8 +158,6 @@ export function geometry(track, course) {
   };
 }
 
-// -------------------------------------------------------------- map canvas
-// A pannable, zoomable top-down course. draw(scene) takes optional runners.
 function createMap(host, geo) {
   const canvas = document.createElement('canvas');
   host.prepend(canvas);
@@ -218,7 +202,6 @@ function createMap(host, geo) {
     g.setLineDash([3 / s, 3 / s]); g.strokeStyle = '#111'; g.stroke(geo.goal); g.setLineDash([]);
   }
 
-  // Labels in screen space, pushed outward and skipped when they collide.
   function labels(taken) {
     const st = geo.strips(cam.s);
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -246,8 +229,6 @@ function roundRect(g, x, y, w, h, r) {
   g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath();
 }
 
-// -------------------------------------------------------------- static course map
-// For the Race tab: the course alone, with a hover read-out. Returns a stop function.
 export function mountCourseMap(host, raceInstanceId, course) {
   let alive = true, map = null, geo = null, hover = null;
   host.innerHTML = `<div class="rv-stage rv-static"><div class="rv-tip" hidden></div><div class="rv-msg faint">Loading course map…</div></div>`;
@@ -286,8 +267,6 @@ export function mountCourseMap(host, raceInstanceId, course) {
   return () => { alive = false; ro.disconnect(); };
 }
 
-// -------------------------------------------------------------- replay viewer
-// ctx: {replay, skills, runnerName(h), courseName(id)}. Returns a stop function.
 export function mountViewer(root, ctx) {
   const { replay } = ctx;
   const course = replay.course || {}, horses = replay.horses, results = replay.results, frames = replay.frames;
@@ -300,7 +279,7 @@ export function mountViewer(root, ctx) {
   const END = frames.at(-1)?.t || 0;
   const events = [...replay.events].sort((a, b) => a.t - b.t).map((e) => ({ ...e, i: e.params[0],
     skill: e.type === 3 ? e.params[1] : 0, dur: e.type === 3 ? e.params[2] / 10000 : 0 }));
-  const shownEvents = events.filter((e) => e.type !== 3 || e.dur >= 0);   // passives fire at 0 s
+  const shownEvents = events.filter((e) => e.type !== 3 || e.dur >= 0);
   const byRunner = horses.map((_, i) => events.filter((e) => e.i === i && e.type === 3));
 
   let alive = true, raf = 0, last = 0, t = 0, playing = false, rate = 1, sel = results.findIndex((r) => r.finish_order === 0);
@@ -308,14 +287,11 @@ export function mountViewer(root, ctx) {
   let geo = null, map = null, snap = null, drag = null;
   if (sel < 0) sel = 0;
 
-  // -------------------------------------------------------- playback state
   function frameAt(time) {
     let lo = 0, hi = frames.length - 1;
     while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (frames[mid].t <= time) lo = mid; else hi = mid - 1; }
     return lo;
   }
-  // Distance is Hermite-interpolated with speed as its slope (frames are
-  // ~1 s apart mid-race); everything else is linear.
   function snapshot(time) {
     const k = frameAt(time), a = frames[k], b = frames[Math.min(k + 1, frames.length - 1)];
     const h = b.t - a.t, s = h > 0 ? Math.min(1, (time - a.t) / h) : 0;
@@ -334,7 +310,6 @@ export function mountViewer(root, ctx) {
     return { t: time, rows, order, lead: order[0] };
   }
   const active = (i, time) => byRunner[i].filter((e) => e.dur >= 0 && e.t <= time && time <= e.t + Math.max(e.dur, 0.8));
-  // When the leader crosses a distance: phase bands on the timeline.
   function leaderTime(d) {
     for (let k = 1; k < frames.length; k++) {
       const hi = Math.max(...frames[k].horses.map((h) => h.distance));
@@ -346,7 +321,6 @@ export function mountViewer(root, ctx) {
     return END;
   }
 
-  // -------------------------------------------------------- shell
   const phaseTimes = PHASES.map(([a, b, l, k]) => [leaderTime(a * dist), leaderTime(b * dist), l, k]);
   const winner = results.findIndex((r) => r.finish_order === 0);
   root.innerHTML = `<div class="rv" tabindex="0">
@@ -394,7 +368,6 @@ export function mountViewer(root, ctx) {
   const stage = $('[data-rv-stage]'), tip = stage.querySelector('.rv-tip');
   const dots = [...root.querySelectorAll('[data-rv-dot]')];
 
-  // -------------------------------------------------------- side panels
   function renderTicks() {
     $('[data-rv-ticks]').innerHTML = shownEvents.map((e) => {
       const mine = e.i === sel, cls = e.type === 3 ? 'sk ' + tierOf(e.skill) : 'ev';
@@ -441,7 +414,6 @@ export function mountViewer(root, ctx) {
         <span class="rv-st-gap mono">${fin ? results[r.i].finish_time.toFixed(2) + ' s' : r.rank === 1 ? `${r.v.toFixed(1)} m/s` : `+${(gap / LENGTH).toFixed(1)} L`}</span>
         <span class="rv-hpbar" title="HP ${Math.round(r.hp)}"><i style="width:${Math.max(0, Math.min(100, r.hp / (frames[0].horses[r.i].hp || 1) * 100))}%"></i></span></div>`;
     }).join('');
-    // Selected runner, live.
     const r = rows[sel], hp0 = frames[0].horses[sel].hp || 1;
     const phase = PHASES.find(([a, b]) => r.d / dist >= a && r.d / dist < b)?.[2] || 'Finished';
     const state = [r.done ? 'Finished' : '', r.spurt && !r.done ? 'Last spurt' : '', r.rushed ? 'Rushed' : '', r.block >= 0 && !r.done ? `Blocked by ${r.block + 1}` : ''].filter(Boolean);
@@ -457,7 +429,6 @@ export function mountViewer(root, ctx) {
       row.querySelector('[data-rv-skst]').textContent = on ? (on.dur > 0 ? `Active · ${(on.t + on.dur - t).toFixed(1)} s` : 'Activated') : passive ? 'Passive' : fired ? 'Used' : list.length ? 'Waiting' : '—';
       row.querySelector('[data-rv-skbar]').style.width = on && on.dur > 0 ? `${(1 - (t - on.t) / on.dur) * 100}%` : '0';
     }
-    // Feed: events so far, newest first.
     const only = $('[data-rv-feed-sel]').checked;
     const past = shownEvents.filter((e) => e.t <= t && (!only || e.i === sel));
     const key = `${past.length}:${only}:${sel}`;
@@ -484,12 +455,10 @@ export function mountViewer(root, ctx) {
     }
   }
 
-  // -------------------------------------------------------- drawing
   function target() {
     const [W, H] = map.size();
     if (mode === 'track') return map.view(geo.bounds, 30);
     if (mode === 'runner') { const [x, y] = geo.at(snap.rows[sel].d, snap.rows[sel].lane * COURSE_WIDTH); return { x, y, s: Math.max(W, H) / 160 }; }
-    // The pack: everyone still running (or everyone, once they are home).
     const running = snap.rows.filter((r) => !r.done);
     const pts = (running.length ? running : snap.rows).map((r) => geo.at(r.d, r.lane * COURSE_WIDTH));
     let [x0, y0, x1, y1] = [Math.min(...pts.map((p) => p[0])), Math.min(...pts.map((p) => p[1])), Math.max(...pts.map((p) => p[0])), Math.max(...pts.map((p) => p[1]))];
@@ -506,7 +475,6 @@ export function mountViewer(root, ctx) {
     }
     g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
     map.course(cam);
-    // Trail of the selected runner over the last four seconds.
     const trail = [];
     for (let s = Math.max(0, t - 4); s <= t; s += 0.1) { const p = snapshotOne(sel, s); trail.push(geo.at(p.d, p.lane * COURSE_WIDTH)); }
     g.strokeStyle = runnerColor(sel); g.globalAlpha = 0.5; g.lineWidth = 3 / cam.s;
@@ -516,7 +484,6 @@ export function mountViewer(root, ctx) {
     const taken = [];
     const r = Math.max(5, Math.min(15, 0.95 * cam.s));
     const pos = snap.rows.map((row) => map.toScreen(geo.at(row.d, row.lane * COURSE_WIDTH + 0.5)));
-    // Who the selected runner is stuck behind.
     const me = snap.rows[sel];
     if (me.block >= 0 && !me.done && pos[me.block]) {
       g.strokeStyle = 'rgba(224,138,122,0.8)'; g.lineWidth = 1.5; g.setLineDash([3, 3]);
@@ -529,7 +496,7 @@ export function mountViewer(root, ctx) {
       const on = active(i, t);
       for (const e of on) {
         const age = t - e.t;
-        if (e.dur === 0 || age < 0.6) {           // activation pulse
+        if (e.dur === 0 || age < 0.6) {
           const p = Math.min(1, age / 0.8);
           g.strokeStyle = TIER[tierOf(e.skill)]; g.globalAlpha = 1 - p; g.lineWidth = 2.5;
           g.beginPath(); g.arc(x, y, r + 3 + p * 16, 0, Math.PI * 2); g.stroke(); g.globalAlpha = 1;
@@ -556,9 +523,7 @@ export function mountViewer(root, ctx) {
         tag(g, `${row.rank}. ${name(i)}`, x, y + r + 14, taken, i === sel ? 'rgba(236,231,220,0.95)' : 'rgba(24,19,31,0.85)', i === sel ? '#1f1a27' : '#ece7dc');
       }
     }
-    // Skill call-outs.
     if (popups !== 'off') {
-      // Newest first, each lifted above any call-out it would cover.
       const placed = [];
       for (let k = shownEvents.length - 1; k >= 0; k--) {
         const e = shownEvents[k], age = t - e.t;
@@ -588,7 +553,6 @@ export function mountViewer(root, ctx) {
     let by = y - h;
     while (by > 0 && placed.some((q) => bx < q[2] && bx + w > q[0] && by < q[3] && by + h > q[1])) by -= h + 3;
     placed.push([bx, by, bx + w, by + h]);
-    // A leader line back to the runner once lifted.
     if (by < y - h - 1) { g.strokeStyle = 'rgba(236,231,220,0.35)'; g.lineWidth = 1; g.beginPath(); g.moveTo(x, y + 6); g.lineTo(x, by + h); g.stroke(); }
     g.fillStyle = 'rgba(24,19,31,0.92)'; roundRect(g, bx, by, w, h, 11); g.fill();
     g.strokeStyle = e.type === 3 ? TIER[tier] : '#e3b56b'; g.lineWidth = 1.5; g.stroke();
@@ -619,14 +583,12 @@ export function mountViewer(root, ctx) {
       const [x, y] = map.toScreen(geo.at(row.d, row.lane * COURSE_WIDTH), c);
       g.fillStyle = runnerColor(row.i); g.beginPath(); g.arc(x + off[0], y + off[1], row.i === sel ? 3.5 : 2.2, 0, Math.PI * 2); g.fill();
     }
-    // The main camera's view.
     const cam = map.cam, [vx, vy] = map.toScreen([cam.x - W / 2 / cam.s, cam.y - H / 2 / cam.s], c);
     g.strokeStyle = 'rgba(236,231,220,0.7)'; g.lineWidth = 1;
     g.strokeRect(vx + off[0], vy + off[1], W / cam.s * s, H / cam.s * s);
     g.restore();
   }
 
-  // -------------------------------------------------------- loop & input
   function seek(time) { t = Math.max(0, Math.min(END, time)); invalidate(); }
   function invalidate() { dirty = true; }
   function loop(now) {
@@ -691,7 +653,6 @@ export function mountViewer(root, ctx) {
     e.preventDefault();
   });
 
-  // Map: drag to pan, wheel to zoom (switches to a free camera), click a runner to select.
   function runnerUnder(sx, sy) {
     let best = -1, bd = 14 * 14;
     snap?.rows.forEach((row) => {

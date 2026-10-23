@@ -1,5 +1,3 @@
-// History: every change the panel made to a save in this region, newest first,
-// and undo for any of them (an undo is itself a change you can undo).
 
 import { REGION_NAME, act, ago, bytes, call, esc, icon, keepScroll, store } from "./core.js";
 import { ask, empty } from "./widgets.js";
