@@ -5,13 +5,14 @@ fn run()->Result<(),String> {
     let mut args=std::env::args().skip(1);
     let command=args.next().ok_or("usage: race_exact_rs simulate|init --input FILE|--input-dir DIR --master FILE --assets FILE --output FILE|DIR; serve --master FILE --assets FILE")?;
     if command!="simulate" && command!="init" && command!="serve" {return Err(format!("unknown command {command}"));}
-    let mut input=None;let mut input_dir=None;let mut master=None;let mut assets=None;let mut output=None;let mut trace=false;let mut require=false;let mut max_ticks=20000;
+    let mut input=None;let mut input_dir=None;let mut master=None;let mut assets=None;let mut output=None;let mut trace=false;let mut require=false;let mut max_ticks=20000;let mut jobs=1usize;
     while let Some(arg)=args.next() {
         match arg.as_str() {
             "--input"=>input=args.next(),"--input-dir"=>input_dir=args.next(),
             "--master"=>master=args.next(),"--assets"=>assets=args.next(),"--output"=>output=args.next(),
             "--trace"=>trace=true,"--require-exact"=>require=true,
             "--max-ticks"=>max_ticks=args.next().ok_or("missing max ticks")?.parse().map_err(|_|"invalid max ticks")?,
+            "--jobs"=>{jobs=args.next().ok_or("missing jobs")?.parse().map_err(|_|"invalid jobs")?;if jobs==0 {return Err("jobs must be positive".into());}},
             _=>return Err(format!("unknown argument {arg}")),
         }
     }
@@ -49,7 +50,7 @@ fn run()->Result<(),String> {
         paths.retain(|p|p.is_file() && p.extension().is_some_and(|e|e=="json"));paths.sort();
         if paths.is_empty() {return Err("input directory contains no JSON races".into());}
         let next=std::sync::atomic::AtomicUsize::new(0);
-        let threads=std::thread::available_parallelism().map_or(4,|n|n.get());
+        let threads=jobs.min(paths.len()).min(std::thread::available_parallelism().map_or(1,|n|n.get()));
         let errors=std::sync::Mutex::new(Vec::new());
         std::thread::scope(|s|for _ in 0..threads {s.spawn(||loop {
             let i=next.fetch_add(1,std::sync::atomic::Ordering::Relaxed);

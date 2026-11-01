@@ -42,6 +42,9 @@ class Cook(Scenario):
         return {102: [(90, 208042, 5), (70, 208041, 4), (40, 208040, 3), (0, 208039, 2)],
                 103: [(90, 1010, 5), (70, 1009, 4), (40, 1008, 3), (0, 1007, 2)]}
 
+    def placement_salt(self, full_state) -> int:
+        return int(bool(impl.state(full_state).get("reseated", True)))
+
     def npc_supporters(self, full_state, chara_info) -> list:
         st = impl.state(full_state)
         return list(st["friends"]) if st["roster"] else []

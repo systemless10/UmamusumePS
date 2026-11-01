@@ -21,6 +21,20 @@ def _ok(data: dict) -> dict:
     return {"response_code": 1, "data_headers": {"result_code": 1, "notifications": {}}, "data": data}
 
 
+_SHOP_CHECK_KEY = "support_card_shop_last_checked_time"
+
+
+def handle_check_support_card_shop(payload: dict) -> dict:
+    from ...patch import _servertime
+    viewer_id = payload["viewer_id"]
+    full_state = state_store.get_state(viewer_id) or {}
+    now = _servertime()
+    last = full_state.get(_SHOP_CHECK_KEY) or now
+    full_state[_SHOP_CHECK_KEY] = now
+    state_store.save_state(viewer_id, full_state)
+    return _ok({"last_checked_time": last})
+
+
 def _lenders(payload: dict) -> dict:
     resp = single_mode_team.handle_friend_support_card_reload(
         {"viewer_id": payload["viewer_id"],
@@ -198,6 +212,7 @@ def handle_limit_exchange_ticket(payload: dict) -> dict:
 
 
 HANDLERS = {
+    "item/check_support_card_shop": handle_check_support_card_shop,
     "support_card_deck/index": handle_support_card_deck_index,
     "friend/search_support_card": handle_search_support_card,
     "race_fit_assistance/users_with_recommended_support_card": handle_race_fit_assistance,

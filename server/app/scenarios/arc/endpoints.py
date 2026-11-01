@@ -204,7 +204,9 @@ def handle_arc_race_end(payload: dict) -> dict:
         st["races"] = [r for r in st["races"] if int(r["turn"]) != turn] + [
             {"race_num": M.EXHIBITION_NUM.get(program, 0), "turn": turn, "result_rank": rank}]
         sp["gained_fans"] = fans
-        sp["reward_info"] = smt._build_race_reward_info(program, rank, fans, cd.get("race_history"))
+        sp["reward_info"] = smt._apply_reward_campaigns(
+            smt._build_race_reward_info(program, rank, fans, cd.get("race_history")),
+            full_state, chara_info)
         sp["end_committed"] = True
     chara_info["playing_state"] = 19
     reward = copy.deepcopy(sp.get("reward_info") or {})

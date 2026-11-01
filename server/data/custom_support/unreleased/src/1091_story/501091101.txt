@@ -52,9 +52,9 @@
 44 Okay, break's over! What should we do next?
 44> How's your energy?
 45 Feeling good♡
-46 We haven't done anything New Year-y yet, so I wanna do something celebrity-ish!
+46 We haven't done anything New Year-y yet, so I wanna do something Celeb-ish!
 47 Got any ideas, Tore-cchi?
-47> A celebrity-style workout | Celebrity-style leisure | Polish your celebrity talk skills
+47> A Celeb-style workout | Celeb-style leisure | Polish your Celeb talk skills
 48 Workout... so it's training after all?!
 48> Just a light one.
 49 Lighter than the usual training, just enough to move her body. I thought it'd be a refreshing way to start the New Year, but...
@@ -78,7 +78,7 @@
 62 ...Heyyy, this is super nice! Keep going, keep going♡
 63 ...I don't really get it, but Vivlos seemed very relaxed.
 64 Talk skills?
-65 Her ability to talk with anyone on equal terms is wonderful. Still, a celebrity also needs elegance.
+65 Her ability to talk with anyone on equal terms is wonderful. Still, a Celeb also needs elegance.
 65> Like how to speak in public.
 66 ...Really?
 66> Huh?

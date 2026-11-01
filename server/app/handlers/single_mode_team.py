@@ -7,6 +7,7 @@ import copy
 import functools
 import json
 import os
+import re
 import random
 import zlib
 from datetime import datetime, timezone
@@ -91,13 +92,18 @@ def _career_support_array(viewer_id, start_chara: dict) -> list[dict]:
             "owner_viewer_id": 0,
         })
     if friend:
-        o = owned.get(friend, {})
+        requested_owner = (start_chara.get("friend_support_card_info") or {}).get("viewer_id")
+        full = state_store.get_state(viewer_id) or {}
+        lender = next((e for e in full.get(FRIEND_SUPPORT_INJECT_KEY) or []
+                       if e.get("viewer_id") == requested_owner
+                       and (e.get("user_support_card") or {}).get("support_card_id") == friend), None)
+        o = (lender.get("user_support_card") if lender else owned.get(friend)) or {}
         out.append({
             "position": len(out) + 1,
             "support_card_id": friend,
             "limit_break_count": o.get("limit_break_count", 0),
             "exp": o.get("exp", 0),
-            "owner_viewer_id": 0,
+            "owner_viewer_id": requested_owner if lender else 0,
         })
     return out
 
@@ -135,6 +141,8 @@ def _build_start_chara_info(viewer_id, start_chara: dict, template_ci: dict) -> 
     talent_level = start_chara.get("talent_level") or owned.get("talent_level") or 1
     rd = _card_rarity_row(card_id, star_level) if card_id else None
 
+    from .. import date_sync
+    ci["start_time"] = datetime.fromtimestamp(patch._servertime(), date_sync._tz()).strftime("%Y-%m-%d %H:%M:%S")
     ci["card_id"] = card_id
     ci["single_mode_chara_id"] = SM_CHARA_ID_BASE + (card_id or 0) % 1_000_000
     ci["scenario_id"] = start_chara.get("scenario_id", ci.get("scenario_id"))
@@ -180,7 +188,7 @@ def _build_start_chara_info(viewer_id, start_chara: dict, template_ci: dict) -> 
         if row["need_rank"] <= talent_level and level > 0:
             key = master_data.skill_tip_key(row["skill_id"])
             innate[key] = max(innate.get(key, 0), level)
-    for (gid, rarity), level in sorted(innate.items()):
+    for (gid, rarity), level in sorted(innate.items(), key=lambda item: (item[0][0], -item[0][1])):
         ci["skill_tips_array"].append({"group_id": gid, "rarity": rarity, "level": min(5, level)})
     _grant_unique_skill(ci)
     _init_bonds(ci)
@@ -362,6 +370,7 @@ def _CAREER_STATE_KEYS() -> tuple:
             single_mode_events.VERSUS_LEVEL_KEY,
             single_mode_events.DUEL_CTX_KEY,
             single_mode_events.DUEL_LAST_TURN_KEY,
+            single_mode_events.MEEK_BOARD_KEY,
             *scenarios.state_keys(),
             GRAND_LIVE_EVENTS_FIRED_KEY,
             career_events.STATE_KEY,
@@ -686,6 +695,10 @@ def sync_chara_info(viewer_id, endpoint: str, response: dict) -> dict:
         except Exception:
             log.exception("multi-chara flag stamp failed; serving unstamped")
         try:
+            _sort_group_members((response or {}).get("data"))
+        except Exception:
+            log.exception("group member sort failed; serving unsorted")
+        try:
             _trim_start_envelope(endpoint, response)
         except Exception:
             log.exception("start envelope trim failed; serving untrimmed")
@@ -696,6 +709,17 @@ def sync_chara_info(viewer_id, endpoint: str, response: dict) -> dict:
     return response
 
 
+def _sort_group_members(data) -> None:
+    if not isinstance(data, dict):
+        return
+    for ci in (data.get("chara_info"),
+               (data.get("single_mode_load_common") or {}).get("chara_info")):
+        for e in (ci or {}).get("evaluation_info_array") or () if isinstance(ci, dict) else ():
+            g = e.get("group_outing_info_array") if isinstance(e, dict) else None
+            if g and all(isinstance(m, dict) for m in g):
+                g.sort(key=lambda m: int(m.get("chara_id") or 0))
+
+
 def _carry_locked_npc_rows(response: dict) -> None:
     data = (response or {}).get("data")
     if not isinstance(data, dict):
@@ -703,9 +727,17 @@ def _carry_locked_npc_rows(response: dict) -> None:
     chara_info = data.get("chara_info")
     if not isinstance(chara_info, dict):
         return
-    rows = scenarios.for_chara(chara_info).locked_npc_rows
+    rows = (scenarios.for_chara(chara_info).locked_npc_rows
+            or single_mode_events.scenario_npc_rows(chara_info.get("scenario_id"), chara_info))
     if not rows:
         return
+    deck = single_mode_events._deck_charas(chara_info)
+    dropped = {t for t, c in rows if c in deck}
+    rows = tuple(r for r in rows if r[0] not in dropped)
+    if dropped:
+        chara_info["evaluation_info_array"] = [
+            e for e in chara_info.get("evaluation_info_array") or []
+            if not (isinstance(e, dict) and e.get("target_id") in dropped)]
     arr = chara_info.setdefault("evaluation_info_array", [])
     present = {e.get("target_id") for e in arr if isinstance(e, dict)}
     for target_id, _chara_id in rows:
@@ -714,6 +746,20 @@ def _carry_locked_npc_rows(response: dict) -> None:
         arr.append({"target_id": target_id, "training_partner_id": target_id,
                     "evaluation": 0, "is_outing": 0, "story_step": 0,
                     "is_appear": 0, "group_outing_info_array": []})
+    uds = data.get(scenarios.for_chara(chara_info).data_set_key)
+    umap = uds.get("evaluation_info_array") if isinstance(uds, dict) else None
+    if isinstance(umap, list) and dropped:
+        umap = uds["evaluation_info_array"] = [
+            e for e in umap if not (isinstance(e, dict) and e.get("target_id") in dropped)]
+    if isinstance(umap, list):
+        have = {e.get("target_id") for e in umap if isinstance(e, dict)}
+        missing = [{"target_id": t, "chara_id": c, "member_state": 0}
+                   for t, c in rows if t not in have]
+        if missing:
+            tail = [e for e in umap if isinstance(e, dict) and (e.get("target_id") or 0) > 1000]
+            head = [e for e in umap if e not in tail]
+            uds["evaluation_info_array"] = sorted(
+                head + missing, key=lambda e: e.get("target_id") or 0) + tail
 
 
 def _trim_opponent_envelope(endpoint: str, response: dict) -> None:
@@ -808,11 +854,28 @@ def _attach_scenario_data_set(viewer_id, response: dict, endpoint: str = "") -> 
                                              home.get("command_info_array"))
     scen.attach(response, full_state, chara_info, command_info, endpoint=endpoint)
     _scrub_foreign_data_sets(data, scen.data_set_key)
+    if career_events.ENDPOINT_TIMING.get(endpoint.rsplit("/", 1)[-1]) is not None:
+        before_chain = career_events.chain_timing(full_state)
+        if career_events.note_endpoint(full_state, endpoint) != before_chain:
+            state_store.save_state(viewer_id, full_state)
+    if endpoint.endswith("/check_event") and career_events.chain_timing(full_state) == 3:
+        for entry in data.get("unchecked_event_array") or ():
+            if isinstance(entry, dict) and entry.get("play_timing") == 6:
+                entry["play_timing"] = 3
+    elif endpoint.endswith("/check_event") and career_events.chain_timing(full_state) == 6:
+        from ..scenarios.unity_cup import producers as _ucp
+        for entry in data.get("unchecked_event_array") or ():
+            if isinstance(entry, dict) and entry.get("play_timing") == 3:
+                entry["play_timing"] = (_ucp.GATE_TIMING_TRAINING
+                                        if int(entry.get("event_id") or 0) in _ucp.RACE_GATE_EVENTS
+                                        else 6)
     held = scen.held_turn(full_state)
     if not held:
         before = full_state.get(_TURN_HOLD_RELEASED_KEY)
         held = _turn_end_hold(data, full_state, scen.turn_end_timings)
         if full_state.get(_TURN_HOLD_RELEASED_KEY) != before:
+            state_store.save_state(viewer_id, full_state)
+        if _serve_held_board(data, full_state, held, scen.held_board_keys):
             state_store.save_state(viewer_id, full_state)
     ci_hold = data.get("chara_info")
     events_now = data.get("unchecked_event_array") or []
@@ -835,8 +898,7 @@ def _attach_scenario_data_set(viewer_id, response: dict, endpoint: str = "") -> 
             smlc = data.get("single_mode_load_common")
             if isinstance(smlc, dict) and "race_condition_array" in smlc:
                 smlc["race_condition_array"] = copy.deepcopy(data["race_condition_array"])
-    if rolled or settled:
-        state_store.save_state(viewer_id, full_state)
+    state_store.save_state(viewer_id, full_state)
 
 
 _TURN_END_TIMINGS = (3, 6, 10)
@@ -865,6 +927,75 @@ def _served_turn(full_state: dict, chara_info: dict, served: int) -> tuple:
     mark["turn"] = served
     full_state[_TURN_SERVED_KEY] = mark
     return served, True
+
+
+_SERVED_BOARD_KEY = "turn_served_board"
+
+
+def presort_tips(viewer_id) -> None:
+    full_state = state_store.get_state(viewer_id)
+    ci = (((full_state or {}).get(STATE_KEY) or {}).get("data") or {}).get("chara_info")
+    tips = ci.get("skill_tips_array") if isinstance(ci, dict) else None
+    if not isinstance(tips, list):
+        return
+    ordered = sorted(tips, key=lambda t: (int(t.get("group_id") or 0), int(t.get("rarity") or 0))
+                     if isinstance(t, dict) else (0, 0))
+    if ordered != tips:
+        ci["skill_tips_array"] = ordered
+        state_store.save_state(viewer_id, full_state)
+
+
+def _training_levels(chara_info) -> dict:
+    return {e["command_id"]: e.get("level") for e in
+            (chara_info or {}).get("training_level_info_array") or ()
+            if isinstance(e, dict) and e.get("command_id") in _TRAINING_COMMAND_IDS_SET}
+
+
+def _board_levels(cmds) -> dict:
+    return {c["command_id"]: c.get("level") for c in cmds or ()
+            if isinstance(c, dict) and c.get("command_id") in _TRAINING_COMMAND_IDS_SET}
+
+
+def _serve_held_board(data: dict, full_state: dict, held: int, extra_keys=()) -> bool:
+    home = data.get("home_info")
+    if not isinstance(home, dict) or not home.get("command_info_array"):
+        return False
+    saved = full_state.get(_SERVED_BOARD_KEY)
+    if held:
+        if isinstance(saved, dict) and saved.get("turn") == held:
+            data["home_info"] = dict(home, command_info_array=copy.deepcopy(saved["cmds"]))
+            ci = data.get("chara_info")
+            mood = ci.get("motivation") if isinstance(ci, dict) else None
+            levels = _training_levels(ci)
+            mood_moved = (mood is not None and saved.get("mood") is not None
+                          and mood != saved["mood"])
+            if mood_moved or (levels and levels != _board_levels(saved["cmds"])):
+                try:
+                    _apply_gains(data["home_info"], _repriced_gains(
+                        full_state, dict(ci, turn=held), data["home_info"]))
+                    for c in data["home_info"]["command_info_array"]:
+                        if c.get("command_type") == 1 and c.get("command_id") in levels:
+                            c["level"] = levels[c["command_id"]]
+                except Exception:
+                    log.exception("held board reprice failed; serving it as saved")
+            for (ds, field), val in zip(extra_keys, saved.get("extra") or ()):
+                if isinstance(data.get(ds), dict) and field in data[ds] and val is not None:
+                    data[ds][field] = copy.deepcopy(val)
+        if held < _RACE_ENTRY_OPEN_TURN:
+            data["home_info"] = dict(data["home_info"], race_entry_restriction=1)
+        return False
+    turn = int((data.get("chara_info") or {}).get("turn") or 0)
+    cmds = home["command_info_array"]
+    extra = [copy.deepcopy((data.get(ds) or {}).get(field)) if isinstance(data.get(ds), dict) else None
+             for ds, field in extra_keys]
+    if (isinstance(saved, dict) and saved.get("turn") == turn and saved.get("cmds") == cmds
+            and (saved.get("extra") or []) == extra
+            and saved.get("mood") == (data.get("chara_info") or {}).get("motivation")):
+        return False
+    mood = (data.get("chara_info") or {}).get("motivation")
+    full_state[_SERVED_BOARD_KEY] = {"turn": turn, "cmds": copy.deepcopy(cmds), "extra": extra,
+                                     "mood": mood}
+    return True
 
 
 def _turn_end_hold(data: dict, full_state: dict, timings=_TURN_END_TIMINGS) -> int:
@@ -952,6 +1083,9 @@ def _sync_chara_info(viewer_id, endpoint: str, response: dict) -> dict:
             persisted_uds = persisted_data.get("ura_data_set")
             if persisted_uds is not None:
                 data["ura_data_set"] = copy.deepcopy(persisted_uds)
+        if isinstance(data.get("ura_data_set"), dict) and "versus_level" in data["ura_data_set"]:
+            data["ura_data_set"]["versus_level"] = int(
+                full_state.get(single_mode_events.VERSUS_LEVEL_KEY, 1) or 1)
 
         if isinstance(data.get("home_info"), dict):
             counts = _continue_counts(full_state, full_state.get(RACE_CTX_KEY))
@@ -1070,6 +1204,7 @@ def _prune_roster(viewer_id, response) -> None:
     for n in full_state.get(single_mode_events.UNLOCKED_NPCS_KEY, []) or ():
         allowed.add(n[0] if isinstance(n, (list, tuple)) else n)
     allowed.update(_npc_supporters(full_state, chara_info))
+    allowed.update(t for t, _c in single_mode_events.scenario_npc_rows(chara_info.get("scenario_id"), chara_info))
     if not allowed:
         return
 
@@ -1188,9 +1323,17 @@ def _best_running_style(chara_info: dict) -> int:
     return max(apts, key=lambda k: (apts[k], -k))
 
 
+def _default_running_style(chara_info: dict) -> int:
+    row = master_data.query_one("SELECT running_style FROM card_data WHERE id=?",
+                                (chara_info.get("card_id"),))
+    if row and row["running_style"] in (1, 2, 3, 4):
+        return row["running_style"]
+    return _best_running_style(chara_info)
+
+
 def _player_running_style(full_state: dict, chara_info: dict) -> int:
     choice = (full_state or {}).get(STYLE_CHOICE_KEY)
-    return choice if choice in (1, 2, 3, 4) else _best_running_style(chara_info)
+    return choice if choice in (1, 2, 3, 4) else _default_running_style(chara_info)
 
 
 def _career_chara_info(viewer_id) -> dict | None:
@@ -1224,7 +1367,7 @@ def _patch_player_horse(race_start_info: dict, chara_info: dict,
     h["wiz"] = chara_info.get("wiz", 0)
     h["motivation"] = chara_info.get("motivation", h.get("motivation"))
     h["fan_count"] = chara_info.get("fans", h.get("fan_count"))
-    h["running_style"] = running_style or _best_running_style(chara_info)
+    h["running_style"] = running_style or _default_running_style(chara_info)
     for apt in (
         "proper_distance_short", "proper_distance_mile", "proper_distance_middle",
         "proper_distance_long", "proper_running_style_nige", "proper_running_style_senko",
@@ -1298,7 +1441,8 @@ def _race_set_of(route_race_id_array) -> int | None:
         return None
     row = master_data.query_one(
         f"SELECT race_set_id FROM single_mode_route_race "
-        f"WHERE id IN ({','.join(map(str, ids))}) LIMIT 1")
+        f"WHERE id IN ({','.join(map(str, ids))}) "
+        f"GROUP BY race_set_id ORDER BY COUNT(*) DESC LIMIT 1")
     return row["race_set_id"] if row else None
 
 
@@ -1666,9 +1810,6 @@ def _newly_cleared_goals(full_state: dict, chara_info: dict, race_history) -> in
     return cleared if cleared > (full_state.get(GOAL_MARKED_KEY) or 0) else 0
 
 
-_CAREER_FAIL_REACTION_SUFFIX = 601
-
-
 def _purge_queued_events(response: dict, full_state: dict) -> None:
     response["data"]["unchecked_event_array"] = []
     full_state[CAREER_FAILED_FLAG_KEY] = True
@@ -1682,26 +1823,14 @@ def _purge_queued_events(response: dict, full_state: dict) -> None:
         full_state.pop(key, None)
 
 
-def _queue_fail_reaction(response, full_state, chara_info) -> None:
-    chara = (chara_info.get("card_id") or 0) // 100
-    if not chara:
-        return
-    story_id = 500000000 + chara * 1000 + _CAREER_FAIL_REACTION_SUFFIX
-    if not master_data.query_one(
-            "SELECT story_id FROM single_mode_story_data WHERE story_id=?", (story_id,)):
-        return
-    _queue_turn_event(response, full_state, _scenario_event_entry(
-        _shared_beat_event_id(_CAREER_FAIL_REACTION_SUFFIX), story_id,
-        play_timing=6, choices=[_ack_choice()], chara_id=chara), fail_chain=True)
-
-
-def _career_fail_event() -> dict:
-    e = _scenario_event_entry(1, 400000090, play_timing=1, choices=[])
+def _career_fail_event(play_timing: int = 1) -> dict:
+    e = _scenario_event_entry(1, 400000090, play_timing=play_timing, choices=[])
     e["event_contents_info"]["show_clear"] = 2
     return e
 
 
-def _maybe_fail_goal(response: dict, full_state: dict, career: dict, new_turn) -> bool:
+def _maybe_fail_goal(response: dict, full_state: dict, career: dict, new_turn,
+                    leave_timing: int = 6) -> bool:
     chara_info = career["data"]["chara_info"]
     if chara_info.get("state") == 2:
         return True
@@ -1711,13 +1840,13 @@ def _maybe_fail_goal(response: dict, full_state: dict, career: dict, new_turn) -
     _all_goals = _route_all_goals(route_ids)
     cleared = {(g[0], g[2], g[3]) for g in _all_goals
                if _goal_is_cleared(g, chara_info, history, _all_goals)}
-    failed = False
+    failed = entry_failed = False
     for t, cid, kind, _cv1 in _route_goal_rows(route_ids):
         if t == new_turn and kind == "program" and (t, 1, cid) not in cleared:
             prog = master_data.query_one(
                 "SELECT need_fan_count FROM single_mode_program WHERE id=?", (cid,))
             if prog and fans < prog["need_fan_count"]:
-                failed = True
+                failed = entry_failed = True
     for g in _all_goals:
         passive = (2, 3) + tuple(scenarios.for_chara(chara_info).passive_goal_types)
         if g[2] not in passive or g[0] + 1 != new_turn:
@@ -1726,10 +1855,13 @@ def _maybe_fail_goal(response: dict, full_state: dict, career: dict, new_turn) -
             failed = True
     if failed:
         chara_info["state"] = 2
+        timing = 1
+        if not entry_failed:
+            chara_info["turn"] = new_turn - 1
+            timing = leave_timing
         _purge_queued_events(response, full_state)
-        _queue_fail_reaction(response, full_state, chara_info)
-        _queue_turn_event(response, full_state, _career_fail_event(), fail_chain=True)
-        log.info("career goal FAILED at turn %s (state=2, fail chain queued)", new_turn)
+        _queue_turn_event(response, full_state, _career_fail_event(timing), fail_chain=True)
+        log.info("career goal FAILED at turn %s (state=2, fail chain queued)", chara_info["turn"])
     return failed
 
 
@@ -1768,8 +1900,8 @@ def _year_permissions(turn) -> str:
     if year <= 1:
         return "(1)"
     if year == 2:
-        return "(2, 3)"
-    return "(3, 4)"
+        return "(2, 3, 7)"
+    return "(3, 4, 8)"
 
 
 def _season_for_date(date: int) -> int:
@@ -1860,7 +1992,7 @@ def _build_race_condition_array(chara_info: dict, turn, race_history=()) -> list
     forced_turns = _forced_race_turns(route_ids)
     if turn is None:
         return []
-    if turn in forced_turns:
+    if turn in forced_turns and turn > 72:
         race = _race_for_turn(chara_info, turn, race_history)
         return [_race_condition_entry(race["program_id"], chara_info)] if race else []
     if _debut_retry_active(chara_info, turn, race_history):
@@ -1884,9 +2016,29 @@ def _build_race_condition_array(chara_info: dict, turn, race_history=()) -> list
     fans = chara_info.get("fans", 0)
     rows = master_data.query(
         "SELECT id FROM single_mode_program WHERE month=? AND half=? AND need_fan_count<=? "
-        f"AND race_permission IN {_year_permissions(turn)} AND base_program_id=0",
+        f"AND race_permission IN {_year_permissions(turn)} "
+        "AND (base_program_id=0 OR race_permission=8)",
         (trow["month"], trow["half"], fans))
-    return [_race_condition_entry(r["id"], chara_info) for r in rows]
+    ids = [race_conditions.venue_program(chara_info, turn, r["id"]) for r in rows]
+    debuts = _debut_program_ids()
+    if any(i in debuts for i in ids):
+        own = _route_debut_program(route_ids)
+        if own:
+            ids = [i for i in ids if i not in debuts or i == own]
+    return [_race_condition_entry(i, chara_info) for i in ids]
+
+
+def _route_debut_program(route_ids) -> int | None:
+    if not route_ids:
+        return None
+    debuts = _debut_program_ids()
+    marks = ",".join("?" * len(route_ids))
+    for r in master_data.query(
+            f"SELECT condition_id FROM single_mode_route_race WHERE id IN ({marks})",
+            tuple(route_ids)):
+        if r["condition_id"] in debuts:
+            return r["condition_id"]
+    return None
 
 
 RESERVED_RACES_KEY = "reserved_races"
@@ -2268,6 +2420,7 @@ def _retarget_race_prep_event(unchecked_event_array, chara_id: int, race_name: s
     if story_id and _story_exists(story_id):
         ev["chara_id"] = chara_id
         ev["story_id"] = event_engine.wire_story_id(story_id)
+        ev["event_id"] = _real_chapter_event_ids().get(story_id) or ev.get("event_id")
 
 
 def _post_race_event_entry(chara_info: dict, race_name: str, won: bool = True,
@@ -2281,7 +2434,7 @@ def _post_race_event_entry(chara_info: dict, race_name: str, won: bool = True,
     if not story:
         return None
     return {
-        "event_id": 11168, "chara_id": chara_id,
+        "event_id": _real_chapter_event_ids().get(story) or 11168, "chara_id": chara_id,
         "story_id": event_engine.wire_story_id(story), "play_timing": 3,
         "event_contents_info": {
             "support_card_id": 0, "show_clear": 0, "show_clear_sort_id": 0,
@@ -2487,8 +2640,12 @@ _GOAL_RACE_STAT_COUNT_DEFAULT = 3
 _JP_GOAL_RACE_SP = 45
 
 
-def _goal_race_reward(chara_info: dict, program_id, finals_round, rank) -> dict:
+def _goal_race_reward(chara_info: dict, program_id, finals_round, rank,
+                      full_state: dict = None) -> dict:
     reward = _race_reward_for(chara_info, program_id, finals_round, int(rank or 1))
+    if full_state is not None:
+        reward = scenarios.for_chara(chara_info).goal_race_reward(
+            full_state, chara_info, reward, finals_round)
     count = 5 if finals_round or region.CURRENT_REGION.get() == "jp" else _GOAL_RACE_STAT_COUNT.get(
         _race_grade_of(program_id) if program_id else None,
         _GOAL_RACE_STAT_COUNT_DEFAULT)
@@ -2588,6 +2745,7 @@ _FRIEND_ENDING = {
     809008009: (20, (("speed", 15), ("guts", 15), ("skill_point", 30))),
     809043010: (25, (("power", 12), ("guts", 18), ("skill_point", 20))),
     809049022: (36, (("speed", 15), ("stamina", 15), ("guts", 15), ("skill_point", 50))),
+    809052022: (45, (("speed", 15), ("guts", 15), ("wiz", 15), ("skill_point", 50))),
 }
 _FRIEND_ENDING_SCENARIO_CHARAS = {9050, 1139}
 
@@ -2712,7 +2870,7 @@ def _finals_event_entry(round_no: int, which: str, chara_info=None) -> dict:
 def _career_player_race_chara(chara_info: dict, viewer_id,
                               running_style: int | None = None) -> dict:
     chara = dict(chara_info)
-    chara["running_style"] = running_style or _best_running_style(chara_info)
+    chara["running_style"] = running_style or _default_running_style(chara_info)
     chara.setdefault("viewer_id", viewer_id)
     chara.setdefault("trainer_name", "Trainer")
     return chara
@@ -3477,6 +3635,9 @@ def _resolve_and_enter_race(payload: dict) -> dict:
     if isinstance(career_home, dict):
         career_home.update(_continue_counts(full_state, full_state[RACE_CTX_KEY]))
         data["home_info"] = copy.deepcopy(career_home)
+    live_uds = (career.get("data") or {}).get("ura_data_set") if isinstance(career, dict) else None
+    if not isinstance(data.get("ura_data_set"), dict) and isinstance(live_uds, dict):
+        data["ura_data_set"] = copy.deepcopy(live_uds)
     _apply_versus(data, full_state, current_turn)
     _remember_display(full_state, response)
     state_store.save_state(viewer_id, full_state)
@@ -3575,22 +3736,43 @@ def _drain_pending(full_state: dict, resolved_event_id, player_chara: int) -> li
     if resolved_event_id in pending:
         pending.remove(resolved_event_id)
     full_state[single_mode_events.PENDING_EVENTS_KEY] = pending
-    if pending and single_mode_events.npcs_unlocked_by(pending[0]):
+    if _career_has_failed(full_state):
+        fail = [r for r in full_state.get(single_mode_events.EXTRA_EVENTS_KEY) or ()
+                if isinstance(r, dict) and r.get("event_id") == 1
+                and resolved_event_id != 1]
+        full_state[single_mode_events.EXTRA_EVENTS_KEY] = []
+        full_state[single_mode_events.PENDING_EVENTS_KEY] = []
+        st = career_events.state(full_state)
+        st["queue"], st["active"] = [], None
+        return fail[:1]
+    if pending and any(single_mode_events.npcs_unlocked_by(e) for e in pending):
         nxt = pending[0]
         full_state[single_mode_events.PENDING_EVENTS_KEY] = pending[1:]
         return [single_mode_events.event_entry(nxt, player_chara)]
     already_active = career_events.active(full_state)
     if already_active is not None:
         return [already_active.wire_entry()]
-    goal_entry = full_state.pop(GOAL_EVENT_KEY, None)
+    head = career_events.peek(full_state)
+    mid_trio = head is not None and head.source == "inspiration"
+    goal_entry = None if mid_trio else full_state.pop(GOAL_EVENT_KEY, None)
     if goal_entry:
         return [goal_entry]
+    extra = list(full_state.get(single_mode_events.EXTRA_EVENTS_KEY, []))
+    ce_next = career_events.best_queued(full_state, CURRENT_ENDPOINT.get())
+    if extra and ce_next is not None:
+        ce_rank = career_events.timing_rank(ce_next, full_state)
+        te = min(range(len(extra)), key=lambda i: career_events.timing_rank(extra[i]))
+        if career_events.timing_rank(extra[te]) < ce_rank:
+            nxt = extra.pop(te)
+            full_state[single_mode_events.EXTRA_EVENTS_KEY] = extra
+            return [nxt]
     wire, _ev = career_events.serve_next(full_state, CURRENT_ENDPOINT.get())
     if wire is not None:
         return [wire]
     extra = list(full_state.get(single_mode_events.EXTRA_EVENTS_KEY, []))
     if extra:
-        nxt = extra.pop(0)
+        nxt = extra.pop(min(range(len(extra)),
+                            key=lambda i: career_events.timing_rank(extra[i])))
         full_state[single_mode_events.EXTRA_EVENTS_KEY] = extra
         return [nxt]
     if pending:
@@ -3644,6 +3826,10 @@ def _queue_turn_event(response: dict, full_state: dict, entry: dict,
     if not shown and not full_state.get(SCENARIO_SLOT_RESERVED_KEY):
         response["data"]["unchecked_event_array"] = [entry]
         return
+    if (not front and shown and isinstance(shown[0], dict)
+            and int(entry.get("play_timing") or 0) in _TURN_END_TIMINGS
+            and int(shown[0].get("play_timing") or 0) in _TURN_START_TIMINGS):
+        front = True
     queue = full_state.setdefault(single_mode_events.EXTRA_EVENTS_KEY, [])
     if not shown:
         if front:
@@ -3677,6 +3863,18 @@ def _emit_turn_event(response: dict, full_state: dict, event: career_events.Even
             wire, _ev = career_events.serve_next(full_state, CURRENT_ENDPOINT.get())
             if wire is not None:
                 response["data"]["unchecked_event_array"] = [wire]
+        elif (shown and isinstance(shown[0], dict)
+              and int(shown[0].get("play_timing") or 0) in _TURN_START_TIMINGS):
+            head = career_events.peek(full_state)
+            active = career_events.active(full_state)
+            legacy_shown = active is None or active.event_id != shown[0].get("event_id")
+            if (legacy_shown and head is not None
+                    and int(head.play_timing or 0) in _TURN_END_TIMINGS):
+                wire, _ev = career_events.serve_next(full_state, CURRENT_ENDPOINT.get())
+                if wire is not None:
+                    queue = full_state.get(single_mode_events.EXTRA_EVENTS_KEY) or []
+                    full_state[single_mode_events.EXTRA_EVENTS_KEY] = list(shown) + list(queue)
+                    response["data"]["unchecked_event_array"] = [wire]
     return accepted
 
 
@@ -3746,11 +3944,13 @@ def _handle_ura_check_event(payload: dict) -> dict:
     turn = payload.get("current_turn", updated.get("turn"))
     event_id = payload.get("event_id")
     ce_resolution = career_events.resolve(full_state, updated, event_id, payload.get("choice_number"),
-                                          career=career, current_turn=turn)
+                                          career=career, current_turn=turn, viewer_id=viewer_id)
     _note_not_up(data, full_state.pop(RACE_REWARD_NOT_UP_KEY, None))
     if ce_resolution is not None:
         _note_not_up(data, ce_resolution.extra.get("not_up"))
         _note_not_up(data, (ce_resolution.applied or {}).get("not_up"))
+    if ce_resolution is not None and "select_index" in ce_resolution.extra:
+        data["_played_branch"] = ce_resolution.extra["select_index"]
     if ce_resolution is not None and "factors" in ce_resolution.extra:
         data["event_effected_factor_array"] = ce_resolution.extra["factors"]
     if isinstance(career_home, dict):
@@ -3854,6 +4054,8 @@ def _handle_ura_check_event(payload: dict) -> dict:
 
     chain_next = scenarios.for_chara(updated).chain_entry_after(full_state, event_id)
     if chain_next:
+        if event_id:
+            _register_npc_unlocks(full_state, updated, event_id)
         data["chara_info"] = updated
         if isinstance(career_home, dict):
             data["home_info"] = copy.deepcopy(career_home)
@@ -3926,17 +4128,87 @@ def _failure_inputs(viewer_id):
 def handle_ura_check_event(payload: dict) -> dict:
     viewer_id = payload.get("viewer_id")
     before = _failure_inputs(viewer_id)
+    mood_before = _mood_inputs(viewer_id)
     response = _handle_ura_check_event(payload)
     try:
         _refresh_failure_after_event(viewer_id, before, response)
     except Exception:
         log.exception("failure-rate refresh after check_event failed; skipping")
+    try:
+        _reprice_after_mood(viewer_id, mood_before, response)
+    except Exception:
+        log.exception("board reprice after check_event failed; skipping")
+    _end_event_chain_state(viewer_id, response)
     return response
+
+
+def _end_event_chain_state(viewer_id, response) -> None:
+    data = (response or {}).get("data")
+    if not isinstance(data, dict):
+        return
+    events = data.get("unchecked_event_array") or []
+    if events and not (isinstance(events[0], dict)
+                       and int(events[0].get("play_timing") or 0) in _TURN_START_TIMINGS):
+        return
+    ci = data.get("chara_info")
+    if not isinstance(ci, dict) or ci.get("playing_state") != 5 or ci.get("state") == 3:
+        return
+    ci["playing_state"] = 1
+    full_state = state_store.get_state(viewer_id) or {}
+    stored = ((full_state.get(STATE_KEY) or {}).get("data") or {}).get("chara_info")
+    if isinstance(stored, dict) and stored is not ci and stored.get("playing_state") == 5:
+        stored["playing_state"] = 1
+        state_store.save_state(viewer_id, full_state)
+
+
+def _mood_inputs(viewer_id):
+    full_state = state_store.get_state(viewer_id) or {}
+    career = full_state.get(STATE_KEY)
+    if not isinstance(career, dict):
+        return None
+    ci = (career.get("data") or {}).get("chara_info") or {}
+    return (ci.get("turn"), ci.get("motivation"))
+
+
+def _repriced_gains(full_state: dict, chara_info: dict, home: dict) -> dict:
+    career = full_state.get(STATE_KEY)
+    if not isinstance(career, dict) or not isinstance(home, dict):
+        return {}
+    shadow = {"data": {**(career.get("data") or {}), "home_info": copy.deepcopy(home)}}
+    if not refresh_board(full_state, copy.deepcopy(chara_info), shadow):
+        return {}
+    return {c.get("command_id"): c.get("params_inc_dec_info_array")
+            for c in shadow["data"]["home_info"].get("command_info_array") or ()
+            if c.get("command_type") == 1}
+
+
+def _apply_gains(home: dict, gains: dict) -> None:
+    for c in (home or {}).get("command_info_array") or ():
+        if (c.get("command_type") == 1 and c.get("is_enable")
+                and gains.get(c.get("command_id")) is not None):
+            c["params_inc_dec_info_array"] = copy.deepcopy(gains[c["command_id"]])
+
+
+def _reprice_after_mood(viewer_id, before, response) -> None:
+    after = _mood_inputs(viewer_id)
+    if before is None or after is None or before[0] != after[0] or before[1] == after[1]:
+        return
+    full_state = state_store.get_state(viewer_id) or {}
+    data = (full_state.get(STATE_KEY) or {}).get("data") or {}
+    home = data.get("home_info")
+    gains = _repriced_gains(full_state, data.get("chara_info") or {}, home)
+    if not gains:
+        return
+    _apply_gains(home, gains)
+    served = ((response or {}).get("data") or {}).get("home_info")
+    if isinstance(served, dict) and served is not home:
+        _apply_gains(served, gains)
+    state_store.save_state(viewer_id, full_state)
 
 
 def _refresh_failure_after_event(viewer_id, before, response) -> None:
     after = _failure_inputs(viewer_id)
-    if before is None or after is None or after == before:
+    if before is None or after is None:
         return
     full_state = state_store.get_state(viewer_id) or {}
     career = full_state.get(STATE_KEY)
@@ -3975,11 +4247,12 @@ def _refresh_failure_after_gains(career_state, response, full_state) -> None:
 def _apply_versus(data, full_state, turn):
     if not scenarios.for_chara((data or {}).get("chara_info")).has_versus_npc:
         return None
+    turn = ((data or {}).get("chara_info") or {}).get("turn") or turn
     return single_mode_events.apply_versus_state(
         data, turn,
         full_state.get(single_mode_events.UNLOCKED_NPCS_KEY, []),
         full_state.get(single_mode_events.VERSUS_LEVEL_KEY, 1),
-        full_state.get(single_mode_events.DUEL_LAST_TURN_KEY))
+        full_state.get(single_mode_events.DUEL_LAST_TURN_KEY), full_state=full_state)
 
 
 def _happy_meek_facility(turn, full_state, chara_info=None):
@@ -3989,7 +4262,7 @@ def _happy_meek_facility(turn, full_state, chara_info=None):
         turn,
         full_state.get(single_mode_events.UNLOCKED_NPCS_KEY, []),
         full_state.get(single_mode_events.VERSUS_LEVEL_KEY, 1),
-        full_state.get(single_mode_events.DUEL_LAST_TURN_KEY))
+        full_state.get(single_mode_events.DUEL_LAST_TURN_KEY), full_state=full_state)
 
 
 def _duel_choice_to_stat(choice_number, options):
@@ -4010,7 +4283,7 @@ def _resolve_duel(full_state, chara_info, event, choice_number, current_turn=Non
     if duel_result.get("won"):
         full_state[single_mode_events.VERSUS_LEVEL_KEY] = vlevel + 1
     full_state[single_mode_events.DUEL_LAST_TURN_KEY] = current_turn if current_turn is not None else chara_info.get("turn")
-    return {}
+    return {"select_index": 1 if duel_result.get("won") else 3}
 
 
 @career_events.resolver("training_failure")
@@ -4021,6 +4294,15 @@ def _resolve_training_failure(full_state, chara_info, event, choice_number, **kw
         payload.get("stat") or "speed")
     full_state.pop(single_mode_events.FAIL_CTX_KEY, None)
     return {}
+
+
+def _duel_preview_rows(full_state: dict) -> list:
+    ev = career_events.find(full_state, single_mode_events.DUEL_EVENT_ID)
+    ctx = (ev.payload if ev is not None else None) or full_state.get(single_mode_events.DUEL_CTX_KEY) or {}
+    vlevel = ctx.get("versus_level", full_state.get(single_mode_events.VERSUS_LEVEL_KEY, 1))
+    options = ctx.get("stat_options") or single_mode_events.duel_stat_options(vlevel)
+    ci = ((full_state.get(STATE_KEY) or {}).get("data") or {}).get("chara_info")
+    return single_mode_events.duel_preview(options, ci, vlevel)
 
 
 def handle_get_choice_reward(payload: dict) -> dict:
@@ -4035,14 +4317,12 @@ def handle_get_choice_reward(payload: dict) -> dict:
                 "data": {"choice_reward_array": own}}
 
     if event_id == single_mode_events.DUEL_EVENT_ID:
-        vlevel = full_state.get(single_mode_events.VERSUS_LEVEL_KEY, 1)
-        ctx = full_state.get(single_mode_events.DUEL_CTX_KEY) or {}
-        options = ctx.get("stat_options") or single_mode_events.duel_stat_options(vlevel)
         return {"response_code": 1, "data_headers": {"result_code": 1, "notifications": {}},
-                "data": {"choice_reward_array": single_mode_events.duel_preview(options)}}
+                "data": {"choice_reward_array": _duel_preview_rows(full_state)}}
 
     ctx = full_state.get(single_mode_events.FAIL_CTX_KEY) or {}
-    if event_id in (single_mode_events.NORMAL_FAIL_EVENT, single_mode_events.WORST_FAIL_EVENT):
+    if (event_id in (single_mode_events.NORMAL_FAIL_EVENT, single_mode_events.WORST_FAIL_EVENT)
+            or (ctx and ctx.get('event_id') == event_id)):
         preview = single_mode_events.failure_preview(
             ctx.get("worst", event_id == single_mode_events.WORST_FAIL_EVENT),
             ctx.get("stat") or "speed", career_ci)
@@ -4195,7 +4475,25 @@ def handle_ura_race_start(payload: dict) -> dict:
         data["race_start_info"] = copy.deepcopy(race_ctx["race_start_info"])
     else:
         _patch_player_horse(data.get("race_start_info", {}), _career_chara_info(viewer_id))
+    _serve_versus_without_chara(data, full_state, payload.get("current_turn"))
     return response
+
+
+def _serve_versus_without_chara(data: dict, full_state: dict, turn) -> None:
+    career = full_state.get(STATE_KEY)
+    if not isinstance(career, dict):
+        return
+    ci = (career.get("data") or {}).get("chara_info") or {}
+    live_uds = (career.get("data") or {}).get("ura_data_set")
+    if not scenarios.for_chara(ci).has_versus_npc or not isinstance(live_uds, dict):
+        return
+    if not isinstance(data.get("ura_data_set"), dict):
+        data["ura_data_set"] = copy.deepcopy(live_uds)
+    had_ci = "chara_info" in data
+    data.setdefault("chara_info", ci)
+    _apply_versus(data, full_state, turn)
+    if not had_ci:
+        data.pop("chara_info", None)
 
 
 _URA_RACE_SEED_DIR = region.seeds_dir() / "ura_race"
@@ -4265,7 +4563,50 @@ def _build_race_reward_info(program_id, result_rank: int, gained_fans: int,
     return info
 
 
+def _apply_reward_campaigns(info: dict, full_state: dict, chara_info: dict) -> dict:
+    from . import campaigns
+    pct, ids = campaigns.race_reward_campaigns(
+        full_state or {}, (chara_info or {}).get("scenario_id") or 0)
+    info["campaign_id_array"] = ids
+    if pct != 100:
+        for key in ("race_reward", "race_reward_bonus"):
+            for it in info.get(key) or ():
+                it["item_num"] = it["item_num"] * pct // 100
+    _apply_race_limit_reward(info, full_state)
+    return info
+
+
+RACE_LIMIT_REWARD_KEY = "race_limit_reward_used"
+
+
+def _apply_race_limit_reward(info: dict, full_state: dict) -> None:
+    career = (full_state or {}).get(STATE_KEY)
+    if not isinstance(career, dict):
+        return
+    import time
+    now = int(time.time())
+    try:
+        rows = master_data.query(
+            "SELECT * FROM single_mode_race_limit_reward WHERE start_date<=? AND end_date>=? "
+            "ORDER BY id", (now, now))
+    except Exception:
+        return
+    used = career["data"].setdefault(RACE_LIMIT_REWARD_KEY, {})
+    out = []
+    for r in rows:
+        n = int(used.get(str(r["id"])) or 0)
+        if n >= r["reward_limit"]:
+            continue
+        used[str(r["id"])] = n + 1
+        out.append({"item_type": r["item_category"], "item_id": r["item_id"],
+                    "item_num": r["reward_num"], "rest_count": r["reward_limit"] - n - 1,
+                    "reward_id": r["id"]})
+    if out:
+        info["race_reward_limit"] = out
+
+
 RACE_TROPHY_KEY = "trophy_award"
+NEXT_EXEC_EVENTS_KEY = "next_exec_events"
 
 
 def _race_trophy_award(full_state: dict, viewer_id, race_ctx: dict, chara_info: dict,
@@ -4296,7 +4637,8 @@ def _credit_race_reward(full_state: dict, race_ctx: dict) -> dict:
         return credited
     reward = race_ctx.get("reward_info") or {}
     summary = {"add_item_list": [], "add_fcoin": 0}
-    for it in (reward.get("race_reward") or []) + (reward.get("race_reward_bonus") or []):
+    for it in ((reward.get("race_reward") or []) + (reward.get("race_reward_bonus") or [])
+               + (reward.get("race_reward_limit") or [])):
         item_id, num = int(it.get("item_id") or 0), int(it.get("item_num") or 0)
         if not item_id or num <= 0:
             continue
@@ -4399,6 +4741,12 @@ def _debut_runs_voluntary(chara_info: dict, program_id) -> bool:
 
 def _race_reward_for(chara_info: dict, program_id, finals_round, result_rank: int,
                      full_state: dict = None) -> dict:
+    base_stat, base_sp = _race_reward_base(chara_info, program_id, finals_round, result_rank)
+    return {"stats": _scale_race_reward(base_stat, chara_info, full_state),
+            "sp": _scale_race_reward(base_sp, chara_info, full_state)}
+
+
+def _race_reward_base(chara_info: dict, program_id, finals_round, result_rank: int) -> tuple:
     if finals_round:
         table = scenarios.for_chara(chara_info).finals_reward_base or _FINALS_REWARD_BASE
         base_stat, base_sp = table.get(finals_round, (10, 40))
@@ -4416,8 +4764,7 @@ def _race_reward_for(chara_info: dict, program_id, finals_round, result_rank: in
         base_stat, base_sp = 1, max(10, base_sp - 10)
     elif result_rank >= 4:
         base_stat, base_sp = max(1, base_stat // 2), max(10, base_sp - 5)
-    return {"stats": _scale_race_reward(base_stat, chara_info, full_state),
-            "sp": _scale_race_reward(base_sp, chara_info, full_state)}
+    return base_stat, base_sp
 
 
 def _apply_race_reward(chara_info: dict, reward: dict) -> list:
@@ -4484,8 +4831,13 @@ def _append_race_history(career_data: dict, race_ctx: dict, chara_info: dict, re
         "result_rank": result_rank,
         "frame_order": (horses[0].get("frame_order", 1) if horses else 1),
         "npc_count": max(0, len(horses) - 1),
+        "npc_frame_order_array": sorted(
+            ({"npc_id": int(h.get("mob_id") or h.get("chara_id") or 0),
+              "frame_order": h.get("frame_order", 0)} for h in horses[1:]),
+            key=lambda x: x["npc_id"]),
         "popularity": race_ctx.get("player_popularity"),
         "rival_ranks": race_ctx.get("rival_finish_orders"),
+        "win_margin_lengths": _win_margin_lengths(race_ctx, chara_info),
         "rushed_count": race_ctx.get("player_rushed_count"),
         "skills_used": race_ctx.get("player_skills_used"),
         "overtakes": race_ctx.get("player_overtakes"),
@@ -4501,7 +4853,10 @@ _WIRE_RACE_HISTORY_FIELDS = (
 def _wire_race_history(history) -> list:
     if not isinstance(history, list):
         return history
-    return [{k: e[k] for k in _WIRE_RACE_HISTORY_FIELDS if k in e}
+    fields = _WIRE_RACE_HISTORY_FIELDS
+    if region.CURRENT_REGION.get() == "jp":
+        fields += ("npc_frame_order_array",)
+    return [{k: e[k] for k in fields if k in e}
             if isinstance(e, dict) else e
             for e in history]
 
@@ -4583,9 +4938,15 @@ def handle_ura_race_end(payload: dict) -> dict:
         career["data"]["chara_info"] = chara_info
         if "race_history" in data:
             data["race_history"] = _wire_race_history(history)
+        if "win_saddle_id_array" in data:
+            from . import trained_chara
+            data["win_saddle_id_array"] = trained_chara._win_saddles_from_results(history)
         if "race_condition_array" in data:
             data["race_condition_array"] = _build_race_condition_array(
                 chara_info, chara_info.get("turn"), history)
+        career_home = career["data"].get("home_info")
+        if "home_info" in data and isinstance(career_home, dict):
+            data["home_info"] = copy.deepcopy(career_home)
         race_ctx["won"] = won
         if not already_committed:
             race_ctx["gained_fans_committed"] = gained_fans
@@ -4598,6 +4959,8 @@ def handle_ura_race_end(payload: dict) -> dict:
         reward_info = _build_race_reward_info(
             race_ctx.get("program_id"), result_rank, gained_fans,
             (career["data"].get("race_history") if career else None))
+        _apply_reward_campaigns(reward_info, full_state,
+                                career["data"].get("chara_info") if career else None)
         race_ctx["reward_info"] = reward_info
         if career:
             full_state[RACE_CTX_KEY] = race_ctx
@@ -4620,10 +4983,59 @@ def handle_ura_race_end(payload: dict) -> dict:
     data["add_trophy_info"] = trophy
     data["trophy_reward_info"] = trophy_reward
     if isinstance(data.get("reward_summary_info"), dict):
-        data["reward_summary_info"]["add_total_fan"] = gained_fans
+        data["reward_summary_info"]["add_total_fan"] = 0
         data["reward_summary_info"]["add_item_list"] = copy.deepcopy(credited["add_item_list"])
         data["reward_summary_info"]["add_fcoin"] = credited["add_fcoin"]
+    if career:
+        _apply_versus(data, full_state, payload.get("current_turn"))
+        _refresh_run_epithets(data, full_state, career)
+        state_store.save_state(viewer_id, full_state)
     return response
+
+
+_MARGIN_LENGTHS = (0, 0, 0, .5, .75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4,
+                   5, 6, 7, 8, 9, 10, 11)
+
+
+def _win_margin_lengths(race_ctx: dict, chara_info: dict):
+    if int(race_ctx.get("player_finish_order") or 0) != 1 or not race_ctx.get("race_scenario"):
+        return None
+    try:
+        import base64, gzip
+        from ..simulation.scenario_format import decode_scenario
+        from .heroes import horse_length
+        res = decode_scenario(gzip.decompress(base64.b64decode(race_ctx["race_scenario"])))["results"]
+        horses = (race_ctx.get("race_start_info") or {}).get("race_horse_data") or []
+        card = int(chara_info.get("card_id") or 0)
+        me = next((h for h in horses if int(h.get("card_id") or 0) == card
+                   and not h.get("mob_id")), None)
+        gate = int((me or {}).get("frame_order") or 0) - 1
+        if not 0 <= gate < len(res):
+            return None
+        second = min((r.finish_time for i, r in enumerate(res) if i != gate), default=None)
+        if second is None:
+            return None
+        return _MARGIN_LENGTHS[min(horse_length(second - res[gate].finish_time),
+                                   len(_MARGIN_LENGTHS) - 1)]
+    except Exception:
+        log.exception("win margin decode failed")
+        return None
+
+
+def _refresh_run_epithets(data: dict, full_state: dict, career: dict) -> None:
+    try:
+        ci = career["data"]["chara_info"]
+        facts = epithets.build_facts(career["data"], ci, full_state)
+        history = career["data"].get("race_history") or ()
+        last = history[-1].get("program_id") if history else None
+        facts["career_complete"] = _finals_round_for_program(last) == 3
+        ids = sorted(set(epithets.earned_ids(facts)) | set(ci.get("nickname_id_array") or ()))
+    except Exception:
+        log.exception("in-run epithet refresh failed")
+        return
+    ci["nickname_id_array"] = ids
+    if isinstance(data.get("chara_info"), dict):
+        data["chara_info"]["nickname_id_array"] = list(ids)
 
 
 def handle_ura_race_out(payload: dict) -> dict:
@@ -4738,8 +5150,7 @@ def handle_ura_race_out(payload: dict) -> dict:
                 if placement_failed:
                     chara_info["state"] = 2
                     _purge_queued_events(response, full_state)
-                    _queue_fail_reaction(response, full_state, chara_info)
-                    _queue_turn_event(response, full_state, _career_fail_event(),
+                    _queue_turn_event(response, full_state, _career_fail_event(3),
                                       fail_chain=True)
                     log.info("goal race at turn %s lost (rank %s) -- career failed, "
                              "skipped goal-complete celebration/reward",
@@ -4751,7 +5162,8 @@ def handle_ura_race_out(payload: dict) -> dict:
                 elif is_goal and not _debut_runs_voluntary(chara_info,
                                                              race_ctx.get("program_id")):
                     ev = _goal_race_reward(chara_info, race_ctx.get("program_id"),
-                                           race_ctx.get("finals_round"), rank)
+                                           race_ctx.get("finals_round"), rank,
+                                           full_state)
                     entry = (_post_race_event_entry(chara_info, story_name,
                                                     won=won_flag, choices=1,
                                                     rank=rank,
@@ -4759,6 +5171,11 @@ def handle_ura_race_out(payload: dict) -> dict:
                              if story_name else None)
                     title = story_name
                     if entry:
+                        if any(e.get("target_id") == _DIRECTOR_TARGET
+                               for e in chara_info.get("evaluation_info_array") or ()):
+                            ev["choices"][0]["effects"].append(
+                                {"type": "npc_bond", "target_id": _DIRECTOR_TARGET,
+                                 "chara_id": 9002, "value": "+4"})
                         try:
                             ev = _branch_post_race(full_state, chara_info, entry, ev)
                         except Exception:
@@ -4808,13 +5225,13 @@ def handle_ura_race_out(payload: dict) -> dict:
                         and [103, 9003] not in unlocked
                         and 1016 not in done
                         and _race_grade_of(race_ctx.get("program_id")) == _DEBUT_GRADE):
-                    pending = list(full_state.get(single_mode_events.PENDING_EVENTS_KEY, []))
-                    if 1016 not in pending:
-                        pending.append(1016)
-                    full_state[single_mode_events.PENDING_EVENTS_KEY] = pending
+                    due = list(full_state.get(NEXT_EXEC_EVENTS_KEY) or [])
+                    if 1016 not in due:
+                        due.append(1016)
+                    full_state[NEXT_EXEC_EVENTS_KEY] = due
             except Exception:
                 log.exception("reporter unlock failed; skipping")
-        if finals_round != 3 and chara_info.get("state") != 3:
+        if finals_round != 3 and chara_info.get("state") not in (2, 3):
             chara_info["turn"] = chara_info.get("turn", 1) + 1
         chara_info["playing_state"] = 1
         career["data"]["chara_info"] = chara_info
@@ -4840,7 +5257,8 @@ def handle_ura_race_out(payload: dict) -> dict:
                 log.exception("inspiration roll failed post-race; skipping")
         try:
             if chara_info.get("state") != 2:
-                _maybe_fail_goal(response, full_state, career, chara_info.get("turn"))
+                _maybe_fail_goal(response, full_state, career, chara_info.get("turn"),
+                                 leave_timing=3)
                 with _scenario_slot_reserved(full_state, race_pending):
                     _maybe_queue_chara_story(response, full_state, career, chara_info.get("turn"),
                                              after_race=race_ctx.get("turn") if race_ctx else None)
@@ -4899,9 +5317,11 @@ def handle_ura_race_out(payload: dict) -> dict:
                               friendship_stacks=_friendship_stacks(full_state),
                               full_state=full_state)
             data["home_info"] = copy.deepcopy(career_home)
+        chara_info["race_program_id"] = 0
         data["chara_info"] = chara_info
         career["data"]["chara_info"] = chara_info
         full_state.pop(RACE_CTX_KEY, None)
+        _apply_versus(data, full_state, payload.get("current_turn"))
 
     _remember_display(full_state, response)
     state_store.save_state(viewer_id, full_state)
@@ -5154,13 +5574,19 @@ SCENARIO_FIXED_FIRED_KEY = "scenario_fixed_fired"
 GRAND_LIVE_EVENTS_FIRED_KEY = "grand_live_events_fired"
 
 
+_REPORTER_BOND_5 = {"type": "npc_bond", "target_id": 103, "chara_id": 9003, "value": "+5"}
 _DIRECTOR_FAN_EVENTS = (
-    (400001028, [{"type": "speed", "value": "+10"}]),
-    (400001029, [{"type": "power", "value": "+10"}]),
-    (400001026, [{"type": "wisdom", "value": "+10"}]),
-    (400001023, [{"type": "mood", "value": "+1"}]),
+    (400001028, [[{"type": "speed", "value": "+10"}]], False),
+    (400001029, [[{"type": "power", "value": "+10"}]], False),
+    (400001023, [[{"type": "mood", "value": "+1"}]], False),
+    (400001026, [[{"type": "wisdom", "value": "+10"}, _REPORTER_BOND_5]], True),
+    (400001025, [[{"type": "power", "value": "+10"}, _REPORTER_BOND_5],
+                 [{"type": "speed", "value": "+10"}, _REPORTER_BOND_5]], True),
+    (400001027, [[{"type": "stamina", "value": "+10"}, _REPORTER_BOND_5],
+                 [{"type": "guts", "value": "+10"}, _REPORTER_BOND_5]], True),
 )
-_DIRECTOR_FAN_CHANCE = 0.10
+_DIRECTOR_FAN_EVENT_ID = 10000
+_DIRECTOR_FAN_CHANCE = 0.047
 DIRECTOR_FAN_FIRED_KEY = "director_fan_fired"
 
 
@@ -5292,19 +5718,21 @@ def _maybe_fire_race_fatigue(full_state: dict, career: dict, response: dict,
 
 def _maybe_fire_director_fan(full_state: dict, career: dict, response: dict) -> bool:
     chara_info = career["data"]["chara_info"]
-    if _bond_of(chara_info, _DIRECTOR_TARGET) < _DIRECTOR_MAX_BOND:
+    if chara_info.get("scenario_id") != 1:
         return False
     fired = set(full_state.get(DIRECTOR_FAN_FIRED_KEY) or ())
-    pool = [(sid, eff) for sid, eff in _DIRECTOR_FAN_EVENTS if sid not in fired]
+    unlocked = [list(x) for x in full_state.get(single_mode_events.UNLOCKED_NPCS_KEY, [])]
+    reporter = [_ETSUKO_TARGET, _ETSUKO_CHARA] in unlocked
+    pool = [(sid, choices) for sid, choices, needs in _DIRECTOR_FAN_EVENTS
+            if sid not in fired and (reporter or not needs)]
     if not pool or random.random() >= _DIRECTOR_FAN_CHANCE:
         return False
-    story_id, effects = random.choice(pool)
+    story_id, choices = random.choice(pool)
     if not _story_exists(story_id):
         return False
-    ev = {"choices": [{"effects": effects}]}
+    ev = {"choices": [{"effects": c} for c in choices]}
     entry = event_engine.career_event_entry(
-        ev, event_engine.CHARA_EVENT_ID, story_id,
-        chara_id=(chara_info.get("card_id") or 0) // 100,
+        ev, _DIRECTOR_FAN_EVENT_ID, story_id, chara_id=0,
         support_card_id=0, play_timing=1)
     _queue_turn_event(response, full_state, entry)
     full_state[DIRECTOR_FAN_FIRED_KEY] = sorted(fired | {story_id})
@@ -5414,7 +5842,8 @@ _CLIENT_SWAPPED_STORIES = frozenset({501097120})
 
 def _chapter_excluded(card_id: int) -> frozenset:
     chara = card_id // 100
-    return (_branch_story_ids(chara) | _secret_story_ids(card_id)
+    return (_branch_story_ids(chara)
+            | (_secret_story_ids(card_id) - _scheduled_secrets(card_id))
             | frozenset(_race_restrict_stories().values())
             | frozenset(s for (c, _t), ids in _FORCED_REST_TURNS.items() if c == chara
                         for s in ids))
@@ -5434,6 +5863,8 @@ def _maybe_queue_chapters(full_state: dict, career: dict, response: dict, new_tu
     played = set(career["data"].get(PLAYED_STORIES_KEY) or ())
     choices = {int(k): v for k, v in (career["data"].get(STORY_CHOICES_KEY) or {}).items()}
     excluded = _chapter_excluded(card_id)
+    scheduled = {sid: ev for sid, _t, ev in _secret_events_for(card_id)
+                 if sid in _scheduled_secrets(card_id)}
     lo = 500000000 + chara * 1000
     extra = tuple((s, t) for s, t in _FIXED_UNSCHEDULED_STORIES.items() if lo <= s < lo + 1000)
     for story, turn in career_branches.chapter_stories(chara) + extra:
@@ -5446,8 +5877,17 @@ def _maybe_queue_chapters(full_state: dict, career: dict, response: dict, new_tu
             continue
         if not career_branches.gate_met(story, played, choices):
             continue
+        secret = None
+        if story in scheduled:
+            secret = scheduled[story]
+            if not secret_events.is_eligible(
+                    secret, _secret_context(full_state, career["data"], new_turn)):
+                continue
+            secret = _scale_secret_rewards(
+                _expand_race_rewards(secret, chara_info, career["data"].get("race_history")),
+                story, chara_info, full_state, scheduled=True)
         fired.append(story)
-        _queue_chapter(full_state, response, chara_info, story)
+        _queue_chapter(full_state, response, chara_info, story, ev=secret)
 
 
 @functools.lru_cache(maxsize=1)
@@ -5466,12 +5906,13 @@ def _chapter_event_id(story: int) -> int:
     return _real_chapter_event_ids().get(story) or _CHAPTER_SLOT_BASE + story % 1000
 
 
-def _queue_chapter(full_state: dict, response: dict, chara_info: dict, story: int) -> None:
+def _queue_chapter(full_state: dict, response: dict, chara_info: dict, story: int,
+                   ev: dict = None) -> None:
     card_id = chara_info.get("card_id") or 0
     chara = card_id // 100
     slot = _chapter_event_id(story)
     title = event_engine.event_title(story)
-    ev = event_engine.resolve(story, title, card_id)
+    ev = ev or event_engine.resolve(story, title, card_id)
     if not ev or not ev.get("choices"):
         _queue_turn_event(response, full_state, _scenario_event_entry(
             slot, story, play_timing=1, choices=[_ack_choice()], chara_id=chara))
@@ -5942,7 +6383,7 @@ def _race_deadline(race_id, year=None):
     return max(turns) if turns else None
 
 
-def _secret_context(full_state: dict, career_data: dict) -> secret_events.Context:
+def _secret_context(full_state: dict, career_data: dict, acted_turn=None) -> secret_events.Context:
     chara_info = career_data.get("chara_info") or {}
     history = career_data.get("race_history") or []
     goals = _route_all_goals(tuple(chara_info.get("route_race_id_array") or ()))
@@ -5970,13 +6411,86 @@ def _secret_context(full_state: dict, career_data: dict) -> secret_events.Contex
         ))
     return secret_events.Context(
         races=races,
-        turn=chara_info.get("turn") or 0,
+        turn=acted_turn or chara_info.get("turn") or 0,
         fans=chara_info.get("fans") or 0,
         goals_cleared=_goals_cleared_count(chara_info, history),
         fired_story_ids=set(full_state.get(event_engine.FIRED_EVENTS_KEY) or ()),
         promises_fulfilled=set(career_data.get(FAN_PROMISES_DONE_KEY) or ()),
         race_deadline=_race_deadline,
     )
+
+
+@functools.lru_cache(maxsize=1)
+def _secret_overlay() -> dict:
+    if region.PROCESS_REGION != "jp":
+        return {}
+    path = Path(__file__).resolve().parent.parent.parent / "data" / "jp_secret_events_overlay.json"
+    try:
+        return json.loads(path.read_text())
+    except (OSError, ValueError):
+        return {}
+
+
+_SECRET_CONDITION_FIX = {
+    501007309: [["win", "101201|3"]],
+    501008318: [["race_pn", "101101|3", 2]],
+    501048308: [["participate", "203101|2"], ["do_not_win", "203101|2"]],
+    501091120: [["win_n_of", 0, [102101, 100401, 100901, 101401, "101701|2", 100801,
+                                 "101701|3"]], ["date", 3, 12, 2]],
+}
+_SECRET_EFFECT_DROP = {501007309: {"power"}}
+
+
+_SECRET_STAT_FIX = {
+    501003309: [{"type": "all_stats", "value": "+3"}, {"type": "guts", "value": "+15"},
+                {"type": "skill_points", "value": "+45"}],
+    501018309: [{"type": "all_stats", "value": "+3"}, {"type": "skill_points", "value": "+20"},
+                {"type": "race_rewards"}],
+    501045304: [{"type": "race_rewards"}],
+}
+_STAT_LINE_TYPES = ("speed", "stamina", "power", "guts", "wisdom", "wiz", "all_stats",
+                    "random_stats", "skill_points", "race_rewards")
+
+
+def _fix_secret_event(sid: int, ev: dict) -> dict:
+    has_rr = any(e.get("type") == "race_rewards" for ch in ev.get("choices") or ()
+                 for e in ch.get("effects") or ())
+    if not (has_rr or sid in _SECRET_CONDITION_FIX or sid in _SECRET_EFFECT_DROP
+            or sid in _SECRET_STAT_FIX):
+        return ev
+    ev = copy.deepcopy(ev)
+    if sid in _SECRET_CONDITION_FIX:
+        ev["conditions"] = copy.deepcopy(_SECRET_CONDITION_FIX[sid])
+    drop = _SECRET_EFFECT_DROP.get(sid) or ()
+    for choice in ev.get("choices") or ():
+        effects = [e for e in choice.get("effects") or () if e.get("type") not in drop]
+        if sid in _SECRET_STAT_FIX:
+            effects = (copy.deepcopy(_SECRET_STAT_FIX[sid])
+                       + [e for e in effects if e.get("type") not in _STAT_LINE_TYPES])
+        if not _secret_race_event(sid):
+            effects = [e for e in effects if e.get("type") != "race_rewards"]
+        choice["effects"] = effects
+    return ev
+
+
+def _expand_race_rewards(ev: dict, chara_info: dict, history) -> dict:
+    if not any(e.get("type") == "race_rewards" for ch in ev.get("choices") or ()
+               for e in ch.get("effects") or ()):
+        return ev
+    last = (history or [None])[-1]
+    ev = copy.deepcopy(ev)
+    for choice in ev.get("choices") or ():
+        out = []
+        for e in choice.get("effects") or ():
+            if e.get("type") != "race_rewards":
+                out.append(e)
+            elif last:
+                stat, sp = _race_reward_base(chara_info, last.get("program_id"), None,
+                                             int(last.get("result_rank") or 99))
+                out += [{"type": "all_stats", "value": f"+{stat}"},
+                        {"type": "skill_points", "value": f"+{sp}"}]
+        choice["effects"] = out
+    return ev
 
 
 def _secret_events_for(card_id: int) -> list:
@@ -5998,6 +6512,12 @@ def _secret_events_for(card_id: int) -> list:
         sid = titles.get(event_engine.title_key(ev.get("name") or ""))
         if sid and ev.get("choices"):
             out.append((sid, ev["name"], ev))
+    out = [(sid, name, _fix_secret_event(sid, ev)) for sid, name, ev in out]
+    have = {sid for sid, _n, _e in out}
+    for key, ev in _secret_overlay().items():
+        sid = int(key)
+        if (sid - 500000000) // 1000 == chara and sid not in have:
+            out.append((sid, ev["name"], ev))
     out.sort(key=lambda t: t[0])
     return out
 
@@ -6012,19 +6532,70 @@ def _secret_story_ids(card_id: int) -> frozenset:
         return frozenset()
 
 
-_SECRET_EVENT_IDS = {501032114: 11440}
+@functools.lru_cache(maxsize=256)
+def _scheduled_secrets(card_id: int) -> frozenset:
+    chara = card_id // 100
+    sched = {s for s, _t in career_branches.chapter_stories(chara)} if chara else set()
+    return frozenset(sid for sid in _secret_story_ids(card_id) if sid in sched)
 
 
-def _maybe_fire_secret_event(full_state: dict, career_state: dict, response: dict) -> bool:
+_SECRET_EVENT_IDS = {501032114: 11440, 501006118: 11055, 501014118: 12430,
+                     501068121: 12558, 501068306: 12548, 501068315: 12557}
+
+_SECRET_RB_TYPES = ("speed", "stamina", "power", "guts", "wisdom", "wiz",
+                    "all_stats", "random_stats", "skill_points")
+_SECRET_BASE_FIX = {501068306: {"skill_points": 55}}
+
+
+def _secret_race_event(sid: int) -> bool:
+    row = master_data.query_one(
+        "SELECT race_event_flag FROM single_mode_story_data WHERE story_id=?", (sid,))
+    return bool(row and row["race_event_flag"])
+
+
+def _scale_secret_rewards(ev: dict, sid: int, chara_info: dict, full_state: dict,
+                          scheduled: bool = False) -> dict:
+    fix = _SECRET_BASE_FIX.get(sid) or {}
+    rb = _secret_race_event(sid) or not scheduled
+    if not fix and not rb:
+        return ev
+    out = copy.deepcopy(ev)
+
+    def scale(effects):
+        for e in effects or ():
+            t = e.get("type")
+            if t not in _SECRET_RB_TYPES:
+                continue
+            raw = str(fix.get(t, e.get("value", "")))
+            e["value"] = re.sub(
+                r"(?<![-\d])\+?(\d+)",
+                lambda m: "+%d" % (_scale_race_reward(int(m.group(1)), chara_info, full_state)
+                                   if rb else int(m.group(1))),
+                raw)
+
+    for choice in out.get("choices") or ():
+        scale(choice.get("effects"))
+        for seg in choice.get("segments") or ():
+            scale(seg.get("effects"))
+    return out
+
+
+def _maybe_fire_secret_event(full_state: dict, career_state: dict, response: dict,
+                             acted_turn=None) -> bool:
     career_data = career_state["data"]
     chara_info = career_data["chara_info"]
     if not scenarios.for_chara(chara_info).has_secret_events:
         return False
     card_id = chara_info.get("card_id") or 0
     fired = set(full_state.get(event_engine.FIRED_EVENTS_KEY, []))
-    ctx = _secret_context(full_state, career_data)
+    ctx = _secret_context(full_state, career_data, acted_turn)
+    scheduled = _scheduled_secrets(card_id)
     due = [(sid, title, ev) for sid, title, ev in _secret_events_for(card_id)
-           if sid not in fired and secret_events.is_eligible(ev, ctx)]
+           if sid not in fired and sid not in scheduled and secret_events.is_eligible(ev, ctx)]
+    graded = {s for s, _t, e in _secret_events_for(card_id)
+              if secret_events.win_g1_threshold(e) is not None}
+    if graded & fired:
+        due = [d for d in due if d[0] not in graded]
     thresholds = [t for t in (secret_events.win_g1_threshold(e) for _s, _t, e in due)
                   if t is not None]
     if thresholds:
@@ -6032,7 +6603,9 @@ def _maybe_fire_secret_event(full_state: dict, career_state: dict, response: dic
         due = [(sid, title, ev) for sid, title, ev in due
                if secret_events.win_g1_threshold(ev) in (None, best)]
     for sid, title, ev in due:
-        ev = _resolve_reward_branch(ev, ctx)
+        ev = _expand_race_rewards(_resolve_reward_branch(ev, ctx), chara_info,
+                                  career_data.get("race_history"))
+        ev = _scale_secret_rewards(ev, sid, chara_info, full_state)
         event_id = _SECRET_EVENT_IDS.get(sid, event_engine.CHARA_EVENT_ID)
         _queue_turn_event(response, full_state, event_engine.career_event_entry(
             ev, event_id, sid, chara_id=card_id // 100, support_card_id=0,
@@ -6042,8 +6615,7 @@ def _maybe_fire_secret_event(full_state: dict, career_state: dict, response: dic
             "event_id": event_id, "story_id": sid,
             "source": "chara", "source_id": card_id, "title": title,
             "trainee_card_id": card_id}
-        if ev.get("_branch_resolved"):
-            event_ctx["event"] = ev
+        event_ctx["event"] = ev
         _push_career_ctx(full_state, event_ctx)
         return True
     return False
@@ -6176,9 +6748,10 @@ def _maybe_fire_shared_beat(full_state: dict, career_state: dict, response: dict
     row = master_data.query_one(
         'SELECT text FROM text_data WHERE category=181 AND "index"=?', (sid,))
     event_id = _shared_beat_event_id(suffix)
+    timing = 6 if suffix == _EXTRA_TRAINING_SUFFIX else 1
     _queue_turn_event(response, full_state, event_engine.career_event_entry(
         ev, event_id, sid, chara_id=chara,
-        support_card_id=0, play_timing=1))
+        support_card_id=0, play_timing=timing))
     full_state[event_engine.FIRED_EVENTS_KEY] = list(fired) + [sid]
     _push_career_ctx(full_state, {
         "event_id": event_id, "story_id": sid,
@@ -6346,11 +6919,8 @@ def handle_exec_command(payload: dict) -> dict:
         return handle_ura_check_event(payload)
 
     if payload.get("event_id") == single_mode_events.DUEL_EVENT_ID:
-        ctx = full_state.get(single_mode_events.DUEL_CTX_KEY) or {}
-        options = ctx.get("stat_options") or single_mode_events.duel_stat_options(
-            full_state.get(single_mode_events.VERSUS_LEVEL_KEY, 1))
         return {"response_code": 1, "data_headers": {"result_code": 1, "notifications": {}},
-                "data": {"choice_reward_array": single_mode_events.duel_preview(options)}}
+                "data": {"choice_reward_array": _duel_preview_rows(full_state)}}
 
     if (payload.get("event_id") in event_engine.CAREER_EVENT_IDS
             or _career_ctx_for(full_state, payload.get("event_id"))):
@@ -6387,6 +6957,8 @@ def handle_exec_command(payload: dict) -> dict:
     else:
         scheduled = [e for e in single_mode_events.SCENARIO_SCHEDULE.get(cur_turn, [])
                      if e not in resolved and e not in in_flight]
+    scheduled += [e for e in full_state.pop(NEXT_EXEC_EVENTS_KEY, None) or ()
+                  if e not in resolved and e not in in_flight and e not in scheduled]
     unlocked = [list(x) for x in full_state.get(single_mode_events.UNLOCKED_NPCS_KEY, [])]
     unlocked_target_ids = [n[0] for n in unlocked]
 
@@ -6399,7 +6971,11 @@ def handle_exec_command(payload: dict) -> dict:
         full_state=full_state)
     full_state[single_mode_events.UNLOCKED_NPCS_KEY] = unlocked
 
-    if not (response.get("data") or {}).get("_training_failed"):
+    rdata0 = response.get("data") or {}
+    if rdata0.get("_slacked") or (not rdata0.get("_training_failed")
+                                  and (rdata0.get("command_result") or {}).get("result_state") == 1):
+        pass
+    elif not rdata0.get("_training_failed"):
         scenarios.for_chara(chara_before).award_training_gains(
             full_state, chara_before, payload)
         if scenarios.for_chara(chara_before).award_claims_slot(full_state):
@@ -6414,8 +6990,9 @@ def handle_exec_command(payload: dict) -> dict:
             full_state, chara_before, payload)
 
     cmd = payload.get("command_id")
-    if _COMMAND_TRAINED_STAT.get(cmd):
-        full_state[event_engine.LAST_TRAINED_KEY] = _COMMAND_TRAINED_STAT[cmd]
+    trained_base = scenarios.for_chara(chara_before).base_command(cmd)
+    if _COMMAND_TRAINED_STAT.get(trained_base):
+        full_state[event_engine.LAST_TRAINED_KEY] = _COMMAND_TRAINED_STAT[trained_base]
     meek_fac = _happy_meek_facility(
         payload.get("current_turn"), full_state,
         career_state["data"].get("chara_info"))
@@ -6437,10 +7014,22 @@ def handle_exec_command(payload: dict) -> dict:
         fail_ci = career_state["data"]["chara_info"]
         player_chara = (fail_ci.get("card_id") or 0) // 100
         eid = single_mode_events.WORST_FAIL_EVENT if worst else single_mode_events.NORMAL_FAIL_EVENT
-        stat = _COMMAND_TRAINED_STAT.get(cmd)
+        stat = _COMMAND_TRAINED_STAT.get(scenarios.for_chara(fail_ci).base_command(cmd))
+        injury = scenarios.for_chara(fail_ci).training_failure_event(full_state, fail_ci, cmd, worst)
+        if injury:
+            eid = injury[0]
         full_state[single_mode_events.FAIL_CTX_KEY] = {
             "event_id": eid, "worst": worst, "stat": stat}
-        entry = single_mode_events.failure_event_entry(eid, player_chara, worst)
+        entry = single_mode_events.failure_event_entry(
+            single_mode_events.WORST_FAIL_EVENT if worst else single_mode_events.NORMAL_FAIL_EVENT,
+            player_chara, worst)
+        if injury:
+            entry['event_id'] = eid
+            entry['story_id'] = injury[1]
+            entry['chara_id'] = 0
+            if len(injury) > 2:
+                for option in entry['event_contents_info']['choice_array']:
+                    option['select_index'] = injury[2]
         _emit_turn_event(response, full_state, career_events.Event(
             event_id=eid, story_id=entry.get("story_id"), raw=entry,
             once_key=f"training_failure:{fail_ci.get('turn')}:{eid}",
@@ -6485,18 +7074,6 @@ def handle_exec_command(payload: dict) -> dict:
                 once_key=f"hint_reveal:{hr_turn}:{i}",
                 priority=career_events.PRIO_SPECIAL, source="hint_reveal"))
 
-    leveled_command = rdata.pop("_facility_leveled", False)
-    if leveled_command:
-        lvl_event, lvl_story = scenarios.for_chara(
-            career_state["data"]["chara_info"]).facility_levelup_event(leveled_command)
-        entry = _scenario_event_entry(lvl_event, lvl_story, play_timing=6,
-                                      choices=[_ack_choice()])
-        lvlup_turn = career_state["data"]["chara_info"].get("turn")
-        _emit_turn_event(response, full_state, career_events.Event(
-            event_id=lvl_event, story_id=lvl_story, raw=entry,
-            once_key=f"facility_levelup:{lvlup_turn}",
-            priority=career_events.PRIO_SPECIAL, source="facility_levelup"))
-
     npc_partners = rdata.pop("_npc_partners", None) or []
     trained_cmd = rdata.pop("_trained_command", None)
     pal_partners = rdata.pop("_pal_partners", None) or []
@@ -6527,6 +7104,7 @@ def handle_exec_command(payload: dict) -> dict:
                         else _COMMAND_TRAINED_STAT.get(trained_cmd, "speed"))
                 player_chara = (ci.get("card_id") or 0) // 100
                 entry = single_mode_events.event_entry(a_event, player_chara)
+                entry["play_timing"] = 6
                 _emit_turn_event(response, full_state, career_events.Event(
                     event_id=a_event, story_id=entry.get("story_id"), raw=entry,
                     once_key=f"appraisal:{ci.get('turn')}:{a_event}",
@@ -6535,6 +7113,18 @@ def handle_exec_command(payload: dict) -> dict:
                     payload={"target_id": tid, "amount": amount, "stat": stat}))
         except Exception:
             log.exception("appraisal roll failed; skipping")
+    leveled_command = rdata.pop("_facility_leveled", False)
+    if leveled_command:
+        lvl_event, lvl_story = scenarios.for_chara(
+            career_state["data"]["chara_info"]).facility_levelup_event(leveled_command)
+        entry = _scenario_event_entry(lvl_event, lvl_story, play_timing=6,
+                                      choices=[_ack_choice()])
+        lvlup_turn = career_state["data"]["chara_info"].get("turn")
+        _emit_turn_event(response, full_state, career_events.Event(
+            event_id=lvl_event, story_id=lvl_story, raw=entry,
+            once_key=f"facility_levelup:{lvlup_turn}",
+            priority=career_events.PRIO_SPECIAL, source="facility_levelup"))
+
 
     scenario_pending = False
     try:
@@ -6633,7 +7223,8 @@ def handle_exec_command(payload: dict) -> dict:
         log.exception("pal/group upkeep failed; skipping")
 
     try:
-        if _maybe_fire_secret_event(full_state, career_state, response):
+        if _maybe_fire_secret_event(full_state, career_state, response,
+                                    acted_turn=payload.get("current_turn")):
             pass
         elif payload.get("command_group_id") == _OUTING_COMMAND_GROUP:
             sel = payload.get("select_id")
@@ -6656,7 +7247,7 @@ def handle_exec_command(payload: dict) -> dict:
                 if not fired:
                     _maybe_fire_support_event(full_state, career_state, response)
         elif cmd is not None and cmd != _RACE_COMMAND_ID:
-            trained_stat = _COMMAND_TRAINED_STAT.get(cmd)
+            trained_stat = _COMMAND_TRAINED_STAT.get(scenarios.for_chara(chara_before).base_command(cmd))
             if _maybe_fire_shared_beat(full_state, career_state, response,
                                        _ACUPUNCTURE_SUFFIX, _ACUPUNCTURE_CHANCE):
                 pass
@@ -6687,12 +7278,9 @@ def handle_exec_command(payload: dict) -> dict:
         shown = response["data"].get("unchecked_event_array")
         unlock = next((e for e in pending if single_mode_events.npcs_unlocked_by(e)), None)
         if unlock is not None:
-            lead = pending.pop(0)
-            if shown:
-                full_state.setdefault(single_mode_events.EXTRA_EVENTS_KEY, [])
-                full_state[single_mode_events.EXTRA_EVENTS_KEY][:0] = shown
-            response["data"]["unchecked_event_array"] = [
-                single_mode_events.event_entry(lead, player_chara)]
+            if not shown:
+                response["data"]["unchecked_event_array"] = [
+                    single_mode_events.event_entry(pending.pop(0), player_chara)]
         elif not shown:
             response["data"]["unchecked_event_array"] = [
                 single_mode_events.event_entry(pending[0], player_chara)]
@@ -6796,6 +7384,9 @@ def _apply_preview_gains(chara_info: dict, preview: list | None, payload: dict,
             chara_info["skill_point"] = chara_info.get("skill_point", 0) + val
             tuning.note_training_sp(val)
         elif tt == 10:
+            if not_up is not None and val > 0 and vital >= chara_info.get("max_vital", 100) \
+                    and 6 not in not_up:
+                not_up.append(6)
             vital = vital + val
     before = payload.get("current_vital", chara_info.get("vital", 100))
     chara_info["vital"] = max(0, min(max(chara_info.get("max_vital", 100), before), vital))
@@ -6813,7 +7404,7 @@ _NPC_BOND_GAIN = 2
 APPRAISAL_CTX_KEY = "appraisal_ctx"
 _APPRAISAL_CHANCE = 0.25
 _APPRAISAL_CHANCE_BY_NPC = {102: 34 / 46, 103: 46 / 56, 111: 1.0, 101: 1.0, 114: 1.0}
-_APPRAISAL_CHANCE_BY_SCENARIO_NPC = {(12, 102): 1.0, (14, 102): 1.0}
+_APPRAISAL_CHANCE_BY_SCENARIO_NPC = {(12, 102): 1.0, (14, 102): 1.0, (15, 116): 1.0}
 
 
 def _appraisal_chance(scenario_id, target_id) -> float:
@@ -6880,6 +7471,11 @@ def _register_npc_unlocks(full_state: dict, updated: dict, event_id) -> None:
             unlocked_now.append(list(npc))
             full_state[single_mode_events.UNLOCKED_NPCS_KEY] = unlocked_now
         _ensure_npc_eval(updated, npc[0])
+        if newly_unlocked:
+            career = full_state.get(STATE_KEY)
+            stored = ((career or {}).get("data") or {}).get("chara_info")
+            if isinstance(stored, dict):
+                refresh_board(full_state, stored, career)
         if not newly_unlocked:
             continue
         for row in updated.get("evaluation_info_array") or []:
@@ -7029,12 +7625,16 @@ def _build_hint_reveals(chara_info: dict, career_state: dict, command_id, turn) 
 
 
 def _support_card_levels(full_state: dict) -> dict:
-    return {
+    levels = {
         c["support_card_id"]: training_formula.card_level(
             c["support_card_id"], c.get("exp") or 0, c.get("limit_break_count"))
         for c in full_state.get(collection.SUPPORT_CARD_KEY) or []
         if isinstance(c, dict) and c.get("support_card_id")
     }
+    chara_info = (((full_state.get(STATE_KEY) or {}).get("data") or {}).get("chara_info") or {})
+    for sid, lv in _deck_support_card_levels(chara_info).items():
+        levels.setdefault(sid, lv)
+    return levels
 
 
 def _friendship_stacks(full_state: dict) -> dict:
@@ -7066,8 +7666,10 @@ def _init_bonds(chara_info: dict) -> None:
                     if etype == training_formula.EFFECT_INITIAL_BOND)
     for c in chara_info.get("support_card_array", []):
         sid = c.get("support_card_id")
-        init = training_formula.card_effect(sid, "initial_friendship_gauge", 0) or 0
-        if levels.get(sid):
+        level = levels.get(sid)
+        init = (training_formula.master_effect(sid, training_formula.EFFECT_INITIAL_BOND, level)
+                if level else training_formula.card_effect(sid, "initial_friendship_gauge", 0) or 0)
+        if level:
             init += training_formula.unique_effect(
                 sid, training_formula.EFFECT_INITIAL_BOND, level=levels[sid])
         _set_bond(chara_info, c.get("position"), min(_BOND_MAX, int(init + deck_wide)))
@@ -7187,6 +7789,32 @@ def _spark_cap_bonuses(factor_group_id, star: int) -> dict:
     return out
 
 
+def _effective_parent_factors(parent: dict) -> dict:
+    history = parent.get("factor_extend_array") or []
+    if not history:
+        return parent
+    upgraded = copy.deepcopy(parent)
+    positions = {int(r["position_id"]): r for r in upgraded.get("succession_chara_array") or []
+                 if isinstance(r, dict) and r.get("position_id") is not None}
+    positions[0] = upgraded
+    changes = {}
+    for row in history:
+        if not isinstance(row, dict):
+            continue
+        pos, base, after = row.get("position_id"), row.get("base_factor_id"), row.get("factor_id")
+        if pos is None or not base or not after:
+            continue
+        key = (int(pos), base)
+        aliases, _previous = changes.get(key, ({base}, base))
+        aliases.add(after)
+        changes[key] = (aliases, after)
+    for (pos, _base), (aliases, after) in changes.items():
+        for factor in (positions.get(pos) or {}).get("factor_info_array") or []:
+            if factor.get("factor_id") in aliases:
+                factor["factor_id"] = after
+    return upgraded
+
+
 def _roster_by_trained_id(viewer_id) -> dict:
     full = state_store.get_state(viewer_id) or {}
     out: dict = {}
@@ -7194,9 +7822,10 @@ def _roster_by_trained_id(viewer_id) -> dict:
     from .load import get_or_seed_blob
     li = get_or_seed_blob(full, viewer_id)
     if isinstance(li, dict):
-        tc = (li.get("data") or {}).get("trained_chara")
-        if isinstance(tc, list):
-            sources.append(tc)
+        for key in ("trained_chara", "generate_succession_chara"):
+            tc = (li.get("data") or {}).get(key)
+            if isinstance(tc, list):
+                sources.append(tc)
     for key in ("legacy_roster_pre_house", "legacy_roster"):
         if isinstance(full.get(key), list):
             sources.append(full[key])
@@ -7210,7 +7839,7 @@ def _roster_by_trained_id(viewer_id) -> dict:
         out.update({u["trained_chara_id"]: u for u in full.get("legacy_roster") or []})
         if full.get(STATE_KEY):
             out.update({u["trained_chara_id"]: u for u in full.get("career_parent_snapshot") or []})
-    return out
+    return {tid: _effective_parent_factors(parent) for tid, parent in out.items()}
 
 
 def _apply_inheritance(chara_info: dict, viewer_id, start_chara: dict) -> dict:
@@ -7647,6 +8276,9 @@ def _claim_inspiration_slot(response: dict, full_state: dict, chara_info: dict) 
 SHARED_NEXT_TURN_KEY = "unique_shared_next_turn"
 
 
+_RACE_ENTRY_OPEN_TURN = 3
+
+
 def _roll_distribution(chara_info: dict, turn: int, specialty_bonus: int = 0,
                        salt: int = 0, full_state: dict | None = None) -> dict:
     rng = random.Random((int(chara_info.get("card_id", 0)) << 8) ^ int(turn)
@@ -7773,6 +8405,7 @@ FACILITY_TRAINS_KEY = "facility_trains"
 _LEVEL_UP_TRAINS = 4
 _MAX_FACILITY_LEVEL = 5
 FACILITY_HOLD_KEY = "_facility_level_hold"
+_LEVELUP_STORY = 400000005
 
 FRIENDSHIP_STACK_KEY = "friendship_stack_counts"
 
@@ -7794,8 +8427,6 @@ def _facility_level(career_data: dict, base_cmd: int) -> int:
 
 
 def _hold_facility_levels(viewer_id, endpoint: str, response: dict) -> None:
-    if not endpoint.endswith("exec_command"):
-        return
     data = (response or {}).get("data")
     if not isinstance(data, dict) or not isinstance(data.get("chara_info"), dict):
         return
@@ -7803,7 +8434,14 @@ def _hold_facility_levels(viewer_id, endpoint: str, response: dict) -> None:
     career_data = (full_state.get(STATE_KEY) or {}).get("data") or {}
     hold = career_data.get(FACILITY_HOLD_KEY)
     chara_info = data["chara_info"]
-    if not isinstance(hold, dict) or hold.get("turn") != chara_info.get("turn"):
+    if not isinstance(hold, dict):
+        return
+    pending = any(isinstance(e, dict) and e.get("story_id") == _LEVELUP_STORY
+                  for e in data.get("unchecked_event_array") or ())
+    pending = pending or any(r.get("source") == "facility_levelup"
+                             for r in career_events.queued_rows(full_state))
+    if not (pending or (endpoint.endswith("exec_command")
+                        and hold.get("turn") == chara_info.get("turn"))):
         return
     old = {int(k): int(v) for k, v in (hold.get("levels") or {}).items()}
     for e in chara_info.get("training_level_info_array") or ():
@@ -7858,6 +8496,8 @@ def _forced_race_turns(route_race_id_array: tuple) -> frozenset:
 def _poll_career_events(response: dict, full_state: dict, career: dict,
                         payload: dict, turn=None, endpoint: str = "") -> list:
     chara_info = career["data"]["chara_info"]
+    if _career_has_failed(full_state):
+        return []
     scenarios.for_chara(chara_info).retime_queued(full_state, endpoint)
     shown = response.get("data", {}).get("unchecked_event_array") or []
     if not shown:
@@ -7885,7 +8525,30 @@ def _poll_career_events(response: dict, full_state: dict, career: dict,
         wire, _ev = career_events.serve_next(full_state, endpoint)
         if wire is not None:
             response.setdefault("data", {})["unchecked_event_array"] = [wire]
+    else:
+        _turn_end_first(response, full_state, endpoint)
     return accepted
+
+
+def _turn_end_first(response: dict, full_state: dict, endpoint: str) -> None:
+    data = response.get("data") or {}
+    shown = data.get("unchecked_event_array") or []
+    head = shown[0] if shown and isinstance(shown[0], dict) else None
+    if head is None:
+        return
+    nxt = career_events.best_queued(full_state, endpoint)
+    if nxt is None or career_events.timing_rank(nxt, full_state) \
+            >= career_events.timing_rank(head):
+        return
+    act = career_events.active(full_state)
+    if act is not None and int(act.event_id) == int(head.get("event_id") or 0) \
+            and int(act.story_id or 0) == int(head.get("story_id") or 0):
+        career_events.requeue_active(full_state)
+    else:
+        full_state.setdefault(single_mode_events.EXTRA_EVENTS_KEY, []).insert(0, head)
+    wire, _ev = career_events.serve_next(full_state, endpoint)
+    if wire is not None:
+        data["unchecked_event_array"] = [wire]
 
 
 def _forced_training_gain():
@@ -7924,7 +8587,7 @@ def _build_training_command_info(chara_info: dict, template_command_info, distri
     current = {s: chara_info.get(s, 0) for s in training_formula.STAT_NAMES}
     maxs = {s: chara_info.get("max_wiz" if s == "wiz" else f"max_{s}", 9999)
             for s in training_formula.STAT_NAMES}
-    motivation = max(0, min(4, chara_info.get("motivation", 2)))
+    motivation = max(0, min(4, int(chara_info.get("motivation") or 3) - 1))
     scenario_id = chara_info.get("scenario_id", 1)
     pos_to_sid = {c["position"]: c["support_card_id"] for c in chara_info.get("support_card_array", [])}
     deck_card_ids = list(pos_to_sid.values())
@@ -7934,6 +8597,10 @@ def _build_training_command_info(chara_info: dict, template_command_info, distri
     deck_bond_sum = sum(_bond_of(chara_info, p) for p in pos_to_sid)
     pure_passion = _pure_passion_cards(chara_info)
     npc_placement = _place_unlocked_npcs(unlocked_npcs, turn)
+    meek_fac = single_mode_events.meek_board(
+        full_state, turn, unlocked_npcs,
+        (full_state or {}).get(single_mode_events.VERSUS_LEVEL_KEY, 1),
+        (full_state or {}).get(single_mode_events.DUEL_LAST_TURN_KEY))[0]
     occupied = {cmd: len(distribution.get(_COMMAND_TO_TYPE[cmd], []))
                      + len(npc_placement.get(cmd, []))
                 for cmd in TRAINING_COMMAND_IDS}
@@ -7965,7 +8632,8 @@ def _build_training_command_info(chara_info: dict, template_command_info, distri
         partners += npc_placement.get(cmd, [])
         supporters_here = supporter_placement.get(cmd, [])
         partners += supporters_here
-        partners += [p for p in team_placement.get(cmd, []) if p not in partners]
+        team_here = [p for p in team_placement.get(cmd, []) if p not in partners]
+        partners += team_here
         while len(partners) > _MAX_FACILITY_PARTNERS and supporters_here:
             partners.remove(supporters_here[-1])
             supporters_here = supporters_here[:-1]
@@ -7982,7 +8650,8 @@ def _build_training_command_info(chara_info: dict, template_command_info, distri
                 card_id=chara_info.get("card_id"), in_facility_cards=in_facility,
                 command_id=cmd, scenario_id=scenario_id, facility_level=level,
                 motivation=motivation, current_stats=current, max_stats=maxs,
-                npc_supporter_count=len(supporters_here),
+                npc_supporter_count=(len(supporters_here) + len(team_here)
+                                     + (not camp and cmd == meek_fac)),
                 extra_stat_bonus=training_bonus,
                 scenario_friendship_bonus=friendship_bonus,
                 support_card_levels=support_card_levels,
@@ -8014,8 +8683,13 @@ def _build_training_command_info(chara_info: dict, template_command_info, distri
                     gains[s] = max(0, int(round(gains[s] * (mult if mult is not None else 1.0)
                                                 * (sp_mult if s == "skill_point" else 1.0) * x)) + add)
         if forced is None:
+            jp_capped = {s for s in training_formula.STAT_NAMES
+                         if region.PROCESS_REGION == "jp" and s in gains
+                         and not gains[s] and current.get(s, 0) >= maxs.get(s, 9999)
+                         and not conditions.blocks_stat(chara_info, s)}
             params = [{"target_type": _STAT_TO_TARGET_TYPE[s], "value": gains[s]}
-                      for s in training_formula.STAT_NAMES if gains.get(s, 0)]
+                      for s in training_formula.STAT_NAMES
+                      if gains.get(s, 0) or s in jp_capped]
             if gains.get("skill_point"):
                 params.append({"target_type": 30, "value": gains["skill_point"]})
         else:
@@ -8123,9 +8797,7 @@ def _refresh_command_info(chara_info: dict, home_info: dict, turn: int, unlocked
         race_history=race_history, training_bonus=training_bonus,
         friendship_bonus=friendship_bonus, support_card_levels=support_card_levels,
         friendship_stacks=friendship_stacks, full_state=full_state)
-    forced_turns = _forced_race_turns(tuple(chara_info.get("route_race_id_array") or ()))
-    unlock_turn = min(forced_turns) if forced_turns else None
-    restricted = (unlock_turn is None or turn is None or turn < unlock_turn)
+    restricted = turn is None or turn < _RACE_ENTRY_OPEN_TURN
     until = chara_info.get(RACE_RESTRICT_UNTIL_KEY) or 0
     if turn is not None and until and turn < until:
         restricted = True
@@ -8177,8 +8849,9 @@ def _record_training_tally(career_data: dict, command_id, failed: bool) -> None:
 
 _REST_COMMANDS = {701}
 REST_CTX_KEY = "active_rest"
-_REST_EVENT_IDS = frozenset({7009, 7010, 7011})
-_REST_STORY_SUFFIX = {7011: 701, 7009: 700, 7010: 718}
+_REST_EVENT_IDS = frozenset({7009, 7010, 7011, 7055, 7056, 7058, 7059, 7061, 7062})
+_REST_STORY_SUFFIX = {7011: 701, 7009: 700, 7010: 718,
+                      7055: 718, 7056: 701, 7058: 718, 7059: 701, 7061: 718, 7062: 701}
 
 
 @career_events.resolver("rest")
@@ -8196,6 +8869,9 @@ def _resolve_rest(full_state, chara_info, event, choice_number, career=None, **k
     full_state.pop(REST_CTX_KEY, None)
     return {"not_up": [6]} if was_capped else {}
 _REST_EVENT_BY_ENERGY = {70: 7011, 50: 7010, 30: 7009}
+_JP_REST_EVENT_BANDS = ((30, {70: 7062, 50: 7061}), (50, {70: 7059, 50: 7058}),
+                        (None, {70: 7056, 50: 7055}))
+_JP_REST_WELL_RESTED = 0.365
 
 _INFIRMARY_COMMAND_ID = 801
 _INFIRMARY_COMMAND_TYPE = 8
@@ -8231,9 +8907,33 @@ def _resolve_infirmary(full_state, chara_info, event, choice_number, career=None
     return {"not_up": [6]} if was_capped else {}
 
 
-def _roll_rest_outcome() -> dict:
+def refresh_board(full_state: dict, chara_info: dict, career) -> bool:
+    career_data = (career or {}).get("data") if isinstance(career, dict) else None
+    career_home = career_data.get("home_info") if isinstance(career_data, dict) else None
+    if not isinstance(career_home, dict):
+        return False
+    _refresh_command_info(
+        chara_info, career_home, turn=chara_info.get("turn"),
+        unlocked_npcs=[n[0] for n in full_state.get(single_mode_events.UNLOCKED_NPCS_KEY, [])],
+        facility_levels=_facility_levels(career_data),
+        race_history=career_data.get("race_history", []),
+        training_bonus=_training_bonus(full_state, chara_info),
+        friendship_bonus=_friendship_bonus(full_state, chara_info),
+        specialty_bonus=_specialty_bonus(full_state, chara_info),
+        support_card_levels=_support_card_levels(full_state),
+        friendship_stacks=_friendship_stacks(full_state),
+        full_state=full_state)
+    return True
+
+
+def _roll_rest_outcome(vital: int = 0) -> dict:
     r = random.random()
     night_owl = False
+    if region.PROCESS_REGION == "jp":
+        energy = 70 if r < _JP_REST_WELL_RESTED else 50
+        ids = next(t for cap, t in _JP_REST_EVENT_BANDS if cap is None or vital <= cap)
+        return {"event_id": ids[energy], "energy": energy,
+                "night_owl": False, "slow_metab": False}
     if r < 0.247:
         energy = 70
     elif r < 0.852:
@@ -8492,7 +9192,7 @@ def _outing_partners(full_state: dict, chara_info: dict) -> list:
             if (not exhausted and step >= 1 and pal_cards.group_kit(card_id)
                     and any(_member_step(entry, m) < 1 for m in pal_cards.group_members(card_id))):
                 exhausted = True
-            if exhausted and not _new_year_outing_ready(full_state, chara_info, card_id):
+            if exhausted:
                 continue
             out.append((chara, card_id))
     return out
@@ -8507,12 +9207,6 @@ def _card_for_partner(full_state: dict, chara_info: dict, select_id) -> int | No
 
 def _queue_outing_event(response, full_state, career_state, card_id, partner,
                         turn=None) -> bool:
-    chara_info = career_state["data"]["chara_info"]
-    if _new_year_outing_ready(full_state, chara_info, card_id, turn):
-        sid = pal_cards.new_year_story(card_id)
-        if sid:
-            return _queue_pal_event(response, full_state, career_state, card_id, sid,
-                                    "new_year", partner=partner, front=True)
     entry = _pal_card_entry(full_state, card_id)
     step = (entry.get("step", 0) if pal_cards.is_pal(card_id)
             else _member_step(entry, partner))
@@ -9217,28 +9911,40 @@ def handle_change_short_cut(payload: dict) -> dict:
     full_state[SHORT_CUT_KEY] = int(payload.get("short_cut_state") or 0)
     chara_info = career["data"]["chara_info"]
     chara_info["short_cut_state"] = full_state[SHORT_CUT_KEY]
+    if "is_non_short_cut_unchecked_event" in payload:
+        chara_info["is_non_short_cut_unchecked_event"] = int(payload["is_non_short_cut_unchecked_event"] or 0)
     response = _load_ura_race_seed("train_check_event")
-    data = response["data"]
-    data["chara_info"] = copy.deepcopy(chara_info)
-    career_home = career["data"].get("home_info")
-    if isinstance(career_home, dict):
-        data["home_info"] = copy.deepcopy(career_home)
-    data["unchecked_event_array"] = []
-    for key in ("race_condition_array", "race_start_info", "race_running_style",
-                "event_effected_factor_array", "not_down_parameter_info"):
-        data.pop(key, None)
+    response["data"] = {
+        "chara_info": copy.deepcopy(chara_info),
+        "unchecked_event_array": copy.deepcopy(full_state.get(DISPLAY_EVENT_KEY) or []),
+    }
     state_store.save_state(viewer_id, full_state)
     return response
 
 
 _ALARM_CLOCK_ITEM = 95
-_FREE_CONTINUE_ALLOWANCE = 1
+_FREE_CONTINUE_ALLOWANCE_BY_REGION = {"jp": 3, "global": 1}
+_FREE_CONTINUE_DAY_KEY = "free_continue_day"
 _PAID_CONTINUE_ALLOWANCE = 3
+_PAID_CONTINUE_BY_SCENARIO = {4: 5}
+_PAID_CONTINUE_CAREER_KEY = "paid_continue_career"
 CONTINUE_BONUS_HOOKS: list = []
 
 
 def _paid_continue_allowance(full_state: dict) -> int:
-    return _PAID_CONTINUE_ALLOWANCE + sum(h(full_state) for h in CONTINUE_BONUS_HOOKS)
+    ci = _career_chara(full_state)
+    base = _PAID_CONTINUE_BY_SCENARIO.get(int(ci.get("scenario_id") or 1), _PAID_CONTINUE_ALLOWANCE)
+    return base + sum(h(full_state) for h in CONTINUE_BONUS_HOOKS)
+
+
+def _career_chara(full_state: dict) -> dict:
+    return ((full_state.get(STATE_KEY) or {}).get("data") or {}).get("chara_info") or {}
+
+
+def _paid_continues_used(full_state: dict) -> int:
+    rec = full_state.get(_PAID_CONTINUE_CAREER_KEY) or {}
+    career = str(_career_chara(full_state).get("start_time") or "")
+    return int(rec.get("used") or 0) if rec.get("career") == career else 0
 
 
 def _alarm_clock_stock(full_state: dict) -> int:
@@ -9253,19 +9959,32 @@ def _spend_alarm_clock(full_state: dict) -> bool:
     for it in items:
         if it.get("item_id") == _ALARM_CLOCK_ITEM and int(it.get("number") or 0) > 0:
             it["number"] = int(it["number"]) - 1
+            full_state[_PAID_CONTINUE_CAREER_KEY] = {
+                "career": str(_career_chara(full_state).get("start_time") or ""),
+                "used": _paid_continues_used(full_state) + 1}
             return True
     return False
 
 
 def _continue_counts(full_state: dict, ctx: dict | None) -> dict:
     ctx = ctx or {}
-    free_left = max(0, _FREE_CONTINUE_ALLOWANCE - int(ctx.get("continue_free_used") or 0))
-    paid_left = max(0, _paid_continue_allowance(full_state) - int(ctx.get("continue_paid_used") or 0))
+    free_left = max(0, _free_continue_allowance() - _free_continues_used_today(full_state))
+    paid_left = max(0, _paid_continue_allowance(full_state) - _paid_continues_used(full_state))
     return {
         "available_free_continue_num": free_left,
         "available_continue_num": min(paid_left, _alarm_clock_stock(full_state)),
-        "free_continue_num": _FREE_CONTINUE_ALLOWANCE,
+        "free_continue_num": _free_continue_allowance(),
     }
+
+
+def _free_continue_allowance() -> int:
+    return _FREE_CONTINUE_ALLOWANCE_BY_REGION.get(region.CURRENT_REGION.get(), 1)
+
+
+def _free_continues_used_today(full_state: dict) -> int:
+    from . import gacha
+    rec = full_state.get(_FREE_CONTINUE_DAY_KEY) or {}
+    return int(rec.get("used") or 0) if rec.get("day") == gacha.game_day() else 0
 
 
 def handle_continue(payload: dict) -> dict:
@@ -9285,6 +10004,9 @@ def handle_continue(payload: dict) -> dict:
         if counts["available_free_continue_num"] <= 0:
             return refuse()
         ctx["continue_free_used"] = int(ctx.get("continue_free_used") or 0) + 1
+        from . import gacha
+        full_state[_FREE_CONTINUE_DAY_KEY] = {
+            "day": gacha.game_day(), "used": _free_continues_used_today(full_state) + 1}
     career = full_state.get(STATE_KEY)
     if ctx.get("end_committed") and isinstance(career, dict):
         cd = career["data"]
@@ -9378,11 +10100,16 @@ def _apply_recreation(chara_info: dict, current_vital: int):
         return _OUTING_RIVERBANK, capped
     if r < 0.85:
         add_mood(1); add_energy(10)
+        chara_info[_SHRINE_SUB_KEY] = 3
     elif r < 0.95:
         add_mood(1); add_energy(20)
+        chara_info[_SHRINE_SUB_KEY] = 2
     else:
         add_mood(1); add_energy(30)
     return _OUTING_SHRINE, capped
+
+
+_SHRINE_SUB_KEY = "_shrine_sub_id"
 
 
 def _facility_failure_cards(chara_info: dict, partners) -> list:
@@ -9488,7 +10215,7 @@ def _simulate_exec_command(career_state: dict, payload: dict, unlocked_npcs=(),
         outing_group = 701
         trip_stories = _forced_rest_stories(chara_info)
     elif is_rest:
-        rest_outcome = _roll_rest_outcome()
+        rest_outcome = _roll_rest_outcome(current_vital)
         outing_group = 701
     elif is_recreation:
         outing_group, energy_capped = _apply_recreation(chara_info, current_vital)
@@ -9535,11 +10262,17 @@ def _simulate_exec_command(career_state: dict, payload: dict, unlocked_npcs=(),
             for pos in trained_here:
                 if pos in gl_supporters:
                     continue
-                if pos in _NPC_TARGET_IDS:
+                if pos in single_mode_events.VERSUS_NPCS:
+                    continue
+                if pos in _NPC_TARGET_IDS or pos in scenarios.for_chara(
+                        chara_info).npc_training_partners(chara_info):
                     _ensure_npc_eval(chara_info, pos)
                     gain = _NPC_BOND_GAIN
                 else:
-                    gain = _BOND_GAIN_PER_TRAINING + training_bond_up + (
+                    card_sid = pos_to_sid.get(pos)
+                    base_bond = (4 if card_sid and pal_cards.card_type(card_sid) in (2, 3)
+                                 else _BOND_GAIN_PER_TRAINING)
+                    gain = base_bond + training_bond_up + (
                         scenarios.for_chara(chara_info).training_bond_bonus(full_state, chara_info)
                         if full_state is not None else 0)
                 gain = conditions.bond_gain(chara_info, gain)
@@ -9580,9 +10313,12 @@ def _simulate_exec_command(career_state: dict, payload: dict, unlocked_npcs=(),
     data["chara_info"] = chara_info
     data["unchecked_event_array"] = []
     _note_not_up(data, not_up)
+    shrine_sub = chara_info.pop(_SHRINE_SUB_KEY, None)
     data["command_result"] = {"command_id": outing_group or command_id or command_group_id or 0,
                               "sub_id": (int(payload.get("select_id") or 1)
-                                         if outing_group == _OUTING_COMMAND_GROUP else 1),
+                                         if outing_group == _OUTING_COMMAND_GROUP
+                                         else shrine_sub if outing_group == _OUTING_SHRINE and shrine_sub
+                                         else 1),
                               "result_state": 1 if failed else 2}
     data["_training_failed"] = failed and base_command != 106
     data["_training_worst"] = worst
@@ -9778,6 +10514,11 @@ def handle_finish(payload: dict) -> dict:
                                     if new_record is not None else 0)
         if final_chara_info is not None:
             smfc["chara_info"] = copy.deepcopy(final_chara_info)
+            smfc["chara_info"]["state"] = 4
+            smfc["chara_info"]["skill_tips_array"] = []
+            if new_record is not None and final_chara_info.get("state") in (2, 3) \
+                    or (final_chara_info.get("turn") or 0) >= _CAREER_END_TURN:
+                smfc["chara_info"]["playing_state"] = 11
         saved = state_store.get_state(viewer_id) or {}
         smfc["love_point_info"] = love_point_info or _unchanged_love_point_info(
             saved, final_chara_info)

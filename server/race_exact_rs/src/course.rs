@@ -71,6 +71,11 @@ impl Course {
         self.corners.iter().rev().find(|s| s.number == n && n > 0)
     }
     pub fn final_corner(&self) -> Option<&Segment> {
-        self.corners.iter().rev().find(|s| s.number > 3 && self.distance-s.start <= 1000.0)
+        let end=crate::simulator::flag("RX_FINALCORNER_END");
+        self.corners.iter().rev().find(|s| s.number > 3 && self.distance-if end {s.end} else {s.start} <= 1000.0)
+    }
+    pub fn lottery_final_corner(&self) -> Option<&Segment> {
+        let end=!crate::simulator::flag("RX_FC_LOT_START");
+        self.corners.iter().rev().find(|s| s.number > 3 && self.distance-if end {s.end} else {s.start} <= 1000.0)
     }
 }

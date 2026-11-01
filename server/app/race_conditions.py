@@ -1,6 +1,7 @@
 
 from __future__ import annotations
 
+import functools
 import logging
 import random
 import zlib
@@ -101,13 +102,57 @@ def unique_condition(chara_id: int, year: int, program_id: int) -> dict | None:
     return _unique_rows().get((int(chara_id or 0), int(year or 0), int(program_id or 0)))
 
 
+_DEBUT_REDRAW = {(800, 11): 10, (900, 12): 12}
+
+
+@master_data.context_cache(maxsize=4096)
+def _program_slot(program_id: int) -> tuple:
+    rows = master_data.query("SELECT grade_rate_id, month, half FROM single_mode_program WHERE id=?",
+                             (int(program_id),))
+    if not rows:
+        return (0, 0)
+    r = rows[0]
+    return (int(r["grade_rate_id"] or 0), (int(r["month"]) - 1) * 2 + int(r["half"]))
+
+
+_VENUE_GROUPS = (10101, 10104, 10105)
+
+
+@functools.lru_cache(maxsize=None)
+def _venue_variants() -> dict:
+    rows = master_data.query(
+        "SELECT id, base_program_id, random_group_id FROM single_mode_program "
+        "WHERE random_group_id != 0") or []
+    out: dict = {}
+    for r in rows:
+        base = int(r["base_program_id"] or r["id"])
+        out.setdefault(base, {})[int(r["random_group_id"])] = int(r["id"])
+    return out
+
+
+def venue_program(chara_info: dict, turn: int, program_id: int) -> int:
+    groups = _venue_variants().get(int(program_id))
+    if not groups:
+        return program_id
+    pool = [g for g in _VENUE_GROUPS if g in groups]
+    if not pool:
+        return program_id
+    year = (int(turn or 1) - 1) // 24 + 1
+    key = f"{chara_info.get('start_time') or ''}|{chara_info.get('card_id') or 0}|{year}|venue"
+    return groups[random.Random(zlib.crc32(key.encode())).choice(pool)]
+
+
 def career_conditions(chara_info: dict | None, program_id: int) -> dict:
     program_id = int(program_id or 0)
     chara_info = chara_info or {}
-    key = f"{chara_info.get('start_time') or ''}|{chara_info.get('card_id') or 0}|{program_id}|cond"
-    cond = roll(program_race_instance(program_id), random.Random(zlib.crc32(key.encode())))
     turn = int(chara_info.get("turn") or 0)
     year = (turn - 1) // 24 + 1 if turn > 0 else 1
+    slot = turn if turn > 72 else year
+    redraw = _DEBUT_REDRAW.get(_program_slot(program_id))
+    if redraw and year == 1 and turn >= redraw:
+        slot = f"{slot}r"
+    key = f"{chara_info.get('start_time') or ''}|{chara_info.get('card_id') or 0}|{program_id}|{slot}|cond"
+    cond = roll(program_race_instance(program_id), random.Random(zlib.crc32(key.encode())))
     row = unique_condition((chara_info.get("card_id") or 0) // 100, year, program_id)
     if row:
         fixed = row["race_condition_id"] and next(

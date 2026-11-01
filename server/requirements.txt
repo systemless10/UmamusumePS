@@ -7,3 +7,4 @@ lz4
 Pillow
 apsw-sqlite3mc
 UnityPy
+numpy

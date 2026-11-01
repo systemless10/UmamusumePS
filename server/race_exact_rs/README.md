@@ -1,5 +1,19 @@
 # Global Rust race simulator port
 
+The expanded 247,851-race Global corpus is **not fully exact**. The current
+distributed holdout reaches **1,027/1,038 exact replays**; the original regression
+set remains **673/673 exact**. All 247,851 inputs pass the documented integrity
+checks, which do not establish physics parity. A current full replay audit is
+in progress. See [the October 29 report](../../docs/RACE_PARITY_2026-10-29.md) and
+[the earlier expanded-corpus work](../../docs/RACE_EXPANDED_CORPUS_2026-10-28.md).
+The first 9,568 full-audit rows are 9,464 exact. A subsequent homogeneous-field
+pacemaker correction makes one of their 104 failures exact; a later counterexample
+narrows the correction to the opening section selection. Both counterexample races
+are exact, and a 208-race focused rerun remains 105/208 exact with no changed exact
+identities or moved first divergences. The full audit predates that correction and
+remains incomplete.
+Earlier complete-parity claims below refer only to their named capture sets.
+
 JP parity work has resumed using the same crate with explicitly labeled JP
 inputs and assets. See [the JP restart report](../../docs/RACE_JP_RESTART_2026-10-09.md)
 for the 34,480-race capture inventory, current baseline, rejected opening probes
@@ -8,7 +22,7 @@ and reproducible commands. JP has no complete replay parity in the new baseline.
 This crate generates independent race candidates from prepared inputs, Global
 assets and the master bundle. It has a runnable tick loop and finish handling.
 Global now uses this engine for live race simulation. General parity beyond
-the captured corpus remains unverified. Every output reports
+the named verified capture sets remains unverified. Every output reports
 `diagnostics.parity_verified: false` and lists unsupported behavior;
 `--require-exact` fails without writing a candidate.
 
@@ -103,7 +117,9 @@ server/race_exact_rs/target/release/race_exact_rs simulate \
 Use `init` instead of `simulate` to inspect initialization. `--trace` adds tagged
 RNG draws and latent per-frame state. `--max-ticks N` bounds the simulation;
 failure to finish is an error. `--input-dir DIR --output DIR` processes a batch,
-loading the master and asset bundle once. Inputs are produced by
+loading the master and asset bundle once. Batch simulation uses one worker by
+default; `--jobs N` explicitly requests additional workers, bounded by CPU
+availability and input count. Inputs are produced by
 `tools/race_exact/gl_prepare.py`; see `docs/RACE_GLOBAL_EXACT.md` for preparation.
 Only an input explicitly marked `seed_mode: recovered` may use an alternate seed.
 
@@ -136,7 +152,10 @@ Python comparator, never to the Rust process. Saved reports are in
 
 ## Remaining work
 
-The captured corpus is exact; behavior outside it remains unverified.
+The named original capture sets are exact; the expanded 247,851-race corpus
+still has replay divergences and has not completed a current full physics audit.
+Input-file integrity is separate from replay parity; see
+[the October 29 audit](../../docs/RACE_PARITY_2026-10-29.md).
 Remaining implementation and validation work includes overtaking and lane target
 selection, advanced skill value/time usage and additional activation, score
 events, defeat results and full post-goal behavior. Position keep uses the first
@@ -152,3 +171,45 @@ audits are documented in `docs/RACE_GLOBAL_SOURCE_SEARCH.md`.
 The candidate's ordinary movement, skills and finish behavior also require
 first-divergence validation. Ported does not imply proven bit-exact. Do not use
 candidate results as an authoritative implementation of the Global server.
+
+Global position-keep speed-up does not end merely because its runner is last
+and therefore has no runner behind. `RX_GLOBAL_PK_NO_BEHIND_FALSE=0` restores
+the previous vacuous-distance-end behavior; JP is unchanged.
+
+Global CompeteTop separation is evaluated per runner; the last active cohort
+member is not forced out when its peers separate. `RX_CT_CASCADE=1` restores
+the earlier prototype cascade.
+
+Global CompeteTop includes the 3.75 m entry boundary and retains a competitor
+at the 5 m exit boundary (`RX_CT_ENTRY_INCLUSIVE=0` / `RX_CT_STRICT_EXIT=0`
+restore the older comparisons). Global full-spurt HP feasibility evaluates
+distance/speed*drain in double before storing the float (`RX_SPURT_NEED_D=0`
+reverts). ConservePower acceleration defaults to `RX_CPORD=3`, with the old
+expression available as `RX_CPORD=0`. Skill-window lotteries round the draw
+to float and scale in double; `RX_LOT_FLOATDRAW=0` restores full-double draws.
+These changes preserve JP behavior. Validated together: 203/208 focused
+races and 512/512 independent frozen-audit exact controls. This does not
+establish full-corpus parity; see the parity research document for failures.
+
+Global recalculation also permits a nearby more-forward fallback below its
+counter threshold while the current handed-over pacemaker is Oikomi;
+`RX_PM_EARLY_OIKOMI=0` restores the old guard. This raises the focused set to
+204/208 exact while preserving all 512 additional exact controls.
+
+Global `is_finalcorner_laterhalf` also requires current corner membership;
+it stops matching on the final straight (`RX_FINALCORNER_HALF_INSIDE=0`
+reverts). This resolves 31 additional full races in a 256-failure discovery
+set while preserving the focused and 512 exact-control corpora.
+
+Global post-finish front blocking now uses the same double-evaluated float
+rate local as the in-race block cap (`RX_GOAL_BLOCK_RATE_D=0` reverts).
+This fixes four full races with no exact losses or earlier divergences in
+the 1,354-race failure set, preserving all 3,942 controls and 673 originals.
+The 257-race early set is unchanged. See Adoption 16 in
+`docs/RACE_PARITY_RESUME_2026-11-01.md`; full-corpus parity remains unproven.
+
+Global pacemaker recalculation also respects the existing position-keep end
+section, like ordinary selection (`RX_PM_RECALC_ENDSEC=0` reverts). This fixes
+37 additional full races with no exact losses or earlier divergences, preserves
+all 3,942 controls and 673 originals, and makes the new set 17/17 exact.
+See Adoption 17 in the resume notes; this remains partial corpus evidence.

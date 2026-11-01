@@ -8,6 +8,8 @@ from . import endpoints, formula, impl, master as M, producers
 
 class Breeders(Scenario):
     scenario_id = impl.SCENARIO_ID
+    has_secret_events = False
+    has_chapter_stories = False
     name = "Breeders"
     endpoint_prefix = "single_mode_breeders"
     data_set_key = "breeders_data_set"
@@ -24,6 +26,7 @@ class Breeders(Scenario):
     reserve_arrivals_after_race = True
     inspiration_closes_chain = True
     plays_calendar_stories = False
+    intro_chain = (4000, 1001)
     camp_lists_rest = True
     playing_states = frozenset({5, 40, 41, 43, 44, 47})
     turn_end_hold_state = 5
@@ -108,7 +111,7 @@ class Breeders(Scenario):
     def final_partners(self, full_state, chara_info, command_id, turn, partners) -> list:
         st = impl.state(full_state or {})
         if full_state and impl.dreams_active(st, int(turn or 0)):
-            return impl.dreams_partners(chara_info)
+            return impl.dreams_partners(full_state, chara_info)
         return partners
 
     def training_gains(self, full_state, chara_info, command_id, facility_level, camp, partners):

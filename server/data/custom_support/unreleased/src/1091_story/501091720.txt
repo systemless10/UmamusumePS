@@ -11,7 +11,7 @@
 7 My name is Tsurumi Anshinzawa!! Wow, no worries～☆
 7> ...
 7{ Tsurumi Anshinzawa
-8 Whoa, a flashy lady...! But... maybe she doesn't really feel like a celebrity...?
+8 Whoa, a flashy lady...! But... maybe she doesn't really feel like a Celeb...?
 9 Gosh! You sure seem worried! ☆
 10 No matter! No matter! We've made our introductions, so lie down and let me put these needles to work!
 11 Ehhh～～～, no, no! I don't want anything that hurts～!
@@ -27,12 +27,12 @@
 18> (We need to get outta here, stat!)
 19 There's no way we're doing this. I take <chrname> and head for the door, when...
 20 W-wait! Where are you going?!
-21 You're Vivlos-chan, right? The Umamusume aiming for Dubai's sparkly races, a celebrity in the making!
+21 You're Vivlos-chan, right? The Umamusume aiming for Dubai's sparkly races, a Celeb in the making!
 21> ...You know her?
 22 Have I heard of her? Of course I have! I'm a big fan!
 23 That's precisely why I'm here! To give you my support! Let me help you!
 24 Just give me a chance! Pleeease!
-25 Y... you're right! Taking a bold leap like this might be my chance to become a celebrity...!?
+25 Y... you're right! Taking a bold leap like this might be my chance to become a Celeb...!?
 26 Please! Pretty please with a carrot on top! I'll even let you choose which chakra I activate!
 27 I'm <i>sure</i> I won't mess up!
 28 Well... pretty sure.
@@ -129,7 +129,7 @@
 112 Welp, I'm outta here! ☆
 113 Hey! Stop right there!
 114 She's gone... She didn't really seem like a super bad person, though...
-115 Being a celebrity is all about building up every day, right!
+115 Being a Celeb is all about building up every day, right!
 115> Yep | Yep
 116 I'm curious who this Anshinzawa character really is, but there's no use ruminating over it. Best to forget about today and move on.
 117 Had a change of heart, did you? No worries, it happens!

@@ -5,6 +5,8 @@ import copy
 import math
 import random
 
+from .. import region
+
 from .. import tuning
 from . import conditions as conditions_mod
 
@@ -17,6 +19,10 @@ EXTRA_EVENTS_KEY = "extra_turn_events"
 EVENT_EFFECTS: dict[int, dict] = {
     3000: {"skill_point": 120},
     4000: {"skill_point": 120},
+}
+
+EVENT_NPC_BONDS: dict[int, dict] = {
+    1016: {102: 5},
 }
 
 INTRO_CHAIN = [3000, 1001]
@@ -85,7 +91,7 @@ _PLAY_TIMING = {
 }
 
 SCENARIO_SCHEDULE: dict[int, list[int]] = {
-    2: [1013],
+    1: [1013],
     3: [1014],
     4: [1015, 102005],
 }
@@ -99,7 +105,15 @@ def _story_id_for(event_id: int, chara_id: int) -> int:
         return _SCENARIO_STORY[event_id]
     if event_id in _CHARA_EVENT_STORY_SUFFIX and chara_id:
         return int(f"50{chara_id}{_CHARA_EVENT_STORY_SUFFIX[event_id]:03d}")
-    return 0
+    return _master_scenario_story(event_id) or 0
+
+
+def _master_scenario_story(event_id: int) -> int | None:
+    from .. import master_data
+    row = master_data.query_one(
+        "SELECT story_id FROM single_mode_story_data WHERE id=? AND card_chara_id=0 "
+        "AND support_card_id=0 AND story_id>0", (event_id,))
+    return int(row["story_id"]) if row else None
 
 
 def _wire_story_id(story_id: int) -> int:
@@ -111,8 +125,12 @@ def is_scenario_event(event_id: int) -> bool:
     return event_id in _SCENARIO_STORY
 
 
+_CHOICELESS = frozenset({1001, 1013})
+
+
 def event_entry(event_id: int, chara_id: int) -> dict:
-    is_scenario = event_id in _SCENARIO_STORY
+    is_scenario = event_id in _SCENARIO_STORY or (
+        event_id not in _CHARA_EVENT_STORY_SUFFIX and _master_scenario_story(event_id) is not None)
     return {
         "event_id": event_id,
         "chara_id": 0 if is_scenario else chara_id,
@@ -120,7 +138,7 @@ def event_entry(event_id: int, chara_id: int) -> dict:
         "play_timing": _PLAY_TIMING.get(event_id, 1),
         "event_contents_info": {
             "support_card_id": 0, "show_clear": 0, "show_clear_sort_id": 0,
-            "choice_array": [{
+            "choice_array": [] if event_id in _CHOICELESS else [{
                 "select_index": 1, "receive_item_id": 0, "target_race_id": 0,
                 "gain_select_id_index": 1, "select_icon": 0,
             }],
@@ -135,6 +153,10 @@ _STAT_STATUS_TYPE = {"speed": 1, "stamina": 2, "power": 3, "guts": 4, "wiz": 5}
 
 
 def apply_effect(chara_info: dict, event_id: int) -> list:
+    if event_id in EVENT_NPC_BONDS:
+        from .. import event_engine
+        for target_id, gain in EVENT_NPC_BONDS[event_id].items():
+            event_engine._apply_npc_bond(chara_info, target_id, gain)
     eff = EVENT_EFFECTS.get(event_id)
     if not eff:
         return []
@@ -183,6 +205,7 @@ NPC_UNLOCKS: dict[int, list[tuple[int, int]]] = {
     203026: [(102, 9002), (103, 9003)],
     206002: [(102, 9002), (110, 9043)],
     206100: [(103, 9003)],
+    201026: [(106, 9006)],
 }
 
 APPRAISAL_EVENTS: dict[int, list[tuple[int, int, int]]] = {
@@ -190,7 +213,7 @@ APPRAISAL_EVENTS: dict[int, list[tuple[int, int, int]]] = {
     103: [(90, 1010, 5), (70, 1009, 4), (40, 1008, 3), (0, 1007, 2)],
 }
 APPRAISAL_BOND_GAIN = 7
-APPRAISAL_BOND_GAIN_BY_NPC = {102: 5, 103: 7, 111: 5, 101: 5, 114: 5}
+APPRAISAL_BOND_GAIN_BY_NPC = {102: 5, 103: 7, 111: 5, 101: 5, 114: 5, 116: 5}
 
 
 def appraisal_bond_gain(target_id) -> int:
@@ -235,8 +258,16 @@ def _has_meek(unlocked) -> bool:
     return any((n[0] if isinstance(n, (list, tuple)) else n) == 2001 for n in (unlocked or ()))
 
 
-def meek_facility(turn) -> int:
-    return _URA_FACILITY_COMMANDS[int(turn) % len(_URA_FACILITY_COMMANDS)]
+MEEK_AWAY_CHANCE = 0.23
+MEEK_DUEL_OFFER_CHANCE = 0.47
+MEEK_BOARD_KEY = "meek_board"
+
+
+def meek_facility(turn):
+    import random
+    if random.random() < MEEK_AWAY_CHANCE:
+        return None
+    return random.choice(_URA_FACILITY_COMMANDS)
 
 
 def meek_duel_offered(turn, unlocked, versus_level: int = 1, last_duel_turn=None) -> bool:
@@ -246,13 +277,37 @@ def meek_duel_offered(turn, unlocked, versus_level: int = 1, last_duel_turn=None
         return False
     if last_duel_turn is not None and int(turn) <= int(last_duel_turn):
         return False
-    return (int(turn) * 7 + 3) % 5 < 2
+    import random
+    return random.random() < MEEK_DUEL_OFFER_CHANCE
 
 
-def happy_meek_facility(turn, unlocked, versus_level: int = 1, last_duel_turn=None):
-    if meek_duel_offered(turn, unlocked, versus_level, last_duel_turn):
-        return meek_facility(turn)
-    return None
+def meek_board(full_state, turn, unlocked, versus_level: int = 1, last_duel_turn=None):
+    if turn is None or not _has_meek(unlocked):
+        return None, False
+    boards = full_state.get(MEEK_BOARD_KEY) if full_state is not None else None
+    b = (boards or {}).get(str(int(turn))) if isinstance(boards, dict) else None
+    if b:
+        fac, duel = b.get("fac"), bool(b.get("duel"))
+    else:
+        fac = meek_facility(turn)
+        duel = fac is not None and meek_duel_offered(turn, unlocked, versus_level, last_duel_turn)
+        if full_state is not None:
+            keep = {k: v for k, v in (boards or {}).items()
+                    if isinstance(boards, dict) and int(k) >= int(turn) - 1}
+            keep[str(int(turn))] = {"fac": fac, "duel": duel}
+            full_state[MEEK_BOARD_KEY] = keep
+    if last_duel_turn is not None and int(turn) <= int(last_duel_turn):
+        duel = False
+    return fac, duel
+
+
+def happy_meek_facility(turn, unlocked, versus_level: int = 1, last_duel_turn=None,
+                        full_state=None):
+    boards = (full_state or {}).get(MEEK_BOARD_KEY)
+    if turn is None or not isinstance(boards, dict) or str(int(turn)) not in boards:
+        return None
+    fac, duel = meek_board(full_state, turn, unlocked, versus_level, last_duel_turn)
+    return fac if duel else None
 
 
 def _reconcile_npc_appearance(data: dict, unlocked=()) -> None:
@@ -278,9 +333,33 @@ def _reconcile_npc_appearance(data: dict, unlocked=()) -> None:
                    "group_outing_info_array": []})
 
 
-def apply_versus_state(data: dict, turn, unlocked, versus_level: int = 1, last_duel_turn=None):
+def scenario_npc_rows(scenario_id, chara_info=None) -> tuple:
+    from .. import master_data as _md
+    if not scenario_id or not _md.has_table("single_mode_unique_chara"):
+        return ()
+    rows = tuple((r["partner_id"], r["chara_id"]) for r in _md.query(
+        "SELECT partner_id, chara_id FROM single_mode_unique_chara"
+        " WHERE scenario_id=? ORDER BY partner_id", (int(scenario_id),)))
+    deck = _deck_charas(chara_info)
+    return tuple(r for r in rows if r[1] not in deck)
+
+
+def _deck_charas(chara_info) -> frozenset:
+    from .. import master_data as _md
+    ids = [c.get("support_card_id") for c in (chara_info or {}).get("support_card_array") or ()
+           if c.get("support_card_id")]
+    if not ids:
+        return frozenset()
+    marks = ",".join("?" * len(ids))
+    return frozenset(r["chara_id"] for r in _md.query(
+        f"SELECT chara_id FROM support_card_data WHERE id IN ({marks})", tuple(ids)))
+
+
+def apply_versus_state(data: dict, turn, unlocked, versus_level: int = 1, last_duel_turn=None,
+                       full_state=None):
     uds0 = data.get("ura_data_set")
     if isinstance(uds0, dict):
+        uds0["versus_level"] = versus_level
         ci0 = data.get("chara_info") or {}
         rows = []
         from .. import master_data as _md
@@ -293,8 +372,14 @@ def apply_versus_state(data: dict, turn, unlocked, versus_level: int = 1, last_d
             rows.append({"target_id": pos,
                          "chara_id": row["chara_id"] if row else 0,
                          "member_state": 0})
+        for tid, cid in scenario_npc_rows(ci0.get("scenario_id"), ci0):
+            rows.append({"target_id": tid, "chara_id": cid, "member_state": 0})
+        listed = {r["target_id"] for r in rows}
         for n in unlocked or ():
             tid, cid = (n[0], n[1]) if isinstance(n, (list, tuple)) else (n, n)
+            if tid in listed:
+                continue
+            listed.add(tid)
             rows.append({"target_id": tid, "chara_id": cid,
                          "member_state": 1 if tid == 2001 else 0})
         uds0["evaluation_info_array"] = rows
@@ -317,15 +402,19 @@ def apply_versus_state(data: dict, turn, unlocked, versus_level: int = 1, last_d
 
     duel_fac = None
     if turn is not None:
-        fac = meek_facility(turn)
+        fac, duel = meek_board(full_state, turn, unlocked, versus_level, last_duel_turn)
         hi = data.get("home_info")
-        if isinstance(hi, dict):
+        if fac is not None and isinstance(hi, dict):
             for c in hi.get("command_info_array") or []:
                 if isinstance(c, dict) and c.get("command_id") == fac:
                     tp = c.setdefault("training_partner_array", [])
                     if 2001 not in tp:
                         tp.append(2001)
-        if isinstance(uds, dict) and meek_duel_offered(turn, unlocked, versus_level, last_duel_turn):
+        if isinstance(uds, dict):
+            for c in uds.get("command_info_array") or []:
+                if isinstance(c, dict) and c.get("versus_event_partner_id") == 2001:
+                    c["versus_event_partner_id"] = 0
+        if isinstance(uds, dict) and duel:
             for c in uds.get("command_info_array") or []:
                 if isinstance(c, dict) and c.get("command_id") == fac:
                     c["versus_event_partner_id"] = 2001
@@ -500,23 +589,22 @@ def happy_meek_stats(level: int) -> dict:
 
 
 def duel_stat_options(versus_level: int) -> list:
-    order = [3, 1, 4, 2, 5]
-    start = (max(1, versus_level) - 1) % 5
-    return [order[(start + i) % 5] for i in range(3)]
+    return random.sample([1, 2, 3, 4, 5], 3)
 
 
 def duel_event_entry(stat_options: list, chara_info: dict | None = None,
                      versus_level: int = 1) -> dict:
     def icon(s):
-        return duel_icon(chara_info, s, versus_level) if chara_info else 2
+        return duel_icon(chara_info, s, versus_level) if chara_info else DUEL_ICON_EVEN
 
+    jp = region.PROCESS_REGION == "jp"
     return {
         "event_id": DUEL_EVENT_ID, "chara_id": 0, "story_id": _DUEL_STORY_ID,
         "play_timing": 6,
         "event_contents_info": {
             "support_card_id": 0, "show_clear": 0, "show_clear_sort_id": 0,
             "choice_array": [
-                {"select_index": s, "receive_item_id": 0, "target_race_id": 0,
+                {"select_index": 1 if jp else s, "receive_item_id": 0, "target_race_id": 0,
                  "gain_select_id_index": s, "select_icon": icon(s)}
                 for s in stat_options
             ],
@@ -526,64 +614,68 @@ def duel_event_entry(stat_options: list, chara_info: dict | None = None,
     }
 
 
-DUEL_ICON_X, DUEL_ICON_CIRCLE, DUEL_ICON_DOUBLE = 1, 3, 4
-
-
-_DUEL_SCALE = 100.0
-
-
-def duel_win_probability(chara_info: dict, stat_index: int, versus_level: int) -> float:
-    key = _STAT_IDX_TO_KEY.get(stat_index)
-    if not key:
-        return 0.0
-    npc = _HAPPY_MEEK_STATS.get(versus_level, _HAPPY_MEEK_STATS[max(_HAPPY_MEEK_STATS)])
-    gap = (chara_info.get(key, 0) or 0) - (npc.get(key, 0) or 0)
-    return min(0.90, max(0.15, 1.0 / (1.0 + math.exp(-gap / _DUEL_SCALE))))
+DUEL_ICON_SURE, DUEL_ICON_EVEN, DUEL_ICON_POOR, DUEL_ICON_BAD = 1, 2, 3, 4
+_DUEL_ICON_WIN = {DUEL_ICON_SURE: 1.0, DUEL_ICON_EVEN: 0.5, DUEL_ICON_POOR: 0.25,
+                  DUEL_ICON_BAD: 0.1}
 
 
 def duel_icon(chara_info: dict, stat_index: int, versus_level: int) -> int:
-    p = duel_win_probability(chara_info, stat_index, versus_level)
-    if p < 0.25:
-        return DUEL_ICON_X
-    if p < 0.75:
-        return DUEL_ICON_CIRCLE
-    return DUEL_ICON_DOUBLE
+    key = _STAT_IDX_TO_KEY.get(stat_index)
+    npc = _HAPPY_MEEK_STATS.get(versus_level, _HAPPY_MEEK_STATS[max(_HAPPY_MEEK_STATS)])
+    if not key or not npc.get(key):
+        return DUEL_ICON_BAD
+    ratio = (chara_info.get(key, 0) or 0) / npc[key]
+    if ratio >= 1.25:
+        return DUEL_ICON_SURE
+    if ratio >= 0.6:
+        return DUEL_ICON_EVEN
+    if ratio >= 0.4:
+        return DUEL_ICON_POOR
+    return DUEL_ICON_BAD
+
+
+def duel_win_probability(chara_info: dict, stat_index: int, versus_level: int) -> float:
+    return _DUEL_ICON_WIN[duel_icon(chara_info, stat_index, versus_level)]
 
 
 def _duel_won(chara_info: dict, stat_index: int, versus_level: int) -> bool:
-    return random.random() < duel_win_probability(chara_info, stat_index, versus_level)
+    p = duel_win_probability(chara_info, stat_index, versus_level)
+    return p >= 1.0 or random.random() < p
 
 
-_DUEL_WIN_STAT_RANGE = (10, 25)
-_DUEL_LOSE_STAT_RANGE = (5, 15)
+_DUEL_WIN_STAT = {1: 10, 2: 12, 3: 15}
+_DUEL_LOSE_STAT = 5
 _DUEL_WIN_SP = 30
 _DUEL_LOSE_SP = 15
 
 
-def _duel_gains(stat_index: int, won: bool, stat_up: int | None = None) -> list:
+def duel_win_stat(versus_level: int) -> int:
+    return _DUEL_WIN_STAT.get(versus_level, _DUEL_WIN_STAT[max(_DUEL_WIN_STAT)])
+
+
+def _duel_gains(stat_index: int, won: bool, versus_level: int = 1) -> list:
     if won:
         skill_id, _g = _RACING_SPIRIT[stat_index]
-        if stat_up is None:
-            stat_up = sum(_DUEL_WIN_STAT_RANGE) // 2
         return [
             {"display_id": 1, "effect_value_0": 50 + stat_index, "effect_value_1": 4, "effect_value_2": 0},
-            {"display_id": 1, "effect_value_0": stat_index, "effect_value_1": stat_up, "effect_value_2": 0},
+            {"display_id": 1, "effect_value_0": stat_index, "effect_value_1": duel_win_stat(versus_level),
+             "effect_value_2": 0},
             {"display_id": 1, "effect_value_0": 30, "effect_value_1": _DUEL_WIN_SP, "effect_value_2": 0},
             {"display_id": 6, "effect_value_0": skill_id, "effect_value_1": 1, "effect_value_2": 0},
         ]
-    if stat_up is None:
-        stat_up = sum(_DUEL_LOSE_STAT_RANGE) // 2
     return [
-        {"display_id": 1, "effect_value_0": stat_index, "effect_value_1": stat_up, "effect_value_2": 0},
+        {"display_id": 1, "effect_value_0": stat_index, "effect_value_1": _DUEL_LOSE_STAT, "effect_value_2": 0},
         {"display_id": 1, "effect_value_0": 30, "effect_value_1": _DUEL_LOSE_SP, "effect_value_2": 0},
     ]
 
 
-def duel_preview(stat_options: list) -> list:
+def duel_preview(stat_options: list, chara_info: dict | None = None,
+                 versus_level: int = 1) -> list:
     arr = []
     for s in stat_options:
-        arr.append({"select_index": s, "gain_param_array": _duel_gains(s, won=True)})
-        arr.append({"select_index": s, "gain_param_array": _duel_gains(s, won=False)})
+        arr.append({"select_index": s, "gain_param_array": _duel_gains(s, True, versus_level)})
+        if not chara_info or duel_icon(chara_info, s, versus_level) != DUEL_ICON_SURE:
+            arr.append({"select_index": s, "gain_param_array": _duel_gains(s, False, versus_level)})
     return arr
 
 
@@ -592,9 +684,9 @@ def resolve_duel(chara_info: dict, stat_index: int, versus_level: int) -> dict:
         stat_index = 1
     key = _STAT_IDX_TO_KEY[stat_index]
     won = _duel_won(chara_info, stat_index, versus_level)
-    stat_up = random.randint(*(_DUEL_WIN_STAT_RANGE if won else _DUEL_LOSE_STAT_RANGE))
+    stat_up = duel_win_stat(versus_level) if won else _DUEL_LOSE_STAT
     sp_up = _DUEL_WIN_SP if won else _DUEL_LOSE_SP
-    gains = _duel_gains(stat_index, won, stat_up)
+    gains = _duel_gains(stat_index, won, versus_level)
     cap_key = "max_wiz" if key == "wiz" else f"max_{key}"
     if won:
         chara_info[cap_key] = chara_info.get(cap_key, 1200) + 4

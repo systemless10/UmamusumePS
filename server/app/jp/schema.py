@@ -76,6 +76,8 @@ def blank(schema: dict):
 
 _SCALARS = ("int", "float", "str", "bool")
 
+_LIGHT_ROWS = {"arc_rival_array": "speed"}
+
 
 def _conform(value, schema: dict, path: str, added: list, clashes: list):
     t = schema.get("t")
@@ -84,6 +86,8 @@ def _conform(value, schema: dict, path: str, added: list, clashes: list):
         return copy.copy(schema.get("d"))
     if t == "map":
         if isinstance(value, list) and not value:
+            if schema.get("ea"):
+                return value
             added.append(path or "<data>")
             return blank(schema)
         if not isinstance(value, dict):
@@ -106,8 +110,11 @@ def _conform(value, schema: dict, path: str, added: list, clashes: list):
                 clashes.append(f"{path.rstrip('.')}: array expected")
             return value
         elem = schema.get("e")
+        light = _LIGHT_ROWS.get(path.rstrip(".").rsplit(".", 1)[-1])
         if elem and elem.get("t") in ("map", "array"):
             for i, item in enumerate(value):
+                if light and isinstance(item, dict) and light not in item:
+                    continue
                 value[i] = _conform(item, elem, f"{path.rstrip('.')}[].", added, clashes)
         return value
     return value

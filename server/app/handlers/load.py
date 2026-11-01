@@ -305,6 +305,9 @@ def _overlay_live_data(response: dict, viewer_id, full_state: dict | None = None
     state_store.save_state(viewer_id, _shared)
     data["tp_info"] = stamina.tp_info(_shared)
     data["rp_info"] = stamina.rp_info(_shared)
+    from . import campaigns
+    data["user_campaign_info_array"] = campaigns.user_campaign_info_array(_shared)
+    data["raffle_campaign_response_data"] = campaigns.raffle_response_data(_shared)
 
     from . import payment
     _birth = payment.user_birth(_shared)

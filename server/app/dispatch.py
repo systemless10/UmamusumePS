@@ -5,20 +5,24 @@ import copy
 import json
 import logging
 import os
+import sqlite3
 import time
 
 from . import accounts
 from . import concerts
-from . import config
+from . import client_versions, config
+from . import event_engine
 from . import event_gallery
 from . import master_data
+from . import region
 from . import tuning
 from . import scenarios
 from . import state as state_store
 from .fixtures import store as fixtures
 from .handlers import conditions
 from .handlers import (collection, gacha, jukebox, live_theater, load, practice_race,
-                       registry, shop, single_mode_team, tool, trained_chara)
+                       registry, shop, single_mode_team, tool, trained_chara,
+                       user_profile)
 from .patch import make_sid, patch_response
 from .result_codes import ResultCode, describe, refuse
 from . import session as session_store
@@ -214,7 +218,7 @@ def _fallback_response(endpoint: str) -> dict:
 GAME_RESOURCE_VERSION = "10008400"
 
 def _resource_version() -> str:
-    return str(config.get("resource_version", GAME_RESOURCE_VERSION))
+    return client_versions.resource_version(GAME_RESOURCE_VERSION)
 
 _ADDED_RESPONSE_FIELDS = {
     "pre_single_mode/index": {"default_running_style_array": []},
@@ -290,7 +294,59 @@ def _apply_version_compat(endpoint: str, response: dict) -> dict:
     return response
 
 
+_ROSTER_INTERNAL = ("grand_live_songs", "grand_live_lives_done")
+
+
+def _strip_roster_internals(node):
+    if isinstance(node, dict):
+        out = node
+        for k, v in node.items():
+            nv = _strip_roster_internals(v)
+            if nv is not v:
+                if out is node:
+                    out = dict(node)
+                out[k] = nv
+        if "trained_chara_id" in out and any(
+                k.startswith("_") or k in _ROSTER_INTERNAL for k in out):
+            out = {k: v for k, v in out.items()
+                   if not (k.startswith("_") or k in _ROSTER_INTERNAL)}
+        return out
+    if isinstance(node, list):
+        out = node
+        for i, v in enumerate(node):
+            nv = _strip_roster_internals(v)
+            if nv is not v:
+                if out is node:
+                    out = list(node)
+                out[i] = nv
+        return out
+    return node
+
+
 REQUEST_GUARDS: list = []
+
+
+_INT_FIELD_SUFFIXES = ("_id", "turn", "_num", "number", "_type", "_count", "index", "_lv", "level")
+_STRING_FIELDS = frozenset({"device_id", "udid", "adid", "steam_id", "dmm_viewer_id",
+                            "dmm_onetime_token", "steam_session_auth_ticket", "button_info"})
+_MALFORMED_ERRORS = (TypeError, ValueError, OverflowError, sqlite3.ProgrammingError,
+                     sqlite3.InterfaceError)
+
+
+def _malformed(node, key: str = "") -> bool:
+    scalar_int = key.endswith(_INT_FIELD_SUFFIXES) and key not in _STRING_FIELDS
+    if isinstance(node, dict):
+        return scalar_int or any(_malformed(v, k) for k, v in node.items())
+    if isinstance(node, list):
+        return scalar_int or any(_malformed(x, key) for x in node)
+    if isinstance(node, bool) or node is None or key in _STRING_FIELDS:
+        return False
+    if isinstance(node, int):
+        return not -(1 << 63) <= node < (1 << 63)
+    base = key[:-6] if key.endswith("_array") else key
+    if base.endswith(_INT_FIELD_SUFFIXES):
+        return not (isinstance(node, str) and node.lstrip("-").isdigit())
+    return False
 
 
 def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | None) -> dict:
@@ -352,7 +408,15 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
                          if endpoint.startswith("single_mode") and tuning.mult("skill_point_multiplier") != 1.0
                          else None)
             tuning.TRAINING_SP.set(0)
-            response = handler(payload) if handler is not None else _fallback_response(endpoint)
+            if endpoint.startswith("single_mode") and handler is not None:
+                single_mode_team.presort_tips(viewer_id)
+            try:
+                response = handler(payload) if handler is not None else _fallback_response(endpoint)
+            except _MALFORMED_ERRORS:
+                if not _malformed(payload):
+                    raise
+                log.warning("%s refused: malformed request values", endpoint)
+                response = refuse()
             if sp_before is not None:
                 try:
                     tuning.settle_skill_points(viewer_id, sp_before, response)
@@ -365,6 +429,10 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
                 data["not_down_parameter_info"] = guards
             response = _apply_version_compat(endpoint, response)
             response = single_mode_team.sync_chara_info(viewer_id, endpoint, response)
+            try:
+                response = user_profile.apply_all_trophies(endpoint, response)
+            except Exception:
+                log.exception("unlock_all_trophies failed; serving as-is")
             if endpoint.startswith("single_mode"):
                 response = concerts.attach_story_songs(viewer_id, endpoint, response)
                 event_gallery.record_served(viewer_id, response)
@@ -382,7 +450,9 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
     if result_code not in (None, ResultCode.RESULT_CODE_OK):
         log.info("RESULT %s -> %s %s", endpoint, result_code, describe(result_code))
 
-    if endpoint.startswith("single_mode") and ("check_event" in endpoint or "exec_command" in endpoint or "get_choice_reward" in endpoint or "load" in endpoint):
+    if (os.environ.get("UMA_DEBUG_RESPONSES", "1") != "0"
+            and endpoint.startswith("single_mode")
+            and any(call in endpoint for call in ("check_event", "exec_command", "get_choice_reward", "load"))):
         try:
             import json as _json, os as _os
             _dbg = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.dirname(__file__))), "debug_responses")
@@ -449,6 +519,9 @@ def handle_decoded(endpoint_path: str, payload: dict, presented_sid: bytes | Non
         except Exception:
             pass
 
+    response = _strip_roster_internals(response)
+    if region.PROCESS_REGION == "global":
+        event_engine.apply_short_cut_story_ids(response)
     patched = patch_response(response, payload, sid)
     if endpoint == "tool/signup":
         new_viewer_id = (patched.get("data") or {}).get("viewer_id")

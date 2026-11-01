@@ -88925,5 +88925,469 @@
         ]
       }
     ]
+  },
+  "30323": {
+    "card_id": "30323",
+    "card_name": "Azuma",
+    "char_id": 9052,
+    "card_type": "friend",
+    "chain_events": [],
+    "random_events": [
+      {
+        "name": "妙なる巫女、吾妻",
+        "type": "random",
+        "story_id": 809052001,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "stamina",
+                "value": "+5"
+              },
+              {
+                "type": "guts",
+                "value": "+5"
+              },
+              {
+                "type": "skill_point",
+                "value": "+5"
+              },
+              {
+                "type": "max_energy",
+                "value": "+3"
+              },
+              {
+                "type": "motivation",
+                "value": "+1"
+              },
+              {
+                "type": "bond",
+                "value": "+15",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "求むるは、新たな書",
+        "type": "random",
+        "story_id": 809052004,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "energy",
+                "value": "+25"
+              },
+              {
+                "type": "motivation",
+                "value": "+1"
+              },
+              {
+                "type": "stamina",
+                "value": "+5"
+              },
+              {
+                "type": "guts",
+                "value": "+5"
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              },
+              {
+                "type": "condition",
+                "condition_id": 45
+              }
+            ],
+            "random_either": false
+          },
+          {
+            "label": "Choice 2",
+            "effects": [
+              {
+                "type": "motivation",
+                "value": "+1"
+              },
+              {
+                "type": "guts",
+                "value": "+5"
+              },
+              {
+                "type": "wiz",
+                "value": "+5"
+              },
+              {
+                "type": "skill_point",
+                "value": "+5"
+              },
+              {
+                "type": "skill_hint",
+                "value": "+5",
+                "skill_id": 204812
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              },
+              {
+                "type": "condition",
+                "condition_id": 45
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "故に我、日々を綴る",
+        "type": "random",
+        "story_id": 809052011,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "energy",
+                "value": "+35"
+              },
+              {
+                "type": "speed",
+                "value": "+10"
+              },
+              {
+                "type": "guts",
+                "value": "+10"
+              },
+              {
+                "type": "skill_point",
+                "value": "+10"
+              },
+              {
+                "type": "max_energy",
+                "value": "+3"
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "流れ、追い難く",
+        "type": "random",
+        "story_id": 809052012,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "energy",
+                "value": "+30"
+              },
+              {
+                "type": "wiz",
+                "value": "+10"
+              },
+              {
+                "type": "skill_point",
+                "value": "+10"
+              },
+              {
+                "type": "skill_hint",
+                "value": "+2",
+                "skill_id": 202552
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "共に、今を辿る",
+        "type": "random",
+        "story_id": 809052013,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "energy",
+                "value": "+50"
+              },
+              {
+                "type": "motivation",
+                "value": "+1"
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          },
+          {
+            "label": "Choice 2",
+            "effects": [
+              {
+                "type": "stamina",
+                "value": "+10"
+              },
+              {
+                "type": "guts",
+                "value": "+10"
+              },
+              {
+                "type": "wiz",
+                "value": "+10"
+              },
+              {
+                "type": "skill_point",
+                "value": "+20"
+              },
+              {
+                "type": "motivation",
+                "value": "+1"
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "時重ね、絆は",
+        "type": "random",
+        "story_id": 809052014,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "energy",
+                "value": "+35"
+              },
+              {
+                "type": "stamina",
+                "value": "+10"
+              },
+              {
+                "type": "power",
+                "value": "+10"
+              },
+              {
+                "type": "skill_point",
+                "value": "+5"
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "其は泡沫、されど――",
+        "type": "random",
+        "story_id": 809052015,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "energy",
+                "value": "+35"
+              },
+              {
+                "type": "guts",
+                "value": "+10"
+              },
+              {
+                "type": "wiz",
+                "value": "+10"
+              },
+              {
+                "type": "skill_point",
+                "value": "+20"
+              },
+              {
+                "type": "skill_hint",
+                "value": "+3",
+                "skill_id": 202551
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "吾妻との絆・新たなる年に",
+        "type": "random",
+        "story_id": 809052021,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "speed",
+                "value": "+10"
+              },
+              {
+                "type": "wiz",
+                "value": "+10"
+              },
+              {
+                "type": "skill_point",
+                "value": "+5"
+              },
+              {
+                "type": "skill_hint",
+                "value": "+3",
+                "skill_id": 200512
+              },
+              {
+                "type": "bond",
+                "value": "+5",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "縁、また巡る日まで",
+        "type": "random",
+        "story_id": 809052022,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "speed",
+                "value": "+15"
+              },
+              {
+                "type": "guts",
+                "value": "+15"
+              },
+              {
+                "type": "wiz",
+                "value": "+15"
+              },
+              {
+                "type": "skill_point",
+                "value": "+50"
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "信じ、歩みを見守りて",
+        "type": "random",
+        "story_id": 809052031,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "speed",
+                "value": "+5"
+              },
+              {
+                "type": "power",
+                "value": "+5"
+              },
+              {
+                "type": "skill_point",
+                "value": "+10"
+              },
+              {
+                "type": "bond",
+                "value": "+10",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          },
+          {
+            "label": "Choice 2",
+            "effects": [
+              {
+                "type": "energy",
+                "value": "+10"
+              },
+              {
+                "type": "wiz",
+                "value": "+5"
+              },
+              {
+                "type": "bond",
+                "value": "+10",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      },
+      {
+        "name": "まばゆき二人三脚",
+        "type": "random",
+        "story_id": 809052032,
+        "choices": [
+          {
+            "label": "Choice 1",
+            "effects": [
+              {
+                "type": "guts",
+                "value": "+4"
+              },
+              {
+                "type": "skill_point",
+                "value": "+4"
+              },
+              {
+                "type": "bond",
+                "value": "+2",
+                "char_id": 9052
+              }
+            ],
+            "random_either": false
+          }
+        ]
+      }
+    ],
+    "_evidence": "Festa live captures; pre-bonus integer rewards reconstructed at level 50 (recovery +60%, effects +30%). Repeatable +4 base is inferred from +5 commits."
   }
 }

@@ -24,16 +24,16 @@ fn pace_down_draws_once_and_ends_on_target_gap() {
     let mut runners = [horse, Runner {order:1,..horse}];
     let mut state = Keep::default();
     let mut random = RaceRandom::new(3,false);
-    state.update(&p,1200,24,&runners,1,0,&mut random,0.0666,true);
+    state.update(&p,1200,24,&runners,1,0,&mut random,0.0666,true,true);
     assert_eq!(state.mode,4);
     assert_eq!(state.count,1);
     assert_eq!(random.calls(),1);
-    state.update(&p,1200,24,&runners,1,0,&mut random,0.0666,true);
+    state.update(&p,1200,24,&runners,1,0,&mut random,0.0666,true,true);
     assert_eq!(random.calls(),1);
     runners[0].distance = 6.0;
-    state.update(&p,1200,24,&runners,1,0,&mut random,0.0666,true);
+    state.update(&p,1200,24,&runners,1,0,&mut random,0.0666,true,true);
     assert_eq!(state.mode,0);
-    state.update(&p,1200,24,&runners,1,0,&mut random,0.0666,true);
+    state.update(&p,1200,24,&runners,1,0,&mut random,0.0666,true,true);
     assert_eq!(random.calls(),1);
 }
 
@@ -54,10 +54,10 @@ fn lone_front_runner_threshold_counts_its_strategy_only() {
     let mut runners = [first, Runner {distance:0.0,order:1,style:2,..first}];
     let mut state = Keep::default();
     let mut random = RaceRandom::new(3,false);
-    state.update(&p,1200,24,&runners,0,0,&mut random,0.0666,true);
+    state.update(&p,1200,24,&runners,0,0,&mut random,0.0666,true,true);
     assert_eq!(state.mode,1);
     runners[1].style = 1;
     let mut state = Keep::default();
-    state.update(&p,1200,24,&runners,0,0,&mut random,0.0666,true);
+    state.update(&p,1200,24,&runners,0,0,&mut random,0.0666,true,true);
     assert_eq!(state.mode,0);
 }

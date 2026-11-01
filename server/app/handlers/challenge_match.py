@@ -6,10 +6,10 @@ import copy
 import functools
 import gzip
 import logging
+import math
 import random
+import struct
 import time
-
-import numpy as np
 
 from .. import config, custom_support, master_data, patch
 from .. import state as state_store
@@ -384,11 +384,15 @@ def handle_race_start(payload: dict) -> dict:
 
 
 def border_time(distance: int) -> float:
-    f = np.float32
+    f = _f32
     d = f(distance)
-    base = f(20) - (d - f(2000)) / f(1000)
-    last = d - f(16) * d / f(24)
-    return float((last / f(21) + (d - last) / base) * f(1.18))
+    base = f(f(20) - f(f(d - 2000) / 1000))
+    last = f(d - f(f(16 * d) / 24))
+    return f(f(f(last / 21) + f(f(d - last) / base)) * f(1.18))
+
+
+def _f32(x: float) -> float:
+    return struct.unpack("f", struct.pack("f", x))[0]
 
 
 def _phase(dist: float, d: int) -> int:
@@ -453,7 +457,7 @@ def _score(scenario_b64: str, player: dict, popularity: int, difficulty: int,
         else:
             add(lambda r: r["condition_type"] == 9 and r["condition_value_1"] == v)
 
-    diff = int(np.floor(border_time(distance) * 10)) - int(np.floor(me.finish_time * 10))
+    diff = math.floor(border_time(distance) * 10) - math.floor(me.finish_time * 10)
     if diff >= 0:
         add(lambda r: r["condition_type"] == 4 and r["condition_value_1"] <= diff < r["condition_value_2"])
     add(lambda r: r["condition_type"] == 3 and r["condition_value_1"] == order + 1)

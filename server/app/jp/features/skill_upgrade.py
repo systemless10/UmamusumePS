@@ -111,13 +111,12 @@ def _evolutions(chara_info: dict, full_state: dict) -> list[dict]:
             (int(chara_info.get("scenario_id") or 0), now)):
         out.append({"description_id": r["skill_id"], "wire_type": 2,
                     "skill_id": r["skill_id"], "base_skill_id": r["base_skill_id"]})
-    owned = {c.get("card_id"): int(c.get("rarity") or 0)
-             for c in full_state.get(collection.CARD_LIST_KEY) or () if isinstance(c, dict)}
+    lineage = set((full_state.get(KEY) or {}).get("lineage_cards") or ())
     for r in () if not master_data.has_table("skill_upgrade_succession_skill") else master_data.query(
             "SELECT card_id, base_skill_id, skill_id FROM skill_upgrade_succession_skill "
             "WHERE start_date<=?", (now,)):
-        if owned.get(r["card_id"], 0) >= 3:
-            out.append({"description_id": r["base_skill_id"], "wire_type": 0,
+        if r["card_id"] in lineage:
+            out.append({"description_id": r["base_skill_id"], "wire_type": 0, "card_id": r["card_id"],
                         "skill_id": r["skill_id"], "base_skill_id": r["base_skill_id"]})
     for e in out:
         e["conditions"] = _conditions(e["description_id"])
@@ -360,10 +359,23 @@ def _parse(text: str):
         return (lambda c: _capped(sum(1 for s in c["fired"] if s in ids), n)), bool(ids)
 
     if re.fullmatch(r"育成開始時に★3以上の育成ウマ娘.+を解放している", t):
-        return (lambda c: (1, 1)), True
+        return (lambda c: (int(c["owned"].get(c["card_id"], 0) >= 3), 1)), True
     if t == "育成開始時に継承してヒントを獲得している":
         return (lambda c: (int(c["base_group"] in c["start_tip_groups"]), 1)), True
 
+    if t == 'すべての進捗発表会と午式駿大祭を大成功で完了する':
+        return (lambda c: (int(all(any(r['schedule_id'] == k and r['result_type'] == 2
+                                        for r in c['festa']) for k in (1, 2, 3))), 1)), True
+    if t == '午式駿大祭を大成功で完了する':
+        return (lambda c: (int(any(r['schedule_id'] == 3 and r['result_type'] == 2
+                                   for r in c['festa'])), 1)), True
+
+    if t == "すべてのお料理チャレンジを大満足以上で完了する":
+        return (lambda c: (int(all(any(int(r["cook_type"]) == k and int(r["result_state"]) >= 2
+                                       for r in c["cook"]) for k in range(1, 6))), 1)), True
+    if t == "大豊食祭を大満足以上で完了する":
+        return (lambda c: (int(any(int(r["cook_type"]) == 5 and int(r["result_state"]) >= 2
+                                   for r in c["cook"])), 1)), True
     if t == "すべてのラーメン・ジャンボリーを大盛況以上で完了する":
         return (lambda c: (int(len([r for r in c["ramen"] if r["result_state"] >= 2]) >= 3), 1)), True
     if t == "超ラーメン・ジャンボリー極を大盛況以上で完了する":
@@ -484,16 +496,21 @@ def _context(chara_info: dict, career_data: dict, full_state: dict) -> dict:
             "tally": tracker.get("tally") or {},
             "start_tip_groups": set(start_groups),
             "ramen": list(snap.get("ramen_results") or ()),
+            "festa": list(snap.get("festa_results") or ()),
+            "cook": list(snap.get("cook_results") or ()),
             "onsen": list(snap.get("onsen_results") or ()),
             "breeders": list(snap.get("breeders_reviews") or ()),
             "pioneer": list(snap.get("pioneer_results") or ()),
             "mecha": list(snap.get("mecha_results") or ()),
             "arc": {"rate": snap.get("arc_rate"), "levels": snap.get("arc_level_sum")},
-            "base_group": 0, "force": bool(full_state.get(FORCE_KEY))}
+            "owned": {c.get("card_id"): int(c.get("rarity") or 0)
+                      for c in full_state.get(collection.CARD_LIST_KEY) or () if isinstance(c, dict)},
+            "card_id": 0, "base_group": 0, "force": bool(full_state.get(FORCE_KEY))}
 
 
 def _progress(evo: dict, ctx: dict) -> list[dict]:
     ctx["base_group"] = _skill_row(evo["base_skill_id"])["group_id"]
+    ctx["card_id"] = evo.get("card_id", 0)
     rows = []
     for cond in evo["conditions"]:
         fn, _ok = _compiled(cond["id"])
@@ -523,13 +540,13 @@ def _met(evo: dict, rows: list[dict], scenario_rows=()) -> bool:
 
 def upgrade_info(chara_info: dict, career_data: dict, full_state: dict) -> list[dict]:
     ctx = _context(chara_info, career_data, full_state)
-    rows = []
+    blocks = {1: [], 2: [], "scenario": [], 0: []}
     for evo in _evolutions(chara_info, full_state):
-        rows += _progress(evo, ctx)
-    seen = {r["condition_id"] for r in rows}
-    rows += [{k: v for k, v in r.items() if k != "rank"}
-             for r in _scenario_rows(chara_info, ctx) if r["condition_id"] not in seen]
-    return sorted(rows, key=lambda r: r["condition_id"])
+        blocks.setdefault(evo["wire_type"], []).extend(_progress(evo, ctx))
+    seen = {r["condition_id"] for b in blocks.values() for r in b}
+    blocks["scenario"] = [{k: v for k, v in r.items() if k != "rank"}
+                          for r in _scenario_rows(chara_info, ctx) if r["condition_id"] not in seen]
+    return [r for b in blocks.values() for r in sorted(b, key=lambda r: r["condition_id"])]
 
 
 def _apply_picks(viewer_id, picks: list) -> None:
@@ -641,6 +658,20 @@ def _tally(endpoint: str, payload: dict, data: dict, full_state: dict, noted) ->
     tracker["effects_seen"] = sorted(now)
 
 
+def _lineage_cards(viewer_id, payload: dict) -> list[int]:
+    start = payload.get("start_chara") or {}
+    roster = smt._roster_by_trained_id(viewer_id)
+    cards = set()
+    for key in ("succession_trained_chara_id_1", "succession_trained_chara_id_2"):
+        parent = roster.get(start.get(key)) if start.get(key) else None
+        if not parent:
+            continue
+        cards.add(int(parent.get("card_id") or 0))
+        cards |= {int(a.get("card_id") or 0) for a in parent.get("succession_chara_array") or ()
+                  if isinstance(a, dict) and a.get("position_id") in (10, 20)}
+    return sorted(cards - {0})
+
+
 def after(endpoint: str, payload: dict, resp: dict, noted) -> None:
     if not _is_career(endpoint) or not available():
         return
@@ -654,6 +685,7 @@ def after(endpoint: str, payload: dict, resp: dict, noted) -> None:
     career = (full_state.get(smt.STATE_KEY) or {}).get("data")
     if _action(endpoint) == "start":
         full_state.pop(KEY, None)
+        _tracker(full_state)["lineage_cards"] = _lineage_cards(viewer_id, payload)
     if not isinstance(career, dict) or not isinstance(career.get("chara_info"), dict):
         for ci in _chara_infos(data):
             ci["skill_upgrade_info_array"] = []

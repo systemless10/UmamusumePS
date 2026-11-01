@@ -26,14 +26,14 @@
 17 Kyaa～♡ Tore-cchi, so good～! Suuuper! So professional!
 17> (...Phew)
 18 "Treat me like a young lady"—that was Vivlos's request when I told her about throwing the party.
-19 Hey, hey, isn't this suit nice?! The silk has just the right sheen, so it's classy～, and that vivid blue is gorgeous～!
+19 Hey hey, isn't this suit nice?! The silk has just the right sheen, so it's classy～, and that vivid blue is gorgeous～!
 19> ...Isn't it a little too flashy?
 20 It's fine. It'll totally look good on you, okay?
 21 After working suuuper hard in the Tiara races, I'm suuuper glamorous, right?
 22 Soooo, I want you to protect me looking all cool, Tore-cchi♡
 23 Go try it on, okay? I'll be waiting～♡
 24 I couldn't shake the feeling she was having a bit of fun at my expense, but if it's what Vivlos wanted, I went along with it and got everything ready—
-25 Oh, right! Fine's a real-deal celeb, so how does Tore-cchi look?!
+25 Oh, right! Fine's a real-deal Celeb, so how does Tore-cchi look?!
 25> Huh
 25{ Fine
 26 Given her background, Fine Motion has likely seen all sorts of people. Being judged by her is a heavy burden, but—
@@ -97,6 +97,6 @@
 72 Then I'll take my leave. —Next time, on the turf.
 73 ...Ramonu's really mysterious, huh?
 73> Yeah... I mean, yes, she is | Yeah... I mean, yes, she is
-74 ...You know, Tore-cchi. I'm done playing celebrity.
+74 ...You know, Tore-cchi. I'm done playing Celeb.
 75 Sorry for being selfish? But...
 76 I like the usual Tore-cchi best after all♡

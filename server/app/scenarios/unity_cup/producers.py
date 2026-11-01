@@ -21,14 +21,13 @@ BEATS: dict = {
     5:  [(201027, 400002403, 0, 6, 0, 0),
          (201161, 400002221, 0, 6, 1, 0)],
     6:  [(201158, 400002219, 0, 6, 1, 0)],
-    7:  [(201001, 400002100, 0, 6, 1, 0),
-         (201159, 400002220, 0, 6, 1, 0)],
+    7:  [(201159, 400002220, 0, 6, 1, 0)],
     13: [(101007, 400000100, 0, 6, 1, 0)],
-    18: [(201028, 400002404, 0, 6, 1, 0)],
+    18: [(201028, 400002404, 0, 6, 1, 0),
+         (201145, 400002215, 0, 6, 1, 0)],
     21: [(201093, 400002116, 0, 10, 0, 0)],
     24: [(201029, 400002405, 0, 10, 1, 0)],
-    33: [(201002, 400002101, 0, 6, 1, 0),
-         (201095, 400002116, 0, 10, 0, 0)],
+    33: [(201095, 400002116, 0, 10, 0, 0)],
     36: [(201034, 400002409, 0, 10, 1, 0)],
     41: [(201039, 400002414, 0, 6, 0, 0)],
     43: [(201040, 400002415, 0, 6, 0, 0)],
@@ -38,8 +37,7 @@ BEATS: dict = {
     49: [(201046, 400002421, 0, 6, 0, 0)],
     50: [(201047, 400002422, 0, 6, 1, 0)],
     54: [(201048, 400002423, 0, 3, 0, 0)],
-    57: [(201003, 400002102, 0, 6, 1, 0),
-         (201098, 400002116, 0, 10, 0, 0)],
+    57: [(201098, 400002116, 0, 10, 0, 0)],
     60: [(201049, 400002424, 0, 3, 1, 0)],
     65: [(201053, 400002428, 0, 6, 0, 0)],
     68: [(201054, 400002429, 0, 3, 0, 0)],
@@ -192,7 +190,7 @@ def unity_cup_random_pool(ctx: CE.Ctx) -> list:
     return [CE.Event(
         event_id=event_id, story_id=story_id, play_timing=RANDOM_POOL_TIMING,
         choices=[CE.Choice(effects=list(effects))],
-        chara_id=chara_id or None,
+        chara_id=chara_id or 0,
         once_key="unity_cup_pool:%d" % event_id,
         priority=CE.PRIO_SCENARIO,
     )]
@@ -272,6 +270,7 @@ def finals_present_beat(name_id: int, won_ura: bool) -> tuple:
     return event_id, FINALS_PRESENT_STORY + name_id
 
 
+EARLY_SCOUT_EVENT = 201145
 SCOUT_JOIN_EVENT = 201020
 SCOUT_JOIN_STORY = 400002205
 SCOUT_JOIN_TIMING = 6
@@ -281,6 +280,22 @@ AFTER_TRAINING_TIMING = 6
 POST_RACE_TIMING = 9
 
 TEAM_SUPPORT_EVENT = 201114
+
+INTRO_LAST_EVENTS = frozenset({201025, TEAM_SUPPORT_EVENT})
+INTRO_LAST_HOLD = "unity_cup_intro_last"
+
+
+@CE.hold_gate(INTRO_LAST_HOLD)
+def _intro_last(full_state: dict) -> bool:
+    from ...handlers import single_mode_events as sme
+    for row in full_state.get(sme.EXTRA_EVENTS_KEY) or ():
+        if isinstance(row, dict) and CE.timing_rank(row) <= CE.TIMING_RANK[10]:
+            return False
+    for row in CE.state(full_state).get("queue") or ():
+        if (isinstance(row, dict) and row.get("hold_until") != INTRO_LAST_HOLD
+                and CE.timing_rank(row, full_state) <= CE.TIMING_RANK[10]):
+            return False
+    return True
 
 SCENARIO_INTRO_EVENT = 201025
 
@@ -321,9 +336,10 @@ def unity_cup_beats(ctx: CE.Ctx) -> list:
             play_timing=timing,
             choices=([CE.Choice(effects=list(BEAT_EFFECTS.get(event_id, ())))]
                      if choice_count else []),
-            chara_id=chara_id or None,
+            chara_id=chara_id or 0,
             once_key=f"unity_cup_beat:{event_id}",
             priority=CE.PRIO_SCENARIO,
+            hold_until=INTRO_LAST_HOLD if event_id in INTRO_LAST_EVENTS else None,
         ))
     if training and int(ctx.turn or 0) > ACTING_DIRECTOR_TURN:
         late = next((b for b in beats_for(ACTING_DIRECTOR_TURN)
@@ -333,12 +349,48 @@ def unity_cup_beats(ctx: CE.Ctx) -> list:
                 event_id=late[0], story_id=late[1],
                 play_timing=AFTER_TRAINING_TIMING,
                 choices=[CE.Choice(effects=[])] if late[4] else [],
-                chara_id=late[2] or None,
+                chara_id=late[2] or 0,
                 once_key=f"unity_cup_beat:{late[0]}",
                 priority=CE.PRIO_SCENARIO,
             ))
     out.sort(key=lambda e: e.play_timing == TURN_START_TIMING)
     return out
+
+
+COMPLIMENTS = ((90, 201004, 400002103, 5), (70, 201003, 400002102, 4),
+               (40, 201002, 400002101, 3), (0, 201001, 400002100, 2))
+
+
+@CE.producer("unity_cup_compliments", priority=CE.PRIO_SCENARIO - 1,
+             scenario=SCENARIO_ID)
+def unity_cup_compliments(ctx: CE.Ctx) -> list:
+    if not _is_training_poll(ctx):
+        return []
+    payload = getattr(ctx, "payload", None) or {}
+    if payload.get("command_type") != 1:
+        return []
+    from ...handlers import single_mode_team as smt
+    board = ctx.full_state.get(smt._SERVED_BOARD_KEY) or {}
+    if int(board.get("turn") or 0) != int(ctx.turn or 0):
+        return []
+    riko = unity_cup.riko_target(ctx.chara_info)
+    here = next((c.get("training_partner_array") or [] for c in board.get("cmds") or ()
+                 if c.get("command_id") == payload.get("command_id")), [])
+    if riko not in here:
+        return []
+    bond = next((int(e.get("evaluation") or 0)
+                 for e in ctx.chara_info.get("evaluation_info_array") or ()
+                 if e.get("target_id") == riko), 0)
+    floor, event_id, story_id, sp = next(c for c in COMPLIMENTS if bond >= c[0])
+    return [CE.Event(
+        event_id=event_id, story_id=story_id, play_timing=AFTER_TRAINING_TIMING,
+        choices=[CE.Choice(effects=[
+            {"type": "npc_bond", "target_id": riko,
+             "chara_id": unity_cup.RIKO_CHARA_ID, "value": "+5"},
+            {"type": "skill_points", "value": "+%d" % sp}])],
+        once_key="unity_cup_compliments:%s" % ctx.turn,
+        priority=CE.PRIO_SCENARIO - 1,
+    )]
 
 
 RACE_GATE_BY_ROUND = (201029, 201034, 201042, 201049, 201055)

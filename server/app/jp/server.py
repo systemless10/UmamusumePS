@@ -57,7 +57,7 @@ def flatten_request_common(payload: dict) -> dict:
 
 
 app = FastAPI(title="Umamusume private server (JP)", lifespan=lifespan)
-from .. import custom_support, custom_support_http
+from .. import client_versions, custom_support, custom_support_http
 app.include_router(custom_support_http.router)
 from .. import profile_images
 app.include_router(profile_images.router)
@@ -72,12 +72,41 @@ def finish(resp: dict, endpoint: str, payload: dict | None = None) -> dict:
         features.profile_slots.fill(endpoint, resp)
         resp = schema.conform(endpoint, resp, handled)
         story_ids.apply(resp)
+        _mask_previews(endpoint, resp.get("data"))
     dh = resp.setdefault("data_headers", {})
     if endpoint in endpoints.SERVER_LIST_ENDPOINTS:
         dh["server_list"] = endpoints.SERVER_LIST
     else:
         dh.pop("server_list", None)
     return resp
+
+
+_NO_PREVIEW_ENDPOINTS = ("race_entry", "race_end", "race_out", "gain_skills")
+
+
+_KEEP_SET_COMMANDS = frozenset({"legend_data_set", "pioneer_data_set", "festa_data_set",
+                                "onsen_data_set"})
+
+
+def _mask_previews(endpoint: str, data) -> None:
+    if not endpoint.startswith("single_mode") or not isinstance(data, dict):
+        return
+    hi = data.get("home_info")
+    if not isinstance(hi, dict) or not hi.get("command_info_array"):
+        return
+    ci = data.get("chara_info") or {}
+    if not (data.get("unchecked_event_array") or ci.get("playing_state", 1) != 1
+            or endpoint.rsplit("/", 1)[-1] in _NO_PREVIEW_ENDPOINTS):
+        return
+    hi = data["home_info"] = dict(hi)
+    hi["command_info_array"] = [
+        {**c, **({"params_inc_dec_info_array": None} if "params_inc_dec_info_array" in c else {}),
+         **({"failure_rate": 0} if "failure_rate" in c else {})}
+        for c in hi["command_info_array"]]
+    for key, ds in list(data.items()):
+        if (key.endswith("_data_set") and key not in _KEEP_SET_COMMANDS
+                and isinstance(ds, dict) and ds.get("command_info_array") is not None):
+            data[key] = {**ds, "command_info_array": None}
 
 
 def _played_branch(endpoint: str, payload: dict) -> int | None:
@@ -110,7 +139,11 @@ def handle(endpoint: str, payload: dict, sid) -> dict:
     features.exhibition.after(endpoint, payload, resp)
     features.archive.after(endpoint, payload, resp)
     features.trainer_skill.after(endpoint, payload, resp)
+    features.continue_unlock.after(endpoint, payload, resp)
     data = resp.get("data")
+    decided = data.pop("_played_branch", None) if isinstance(data, dict) else None
+    if decided is not None:
+        branch = decided
     if branch is not None and isinstance(data, dict):
         data["select_index_info_array"] = [{"branch_number": 1, "select_index": branch}]
     return resp
@@ -136,11 +169,13 @@ async def dispatch(endpoint_path: str, request: Request) -> Response:
 
     endpoints.remember_session(decoded)
     token = endpoints.CURRENT_REQUEST.set(decoded)
+    ver = client_versions.observe(headers)
     try:
         payload = decoded.payload if isinstance(decoded.payload, dict) else {}
         with custom_support.request_context(headers, payload):
             resp = custom_support.project(handle(endpoint, payload, decoded.sid))
     finally:
+        client_versions.reset(ver)
         endpoints.CURRENT_REQUEST.reset(token)
 
     wire = transport.seal_reply(resp, decoded)

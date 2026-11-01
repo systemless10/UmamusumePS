@@ -10,12 +10,22 @@ const STYLE_NAMES:[&str;4]=["Nige","Senko","Sashi","Oikomi"];
 struct Detail {
     pre:Condition, condition:Condition, pre_passed:bool, active:bool,
     left:f32, cooldown:f32, uid:u64, number:usize, additional_seen:i32, additional_used:[i32;3],
+    order_time_used:i32, order_time_seen:i32, order_add_seen:i32, last_ext:bool,
 }
 #[derive(Clone)]
 struct Skill { id:i32, level:i32, row:HashMap<String,Value>, enabled:bool, details:Vec<Detail>, cooldown:f32 }
+#[derive(Default)]
+struct HealHistory {pending:BTreeSet<usize>,previous:BTreeSet<usize>,recent:Vec<usize>}
+impl HealHistory {
+    fn advance(&mut self) {
+        self.previous=std::mem::take(&mut self.pending);
+        for &i in &self.previous {self.recent.retain(|j|*j!=i);self.recent.push(i);}
+    }
+    fn targets(&self,count:usize)->Vec<usize> {self.recent.iter().rev().take(count).copied().collect()}
+}
 #[derive(Clone,Copy)]
 struct Around { i:usize, gap:f32, gap_abs:f32, lane:f32, lane_abs:f32, speed_gap:f32, back:bool }
-fn flag(name:&str)->bool {
+pub(crate) fn flag(name:&str)->bool {
     thread_local!(static FLAGS:std::cell::RefCell<HashMap<String,bool>>=Default::default());
     if let Some(v)=FLAGS.with(|f|f.borrow().get(name).copied()) {return v;}
     let v=std::env::var(name).map_or(true,|v|v!="0");FLAGS.with(|f|f.borrow_mut().insert(name.to_string(),v));v
@@ -23,7 +33,7 @@ fn flag(name:&str)->bool {
 fn opt(name:&str)->bool {
     thread_local!(static FLAGS:std::cell::RefCell<HashMap<String,bool>>=Default::default());
     if let Some(v)=FLAGS.with(|f|f.borrow().get(name).copied()) {return v;}
-    const ADOPTED:&[&str]=&["RX_D3A","RX_D3C","RX_D4","RX_D5C","RX_D7","RX_NEARPRE","RX_COMPETE","RX_T21","RX_TEND","RX_SLOPEMUL","RX_T4","RX_RESLOT","RX_SKCD","RX_GOALSPD","RX_GOALKEEP","RX_GOALLANE2","RX_GOALLANE3","RX_GOALLANE4","RX_GOALBLOCK","RX_GOALOT","RX_CT_EXPIRED_PEER","RX_SKILL_GAP_FLOOR","RX_PM_RANGE_LEAD","RX_GLOBAL_EVENT_FIRST","RX_GLOBAL_FINISH_GAP","RX_GLOBAL_TOP_EVENT_ORDER","RX_GLOBAL_PM_RECALC"];
+    const ADOPTED:&[&str]=&["RX_D3A","RX_D3C","RX_D4","RX_D5C","RX_D7","RX_NEARPRE","RX_COMPETE","RX_T21","RX_TEND","RX_SLOPEMUL","RX_T4","RX_RESLOT","RX_SKCD","RX_GOALSPD","RX_GOALKEEP","RX_GOALLANE2","RX_GOALLANE3","RX_GOALLANE4","RX_GOALBLOCK","RX_GOALOT","RX_CT_EXPIRED_PEER","RX_SKILL_GAP_FLOOR","RX_PM_RANGE_LEAD","RX_GLOBAL_EVENT_FIRST","RX_GLOBAL_FINISH_GAP","RX_GLOBAL_TOP_EVENT_ORDER","RX_GLOBAL_PM_RECALC","RX_GLOBAL_PM_RAW_STYLE","RX_GLOBAL_CT_RAW_LEAD","RX_ADDLAST","RX_ADDLAST_CONSUME","RX_ADD_TIME1L","RX_CP_RUSH_EXIT_NOTOP","RX_CP_RUSH_EXIT_M4"];
     let v=match std::env::var(name) {Ok(v)=>v=="1",Err(_)=>ADOPTED.contains(&name)};
     FLAGS.with(|f|f.borrow_mut().insert(name.to_string(),v));v
 }
@@ -47,14 +57,14 @@ struct Horse {
     downhill:bool, downhill_check:f32, spurt_result:i32, spurt_start:f32, spurt_speed:f32,
     spurt_calculated:bool, skill_time:f32, target_speed:f32, after_goal:f32, extra_lane:Option<f32>, force_lane:bool, raw_time:f32, scaled_time:f32,
     around:Vec<Around>, visible:Vec<usize>, in_space:f32, out_space:f32, overtake:Vec<usize>, ot_cool:f32, move_time:f32, move_dir:i32,
-    order_up:[i32;8], order_up_cool:Vec<f32>, ot_target_time:f32, fight_count:i32, lane_move:f32,
+    order_up:[i32;8], order_up_cool:Vec<f32>, ot_target_time:f32, ot_noup_time:f32, fight_count:i32, lane_move:f32,
     hp_empty:bool, block_front_acc:f32, apt_distance:i32, apt_ground:i32,
-    dbg:[f32;16], activate_count:i32, activate_phase:[i32;4], activate_half:[i32;2], heal_count:i32, keep:crate::position_keep::Keep, cp:Conserve,
+    dbg:[f32;16], activate_count:i32, activate_phase:[i32;4], activate_half:[i32;2], tag_skill_count:i32, heal_count:i32, keep:crate::position_keep::Keep, cp:Conserve,
 }
 #[derive(Clone,Default)]
 struct Conserve { end:Option<[f32;6]>, top:bool, pow:f32, mt:[f32;10], log:Vec<u32>, value:f32, timer:f32, released:bool, accel:f32, left:f32, dbg_p2:bool, dbg_sp:bool,
-    spec:f32, scd:i32, ctimer:f32, last_credit:f32, s_init:bool, s_tm:bool, s_tp:bool, probe_keep_mode:i32, lag_mode:i32,
-    dlog:Vec<[f32;18]> }
+    spec:f32, scd:i32, ctimer:f32, last_credit:f32, top_in_rush:bool, s_init:bool, s_tm:bool, s_tp:bool, probe_keep_mode:i32, lag_mode:i32,
+    dlog:Vec<[f32;20]> }
 impl Horse {
     fn tempted(&self)->bool {if opt("RX_TEMPT_ACTIVE") {self.temptation_active} else {self.temptation_mode!=0}}
     fn stat(&self,i:usize)->f32 {self.mods.apply(i,self.adjusted[i]).clamp(1.0,self.stat_max)}
@@ -71,8 +81,9 @@ impl Horse {
 pub struct Simulator<'a> {
     input:RaceIn, master:&'a Master, assets:&'a Assets, course:Course, geometry:Geometry,
     horses:Vec<Horse>, random:RaceRandom, time:f32, events:Vec<Value>,
-    unsupported:BTreeSet<String>, distance_diff_max:f32, compete:crate::compete::State, pacemaker:usize, pm_ready:bool, pm_section:i32, pm_not_forward:i32, pm_handed:bool, cur_skill:i32,
+    unsupported:BTreeSet<String>, distance_diff_max:f32, compete:crate::compete::State, pacemaker:usize, pm_ready:bool, pm_section:i32, pm_not_forward:i32, pm_handed:bool, pm_fwd_streak:i32, ct_dbg_done:bool, cur_skill:i32,
     fired:HashMap<(usize,i32),u32>, cur_detail:usize,
+    heal_history:HealHistory,
 }
 impl<'a> Simulator<'a> {
     pub fn new(mut input:RaceIn,master:&'a Master,assets:&'a Assets,trace:bool)->Result<Self,String> {
@@ -97,7 +108,7 @@ impl<'a> Simulator<'a> {
         let course=Course::load(assets,input.course_set)?;
         let geometry=Geometry::load(assets,&course,input.region.as_deref()==Some("jp"))?;
         let mut s=Self {random:RaceRandom::new(input.seed as i32,trace),input,master,assets,course,geometry,
-            horses:vec![],time:0.0,events:vec![],unsupported:BTreeSet::new(),distance_diff_max:0.0,compete:crate::compete::State::new(0),pacemaker:0,pm_ready:false,pm_section:0,pm_not_forward:0,pm_handed:false,cur_skill:0,fired:HashMap::new(),cur_detail:0};
+            horses:vec![],time:0.0,events:vec![],unsupported:BTreeSet::new(),distance_diff_max:0.0,compete:crate::compete::State::new(0),pacemaker:0,pm_ready:false,pm_section:0,pm_not_forward:0,pm_handed:false,pm_fwd_streak:0,ct_dbg_done:false,cur_skill:0,fired:HashMap::new(),cur_detail:0,heal_history:HealHistory::default()};
         for mechanic in ["server:CompeteTop","server:CompeteFight","server:ConservePower","server:PaseMaker",
             "client:overtake_lane_search","results:defeat","skills:additional_activation","client:post_goal_targets","events:score",
             "skills:random_reservations","skills:event_target_flags"] {
@@ -117,7 +128,7 @@ impl<'a> Simulator<'a> {
             let condition=triggers::build(text,&self.course,&mut self.random,&tag);
             self.random.wide=false;
             details.push(Detail {pre_passed:pre.is_empty(),pre,condition,active:false,left:0.0,cooldown:0.0,
-                uid:((hi as u64)<<48)|((id as u64)<<8)|d as u64,number:d,additional_seen:0,additional_used:[0;3]});
+                uid:((hi as u64)<<48)|((id as u64)<<8)|d as u64,number:d,additional_seen:0,additional_used:[0;3],order_time_used:0,order_time_seen:0,order_add_seen:0,last_ext:false});
         }
         if self.jp() && flag("RX_JP_SHAREWIN") && details.len()==2 {
             let first:Vec<(String,Vec<(f32,f32)>)>=details[0].condition.iter().flatten().filter(|t|t.randomized).map(|t|(t.name.clone(),t.windows.clone())).collect();
@@ -208,7 +219,7 @@ impl<'a> Simulator<'a> {
             horses.push(Horse {input:h.clone(),base,adjusted,mods:Modifiers::default(),skills:vec![],distance:0.0,prev_distance:0.0,
                 order_continue:[[true;9];2],lane,prev_lane:lane,lane_max:c.lane_max,target_lane:lane,lane_speed:0.0,position:self.geometry.world(0.0,lane),pos64:self.geometry.world64(0.0,lane,std::env::var("RX_POS64").ok().and_then(|v|v.parse().ok()).unwrap_or(1)),speed:p.f("StartSpeed"),
                 self_speed:p.f("StartSpeed"),min_speed:p.f("StartSpeed"),hp:0.0,max_hp:0.0,delay:0.0,original_delay:0.0,
-                phase:0,start_dash:true,finished:false,order:i,prev_order:i,ot_target_time:0.0,fight_count:0,cf_speed:0.0,cf_hp:0.0,cf_pos:[0.0;2],lane_move:0.0,hp_empty:false,block_front_acc:0.0,apt_distance:distance_apt,apt_ground:ground_apt,order_up:[0;8],order_up_cool:vec![0.0;self.input.horses.len()],guts_order:0,wiz_order:0,
+                phase:0,start_dash:true,finished:false,order:i,prev_order:i,ot_target_time:0.0,ot_noup_time:0.0,fight_count:0,cf_speed:0.0,cf_hp:0.0,cf_pos:[0.0;2],lane_move:0.0,hp_empty:false,block_front_acc:0.0,apt_distance:distance_apt,apt_ground:ground_apt,order_up:[0;8],order_up_cool:vec![0.0;self.input.horses.len()],guts_order:0,wiz_order:0,
                 front:None,inside:None,outside:None,near_count:0,around:vec![],visible:vec![],in_space:0.0,out_space:0.0,overtake:vec![],ot_cool:0.0,move_time:0.0,move_dir:0,front_time:0.0,side_time:0.0,near_front_time:0.0,near_behind_time:0.0,near_behind_set:vec![],surround:[false;3],reserved:vec![],
                 corner:0,corner_end:0.0,final_corner:false,straight:false,front_type:0,slope:0.0,slope_end:0.0,called_event:-1,
                 stat_max,force_in:0.0,ex,style_rate:self.rate("race_proper_runningstyle_rate",style_apt,"proper_rate")?,dist_speed:self.rate("race_proper_distance_rate",distance_apt,"proper_rate_speed")?,
@@ -216,12 +227,12 @@ impl<'a> Simulator<'a> {
                 ground_coef:self.rate("race_proper_ground_rate",ground_apt,"proper_rate")?,section_speed:[0.0;24],section_base:[0.0;24],sec_rand:[0.0;3],sec_drawn:0,
                 temptation_section:0,temptation_mode:0,temptation_active:false,temptation_count:0,temptation_timer:0.0,temptation_check:0.0,temptation_forced:false,temptation_end:0,
                 downhill:false,downhill_check:0.0,spurt_result:8,spurt_start:-1.0,spurt_speed:0.0,spurt_calculated:false,skill_time:-1.0,target_speed:0.0,after_goal:0.0,extra_lane:None,force_lane:false,
-                raw_time:-1.0,scaled_time:-1.0,dbg:[0.0;16],activate_count:0,activate_phase:[0;4],activate_half:[0;2],heal_count:0,keep:crate::position_keep::Keep::default(),cp:Conserve {pow:cp_pow,..Default::default()}});
+                raw_time:-1.0,scaled_time:-1.0,dbg:[0.0;16],activate_count:0,activate_phase:[0;4],activate_half:[0;2],tag_skill_count:0,heal_count:0,keep:crate::position_keep::Keep::default(),cp:Conserve {pow:cp_pow,..Default::default()}});
         }
         self.horses=horses;
         self.compete=crate::compete::State::new(self.horses.len());
         self.pacemaker=self.horses.iter().enumerate().min_by_key(|(i,h)|
-            (if h.ex() {0} else {h.input.running_style},*i)).unwrap().0;
+            (if h.ex() && (self.jp() || !opt("RX_GLOBAL_PM_RAW_STYLE")) {0} else {h.input.running_style},*i)).unwrap().0;
         if let Some(i)=std::env::var("RX_PMFIX").ok().and_then(|v|v.parse::<usize>().ok()) {
             if i<self.horses.len() {self.pacemaker=i;}
         }
@@ -350,7 +361,7 @@ impl<'a> Simulator<'a> {
             "weather"=>self.input.weather as f32,"season"=>self.input.season as f32,"motivation"=>h.input.motivation as f32,
             "running_style"=>h.input.running_style as f32,"post_number"=>post_number(hi,self.horses.len()) as f32,
             "popularity"=>((h.input.popularity-1).max(0)+1) as f32,"phase"=>h.phase as f32,"corner"=>h.corner as f32,
-            "is_finalcorner"=>boolean(h.final_corner),"is_finalcorner_laterhalf"=>boolean(h.final_corner && c.final_corner().is_some_and(|s|h.distance>=(s.start+s.end)*0.5)),
+            "is_finalcorner"=>boolean(h.final_corner),"is_finalcorner_laterhalf"=>boolean(h.final_corner && (self.jp() || !flag("RX_FINALCORNER_HALF_INSIDE") || h.corner!=0) && (if !self.jp() && flag("RX_FC_HALF_START_RULE") {c.lottery_final_corner()} else {c.final_corner()}).is_some_and(|s|h.distance>=(s.start+s.end)*0.5)),
             "remain_distance"=>if self.input.region.as_deref()!=Some("jp") && flag("RX_REMAIN_INT") {c.distance-(h.distance as i32) as f32} else {c.distance-h.distance},"distance_rate"=>{
                 let threshold=(rhs as f32/100.0*c.distance+0.5) as i32;
                 return Some((h.distance as i32-threshold+rhs) as f32);
@@ -408,6 +419,10 @@ impl<'a> Simulator<'a> {
             "is_move_lane"=>if h.move_time<1.0 {0.0} else {(h.move_dir!=0) as i32 as f32+1.0},"blocked_front_continuetime"=>h.front_time as i32 as f32,"blocked_side_continuetime"=>h.side_time as i32 as f32,
             "near_count"=>h.near_count as f32,"straight_front_type"=>h.front_type as f32,
             "activate_count_all"=>h.activate_count as f32,"activate_count_heal"=>h.heal_count as f32,
+            "is_other_character_activate_advantage_skill" if !self.jp() && rhs==9 && flag("RX_GLOBAL_HEAL_HISTORY")=>{
+                let team=h.input.team_id;
+                if self.heal_history.previous.iter().any(|&i|i!=hi && (team==0 || self.horses[i].input.team_id==0 || team!=self.horses[i].input.team_id)) {9.0} else {0.0}
+            },
             "activate_count_start"=>h.activate_phase[0] as f32,
             "activate_count_middle"=>h.activate_phase[1] as f32,
             "activate_count_end_after"=>(h.activate_phase[2]+h.activate_phase[3]) as f32,
@@ -423,6 +438,7 @@ impl<'a> Simulator<'a> {
             "change_order_up_lastspurt" if flag("RX_ORDERUP")=>h.order_up[5] as f32,
             "change_order_up_finalcorner_after" if flag("RX_ORDERUP")=>h.order_up[7] as f32,
             "overtake_target_time" if flag("RX_OTTIME")=>h.ot_target_time,
+            "overtake_target_no_order_up_time" if flag("RX_OTNOUP")=>h.ot_noup_time as i32 as f32,
             "lane_type" if flag("RX_LANETYPE")=>if h.lane<=0.2 {0.0} else if h.lane<=0.4 {1.0} else if h.lane<=0.6 {2.0} else {3.0},
             "is_activate_any_skill" if flag("RX_ANYSKILL")=>h.activate_count as f32,
             "compete_fight_count" if flag("RX_FIGHTCNT") && opt("RX_COMPETE")=>h.fight_count as f32,
@@ -482,14 +498,17 @@ impl<'a> Simulator<'a> {
                                 let pending=(now-d.additional_seen).max(0);
                                 d.additional_seen=now;
                                 for a in 1..=3 {
-                                    if ival(&skill.row,&format!("additional_activate_type_{}_{}",d.number,a))!=3 {continue;}
-                                    let cap=global_additional_cap(self.p(),3);
+                                    let kind=ival(&skill.row,&format!("additional_activate_type_{}_{}",d.number,a));
+                                    if !(kind==3 || kind==2 && flag("RX_ADD_TYPE2")) {continue;}
+                                    let cap=global_additional_cap(self.p(),kind);
                                     let count=take_additional_count(pending,cap,&mut d.additional_used[a-1]);
                                     for _ in 0..count {
                                         self.ability_activate(hi,skill.id,skill.level,&skill.row,d,a,true);
                                     }
                                 }
                             }
+                            self.additional_order_up(hi,skill.id,skill.level,&skill.row,d,dt);
+                            self.extend_order_duration(hi,&skill.row,d,dt);
                             d.left-=dt;
                             if d.left<=0.0 {
                                 d.active=false;
@@ -504,6 +523,8 @@ impl<'a> Simulator<'a> {
                 if skill_cd && skill.cooldown>0.0 {skill.cooldown=(skill.cooldown-dt).max(0.0);if skill.cooldown>0.0 {continue;}}
                 for d in &mut skill.details {
                     if d.active && d.left>=0.0 {
+                        self.additional_order_up(hi,skill.id,skill.level,&skill.row,d,dt);
+                        self.extend_order_duration(hi,&skill.row,d,dt);
                         d.left-=dt;
                         if d.left<=0.0 {
                             d.active=false;
@@ -527,7 +548,14 @@ impl<'a> Simulator<'a> {
                         if !self.jp() && usage==3 && flag("RX_GLOBAL_TIME_HP") {
                             let mult=global_hp_duration_multiplier(self.p(),self.horses[hi].hp);
                             if raw!=-1 {d.left*=mult;}
-                        } else if usage>1 {self.unsupported.insert(format!("skill_time_usage:{usage}"));}
+                        } else if !self.jp() && usage==2 && flag("RX_GLOBAL_TIME_GAP") {
+                            let top=self.horses.iter().find(|h|h.order==0).unwrap().distance;
+                            let mult=global_gap_duration_multiplier(self.p(),top-self.horses[hi].distance);
+                            if raw!=-1 {d.left*=mult;}
+                        } else if usage>1 && !(!self.jp() && usage==4 && flag("RX_GLOBAL_TIME_ORDER")) {self.unsupported.insert(format!("skill_time_usage:{usage}"));}
+                        d.order_time_used=0;
+                        d.order_time_seen=self.horses[hi].order_up[..3].iter().sum();
+                        d.order_add_seen=d.order_time_seen;
                         d.active=true;
                         *self.fired.entry((hi,skill.id)).or_default()|=1<<d.number;
                         let h=&mut self.horses[hi];h.activate_count+=1;
@@ -541,6 +569,9 @@ impl<'a> Simulator<'a> {
                                 for t in targets {if t<32 {mask|=1<<t;}}
                             }
                         }
+                        if !self.jp() && flag("RX_GLOBAL_USAGE14") && global_counted_tag(self.p(),sval(&skill.row,"tag_id")) {
+                            self.horses[hi].tag_skill_count+=1;
+                        }
                         let jp_enc=self.jp() && flag("RX_JP_SKILLPARAM");
                         let t0=self.time==0.0 && !jp_enc;
                         if jp_enc && self.time==0.0 && raw<=0 {mask=0;}
@@ -553,6 +584,47 @@ impl<'a> Simulator<'a> {
             }
             if priority==0 && flag("RX_RANDEND") {self.reserve_random(hi,&skills);}
             self.horses[hi].skills=skills;
+        }
+    }
+    fn additional_order_up(&mut self,hi:usize,id:i32,level:i32,row:&HashMap<String,Value>,d:&mut Detail,dt:f32) {
+        if self.jp() || !flag("RX_GLOBAL_ADDITIONAL_ORDER") {return;}
+        let now:i32=self.horses[hi].order_up[..3].iter().sum();
+        let changed=now>d.order_add_seen;
+        d.order_add_seen=now;
+        if std::env::var("RX_ADDDBG").is_ok() && changed {eprintln!("ADDCHK {:.4} h{} now={} left={}",self.time,hi,now,d.left);}
+        if !changed {return;}
+        if opt("RX_ADDLAST") && d.left<=dt {
+            if opt("RX_ADDLAST_CONSUME") {
+                for a in 1..=3 {
+                    if ival(row,&format!("additional_activate_type_{}_{}",d.number,a))!=1 {continue;}
+                    let cap=global_additional_cap(self.p(),1);
+                    take_additional_count(1,cap,&mut d.additional_used[a-1]);
+                }
+            }
+            return;
+        }
+        for a in 1..=3 {
+            if ival(row,&format!("additional_activate_type_{}_{}",d.number,a))!=1 {continue;}
+            let cap=global_additional_cap(self.p(),1);
+            if std::env::var("RX_ADDDBG").is_ok() {eprintln!("ADD1 {:.4} h{} a{} used={} left={}",self.time,hi,a,d.additional_used[a-1],d.left);}
+            if take_additional_count(1,cap,&mut d.additional_used[a-1])>0 {
+                self.ability_activate(hi,id,level,row,d,a,true);
+            }
+        }
+    }
+    fn extend_order_duration(&mut self,hi:usize,row:&HashMap<String,Value>,d:&mut Detail,dt:f32) {
+        if self.jp() || !flag("RX_GLOBAL_TIME_ORDER") || ival(row,&format!("ability_time_usage_{}",d.number))!=4 {return;}
+        let now:i32=self.horses[hi].order_up[..3].iter().sum();
+        let changed=now>d.order_time_seen;
+        d.order_time_seen=now;
+        let extra=global_order_duration_extension(self.p(),changed,&mut d.order_time_used,self.course.distance);
+        if std::env::var("RX_ADDDBG").is_ok() && changed {eprintln!("EXT {:.4} h{} uid{} extra={} used={} left={}",self.time,hi,d.uid,extra,d.order_time_used,d.left);}
+        let mode=std::env::var("RX_EXT_NODEC").unwrap_or_else(|_|"3".into());
+        let last=extra>0.0 && (mode=="1" || matches!(mode.as_str(),"2"|"3") && d.left<=dt);
+        if extra>0.0 {
+            d.left+=extra+if last {dt} else {0.0};if last {d.last_ext=true;}
+            let rx=extra+if last && mode!="3" {dt} else {0.0};
+            if flag("RX_ADDEXT") {for h in &mut self.horses {h.mods.extend_timed(d.uid,rx);}}
         }
     }
     fn reserve_random(&mut self,hi:usize,skills:&[Skill]) {
@@ -623,6 +695,7 @@ impl<'a> Simulator<'a> {
             18 if flag("RX_T18")=>self.horses.iter().enumerate().filter(|(i,h)|*i!=hi && h.input.running_style as i64==tv).map(|(i,_)|i).collect(),
             21 if opt("RX_T21")=>self.horses.iter().enumerate().filter(|(i,h)|*i!=hi && h.input.running_style as i64==tv && h.tempted()).map(|(i,_)|i).collect(),
             22=>self.horses.iter().enumerate().filter(|(_,h)|h.input.chara_id as i64==tv).map(|(i,_)|i).collect(),
+            23 if !self.jp() && flag("RX_GLOBAL_HEAL_HISTORY")=>self.heal_history.targets(tv.max(0) as usize),
             _=>{self.unsupported.insert(format!("skill_target:{target}"));vec![]},
         };
         let mut value=ival(row,&format!("float_ability_value_{suffix}")) as f32*0.0001;
@@ -634,10 +707,16 @@ impl<'a> Simulator<'a> {
             eprintln!("{}",json!({"replay_sha":self.input.replay_sha,"t":self.time,"horse":hi,"skill":id,"ability":a,"targets":targets}));
         }
         let usage=ival(row,&format!("ability_value_usage_{suffix}"));
-        if usage>1 && !((3..=7).contains(&usage) && flag("RX_USAGE")) && !(matches!(usage,8|9) && flag("RX_USAGE8")) && !(usage==10 && flag("RX_USAGE10")) && !(usage==12 && flag("RX_USAGE12")) && !(usage==13 && flag("RX_USAGE13")) && !(matches!(usage,22|23) && flag("RX_USAGE22")) && !(matches!(usage,27|31|32|37|40) && self.jp() && flag("RX_JP_SCEN")) {self.unsupported.insert(format!("skill_value_usage:{usage}"));}
+        if usage>1 && !((3..=7).contains(&usage) && flag("RX_USAGE")) && !(matches!(usage,8|9) && flag("RX_USAGE8")) && !(usage==11 && !self.jp() && flag("RX_GLOBAL_USAGE11")) && !(usage==10 && flag("RX_USAGE10")) && !(usage==12 && flag("RX_USAGE12")) && !(usage==13 && flag("RX_USAGE13")) && !(usage==14 && !self.jp() && flag("RX_GLOBAL_USAGE14")) && !(matches!(usage,22|23) && flag("RX_USAGE22")) && !(matches!(usage,27|31|32|37|40) && self.jp() && flag("RX_JP_SCEN")) {self.unsupported.insert(format!("skill_value_usage:{usage}"));}
         let coef=self.master.rows("skill_level_value").iter().find(|r|ival(r,"ability_type")==kind && ival(r,"level")==level as i64)
             .map_or(1.0,|r|ival(r,"float_ability_value_coef") as f32*0.0001);
         match ival(row,&format!("ability_value_level_usage_{suffix}")) {1=>value=coef*value,3=>value=(1.0/coef)*value,_=>()};
+        if usage==14 && !self.jp() && flag("RX_GLOBAL_USAGE14") {
+            value*=global_tag_multiplier(self.p(),self.horses[hi].tag_skill_count);
+        }
+        if usage==11 && !self.jp() && flag("RX_GLOBAL_USAGE11") {
+            value*=global_order_value_multiplier(self.p(),self.horses[hi].order_up[4]);
+        }
         if usage==10 && flag("RX_USAGE10") {
             let wins=self.horses[hi].input.single_mode_win_count;
             let mult=self.p().arr("Skill.RaceWinCountCoefAscArray").iter()
@@ -715,6 +794,7 @@ impl<'a> Simulator<'a> {
         if ival(row,&format!("additional_activate_type_{suffix}"))!=0 {
             if !is_additional {return targets;}
         }
+        if kind==9 && value>0.0 && !is_additional && !self.jp() && flag("RX_GLOBAL_HEAL_HISTORY") {self.heal_history.pending.insert(hi);}
         if kind==9 && value>0.0 && flag("RX_HEALCNT") {self.horses[hi].heal_count+=1;}
         for &i in &targets {
             let h=&mut self.horses[i];let uid=detail.uid;
@@ -735,7 +815,7 @@ impl<'a> Simulator<'a> {
                 _=>None,
             };
             if let Some((index,op,once,value))=effect {
-                if is_additional && self.input.region.as_deref()!=Some("jp") && flag("RX_GLOBAL_ADDITIONAL_TIME") {
+                if is_additional && self.input.region.as_deref()!=Some("jp") && flag("RX_GLOBAL_ADDITIONAL_TIME") && !((opt("RX_ADD_TIME1") || opt("RX_ADD_TIME1L") && detail.last_ext) && ival(row,&format!("additional_activate_type_{}_{}",detail.number,a))==1) {
                     h.mods.add_timed(index,value,op,uid,once,detail.left);
                 } else {h.mods.add(index,value,op,uid,once);}
             }
@@ -802,7 +882,8 @@ impl<'a> Simulator<'a> {
             (h.stat(0)*p.f("LastSpurtTargetSpeedCoefSqrt")).sqrt()*h.dist_speed*p.f("addSpeedParamCoef")+
             (base*p.f("lastSpurtBaseTargetSpeedAddCoef")+normal)*p.f("baseTargetSpeedCoef")};
         let remain=(self.course.distance-h.distance-p.i("LastSpurtDistanceGoalBuffer") as f32).max(0.0);
-        let need=|speed:f32|remain/speed*self.hp_rate(h,speed,base,p.f("Hp.HpDecRateBaseNormal"));
+        let need=|speed:f32|{let rate=self.hp_rate(h,speed,base,p.f("Hp.HpDecRateBaseNormal"));
+            if !self.jp() && flag("RX_SPURT_NEED_D") {(remain as f64/speed as f64*rate as f64) as f32} else {remain/speed*rate}};
         let (result,start,speed)=if h.hp<need(h.min_speed) {(4,-1.0,base)}
             else if need(max)<=h.hp {(1,h.distance,max)}
             else {
@@ -815,8 +896,28 @@ impl<'a> Simulator<'a> {
                     while d>0.0 {
                         let spurt_time=d/speed;let normal_time=(remain-d)/normal;
                         if std::env::var("RX_HDBG").ok().and_then(|v|v.parse::<usize>().ok())==Some(hi) {eprintln!("CAND sp={speed} st={} need={} hp={} sr={spurt_rate} nr={normal_rate}",goal-d,spurt_rate*spurt_time+normal_time*normal_rate,h.hp);}
-                        let fits=if wide {d as f64/speed as f64*spurt_rate as f64+(remain as f64-d as f64)/normal as f64*normal_rate as f64<=h.hp as f64}
+                        let form=std::env::var("RX_SPURT_FORM").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(if !self.jp() && flag("RX_SPURT_F18") {18} else {0});
+                        let fits=if form==1 {d/speed*spurt_rate+(remain-d)/normal*normal_rate<=h.hp}
+                            else if form==7 {d*spurt_rate/speed+(remain-d)*normal_rate/normal<=h.hp}
+                            else if form==8 {d/speed*spurt_rate+(remain-d)*normal_rate/normal<=h.hp}
+                            else if form==9 {d*spurt_rate/speed+(remain-d)/normal*normal_rate<=h.hp}
+                            else if form==10 {(d/speed*spurt_rate) as f64+((remain-d)/normal*normal_rate) as f64<=h.hp as f64}
+                            else if form==11 {h.hp-d/speed*spurt_rate>=(remain-d)/normal*normal_rate}
+                            else if form==12 {d/speed*spurt_rate+(remain-d)/normal*normal_rate<h.hp}
+                            else if form==18 {spurt_time as f64*spurt_rate as f64+(normal_time*normal_rate) as f64<=h.hp as f64}
+                            else if form==13 {spurt_rate.mul_add(spurt_time,normal_time*normal_rate)<=h.hp}
+                            else if form==14 {normal_time.mul_add(normal_rate,spurt_rate*spurt_time)<=h.hp}
+                            else if form==15 {spurt_time.mul_add(spurt_rate,normal_time*normal_rate)<=h.hp}
+                            else if form==16 {(spurt_rate*spurt_time-h.hp)+normal_time*normal_rate<=0.0}
+                            else if form==17 {normal_time.mul_add(normal_rate,spurt_rate.mul_add(spurt_time,-h.hp))<=0.0}
+                            else if form==3 {(spurt_rate*spurt_time) as f64+(normal_time*normal_rate) as f64<=h.hp as f64}
+                            else if form==4 {spurt_time as f64*spurt_rate as f64+normal_time as f64*normal_rate as f64<=h.hp as f64}
+                            else if form==5 {((spurt_time as f64*spurt_rate as f64+normal_time as f64*normal_rate as f64) as f32)<=h.hp}
+                            else if form==6 {((d as f64/speed as f64*spurt_rate as f64+(remain as f64-d as f64)/normal as f64*normal_rate as f64) as f32)<=h.hp}
+                            else if wide {d as f64/speed as f64*spurt_rate as f64+(remain as f64-d as f64)/normal as f64*normal_rate as f64<=h.hp as f64}
                             else {spurt_rate*spurt_time+normal_time*normal_rate<=h.hp};
+                        if std::env::var("RX_SPDBG").is_ok() {let fd=d as f64/speed as f64*spurt_rate as f64+(remain as f64-d as f64)/normal as f64*normal_rate as f64<=h.hp as f64;let ff=spurt_rate*spurt_time+normal_time*normal_rate<=h.hp;
+                            if fd!=ff {eprintln!("SPDBG st={spurt_time:e} nt={normal_time:e} h={hi} t={:.4} d={d} sp={speed} sr={spurt_rate} nr={normal_rate} rem={remain} hp={} f32sum={} f64sum={} dbl={fd}",self.time,h.hp,spurt_rate*spurt_time+normal_time*normal_rate,d as f64/speed as f64*spurt_rate as f64+(remain as f64-d as f64)/normal as f64*normal_rate as f64);}}
                         if fits && goal-d<self.course.distance-p.f("lastSpurtDistanceMaxFromGoal") {
                             let normal_time=if opt("RX_SPURT_CUR") {(remain-d)/h.speed} else {normal_time};
                             return Some((goal-d,normal_time+spurt_time));
@@ -874,8 +975,11 @@ impl<'a> Simulator<'a> {
                 if gap.abs()<side_gap {
                     if lane<0.0 {if abs<in_space {in_space=abs;}} else if lane>0.0 && abs<out_space {out_space=abs;}
                 }
-                if vis>0.0 && gap>=0.0 && gap<=vis &&
-                    abs<=((gap/vis)*f32::from_bits(0x3f238e39)+f32::from_bits(0x3de38e39))*0.5 {visible.push(i);}
+                let cone=if !self.jp() && flag("RX_VIS_CONE_D") {
+                    let bound=((gap as f64/vis as f64)*f32::from_bits(0x3f238e39) as f64+f32::from_bits(0x3de38e39) as f64)*0.5;
+                    if flag("RX_VIS_CONE_LOCAL") {abs<=bound as f32} else {abs as f64<=bound}
+                } else {abs<=((gap/vis)*f32::from_bits(0x3f238e39)+f32::from_bits(0x3de38e39))*0.5};
+                if vis>0.0 && gap>=0.0 && gap<=vis && cone {visible.push(i);}
             }
             if abs<=p.f("Skill.InfrontHorseNearLaneDistance") && gap>0.0 && gap<=p.f("Skill.InfrontHorseNearDistance") {near_front=true;}
             if abs<=p.f("Skill.BehindHorseNearLaneDistance") && gap<0.0 && -gap<=p.f("Skill.BehindHorseNearDistance") {near_behind=true;}
@@ -912,7 +1016,19 @@ impl<'a> Simulator<'a> {
         let params=crate::compete::Params{
             fight_exit_inclusive: !self.jp() && flag("RX_CF_EXIT_INCLUSIVE"),
             fight_select_before_history: !self.jp() && flag("RX_CF_TARGET_HISTORY"),
-            top_cohort:!self.jp() && flag("RX_CT_COHORT"),top_end_exit:!self.jp() && flag("RX_CT_END_EXIT"),top_requires_lead:std::env::var("RX_CTLEAD").ok().and_then(|v|v.parse().ok()).unwrap_or(1),..Default::default()};
+            top_cohort:!self.jp() && flag("RX_CT_COHORT"),top_end_exit:!self.jp() && flag("RX_CT_END_EXIT"),
+            top_shared_end:!self.jp() && flag("RX_CT_SHARED_END"),
+            top_strict_exit:!self.jp() && flag("RX_CT_STRICT_EXIT"),
+            top_entry_inclusive:!self.jp() && flag("RX_CT_ENTRY_INCLUSIVE"),
+            top_start_leader:!self.jp() && flag("RX_CT_START_LEADER"),
+            top_requires_lead:std::env::var("RX_CTLEAD").ok().and_then(|v|v.parse().ok()).unwrap_or(if !self.jp() && opt("RX_GLOBAL_CT_RAW_LEAD") {3} else {1}),..Default::default()};
+        let mut params=params;
+        if std::env::var("RX_CTDBG").is_ok() && !self.ct_dbg_done && (0..self.horses.len()).any(|i|self.horses[i].distance>=params.start_distance) {
+            self.ct_dbg_done=true;
+            let v:Vec<_>=(0..self.horses.len()).filter(|&i|self.horses[i].distance>=params.start_distance-3.0).map(|i|(i,self.horses[i].input.running_style,self.horses[i].cf_pos[0],self.horses[i].distance,self.horses[i].order)).collect();
+            eprintln!("CTDBG t={:.4} {:?}",self.time,v);
+        }
+        if opt("RX_CT_START_STALE") && !(0..self.horses.len()).any(|i|self.horses[i].cf_pos[0]>=params.start_distance) {params.start_distance=f32::INFINITY;}
         let (mut next,mut changes)=crate::compete::step(&self.compete,&runners,self.course.distance,dt,&params);
         if flag("RX_CFSTALE") {
             let stale=(0..self.horses.len()).map(|i|self.compete_runner(i,true)).collect::<Vec<_>>();
@@ -951,8 +1067,8 @@ impl<'a> Simulator<'a> {
                 if !self.compete.modes[i].top || !next.modes[i].top {continue;}
                 let peers=(0..runners.len()).filter(|&j|j!=i && self.compete.modes[j].top_group==self.compete.modes[i].top_group).collect::<Vec<_>>();
                 if !peers.is_empty() && peers.iter().all(|&j|
-                    (if !self.jp() && flag("RX_CT_EXPIRED_ABS") {(runners[j].distance-runners[i].distance).abs()}
-                        else {runners[j].distance-runners[i].distance})>=params.top_exit_distance ||
+                    {let gap=if !self.jp() && flag("RX_CT_EXPIRED_ABS") {(runners[j].distance-runners[i].distance).abs()}
+                        else {runners[j].distance-runners[i].distance}; if !self.jp() && flag("RX_CT_STRICT_EXIT") {gap>params.top_exit_distance} else {gap>=params.top_exit_distance}} ||
                     (runners[j].lane-runners[i].lane).abs()>=params.top_exit_lane) {
                     next.modes[i].top=false;
                     next.modes[i].top_distance_exit=true;
@@ -967,6 +1083,19 @@ impl<'a> Simulator<'a> {
             let leader=if flag("RX_CTRANKLEAD") {entering.iter().copied().min_by_key(|i|(runners[*i].rank,*i))}
                 else {entering.iter().copied().max_by(|a,b|runners[*a].distance.total_cmp(&runners[*b].distance).then(b.cmp(a)))};
             entering.sort_by_key(|i|(Some(*i)!=leader,*i));
+            if flag("RX_CT_GROUP_EVENT") {
+                crate::compete::order_top_entries(&mut entering,&runners,&self.compete);
+                if !entering.is_empty() && flag("RX_CT_NET_EVENT") {
+                    let mut native_order=Vec::new();
+                    for style in 1..=4 {
+                        let mut bucket=(0..self.horses.len()).filter(|&i|
+                            self.horses[i].input.running_style==style).collect::<Vec<_>>();
+                        netsort::sort(&mut bucket,&|_,_|0);
+                        native_order.extend(bucket);
+                    }
+                    crate::compete::order_top_entries_by(&mut entering,&runners,&self.compete,&native_order);
+                }
+            }
             let mut ordered=entering.into_iter();
             for change in &mut changes {
                 if matches!(change,crate::compete::Change::TopEnter(_)) {*change=crate::compete::Change::TopEnter(ordered.next().unwrap());}
@@ -1095,7 +1224,11 @@ impl<'a> Simulator<'a> {
         }
     }
     fn ot_exist(&self,hi:usize,d0:f32,d1:f32,l0:f32,l1:f32)->bool {
-        self.horses[hi].visible.iter().any(|&v|{let n=&self.horses[v];d0<=n.distance && n.distance<=d1 && l0<=n.lane && n.lane<=l1})
+        let hit=self.horses[hi].visible.iter().copied().find(|&v|{let n=&self.horses[v];d0<=n.distance && n.distance<=d1 && l0<=n.lane && n.lane<=l1});
+        if std::env::var("RX_OT_EXIST_DEBUG").ok().and_then(|v|v.parse::<usize>().ok())==Some(hi) {
+            eprintln!("OTEXIST {:.4} h={} dist={}/{} lane={}/{} hit={:?}",self.time,hi,d0,d1,l0,l1,hit.map(|i|(i,self.horses[i].distance,self.horses[i].lane)));
+        }
+        hit.is_some()
     }
     fn ot_search(&self,hi:usize,fixed:f32)->f32 {
         let p=self.p();let h=&self.horses[hi];
@@ -1119,6 +1252,9 @@ impl<'a> Simulator<'a> {
                 else if d>0.0 {p.f("overTakeOutLaneCoefEnd")} else {p.f("overTakeInLaneCoefEnd")};
             let skill=if m_in!=m_out && ((m_in && d>0.0) || (m_out && d<0.0)) {1.5} else {1.0};
             let cost=(phase*d*skill).abs();
+            if std::env::var("RX_OT_SEARCH_DEBUG").ok().and_then(|v|v.parse::<usize>().ok())==Some(hi) {
+                eprintln!("OTSEARCH t={:.4} lane={} candidate={} cost={} allowed={} inside={:?} outside={:?} space={}/{} targets={:?}",self.time,h.lane,c,cost,self.ot_enable(hi,c),h.inside,h.outside,h.in_space,h.out_space,h.overtake);
+            }
             if cost<best && self.ot_enable(hi,c) {best=cost;chosen=c;}
         }
         if let Some(extra)=h.extra_lane {
@@ -1253,7 +1389,8 @@ impl<'a> Simulator<'a> {
                         let g=h.around.iter().find(|a|a.i==i).map_or(front.distance-h.distance,|a|a.gap);
                         let t=(g/p.f("Block.FrontBlockDistanceGap")).clamp(0.0,1.0);
                         let (mx,mn)=(p.f("Block.FrontBlockMaxSpeedRateMax"),p.f("Block.FrontBlockMaxSpeedRateMin"));
-                        (front.speed*((mx-mn)*t+mn)).max(h.min_speed)
+                        let rate=if !self.jp() && flag("RX_GOAL_BLOCK_RATE_D") {((mx as f64-mn as f64)*t as f64+mn as f64) as f32} else {(mx-mn)*t+mn};
+                        (front.speed*rate).max(h.min_speed)
                     },
                     None=>30.0,
                 };
@@ -1283,13 +1420,34 @@ impl<'a> Simulator<'a> {
         }
         if !self.horses[hi].finished {self.horses[hi].lane_move=0.0;}
         if !self.horses[hi].finished {
-            let runners=self.horses.iter().map(|h|crate::position_keep::Runner {
-                distance:h.distance,order:h.order,style:h.input.running_style,ex:h.ex(),phase:h.phase,
+            let snap=std::env::var("RX_PK_SNAP").ok();
+            let runners=self.horses.iter().enumerate().map(|(j,h)|crate::position_keep::Runner {
+                distance:match snap.as_deref() {Some("1") if j<hi=>h.prev_distance,_=>h.distance},order:h.order,style:h.input.running_style,ex:h.ex(),phase:h.phase,
                 wiz:h.stat(4),temptation:if h.tempted() && h.temptation_mode==0 {3} else {h.temptation_mode},
                 speed_skill:h.mods.apply(6,0.0)>0.0 || h.mods.apply(5,0.0)>0.0,
             }).collect::<Vec<_>>();
+            let debug_keep=self.random.trace.is_some() && self.time<=12.0 &&
+                std::env::var("RX_KEEP_DEBUG").ok().and_then(|v|v.parse::<usize>().ok())==Some(hi);
+            let before=debug_keep.then(||(self.horses[hi].keep.mode,
+                self.horses[hi].keep.rng_probe_state(),self.random.calls()));
+            let no_behind_is_far=self.jp() || std::env::var("RX_GLOBAL_PK_NO_BEHIND_FALSE").is_ok_and(|v|v=="0");
             self.horses[hi].keep.update(&Tree(p.get("PositionKeep")),self.course.distance as i32,24,
-                &runners,hi,self.pacemaker,&mut self.random,dt,!(opt("RX_PMFIRST") && !self.pm_ready));
+                &runners,hi,self.pacemaker,&mut self.random,dt,!(opt("RX_PMFIRST") && !self.pm_ready),
+                no_behind_is_far);
+            if let Some((mode,state,calls))=before {
+                let keep=&self.horses[hi].keep;
+                if keep.checked>=0 || mode!=keep.mode {
+                    let own=runners[hi];let pace=runners[self.pacemaker];
+                    eprintln!("{}",json!({"kind":"keep_check","replay":self.input.replay_sha,
+                        "t":self.time,"horse":hi,"pacemaker":self.pacemaker,
+                        "before_mode":mode,"after_mode":keep.mode,"wanted":keep.wanted,
+                        "before_state":state,"after_state":keep.rng_probe_state(),
+                        "rng_before":calls,"rng_after":self.random.calls(),
+                        "distance":own.distance,"order":own.order,"wiz":own.wiz,
+                        "pacemaker_gap":pace.distance-own.distance,
+                        "field":runners.iter().map(|r|(r.distance,r.order,r.style,r.ex)).collect::<Vec<_>>()}));
+                }
+            }
         }
         if flag("RX_CP") && !self.horses[hi].finished && !self.horses[hi].cp.released {
             if self.compete.modes.get(hi).is_some_and(|m|m.top) {self.horses[hi].cp.top=true;}
@@ -1313,14 +1471,20 @@ impl<'a> Simulator<'a> {
                 let rush_prev=!self.jp() && flag("RX_CP_RUSH_PREV_TICK");
                 let rush_timer_exit=!self.jp() && flag("RX_CP_RUSH_TIMER_EXIT");
                 let end_kind=self.horses[hi].temptation_end;
+                let skill_exit_ok=!self.jp() && flag("RX_CP_RUSH_EXIT_SKILL");
                 let m0=!self.jp() && flag("RX_CP_RUSH_EXIT_M0");
-                let c=&mut self.horses[hi].cp;
+                let m4=!self.jp() && opt("RX_CP_RUSH_EXIT_M4");
+                let od0=self.horses[hi].original_delay;let c=&mut self.horses[hi].cp;
                 let cooldown=|name:&str,default:i32|std::env::var(name).ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(default).max(0);
-                if !c.s_init {c.s_init=true;c.scd=cooldown("RX_CPSPECSTART",8);}
+                if !c.s_init {c.s_init=true;if std::env::var("RX_CPTR").is_ok() {eprintln!("CPINIT h={hi} t={} od={:e}",self.time,od0);}c.scd=cooldown("RX_CPSPECSTART",8);c.ctimer+=std::env::var("RX_CP_T0").ok().and_then(|v|v.parse::<f32>().ok()).unwrap_or(0.0);if let Some(k)=std::env::var("RX_CP_T0D").ok().and_then(|v|v.parse::<f32>().ok()) {c.ctimer+=self.time-od0-k*dt;}}
                 if tm && !c.s_tm && rush_prev {c.spec-=c.last_credit;}
-                if tm && !c.s_tm {c.spec*=d_tm;}
+                if tm && !c.s_tm && std::env::var("RX_RXDBG").is_ok() {eprintln!("RXIN h={hi} t={:.4} ctimer={:.4} spec={:.4} scd={}",self.time,c.ctimer,c.spec,c.scd);}
+                if tm && !c.s_tm {c.spec*=d_tm;c.top_in_rush=false;}
+                if tm && tp {c.top_in_rush=true;}
                 c.last_credit=0.0;
-                let rush_exit=!tm && c.s_tm && rush_timer_exit && (if m0 {matches!(end_kind,1|2) && c.lag_mode==0} else {end_kind==1});
+                let skill_exit=skill_exit_ok && end_kind==3;
+                let rush_exit=!tm && c.s_tm && rush_timer_exit && !(opt("RX_CP_RUSH_EXIT_NOTOP") && c.top_in_rush && end_kind!=3) && (skill_exit || if m0 {matches!(end_kind,1|2) && (c.lag_mode==0 || m4 && c.lag_mode==4)} else {end_kind==1});
+                if !tm && c.s_tm && std::env::var("RX_RXDBG").is_ok() {eprintln!("RXDBG h={hi} t={:.4} end={end_kind} lag={} exit={rush_exit} top={} tp={tp} ctimer={:.4} spec={:.4}",self.time,c.lag_mode,c.top_in_rush,c.ctimer,c.spec);}
                 if tp && !c.s_tp {c.spec*=d_tp;}
                 let cost=std::env::var("RX_CP_PACE_COST").ok().and_then(|v|v.parse::<f32>().ok());
                 let decay=std::env::var("RX_CP_PACE_ENTRY_DECAY").ok().and_then(|v|v.parse::<f32>().ok())
@@ -1330,18 +1494,22 @@ impl<'a> Simulator<'a> {
                     c.probe_keep_mode=m;
                 }
                 c.s_tm=tm;c.s_tp=tp;
+                let cp_cut=if opt("RX_CPCUT_FLOAT") {self.course.distance/24.0*10.0} else {(self.course.distance as i32/24*10) as f32};
                 if flag("RX_CPSEC") {
                     let lag=opt("RX_CP_PACE_LAG") && std::env::var("RX_CPLAGM").ok().and_then(|v|v.parse::<i32>().ok()).map_or(matches!(m,1|2|3|5),|x|x==m) && !matches!(c.lag_mode,1|2|3|5) && !tm && !tp;
                     let m_eff=if lag {c.lag_mode} else {m};c.lag_mode=m;
+                    let csub=std::env::var("RX_CP_SUB").ok().and_then(|v|v.parse::<f32>().ok()).unwrap_or(1.0);
+                    let cdt=std::env::var("RX_CP_DT").ok().and_then(|v|v.parse::<f32>().ok()).unwrap_or(dt);
+                    if std::env::var("RX_CPTR").ok().and_then(|v|v.parse::<usize>().ok())==Some(hi) {eprintln!("CPTR t={:.4} m={m} tm={tm} tp={tp} lag={lag} ctimer={:e} spec={:.4} cut={cp_cut}",self.time,c.ctimer,c.spec);}
                     if tm || tp || (!lag && matches!(m,1|2|3|5)) {c.ctimer=-cp_cool;}
-                    else if lag && self.horses[hi].distance<(self.course.distance as i32/24*10) as f32 {
-                        let c=&mut self.horses[hi].cp;c.ctimer+=dt;
+                    else if lag && self.horses[hi].distance<cp_cut {
+                        let c=&mut self.horses[hi].cp;c.ctimer+=cdt;
                         if c.ctimer>=1.0 {let g=(if m_eff==4 {r_pd} else {r_n})*sc;c.spec+=g;c.last_credit=g;}
                         c.ctimer=-cp_cool;
                     }
-                    else if (if opt("RX_CPCUTPREV") {self.horses[hi].prev_distance} else {self.horses[hi].distance})<(self.course.distance as i32/24*10) as f32 {
-                        let c=&mut self.horses[hi].cp;c.ctimer+=dt;if rush_exit {c.ctimer+=dt;}
-                        if c.ctimer>=1.0 {let g=(if m==4 {r_pd} else {r_n})*sc;c.spec+=g;c.last_credit=g;c.ctimer-=1.0;}
+                    else if (if opt("RX_CPCUTPREV") {self.horses[hi].prev_distance} else {self.horses[hi].distance})<cp_cut {
+                        let c=&mut self.horses[hi].cp;c.ctimer+=cdt;if rush_exit {c.ctimer+=cdt;}
+                        if c.ctimer>=1.0 {let g=(if m==4 {r_pd} else {r_n})*sc;c.spec+=g;c.last_credit=g;c.ctimer-=csub;}
                     }
                 }
                 else if tm || tp {c.scd=cooldown("RX_CPSPECTOP",23);}
@@ -1366,7 +1534,7 @@ impl<'a> Simulator<'a> {
                 |(h.mods.has(6) as u32)<<7|(h.mods.has(10) as u32)<<8|(h.mods.has(21) as u32)<<9|(h.phase as u32)<<10
                 |((h.self_speed<h.target_speed) as u32)<<12|((h.self_speed>h.target_speed) as u32)<<15|(h.front.is_some() as u32)<<13|(h.mods.has(5) as u32)<<14|(((h.distance/(self.course.distance/24.0)) as u32).min(31))<<16|(((h.keep.checked+1) as u32)&7)<<24|(h.start_dash as u32)<<27|((h.delay>0.0) as u32)<<28|((h.keep.cooldown>0.0) as u32)<<29
                 |((h.corner!=0) as u32)<<21|((h.slope>0.0) as u32)<<22|((h.slope<0.0) as u32)<<23|(h.downhill as u32)<<30|(h.straight as u32)<<31;
-            h.cp.log.push(code);let dl=[h.distance,h.self_speed,h.target_speed,pm_d-h.distance,h.keep.wanted as f32,h.keep.cooldown,h.order as f32,h.lane,h.hp,self.pacemaker as f32,h.keep.rng_probe_state()[4],h.keep.rng_probe_state()[3],near_ahead,near_any,gap_ahead,h.cp.ctimer,h.cp.spec,self.time];h.cp.dlog.push(dl);
+            h.cp.log.push(code);let dl=[h.distance,h.self_speed,h.target_speed,pm_d-h.distance,h.keep.wanted as f32,h.keep.cooldown,h.order as f32,h.lane,h.hp,self.pacemaker as f32,h.keep.rng_probe_state()[4],h.keep.rng_probe_state()[3],near_ahead,near_any,gap_ahead,h.cp.ctimer,h.cp.spec,self.time,h.temptation_end as f32,h.cp.lag_mode as f32];h.cp.dlog.push(dl);
         }
         if flag("RX_OT") {self.update_overtake(hi,dt);}
         self.temptation(hi,dt);
@@ -1398,16 +1566,18 @@ impl<'a> Simulator<'a> {
                 let rushed=h.temptation_count>0 && flag("RX_CPRUSH");
                 let dec=|m:i64|cp.arr("ConservePowerDecreaseAccelCoefArray").iter().find(|r|r["Mode"].as_i64()==Some(m)).map_or(1.0,|r|f32_of(&r["Coef"]));
                 let mode_coef=(if h.cp.top && flag("RX_CPTOP") {dec(3)} else {1.0})*(if rushed {dec(4)} else {1.0});
-                let accel=if std::env::var("RX_CPORD").as_deref()==Ok("3") {
+                let cp_order=std::env::var("RX_CPORD").unwrap_or_else(|_|if self.jp() {"0"} else {"3"}.to_string());
+                let accel=if cp_order=="3" {
                     (((pow-1200.0) as f64*cp.f("ReleaseConservePowerDeclCoef") as f64).sqrt()*cp.f("ReleaseConservePowerAccelCoef") as f64*coef as f64*mode_coef as f64) as f32
-                } else if std::env::var("RX_CPORD").as_deref()==Ok("4") {
+                } else if cp_order=="4" {
                     ((pow-1200.0)*cp.f("ReleaseConservePowerDeclCoef")).sqrt()*(cp.f("ReleaseConservePowerAccelCoef")*coef*mode_coef)
                 } else {((pow-1200.0)*cp.f("ReleaseConservePowerDeclCoef")).sqrt()*cp.f("ReleaseConservePowerAccelCoef")*coef*mode_coef}*std::env::var("RX_CPK").ok().and_then(|v|v.parse::<f32>().ok()).unwrap_or(1.0);
                 let t=self.time;let h=&mut self.horses[hi];h.cp.released=true;
                 if pow>1200.0 && (!flag("RX_IPA_CP_THRESHOLD") || dur>cp.f("ConservePowerReleasableActivityTimeThreshold")) {
                     h.cp.accel=accel;h.cp.left=dur;
+                    if std::env::var("RX_CPREL").is_ok() {eprintln!("CPREL h={hi} t={t:.4} dur={dur:e} ticks={:.6} spec={:e} accel={accel:e} L={}",dur/dt,h.cp.spec,self.course.distance);}
                     let mut ev=json!({"t":t,"type":6,"name":"ReleaseConservePower","params":[hi],"horse":hi,"extra":""});
-                    if std::env::var("RX_CPDBG").is_ok() {ev["dur"]=json!(dur);ev["spec"]=json!(h.cp.spec);ev["mt"]=json!(h.cp.mt);ev["pow"]=json!(pow);ev["value"]=json!(h.cp.value);ev["log"]=json!(std::mem::take(&mut h.cp.log));ev["dlog"]=json!(std::mem::take(&mut h.cp.dlog));}
+                    if std::env::var("RX_CPDBG").is_ok() {ev["dur"]=json!(dur);ev["spec"]=json!(h.cp.spec);ev["mt"]=json!(h.cp.mt);ev["pow"]=json!(pow);ev["value"]=json!(h.cp.value);ev["L"]=json!(self.course.distance);ev["log"]=json!(std::mem::take(&mut h.cp.log));ev["dlog"]=json!(std::mem::take(&mut h.cp.dlog));}
                     self.events.push(ev);
                 }
             }
@@ -1509,10 +1679,11 @@ impl<'a> Simulator<'a> {
         else if v<target && !h.start_dash && opt("RX_D1B") {v=((v as f64+(accel*dt) as f64) as f32).min(target);}
         else if v<target {v=(v+accel*dt).min(target);} else if v>target {v=(v-rate*p.f("declBase")*dt).max(target);}
         if h.start_dash {v=v.min(default_min);}v=v.clamp(h.min_speed,max);
+        if std::env::var("RX_MAXDBG").ok().and_then(|x|x.parse::<usize>().ok())==Some(hi) && v>=max {eprintln!("MAXCLAMP {:.4} max={} front={:?} target={}",self.time,max,h.front,target);}
         let perturb=std::env::var("RX_PERTURB").ok().and_then(|v|{let x:Vec<i64>=v.split(',').filter_map(|a|a.parse().ok()).collect();(x.len()>=3).then(||x)})
             .filter(|x|x[0]==hi as i64 && x[1]==(self.time/dt).round() as i64);
         if let Some(x)=&perturb && x.get(3).copied().unwrap_or(0)==0 {v=f32::from_bits((v.to_bits() as i64+x[2]) as u32);}
-        h.self_speed=v;if h.cp.left>0.0 {h.cp.left-=dt;if h.cp.left<=0.0 && std::env::var("RX_CPDBG").is_ok() {h.cp.end=Some([h.self_speed,target,h.hp,h.distance,h.spurt_speed,h.max_hp]);}}
+        h.self_speed=v;if h.cp.left>0.0 {h.cp.left-=dt;if h.cp.left<=0.0 && std::env::var("RX_CPREL").is_ok() {eprintln!("CPEND h={hi} t={:.4} left={:e}",self.time,h.cp.left);}if h.cp.left<=0.0 && std::env::var("RX_CPDBG").is_ok() {h.cp.end=Some([h.self_speed,target,h.hp,h.distance,h.spurt_speed,h.max_hp]);}}
         h.speed=if opt("RX_D6") {((h.mods.apply(23,0.0) as f64+h.mods.apply(5,0.0) as f64+v as f64) as f32).clamp(h.min_speed,max)}
             else {(h.mods.apply(23,0.0)+h.mods.apply(5,0.0)+v).clamp(h.min_speed,max)};
         let mut movement=h.speed*dt;
@@ -1617,16 +1788,21 @@ impl<'a> Simulator<'a> {
         }
     }
     fn tick(&mut self,dt:f32) {
+        if dt>0.0 && !self.jp() && flag("RX_GLOBAL_HEAL_HISTORY") {self.heal_history.advance();}
         for hi in 0..self.horses.len() {
             self.around(hi,dt);let h=&mut self.horses[hi];if !flag("RX_PO") {h.prev_order=h.order;}
             if h.finished {h.after_goal+=dt;}
             if h.distance>h.corner_end {h.corner=0;}
         }
+        let raw_pm=!self.jp() && opt("RX_GLOBAL_PM_RAW_STYLE");
         let pm=std::env::var("RX_PM").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(6);
         if pm>=6 && dt>0.0 {
-            let style=|h:&Horse|if h.ex() {0} else {h.input.running_style};
+            let style=|h:&Horse|if h.ex() && !raw_pm {0} else {h.input.running_style};
             let sec=self.course.distance/24.0;
-            let probe=if pm==6 {self.horses.iter().map(|h|h.distance).fold(f32::MIN,f32::max)} else {self.horses[self.pacemaker].distance};
+            let trig=std::env::var("RX_PM_TRIG").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(if self.jp() {0} else {2});
+            let probe=if pm==6 && trig==1 {self.horses.iter().min_by_key(|h|h.order).unwrap().distance}
+                else if pm==6 && trig==2 {self.horses.iter().min_by_key(|h|h.prev_order).unwrap().distance}
+                else if pm==6 {self.horses.iter().map(|h|h.distance).fold(f32::MIN,f32::max)} else {self.horses[self.pacemaker].distance};
             let s=if !self.jp() && opt("RX_PMSEC_D") {(probe as f64/(self.course.distance as f64/24.0)) as i32} else {(probe/sec) as i32};
             let fixed_first=opt("RX_PM_TIME3_LEAD") || opt("RX_PM_DISTANCE60_LEAD");
             let first_due=(opt("RX_PM_TIME3_LEAD") && self.time>=3.0) || (opt("RX_PM_DISTANCE60_LEAD") && probe>=60.0);
@@ -1640,9 +1816,17 @@ impl<'a> Simulator<'a> {
                 let near=|h:&Horse|!rr || lead-h.distance<=range;
                 let retained_style=if opt("RX_PM_EARLY_STYLE") && !first_selection {style(&self.horses[self.pacemaker])} else {0};
                 let best=self.horses.iter().filter(|h|!h.finished && near(h) && style(h)>=retained_style).map(style).min().unwrap_or(1);
-                let lead_i=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|h.order).map(|(i,_)|i);
-                let keep=flag("RX_PMKEEP") && lead_i.is_some_and(|i|style(&self.horses[i])!=best);
-                let po=flag("RX_PMPREVORDER");
+                let lead_i=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|if flag("RX_PMKEEP_PREV") {h.prev_order} else {h.order}).map(|(i,_)|i);
+                let keep=flag("RX_PMKEEP") && !(first_selection && opt("RX_PMKEEP_FIRST")) && lead_i.is_some_and(|i|style(&self.horses[i])!=best);
+                let homogeneous=!self.jp() && opt("RX_GLOBAL_PM_HOMOGENEOUS_CURRENT") &&
+                    self.horses.iter().filter(|h|!h.finished).map(style)
+                        .all(|candidate|candidate==best);
+                let homogeneous_current=homogeneous && first_selection;
+                let po=flag("RX_PMPREVORDER") && !homogeneous_current;
+                if first_selection && std::env::var("RX_PMFIRSTDBG").is_ok() {
+                    let v:Vec<_>=self.horses.iter().enumerate().filter(|(_,h)|style(h)==best && near(h)).map(|(i,h)|(i,h.order,h.prev_order,h.distance,h.speed)).collect();
+                    eprintln!("PMFIRST t={:.4} s={} homo={} cur_pm={} cand={:?}",self.time,s,homogeneous,self.pacemaker,v);
+                }
                 let ended=flag("RX_PMENDSEC") && s>=self.p().f("PositionKeep.PositionKeepEndSection") as i32;
                 if !keep && !ended {if let Some((i,_))=self.horses.iter().enumerate().filter(|(_,h)|style(h)==best && near(h)).min_by_key(|(_,h)|if po {h.prev_order} else {h.order}) {self.pacemaker=i;}}
                 if std::env::var("RX_PMDBG").is_ok() {
@@ -1657,20 +1841,31 @@ impl<'a> Simulator<'a> {
                 let range_lead=opt("RX_PM_RANGE_LEAD") && forward_gap>self.p().f("PositionKeep.PaseMakerChangeForwardRunningStyleRange");
                 let count_lead=opt("RX_PM_COUNT_LEAD") && self.horses.iter().filter(|h|!h.finished && h.distance>self.horses[self.pacemaker].distance && style(h)!=best).count() as f32>=self.p().f("PositionKeep.PaseMakerChangeTopHorseNotMostForwardStyleCount");
                 if opt("RX_PMLEAD") || early_lead || first_lead || range_lead || count_lead || (fixed_first && first_selection) {if let Some((i,_))=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|h.order) {self.pacemaker=i;}}
-                if !self.jp() && opt("RX_GLOBAL_PM_RECALC") {
+                if !self.jp() && opt("RX_GLOBAL_PM_RECALC") && !(flag("RX_PM_RECALC_ENDSEC") && ended) {
                     let runners=self.horses.iter().map(|h|crate::pacemaker::Runner {
-                        style:style(h),order:h.order,distance:h.distance,finished:h.finished,
+                        style:style(h),order:if flag("RX_PM_RECALC_PREV") {h.prev_order} else {h.order},distance:h.distance,finished:h.finished,
                     }).collect::<Vec<_>>();
+                    if std::env::var("RX_PMSTATE").is_ok() {eprintln!("PMSTATE {} {} {} {} {:?}",self.time,self.pacemaker,self.pm_not_forward,self.pm_handed,
+                        self.horses.iter().map(|h|(style(h),h.prev_order,h.order,h.distance,h.keep.mode,h.temptation_mode,h.lane)).collect::<Vec<_>>());}
+                    let streak_n=std::env::var("RX_PM_RESET_STREAK").ok().and_then(|v|v.parse::<i32>().ok()).unwrap_or(0);
+                    {let fw=runners.iter().filter(|r|!r.finished).map(|r|r.style).min().unwrap_or(1);
+                     let li=runners.iter().enumerate().filter(|(_,r)|!r.finished).min_by_key(|(i,r)|(r.order,*i)).map(|(i,_)|i).unwrap_or(0);
+                     self.pm_fwd_streak=if runners[li].style==fw {self.pm_fwd_streak+1} else {0};}
+                    let streak_reset=streak_n>0 && self.pm_fwd_streak>=streak_n;
                     if let Some(i)=crate::pacemaker::recalculate_with(&runners,&mut self.pm_not_forward,
                         self.assets.params().f("PositionKeep.PaseMakerChangeTopHorseNotMostForwardStyleCount") as i32,
                         self.assets.params().f("PositionKeep.PaseMakerChangeForwardRunningStyleRange"),crate::pacemaker::Rules {
                         early_forward:self.pm_handed && flag("RX_PM_RECALC_RESET"),
-                        reset_on_forward:!flag("RX_PM_NORESET"),
-                        reset_on_recalc:flag("RX_PM_RESET_RECALC"),order_first:flag("RX_PM_RESET_RECALC"),
-                        forward_nige_only:flag("RX_PM_FORWARD_NIGE")}) {
+                        early_any_style:flag("RX_PM_EARLY_OIKOMI") && runners[self.pacemaker].style==4,
+                        reset_on_forward:!flag("RX_PM_NORESET") || streak_reset,
+                        reset_on_recalc:flag("RX_PM_RESET_RECALC") && !opt("RX_PM_RR_OFF"),order_first:flag("RX_PM_RESET_RECALC") && !opt("RX_PM_OF_OFF"),
+                        forward_nige_only:flag("RX_PM_FORWARD_NIGE"),
+                        count_gap:std::env::var("RX_PM_COUNT_GAP").ok().and_then(|v|v.parse().ok()).unwrap_or(-1.0),
+                        handback:self.pm_handed && flag("RX_PM_RECALC_RESET") && opt("RX_PM_HANDBACK"),current:self.pacemaker}) {
                         if std::env::var("RX_PMLOG").is_ok() && (i!=self.pacemaker || std::env::var("RX_PMLOG").as_deref()==Ok("2")) {eprintln!("PMLOG {} {} recalc {}->{} lead_d {} pm_d {} styles {:?}",self.input.replay_sha,self.time,self.pacemaker,i,self.horses.iter().map(|h|h.distance).fold(0.0,f32::max),self.horses[self.pacemaker].distance,runners.iter().map(|r|(r.style,r.order,r.distance)).collect::<Vec<_>>());}
                         self.pacemaker=i;
                         if flag("RX_PM_RECALC_RESET") && runners[i].style!=runners.iter().filter(|r|!r.finished).map(|r|r.style).min().unwrap_or(1) {self.pm_not_forward=0;self.pm_handed=true;}
+                        else if opt("RX_PM_HANDBACK") && self.pm_handed {self.pm_not_forward=0;self.pm_handed=false;}
                     }
                     if std::env::var("RX_PMLOG").as_deref()==Ok("3") {let li=self.horses.iter().enumerate().min_by_key(|(_,h)|h.order).unwrap().0;eprintln!("PMCHK {} s={} pm={} lead={} lstyle={} cnt={} handed={}",self.time,s,self.pacemaker,li,style(&self.horses[li]),self.pm_not_forward,self.pm_handed);}
                 } else if opt("RX_IPA_PM_COUNT") {
@@ -1691,7 +1886,7 @@ impl<'a> Simulator<'a> {
                 }
             }
         } else if pm!=0 && dt>0.0 {
-            let style=|h:&Horse|if h.ex() {0} else {h.input.running_style};
+            let style=|h:&Horse|if h.ex() && !raw_pm {0} else {h.input.running_style};
             let lead=self.horses.iter().map(|h|h.distance).fold(f32::MIN,f32::max);
             let range=self.p().f("PositionKeep.PaseMakerChangeMostForwardStyleRange");
             let near=|h:&Horse|pm!=3 && pm!=5 || lead-h.distance<=range;
@@ -1709,12 +1904,14 @@ impl<'a> Simulator<'a> {
             }
         }
         if dt>0.0 && !self.jp() && flag("RX_PMREVERT") && !(!self.jp() && flag("RX_PMREVERT_LATE")) && (self.pm_handed || self.pm_not_forward>=self.p().f("PositionKeep.PaseMakerChangeTopHorseNotMostForwardStyleCount") as i32) {
-            let st=|h:&Horse|if h.ex() {0} else {h.input.running_style};
+            let st=|h:&Horse|if h.ex() && !raw_pm {0} else {h.input.running_style};
             let best=self.horses.iter().filter(|h|!h.finished).map(st).min().unwrap_or(1);
-            if let Some((i,_))=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|h.order) {
+            if let Some((i,_))=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|if opt("RX_PMREVERT_PREV") {h.prev_order} else {h.order}) {
                 if st(&self.horses[i])==best && (!opt("RX_PMREVERT_SLOW") || st(&self.horses[self.pacemaker])>=3) {self.pacemaker=i;self.pm_not_forward=0;self.pm_handed=false;}
             }
         }
+        if let Ok(v)=std::env::var("RX_PMOVR") {for it in v.split(',') {if let Some((t,i))=it.split_once(':') {
+            if let (Ok(t),Ok(i))=(t.parse::<f32>(),i.parse::<usize>()) {if self.time>=t-1e-4 {self.pacemaker=i;}}}}}
         self.skills_pass(dt,1);self.skills_pass(dt,0);
         for hi in 0..self.horses.len() {
             self.update_horse(hi,dt);
@@ -1722,12 +1919,13 @@ impl<'a> Simulator<'a> {
                 let o=self.horses[hi].order;
                 let hit=self.horses.iter().any(|n|o<n.order && n.overtake.contains(&hi));
                 let h=&mut self.horses[hi];h.ot_target_time=if hit {h.ot_target_time+dt} else {0.0};
+                h.ot_noup_time=if h.overtake.is_empty() {0.0} else {h.ot_noup_time+dt};
             }
         }
         if dt>0.0 && !self.jp() && flag("RX_PMREVERT") && flag("RX_PMREVERT_LATE") && (self.pm_handed || self.pm_not_forward>=self.p().f("PositionKeep.PaseMakerChangeTopHorseNotMostForwardStyleCount") as i32) {
-            let st=|h:&Horse|if h.ex() {0} else {h.input.running_style};
+            let st=|h:&Horse|if h.ex() && !raw_pm {0} else {h.input.running_style};
             let best=self.horses.iter().filter(|h|!h.finished).map(st).min().unwrap_or(1);
-            if let Some((i,_))=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|h.order) {
+            if let Some((i,_))=self.horses.iter().enumerate().filter(|(_,h)|!h.finished).min_by_key(|(_,h)|if opt("RX_PMREVERT_PREV") {h.prev_order} else {h.order}) {
                 if st(&self.horses[i])==best && (!opt("RX_PMREVERT_SLOW") || st(&self.horses[self.pacemaker])>=3) {self.pacemaker=i;self.pm_not_forward=0;self.pm_handed=false;}
             }
         }
@@ -1750,6 +1948,8 @@ impl<'a> Simulator<'a> {
         if dt>0.0 && flag("RX_NEAR") && opt("RX_NEARPRE") {self.near_times(dt);}
         let po=flag("RX_PO");
         for (i,hi) in order.iter().copied().enumerate() {let h=&mut self.horses[hi];if po {h.prev_order=h.order;}h.order=i;}
+        let otm=std::env::var("RX_OTNOUP_ORDER").unwrap_or_else(|_|"1".into());
+        if otm=="1" {for h in &mut self.horses {if h.order<h.prev_order {h.ot_noup_time=0.0;}}}
         if flag("RX_ORDERUP") {
             let cool=self.p().f("overTakeCountCoolDownTime");
             for hi in 0..self.horses.len() {
@@ -1761,6 +1961,7 @@ impl<'a> Simulator<'a> {
                 let Some(&passed)=order.get(cur+1) else {continue};
                 if h.order_up_cool[passed]>0.0 {continue;}
                 h.order_up_cool[passed]=cool;
+                if otm=="2" {h.ot_noup_time=0.0;}
                 let lastspurt=h.spurt_start>0.0 && h.spurt_result&12==0 && h.distance>=h.spurt_start;
                 match h.phase {0=>h.order_up[0]+=1,1=>h.order_up[1]+=1,2|3=>h.order_up[2]+=1,_=>()}
                 if h.corner!=0 {h.order_up[3]+=1;if matches!(h.phase,2|3) {h.order_up[4]+=1;}}
@@ -1773,13 +1974,13 @@ impl<'a> Simulator<'a> {
         if let (Some(max),Some(min))=(unfinished.iter().copied().reduce(f32::max),unfinished.iter().copied().reduce(f32::min)) {
             self.distance_diff_max=self.distance_diff_max.max(max-min);
         }
-        if dt>0.0 && self.time>=5.0 && flag("RX_ORDCONT") {
-            let n=self.horses.len() as f32;
+        if dt>0.0 && self.time>=std::env::var("RX_ORDCONT_T").ok().and_then(|v|v.parse::<f32>().ok()).unwrap_or(5.0) && flag("RX_ORDCONT") {
+            let n=self.horses.len() as f32;let prevo=!self.jp() && flag("RX_ORDCONT_PREV");
             for h in &mut self.horses {
                 for i in 0..9 {
-                    let threshold=(((i+1) as f32*10.0)/100.0*n+0.5) as i32;let o=h.order as i32+1;
+                    let threshold=(((i+1) as f32*10.0)/100.0*n+0.5) as i32;let o=if prevo {h.prev_order} else {h.order} as i32+1;
                     if threshold<o {h.order_continue[0][i]=false;}
-                    if o<threshold {h.order_continue[1][i]=false;}
+                    if o<threshold {if h.order_continue[1][i] && std::env::var("RX_OCDBG").is_ok() {eprintln!("OCCLR {:.4} h{} out{} o={} thr={} d={} pd={} po={}",self.time,h.input.frame_order,(i+1)*10,o,threshold,h.distance,h.prev_distance,h.prev_order);} h.order_continue[1][i]=false;}
                 }
             }
         }
@@ -1791,12 +1992,14 @@ impl<'a> Simulator<'a> {
         if self.random.trace.is_some() {
             frame["diagnostics"]=json!({"rng_calls":self.random.calls(),"pacemaker":self.pacemaker,"horses":self.horses.iter().map(|h|json!({
                 "hp_float":h.hp,"speed_float":h.speed,"self_speed":h.self_speed,"target_speed":h.target_speed,"min_speed":h.min_speed,
+                "near_front_time":h.near_front_time,"near_behind_time":h.near_behind_time,"prev_order":h.prev_order,
                 "lane_float":h.lane,"target_lane":h.target_lane,"lane_speed":h.lane_speed,"overtake":h.overtake,"ot_cool":h.ot_cool,"in_space":h.in_space,"out_space":h.out_space,"visible":h.visible,"inside":h.inside,"outside":h.outside,"phase":h.phase,"corner":h.corner,"final_corner":h.final_corner,"straight":h.straight,"front_type":h.front_type,"order":h.order,"slope":h.slope,"downhill":h.downhill,
                 "spurt_start":h.spurt_start,"spurt_result":h.spurt_result,"position_keep":h.keep.mode,"dbg":h.dbg,"start_dash":h.start_dash,"front":h.front,
                 "temptation_active":h.temptation_active,"temptation_mode":h.temptation_mode,"temptation_timer":h.temptation_timer,"temptation_check":h.temptation_check,"temptation_forced":h.temptation_forced})).collect::<Vec<_>>()});
             if opt("RX_RNG_KEEP_STATE") {
                 frame["diagnostics"]["keep_states"]=json!(self.horses.iter().map(|h|h.keep.rng_probe_state()).collect::<Vec<_>>());
             }
+            frame["diagnostics"]["cp_states"]=json!(self.horses.iter().map(|h|[h.cp.left,h.cp.accel,h.cp.spec]).collect::<Vec<_>>());
             if opt("RX_HP_STATE") {
                 frame["diagnostics"]["hp_inputs"]=json!(self.horses.iter().enumerate().map(|(i,h)|json!({
                     "guts":h.stat(3),"skill_rate":h.mods.apply(13,0.0),
@@ -1862,9 +2065,9 @@ impl<'a> Simulator<'a> {
             }
             if let Some(i)=std::env::var("RX_HDBG").ok().and_then(|v|v.parse::<usize>().ok()) {
                 let h=&self.horses[i];
-                eprintln!("HDBG {:.4} pm={} pmd={:.4} tg={:.4} ed={:.3} d={:.6} v={:.6} tv={:.6} ln={:.6} tl={:.6} pk={} tm={} ph={} sec={:.6} slope={} front={:?} fs={:.3} mods={:.6} dbg={:?} sl={} dh={} hp={:.6}",
+                eprintln!("HDBG {:.4} pm={} pmd={:.4} tg={:.4} ed={:.3} d={:.6} v={:.6} tv={:.6} ln={:.6} tl={:.6} pk={} tm={} ph={} sec={:.6} slope={} front={:?} fs={:.3} mods={:.6} dbg={:?} sl={} dh={} hp={:.6} chk={} want={} cd={:.3} m5={} m23={} ss={}",
                     self.time,self.pacemaker,self.horses[self.pacemaker].distance-h.distance,h.keep.target_gap,h.keep.end_distance,h.distance,h.speed,h.target_speed,h.lane,h.target_lane,h.keep.mode,h.temptation_mode,h.phase,
-                    h.section_speed[((h.distance/self.course.distance*24.0) as usize).min(23)],h.slope,h.front,h.front_time,h.mods.apply(27,0.0),&h.dbg[..6],h.slope,h.downhill,h.hp);
+                    h.section_speed[((h.distance/self.course.distance*24.0) as usize).min(23)],h.slope,h.front,h.front_time,h.mods.apply(27,0.0),&h.dbg[..6],h.slope,h.downhill,h.hp,h.keep.checked,h.keep.wanted,h.keep.cooldown,h.mods.apply(5,0.0),h.mods.apply(23,0.0),h.self_speed);
             }
             if interval<=0.0 || all {
                 frames.push(self.record());
@@ -1931,6 +2134,35 @@ pub fn post_number(index:usize,count:usize)->usize {
     1
 }
 
+fn global_order_duration_extension(params:Tree<'_>,changed:bool,used:&mut i32,distance:f32)->f32 {
+    if !changed || *used>=params.i("Skill.OrderUpAddAbilityTimeMaxCount") {return 0.0;}
+    *used+=1;
+    params.f("Skill.OrderUpAddAbilityTime")*(distance/params.i("Skill.AbilityTimeDivideDistance") as f32)
+}
+
+fn global_order_value_multiplier(params:Tree<'_>,count:i32)->f32 {
+    params.arr("Skill.OrderUpCornerPhaseEndAfterCoefAscArray").iter()
+        .find(|r|(count as i64)<r["OrderChangeCountThreshold"].as_i64().unwrap())
+        .map_or(1.0,|r|f32_of(&r["Multiply"]))
+}
+
+fn global_gap_duration_multiplier(params:Tree<'_>,gap:f32)->f32 {
+    (gap/params.f("Skill.AbilityTimeDiffDistanceTopCoefPerDistance")
+        +params.f("Skill.AbilityTimeDiffDistanceTopCoefMin"))
+        .clamp(params.f("Skill.AbilityTimeDiffDistanceTopCoefMin"),params.f("Skill.AbilityTimeDiffDistanceTopCoefMax"))
+}
+
+fn global_counted_tag(params:Tree<'_>,tags:&str)->bool {
+    tags.split('/').filter_map(|s|s.parse::<i64>().ok()).any(|tag|
+        params.arr("Skill.AbilityValueUsageTagGroup1Array").iter().any(|v|v.as_i64()==Some(tag)))
+}
+
+fn global_tag_multiplier(params:Tree<'_>,count:i32)->f32 {
+    params.arr("Skill.ActivateSpecificTagGroupSkillCountCoefAscArray").iter()
+        .find(|r|(count as i64)<r["ActivateSpecificTagGroupSkillCountThreshold"].as_i64().unwrap())
+        .map_or(1.0,|r|f32_of(&r["Multiply"]))
+}
+
 fn global_hp_duration_multiplier(params:Tree<'_>,hp:f32)->f32 {
     params.arr("Skill.TimeRemainHpCoefAscArray").iter()
         .find(|r|hp<f32_of(&r["HpThreshold"]))
@@ -1940,6 +2172,54 @@ fn global_hp_duration_multiplier(params:Tree<'_>,hp:f32)->f32 {
 #[cfg(test)]
 mod global_skill_tests {
     use super::*;
+    #[test]
+    fn heal_history_is_delayed_unique_and_ordered_by_native_horse_cache() {
+        let mut h=HealHistory::default();
+        h.pending.insert(2);h.pending.insert(1);h.pending.insert(2);
+        assert!(h.previous.is_empty());assert!(h.targets(1).is_empty());
+        h.advance();
+        assert_eq!(h.previous.iter().copied().collect::<Vec<_>>(),vec![1,2]);
+        assert_eq!(h.targets(1),vec![2]);
+        h.advance();
+        assert!(h.previous.is_empty());assert_eq!(h.targets(2),vec![2,1]);
+        h.pending.insert(1);h.advance();
+        assert_eq!(h.targets(3),vec![1,2]);
+    }
+    #[test]
+    fn counted_overtakes_extend_duration_up_to_asset_budget() {
+        let p=json!({"Skill":{"OrderUpAddAbilityTimeMaxCount":3,"OrderUpAddAbilityTime":1.0,"AbilityTimeDivideDistance":1000}});
+        let mut used=0;
+        assert_eq!(global_order_duration_extension(Tree(&p),false,&mut used,1800.0),0.0);
+        assert_eq!(used,0);
+        for _ in 0..3 {assert_eq!(global_order_duration_extension(Tree(&p),true,&mut used,1800.0),1.8);}
+        assert_eq!(global_order_duration_extension(Tree(&p),true,&mut used,1800.0),0.0);
+        assert_eq!(used,3);
+    }
+    #[test]
+    fn corner_overtake_value_uses_strict_native_thresholds() {
+        let assets=Assets::load(concat!(env!("CARGO_MANIFEST_DIR"),"/../data/race_param_define_global.json")).unwrap();
+        for (count,mult) in [(0,1.0),(1,1.0),(2,1.1),(3,1.2),(4,1.25),(98,1.25),(99,1.0)] {
+            assert_eq!(global_order_value_multiplier(assets.params(),count),mult);
+        }
+    }
+    #[test]
+    fn gap_duration_clamps_to_native_asset_limits() {
+        let p=json!({"Skill":{"AbilityTimeDiffDistanceTopCoefPerDistance":10.0,
+            "AbilityTimeDiffDistanceTopCoefMin":1.0,"AbilityTimeDiffDistanceTopCoefMax":3.0}});
+        for (gap,mult) in [(-1.0,1.0),(0.0,1.0),(5.0,1.5),(20.0,3.0),(100.0,3.0)] {
+            assert_eq!(global_gap_duration_multiplier(Tree(&p),gap),mult);
+        }
+    }
+    #[test]
+    fn tag_value_native_boundaries_and_group_membership() {
+        let assets=Assets::load(concat!(env!("CARGO_MANIFEST_DIR"),"/../data/race_param_define_global.json")).unwrap();
+        for (count,mult) in [(0,0.0),(2,0.0),(3,1.0),(4,1.0),(5,2.0),(6,3.0),(98,3.0),(99,1.0)] {
+            assert_eq!(global_tag_multiplier(assets.params(),count),mult);
+        }
+        assert!(global_counted_tag(assets.params(),"401/601/615"));
+        assert!(!global_counted_tag(assets.params(),"401/403"));
+        assert!(!global_counted_tag(assets.params(),""));
+    }
     #[test]
     fn additional_activation_budget_consumes_each_event_once() {
         let mut used=0;

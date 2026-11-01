@@ -11,6 +11,11 @@ pub fn enabled() -> bool {
 pub static LOADED: AtomicBool = AtomicBool::new(false);
 static INSTALLED: OnceLock<Result<(), String>> = OnceLock::new();
 static MASTER_HOOK: OnceLock<Result<(), String>> = OnceLock::new();
+static SCENARIO_HOOK: OnceLock<Result<(), String>> = OnceLock::new();
+static APPLY_LOGIN: AtomicUsize = AtomicUsize::new(0);
+static CARD_PREVIEW_HOOK: OnceLock<Result<(), String>> = OnceLock::new();
+static RELEASE_CARDS: AtomicUsize = AtomicUsize::new(0);
+static RELEASE_CARDS_PIECES: AtomicUsize = AtomicUsize::new(0);
 static STATE: Mutex<Option<Pack>> = Mutex::new(None);
 static STATUS: Mutex<String> = Mutex::new(String::new());
 static OPEN: AtomicUsize = AtomicUsize::new(0);
@@ -45,6 +50,156 @@ pub fn install() {
     });
     if let Err(e) = result { status(format!("Unavailable: {e}. Custom cards stay hidden.")); log(2, &format!("custom support: {e}")); }
     else { status("Waiting for the game's master connection. Restart if already logged in."); log(3, "custom support: master-open hook installed; managed setup deferred"); }
+    if region() == Region::Global {
+        if let Err(e) = SCENARIO_HOOK.get_or_init(|| unsafe { install_scenario_preview() }) {
+            log(2, &format!("custom support: scenario picker preview unavailable: {e}"));
+        }
+        if let Err(e) = CARD_PREVIEW_HOOK.get_or_init(|| unsafe {
+            let work = class(c"umamusume.dll", c"Gallop", c"WorkCardData")?;
+            hook(method(work, c"UpdateReleaseCard", 1)?, hk_release_cards as *mut c_void, &RELEASE_CARDS)?;
+            hook(method(work, c"UpdateReleaseCardWithHavingPiece", 1)?, hk_release_cards_pieces as *mut c_void, &RELEASE_CARDS_PIECES)?;
+            log(3, "custom support: locked trainee preview hooks installed");
+            Ok(())
+        }) {
+            log(2, &format!("custom support: locked trainee preview unavailable: {e}"));
+        }
+    }
+}
+
+unsafe fn add_preview_cards(work: *mut c_void) -> Result<(), String> {
+    let Some(preview) = PREVIEW.get() else { return Ok(()) };
+    if work.is_null() || !LOADED.load(Ordering::Acquire)
+        || !UNRELEASED.load(Ordering::Acquire)
+        || CONFIG.read().unwrap_or_else(|e| e.into_inner()).enabled {
+        return Ok(());
+    }
+    type GetClass = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
+    type Unbox = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
+    let get_class: GetClass = il2cpp("il2cpp_object_get_class").ok_or("No object class")?;
+    let unbox: Unbox = il2cpp("il2cpp_object_unbox").ok_or("No value unbox")?;
+    let list = invoke(method(get_class(work), c"get_ReleaseCardIdList", 0)?, work, &mut [])?;
+    if list.is_null() { return Ok(()); }
+    let list_class = get_class(list);
+    let contains = method(list_class, c"Contains", 1)?;
+    let add = method(list_class, c"Add", 1)?;
+    let mut added = 0;
+    for &card in &preview.cards {
+        let Ok(mut id) = i32::try_from(card) else { continue };
+        let arg = &mut id as *mut i32 as *mut c_void;
+        let found = invoke(contains, list, &mut [arg])?;
+        if found.is_null() { return Err("Release-card membership check returned null".into()); }
+        if !*(unbox(found) as *const bool) {
+            invoke(add, list, &mut [arg])?;
+            added += 1;
+        }
+    }
+    if added > 0 { log(3, &format!("custom support: added {added} backported cards to locked trainee list")); }
+    Ok(())
+}
+
+unsafe fn finish_release_card_preview(work: *mut c_void) {
+    match std::panic::catch_unwind(|| add_preview_cards(work)) {
+        Ok(Err(e)) => log(2, &format!("custom support: locked trainee preview: {e}")),
+        Err(_) => log(2, "custom support: locked trainee preview panicked"),
+        _ => {}
+    }
+}
+
+unsafe extern "C" fn hk_release_cards(this: *mut c_void, cards: *mut c_void, mi: *const c_void) {
+    let original: unsafe extern "C" fn(*mut c_void, *mut c_void, *const c_void) = std::mem::transmute(trampoline(&RELEASE_CARDS));
+    original(this, cards, mi);
+    finish_release_card_preview(this);
+}
+
+unsafe extern "C" fn hk_release_cards_pieces(this: *mut c_void, cards: *mut c_void, mi: *const c_void) {
+    let original: unsafe extern "C" fn(*mut c_void, *mut c_void, *const c_void) = std::mem::transmute(trampoline(&RELEASE_CARDS_PIECES));
+    original(this, cards, mi);
+    finish_release_card_preview(this);
+}
+
+unsafe fn install_scenario_preview() -> Result<(), String> {
+    type Methods = unsafe extern "C" fn(*mut c_void, *mut *mut c_void) -> *const c_void;
+    type Name = unsafe extern "C" fn(*const c_void) -> *const c_char;
+    type Count = unsafe extern "C" fn(*const c_void) -> u32;
+    type Param = unsafe extern "C" fn(*const c_void, u32) -> *const c_void;
+    type TypeName = unsafe extern "C" fn(*const c_void) -> *mut c_char;
+    type Free = unsafe extern "C" fn(*mut c_void);
+    let methods: Methods = il2cpp("il2cpp_class_get_methods").ok_or("No method listing")?;
+    let name: Name = il2cpp("il2cpp_method_get_name").ok_or("No method names")?;
+    let count: Count = il2cpp("il2cpp_method_get_param_count").ok_or("No parameter count")?;
+    let param: Param = il2cpp("il2cpp_method_get_param").ok_or("No parameter lookup")?;
+    let type_name: TypeName = il2cpp("il2cpp_type_get_name").ok_or("No type names")?;
+    let free: Free = il2cpp("il2cpp_free").ok_or("No runtime free")?;
+    let work = class(c"umamusume.dll", c"Gallop", c"WorkSingleModeData")?;
+    let mut iter = std::ptr::null_mut();
+    loop {
+        let m = methods(work, &mut iter);
+        if m.is_null() { return Err("WorkSingleModeData.Apply(LoginResponse) missing".into()); }
+        if CStr::from_ptr(name(m)) != c"Apply" || count(m) != 1 { continue; }
+        let t = type_name(param(m, 0));
+        if t.is_null() { continue; }
+        let text = CStr::from_ptr(t).to_string_lossy();
+        let matched = text.contains("Gallop.LoginResponse") && text.ends_with("CommonResponse");
+        free(t as *mut c_void);
+        if matched {
+            hook(m, hk_apply_login as *mut c_void, &APPLY_LOGIN)?;
+            log(3, "custom support: scenario picker preview hook installed");
+            return Ok(());
+        }
+    }
+}
+
+unsafe fn add_preview_scenarios(response: *mut c_void) -> Result<(), String> {
+    let Some(preview) = PREVIEW.get() else { return Ok(()) };
+    if response.is_null() || !LOADED.load(Ordering::Acquire)
+        || !UNRELEASED.load(Ordering::Acquire)
+        || CONFIG.read().unwrap_or_else(|e| e.into_inner()).enabled {
+        return Ok(());
+    }
+    type GetClass = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
+    type GetValue = unsafe extern "C" fn(*mut c_void, *mut c_void, *mut c_void);
+    type SetValue = unsafe extern "C" fn(*mut c_void, *mut c_void, *mut c_void);
+    type Length = unsafe extern "C" fn(*mut c_void) -> usize;
+    type NewArray = unsafe extern "C" fn(*mut c_void, usize) -> *mut c_void;
+    let get_class: GetClass = il2cpp("il2cpp_object_get_class").ok_or("No object class")?;
+    let get: GetValue = il2cpp("il2cpp_field_get_value").ok_or("No field reader")?;
+    let set: SetValue = il2cpp("il2cpp_field_set_value").ok_or("No field writer")?;
+    let length: Length = il2cpp("il2cpp_array_length").ok_or("No array length")?;
+    let new_array: NewArray = il2cpp("il2cpp_array_new").ok_or("No array allocator")?;
+    let field = API.get().and_then(|a| a.get_field).ok_or("No field lookup")?;
+    let f = field(get_class(response), c"single_mode_scenario_id_array".as_ptr());
+    if f.is_null() { return Err("Login scenario array field missing".into()); }
+    let mut array: *mut c_void = std::ptr::null_mut();
+    get(response, f as *mut c_void, &mut array as *mut _ as *mut c_void);
+    if array.is_null() { return Ok(()); }
+    let len = length(array);
+    if len > 64 { return Err("Unexpected scenario array length".into()); }
+    let current = std::slice::from_raw_parts((array as *const u8).add(4 * std::mem::size_of::<usize>()) as *const i32, len);
+    let mut ids = current.to_vec();
+    for &scenario in &preview.scenarios {
+        if let Ok(id) = i32::try_from(scenario) {
+            if !ids.contains(&id) { ids.push(id); }
+        }
+    }
+    if ids.len() == len { return Ok(()); }
+    let int_class = class(c"mscorlib.dll", c"System", c"Int32")?;
+    let replacement = new_array(int_class, ids.len());
+    if replacement.is_null() { return Err("Scenario array allocation failed".into()); }
+    std::ptr::copy_nonoverlapping(ids.as_ptr(), (replacement as *mut u8).add(4 * std::mem::size_of::<usize>()) as *mut i32, ids.len());
+    set(response, f as *mut c_void, replacement);
+    log(3, &format!("custom support: picker scenario IDs {current:?} -> {ids:?}"));
+    Ok(())
+}
+
+unsafe extern "C" fn hk_apply_login(this: *mut c_void, response: *mut c_void, mi: *const c_void) {
+    let result = std::panic::catch_unwind(|| add_preview_scenarios(response));
+    match result {
+        Ok(Err(e)) => log(2, &format!("custom support: scenario preview: {e}")),
+        Err(_) => log(2, "custom support: scenario preview panicked"),
+        _ => {}
+    }
+    let original: unsafe extern "C" fn(*mut c_void, *mut c_void, *const c_void) = std::mem::transmute(trampoline(&APPLY_LOGIN));
+    original(this, response, mi);
 }
 
 pub(crate) unsafe fn class(image: &CStr, ns: &CStr, name: &CStr) -> Result<*mut c_void, String> {
@@ -153,6 +308,21 @@ unsafe extern "C" fn hk_open(this: *mut c_void, file: *mut c_void, vfs: *mut c_v
         return original(this, file, vfs, key, cipher, mi);
     }
     if server().is_none() {
+        if let Some(path) = preview_master(&input) {
+            if let Some(new) = API.get().and_then(|a| a.string_new) {
+                let p = cstr(&path.to_string_lossy());
+                if original(this, new(p.as_ptr()), vfs, key, cipher, mi) {
+                    LOADED.store(true, Ordering::Release);
+                    *STATE.lock().unwrap_or_else(|e| e.into_inner()) = Some(Pack {
+                        manifest: json!({}), dir: path.parent().unwrap().to_owned(), server: String::new(),
+                        token: String::new(), expires: 0, instance: String::new(), cards: HashMap::new() });
+                    status("Official server: ported content loaded (preview)");
+                    log(3, &format!("custom support: preview master {}", path.display()));
+                    return true;
+                }
+                status("Preview master could not open; using stock master.");
+            }
+        }
         return original(this, file, vfs, key, cipher, mi);
     }
     if let Err(e) = INSTALLED.get_or_init(|| install_hooks()) {
@@ -214,6 +384,9 @@ fn prepare(base_path: &str) -> Result<Pack, String> {
         }
         cards.insert(id, CardArt { donor, texture:0, sprite:0, texture_handle:0, sprite_handle:0, slots, slot_art: HashMap::new() });
     }
+    if let Err(e) = save_preview(&server, challenge, &manifest) {
+        log(2, &format!("custom support: preview master not cached: {e}"));
+    }
     let events = manifest["events"].as_array();
     if !cards.is_empty() && !ENABLED.load(Ordering::Acquire) {
         return Err("This pack contains custom cards. Enable custom supports and restart.".into());
@@ -232,6 +405,82 @@ fn prepare(base_path: &str) -> Result<Pack, String> {
     }
     let instance = format!("{}-{}-{}", std::process::id(), epoch(), GENERATION.load(Ordering::Acquire));
     Ok(Pack { manifest, dir, server, token:String::new(), expires:0, instance, cards })
+}
+
+struct Preview { cards: Vec<i64>, scenarios: Vec<i64> }
+static PREVIEW: OnceLock<Preview> = OnceLock::new();
+static BLOCK_START: AtomicBool = AtomicBool::new(false);
+
+fn preview_dir() -> Option<PathBuf> {
+    Some(config_path()?.parent()?.join("custom_support").join("preview"))
+}
+
+fn save_preview(server: &str, challenge: &str, manifest: &Value) -> Result<(), String> {
+    let dir = preview_dir().ok_or("Plugin directory unavailable")?;
+    let Some(p) = manifest.get("preview").filter(|p| p.is_object()) else {
+        let _ = std::fs::remove_file(dir.join("preview.json"));
+        return Ok(());
+    };
+    std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+    let sha = p["master_sha256"].as_str().ok_or("Missing preview checksum")?;
+    if !std::fs::read(dir.join("preview.mdb")).is_ok_and(|b| sha256(&b) == sha) {
+        status("Downloading preview master…");
+        let bytes = http(server, "GET", &format!("/custom-support/pack/{challenge}/preview.mdb"), &[])?;
+        if sha256(&bytes) != sha { return Err("Checksum mismatch for preview.mdb".into()); }
+        let tmp = dir.join("preview.pending");
+        std::fs::write(&tmp, bytes).map_err(|e| e.to_string())?;
+        std::fs::rename(&tmp, dir.join("preview.mdb")).map_err(|e| e.to_string())?;
+    }
+    let info = json!({"base_sha256": manifest["base_sha256"], "master_sha256": sha,
+        "cards": p["cards"], "scenarios": p["scenarios"]});
+    std::fs::write(dir.join("preview.json"), info.to_string()).map_err(|e| e.to_string())
+}
+
+fn preview_master(base_path: &str) -> Option<PathBuf> {
+    if !UNRELEASED.load(Ordering::Acquire) || CONFIG.read().unwrap_or_else(|e| e.into_inner()).enabled {
+        return None;
+    }
+    let dir = preview_dir()?;
+    let info: Value = serde_json::from_slice(&std::fs::read(dir.join("preview.json")).ok()?).ok()?;
+    let base = sha256(&std::fs::read(base_path).ok()?);
+    if info["base_sha256"].as_str() != Some(base.as_str()) {
+        status("Preview master is for another game version; log in on your server once to refresh it.");
+        return None;
+    }
+    let path = dir.join("preview.mdb");
+    if info["master_sha256"].as_str() != Some(sha256(&std::fs::read(&path).ok()?).as_str()) { return None; }
+    let ids = |k: &str| info[k].as_array().map(|a| a.iter().filter_map(Value::as_i64).collect()).unwrap_or_default();
+    let _ = PREVIEW.set(Preview { cards: ids("cards"), scenarios: ids("scenarios") });
+    Some(path)
+}
+
+pub fn check_start(req: *mut c_void) {
+    let Some(p) = PREVIEW.get() else { return };
+    if super::class_name(req).as_deref() != Some("Gallop.SingleModeStartRequest") { return; }
+    let (Some(get_class), Some(offset)) = (il2cpp::<unsafe extern "C" fn(*mut c_void) -> *mut c_void>("il2cpp_object_get_class"),
+        il2cpp::<unsafe extern "C" fn(*mut c_void) -> usize>("il2cpp_field_get_offset")) else { return };
+    let Some(field) = API.get().and_then(|a| a.get_field) else { return };
+    unsafe {
+        let at = |obj: *mut c_void, name: &CStr| -> Option<usize> {
+            let f = field(get_class(obj), name.as_ptr());
+            (!f.is_null()).then(|| offset(f as *mut c_void))
+        };
+        let Some(o) = at(req, c"start_chara") else { return };
+        let chara = *((req as *const u8).add(o) as *const *mut c_void);
+        if chara.is_null() { return; }
+        let (Some(oc), Some(os)) = (at(chara, c"card_id"), at(chara, c"scenario_id")) else { return };
+        let card = *((chara as *const u8).add(oc) as *const i32) as i64;
+        let scenario = *((chara as *const u8).add(os) as *const i32) as i64;
+        if p.cards.contains(&card) || (scenario != 5 && p.scenarios.contains(&scenario)) {
+            log(2, &format!("custom support: career start (card {card}, scenario {scenario}) is preview-only; not sent"));
+            BLOCK_START.store(true, Ordering::Release);
+        }
+    }
+}
+
+pub fn take_blocked(url: &str, hooked: bool) -> bool {
+    let flagged = BLOCK_START.swap(false, Ordering::AcqRel);
+    PREVIEW.get().is_some() && LOADED.load(Ordering::Acquire) && url.contains("single_mode/start") && (flagged || !hooked)
 }
 
 fn download_verified(server: &str, challenge: &str, name: &str, expected: &str, dir: &std::path::Path) -> Result<(), String> {

@@ -36,6 +36,10 @@ pub struct Params {
     pub top_requires_lead: u8,
     pub top_cohort: bool,
     pub top_end_exit: bool,
+    pub top_shared_end: bool,
+    pub top_strict_exit: bool,
+    pub top_entry_inclusive: bool,
+    pub top_start_leader: bool,
 }
 
 impl Default for Params {
@@ -51,7 +55,7 @@ impl Default for Params {
             fight_exit_hp_percent: 5.0, fight_exit_inclusive: true, fight_select_before_history: true,
             fight_speed: [200.0, 0.708, 0.0001],
             fight_accel: [160.0, 0.59, 0.0001], top_hp: [1.4, 3.6, 3.5, 7.7],
-            top_requires_lead: 1, top_cohort: false, top_end_exit: false,
+            top_requires_lead: 1, top_cohort: false, top_end_exit: false, top_shared_end: false, top_strict_exit: false, top_entry_inclusive: false, top_start_leader: false,
         }
     }
 }
@@ -80,6 +84,24 @@ impl State {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Change { TopEnter(usize), TopExit(usize), FightEnter(usize), FightExit(usize) }
+
+pub fn order_top_entries(entries: &mut [usize], runners: &[Runner], state: &State) {
+    order_top_entries_by(entries, runners, state, &(0..runners.len()).collect::<Vec<_>>());
+}
+
+pub fn order_top_entries_by(entries: &mut [usize], runners: &[Runner], state: &State,
+                            member_order: &[usize]) {
+    let leaders: Vec<usize> = entries.iter().map(|&i| {
+        entries.iter().copied().filter(|&j|
+            state.modes[j].top_group == state.modes[i].top_group)
+            .min_by_key(|&j| (runners[j].rank, j)).unwrap()
+    }).collect();
+    let keys: std::collections::HashMap<usize, (usize, usize, bool, usize)> =
+        entries.iter().copied().zip(leaders).map(|(i, lead)|
+            (i, (runners[lead].rank, lead, i != lead,
+                 member_order.iter().position(|&j| j == i).unwrap()))).collect();
+    entries.sort_by_key(|i| keys[i]);
+}
 
 fn formula(guts: f32, c: [f32; 3]) -> f32 { (c[0] * guts.max(0.0)).powf(c[1]) * c[2] }
 pub fn top_duration(r: &Runner, p: &Params) -> f32 {
@@ -116,18 +138,20 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
     let mut changes = Vec::new();
     let one = |n: &str| std::env::var(n).is_ok_and(|v| v == "1");
     let end = course_distance / 24.0 * (p.end_section - std::env::var("RX_CTEND1").map_or(true, |v| v != "0") as u32) as f32;
+    let shared_end = p.top_shared_end && old.modes.iter().zip(runners)
+        .any(|(mode, runner)| mode.top && runner.distance >= end);
     for i in 0..n {
         let r = &runners[i]; let m = &old.modes[i];
         if m.top {
             next.modes[i].top_remaining -= dt;
-            if next.modes[i].top_remaining <= 0.0 || r.distance >= end {
+            if next.modes[i].top_remaining <= 0.0 || r.distance >= end || shared_end {
                 next.modes[i].top = false;
-                if p.top_end_exit && r.distance >= end { next.modes[i].top_distance_exit = true; }
+                if p.top_end_exit && (r.distance >= end || shared_end) { next.modes[i].top_distance_exit = true; }
             } else {
                 let peers: Vec<usize> = (0..n).filter(|&j| j != i &&
                     (p.top_cohort || old.modes[j].top) && old.modes[j].top_group == m.top_group).collect();
                 if !peers.is_empty() && peers.iter().all(|&j|
-                    (if std::env::var("RX_CTABS").map_or(true, |v| v != "0") {(runners[j].distance - r.distance).abs()} else {runners[j].distance - r.distance}) >= p.top_exit_distance ||
+                    {let gap=if std::env::var("RX_CTABS").map_or(true, |v| v != "0") {(runners[j].distance - r.distance).abs()} else {runners[j].distance - r.distance}; if p.top_strict_exit {gap>p.top_exit_distance} else {gap>=p.top_exit_distance}} ||
                     (runners[j].lane - r.lane).abs() >= p.top_exit_lane) {
                     next.modes[i].top = false;
                     next.modes[i].top_distance_exit = true;
@@ -158,13 +182,13 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
     for group in 0..2 {
         let members: Vec<usize> = (0..n).filter(|&i| old.modes[i].top_group == Some(group)).collect();
         let live: Vec<usize> = members.iter().copied().filter(|&i| next.modes[i].top).collect();
-        if live.len() == 1 && members.len() > 1 && members.iter().all(|&i|
+        if one("RX_CT_CASCADE") && live.len() == 1 && members.len() > 1 && members.iter().all(|&i|
             i == live[0] || next.modes[i].top_distance_exit) {
             next.modes[live[0]].top = false;
             next.modes[live[0]].top_distance_exit = true;
         }
     }
-    if runners.iter().any(|r| r.distance >= p.start_distance) {
+    if runners.iter().any(|r| r.distance >= p.start_distance && (!p.top_start_leader || r.rank == 1)) {
         for (group, style) in [Style::Nige, Style::Oonige].into_iter().enumerate() {
             if next.top_fired[group] { continue; }
             let leader = if std::env::var("RX_CTRANKLEAD").map_or(true, |v| v != "0") {
@@ -178,12 +202,16 @@ pub fn step(old: &State, runners: &[Runner], course_distance: f32, dt: f32,
                 let leads = match p.top_requires_lead {
                     1 => runners[lead].rank == 1,
                     2 => runners.iter().all(|q| q.distance <= runners[lead].distance),
+                    3 => runners[lead].rank==1 || style==Style::Nige &&
+                        if std::env::var("RX_CTLEAD_AHEAD").map_or(true,|v|v!="0") {
+                            runners.iter().all(|q|q.rank>=runners[lead].rank || q.style==Style::Oonige)
+                        } else {runners.iter().any(|q|q.rank==1 && q.style==Style::Oonige)},
                     _ => true,
                 };
                 if !leads { continue; }
                 let members: Vec<usize> = (0..n).filter(|&i| {
                     let r = &runners[i]; let q = &runners[lead];
-                    r.style == style && q.distance - r.distance < p.top_distance &&
+                    r.style == style && (if p.top_entry_inclusive {q.distance-r.distance<=p.top_distance} else {q.distance-r.distance<p.top_distance}) &&
                         (q.lane - r.lane).abs() <= p.top_lane
                 }).collect();
                 if members.len() > 1 && members.iter().any(|&i| runners[i].distance <
@@ -257,6 +285,57 @@ mod tests {
         Runner { style: Style::Nige, distance, lane: 0.0, speed: 20.0,
             hp: 1000.0, max_hp: 1000.0, guts: 1040.0, strategy_proficiency: 1.0,
             rank, final_straight: false, tempted: false }
+    }
+    #[test]
+    fn shared_section_cutoff_uses_active_competitors_and_ends_both_groups() {
+        let params=Params { top_shared_end:true, top_end_exit:true, ..Default::default() };
+        let mut old=State::new(4);
+        old.top_fired=[true,true];
+        for i in 0..3 {
+            old.modes[i].top=true;
+            old.modes[i].top_group=Some(usize::from(i==2));
+            old.modes[i].top_remaining=100.0;
+        }
+        let mut runners=[runner(334.0,2),runner(332.0,3),runner(331.0,4),runner(340.0,1)];
+        let next=step(&old,&runners,1000.0,TICK,&params).0;
+        assert!(next.modes.iter().all(|m|!m.top));
+        assert!(next.modes[..3].iter().all(|m|m.top_distance_exit));
+        runners[0].distance=332.5;
+        let next=step(&old,&runners,1000.0,TICK,&params).0;
+        assert!(next.modes[..3].iter().all(|m|m.top));
+    }
+    #[test]
+    fn simultaneous_top_groups_emit_each_leader_then_its_gate_order_members() {
+        let runners=[runner(150.0,3),runner(151.0,1),runner(149.0,4),runner(150.5,2)];
+        let mut state=State::new(4);
+        for i in 0..4 {state.modes[i].top_group=Some(i%2);}
+        let mut entries=vec![0,1,2,3];
+        order_top_entries(&mut entries,&runners,&state);
+        assert_eq!(entries,vec![1,3,0,2]);
+        let mut reversed=runners;
+        reversed[0].rank=0;
+        order_top_entries(&mut entries,&reversed,&state);
+        assert_eq!(entries,vec![0,2,1,3]);
+    }
+    #[test]
+    fn front_subtypes_share_lead_eligibility_but_compete_in_separate_groups() {
+        let p=Params{top_requires_lead:3,..Default::default()};
+        let mut r=[runner(151.0,2),runner(150.0,3),runner(153.0,1)];
+        r[2].style=Style::Oonige;
+        r[2].lane=0.5;
+        let next=step(&State::new(3),&r,1800.0,TICK,&p).0;
+        assert!(next.modes[0].top && next.modes[1].top);
+        assert!(!next.modes[2].top);
+        r[0].distance=149.0;r[1].distance=148.0;
+        let next=step(&State::new(3),&r,1800.0,TICK,&p).0;
+        assert!(next.modes[0].top && next.modes[1].top);
+        r[0].distance=151.0;r[1].distance=150.0;
+        r[2].style=Style::Other;
+        let next=step(&State::new(3),&r,1800.0,TICK,&p).0;
+        assert!(next.modes.iter().all(|m|!m.top));
+        r[0].style=Style::Oonige;r[1].style=Style::Oonige;r[2].style=Style::Nige;
+        let next=step(&State::new(3),&r,1800.0,TICK,&p).0;
+        assert!(next.modes.iter().all(|m|!m.top));
     }
     #[test]
     fn controlled_oracle_top_tick_124_to_277() {
@@ -379,7 +458,7 @@ mod tests {
         assert_eq!(s.near[0][1],None);
     }
     #[test]
-    fn top_distance_cascade_and_style_partition() {
+    fn top_distance_exit_is_individual_and_style_partitioned() {
         let p=Params::default();let mut s=State::new(3);
         let mut r=[runner(200.0,1),runner(199.0,2),runner(198.0,3)];
         s=step(&s,&r,2500.0,TICK,&p).0;
@@ -389,5 +468,14 @@ mod tests {
         assert!(!s.modes[0].top && !s.modes[1].top);
         let mut r=[runner(200.0,1),runner(199.0,2)];r[1].style=Style::Oonige;
         assert!(!step(&State::new(2),&r,2500.0,TICK,&p).0.modes[0].top);
+    }
+    #[test]
+    fn separated_peer_does_not_force_out_sole_survivor() {
+        let p=Params::default();let mut s=State::new(2);
+        s.modes[0].top=true;s.modes[0].top_group=Some(0);s.modes[0].top_remaining=5.0;
+        s.modes[1].top_group=Some(0);s.modes[1].top_distance_exit=true;
+        let r=[runner(200.0,1),runner(199.0,2)];
+        let next=step(&s,&r,2500.0,TICK,&p).0;
+        assert!(next.modes[0].top);
     }
 }

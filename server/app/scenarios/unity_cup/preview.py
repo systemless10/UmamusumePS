@@ -62,11 +62,18 @@ def _raises_gauge(st: dict, turn, target_id) -> bool:
     ).random() < GUIDE_CHANCE
 
 
+def _board_signature(home_commands) -> list:
+    return sorted([c.get("command_id"), list(c.get("training_partner_array") or ())]
+                  for c in home_commands or () if isinstance(c, dict))
+
+
 def command_info(full_state: dict, chara_info: dict, home_commands):
     st = unity_cup.state(full_state)
     turn = chara_info.get("turn")
     cache = full_state.get(PREVIEW_KEY)
-    if isinstance(cache, dict) and cache.get("turn") == turn:
+    board = _board_signature(home_commands)
+    if (isinstance(cache, dict) and cache.get("turn") == turn
+            and cache.get("board", board) == board):
         return copy.deepcopy(cache.get("commands") or []), False
 
     unity_cup.ensure_roster(st, turn, chara_info)
@@ -112,7 +119,7 @@ def command_info(full_state: dict, chara_info: dict, home_commands):
         placements[str(cmd)] = [m["target_id"] for m in taking]
 
     full_state[PREVIEW_KEY] = {"turn": turn, "commands": copy.deepcopy(commands),
-                               "placements": placements}
+                               "placements": placements, "board": board}
     return commands, True
 
 

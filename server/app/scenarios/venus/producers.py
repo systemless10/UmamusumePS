@@ -40,7 +40,7 @@ FINAL_LOSS_AFTER = (205027, 400005030)
 MAGAZINE = (2, 400000091)
 CARD_ENDING = {True: (24, 830137030), False: (23, 830137031)}
 CARD_TRAINING = (21074, 21084, 830137003)
-CARD_TRAINING_CHANCE = 0.3
+CARD_TRAINING_CHANCE = 18 / 42
 TRAINEE_ENDING_WIN, TRAINEE_ENDING_LOSS = 6, 5
 
 LEGACY_SKILLS = {M.DARLEY: (210261, 210262), M.GODOLPHIN: (210271, 210272),
@@ -184,7 +184,10 @@ def card_training_event(full_state: dict, chara_info: dict, turn: int) -> CE.Eve
     from ...handlers import single_mode_team as smt
     entry = smt._pal_card_entry(full_state, M.LINK_CARD)
     met = bool(entry.get("unlocked"))
-    passion = M.PURE_PASSION in set(chara_info.get("chara_effect_id_array") or ())
+    st = impl.state(full_state)
+    passion = st.pop("card003_passion", None)
+    if passion is None:
+        passion = M.PURE_PASSION in set(chara_info.get("chara_effect_id_array") or ())
     variant = "b" if (met and passion) else ("c" if met else "a")
     sp_r = 9 if variant == "b" else 4
     extra_sp = [{"type": "skill_points", "value": "+4"}] if variant == "b" else []
@@ -343,6 +346,7 @@ def venus_calendar(ctx: CE.Ctx) -> list:
 
 @CE.resolver("venus_world")
 def _world(full_state, chara_info, event, choice_number, **kw):
+    impl.state(full_state)["world"] = 1
     k = impl.link_card(chara_info)
     if k:
         for row in chara_info.get("evaluation_info_array") or ():

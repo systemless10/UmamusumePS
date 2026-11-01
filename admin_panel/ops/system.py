@@ -9,6 +9,7 @@ import subprocess
 import time
 from pathlib import Path
 
+from app import client_versions, config
 from app import master_data as M
 from app import region
 
@@ -234,7 +235,56 @@ def system_get(viewer, args):
             "cfg_path": str(hachimi_dir(reg) / "redirect.cfg"), "hachimi": hachimi_dir(reg).is_dir(),
             "game_dir": str(game_dir(reg)), "game_running": game_running(reg),
             "servers": procs, "ips": _ips(), "start_command": start_command(reg, p),
-            "plugin_server": plugin_server(p), "warnings": warnings}
+            "plugin_server": plugin_server(p), "warnings": warnings, "versions": _versions(),
+            "server_settings": _server_settings()}
+
+
+SERVER_KEYS = {
+    "unlock_all_trophies": ("Unlock all trophies + race Skip button",
+                            "Every account owns every race trophy, which also unlocks the career race Skip button "
+                            "for every race. First-win carats and popups still come only from real wins. "
+                            "Turning it off restores the real trophy room."),
+}
+
+
+def _server_settings() -> list[dict]:
+    return [{"key": k, "label": label, "help": help_, "value": bool(config.get(k, False))}
+            for k, (label, help_) in SERVER_KEYS.items()]
+
+
+@op("system.set_server")
+def system_set_server(viewer, args):
+    vals = args.get("values") or {}
+    bad = [k for k in vals if k not in SERVER_KEYS]
+    if bad:
+        raise OpError(f"Unknown setting {bad[0]}.")
+    for k, v in vals.items():
+        config.set_value(k, bool(v))
+    return system_get(viewer, {})
+
+
+def _versions() -> dict:
+    return {"source": client_versions.mode(), "resource_version": client_versions.resource_version(),
+            "app_version": client_versions.app_version()}
+
+
+@op("system.set_versions")
+def system_set_versions(viewer, args):
+    source = args.get("source")
+    if source not in client_versions.MODES:
+        raise OpError("Source must be client or custom.")
+    res = str(args.get("resource_version") or "").strip()
+    app = str(args.get("app_version") or "").strip()
+    if res and not res.split(":", 1)[0].isdigit():
+        raise OpError("Resource version is a number like 10008400.")
+    if app and not all(x.isdigit() for x in app.split(".")):
+        raise OpError("App version looks like 1.35.2.")
+    config.set_value("version_source", source)
+    if res:
+        config.set_value("resource_version", res)
+    if app:
+        config.set_value("app_version", app)
+    return system_get(viewer, {})
 
 
 @op("system.set_profile")

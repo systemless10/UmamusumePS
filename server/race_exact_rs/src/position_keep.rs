@@ -54,7 +54,8 @@ impl Keep {
 
     pub fn update(&mut self, p: &Tree<'_>, distance: i32, sections: i32,
                   runners: &[Runner], owner: usize, pacemaker: usize,
-                  random: &mut RaceRandom, dt: f32, pacemaker_ready: bool) {
+                  random: &mut RaceRandom, dt: f32, pacemaker_ready: bool,
+                  no_behind_is_far: bool) {
         let h = runners[owner];
         let pace = runners[pacemaker];
         let tempted = h.temptation != 0;
@@ -77,7 +78,8 @@ impl Keep {
             p.f("PositionKeepSpeedUpEndDistanceDiffOne")
         } else { p.f("PositionKeepSpeedUpEndDistanceDiff") };
         let force_rush = tempted && std::env::var("RX_TEMPT_FORCEKEEP").map_or(true, |v| v != "0");
-        let far_behind = behind.map_or(!force_rush, |other| h.distance - other.distance >= speed_up_end);
+        let no_behind_far = !force_rush && no_behind_is_far;
+        let far_behind = behind.map_or(no_behind_far, |other| h.distance - other.distance >= speed_up_end);
         let gap = pace.distance - h.distance;
         self.checked = -1;
         self.wanted = -1;
@@ -99,10 +101,11 @@ impl Keep {
                     || style == 2 && std::env::var("RX_PK_MAX_FLOOR_SENKO").is_ok_and(|v| v == "1") {
                     max.floor()
                 } else { max };
-                if gap < min { if pacemaker == owner { 0 } else { 4 } }
+                if gap < min { if pacemaker == owner || std::env::var("RX_PK_DOWN_ORDER").is_ok_and(|v| v == "1") && pace.order > h.order { 0 } else { 4 } }
                 else if gap > max { 3 } else { 0 }
             };
             self.wanted = mode;
+            if std::env::var("RX_PKDBG").ok().and_then(|v|v.parse::<usize>().ok())==Some(owner) {eprintln!("PK owner={owner} pm={pacemaker} style={style} gap={gap} mode={mode} ord={} pord={} pst={}",h.order,pace.order,pace.style);}
             if mode == 0 || mode == 1 && far_behind || mode == 4 && h.speed_skill { return; }
             if !tempted && matches!(mode, 1 | 2 | 3) {
                 let key = match mode {

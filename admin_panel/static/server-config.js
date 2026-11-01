@@ -72,6 +72,11 @@ export const serverWin = {
             <div class="faint" style="font-size:12px">A running server keeps its address until restarted. Restart it from your terminal with the command above.</div>
           </div>
           <div class="ed-sec">
+            <b>Server settings <span class="faint" style="font-weight:400">every account in this region · applies on the next request</span></b>
+            ${d.server_settings.map((c) => `<label class="row" style="gap:8px;align-items:flex-start"><input type="checkbox" data-srv="${c.key}" ${c.value ? "checked" : ""}>
+              <span><b style="font-size:13px">${esc(c.label)}</b> <span class="faint" style="font-size:12px">${esc(c.help)}</span></span></label>`).join("")}
+          </div>
+          <div class="ed-sec">
             <b>Plugin settings <span class="faint mono" style="font-weight:400">${esc(d.cfg_path)}</span></b>
             ${d.hachimi ? d.cfg.filter((c) => !PACK_KEYS.includes(c.key) || c.key === PACK_KEYS[0]).map((c) => PACK_KEYS.includes(c.key) ? packRow(d.cfg) : c.key === "server" ? `<div class="ed-row"><label style="flex:1">${esc(c.label)}<span class="faint" style="font-size:11px">${esc(c.help)}</span>
                   <input type="text" class="sm" data-cfg="server" value="${esc(c.value)}" placeholder="https://127.0.0.1" style="width:100%"></label></div>`
@@ -111,6 +116,13 @@ export const serverWin = {
         const r = await act(b, "Plugin settings", () => call("system.set_cfg", { values }, target), "Saved. Start the game to load it.");
         if (r) { d = r; draft = { ...d.profile }; render(); }
       }
+    });
+    body.addEventListener("change", async (e) => {
+      const k = e.target.dataset?.srv;
+      if (!k) return;
+      const r = await act(e.target, "Server settings", () => call("system.set_server", { values: { [k]: e.target.checked } },
+        { region: store.region, viewer: null }), "Saved");
+      if (r) { d = r; render(); } else e.target.checked = !e.target.checked;
     });
     body.addEventListener("input", (e) => {
       const f = e.target.dataset?.f;

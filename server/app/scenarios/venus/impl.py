@@ -178,15 +178,9 @@ def _fuse(full_state: dict, st: dict, target: int) -> None:
         if a == b:
             goddess = a
         else:
-            count: dict = {}
-            for n in M.FRAGMENT_SLOTS:
-                s = slot(st, n)
-                if s:
-                    g = M.goddess_of(s[0])
-                    count[g] = count.get(g, 0) + 1
-            best = max(count.values(), default=0)
-            tied = sorted(g for g, c in count.items() if c == best)
-            goddess = tied[0] if len(tied) == 1 else rng.choice(tied)
+            colours = [M.goddess_of(s[0]) for n in M.FRAGMENT_SLOTS if (s := slot(st, n))]
+            na, nb = colours.count(a), colours.count(b)
+            goddess = a if na > nb else b if nb > na else rng.choice([a, b])
         st["slots"][str(target)] = [goddess, 0]
         return
     goddess = M.goddess_of(left[0])
@@ -203,6 +197,7 @@ def add_fragment(full_state: dict, sid: int, count: int = 1) -> int:
     st = state(full_state)
     landed = 0
     for _ in range(int(count)):
+        existing = set(st["slots"])
         free = next((n for n in M.FRAGMENT_SLOTS if not slot(st, n)), None)
         if free is None:
             break
@@ -214,6 +209,8 @@ def add_fragment(full_state: dict, sid: int, count: int = 1) -> int:
             st["points"][str(fac)] = int(st["points"].get(str(fac), 0)) + POINTS_FRAGMENT
         for target in (9, 10, 11, 12, 13, 14, 15):
             _fuse(full_state, st, target)
+        st.setdefault("new_spirit_slots", []).extend(
+            int(n) for n in st["slots"] if n not in existing)
     if landed:
         log.info("venus: +%s fragment %s -> %s held%s", landed, sid, fragments_held(st),
                  " (wisdom ready)" if wisdom_ready(st) else "")
@@ -227,6 +224,13 @@ def spirit_info_array(st: dict) -> list:
         if s:
             out.append({"spirit_num": n, "spirit_id": s[0], "effect_group_id": s[1]})
     return out
+
+
+def _take_spirit_info(st: dict) -> list:
+    new = st.pop("new_spirit_slots", [])
+    rows = {r["spirit_num"]: r for r in spirit_info_array(st)}
+    order = sorted(n for n in rows if n not in new) + new
+    return [rows[n] for n in order if n in rows]
 
 
 def _roll_type(rng: random.Random, command_id: int, ctype: int) -> int:
@@ -294,11 +298,23 @@ def offer_for(st: dict, turn: int, ctype: int, command_id: int):
     return None
 
 
-def command_info_rows(st: dict, turn: int) -> list:
-    if int(st["offers"].get("turn") or 0) != int(turn):
+def arrived(st: dict, turn: int) -> bool:
+    return bool(st.get("world")) or int(turn) > FIRST_OFFER_TURN
+
+
+def command_info_rows(st: dict, turn: int, home_info=None) -> list:
+    if int(st["offers"].get("turn") or 0) != int(turn) or not arrived(st, turn):
         return []
+    cmds = (home_info or {}).get("command_info_array")
+    if cmds:
+        on = [c for c in cmds if int(c.get("is_enable", 1) or 0) == 1]
+        types = {int(c.get("command_type") or 0) for c in on}
+        ids = {int(c.get("command_id") or 0) for c in on}
+        keep = lambda r: (r[0] in types) if r[0] == 3 else (r[1] in ids)
+    else:
+        keep = lambda r: True
     return [{"command_type": r[0], "command_id": r[1], "spirit_id": r[2], "is_boost": r[3]}
-            for r in st["offers"].get("rows") or ()]
+            for r in st["offers"].get("rows") or () if keep(r)]
 
 
 class Refused(Exception):
@@ -307,6 +323,8 @@ class Refused(Exception):
 
 def use_wisdom(full_state: dict, chara_info: dict, turn: int) -> int:
     st = state(full_state)
+    if st.get("cleared_turn"):
+        raise Refused("wisdom already used")
     if not wisdom_ready(st):
         raise Refused("no wisdom to use")
     goddess = slot(st, M.WISDOM_SLOT)[0]
@@ -670,10 +688,11 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict, full: bool, *,
         "race_scenario": race_scenario,
         "command_info_array": command_info_array(st, home_info, turn) if full else None,
         "evaluation_info_array": evaluation_array(chara_info),
-        "spirit_info_array": spirit_info_array(st),
+        "spirit_info_array": _take_spirit_info(st),
         "venus_spirit_active_effect_info_array": active_rows(st, turn),
-        "venus_chara_info_array": [{"chara_id": g, "venus_level": level(st, g)} for g in M.GODDESSES],
-        "venus_chara_command_info_array": command_info_rows(st, turn),
+        "venus_chara_info_array": ([{"chara_id": g, "venus_level": level(st, g)} for g in M.GODDESSES]
+                                   if arrived(st, turn) else []),
+        "venus_chara_command_info_array": command_info_rows(st, turn, home_info),
         "venus_race_condition": race_condition(st, turn),
         "venus_race_history_array": [dict(r) for r in st["races"]],
         "race_reward_info": race_reward_info,

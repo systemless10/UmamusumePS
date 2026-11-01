@@ -1,5 +1,5 @@
 #title Introducing Vivlos!
-0 A country where sparkly celebrities gather... "Dubai."
+0 A country where sparkly Celebs gather... "Dubai."
 1 The country I dream of! And the races held there are... super-duper glamorous, of course!
 2 Someday, I wanna run in Dubai's races, all full of sparkle too—and win!
 3 Right? Isn't that a suuuper wonderful dream?
@@ -25,18 +25,18 @@
 16{ Tracen Academy
 17 It'd be huge and full of the newest machines, and all the walls would be glass! And outside could be a huge desert?!
 18 Kyaa, so glamorous♪
-19 Vivlos yearns for all things "celebrity." Her love of the glamorous and dazzling comes from... her dream.
-20 I'm gonna go to Dubai someday! So I've gotta level up my celebrity vibes.
+19 Vivlos yearns for all things "Celeb." Her love of the glamorous and dazzling comes from... her dream.
+20 I'm gonna go to Dubai someday! So I've gotta level up my Celeb vibes.
 21 In Dubai, there's a day when international G1 races are held. G1s in all kinds of categories are run that day, and Umamusume from all over the world gather for a huge celebration.
 21{ G1
 22 Running in those Dubai races is Vivlos's dream—she told me so before we signed the contract.
 23 Hey, Tore-cchi! Let's get a private gym, okay?
-23> ...The academy gym is top-of-the-line celebrity! | ...The academy gym is top-of-the-line celebrity!
+23> ...The academy gym is top-of-the-line Celeb! | ...The academy gym is top-of-the-line Celeb!
 24 Oh? Hmm...?
 25 ...Well, okay! Then I guess the gym's fine.
 26 For now, anyway♡
 26> ?!
-27 And before we go to the celebrity gym, there are some people I wanna introduce you to!
+27 And before we go to the Celeb gym, there are some people I wanna introduce you to!
 28 First up, the ladies you already know, Tore-cchi!
 29 Hello, Trainer.
 30 ...H-hi.
@@ -76,7 +76,7 @@
 56 You know I wanna go to Dubai, right?
 57 Of course~ Ever since our family trip when you were all little... you've been crazy about it, haven't you?
 58 I remember you made a huuuge fuss, saying "I'm definitely gonna live in Dubai!"
-59 Ehehe. This time, I'm gonna aim for Dubai's races with my own strength!
+59 Ehehee. This time, I'm gonna aim for Dubai's races with my own strength!
 60 I see, I see! What an amazing goal! We're rooting for you, Vivlos!
 61 Thank you♡ But, before that... I have one more goal.
 62 I'm going to take the Tiara path!

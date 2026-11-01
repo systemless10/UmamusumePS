@@ -57,3 +57,17 @@ def get_float(key: str):
     except (TypeError, ValueError):
         log.warning("client_config.json %s is not a number: %r", key, value)
         return None
+
+
+def set_value(key: str, value) -> None:
+    try:
+        with open(CONFIG_PATH, encoding="utf-8") as fh:
+            data = json.load(fh) or {}
+    except (OSError, ValueError):
+        data = {}
+    data[key] = value
+    tmp = CONFIG_PATH + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as fh:
+        json.dump(data, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+    os.replace(tmp, CONFIG_PATH)

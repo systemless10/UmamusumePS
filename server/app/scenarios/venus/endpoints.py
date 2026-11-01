@@ -185,7 +185,9 @@ def handle_race_end(payload: dict) -> dict:
             {"race_num": impl.race_num(group, program), "turn": turn, "result_rank": rank}]
         impl.add_race_points(full_state, won)
         sp["gained_fans"] = fans
-        sp["reward_info"] = smt._build_race_reward_info(program, rank, fans, cd.get("race_history"))
+        sp["reward_info"] = smt._apply_reward_campaigns(
+            smt._build_race_reward_info(program, rank, fans, cd.get("race_history")),
+            full_state, chara_info)
         sp["end_committed"] = True
     chara_info["playing_state"] = 15
     reward = copy.deepcopy(sp.get("reward_info") or {})
@@ -253,7 +255,7 @@ def handle_race_continue(payload: dict) -> dict:
     smt = _smt()
     st = impl.state(full_state)
     sp = st["sprace"]
-    if int(chara_info.get("playing_state") or 1) != 15 or int(sp.get("player_finish_order") or 1) == 1:
+    if int(chara_info.get("playing_state") or 1) not in (14, 15) or int(sp.get("player_finish_order") or 1) == 1:
         return _refused("venus_race_continue", "nothing to retry")
     ctype = int(payload.get("continue_type") or 1)
     counts = smt._continue_counts(full_state, sp)
@@ -291,6 +293,7 @@ def handle_race_continue(payload: dict) -> dict:
 
 HANDLERS = {
     "spirit_use": handle_spirit_use,
+    "spirit_history": handle_spirit_history,
     "venus_spirit_history": handle_spirit_history,
     "venus_race_entry": handle_race_entry,
     "venus_race_start": handle_race_start,

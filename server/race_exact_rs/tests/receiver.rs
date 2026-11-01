@@ -36,3 +36,17 @@ fn separately_added_modifiers_expire_from_copied_time_not_new_full_duration() {
     m.update_timed(0.1);
     assert_eq!(m.apply(6,0.0),0.0);
 }
+
+#[test]
+fn duration_extension_reaches_only_its_details_finite_receivers() {
+    let mut m=Modifiers::default();
+    m.add_timed(6,0.25,Add,7,false,0.1);
+    m.add_timed(10,0.1,Add,7,false,-1.0);
+    m.add_timed(6,0.5,Add,8,false,0.1);
+    m.extend_timed(7,0.5);
+    m.update_timed(0.2);
+    assert_eq!(m.apply(6,0.0),0.25);
+    assert_eq!(m.entries.iter().find(|m|m.index==10).unwrap().remaining,Some(-1.0));
+    m.update_timed(0.5);
+    assert_eq!(m.apply(6,0.0),0.0);
+}

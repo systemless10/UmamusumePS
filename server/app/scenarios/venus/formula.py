@@ -4,6 +4,7 @@ from __future__ import annotations
 import math
 
 from ... import training_formula as tf
+from ...handlers import pal_cards
 from ..ramen import formula as RF
 from . import master as M
 
@@ -42,14 +43,14 @@ def level_of(command_id: int, level: int) -> int:
 
 def friend_fn(chara_info: dict, command_id: int, all_friend: bool = False):
     base = SUMMER_TO_BASE.get(command_id, command_id)
-    passion = M.PURE_PASSION in set(chara_info.get("chara_effect_id_array") or ())
+    live = set(chara_info.get("chara_effect_id_array") or ())
 
     def fn(sid, kind, cmd, bond):
         if all_friend:
             return True
         if kind == 1:
             return cmd == base and bond >= FRIENDSHIP_BOND
-        return kind == GROUP_TYPE and passion and bond >= FRIENDSHIP_BOND
+        return kind == GROUP_TYPE and pal_cards.pure_passion_condition(sid) in live
     return fn
 
 

@@ -243,86 +243,6 @@
     "end_date": 2524575600
    },
    {
-    "id": 202491,
-    "rarity": 2,
-    "group_id": 20249,
-    "group_rate": 2,
-    "filter_switch": 0,
-    "grade_value": 508,
-    "skill_category": 3,
-    "tag_id": "104/303/403",
-    "unique_skill_id_1": 0,
-    "unique_skill_id_2": 0,
-    "exp_type": 0,
-    "potential_per_default": 10,
-    "activate_lot": 1,
-    "priority": 0,
-    "precondition_1": "distance_rate>=66&order_rate_out50_continue==1&temptation_count==0",
-    "condition_1": "running_style==4&phase_firsthalf_random==2",
-    "float_ability_time_1": 12000,
-    "ability_time_usage_1": 1,
-    "float_cooldown_time_1": 5000000,
-    "ability_type_1_1": 31,
-    "ability_value_usage_1_1": 1,
-    "additional_activate_type_1_1": 0,
-    "ability_value_level_usage_1_1": 1,
-    "float_ability_value_1_1": 4000,
-    "target_type_1_1": 1,
-    "target_value_1_1": 0,
-    "ability_type_1_2": 0,
-    "ability_value_usage_1_2": 1,
-    "additional_activate_type_1_2": 0,
-    "ability_value_level_usage_1_2": 1,
-    "float_ability_value_1_2": 0,
-    "target_type_1_2": 0,
-    "target_value_1_2": 0,
-    "ability_type_1_3": 0,
-    "ability_value_usage_1_3": 1,
-    "additional_activate_type_1_3": 0,
-    "ability_value_level_usage_1_3": 1,
-    "float_ability_value_1_3": 0,
-    "target_type_1_3": 0,
-    "target_value_1_3": 0,
-    "precondition_2": "",
-    "condition_2": "",
-    "float_ability_time_2": 0,
-    "ability_time_usage_2": 1,
-    "float_cooldown_time_2": 0,
-    "ability_type_2_1": 0,
-    "ability_value_usage_2_1": 1,
-    "additional_activate_type_2_1": 0,
-    "ability_value_level_usage_2_1": 1,
-    "float_ability_value_2_1": 0,
-    "target_type_2_1": 0,
-    "target_value_2_1": 0,
-    "ability_type_2_2": 0,
-    "ability_value_usage_2_2": 1,
-    "additional_activate_type_2_2": 0,
-    "ability_value_level_usage_2_2": 1,
-    "float_ability_value_2_2": 0,
-    "target_type_2_2": 0,
-    "target_value_2_2": 0,
-    "ability_type_2_3": 0,
-    "ability_value_usage_2_3": 1,
-    "additional_activate_type_2_3": 0,
-    "ability_value_level_usage_2_3": 1,
-    "float_ability_value_2_3": 0,
-    "target_type_2_3": 0,
-    "target_value_2_3": 0,
-    "popularity_add_param_1": 3,
-    "popularity_add_value_1": 60,
-    "popularity_add_param_2": 0,
-    "popularity_add_value_2": 0,
-    "disp_order": 22220,
-    "icon_id": 20042,
-    "plate_type": 0,
-    "disable_singlemode": 1,
-    "disable_count_condition": 0,
-    "is_general_skill": 1,
-    "start_date": 1483196400,
-    "end_date": 2524575600
-   },
-   {
     "id": 202511,
     "rarity": 1,
     "group_id": 20251,
@@ -1807,20 +1727,6 @@
     "solvable_type": 0
    },
    {
-    "id": 202491,
-    "need_skill_point": 180,
-    "status_type": 0,
-    "status_value": 0,
-    "solvable_type": 0
-   },
-   {
-    "id": 202492,
-    "need_skill_point": 180,
-    "status_type": 0,
-    "status_value": 0,
-    "solvable_type": 0
-   },
-   {
     "id": 202511,
     "need_skill_point": 0,
     "status_type": 0,
@@ -2073,6 +1979,20 @@
     "solvable_type": 0
    },
    {
+    "id": 203122,
+    "need_skill_point": 170,
+    "status_type": 0,
+    "status_value": 0,
+    "solvable_type": 0
+   },
+   {
+    "id": 203232,
+    "need_skill_point": 180,
+    "status_type": 0,
+    "status_value": 0,
+    "solvable_type": 0
+   },
+   {
     "id": 203322,
     "need_skill_point": 120,
     "status_type": 0,
@@ -2087,6 +2007,13 @@
     "solvable_type": 0
    },
    {
+    "id": 203422,
+    "need_skill_point": 180,
+    "status_type": 0,
+    "status_value": 0,
+    "solvable_type": 0
+   },
+   {
     "id": 203431,
     "need_skill_point": 170,
     "status_type": 0,
@@ -2095,6 +2022,13 @@
    },
    {
     "id": 203432,
+    "need_skill_point": 170,
+    "status_type": 0,
+    "status_value": 0,
+    "solvable_type": 0
+   },
+   {
+    "id": 203442,
     "need_skill_point": 170,
     "status_type": 0,
     "status_value": 0,
@@ -2130,6 +2064,20 @@
    },
    {
     "id": 203712,
+    "need_skill_point": 180,
+    "status_type": 0,
+    "status_value": 0,
+    "solvable_type": 0
+   },
+   {
+    "id": 203992,
+    "need_skill_point": 180,
+    "status_type": 0,
+    "status_value": 0,
+    "solvable_type": 0
+   },
+   {
+    "id": 204002,
     "need_skill_point": 180,
     "status_type": 0,
     "status_value": 0,
@@ -2248,13 +2196,6 @@
     "solvable_type": 0
    },
    {
-    "id": 900991,
-    "need_skill_point": 200,
-    "status_type": 0,
-    "status_value": 0,
-    "solvable_type": 0
-   },
-   {
     "id": 901041,
     "need_skill_point": 200,
     "status_type": 0,
@@ -2346,20 +2287,6 @@
     "solvable_type": 0
    },
    {
-    "id": 910671,
-    "need_skill_point": 200,
-    "status_type": 0,
-    "status_value": 0,
-    "solvable_type": 0
-   },
-   {
-    "id": 910681,
-    "need_skill_point": 200,
-    "status_type": 0,
-    "status_value": 0,
-    "solvable_type": 0
-   },
-   {
     "id": 910691,
     "need_skill_point": 200,
     "status_type": 0,
@@ -2416,6 +2343,18 @@
    {
     "id": 47,
     "category": 47,
+    "index": 203122,
+    "text": "さらなる高みへ"
+   },
+   {
+    "id": 47,
+    "category": 47,
+    "index": 203232,
+    "text": "逸る足取り"
+   },
+   {
+    "id": 47,
+    "category": 47,
     "index": 203322,
     "text": "駆け降り"
    },
@@ -2428,6 +2367,12 @@
    {
     "id": 47,
     "category": 47,
+    "index": 203422,
+    "text": "己を信じて"
+   },
+   {
+    "id": 47,
+    "category": 47,
     "index": 203431,
     "text": "才気煥発"
    },
@@ -2436,6 +2381,12 @@
     "category": 47,
     "index": 203432,
     "text": "躍動"
+   },
+   {
+    "id": 47,
+    "category": 47,
+    "index": 203442,
+    "text": "憧れを越えて"
    },
    {
     "id": 47,
@@ -2466,6 +2417,18 @@
     "category": 47,
     "index": 203712,
     "text": "勇気の一歩"
+   },
+   {
+    "id": 47,
+    "category": 47,
+    "index": 203992,
+    "text": "目覚めの時"
+   },
+   {
+    "id": 47,
+    "category": 47,
+    "index": 204002,
+    "text": "意地っ張り"
    },
    {
     "id": 47,
@@ -2866,6 +2829,18 @@
    {
     "id": 48,
     "category": 48,
+    "index": 203122,
+    "text": "レース中盤のどこかで前方だと\\n速度がわずかに上がる＜先行・中距離＞"
+   },
+   {
+    "id": 48,
+    "category": 48,
+    "index": 203232,
+    "text": "レース中盤が迫ったどこかで\\n速度がわずかに上がる＜作戦・先行＞"
+   },
+   {
+    "id": 48,
+    "category": 48,
     "index": 203322,
     "text": "いずれかの下り坂のどこかで加速力が\\nわずかに上がる＜作戦・差し＞"
    },
@@ -2878,6 +2853,12 @@
    {
     "id": 48,
     "category": 48,
+    "index": 203422,
+    "text": "レース最終盤始めのどこかで\\nラストスパートの最中なら\\n速度がわずかに上がる＜作戦・先行＞"
+   },
+   {
+    "id": 48,
+    "category": 48,
     "index": 203431,
     "text": "レース最終盤始めのどこかで\\nラストスパートの最中なら速度が上がる\\n＜中距離＞"
    },
@@ -2886,6 +2867,12 @@
     "category": 48,
     "index": 203432,
     "text": "レース最終盤始めのどこかで\\nラストスパートの最中なら\\n速度がわずかに上がる＜中距離＞"
+   },
+   {
+    "id": 48,
+    "category": 48,
+    "index": 203442,
+    "text": "レース終盤始めの早めのどこかで\\n前方だと加速力がわずかに上がる\\n＜先行・中距離＞"
    },
    {
     "id": 48,
@@ -2916,6 +2903,18 @@
     "category": 48,
     "index": 203712,
     "text": "直線でラストスパートの最中なら\\n加速力がわずかに上がる＜作戦・先行＞"
+   },
+   {
+    "id": 48,
+    "category": 48,
+    "index": 203992,
+    "text": "レース中盤のどこかで速度がわずかに\\n上がる、スキル発動時前方だと\\n効果が変わりわずかに前に出る\\n＜作戦・先行＞"
+   },
+   {
+    "id": 48,
+    "category": 48,
+    "index": 204002,
+    "text": "レース序盤または中盤に\\n追い抜かれるか競り合うと\\nわずかに前に出る＜作戦・先行＞"
    },
    {
     "id": 48,

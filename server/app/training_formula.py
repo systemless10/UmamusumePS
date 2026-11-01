@@ -176,6 +176,9 @@ NUM_TO_BONUS_KEY = {
     0: "speed_bonus", 1: "stamina_bonus", 2: "power_bonus",
     3: "guts_bonus", 4: "wisdom_bonus",
 }
+_BONUS_KEY_TYPE = {"friendship_bonus": 1, "mood_effect": 2, "speed_bonus": 3,
+                   "stamina_bonus": 4, "power_bonus": 5, "guts_bonus": 6,
+                   "wisdom_bonus": 7, "training_bonus": 8, "skill_point_bonus": 30}
 
 @master_data.context_cache(maxsize=512)
 def _camp_command_for(base_command_id: int) -> int | None:
@@ -826,9 +829,11 @@ def calculate_training_gain(
                    + situational_unique(sid, t, unique_lv, owned_skill_ids,
                                         facility_level_sum))
                   if unique_lv else (lambda t: 0.0))
+        base = ((lambda key: master_effect(sid, _BONUS_KEY_TYPE[key], unique_lv))
+                if unique_lv else (lambda key: _card_effect(card, key)))
 
-        total_mood_effect += _card_effect(card, "mood_effect") + unique(EFFECT_MOOD)
-        total_training_effect += _card_effect(card, "training_bonus") + unique(EFFECT_TRAINING)
+        total_mood_effect += base("mood_effect") + unique(EFFECT_MOOD)
+        total_training_effect += base("training_bonus") + unique(EFFECT_TRAINING)
         if unique_lv:
             total_training_effect += _unique_conditional_training_bonus(
                 sid, EFFECT_TRAINING_IF_NOT_PREFERRED, unique_lv,
@@ -853,7 +858,7 @@ def calculate_training_gain(
         is_friendship = (_pure_passion_friendship(sid, pure_passion_cards) if pal
                          else (card_type_num == fac and bond >= 80))
         if is_friendship:
-            friendship_pct = ((1 + _card_effect(card, "friendship_bonus") / 100)
+            friendship_pct = ((1 + base("friendship_bonus") / 100)
                               * (1 + unique(EFFECT_FRIENDSHIP) / 100) - 1) * 100
             if unique_lv and friendship_stacks:
                 friendship_pct += _friendship_stack_bonus(
@@ -865,8 +870,8 @@ def calculate_training_gain(
 
         for y in range(5):
             if base_stats[y] != 0:
-                base_bonus = (master_effect(sid, EFFECT_STAT_BONUS_BASE + 4) if y == 4
-                             else _card_effect(card, NUM_TO_BONUS_KEY[y]))
+                base_bonus = (master_effect(sid, EFFECT_STAT_BONUS_BASE + 4, unique_lv)
+                              if y == 4 else base(NUM_TO_BONUS_KEY[y]))
                 stat_bonus[y] += base_bonus + unique(EFFECT_STAT_BONUS_BASE + y)
         if unique_lv:
             deck_stats, deck_sp = deck_type_stat_bonus(sid, bond, deck_card_ids, unique_lv)
@@ -875,7 +880,7 @@ def calculate_training_gain(
                     stat_bonus[y] += deck_stats[y]
             sp_bonus += deck_sp
         count += 1
-        sp_bonus += _card_effect(card, "skill_point_bonus") + unique(EFFECT_SKILL_POINT)
+        sp_bonus += base("skill_point_bonus") + unique(EFFECT_SKILL_POINT)
 
     if support_card_levels:
         for sid, _bond in in_facility_cards:

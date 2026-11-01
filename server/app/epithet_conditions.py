@@ -463,6 +463,7 @@ def parse_clause(clause: str):
 
 
 def _fuse_consecutive(base: "Predicate", mods: list):
+    base, mods = _fuse_counted_wins(base, mods)
     if base.kind != "win_race_times":
         return base, mods
     con = next((m for m in mods if getattr(m, "kind", None) == "consecutive"), None)
@@ -470,6 +471,25 @@ def _fuse_consecutive(base: "Predicate", mods: list):
         return base, mods
     return (Predicate("win_race_times_in_a_row", base.params),
             [m for m in mods if m is not con])
+
+
+_COUNT_FUSE = {
+    ("win_graded_count", "consecutive"): "win_graded_in_a_row",
+    ("win_grade_count", "winning_streak"): "win_grade_in_streak",
+    ("win_grade_count", "consecutive"): "win_grade_in_streak",
+    ("win_grade_count", "distance_at_least"): "win_grade_distance_count",
+    ("win_graded_count", "winning_streak"): "win_graded_in_streak",
+    ("win_grade_count", "at_racecourse"): "win_grade_course_count",
+}
+
+
+def _fuse_counted_wins(base: "Predicate", mods: list):
+    for m in mods:
+        joint = _COUNT_FUSE.get((base.kind, getattr(m, "kind", None)))
+        if joint:
+            return (Predicate(joint, base.params + tuple(m.params)),
+                    [x for x in mods if x is not m])
+    return base, mods
 
 
 _SURFACE_FUSE = {"win_grade_count": "win_grade_surface_count",
@@ -487,9 +507,24 @@ def _fuse_surface_count(base: "Predicate", mods: list):
     return Predicate(joint, base.params + surface.params), rest
 
 
+_SCENARIO_TAIL = re.compile(r"\s*\(([^()]+?) only\)\.?$")
+
+
 def parse(text: str) -> All:
     whole = normalize(text)
-    return All(tuple(parse_clause(c) for c in _CLAUSE_SPLIT.split(whole) if c.strip()))
+    tail = _SCENARIO_TAIL.search(whole)
+    parts = ()
+    if tail:
+        whole = whole[:tail.start()]
+        parts = (Predicate("scenario_only", (tail.group(1),)),)
+    clauses = [parse_clause(c) for c in _CLAUSE_SPLIT.split(whole) if c.strip()]
+    weather = next((p.params[0] for p in clauses if isinstance(p, Predicate)
+                    and p.kind == "run_weather_count"), None)
+    if weather:
+        clauses = [Predicate("win_weather_count", (weather, p.params[0]))
+                   if isinstance(p, Predicate) and p.kind == "win_count" else p
+                   for p in clauses]
+    return All(tuple(clauses) + parts)
 
 
 def _f(facts, key, default=0):
@@ -591,14 +626,29 @@ _EVALUATORS = {
         (f.get("race_win_counts") or {}).get(name.strip(), 0) >= _num(n)),
     "win_race_twice": lambda f, name: (
         (f.get("race_win_counts") or {}).get(name.strip(), 0) >= 2),
-    "run_race_named": lambda f, name: name in (f.get("races_run_names") or ()),
+    "run_race_named": lambda f, name: (name in (f.get("races_run_names") or ())
+                                       or (name == "Make Debut"
+                                           and _f(f, "runs_grade_make_debut") > 0)),
     "win_grade_count": lambda f, n, g: (
         _f(f, "wins_grade_" + g.lower().replace(" ", "_").replace("-", "_")) >= _num(n)),
     "win_grade_once": lambda f, g: (
         _f(f, "wins_grade_" + g.lower().replace(" ", "_").replace("-", "_")) >= 1),
     "win_graded_count": lambda f, n: _f(f, "wins_graded") >= _num(n),
+    "win_graded_in_a_row": lambda f, n: _f(f, "best_graded_win_run") >= _num(n),
+    "win_grade_in_streak": lambda f, n, g: (
+        (f.get("best_streak_grade_wins") or {}).get(
+            g.lower().replace(" ", "_").replace("-", "_"), 0) >= _num(n)),
+    "win_graded_in_streak": lambda f, n: (
+        (f.get("best_streak_grade_wins") or {}).get("graded", 0) >= _num(n)),
+    "win_grade_course_count": lambda f, n, g, c: sum(
+        1 for x in (f.get("grade_win_courses") or {}).get(
+            g.lower().replace(" ", "_").replace("-", "_"), ()) if x == c.strip()) >= _num(n),
+    "win_grade_distance_count": lambda f, n, g, d: sum(
+        1 for x in (f.get("grade_win_distances") or {}).get(
+            g.lower().replace(" ", "_").replace("-", "_"), ()) if x >= _num(d)) >= _num(n),
     "win_graded_once": lambda f: _f(f, "wins_graded") >= 1,
     "win_count": lambda f, n: _f(f, "wins_total") >= _num(n),
+    "win_weather_count": lambda f, w, n: _f(f, "wins_weather_" + w.lower()) >= _num(n),
     "win_grade_surface_count": lambda f, n, g, s: (
         (f.get("wins_grade_by_surface") or {}).get(
             (g.lower().replace(" ", "_").replace("-", "_"), s.lower()), 0) >= _num(n)),

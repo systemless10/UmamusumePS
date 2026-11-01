@@ -191,6 +191,35 @@ def handle_get_trophy_info(payload: dict) -> dict:
     return _ok({"user_trophy_info_array": array, "last_checked_time": last})
 
 
+def apply_all_trophies(endpoint: str, response: dict) -> dict:
+    from .. import config
+    if not config.get("unlock_all_trophies", False):
+        return response
+    data = response.get("data") if isinstance(response, dict) else None
+    if not isinstance(data, dict):
+        return response
+    if endpoint == "load/index" and isinstance(data.get("login_trophy_info_array"), list):
+        have = {t.get("trophy_id") for t in data["login_trophy_info_array"]}
+        for row in master_data.query("SELECT trophy_id FROM race_trophy ORDER BY trophy_id"):
+            if row["trophy_id"] not in have:
+                data["login_trophy_info_array"].append(
+                    {"trophy_id": row["trophy_id"], "chara_id_array": []})
+    elif endpoint == "user/get_trophy_info" and isinstance(data.get("user_trophy_info_array"), list):
+        have = {t.get("trophy_id") for t in data["user_trophy_info_array"]}
+        for row in master_data.query(
+                "SELECT trophy_id, race_instance_id FROM race_trophy ORDER BY trophy_id"):
+            if row["trophy_id"] not in have:
+                data["user_trophy_info_array"].append({
+                    "trophy_id": row["trophy_id"], "create_time": _now(),
+                    "race_instance_info_array": [{
+                        "race_instance_id": row["race_instance_id"],
+                        "trophy_chara_info_array": []}]})
+    for holder in (data, data.get("single_mode_load_common")):
+        if isinstance(holder, dict) and isinstance(holder.get("home_info"), dict):
+            holder["home_info"]["shortened_race_state"] = 4
+    return response
+
+
 @registry.endpoint("user/change_favorite_character")
 def handle_change_favorite_character(payload: dict) -> dict:
     viewer_id = payload["viewer_id"]

@@ -7,12 +7,12 @@
 4 Then if I say I wanna go to the pool now～, will you make it happen?
 4> Sure, let's go! | Sure, let's go!
 5 Here, she won't get cold whatever the season. I led Vivlos to the heated pool.
-6 Wahaaaa♡ Hey, hey, next that water slide over there! I wanna ride it, I wanna ride iiit!
+6 Wahaaaa♡ Hey hey, next that water slide over there! I wanna ride it, I wanna ride iiit!
 6> I figured you'd say that, so I made a reservation
 7 One step ahead, perfect score～♪
 8 Ahahaha. Amaaazing. You're amazing, Tore-cchi!
 9 Everything today is fun! Everything since you invited me out!
-10 It's so super celebrity-like♡ I've got someone who prepares everything for me♪
+10 It's so super Celeb-like♡ I've got someone who prepares everything for me♪
 10> Tsk tsk tsk, it's not over yet
 11 Ehh? No way, no way, no waaay?
 12 Miss Vivlos. Trainer. We've prepared a car for your ride home.
@@ -20,7 +20,7 @@
 14 Genius! Tore-cchi, you're super amazing! There's a shiny car waiting! Hey, hey. Are we going home in this?
 14> Yep. Did you get a good break? | Yep. Did you get a good break?
 15 I did! Way too much! Something like this...
-16 Ehehe... It's just like being a celebrity♡
+16 Ehehe... It's just like being a Celeb♡
 17 The plan I prepared for Vivlos seems to have succeeded, right through to the main event I'd saved for last.
 17> (My wallet feels a lot lighter, though...)
 18 Uuuu...
@@ -38,9 +38,9 @@
 28> ...You're kind, Vivlos | ...You're kind, Vivlos | Has something like that happened to you? | Has something like that happened to you?
 29 ...When it's been a super fun day and you suddenly make everyone worried and sad, that... becomes a painful memory.
 29> ...You're kind, Vivlos | ...You're kind, Vivlos | Has something like that happened to you? | Has something like that happened to you?
-30 Ehehe, you think～?
+30 Ehehee, you think～?
 31 But～, maybe it's thanks to you, Tore-cchi? 'Cause you showed me sooo much fun♡
-32 I do wanna ride in a super-celebrity car, but～. ...I figured it's fine just for today～.
+32 I do wanna ride in a super-Celeb car, but～. ...I figured it's fine just for today～.
 33 'Cause even without a car, you'll make the way home fun for me, right, Tore-cchi♡
 33> ...Huh!?
 34 Of course, I hadn't prepared any backup plan from here. Sorry, Vivlos, but—
@@ -52,7 +52,7 @@
 38 But you'll try your best until you hit your limit, right～?
 39 ...Ehehe. I loooove you, Tore-cchi♡
 40 In the end, my strength didn't last long at all... but Vivlos was smiling, all content.
-41 Ehehe. You figured it out? Just a little... it used to happen a lot.
+41 Ehehee. You figured it out? Just a little... it used to happen a lot.
 42 Always during fun times with my family.
 43 "...Vivlos, does your tummy hurt? Then—"
 44 "—! No, don't tell! I'm okay. I can hold it in."

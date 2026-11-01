@@ -140,6 +140,8 @@ def spring_done(st: dict, onsen_id: int) -> bool:
 
 
 def rank(st: dict) -> int:
+    if st.get("completion_pending"):
+        return int(st["completion_pending"]["rank"])
     dug = set(int(x) for x in st["dug"])
     best = 1
     for r, need, required, _group in M.ryokan_ranks():
@@ -596,7 +598,11 @@ def data_set(full_state: dict, chara_info: dict, home_info: dict) -> dict:
             row["dig_info_array"] = []
     rest_dig = _dig_rows(outing_dig(full_state, chara_info, turn, False)) if active and not race_only else []
     kiyo_dig = _dig_rows(outing_dig(full_state, chara_info, turn, True)) if active else []
-    race_dig = _dig_rows(dig_plan(full_state, chara_info, race_base(chara_info, turn), turn)) if active else []
+    race_command = next((c for c in (home_info or {}).get("command_info_array") or ()
+                         if c.get("command_id") == 401), None)
+    race_enabled = race_command is None or bool(race_command.get("is_enable"))
+    race_dig = (_dig_rows(dig_plan(full_state, chara_info, race_base(chara_info, turn), turn))
+                if active and race_enabled else [])
     rows += [
         {"command_type": 3, "command_id": 301, "params_inc_dec_info_array": [], "dig_info_array": rest_dig},
         {"command_type": 3, "command_id": 390, "params_inc_dec_info_array": [], "dig_info_array": rest_dig},

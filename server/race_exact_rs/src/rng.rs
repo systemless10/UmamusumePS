@@ -168,7 +168,7 @@ impl RaceRandom {
     }
 
     pub fn float_range(&mut self, lo: f32, hi: f32, tag: &dyn Fn() -> String) -> f32 {
-        let mode = if self.wide { Wide::Double } else { Wide::Float };
+        let mode = if self.wide && std::env::var("RX_LOT_FLOATDRAW").map_or(true,|v|v!="0") {Wide::FloatDraw} else if self.wide { Wide::Double } else { Wide::Float };
         self.float_range_with(lo, hi, mode, tag)
     }
 

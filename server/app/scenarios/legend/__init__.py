@@ -18,6 +18,8 @@ def _partner_rows() -> tuple:
 
 class Legend(Scenario):
     scenario_id = impl.SCENARIO_ID
+    has_secret_events = False
+    has_chapter_stories = False
     name = "Legend"
     endpoint_prefix = "single_mode_legend"
     data_set_key = "legend_data_set"

@@ -1,0 +1,24 @@
+#title A Sparkly Celeb Someday ♪
+0 I was reading an overseas magazine to gather information on international races when—
+1 Whaaat! A private jet?!
+2 That's the Satono family for you! So Celeb~~♡ What else have you got?
+3 Haaah♡ The Satono family stories were amazing. Celebs really are so excit—
+4 Aaah!! That magazine!!
+4> Huh, this?
+5 Yeah, it's the Celeb special, right? I bought it too! Do you like Celebs too, Trainer-san~?
+5> No... do you like them? | No... do you like them?
+6 Yup! 'Cause I wanna be a sparkly Celeb ♪
+7 I got so excited when we went to Dubai on a family trip♡ Celebs are, like—
+8 They've got eeeverything they want! They're so relaxed and cool♡
+8> I see.
+9 And I bet they have parties every day! Their whole lives probably go exactly how they want♡
+9> Hmm...?
+10 And, and! I bet they even make toasts in space ♪ That kind of sparkle can't fit on Earth!
+10> U-um...??
+11 Haaah~ Celebs are sooo amazing♡ So sparkly~ so excitiiing~~♡
+12 Is that really what Celebs are like? The question crossed my mind, but I wasn't about to be a killjoy in front of those dreamy eyes.
+12> Let's charge straight toward that dream! | Let's boost your Celeb power!
+13 Yup! I'll race, do great, and head for Dubai!
+14 Here I come, sparkly Celeb life ♪ I'm gonna do my best! Yeah!!
+15 Hmhm~ ♪ Then leave it to me! I've got Celeb potential to begin with ♪
+16 To get even closer to being a Celeb... oh, maybe I'll buy that new bag♡

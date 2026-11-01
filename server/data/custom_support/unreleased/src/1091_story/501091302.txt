@@ -7,14 +7,14 @@
 4 First prize is a Premium Carrot Hamburger Steak, second is a Carrot Mountain, and third is One Carrot!
 5 Step right up, it's a fun, fun raffle! Anyone can play～!
 6 Wow! Amazing, amazing♡
-7 Hey, hey, wanna give it a try?
+7 Hey hey, wanna give it a try?
 8 We might even win the hot spring trip.
 9 I was the luckiest at stuff like this in my whole family!
 10 C'mon, can we? Please, please?
 10> All right, let's give it a try
 11 I happened to have one raffle ticket from the shopping we'd just done.
 12 Yay♡ Okaaay...—
-13 ...Hey, hey, mister.
+13 ...Hey hey, mister.
 14 ...Hm? M-me?
 15 Yep. So, there's something I wanna ask～...
 16 Stare～～...♡
@@ -71,7 +71,7 @@
 55 Obtained <itemname>.
 55{ <itemname>
 56 Whooa～!
-57 Hey, hey, isn't that amazing?! Isn't luck on my side～!?
+57 Hey hey, isn't that amazing?! Isn't luck on my side～!?
 57> Amazing! | Amazing!
 58 Riiight, riiight～♡
 59 Ooh, the hamburger steak looks suuuper tasty♡
@@ -100,7 +100,7 @@
 78 Can I really have all this?
 79 Yep, of course! Enjoy every bite!
 80 Yaaay～! Thank youuu♡
-81 Hey, hey, Tore-cchi! There's so much of it.
+81 Hey hey, Tore-cchi! There's so much of it.
 82 If we're gonna do it anyway—isn't this a party!?
 83 The next day—
 84 —Yep, this! A carrot cake I made!
@@ -139,6 +139,6 @@
 109 No waaaaay! Whyyy!?
 110 Of all things... a participation prize!?
 110> It's all luck, you know...
-111 But, but, a celebrity with luck on her side would win, right?
-112 Then I'm not a celebrity at all! Nooo～～...
+111 But, but, a Celeb with luck on her side would win, right?
+112 Then I'm not a Celeb at all! Nooo～～...
 113 Vivlos's spirits had taken a dive...

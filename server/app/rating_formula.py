@@ -1,6 +1,8 @@
 
 from __future__ import annotations
 
+import re
+
 MAX_STAT_VALUE = 2500
 
 _R1 = [
@@ -30,7 +32,7 @@ def _build_score_table():
         elif c % 50 == 0:
             idx += 1
         raw += _R1[idx]
-        table[c] = round(raw / 10)
+        table[c] = (raw + 5) // 10
 
     raw = 38413
     idx = 0
@@ -42,7 +44,7 @@ def _build_score_table():
         elif c % 10 == 0:
             idx += 1
         raw += _R2[idx]
-        table[c] = round(raw / 10)
+        table[c] = (raw + 5) // 10
 
     raw = 142796
     idx = 0
@@ -53,7 +55,7 @@ def _build_score_table():
             idx = 0
         raw += rate
         idx += 1
-        table[c] = round(raw / 10)
+        table[c] = (raw + 5) // 10
 
     return table
 
@@ -85,16 +87,41 @@ def get_rating(stats) -> int:
 _SKILL_GRADE: dict | None = None
 
 
-def get_skill_score(skill_array) -> int:
+def _aptitude_rate(level) -> float:
+    level = int(level or 0)
+    return 1.1 if level >= 7 else 0.9 if level >= 5 else 0.8 if level >= 2 else 0.7
+
+
+_STYLE_KEYS = {1: "nige", 2: "senko", 3: "sashi", 4: "oikomi"}
+_DISTANCE_KEYS = {1: "short", 2: "mile", 3: "middle", 4: "long"}
+
+
+def _skill_rate(cond: str, aptitudes: dict) -> float:
+    rate = 1.0
+    m = re.search(r"running_style==(\d)", cond)
+    if m and int(m.group(1)) in _STYLE_KEYS:
+        rate *= _aptitude_rate(aptitudes.get(
+            "proper_running_style_" + _STYLE_KEYS[int(m.group(1))]))
+    m = re.search(r"distance_type==(\d)", cond)
+    if m and int(m.group(1)) in _DISTANCE_KEYS:
+        rate *= _aptitude_rate(aptitudes.get(
+            "proper_distance_" + _DISTANCE_KEYS[int(m.group(1))]))
+    return rate
+
+
+def get_skill_score(skill_array, aptitudes: dict | None = None) -> int:
     global _SKILL_GRADE
     if _SKILL_GRADE is None:
         from . import master_data
-        _SKILL_GRADE = {r["id"]: r["grade_value"] or 0
-                        for r in master_data.query("SELECT id, grade_value FROM skill_data")}
+        _SKILL_GRADE = {r["id"]: (r["grade_value"] or 0,
+                                  (r["condition_1"] or "") + " " + (r["condition_2"] or ""))
+                        for r in master_data.query(
+                            "SELECT id, grade_value, condition_1, condition_2 FROM skill_data")}
     total = 0
     for s in skill_array or ():
         sid = s.get("skill_id") if isinstance(s, dict) else s
-        total += _SKILL_GRADE.get(sid, 0)
+        grade, cond = _SKILL_GRADE.get(sid, (0, ""))
+        total += grade if aptitudes is None else round(grade * _skill_rate(cond, aptitudes))
     return total
 
 

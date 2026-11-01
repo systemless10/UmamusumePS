@@ -30,7 +30,7 @@ logging.getLogger().handlers[0].setLevel(
 log = logging.getLogger("uma-server")
 
 app = FastAPI(title="Umamusume private server (dev)", lifespan=lifespan)
-from . import custom_support, custom_support_http
+from . import client_versions, custom_support, custom_support_http
 try:
     from . import ios_cdn
 except ImportError:
@@ -71,6 +71,17 @@ if ios_cdn:
     app.get("/" + ios_cdn.PREFIX + "{path:path}")(ios_cdn_file)
 
 
+def _played_branch(endpoint: str, payload: dict) -> int | None:
+    if not endpoint.endswith("/check_event") or not endpoint.startswith("single_mode"):
+        return None
+    from . import state as state_store
+    from .handlers import single_mode_team
+    full_state = state_store.get_state(payload.get("viewer_id")) or {}
+    branch = single_mode_team._served_branch(full_state, payload.get("event_id"),
+                                             payload.get("choice_number"))
+    return int(branch or 1)
+
+
 @app.post("/{endpoint_path:path}")
 async def dispatch(endpoint_path: str, request: Request):
     raw = await request.body()
@@ -78,16 +89,26 @@ async def dispatch(endpoint_path: str, request: Request):
     headers = dict(request.headers)
     profile_images.set_request_base(headers)
     cdn = ios_cdn.request_context(decoded.payload, headers) if ios_cdn else nullcontext(None)
+    ver = client_versions.observe(headers)
     with cdn as overlay:
         evo_ep = endpoint_path.removeprefix("umamusume/")
         noted = skill_upgrade.before(evo_ep, decoded.payload)
+        branch = _played_branch(evo_ep, decoded.payload)
         resp = pipeline.handle_decoded(endpoint_path, decoded.payload, decoded.sid or None)
         skill_upgrade.after(evo_ep, decoded.payload, resp, noted)
+        data = resp.get("data") if isinstance(resp, dict) else None
+        decided = data.pop("_played_branch", None) if isinstance(data, dict) else None
+        if decided is not None and branch is not None:
+            branch = decided
+        if branch is not None and isinstance(data, dict) and \
+                (resp.get("data_headers") or {}).get("result_code", 1) == 1:
+            data["select_index"] = branch
         patched = custom_support.project(resp)
         if overlay:
             patched = ios_cdn.patch_response(patched, overlay)
         rc = (patched.get("data_headers") or {}).get("result_code") if isinstance(patched, dict) else None
         if rc not in (None, 1):
             logging.getLogger("uma-server").warning("result_code %s for %s (ios overlay %s)", rc, endpoint_path, bool(overlay))
+    client_versions.reset(ver)
     body = crypto.encode_response(patched, decoded.udid_raw)
     return Response(content=body, media_type="application/x-msgpack; charset=utf-8")

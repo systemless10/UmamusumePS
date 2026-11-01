@@ -3,12 +3,12 @@ from __future__ import annotations
 
 from ...handlers import daily_races, factor_research
 
-from . import (account, archive, auto_play, const_walking, exhibition, jobs, misc, modes,
+from . import (account, archive, auto_play, const_walking, continue_unlock, exhibition, jobs, misc, modes,
                passes, plushie, profile_slots, roadmap, skill_filter, skill_set, skill_upgrade, schedule_book, stepup,
                succession, support_cards, trainer_skill)
 
 HANDLERS: dict = {}
-for _module in (account, archive, auto_play, const_walking, exhibition, factor_research, jobs, misc, modes,
+for _module in (account, archive, auto_play, const_walking, continue_unlock, exhibition, factor_research, jobs, misc, modes,
                 passes, plushie, profile_slots, roadmap, skill_filter, skill_set, skill_upgrade, schedule_book, stepup,
                 succession, support_cards, trainer_skill):
     for _ep, _fn in _module.HANDLERS.items():

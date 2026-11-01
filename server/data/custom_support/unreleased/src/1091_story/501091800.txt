@@ -1,0 +1,61 @@
+#title Taking Up Summer's Invitation
+0 Tore-cchi~♡ What's on your schedule for tomorrow?
+1 I've got a favor to ask. Sooo... wanna go to the pool with me?
+1> Even though there's an ocean right here?
+2 'Cause a pool near the ocean feels kinda Celeb-ish, y'know☆ C'mon, c'mon! Pleeease?
+3 Vivlos fidgeted restlessly, begging me to go.
+4 She seemed awfully excited. She'd been working hard in training, too, so a little break couldn't hurt.
+4> Alright, let's go.
+5 ! Yaaay! Let's play a whole bunch, Tore-cchi☆
+6 Aaand... once we're at the pool, no looking anywhere else, okay? Focus only on me♡
+7 —As promised, I came to the pool with Vivlos. She told me to go on ahead, so I waited, and...
+8 Ta-daaa☆
+9 Ehehee. Well? Well?? It's a swimsuit made for me, and only me♡
+10 ...I see. So this was why she'd been so excited. She wanted to show off her new swimsuit.
+10> It looks great on you.
+11 Not too flashy, cute but with a touch of elegance. It suited her perfectly.
+12 Mmm... I'm happy, but I kinda want one more compliment~?
+13 Ah. Geez, Tore-cchi! If you're gonna think about it, look right at me while you do!
+13> Even if you say that...
+14 C'mon, please♡ I've been looking forward to hearing what you'd say.
+15 Come on, come on, got anything?
+15> U-um...
+16 Geez. Fiiine. Have something ready before we go home.
+17 I'm not leaving until I'm satisfied with your answer. Better be ready~? Hehe.
+18 Now, let's play a ton today! What should we do first~?
+18> There's a cute inner tube. | How about the water slide?
+19 An inner tube! Just floating around without swimming might be kinda Celeb-ish...?
+20 Let's go, let's go! Looks like we can use the big tubes over in that area.
+21 I walked around the pool for a while, pulling Vivlos along on the tube. Eventually I started to tire, so we took a break—
+22 All I did was float, but it was so much fun~♡ Thanks, Tore-cchi.
+22> I'm gonna build some muscle at this rate... Phew...
+23 Hehe. Then next it's your turn to kick back and relax, Tore-cchi.
+24 C'mon, let's go one more time. This time I'll pull you ♪
+24> Wait, really? | Wait, really?
+25 Of course! There's no point if we don't both have fun.
+26 I spent the whole day playing with Vivlos. Just as we were talking about heading home...
+27 Ooh, could be fun. Looks like you can ride it in pairs...
+28 I wonder how fast it goes? I'm so excited!
+29 Haaah~♡ This is so fun.
+30 It didn't go as fast as I thought, but maybe if I change the angle of my body a little, it'll go faster?
+31 Let's try all kinds of stuff☆
+31> J-just don't do anything dangerous.
+32 Yup, of course!
+33 I spent the whole day playing with Vivlos. Just as we were talking about heading home...
+34 Ah! Tore-cchi, did you forget? You've gotta answer my question before we leave.
+35 You didn't look anywhere else, and you were watching me properly, right? 'Cause I asked you to focus on me, remember?
+36 Right... I thought, and while thinking it over again, I looked steadily at her face.
+37 ! ...G-geez. Tore-cchi. You're supposed to be looking at the swimsuit, not my face, y'know?
+38 As Vivlos squirmed in embarrassment, her swimsuit fluttered softly. Somehow, it seemed just like her today.
+39 Playing to her heart's content, laughing, having a blast. She looked so—
+39> ...Like you're having fun.
+40 !
+41 It might have been an odd thing to say about an outfit, but it's what I thought. ...And then—
+42 Yeah, yeah! That's it! It's cute and exciting, and it makes you wanna invite someone out to play a bunch, right?
+43 That's my Tore-cchi! You get—
+43> It really does suit you.
+45 I thought so all over again. Vivlos froze for a moment, then spoke as if holding back the smile tugging at her lips.
+46 A-ahem. Honestly, I want you to praise me waaay more, but I'll save that for next time.
+47 And! This time I invited you, Tore-cchi, but next time...
+47> I'll have a plan ready.
+48 Hehe, yeah! Invite me out loooads♡ We've gotta go all kinds of places and enjoy summer to the fullest!

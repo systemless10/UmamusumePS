@@ -102,18 +102,21 @@ def bonus_params(chara_info: dict, command_id: int, level: int, partners,
                  s_pct: int, f_pct: int, dig_stats: dict, card_levels=None) -> list:
     raw = home_raw(chara_info, command_id, level, partners, card_levels)
     out = []
-    for tt in sorted(set(raw) | {t for t in dig_stats if t != TARGET_ENERGY}):
+    extra = [tt for tt in dig_stats if tt not in raw and tt != 1]
+    if 1 in dig_stats and 1 not in raw:
+        extra.append(1)
+    targets = list(raw) + extra
+    for tt in targets:
+        if tt == TARGET_ENERGY:
+            continue
         home_pre = RF.capped(raw.get(tt, 0))
         delta = 0
         if tt in raw and (s_pct or f_pct):
-            total = int(math.floor(home_pre * (1 + s_pct / 100) * (1 + f_pct / 100) + 1e-9))
-            if total > home_pre:
-                delta = min(total - home_pre, PREVIEW_CAP)
-        delta += int(dig_stats.get(tt, 0))
-        if delta <= 0:
-            continue
-        shown = RF._shown_bonus(chara_info, tt, home_pre, delta)
-        if shown > 0:
+            total = (home_pre * (100 + s_pct) * (100 + f_pct) + 50) // 10000
+            delta = min(max(0, total - home_pre), PREVIEW_CAP)
+        delta = min(delta + int(dig_stats.get(tt, 0)), PREVIEW_CAP)
+        if delta > 0:
+            shown = RF._shown_bonus(chara_info, tt, home_pre, delta)
             out.append({"target_type": tt, "value": shown})
     return out
 

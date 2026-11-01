@@ -69,6 +69,7 @@ _EN_TEXT_CANDIDATES = [
 ]
 
 _conn: sqlite3.Connection | None = None
+_conn_key: tuple | None = None
 
 
 def _overlay_english_text(conn: sqlite3.Connection) -> None:
@@ -85,9 +86,40 @@ def _overlay_english_text(conn: sqlite3.Connection) -> None:
         "ON e.category = j.category AND e.[index] = j.[index]")
 
 
+def _file_key() -> tuple:
+    st = MASTER_MDB_PATH.stat()
+    return (st.st_ino, st.st_mtime_ns, st.st_size)
+
+
+def refresh_if_changed() -> bool:
+    global _conn, _conn_key
+    try:
+        key = _file_key()
+    except OSError:
+        return False
+    if _conn is None or key == _conn_key:
+        return False
+    _conn.close()
+    _conn = None
+    import sys
+    for name, mod in list(sys.modules.items()):
+        if mod is None or not (name == "app" or name.startswith("app.")):
+            continue
+        for v in list(vars(mod).values()):
+            clear = getattr(v, "cache_clear", None)
+            if callable(clear) and not isinstance(v, type):
+                clear()
+    log.info("master_data: %s changed on disk; reopened and cleared caches", MASTER_MDB_PATH)
+    return True
+
+
 def get_connection() -> sqlite3.Connection:
-    global _conn
+    global _conn, _conn_key
     if _conn is None:
+        try:
+            _conn_key = _file_key()
+        except OSError:
+            _conn_key = None
         uri = f"file:{MASTER_MDB_PATH.as_posix()}?mode=ro"
         _conn = sqlite3.connect(uri, uri=True, check_same_thread=False)
         _conn.row_factory = sqlite3.Row

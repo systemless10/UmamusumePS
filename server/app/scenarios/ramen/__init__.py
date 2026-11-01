@@ -47,6 +47,13 @@ class Ramen(Scenario):
     def npc_supporters(self, full_state, chara_info) -> list:
         return list(impl.state(full_state)["npcs"])
 
+    def placement_salt(self, full_state) -> int:
+        flag = impl.state(full_state)["flags"].get("reseated")
+        if flag is None:
+            from ...handlers import single_mode_team as smt
+            flag = impl.turn_of(smt._career_chara(full_state)) > 1
+        return int(bool(flag))
+
     def extra_endpoints(self) -> dict:
         return dict(endpoints.HANDLERS)
 

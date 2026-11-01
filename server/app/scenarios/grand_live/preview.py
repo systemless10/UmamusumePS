@@ -83,7 +83,7 @@ def _support_chara_ids(chara_info: dict, positions) -> list:
     for pos in positions:
         card_id = by_pos.get(pos)
         if card_id:
-            out.append(int(card_id) // 100)
+            out.append(grand_live.support_card_chara(card_id))
     return out
 
 

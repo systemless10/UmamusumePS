@@ -17,6 +17,11 @@ impl Modifiers {
             _=>true,
         });
     }
+    pub fn extend_timed(&mut self,owner:u64,time:f32) {
+        for m in self.entries.iter_mut().filter(|m|m.owner==owner) {
+            if let Some(left)=&mut m.remaining {if *left>=0.0 {*left+=time;}}
+        }
+    }
     pub fn apply(&self,index:usize,mut value:f32)->f32 {
         for m in self.entries.iter().filter(|m|m.index==index && !m.once) {
             value=match m.operation {Operation::Add=>value+m.value,Operation::Set=>m.value};

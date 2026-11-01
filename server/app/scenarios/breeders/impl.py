@@ -415,13 +415,21 @@ def activate_dreams(full_state: dict, chara_info: dict, turn: int, board_tips) -
     tips += extra[:guarantee]
     if M.EFF_ALL_TIPS in e:
         tips = list(normal)
+    cards = list(normal)
+    rng_for(full_state, "dreams-cards", turn).shuffle(cards)
+    cards = cards[:DREAMS_CARD_CAP]
+    tips = [p for p in tips if p in cards]
     st["stock"] = int(st["stock"]) - 1
-    st["dreams"] = {"turn": int(turn), "tips": sorted(set(tips))}
+    st["dreams"] = {"turn": int(turn), "tips": sorted(set(tips)), "cards": cards}
     log.info("breeders: DREAMS on turn %s (stock %s left)", turn, st["stock"])
 
 
-def dreams_partners(chara_info: dict) -> list:
-    return normal_positions(chara_info)
+DREAMS_CARD_CAP = 5
+
+
+def dreams_partners(full_state: dict, chara_info: dict) -> list:
+    cards = (state(full_state).get("dreams") or {}).get("cards")
+    return list(cards) if cards else normal_positions(chara_info)[:DREAMS_CARD_CAP]
 
 
 def place_members(full_state: dict, chara_info: dict, turn: int, board: dict) -> dict:

@@ -52,6 +52,7 @@ class Event:
     hold_until: str | None = None
     timing_from_endpoint: bool = False
     wire_event_id: int = 0
+    select_index: int = 1
 
     def to_dict(self) -> dict:
         d = dataclasses.asdict(self)
@@ -82,7 +83,7 @@ class Event:
                 "show_clear": self.show_clear,
                 "show_clear_sort_id": self.show_clear_sort_id,
                 "choice_array": [
-                    {"select_index": 1, "receive_item_id": 0, "target_race_id": 0,
+                    {"select_index": self.select_index, "receive_item_id": 0, "target_race_id": 0,
                      "gain_select_id_index": i + 1, "select_icon": 0}
                     for i in range(len(self.choices))],
                 "tips_training_partner_id": None,
@@ -335,6 +336,10 @@ def serve_next(full_state: dict, endpoint: str = ""):
         index += 1
     if index >= len(st["queue"]):
         return None, None
+    best = _best_index(full_state, endpoint)
+    if best is not None and timing_rank(st["queue"][best], full_state) \
+            < timing_rank(st["queue"][index], full_state):
+        index = best
     if not servable_on(st["queue"][index], endpoint):
         return None, None
     ev = Event.from_dict(st["queue"].pop(index))
@@ -346,6 +351,50 @@ def serve_next(full_state: dict, endpoint: str = ""):
     for hook in SERVE_HOOKS:
         hook(full_state, ev)
     return ev.wire_entry(), ev
+
+
+TIMING_RANK = {2: 0, 3: 1, 6: 1, 10: 2, 9: 3, 12: 3, 1: 4, 11: 5}
+
+
+def timing_rank(row, full_state: dict = None) -> int:
+    if isinstance(row, Event):
+        row = row.to_dict()
+    if not isinstance(row, dict):
+        return 9
+    raw = row.get("raw")
+    t = int((raw if isinstance(raw, dict) and raw.get("play_timing") else row)
+            .get("play_timing") or 0)
+    if row.get("timing_from_endpoint") and full_state is not None:
+        t = chain_timing(full_state)
+    return TIMING_RANK.get(t, 4)
+
+
+def _best_index(full_state: dict, endpoint: str = ""):
+    best = None
+    for i, row in enumerate(state(full_state).get("queue") or ()):
+        if not isinstance(row, dict) or _held(row, full_state) \
+                or not servable_on(row, endpoint):
+            continue
+        if best is None or timing_rank(row, full_state) < best[1]:
+            best = (i, timing_rank(row, full_state))
+    return None if best is None else best[0]
+
+
+def best_queued(full_state: dict, endpoint: str = ""):
+    i = _best_index(full_state, endpoint)
+    return None if i is None else state(full_state)["queue"][i]
+
+
+def chain_timing(full_state: dict) -> int:
+    return int(state(full_state).get(CHAIN_TIMING_KEY) or 1)
+
+
+def requeue_active(full_state: dict) -> None:
+    st = state(full_state)
+    row = st.get("active")
+    if isinstance(row, dict):
+        st["queue"].insert(0, row)
+    st["active"] = None
 
 
 def active(full_state: dict) -> Event | None:

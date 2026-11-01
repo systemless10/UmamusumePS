@@ -104,6 +104,20 @@ def supporters_for(full_state) -> list:
     return list(grand_live.state(full_state).get("supporters") or ())
 
 CONCERT_BEGINS_EVENTS = frozenset({202005, 202011, 202019, 202026, 202100})
+CONCERT_LAST_HOLD = "grand_live_concert_last"
+
+
+@CE.hold_gate(CONCERT_LAST_HOLD)
+def _concert_begins_last(full_state: dict) -> bool:
+    from ...handlers import single_mode_events as sme
+    for row in full_state.get(sme.EXTRA_EVENTS_KEY) or ():
+        if isinstance(row, dict) and CE.timing_rank(row) <= CE.TIMING_RANK[10]:
+            return False
+    for row in CE.state(full_state).get("queue") or ():
+        if (isinstance(row, dict) and row.get("hold_until") != CONCERT_LAST_HOLD
+                and CE.timing_rank(row, full_state) <= CE.TIMING_RANK[10]):
+            return False
+    return True
 
 
 def post_live_beats(turn: int) -> list:
@@ -131,6 +145,7 @@ def grand_live_beats(ctx: CE.Ctx) -> list:
             chara_id=0,
             once_key=f"gl:{event_id}",
             priority=CE.PRIO_SCENARIO,
+            hold_until=CONCERT_LAST_HOLD if event_id in CONCERT_BEGINS_EVENTS else None,
             resolver="grand_live_beat",
             payload={"turn": ctx.turn},
         ))

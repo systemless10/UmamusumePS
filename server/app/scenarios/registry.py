@@ -25,6 +25,7 @@ _SCENARIO_MODULES = [
     "app.scenarios.onsen",
     "app.scenarios.breeders",
     "app.scenarios.ramen",
+    "app.scenarios.festa",
 ]
 
 _DEFAULT = Scenario()

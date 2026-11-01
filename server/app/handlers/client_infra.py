@@ -41,7 +41,7 @@ def handle_get_verify_token(payload: dict) -> dict:
 def handle_get_pre_download_resource_version(payload: dict) -> dict:
     from . import load as load_handler
     from .. import dispatch as _main
-    version = str(config.get("resource_version", _main.GAME_RESOURCE_VERSION))
+    version = _main._resource_version()
     return _ok({"resource_version": version})
 
 

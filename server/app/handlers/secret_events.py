@@ -92,7 +92,7 @@ class Context:
         except Exception:
             log.exception("race deadline lookup failed for %s", race_id)
             return None
-        return None if last is None else (self.turn or 0) > last
+        return None if last is None else (self.turn or 0) >= last
 
     def matching(self, race_id, year=None, *, won=None):
         for r in self.races:
@@ -575,7 +575,7 @@ def _v_do_not_race(c, ctx, _all):
     t = date_turn(c[1], c[2], c[3])
     if t is None:
         return None
-    if (ctx.turn or 0) <= t:
+    if (ctx.turn or 0) < t:
         return False
     return not any(r.turn == t for r in ctx.races)
 
@@ -642,6 +642,8 @@ def _v_beat_rival(c, ctx, _all):
         return None
     if not ctx.ran(rid, yr):
         return False
+    if ctx.win(rid, yr):
+        return True
     res = _rival_result(ctx, rid, yr, chara)
     return None if res is None else res[0] < res[1]
 
@@ -790,7 +792,18 @@ def branch_count(event: dict, ctx: Context):
             if code is None:
                 return None
             return sum(1 for r in ctx.wins if code in r.length_types)
+        if verb == "win_n_of" and len(c) > 2 and isinstance(c[2], list) and _has_guard(
+                event, "win_streak"):
+            targets = [_target(t) for t in c[2]]
+            if any(rid is None for rid, _ in targets):
+                return None
+            return sum(1 for rid, yr in targets if ctx.win(rid, yr))
     return None
+
+
+def _has_guard(event: dict, kind: str) -> bool:
+    return any(g.get("kind") == kind for ch in event.get("choices") or ()
+               for seg in ch.get("segments") or () for g in seg.get("when") or ())
 
 
 def branch_segment_index(event: dict, ctx: Context, choice: dict):
@@ -799,9 +812,14 @@ def branch_segment_index(event: dict, ctx: Context, choice: dict):
         return None
     for i, seg in enumerate(choice.get("segments") or ()):
         for guard in seg.get("when") or ():
-            if guard.get("kind") != "count":
+            if guard.get("kind") == "win_streak":
+                v = guard.get("value")
+                band = (tuple(v) if isinstance(v, list) and len(v) == 2
+                        else (_int(v), None) if _int(v) is not None else None)
+            elif guard.get("kind") == "count":
+                band = _parse_band(guard.get("value"))
+            else:
                 continue
-            band = _parse_band(guard.get("value"))
             if band and band[0] <= n and (band[1] is None or n <= band[1]):
                 return i
     return None

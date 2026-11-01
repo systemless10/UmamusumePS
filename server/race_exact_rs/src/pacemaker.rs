@@ -10,15 +10,19 @@ pub struct Runner {
 #[derive(Clone, Copy)]
 pub struct Rules {
     pub early_forward: bool,
+    pub early_any_style: bool,
     pub reset_on_forward: bool,
     pub reset_on_recalc: bool,
     pub order_first: bool,
     pub forward_nige_only: bool,
+    pub count_gap: f32,
+    pub handback: bool,
+    pub current: usize,
 }
 
 impl Default for Rules {
     fn default() -> Self {
-        Self { early_forward: false, reset_on_forward: true, reset_on_recalc: false, order_first: false, forward_nige_only: false }
+        Self { early_forward: false, early_any_style: false, reset_on_forward: true, reset_on_recalc: false, order_first: false, forward_nige_only: false, count_gap: -1.0, handback: false, current: usize::MAX }
     }
 }
 
@@ -36,11 +40,25 @@ pub fn recalculate_with(runners: &[Runner], count: &mut i32, threshold: i32,
         if rules.reset_on_forward { *count = 0; }
         return None;
     }
+    let front = runners.iter().filter(|h| !h.finished && h.style == forward).map(|h| h.distance).fold(f32::MIN, f32::max);
+    if rules.count_gap >= 0.0 && runners[leader].distance - front <= rules.count_gap { return None; }
     *count = count.saturating_add(1);
-    let below = *count < threshold;
+    let below = if std::env::var("RX_PM_COUNT_STRICT").is_ok_and(|v| v == "1") { *count <= threshold } else { *count < threshold };
     if below && !rules.early_forward { return None; }
+    if below && rules.handback {
+        let ld = runners[leader].distance;
+        let cur = rules.current;
+        let gap_max = std::env::var("RX_PM_HB_GAP").ok().and_then(|v| v.parse::<f32>().ok()).unwrap_or(f32::MAX);
+        let ok = cur < runners.len() && cur != leader;
+        if ok { if let Some((i, _)) = runners.iter().enumerate().filter(|(_, h)| !h.finished && h.style == forward && ld - h.distance <= forward_range)
+            .min_by_key(|(i, h)| (h.order, *i)) { if runners[cur].distance - runners[i].distance <= gap_max { return Some(i); } } }
+    }
+    if !below && std::env::var("RX_PMRC").is_ok() {
+        let fwd: Vec<_> = runners.iter().enumerate().filter(|(_, h)| !h.finished && h.style == forward).map(|(i, h)| (i, h.order, h.distance)).collect();
+        eprintln!("PMRC cnt={} leader={} lstyle={} lorder={} ld={:.3} forward={} fwd={:?} styles={:?}", *count, leader, runners[leader].style, runners[leader].order, runners[leader].distance, forward, fwd, runners.iter().map(|h| h.style).collect::<Vec<_>>());
+    }
     if !below && rules.reset_on_recalc { *count = 0; }
-    let pick = |i: usize| if below && (runners[i].style != forward || rules.forward_nige_only && forward > 1) { None } else { Some(i) };
+    let pick = |i: usize| if below && !rules.early_any_style && (runners[i].style != forward || rules.forward_nige_only && forward > 1) { None } else { Some(i) };
     if runners[leader].style < 3 { return pick(leader); }
     let lead = runners[leader];
     let by_order = rules.order_first || std::env::var("RX_PMLONE").map_or(true, |v| v != "0")

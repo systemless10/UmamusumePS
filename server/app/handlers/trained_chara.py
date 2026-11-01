@@ -667,6 +667,9 @@ def build_trained_chara_from_career(viewer_id, career_state: dict, start_chara: 
             "support_card_id": c.get("support_card_id"),
             "exp": c.get("exp", 0),
             "limit_break_count": c.get("limit_break_count", 0),
+            "rental_type": 0,
+            "friend_type": 1 if c.get("owner_viewer_id") else 0,
+            "is_rental": 0,
         }
         for c in chara_info.get("support_card_array", [])
     ]

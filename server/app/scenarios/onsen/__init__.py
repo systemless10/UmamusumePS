@@ -91,6 +91,18 @@ class Onsen(Scenario):
             served_ci["playing_state"] = 5
         ds = impl.data_set(full_state, chara_info, home)
         data["onsen_data_set"] = ds
+        for ci in (chara_info, (data.get("single_mode_load_common") or {}).get("chara_info")):
+            if not isinstance(ci, dict):
+                continue
+            evaluations = ci.setdefault("evaluation_info_array", [])
+            present = {r.get("target_id") for r in evaluations}
+            for row in ds["evaluation_info_array"]:
+                target = row["target_id"]
+                if target >= 1000 and target not in present:
+                    evaluations.append({"target_id": target, "training_partner_id": target,
+                                        "evaluation": 0, "is_outing": 0, "story_step": 0,
+                                        "is_appear": 0, "group_outing_info_array": []})
+                    present.add(target)
         for holder in (data.get("single_mode_start_common"), data.get("single_mode_load_common")):
             if isinstance(holder, dict):
                 holder.pop("onsen_data_set", None)

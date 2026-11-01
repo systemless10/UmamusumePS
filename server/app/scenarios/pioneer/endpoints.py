@@ -125,10 +125,14 @@ def handle_shima_training_exec(payload: dict) -> dict:
     st = impl.state(full_state)
     turn = impl.turn_of(chara_info)
     if (int(chara_info.get("playing_state") or 1) != 1 or int(st["tickets"]) < 1
-            or impl.island_turn(turn)):
+            or impl.island_turn(turn) or not impl.FIRST_PLAN_TURN <= turn <= impl.LIVE_TURN):
         return _refused("shima_training_exec",
                         f"turn {turn}, playing_state {chara_info.get('playing_state')}, "
                         f"tickets {st['tickets']}")
+    home = (_career_state.get("data") or {}).get("home_info") or {}
+    for row in home.get("command_info_array") or ():
+        if isinstance(row, dict) and row.get("command_id") == M.ISLAND_TRAINING:
+            row["is_enable"] = 1
     pv = impl.stored(st, turn).get("island") or {}
     fields = dict(payload)
     fields.update(command_type=1, command_id=M.ISLAND_TRAINING, command_group_id=0, select_id=0,

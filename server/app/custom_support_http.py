@@ -28,6 +28,9 @@ async def pack(challenge: str, kind: str):
             raise HTTPException(403, "Wrong region")
         if kind == "master.mdb":
             filename, media = kind, "application/vnd.sqlite3"
+        elif kind == "preview.mdb" and ch.get("preview"):
+            return Response((C.root() / "packs" / ch["preview"] / "master.mdb").read_bytes(),
+                            media_type="application/vnd.sqlite3", headers={"Cache-Control": "no-store"})
         else:
             entries = {str(d["id"]) + ".png" for d in m["cards"] if d["art_sha256"]}
             entries |= {f'{d["id"]}_{slot}.png' for d in m["cards"] for slot in d.get("slot_art") or {}}

@@ -32,5 +32,6 @@
   "hint_rate_multiplier": null,
   "bond_gain_multiplier": null,
   "energy_cost_multiplier": null,
-  "race_simulator": "exact_test"
+  "race_simulator": "exact_test",
+  "app_version": "1.35.3"
 }

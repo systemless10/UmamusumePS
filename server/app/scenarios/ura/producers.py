@@ -11,6 +11,11 @@ SCENARIO_ID = 1
 
 
 SKILL_IRON_WILL = 200441
+
+
+def _DIRECTOR_BOND(value: int) -> dict:
+    return {"type": "npc_bond", "target_id": 102, "chara_id": 9002, "value": f"+{value}"}
+
 URA_FIXED_BEATS: dict = {
     29: (1017, 400001405, [{"type": "mood", "value": "+1"}]),
     35: (1027, 400000041, None),
@@ -18,14 +23,23 @@ URA_FIXED_BEATS: dict = {
         {"type": "wisdom", "value": "+20"},
         {"type": "skill_points", "value": "+20"},
         {"type": "skill_hint", "skill_id": SKILL_IRON_WILL, "value": 1}]),
-    48: (1019, 400001407, [{"type": "skill_points", "value": "+30"}]),
+    48: (1019, 400001407, [{"type": "skill_points", "value": "+30"}, _DIRECTOR_BOND(5)]),
     39: (102004, 400001419, [{"type": "energy", "value": "+30"}]),
     53: (1020, 400001408, None),
     59: (1028, 400000041, None),
     63: (102006, 400001419, [{"type": "energy", "value": "+30"}]),
     65: (1021, 400001409, None),
-    72: (1022, 400001410, [{"type": "skill_points", "value": "+30"}]),
+    72: (1022, 400001410, [{"type": "skill_points", "value": "+30"}, _DIRECTOR_BOND(10)]),
 }
+
+URA_FAN_GATED: dict = {
+    1018: (50_000, 1, 2, []),
+    1019: (100_000, 3, 2, [_DIRECTOR_BOND(5)]),
+    1022: (240_000, 2, 1, [_DIRECTOR_BOND(5)]),
+}
+
+
+_POST_ACTION_BEATS = frozenset({1017, 1018, 1019, 1020, 1021, 1022})
 
 
 _SHARED_FIXED_STORIES = {
@@ -42,12 +56,26 @@ def _fixed_once_key(event_id: int, story_id: int) -> str:
 @CE.producer("ura_fixed_beats", priority=CE.PRIO_SCENARIO,
              scenario=SCENARIO_ID)
 def ura_fixed_beats(ctx: CE.Ctx) -> list:
-    entry = URA_FIXED_BEATS.get(ctx.advanced_turn)
+    entry = URA_FIXED_BEATS.get(ctx.turn)
+    post_action = bool(entry) and entry[0] in _POST_ACTION_BEATS
+    if not post_action:
+        entry = URA_FIXED_BEATS.get(ctx.advanced_turn)
+        if entry and entry[0] in _POST_ACTION_BEATS:
+            entry = None
     if not entry:
         return []
     event_id, story_id, effects = entry
+    select_index = 1
+    gate = URA_FAN_GATED.get(event_id)
+    if gate:
+        need, met_index, missed_index, missed_effects = gate
+        if int((ctx.chara_info or {}).get("fans") or 0) >= need:
+            select_index = met_index
+        else:
+            select_index, effects = missed_index, missed_effects
     return [CE.Event(
-        event_id=event_id, story_id=story_id, play_timing=1,
+        event_id=event_id, story_id=story_id, play_timing=6 if post_action else 1,
+        timing_from_endpoint=post_action, select_index=select_index,
         choices=[] if effects is None else [CE.Choice(effects=list(effects))],
         chara_id=0,
         once_key=_fixed_once_key(event_id, story_id),

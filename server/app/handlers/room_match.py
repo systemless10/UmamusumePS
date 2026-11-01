@@ -10,7 +10,7 @@ import time
 from contextlib import contextmanager
 from threading import RLock
 
-from .. import config, patch, region, social
+from .. import client_versions, config, patch, region, social
 from .. import state as state_store
 from ..result_codes import ResultCode, refuse
 from ..simulation import race_simulator
@@ -618,7 +618,7 @@ def _run_race(room: dict) -> dict | None:
             "race_horse_data_array": rows,
             "trained_chara_array": trained,
             "season": season, "weather": weather, "ground_condition": ground,
-            "app_version": str(config.get("app_version", "1.35.2")),
+            "app_version": client_versions.app_version("1.35.2"),
             "resource_version": str(config.get("resource_version", "10007900"))}
 
 

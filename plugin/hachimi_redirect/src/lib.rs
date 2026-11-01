@@ -433,7 +433,13 @@ unsafe extern "C" fn hk_post(this: *mut c_void, url: *mut c_void, data: *mut c_v
             }
         }
     });
-    let url = std::panic::catch_unwind(|| rewrite(url)).ok().flatten().unwrap_or(url);
+    let mut url = std::panic::catch_unwind(|| rewrite(url)).ok().flatten().unwrap_or(url);
+    if il2cpp_text(url).is_some_and(|u| custom_support::take_blocked(&u, CENSOR_INSTALLED.get() == Some(&true))) {
+        notify("Ported trainees and scenarios are preview-only on the official server.");
+        if let Some(new) = API.get().and_then(|a| a.string_new) {
+            url = new(c"https://127.0.0.1:9/umaps-preview-blocked".as_ptr());
+        }
+    }
     if il2cpp_text(url).is_some_and(|u| {
         let cfg = CONFIG.read().unwrap_or_else(|e| e.into_inner());
         cfg.enabled && u.starts_with(&(cfg.server.clone() + "/"))
@@ -552,6 +558,7 @@ static FIELDS: OnceLock<CensorFields> = OnceLock::new();
 
 unsafe extern "C" fn hk_setup_request_common(req: *mut c_void, mi: *const c_void) {
     std::mem::transmute::<usize, SetupFn>(trampoline(&SETUP_TRAMPOLINE))(req, mi);
+    let _ = std::panic::catch_unwind(|| custom_support::check_start(req));
     let _ = std::panic::catch_unwind(|| censor(req));
 }
 

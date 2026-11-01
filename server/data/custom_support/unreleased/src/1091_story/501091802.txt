@@ -1,0 +1,51 @@
+#title Just Like Back Then
+0 .......... ...Huh...?
+1 ...Chevacchi...?
+2 Ah, there you are! Cheeevacchiii! This time I'm gonna catch you for real!
+3 N-not again...? You've been at this since this morning... I-I'm busy right now...!
+4 Ah! Aaah~! Wait for meee!
+5 Geez, she got away again...
+5> What are you doing? | What are you doing?
+6 Vivlos had been chasing Cheval Grand around since morning. Curiosity finally got the better of me, so I asked her why.
+7 'Cause Chevacchi showed up in my dream!
+7> ...Okay?
+8 Ehehe~ She patted my head just like when we were little~♡
+8> Oh, so maybe that's why...
+9 Yup! Now I'm in the mood to be spoiled by Chevacchi☆
+10 But she keeps running away right away... Hey, how do I get her to pat me like she used to?
+10> Hmm, all you can do is ask...
+11 Right? There's no other way, huh? Alriiight... I'm gonna catch Chevacchi~!
+12 Whoa, there's a pebble by my feet! I'm gonna fall~! Help meee~!
+13 Huh?! Are you oka— 
+15 You didn't even fall...!
+16 Aah, waaait!
+17 I've got some yummy pork buns, y'know~. And a full course of Chinese food all ready, toooo~.
+18 ..........
+19 *Peek.*
+20 Even I'm not falling for that...!
+21 Aaah!!
+22 After that, she tried every trick in the book to catch Cheval Grand, but none of them worked...
+23 Uuugh... Chevacchi's a tough one...
+24 Worn out, Vivlos went limp and fell asleep right there.
+25 ...Sigh. Seriously, what is all this about...?
+26 And now she's asleep in a place like this... What if she catches a cold?
+27 Cheval Grand touched Vivlos's hair. Without really thinking about it, she stroked her head, checking that she was breathing peacefully.
+29 (...Chevacchi's patting my head... Wow, wooow...)
+30 She's out cold... Doesn't look like she'll wake up.
+31 ...Sigh. I'll get a little distance, then call her phone.
+33 ...Ehehe. Ehehehehe...
+34 Vivlos couldn't stop smiling from the joy of being patted.
+35 Worn out, Vivlos went limp and fell asleep right there.
+36 And now she's asleep in a place like this... What if she catches a cold?
+37 Cheval Grand touched Vivlos's hair. Without really thinking about it, she stroked her head, checking that she was breathing peacefully.
+38 Mmm... Chevacchiii... Ehe... ehehe...
+39 ...Pfft. Honestly... I wonder what she's dreaming about...
+40 There, there. Good girl, good girl.
+41 Now, a big squeeeze! Hug me, Chevacchi.
+42 Ehehe... Let me be spoiled lots and looots♡
+43 Worn out, Vivlos went limp and fell asleep right there.
+44 And now she's asleep in a place like this... What if she catches a co—
+45 Gotcha, Chevacchi~!
+46 Waah?! P-pretending to be asleep... that's dirty!
+47 I wasn't pretending~. I literally just woke up!
+48 Ehehee. Better be ready. I'm never letting you get away now♡

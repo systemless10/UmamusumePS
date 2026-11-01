@@ -64,7 +64,16 @@ def _beat(event_id, story_id, *, choices=None, timing=1, from_endpoint=False,
 
 
 def opening_event() -> CE.Event | None:
-    return _beat(*OPENING, priority=CE.PRIO_FRONT)
+    return _beat(*OPENING, priority=CE.PRIO_FRONT, resolver="ramen_opening")
+
+
+@CE.resolver("ramen_opening")
+def _opening(full_state, chara_info, event, choice_number, **kw):
+    from ...handlers import single_mode_team as smt
+    impl.state(full_state)["flags"]["reseated"] = True
+    smt._register_npc_unlocks(full_state, chara_info, event.event_id)
+    impl.refresh_home(full_state, chara_info)
+    return {}
 
 
 def region_follow_event(select_type: int) -> CE.Event | None:

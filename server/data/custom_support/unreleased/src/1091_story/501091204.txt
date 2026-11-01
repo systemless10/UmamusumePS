@@ -2,7 +2,7 @@
 0 When we came to Kyoto for the last crown of the Tiara races, the Shuka Sho—
 1 (Waaaaah...!)
 2 Whoa, so many people...!
-3 What's going on? Is some celebrity visiting Japan?
+3 What's going on? Is some Celeb visiting Japan?
 4 Where? Where?
 4> It's probably you | It's probably you
 5 Huh?

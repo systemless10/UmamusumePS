@@ -12152,6 +12152,174 @@
     "past_race_id": 0,
     "force_use_race_dress": 0,
     "event_category": 3
+   },
+   {
+    "id": 12496,
+    "story_id": 501091508,
+    "short_story_id": 0,
+    "card_id": 0,
+    "card_chara_id": 0,
+    "support_card_id": 0,
+    "support_chara_id": 0,
+    "show_progress_1": 0,
+    "show_progress_2": 0,
+    "show_progress_3": 0,
+    "show_clear": 0,
+    "show_succession": 0,
+    "event_title_style": 1,
+    "event_title_dress_icon": 0,
+    "event_title_chara_icon": 0,
+    "se_change": 0,
+    "ending_type": 0,
+    "race_event_flag": 0,
+    "mini_game_result": 0,
+    "gallery_main_scenario": 0,
+    "gallery_flag": 0,
+    "gallery_list_id": 0,
+    "available_gallery_key": 1,
+    "past_race_id": 0,
+    "force_use_race_dress": 0,
+    "event_category": 3
+   },
+   {
+    "id": 12489,
+    "story_id": 501091713,
+    "short_story_id": 0,
+    "card_id": 0,
+    "card_chara_id": 0,
+    "support_card_id": 0,
+    "support_chara_id": 0,
+    "show_progress_1": 0,
+    "show_progress_2": 0,
+    "show_progress_3": 0,
+    "show_clear": 0,
+    "show_succession": 0,
+    "event_title_style": 1,
+    "event_title_dress_icon": 0,
+    "event_title_chara_icon": 0,
+    "se_change": 0,
+    "ending_type": 0,
+    "race_event_flag": 0,
+    "mini_game_result": 0,
+    "gallery_main_scenario": 0,
+    "gallery_flag": 0,
+    "gallery_list_id": 0,
+    "available_gallery_key": 1,
+    "past_race_id": 0,
+    "force_use_race_dress": 0,
+    "event_category": 3
+   },
+   {
+    "id": 12492,
+    "story_id": 501091732,
+    "short_story_id": 0,
+    "card_id": 0,
+    "card_chara_id": 0,
+    "support_card_id": 0,
+    "support_chara_id": 0,
+    "show_progress_1": 0,
+    "show_progress_2": 0,
+    "show_progress_3": 0,
+    "show_clear": 0,
+    "show_succession": 1,
+    "event_title_style": 1,
+    "event_title_dress_icon": 0,
+    "event_title_chara_icon": 0,
+    "se_change": 0,
+    "ending_type": 0,
+    "race_event_flag": 0,
+    "mini_game_result": 0,
+    "gallery_main_scenario": 0,
+    "gallery_flag": 0,
+    "gallery_list_id": 0,
+    "available_gallery_key": 1,
+    "past_race_id": 0,
+    "force_use_race_dress": 0,
+    "event_category": 3
+   },
+   {
+    "id": 12494,
+    "story_id": 501091732,
+    "short_story_id": 0,
+    "card_id": 0,
+    "card_chara_id": 0,
+    "support_card_id": 0,
+    "support_chara_id": 0,
+    "show_progress_1": 0,
+    "show_progress_2": 0,
+    "show_progress_3": 0,
+    "show_clear": 0,
+    "show_succession": 1,
+    "event_title_style": 1,
+    "event_title_dress_icon": 0,
+    "event_title_chara_icon": 0,
+    "se_change": 0,
+    "ending_type": 0,
+    "race_event_flag": 0,
+    "mini_game_result": 0,
+    "gallery_main_scenario": 0,
+    "gallery_flag": 0,
+    "gallery_list_id": 0,
+    "available_gallery_key": 1,
+    "past_race_id": 0,
+    "force_use_race_dress": 0,
+    "event_category": 3
+   },
+   {
+    "id": 12493,
+    "story_id": 501091733,
+    "short_story_id": 0,
+    "card_id": 0,
+    "card_chara_id": 0,
+    "support_card_id": 0,
+    "support_chara_id": 0,
+    "show_progress_1": 0,
+    "show_progress_2": 0,
+    "show_progress_3": 0,
+    "show_clear": 0,
+    "show_succession": 0,
+    "event_title_style": 1,
+    "event_title_dress_icon": 0,
+    "event_title_chara_icon": 0,
+    "se_change": 0,
+    "ending_type": 0,
+    "race_event_flag": 0,
+    "mini_game_result": 0,
+    "gallery_main_scenario": 0,
+    "gallery_flag": 0,
+    "gallery_list_id": 0,
+    "available_gallery_key": 1,
+    "past_race_id": 0,
+    "force_use_race_dress": 0,
+    "event_category": 3
+   },
+   {
+    "id": 12495,
+    "story_id": 501091733,
+    "short_story_id": 0,
+    "card_id": 0,
+    "card_chara_id": 0,
+    "support_card_id": 0,
+    "support_chara_id": 0,
+    "show_progress_1": 0,
+    "show_progress_2": 0,
+    "show_progress_3": 0,
+    "show_clear": 0,
+    "show_succession": 0,
+    "event_title_style": 1,
+    "event_title_dress_icon": 0,
+    "event_title_chara_icon": 0,
+    "se_change": 0,
+    "ending_type": 0,
+    "race_event_flag": 0,
+    "mini_game_result": 0,
+    "gallery_main_scenario": 0,
+    "gallery_flag": 0,
+    "gallery_list_id": 0,
+    "available_gallery_key": 1,
+    "past_race_id": 0,
+    "force_use_race_dress": 0,
+    "event_category": 3
    }
   ],
   "single_mode_event_conclusion": [
@@ -13707,7 +13875,7 @@
    {
     "character_id": 1091,
     "voice_id": 20025,
-    "text": "Going full sparkle mode☆ Celebrity, here I come!",
+    "text": "Going full sparkle mode☆ Celeb, here I come!",
     "cue_sheet": "snd_voi_training_109100",
     "cue_id": 16,
     "motion_set": 2001,
@@ -13771,7 +13939,7 @@
    {
     "character_id": 1091,
     "voice_id": 20029,
-    "text": "My first step toward being a celebrity! I'll do my best today too.",
+    "text": "My first step toward being a Celeb! I'll do my best today too.",
     "cue_sheet": "snd_voi_training_109100",
     "cue_id": 20,
     "motion_set": 1091818,
@@ -13851,7 +14019,7 @@
    {
     "character_id": 1091,
     "voice_id": 20034,
-    "text": "You can't be a celebrity if you're not sparkly. Smile, smile.",
+    "text": "You can't be a Celeb if you're not sparkly. Smile, smile.",
     "cue_sheet": "snd_voi_training_109100",
     "cue_id": 25,
     "motion_set": 1091820,
@@ -13899,7 +14067,7 @@
    {
     "character_id": 1091,
     "voice_id": 20037,
-    "text": "I'm definitely gonna win the race... If I lose, I can't become a celebrity...",
+    "text": "I'm definitely gonna win the race... If I lose, I can't become a Celeb...",
     "cue_sheet": "snd_voi_training_109100",
     "cue_id": 28,
     "motion_set": 1091002,
@@ -14123,7 +14291,7 @@
    {
     "character_id": 1091,
     "voice_id": 30003,
-    "text": "Becoming a celebrity isn't easy...",
+    "text": "Becoming a Celeb isn't easy...",
     "cue_sheet": "snd_voi_race_109100",
     "cue_id": 3,
     "motion_set": 0,
@@ -14235,7 +14403,7 @@
    {
     "character_id": 1091,
     "voice_id": 90000,
-    "text": "Morning, Tore-cchi♪ Let's make today another super sparkly, heart-fluttering day!",
+    "text": "Morning, Tore-cchi♪ Let's make today another super sparkly, exciting day!",
     "cue_sheet": "snd_voi_home_109101",
     "cue_id": 0,
     "motion_set": 1091017,
@@ -14395,7 +14563,7 @@
    {
     "character_id": 1091,
     "voice_id": 91000,
-    "text": "If you wanna hear the latest trends, it's gotta be Crown! She knows tons of celebrity news, it's amazing.",
+    "text": "If you wanna hear the latest trends, it's gotta be Crown! She knows tons of Celeb news, it's amazing.",
     "cue_sheet": "snd_voi_home_109101",
     "cue_id": 10,
     "motion_set": 1091811,
@@ -14443,7 +14611,7 @@
    {
     "character_id": 1091,
     "voice_id": 91003,
-    "text": "Checking celebrity news today too☆ Mmm♪ Hollywood actors' love lives are so flashy and thrilling!",
+    "text": "Checking Celeb news today too☆ Mmm♪ Hollywood actors' love lives are so flashy and thrilling!",
     "cue_sheet": "snd_voi_home_109101",
     "cue_id": 13,
     "motion_set": 1091000,
@@ -14827,7 +14995,7 @@
    {
     "character_id": 1091,
     "voice_id": 95001,
-    "text": "The heart-flutters won't stop♪",
+    "text": "The excitement won't stop♪",
     "cue_sheet": "snd_voi_outgame_109101",
     "cue_id": 1,
     "motion_set": 0,
@@ -14859,7 +15027,7 @@
    {
     "character_id": 1091,
     "voice_id": 95004,
-    "text": "To become a sparkly celebrity! Let your heart flutter with me♪",
+    "text": "To become a sparkly Celeb! Get excited with me♪",
     "cue_sheet": "snd_voi_gacha_109101",
     "cue_id": 0,
     "motion_set": 0,
@@ -14907,7 +15075,7 @@
    {
     "character_id": 1091,
     "voice_id": 1190,
-    "text": "Celebrity, here I come!!",
+    "text": "Celeb, here I come!!",
     "cue_sheet": "snd_voi_teamst_st_109100_1089",
     "cue_id": 0,
     "motion_set": 1091000,
@@ -15067,7 +15235,7 @@
    {
     "character_id": 1091,
     "voice_id": 40000,
-    "text": "The heart-flutters are starting!",
+    "text": "The excitement's starting!",
     "cue_sheet": "snd_voi_race_109101",
     "cue_id": 2,
     "motion_set": 0,
@@ -15099,7 +15267,7 @@
    {
     "character_id": 1091,
     "voice_id": 30004,
-    "text": "I'm gonna be a celebrity! Of course I won!",
+    "text": "I'm gonna be a Celeb! Of course I won!",
     "cue_sheet": "snd_voi_race_109101",
     "cue_id": 0,
     "motion_set": 0,
@@ -15115,7 +15283,7 @@
    {
     "character_id": 1091,
     "voice_id": 30005,
-    "text": "Eek, I got closer to being a celebrity♪",
+    "text": "Eek, I got closer to being a Celeb♪",
     "cue_sheet": "snd_voi_race_109100",
     "cue_id": 8,
     "motion_set": 0,
@@ -15259,7 +15427,7 @@
    {
     "character_id": 1091,
     "voice_id": 70000,
-    "text": "Let's become celebrities together, Tore-cchi♪",
+    "text": "Let's become Celebs together, Tore-cchi♪",
     "cue_sheet": "snd_voi_outgame_109100",
     "cue_id": 3,
     "motion_set": 1091006,
@@ -15883,7 +16051,7 @@
    {
     "character_id": 1091,
     "voice_id": 2034,
-    "text": "Going full sparkle mode☆ Celebrity, here I come!",
+    "text": "Going full sparkle mode☆ Celeb, here I come!",
     "cue_sheet": "snd_voi_training_109100",
     "cue_id": 16,
     "motion_set": 2001,
@@ -16171,7 +16339,7 @@
    {
     "character_id": 1091,
     "voice_id": 91028,
-    "text": "I like blue, but pink is super cute too. It makes my heart flutter with excitement☆",
+    "text": "I like blue, but pink is super cute too. It gets my heart all excited☆",
     "cue_sheet": "snd_voi_home_109102",
     "cue_id": 15,
     "motion_set": 1091848,
@@ -16475,7 +16643,7 @@
    {
     "character_id": 1091,
     "voice_id": 95007,
-    "text": "Celebrity level, uuup!",
+    "text": "Celeb level, uuup!",
     "cue_sheet": "snd_voi_outgame_109102",
     "cue_id": 0,
     "motion_set": 1091001,
@@ -16651,7 +16819,7 @@
    {
     "character_id": 1091,
     "voice_id": 30007,
-    "text": "Eek, I got closer to being a celebrity♪",
+    "text": "Eek, I got closer to being a Celeb♪",
     "cue_sheet": "snd_voi_race_109100",
     "cue_id": 8,
     "motion_set": 0,
@@ -16811,7 +16979,7 @@
    {
     "character_id": 1091,
     "voice_id": 81001,
-    "text": "Wow! That's pretty amazing...! But I can still make hearts flutter more than you♪",
+    "text": "Wow! That's pretty amazing...! But I can still get everyone more excited than you♪",
     "cue_sheet": "snd_voi_outgame_109100",
     "cue_id": 14,
     "motion_set": 1091862,
@@ -16907,7 +17075,7 @@
    {
     "character_id": 1091,
     "voice_id": 400012,
-    "text": "Here's the event mission☆ Aim to be a true celebrity!",
+    "text": "Here's the event mission☆ Aim to be a true Celeb!",
     "cue_sheet": "snd_voi_event_090046",
     "cue_id": 12,
     "motion_set": 1091845,
@@ -16955,7 +17123,7 @@
    {
     "character_id": 1091,
     "voice_id": 70021,
-    "text": "Celebrities need a bit of sexiness too, right? Showing a little tummy? Kyaa♡",
+    "text": "Celebs need a bit of sexiness too, right? Showing a little tummy? Kyaa♡",
     "cue_sheet": "snd_voi_outgame_109100",
     "cue_id": 43,
     "motion_set": 1091801,
@@ -18750,7 +18918,7 @@
     "id": 164,
     "category": 164,
     "index": 1091,
-    "text": "Handling the cold, baseball, daydreaming about celebrity life"
+    "text": "Handling the cold, baseball, daydreaming about Celeb life"
    },
    {
     "id": 165,
@@ -18768,7 +18936,7 @@
     "id": 167,
     "category": 167,
     "index": 1091,
-    "text": "Uses a celebrity-favorite conditioner"
+    "text": "Uses a Celeb-favorite conditioner"
    },
    {
     "id": 168,
@@ -18822,7 +18990,7 @@
     "id": 260,
     "category": 260,
     "index": 1091,
-    "text": "Sparkle check in front of the mirror☆"
+    "text": "Excitement check in front of the mirror☆"
    },
    {
     "id": 4,
@@ -19254,7 +19422,7 @@
     "id": 181,
     "category": 181,
     "index": 501091719,
-    "text": "Nonstop Heart-Flutters"
+    "text": "Nonstop Excitement"
    },
    {
     "id": 181,
@@ -19603,6 +19771,18 @@
     "category": 92,
     "index": 41091007,
     "text": "My Heart Is Racing ♡"
+   },
+   {
+    "id": 181,
+    "category": 181,
+    "index": 501091732,
+    "text": "Inspiration"
+   },
+   {
+    "id": 181,
+    "category": 181,
+    "index": 501091733,
+    "text": "Inspiration"
    }
   ]
  }

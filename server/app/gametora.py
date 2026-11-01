@@ -180,6 +180,9 @@ def _split_segments(rewards: list) -> list:
         t = r.get("t")
         if t == "nl":
             out.append(([], []))
+        elif t == "se_has" and out[-1][1] and out[-1][1][-1].get("t") == "se":
+            cond = out[-1][1].pop()
+            out.append(([{"kind": "has_condition", "value": cond.get("d")}], []))
         elif t in _GUARD_CODES:
             if out[-1][0] or out[-1][1]:
                 out.append(([], []))
@@ -364,11 +367,26 @@ def _jp_events(doc: dict) -> dict | None:
     return out
 
 
+def _status_guard_segments(choice: dict) -> None:
+    effects = choice.get("effects") or []
+    i = next((k for k, e in enumerate(effects) if e.get("type") == "se_has"), -1)
+    if i < 1 or effects[i - 1].get("type") != "condition" or choice.get("segments"):
+        return
+    guard = {"kind": "has_condition", "value": effects[i - 1].get("condition_id")}
+    choice["segments"] = [{"effects": effects[:i - 1], "random_either": False, "when": []},
+                          {"effects": effects[i + 1:], "random_either": False, "when": [guard]}]
+    choice["effects"] = effects[:i - 1]
+
+
 def _read_cached(path: str, jp: bool):
     if not os.path.exists(path):
         return None
     with open(path, encoding="utf-8") as fh:
         doc = json.load(fh)
+    for lang in ("events", "events_ja"):
+        for ev in (doc.get(lang) or {}).values():
+            for c in (ev.get("choices") or ()) if isinstance(ev, dict) else ():
+                _status_guard_segments(c)
     return _jp_events(doc) if jp else doc.get("events")
 
 

@@ -1,0 +1,13 @@
+#title 0
+0 I'm so sorry, Vivlos! Your birthday's here and I still haven't decided on a present...!
+1 It's fine, it's fine~! I mean, that just means you thought about it super seriously, right? Ehehe, I'm so happy~ Now I'm excited~♡
+2 Yes, I wanted to find something that would truly make you happy... but there are still so many things I'm worried about...
+3 What're you worried about~? C'mon, tell me! I'll answer seriously too!
+4 Then... I shall ask!
+5 A lion, or a cruiser! Which would you prefer!?
+6 Whaaaaat!? I want boooth!!
+7 I knew it~! You did say you wanted to keep a lion! And my father's acquaintance may be able to hand down a cruiser!
+8 But I hear they take a lot of care and upkeep... I just don't know what to do...!
+9 Ahh, true... If a lion came now, I don't think I could make it happy... And I don't have a harbor for a cruiser either~...
+10 For now, something I can wear casually would be nice! Like accessories, stuff like that~!
+11 (Wait, a lion's actually an option? So celeb~! I wanna be able to say stuff like that so casually too~!!)

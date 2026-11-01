@@ -8,6 +8,7 @@ from . import endpoints, formula, impl, master as M, producers
 
 class Arc(Scenario):
     scenario_id = impl.SCENARIO_ID
+    has_secret_events = False
     name = "Arc"
     endpoint_prefix = "single_mode_arc"
     data_set_key = "arc_data_set"

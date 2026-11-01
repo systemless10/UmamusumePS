@@ -51,6 +51,8 @@ def _blank() -> dict:
         "power": 0, "success_point": 0, "success_rate": 0,
         "history": [],
         "sets": {"1": 1},
+        "opened": False,
+        "reseated": False,
         "results": [], "new_result": 0,
         "cook_num": [],
         "dish": {},
@@ -70,6 +72,8 @@ def state(full_state: dict) -> dict:
     if not isinstance(st, dict):
         st = _blank()
         full_state[STATE_KEY] = st
+    st.setdefault("opened", True)
+    st.setdefault("reseated", True)
     for k, v in _blank().items():
         st.setdefault(k, copy.deepcopy(v))
     return st
@@ -361,6 +365,8 @@ def dish_effect_rows(st: dict, dish_id: int, lasting_only: bool = False) -> list
 
 
 def available_dishes(st: dict) -> list:
+    if not st.get("opened", True):
+        return []
     ids = []
     for tier in sorted(st["sets"], key=int):
         ids += M.dish_ids_of_set(int(st["sets"][tier]))

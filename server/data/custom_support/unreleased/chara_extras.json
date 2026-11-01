@@ -1,0 +1,3440 @@
+{
+ "tables": {
+  "single_mode_change_chara_route": [
+   {
+    "id": 90,
+    "route_race_group_id": 40000,
+    "chara_id": 1089,
+    "route_race_id": 1095
+   },
+   {
+    "id": 91,
+    "route_race_group_id": 40000,
+    "chara_id": 1091,
+    "route_race_id": 1106
+   },
+   {
+    "id": 83,
+    "route_race_group_id": 40000,
+    "chara_id": 1104,
+    "route_race_id": 1004
+   },
+   {
+    "id": 79,
+    "route_race_group_id": 40000,
+    "chara_id": 1105,
+    "route_race_id": 952
+   },
+   {
+    "id": 80,
+    "route_race_group_id": 40000,
+    "chara_id": 1106,
+    "route_race_id": 966
+   }
+  ],
+  "single_mode_rival": [
+   {
+    "id": 3662,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1001,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3663,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1002,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3661,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1003,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3664,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1008,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3665,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1009,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3660,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1013,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3658,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1017,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3659,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1018,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3666,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1026,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3667,
+    "chara_id": 1089,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1030,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3616,
+    "chara_id": 1089,
+    "turn": 30,
+    "race_program_id": 171,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1068,
+    "single_mode_npc_id": 10680,
+    "frame_order": 0
+   },
+   {
+    "id": 3650,
+    "chara_id": 1089,
+    "turn": 36,
+    "race_program_id": 74,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1007,
+    "single_mode_npc_id": 10070,
+    "frame_order": 0
+   },
+   {
+    "id": 3619,
+    "chara_id": 1089,
+    "turn": 42,
+    "race_program_id": 177,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1068,
+    "single_mode_npc_id": 10680,
+    "frame_order": 0
+   },
+   {
+    "id": 3651,
+    "chara_id": 1089,
+    "turn": 46,
+    "race_program_id": 79,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1007,
+    "single_mode_npc_id": 10070,
+    "frame_order": 0
+   },
+   {
+    "id": 3652,
+    "chara_id": 1089,
+    "turn": 48,
+    "race_program_id": 81,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1007,
+    "single_mode_npc_id": 10070,
+    "frame_order": 0
+   },
+   {
+    "id": 3718,
+    "chara_id": 1091,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1009,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3717,
+    "chara_id": 1091,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1039,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3715,
+    "chara_id": 1091,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1044,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3716,
+    "chara_id": 1091,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1059,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3719,
+    "chara_id": 1091,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1086,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3713,
+    "chara_id": 1091,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1099,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3687,
+    "chara_id": 1091,
+    "turn": 27,
+    "race_program_id": 181,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1067,
+    "single_mode_npc_id": 10670,
+    "frame_order": 0
+   },
+   {
+    "id": 3688,
+    "chara_id": 1091,
+    "turn": 31,
+    "race_program_id": 163,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1067,
+    "single_mode_npc_id": 10670,
+    "frame_order": 0
+   },
+   {
+    "id": 3689,
+    "chara_id": 1091,
+    "turn": 34,
+    "race_program_id": 166,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1067,
+    "single_mode_npc_id": 10670,
+    "frame_order": 0
+   },
+   {
+    "id": 3690,
+    "chara_id": 1091,
+    "turn": 42,
+    "race_program_id": 84,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1067,
+    "single_mode_npc_id": 10670,
+    "frame_order": 0
+   },
+   {
+    "id": 3697,
+    "chara_id": 1091,
+    "turn": 43,
+    "race_program_id": 87,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1068,
+    "single_mode_npc_id": 10680,
+    "frame_order": 0
+   },
+   {
+    "id": 3691,
+    "chara_id": 1091,
+    "turn": 44,
+    "race_program_id": 168,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1067,
+    "single_mode_npc_id": 10670,
+    "frame_order": 0
+   },
+   {
+    "id": 3246,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1003,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3244,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1004,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3250,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1013,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3251,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1027,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3253,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1059,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3252,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1064,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3248,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1070,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3254,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1071,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3247,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1073,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3255,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1074,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3245,
+    "chara_id": 1104,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1086,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3022,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1006,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3021,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1016,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3019,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1017,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3025,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1018,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3026,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1025,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3027,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1032,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3028,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1036,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3020,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1057,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3023,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1069,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3024,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1072,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3029,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1077,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3030,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1084,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3031,
+    "chara_id": 1105,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1094,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 2975,
+    "chara_id": 1105,
+    "turn": 28,
+    "race_program_id": 199,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1047,
+    "single_mode_npc_id": 10470,
+    "frame_order": 0
+   },
+   {
+    "id": 3005,
+    "chara_id": 1105,
+    "turn": 36,
+    "race_program_id": 74,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   },
+   {
+    "id": 3010,
+    "chara_id": 1105,
+    "turn": 38,
+    "race_program_id": 103,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3006,
+    "chara_id": 1105,
+    "turn": 42,
+    "race_program_id": 1124,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   },
+   {
+    "id": 3011,
+    "chara_id": 1105,
+    "turn": 43,
+    "race_program_id": 86,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3007,
+    "chara_id": 1105,
+    "turn": 43,
+    "race_program_id": 1109,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   },
+   {
+    "id": 3008,
+    "chara_id": 1105,
+    "turn": 44,
+    "race_program_id": 76,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   },
+   {
+    "id": 2994,
+    "chara_id": 1105,
+    "turn": 44,
+    "race_program_id": 76,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1083,
+    "single_mode_npc_id": 10830,
+    "frame_order": 0
+   },
+   {
+    "id": 3012,
+    "chara_id": 1105,
+    "turn": 46,
+    "race_program_id": 78,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3009,
+    "chara_id": 1105,
+    "turn": 48,
+    "race_program_id": 81,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   },
+   {
+    "id": 2981,
+    "chara_id": 1105,
+    "turn": 54,
+    "race_program_id": 13,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1047,
+    "single_mode_npc_id": 10470,
+    "frame_order": 0
+   },
+   {
+    "id": 3013,
+    "chara_id": 1105,
+    "turn": 55,
+    "race_program_id": 14,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3014,
+    "chara_id": 1105,
+    "turn": 59,
+    "race_program_id": 73,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3015,
+    "chara_id": 1105,
+    "turn": 61,
+    "race_program_id": 100,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3016,
+    "chara_id": 1105,
+    "turn": 64,
+    "race_program_id": 82,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 1022001,
+    "frame_order": 0
+   },
+   {
+    "id": 2984,
+    "chara_id": 1105,
+    "turn": 67,
+    "race_program_id": 87,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1047,
+    "single_mode_npc_id": 10470,
+    "frame_order": 0
+   },
+   {
+    "id": 3018,
+    "chara_id": 1105,
+    "turn": 69,
+    "race_program_id": 77,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1044,
+    "single_mode_npc_id": 10440,
+    "frame_order": 0
+   },
+   {
+    "id": 3017,
+    "chara_id": 1105,
+    "turn": 70,
+    "race_program_id": 78,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3086,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1003,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3090,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1008,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3091,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1009,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3088,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1015,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3084,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1017,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3094,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1025,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3093,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1032,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3089,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1033,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3087,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1060,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3085,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1070,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3092,
+    "chara_id": 1106,
+    "turn": 0,
+    "race_program_id": 0,
+    "rival_flag_id": 0,
+    "condition_type": 2,
+    "rival_chara_id": 1087,
+    "single_mode_npc_id": 0,
+    "frame_order": 0
+   },
+   {
+    "id": 3032,
+    "chara_id": 1106,
+    "turn": 32,
+    "race_program_id": 174,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1083,
+    "single_mode_npc_id": 10830,
+    "frame_order": 0
+   },
+   {
+    "id": 3075,
+    "chara_id": 1106,
+    "turn": 44,
+    "race_program_id": 167,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3071,
+    "chara_id": 1106,
+    "turn": 44,
+    "race_program_id": 1142,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1036,
+    "single_mode_npc_id": 10360,
+    "frame_order": 0
+   },
+   {
+    "id": 3067,
+    "chara_id": 1106,
+    "turn": 44,
+    "race_program_id": 1142,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1077,
+    "single_mode_npc_id": 10770,
+    "frame_order": 0
+   },
+   {
+    "id": 3035,
+    "chara_id": 1106,
+    "turn": 44,
+    "race_program_id": 1142,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1083,
+    "single_mode_npc_id": 10830,
+    "frame_order": 0
+   },
+   {
+    "id": 3072,
+    "chara_id": 1106,
+    "turn": 46,
+    "race_program_id": 79,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1036,
+    "single_mode_npc_id": 10360,
+    "frame_order": 0
+   },
+   {
+    "id": 3068,
+    "chara_id": 1106,
+    "turn": 46,
+    "race_program_id": 79,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1077,
+    "single_mode_npc_id": 10770,
+    "frame_order": 0
+   },
+   {
+    "id": 3073,
+    "chara_id": 1106,
+    "turn": 48,
+    "race_program_id": 81,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1036,
+    "single_mode_npc_id": 10360,
+    "frame_order": 0
+   },
+   {
+    "id": 3078,
+    "chara_id": 1106,
+    "turn": 55,
+    "race_program_id": 14,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3048,
+    "chara_id": 1106,
+    "turn": 60,
+    "race_program_id": 74,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   },
+   {
+    "id": 3079,
+    "chara_id": 1106,
+    "turn": 62,
+    "race_program_id": 103,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3049,
+    "chara_id": 1106,
+    "turn": 66,
+    "race_program_id": 1124,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   },
+   {
+    "id": 3080,
+    "chara_id": 1106,
+    "turn": 67,
+    "race_program_id": 86,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3050,
+    "chara_id": 1106,
+    "turn": 67,
+    "race_program_id": 1109,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   },
+   {
+    "id": 3081,
+    "chara_id": 1106,
+    "turn": 70,
+    "race_program_id": 78,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1022,
+    "single_mode_npc_id": 10220,
+    "frame_order": 0
+   },
+   {
+    "id": 3052,
+    "chara_id": 1106,
+    "turn": 72,
+    "race_program_id": 81,
+    "rival_flag_id": 0,
+    "condition_type": 1,
+    "rival_chara_id": 1019,
+    "single_mode_npc_id": 10190,
+    "frame_order": 0
+   }
+  ],
+  "live_permission_data": [
+   {
+    "music_id": 1010,
+    "chara_id": 1089
+   },
+   {
+    "music_id": 1029,
+    "chara_id": 1089
+   },
+   {
+    "music_id": 1032,
+    "chara_id": 1089
+   },
+   {
+    "music_id": 1036,
+    "chara_id": 1089
+   },
+   {
+    "music_id": 1005,
+    "chara_id": 1091
+   },
+   {
+    "music_id": 1029,
+    "chara_id": 1091
+   },
+   {
+    "music_id": 1036,
+    "chara_id": 1091
+   },
+   {
+    "music_id": 1010,
+    "chara_id": 1104
+   },
+   {
+    "music_id": 1029,
+    "chara_id": 1104
+   },
+   {
+    "music_id": 1036,
+    "chara_id": 1104
+   },
+   {
+    "music_id": 1028,
+    "chara_id": 1105
+   },
+   {
+    "music_id": 1029,
+    "chara_id": 1105
+   },
+   {
+    "music_id": 1036,
+    "chara_id": 1105
+   },
+   {
+    "music_id": 1008,
+    "chara_id": 1106
+   },
+   {
+    "music_id": 1029,
+    "chara_id": 1106
+   },
+   {
+    "music_id": 1036,
+    "chara_id": 1106
+   }
+  ],
+  "team_stadium_race_result_motion": [
+   {
+    "character_id": 1089,
+    "win_1": 1089000,
+    "win_2": 1089000,
+    "win_2_position_y": 0,
+    "win_3": 1089000,
+    "win_3_position_y": 0,
+    "win_4": 1089000,
+    "win_4_position_y": 0,
+    "win_5": 1089000,
+    "lose_1": 5,
+    "lose_2": 5,
+    "lose_3": 5,
+    "lose_4": 5,
+    "lose_5": 5,
+    "draw_1": 9,
+    "draw_2": 9,
+    "draw_3": 9,
+    "draw_4": 9,
+    "draw_5": 9,
+    "position_y": 0
+   },
+   {
+    "character_id": 1091,
+    "win_1": 1091000,
+    "win_2": 1091000,
+    "win_2_position_y": 0,
+    "win_3": 1091000,
+    "win_3_position_y": 0,
+    "win_4": 1091000,
+    "win_4_position_y": 0,
+    "win_5": 1091000,
+    "lose_1": 5,
+    "lose_2": 5,
+    "lose_3": 5,
+    "lose_4": 5,
+    "lose_5": 5,
+    "draw_1": 9,
+    "draw_2": 9,
+    "draw_3": 9,
+    "draw_4": 9,
+    "draw_5": 9,
+    "position_y": 0
+   },
+   {
+    "character_id": 1104,
+    "win_1": 1104000,
+    "win_2": 1104000,
+    "win_2_position_y": 0,
+    "win_3": 1104000,
+    "win_3_position_y": 0,
+    "win_4": 1104000,
+    "win_4_position_y": 0,
+    "win_5": 1104000,
+    "lose_1": 5,
+    "lose_2": 5,
+    "lose_3": 5,
+    "lose_4": 5,
+    "lose_5": 5,
+    "draw_1": 9,
+    "draw_2": 9,
+    "draw_3": 9,
+    "draw_4": 9,
+    "draw_5": 9,
+    "position_y": 0
+   },
+   {
+    "character_id": 1105,
+    "win_1": 1105000,
+    "win_2": 1105000,
+    "win_2_position_y": 0,
+    "win_3": 1105000,
+    "win_3_position_y": 0,
+    "win_4": 1105000,
+    "win_4_position_y": 0,
+    "win_5": 1105000,
+    "lose_1": 5,
+    "lose_2": 5,
+    "lose_3": 5,
+    "lose_4": 5,
+    "lose_5": 5,
+    "draw_1": 9,
+    "draw_2": 9,
+    "draw_3": 9,
+    "draw_4": 9,
+    "draw_5": 9,
+    "position_y": 0
+   },
+   {
+    "character_id": 1106,
+    "win_1": 1106000,
+    "win_2": 1106000,
+    "win_2_position_y": 0,
+    "win_3": 1106000,
+    "win_3_position_y": 0,
+    "win_4": 1106000,
+    "win_4_position_y": 0,
+    "win_5": 1106000,
+    "lose_1": 5,
+    "lose_2": 5,
+    "lose_3": 5,
+    "lose_4": 5,
+    "lose_5": 5,
+    "draw_1": 9,
+    "draw_2": 9,
+    "draw_3": 9,
+    "draw_4": 9,
+    "draw_5": 9,
+    "position_y": 0
+   }
+  ],
+  "note_profile": [
+   {
+    "id": 124,
+    "chara_id": 1089,
+    "text_type": 10,
+    "lock_type": 2,
+    "lock_value": 108902,
+    "secret_flg": 0,
+    "sort": 20
+   },
+   {
+    "id": 125,
+    "chara_id": 1091,
+    "text_type": 10,
+    "lock_type": 2,
+    "lock_value": 109102,
+    "secret_flg": 0,
+    "sort": 20
+   }
+  ],
+  "champions_news_chara_comment": [
+   {
+    "id": 1163,
+    "round_id": 1,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1164,
+    "round_id": 1,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1165,
+    "round_id": 1,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1166,
+    "round_id": 2,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1167,
+    "round_id": 2,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1168,
+    "round_id": 2,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1169,
+    "round_id": 3,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1170,
+    "round_id": 3,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1171,
+    "round_id": 3,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1172,
+    "round_id": 4,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1173,
+    "round_id": 4,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1174,
+    "round_id": 5,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1175,
+    "round_id": 5,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1176,
+    "round_id": 1,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1177,
+    "round_id": 1,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1178,
+    "round_id": 1,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1179,
+    "round_id": 2,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1180,
+    "round_id": 2,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1181,
+    "round_id": 2,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1182,
+    "round_id": 3,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1183,
+    "round_id": 3,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1184,
+    "round_id": 3,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1185,
+    "round_id": 4,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1186,
+    "round_id": 4,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1187,
+    "round_id": 5,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1188,
+    "round_id": 5,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1072,
+    "round_id": 1,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1073,
+    "round_id": 1,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1074,
+    "round_id": 1,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1075,
+    "round_id": 2,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1076,
+    "round_id": 2,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1077,
+    "round_id": 2,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1078,
+    "round_id": 3,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1079,
+    "round_id": 3,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1080,
+    "round_id": 3,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1081,
+    "round_id": 4,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1082,
+    "round_id": 4,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1083,
+    "round_id": 5,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1084,
+    "round_id": 5,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1033,
+    "round_id": 1,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1034,
+    "round_id": 1,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1035,
+    "round_id": 1,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1036,
+    "round_id": 2,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1037,
+    "round_id": 2,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1038,
+    "round_id": 2,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1039,
+    "round_id": 3,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1040,
+    "round_id": 3,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1041,
+    "round_id": 3,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1042,
+    "round_id": 4,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1043,
+    "round_id": 4,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1044,
+    "round_id": 5,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1045,
+    "round_id": 5,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1046,
+    "round_id": 1,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1047,
+    "round_id": 1,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1048,
+    "round_id": 1,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1049,
+    "round_id": 2,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1050,
+    "round_id": 2,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1051,
+    "round_id": 2,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1052,
+    "round_id": 3,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1053,
+    "round_id": 3,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1054,
+    "round_id": 3,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1055,
+    "round_id": 4,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1056,
+    "round_id": 4,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1057,
+    "round_id": 5,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1058,
+    "round_id": 5,
+    "chara_id": 1106,
+    "big_flag": 0
+   }
+  ],
+  "text_data": [
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1163,
+    "text": "レースへの意気込みを教えてください！"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1163,
+    "text": "え、っと……か、勝ち――\\n……いや、精いっぱい、頑張ります……！"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1164,
+    "text": "ご家族が応援にいらしているそうですね。"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1164,
+    "text": "み、みんなで応援が……恒例で……\\nいいって言ったのに……うぅ。"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1165,
+    "text": "帽子、決まってますね！"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1165,
+    "text": "え、あっ、ありがとうございます……！\\nこの帽子は、大切なもの……なんです。"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1166,
+    "text": "レースへの意気込みを教えてください！"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1166,
+    "text": "え、っと……か、勝ち――\\n……いや、精いっぱい、頑張ります……！"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1167,
+    "text": "ご家族が応援にいらしているそうですね。"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1167,
+    "text": "み、みんなで応援が……恒例で……\\nいいって言ったのに……うぅ。"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1168,
+    "text": "帽子、決まってますね！"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1168,
+    "text": "え、あっ、ありがとうございます……！\\nこの帽子は、大切なもの……なんです。"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1169,
+    "text": "レースへの意気込みを教えてください！"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1169,
+    "text": "え、っと……か、勝ち――\\n……いや、精いっぱい、頑張ります……！"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1170,
+    "text": "ご家族が応援にいらしているそうですね。"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1170,
+    "text": "み、みんなで応援が……恒例で……\\nいいって言ったのに……うぅ。"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1171,
+    "text": "帽子、決まってますね！"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1171,
+    "text": "え、あっ、ありがとうございます……！\\nこの帽子は、大切なもの……なんです。"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1172,
+    "text": "レース前の勝負飯は？"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1172,
+    "text": "……ハンバーグ。\\n父さんの、得意料理で……力、つけてます。"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1173,
+    "text": "今のお気持ちをどうぞ！"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1173,
+    "text": "ここまで、来られたので……\\n最後は、僕が、か、勝ちますっ！"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1174,
+    "text": "レース前の勝負飯は？"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1174,
+    "text": "……ハンバーグ。\\n父さんの、得意料理で……力、つけてます。"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1175,
+    "text": "今のお気持ちをどうぞ！"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1175,
+    "text": "ここまで、来られたので……\\n最後は、僕が、か、勝ちますっ！"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1110,
+    "text": "今日のレースはいかがでしたか？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1110,
+    "text": "え、あの……必死で、あんまり、\\n覚えてなくて……すみません……！"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1111,
+    "text": "この喜びを、誰に伝えましょう？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1111,
+    "text": "ええと、まずは家族……そのあと、\\nその……海外にいる、幼馴染にも。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1112,
+    "text": "勝利後の自分へのご褒美は？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1112,
+    "text": "……そんな、自分を甘やかしていいのかな。\\nえっと、最後まで勝てたら、考えます。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1113,
+    "text": "勝利の決め手は？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1113,
+    "text": "いやっ、そんな、み、みんなすごく強くて！\\nだから……ぼ、僕が、聞きたいくらい……。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1114,
+    "text": "レース後には何をしていますか？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1114,
+    "text": "反省会を、します……僕が、完璧にできる\\nことなんてないから……勝っても、必ず。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1115,
+    "text": "勝利後の自分へのご褒美は？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1115,
+    "text": "……そんな、自分を甘やかしていいのかな。\\nえっと、最後まで勝てたら、考えます。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1116,
+    "text": "勝利の決め手は？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1116,
+    "text": "いやっ、そんな、み、みんなすごく強くて！\\nだから……ぼ、僕が、聞きたいくらい……。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1117,
+    "text": "レース後には何をしていますか？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1117,
+    "text": "反省会を、します……僕が、完璧にできる\\nことなんてないから……勝っても、必ず。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1118,
+    "text": "何が勝利につながったと思いますか？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1118,
+    "text": "……毎日、自分に言い聞かせていて。\\n下向くな、とにかくやれって。これ、かな。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1119,
+    "text": "今のお気持ちを、どうぞ！"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1119,
+    "text": "安心して、疲れました。……でも、今日は\\n僕を、僕が、少し褒めてもいいかな……。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1120,
+    "text": "何が勝利につながったと思いますか？"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1120,
+    "text": "……毎日、自分に言い聞かせていて。\\n下向くな、とにかくやれって。これ、かな。"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1121,
+    "text": "今のお気持ちを、どうぞ！"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1121,
+    "text": "安心して、疲れました。……でも、今日は\\n僕を、僕が、少し褒めてもいいかな……。"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 256,
+    "text": "僕だって、負けたくない…。\\n僕だって、前に進みたい…。\\nそんな時…勇気をくれる歌です。"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 276,
+    "text": "360度、お客さんに囲まれた\\n大舞台…そこで、堂々と\\n踊れるような、ウマ娘に――！"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 391,
+    "text": "深く帽子を被ったら、違う自分に\\nなれるかも…。そんな気持ちに\\nさせてくれる曲、なんです…。"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 252,
+    "text": "凪いだ夜の海みたいな…\\nそんな静かな曲、あるかな…？"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1176,
+    "text": "What's the key thing everyone should be watching for?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1176,
+    "text": "My hair♪ It's super glossy, right? I use a hair oil Celebs swear by♡"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1177,
+    "text": "What do you do before a race?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1177,
+    "text": "Listen to music♪ Western songs a friend told me about! They give me energy, like \"I'm gonna do my best too!\"♪"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1178,
+    "text": "What do you eat to celebrate a win?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1178,
+    "text": "Anything that gets me excited♡ Like Mama's homemade pie, or fluffy pancakes♪"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1179,
+    "text": "What's the key thing everyone should be watching for?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1179,
+    "text": "My hair♪ It's super glossy, right? I use a hair oil Celebs swear by♡"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1180,
+    "text": "What do you do before a race?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1180,
+    "text": "Listen to music♪ Western songs a friend told me about! They give me energy, like \"I'm gonna do my best too!\"♪"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1181,
+    "text": "What do you eat to celebrate a win?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1181,
+    "text": "Anything that gets me excited♡ Like Mama's homemade pie, or fluffy pancakes♪"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1182,
+    "text": "What's the key thing everyone should be watching for?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1182,
+    "text": "My hair♪ It's super glossy, right? I use a hair oil Celebs swear by♡"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1183,
+    "text": "What do you do before a race?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1183,
+    "text": "Listen to music♪ Western songs a friend told me about! They give me energy, like \"I'm gonna do my best too!\"♪"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1184,
+    "text": "What do you eat to celebrate a win?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1184,
+    "text": "Anything that gets me excited♡ Like Mama's homemade pie, or fluffy pancakes♪"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1185,
+    "text": "It's finally the finals. Are you fully prepared?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1185,
+    "text": "Totally! I did a really thorough warm-up! Keeping my body warm gets me in top form~♪"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1186,
+    "text": "Any message for your fans?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1186,
+    "text": "Even if I'm so sparkly it's blinding, keep your eyes on me♡ Get excited over me♡"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1187,
+    "text": "It's finally the finals. Are you fully prepared?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1187,
+    "text": "Totally! I did a really thorough warm-up! Keeping my body warm gets me in top form~♪"
+   },
+   {
+    "id": 204,
+    "category": 204,
+    "index": 1188,
+    "text": "Any message for your fans?"
+   },
+   {
+    "id": 205,
+    "category": 205,
+    "index": 1188,
+    "text": "Even if I'm so sparkly it's blinding, keep your eyes on me♡ Get excited over me♡"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1122,
+    "text": "That was a superb run!"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1122,
+    "text": "Ehehe, praise me more, more~!! That'll make me try even haaarder♪"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1123,
+    "text": "You were sparkling out there!"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1123,
+    "text": "Ehehe, right? I won't lose even to the Dubai night skyline♪"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1124,
+    "text": "What kind of training got you here?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1124,
+    "text": "Stuff like building up my body! Tore-cchi scolded me for eating nothing but sweets~."
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1125,
+    "text": "If you win the finals too, what's your reward?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1125,
+    "text": "My usual brand's bags are nice, but the best would be everyone's~......♡"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1126,
+    "text": "The finals are next. Are you nervous?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1126,
+    "text": "Not at all! I've hardly ever been nervous! Big stages get me even more excited♪"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1127,
+    "text": "What kind of training got you here?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1127,
+    "text": "Stuff like building up my body! Tore-cchi scolded me for eating nothing but sweets~."
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1128,
+    "text": "If you win the finals too, what's your reward?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1128,
+    "text": "My usual brand's bags are nice, but the best would be everyone's~......♡"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1129,
+    "text": "The finals are next. Are you nervous?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1129,
+    "text": "Not at all! I've hardly ever been nervous! Big stages get me even more excited♪"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1130,
+    "text": "Who do you want to share this win with?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1130,
+    "text": "My family! Papa, Mama, Onee-chans! I won! I woooon!!"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1131,
+    "text": "What's your next goal?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1131,
+    "text": "I'm gonna shine sooo much♪ Aiming for my dream of being a sparkly Celeb, let's goooo!!"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1132,
+    "text": "Who do you want to share this win with?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1132,
+    "text": "My family! Papa, Mama, Onee-chans! I won! I woooon!!"
+   },
+   {
+    "id": 231,
+    "category": 231,
+    "index": 1133,
+    "text": "What's your next goal?"
+   },
+   {
+    "id": 232,
+    "category": 232,
+    "index": 1133,
+    "text": "I'm gonna shine sooo much♪ Aiming for my dream of being a sparkly Celeb, let's goooo!!"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 277,
+    "text": "Onee-chan's teaching me tips for this song's dance~♪ You'll see the results... at the live show♡"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 300,
+    "text": "A trip through space is sooo Celeb! Maybe I could even take a vacation right in the middle of the Milky Way♡"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 392,
+    "text": "Bow-cheese-wee♪ ...I sing this one at karaoke with my sisters too~! It gets everyone so hyped☆"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 267,
+    "text": "I want a stylish, sparkly song~! Hey, hey, which one do you recommend?"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 231,
+    "text": "相手が強かろうが、期待されて\\nなかろうが、覆して勝ってみせる！\\n…そんな勇気が湧いてくる曲だぜ！"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 304,
+    "text": "うちの野菜はそのままでもウマい。\\nそいつを真心こめて料理したら、\\nそりゃもうごちそう間違いなしだ！"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 332,
+    "text": "部屋で歌ってるとパーマーが\\n『いただきまーす！』とか合いの手\\n入れてくれてさ。ノリいいよなぁ♪"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 227,
+    "text": "アクティブセティ“受信”確認。\\n“第一法則”に基づき“地球”へ。\\n“流星痕”…見逃さないでね。"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 298,
+    "text": "“到着地点”は“銀河の彼方”。\\n“第三宇宙速度”を超えて…\\n“DPSE”を『みんなと護る』だね"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 364,
+    "text": "“T-DK”…。\\nんーまーっまーっまーっまーっ\\nNMA NMA MA…『届いた』？"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 228,
+    "text": "この曲聴くと、わたしも輝ける\\nかも～って思えちゃうんですよね！\\n…あ、思うだけですけど、えへへ！"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 362,
+    "text": "あのー…音頭って聞いてたから\\nてっきりスローペースだと…。\\nふつ～そう思うじゃないですかぁ！"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 399,
+    "text": "memoire…記憶って意味だっけ？\\n記憶に残すなら、なるべく楽しい\\nことでい～っぱいにしたいよねぇ。"
+   },
+   {
+    "id": 228,
+    "category": 228,
+    "index": 456,
+    "text": "寮に帰ったら、ダンツちゃんの\\n「おかえり」が待ってる…こういう\\nふつ～ってさ、やっぱりいいよねぇ"
+   }
+  ],
+  "champions_news_win_comment": [
+   {
+    "id": 1110,
+    "round_id": 1,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1111,
+    "round_id": 1,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1112,
+    "round_id": 2,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1113,
+    "round_id": 2,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1114,
+    "round_id": 2,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1115,
+    "round_id": 3,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1116,
+    "round_id": 3,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1117,
+    "round_id": 3,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1118,
+    "round_id": 4,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1119,
+    "round_id": 4,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1120,
+    "round_id": 5,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1121,
+    "round_id": 5,
+    "chara_id": 1089,
+    "big_flag": 0
+   },
+   {
+    "id": 1122,
+    "round_id": 1,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1123,
+    "round_id": 1,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1124,
+    "round_id": 2,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1125,
+    "round_id": 2,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1126,
+    "round_id": 2,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1127,
+    "round_id": 3,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1128,
+    "round_id": 3,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1129,
+    "round_id": 3,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1130,
+    "round_id": 4,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1131,
+    "round_id": 4,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1132,
+    "round_id": 5,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1133,
+    "round_id": 5,
+    "chara_id": 1091,
+    "big_flag": 0
+   },
+   {
+    "id": 1038,
+    "round_id": 1,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1039,
+    "round_id": 1,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1040,
+    "round_id": 2,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1041,
+    "round_id": 2,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1042,
+    "round_id": 2,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1043,
+    "round_id": 3,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1044,
+    "round_id": 3,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1045,
+    "round_id": 3,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1046,
+    "round_id": 4,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1047,
+    "round_id": 4,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1048,
+    "round_id": 5,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1049,
+    "round_id": 5,
+    "chara_id": 1104,
+    "big_flag": 0
+   },
+   {
+    "id": 1002,
+    "round_id": 1,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1003,
+    "round_id": 1,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1004,
+    "round_id": 2,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1005,
+    "round_id": 2,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1006,
+    "round_id": 2,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1007,
+    "round_id": 3,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1008,
+    "round_id": 3,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1009,
+    "round_id": 3,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1010,
+    "round_id": 4,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1011,
+    "round_id": 4,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1012,
+    "round_id": 5,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1013,
+    "round_id": 5,
+    "chara_id": 1105,
+    "big_flag": 0
+   },
+   {
+    "id": 1014,
+    "round_id": 1,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1015,
+    "round_id": 1,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1016,
+    "round_id": 2,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1017,
+    "round_id": 2,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1018,
+    "round_id": 2,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1019,
+    "round_id": 3,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1020,
+    "round_id": 3,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1021,
+    "round_id": 3,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1022,
+    "round_id": 4,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1023,
+    "round_id": 4,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1024,
+    "round_id": 5,
+    "chara_id": 1106,
+    "big_flag": 0
+   },
+   {
+    "id": 1025,
+    "round_id": 5,
+    "chara_id": 1106,
+    "big_flag": 0
+   }
+  ],
+  "home_walk_group": [
+   {
+    "id": 91,
+    "chara_id_1": 1089,
+    "enable_eat_1": 1,
+    "chara_id_2": 0,
+    "enable_eat_2": 0,
+    "chara_id_3": 0,
+    "enable_eat_3": 0
+   },
+   {
+    "id": 92,
+    "chara_id_1": 1091,
+    "enable_eat_1": 0,
+    "chara_id_2": 0,
+    "enable_eat_2": 0,
+    "chara_id_3": 0,
+    "enable_eat_3": 0
+   },
+   {
+    "id": 84,
+    "chara_id_1": 1104,
+    "enable_eat_1": 0,
+    "chara_id_2": 0,
+    "enable_eat_2": 0,
+    "chara_id_3": 0,
+    "enable_eat_3": 0
+   },
+   {
+    "id": 80,
+    "chara_id_1": 1105,
+    "enable_eat_1": 0,
+    "chara_id_2": 0,
+    "enable_eat_2": 0,
+    "chara_id_3": 0,
+    "enable_eat_3": 0
+   },
+   {
+    "id": 81,
+    "chara_id_1": 1106,
+    "enable_eat_1": 1,
+    "chara_id_2": 0,
+    "enable_eat_2": 0,
+    "chara_id_3": 0,
+    "enable_eat_3": 0
+   }
+  ],
+  "home_story_trigger": [
+   {
+    "id": 603,
+    "pos_id": 130,
+    "home_event_type": 1,
+    "num": 3,
+    "story_id": 1089001,
+    "chara_id_1": 1068,
+    "chara_id_2": 1089,
+    "chara_id_3": 1067,
+    "condition_type": 0,
+    "gallery_chara_id": 1089,
+    "disp_order": 8,
+    "available_gallery_key": 1,
+    "start_date": 1678719600
+   },
+   {
+    "id": 692,
+    "pos_id": 410,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1089001,
+    "chara_id_1": 1089,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1089,
+    "disp_order": 1,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 693,
+    "pos_id": 310,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1089002,
+    "chara_id_1": 1089,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1089,
+    "disp_order": 2,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 694,
+    "pos_id": 110,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1089003,
+    "chara_id_1": 1089,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1089,
+    "disp_order": 3,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 696,
+    "pos_id": 420,
+    "home_event_type": 0,
+    "num": 2,
+    "story_id": 1089002,
+    "chara_id_1": 1068,
+    "chara_id_2": 1089,
+    "chara_id_3": 0,
+    "condition_type": 3,
+    "gallery_chara_id": 1089,
+    "disp_order": 5,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 698,
+    "pos_id": 410,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1091001,
+    "chara_id_1": 1091,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1091,
+    "disp_order": 1,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 699,
+    "pos_id": 510,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1091002,
+    "chara_id_1": 1091,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1091,
+    "disp_order": 2,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 700,
+    "pos_id": 310,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1091003,
+    "chara_id_1": 1091,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1091,
+    "disp_order": 3,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 702,
+    "pos_id": 420,
+    "home_event_type": 0,
+    "num": 2,
+    "story_id": 1091002,
+    "chara_id_1": 1091,
+    "chara_id_2": 1067,
+    "chara_id_3": 0,
+    "condition_type": 2,
+    "gallery_chara_id": 1091,
+    "disp_order": 5,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 789,
+    "pos_id": 520,
+    "home_event_type": 1,
+    "num": 2,
+    "story_id": 1091001,
+    "chara_id_1": 1067,
+    "chara_id_2": 1091,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1091,
+    "disp_order": 7,
+    "available_gallery_key": 1,
+    "start_date": 1712588400
+   },
+   {
+    "id": 589,
+    "pos_id": 530,
+    "home_event_type": 1,
+    "num": 3,
+    "story_id": 1104001,
+    "chara_id_1": 1104,
+    "chara_id_2": 1057,
+    "chara_id_3": 1017,
+    "condition_type": 0,
+    "gallery_chara_id": 1104,
+    "disp_order": 8,
+    "available_gallery_key": 1,
+    "start_date": 1682262000
+   },
+   {
+    "id": 642,
+    "pos_id": 310,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1104001,
+    "chara_id_1": 1104,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1104,
+    "disp_order": 1,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 643,
+    "pos_id": 110,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1104002,
+    "chara_id_1": 1104,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1104,
+    "disp_order": 2,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 644,
+    "pos_id": 210,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1104003,
+    "chara_id_1": 1104,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1104,
+    "disp_order": 3,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 645,
+    "pos_id": 420,
+    "home_event_type": 0,
+    "num": 2,
+    "story_id": 1104001,
+    "chara_id_1": 1057,
+    "chara_id_2": 1104,
+    "chara_id_3": 0,
+    "condition_type": 3,
+    "gallery_chara_id": 1104,
+    "disp_order": 4,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 646,
+    "pos_id": 130,
+    "home_event_type": 0,
+    "num": 3,
+    "story_id": 61,
+    "chara_id_1": 1017,
+    "chara_id_2": 1104,
+    "chara_id_3": 1057,
+    "condition_type": 3,
+    "gallery_chara_id": 1104,
+    "disp_order": 5,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 817,
+    "pos_id": 120,
+    "home_event_type": 1,
+    "num": 2,
+    "story_id": 1104002,
+    "chara_id_1": 1104,
+    "chara_id_2": 1064,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1104,
+    "disp_order": 9,
+    "available_gallery_key": 1,
+    "start_date": 1713884400
+   },
+   {
+    "id": 612,
+    "pos_id": 310,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1105001,
+    "chara_id_1": 1105,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1105,
+    "disp_order": 1,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 613,
+    "pos_id": 410,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1105002,
+    "chara_id_1": 1105,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1105,
+    "disp_order": 2,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 614,
+    "pos_id": 110,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1105003,
+    "chara_id_1": 1105,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1105,
+    "disp_order": 3,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 615,
+    "pos_id": 420,
+    "home_event_type": 0,
+    "num": 2,
+    "story_id": 1105002,
+    "chara_id_1": 1037,
+    "chara_id_2": 1105,
+    "chara_id_3": 0,
+    "condition_type": 3,
+    "gallery_chara_id": 1105,
+    "disp_order": 4,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 621,
+    "pos_id": 520,
+    "home_event_type": 1,
+    "num": 2,
+    "story_id": 1105001,
+    "chara_id_1": 1105,
+    "chara_id_2": 1047,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1105,
+    "disp_order": 7,
+    "available_gallery_key": 1,
+    "start_date": 1684594800
+   },
+   {
+    "id": 622,
+    "pos_id": 120,
+    "home_event_type": 1,
+    "num": 2,
+    "story_id": 1105002,
+    "chara_id_1": 1037,
+    "chara_id_2": 1105,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1105,
+    "disp_order": 8,
+    "available_gallery_key": 1,
+    "start_date": 1684594800
+   },
+   {
+    "id": 624,
+    "pos_id": 310,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1106001,
+    "chara_id_1": 1106,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1106,
+    "disp_order": 1,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 625,
+    "pos_id": 510,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1106002,
+    "chara_id_1": 1106,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1106,
+    "disp_order": 2,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 626,
+    "pos_id": 210,
+    "home_event_type": 0,
+    "num": 1,
+    "story_id": 1106003,
+    "chara_id_1": 1106,
+    "chara_id_2": 0,
+    "chara_id_3": 0,
+    "condition_type": 1,
+    "gallery_chara_id": 1106,
+    "disp_order": 3,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 627,
+    "pos_id": 520,
+    "home_event_type": 0,
+    "num": 2,
+    "story_id": 1106002,
+    "chara_id_1": 1106,
+    "chara_id_2": 1077,
+    "chara_id_3": 0,
+    "condition_type": 2,
+    "gallery_chara_id": 1106,
+    "disp_order": 4,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 634,
+    "pos_id": 530,
+    "home_event_type": 0,
+    "num": 3,
+    "story_id": 66,
+    "chara_id_1": 1106,
+    "chara_id_2": 1084,
+    "chara_id_3": 1083,
+    "condition_type": 2,
+    "gallery_chara_id": 1106,
+    "disp_order": 5,
+    "available_gallery_key": 1,
+    "start_date": 1614135600
+   },
+   {
+    "id": 776,
+    "pos_id": 220,
+    "home_event_type": 1,
+    "num": 2,
+    "story_id": 1106001,
+    "chara_id_1": 1105,
+    "chara_id_2": 1106,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1106,
+    "disp_order": 6,
+    "available_gallery_key": 1,
+    "start_date": 1711810800
+   },
+   {
+    "id": 777,
+    "pos_id": 520,
+    "home_event_type": 1,
+    "num": 2,
+    "story_id": 1106003,
+    "chara_id_1": 1077,
+    "chara_id_2": 1106,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1106,
+    "disp_order": 7,
+    "available_gallery_key": 1,
+    "start_date": 1711810800
+   },
+   {
+    "id": 952,
+    "pos_id": 520,
+    "home_event_type": 1,
+    "num": 2,
+    "story_id": 1106002,
+    "chara_id_1": 1106,
+    "chara_id_2": 1047,
+    "chara_id_3": 0,
+    "condition_type": 0,
+    "gallery_chara_id": 1106,
+    "disp_order": 8,
+    "available_gallery_key": 1,
+    "start_date": 1743346800
+   }
+  ],
+  "jukebox_comment": [
+   {
+    "id": 256,
+    "comment_id": 1089101,
+    "chara_id": 1089,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 276,
+    "comment_id": 1089102,
+    "chara_id": 1089,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 391,
+    "comment_id": 1089103,
+    "chara_id": 1089,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 252,
+    "comment_id": 1089201,
+    "chara_id": 1089,
+    "comment_type": 2,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 277,
+    "comment_id": 1091101,
+    "chara_id": 1091,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 300,
+    "comment_id": 1091102,
+    "chara_id": 1091,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 392,
+    "comment_id": 1091103,
+    "chara_id": 1091,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 267,
+    "comment_id": 1091201,
+    "chara_id": 1091,
+    "comment_type": 2,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 231,
+    "comment_id": 1104101,
+    "chara_id": 1104,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 304,
+    "comment_id": 1104102,
+    "chara_id": 1104,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 332,
+    "comment_id": 1104103,
+    "chara_id": 1104,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 221,
+    "comment_id": 1104201,
+    "chara_id": 1104,
+    "comment_type": 2,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 227,
+    "comment_id": 1105101,
+    "chara_id": 1105,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 298,
+    "comment_id": 1105102,
+    "chara_id": 1105,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 364,
+    "comment_id": 1105103,
+    "chara_id": 1105,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 214,
+    "comment_id": 1105201,
+    "chara_id": 1105,
+    "comment_type": 2,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 228,
+    "comment_id": 1106101,
+    "chara_id": 1106,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 362,
+    "comment_id": 1106102,
+    "chara_id": 1106,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 399,
+    "comment_id": 1106103,
+    "chara_id": 1106,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 456,
+    "comment_id": 1106104,
+    "chara_id": 1106,
+    "comment_type": 1,
+    "variation_type": 0,
+    "variation_value": 0
+   },
+   {
+    "id": 218,
+    "comment_id": 1106201,
+    "chara_id": 1106,
+    "comment_type": 2,
+    "variation_type": 0,
+    "variation_value": 0
+   }
+  ]
+ }
+}

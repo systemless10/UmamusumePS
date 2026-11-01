@@ -30,6 +30,7 @@ _FEATURE_MODULES = [
     "app.handlers.limited_shop",
     "app.handlers.transfer",
     "app.handlers.campaign_walking",
+    "app.handlers.campaigns",
     "app.handlers.map_event",
     "app.handlers.stamina",
     "app.handlers.payment",

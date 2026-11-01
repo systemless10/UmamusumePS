@@ -725,16 +725,17 @@ def ramen_data_set(full_state: dict, chara_info: dict, home_info: dict,
     turn = served_turn(full_state, chara_info)
     active = gauge_active(st, turn)
     tricks = list(st["tricks"])
+    hide = start or turn < 3 or turn > LAST_GAUGE_TURN
     ds = {
         "command_info_array": None,
         "evaluation_info_array": [] if start else evaluation_array(full_state, chara_info),
         "feeling_reduce_turn_info_array": None,
         "feeling_turn_info_array": (
-            [] if start or turn > LAST_GAUGE_TURN else
+            [] if hide else
             [{"feeling_id": f, "remain_turn": int(st["gauge"].get(str(f), 0)) if st["regions"] else 0}
              for f in FEELINGS]),
         "feeling_info_array": (
-            [] if start or turn > LAST_GAUGE_TURN else
+            [] if hide else
             [{"feeling_index": i + 1, "feeling_id": tricks[i] if i < len(tricks) else 0}
              for i in range(TRICK_SLOTS)]),
         "special_feeling_num": int(st["secrets"]),

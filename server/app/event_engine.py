@@ -24,6 +24,32 @@ CAREER_EVENT_IDS = frozenset({SUPPORT_EVENT_ID, SUPPORT_RANDOM_EVENT_ID, CHARA_E
 
 
 @master_data.context_cache(maxsize=8192)
+def long_story_id(story_id) -> int:
+    sid = int(story_id or 0)
+    if sid <= 0 or master_data.query_one(
+            "SELECT 1 FROM single_mode_story_data WHERE story_id=?", (sid,)):
+        return sid
+    row = master_data.query_one(
+        "SELECT story_id FROM single_mode_story_data WHERE short_story_id=? ORDER BY id",
+        (sid,))
+    return int(row["story_id"]) if row else sid
+
+
+def apply_short_cut_story_ids(response: dict) -> None:
+    data = (response or {}).get("data")
+    if not isinstance(data, dict):
+        return
+    blocks = [data, *(v for v in data.values() if isinstance(v, dict))]
+    if not any(isinstance(b.get("chara_info"), dict)
+               and b["chara_info"].get("short_cut_state") == 0 for b in blocks):
+        return
+    for b in blocks:
+        for ev in b.get("unchecked_event_array") or ():
+            if isinstance(ev, dict) and isinstance(ev.get("story_id"), int):
+                ev["story_id"] = long_story_id(ev["story_id"])
+
+
+@master_data.context_cache(maxsize=8192)
 def wire_story_id(story_id) -> int:
     try:
         sid = int(story_id or 0)
@@ -452,6 +478,12 @@ def _guard_holds(guard: dict, chara_info: dict) -> bool | None:
     if kind == "season":
         season = _season_of(chara_info)
         return None if season is None else season == guard.get("value")
+    if kind in ("has_condition", "lacks_condition"):
+        want = guard.get("value")
+        if not isinstance(want, int):
+            return None
+        has = want in (chara_info.get("chara_effect_id_array") or ())
+        return has if kind == "has_condition" else not has
     return None
 
 
@@ -626,19 +658,32 @@ def career_event_entry(event: dict, event_id: int, story_id: int,
 UNLOCK_OUTING_DISPLAY_ID = 11
 
 
+def _is_group_card(card_id) -> bool:
+    if not card_id:
+        return False
+    rows = master_data.query("SELECT support_card_type FROM support_card_data WHERE id=?",
+                             (int(card_id),))
+    return any(r["support_card_type"] == 3 for r in rows)
+
+
 def choice_reward_array(event: dict, chara_info: dict | None = None,
                         default_char_id=None, unlock_partner=None,
                         unlock_chances=None, source_card_id=None) -> list:
     out = []
     chances = unlock_chances or {}
+    group_card = source_card_id if _is_group_card(source_card_id) else None
     for i, choice in enumerate(event.get("choices") or []):
         idx = i + 1
         chance = chances.get(idx, 0.0) if unlock_partner else 0.0
         marker = _G(UNLOCK_OUTING_DISPLAY_ID, unlock_partner) if chance > 0 else None
         entries = []
-        for group in _choice_effect_groups(choice):
+        for group in _choice_effect_groups(resolve_segments(choice, chara_info)):
             gains = _encode_gains(boost_effects(group, source_card_id, chara_info),
                                   chara_info, default_char_id)
+            if group_card and default_char_id:
+                for g in gains:
+                    if g["display_id"] in (4, 35) and g["effect_value_0"] == default_char_id:
+                        g["effect_value_0"] = group_card
             entries.append({"select_index": idx, "gain_param_array": gains})
         if marker is not None:
             if chance >= 1.0:
@@ -1066,9 +1111,10 @@ def seasonal_event(kind: str, card_id, context: dict | None = None) -> dict | No
         base_effects = [{"type": stat, "value": "+5",
                          "display_id": 19, "display_target": 5},
                         {"type": "energy", "value": "-5"}]
-        if (context or {}).get("scenario_id") == 1:
-            base_effects = [{"type": "npc_bond", "target_id": 103, "chara_id": 9003,
-                             "value": "+5"}] + base_effects
+        companion = {1: (102, 9002), 2: (103, 9003)}.get((context or {}).get("scenario_id"))
+        if companion:
+            base_effects = [{"type": "npc_bond", "target_id": companion[0],
+                             "chara_id": companion[1], "value": "+5"}] + base_effects
         no_cure = list(base_effects)
         with_cure = base_effects + [{"type": "heal_status"}]
         return {"choices": [

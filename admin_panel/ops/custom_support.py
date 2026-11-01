@@ -71,3 +71,28 @@ def art(viewer, args):
     if not d:
         raise OpError("Custom card not found")
     return {"art": d.get("art", ""), "donor": d["art_donor"]}
+
+
+def _umapack_folder(args):
+    from app import umapack_sync as U
+    from .system import hachimi_dir
+    return (args.get("folder") or "").strip() or U.settings().get("folder") or str(hachimi_dir() / "umapacks")
+
+
+@op("umapack.sync_status")
+def umapack_sync_status(viewer, args):
+    from app import umapack_sync as U
+    from .common import region_name
+    if region_name() != "global":
+        return {"available": False}
+    s = U.settings()
+    return {"available": True, "folder": _umapack_folder({}), "custom": bool(s.get("folder"))}
+
+
+@op("umapack.sync")
+def umapack_sync(viewer, args):
+    from app import umapack_sync as U
+    from .common import region_name
+    if region_name() != "global":
+        raise OpError("Umapacks are Global only.")
+    return _run(U.sync, _umapack_folder(args))

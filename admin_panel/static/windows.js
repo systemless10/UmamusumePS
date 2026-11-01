@@ -16,6 +16,7 @@ import { champions } from "./champions.js";
 import { syncWin } from "./sync.js";
 import { jobsWin } from "./jobs.js";
 import { serverWin } from "./server-config.js";
+import { settingsWin } from "./settings.js";
 import { pvpWin } from "./pvp.js";
 import { setupWin } from "./setup.js";
 
@@ -64,6 +65,7 @@ export const WINDOWS = {
   champions: g("Game", champions, { dock: false, key: null }),
   setup: setupWin,
   server: serverWin,
+  settings: settingsWin,
   jobs: g("System", jobsWin, { worker: false }),
   history: g("System", historyWin),
   errors: { ...errorsWin, worker: false },

@@ -23,7 +23,7 @@ SP_TAG_BOOST_TYPE = 3
 TRAINEE_SLOT_BASE = 2007900
 
 GROWTH = (3, 8)
-CO_TRAIN = (18, 27)
+CO_MAIN, CO_SUB, CO_OTHER = (15, 20), (7, 12), (2, 5)
 SHARE_SPREAD, SHARE_MAX = 7, 28
 SSS_ODDS = {0: 0.03, 5: 0.42, 6: 0.42, 7: 0.42}
 SSS_SURE = 8
@@ -309,17 +309,38 @@ def _grow_points(full_state: dict, st: dict, turn: int) -> None:
 
 def _grow_stats(full_state: dict, st: dict, turn: int) -> None:
     rng = rng_for(full_state, "growth", turn)
-    co = st.get("co_train") or {}
-    co_charas = {int(c) for c in co.get("charas") or ()} if int(co.get("turn") or 0) == turn - 1 else set()
-    co_stat = M.STAT_OF.get(int(co.get("command_id") or 0))
     for m in st["members"]:
         row = M_scout(m)
         for key, col in zip(M.STAT_KEYS, ("speed", "stamina", "pow", "guts", "wiz")):
             lim = int((row or {}).get(f"{col}_limit") or 2000)
-            add = rng.randint(*GROWTH)
-            if m["chara"] in co_charas and key == co_stat:
-                add += rng.randint(*CO_TRAIN)
-            m[key] = min(lim, int(m[key]) + add)
+            m[key] = min(lim, int(m[key]) + rng.randint(*GROWTH))
+
+
+_STAT_OF_TARGET = {1: "speed", 2: "stamina", 3: "power", 4: "guts", 5: "wiz"}
+
+
+def _facility_stats(base_cmd: int) -> tuple:
+    from ... import master_data
+    rows = master_data.query(
+        "SELECT target_type, effect_value FROM single_mode_training_effect "
+        "WHERE scenario_id=6 AND sub_id=1 AND command_id=? AND target_type BETWEEN 1 AND 5 "
+        "ORDER BY effect_value DESC, target_type", (int(base_cmd),)) or []
+    stats = [_STAT_OF_TARGET[int(r["target_type"])] for r in rows]
+    return (stats + [None, None])[:2]
+
+
+def _co_train_gain(full_state: dict, st: dict, base_cmd: int, charas, turn: int) -> None:
+    main, sub = _facility_stats(base_cmd)
+    rng = rng_for(full_state, "co-train", turn)
+    for c in charas:
+        m = member(st, c)
+        if not m:
+            continue
+        row = M_scout(m)
+        for key, col in zip(M.STAT_KEYS, ("speed", "stamina", "pow", "guts", "wiz")):
+            lim = int((row or {}).get(f"{col}_limit") or 2000)
+            span = CO_MAIN if key == main else CO_SUB if key == sub else CO_OTHER
+            m[key] = min(lim, int(m[key]) + rng.randint(*span))
 
 
 def M_scout(m: dict) -> dict | None:
@@ -382,6 +403,8 @@ def on_training(full_state: dict, chara_info: dict, command_id: int, partners, t
         m["gauge"] = min(GAUGE_MAX, int(m["gauge"]) + 1 + rainbows)
     flag(st, "not_up_boost", full)
     st["co_train"] = {"turn": int(turn), "command_id": formula.base_of(command_id), "charas": on}
+    if not exped and not failed:
+        _co_train_gain(full_state, st, formula.base_of(command_id), on, turn)
 
 
 def raise_gauges(st: dict, charas, n: int = 1) -> list:

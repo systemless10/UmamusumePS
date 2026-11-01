@@ -31,6 +31,9 @@ def restricted_support_cards(scenario_id) -> frozenset:
     return _restrict_rows().get(int(scenario_id or 0), frozenset())
 
 
+_URA_LEVELUP_EVENT = {101: 1006, 102: 1023, 103: 1024, 105: 1025, 106: 1026}
+
+
 class Scenario:
 
     scenario_id: int = 0
@@ -121,11 +124,18 @@ class Scenario:
                            payload: dict) -> None:
         return None
 
+    def training_failure_event(self, full_state: dict, chara_info: dict,
+                               command_id: int, worst: bool):
+        return None
+
     def award_claims_slot(self, full_state: dict) -> bool:
         return False
 
     def training_bond_bonus(self, full_state: dict, chara_info: dict) -> int:
         return 0
+
+    def npc_training_partners(self, chara_info: dict) -> frozenset:
+        return frozenset()
 
     def mood_change(self, full_state: dict, chara_info: dict, value: int) -> int:
         return value
@@ -138,6 +148,7 @@ class Scenario:
 
     turn_end_hold_state: int = 5
     turn_end_timings: tuple = (3, 6, 10)
+    held_board_keys: tuple = ()
 
     def settle(self, full_state: dict, chara_info: dict,
                endpoint: str = "") -> bool:
@@ -188,7 +199,7 @@ class Scenario:
         return reveals
 
     def facility_levelup_event(self, command_id) -> tuple:
-        return (1024, 400000005)
+        return (_URA_LEVELUP_EVENT.get(command_id, 1024), 400000005)
 
     def appraisal_events(self):
         return None
@@ -259,6 +270,10 @@ class Scenario:
 
     def race_bonus_pct(self, full_state: dict, chara_info: dict) -> int:
         return 0
+
+    def goal_race_reward(self, full_state: dict, chara_info: dict, reward: dict,
+                         finals_round) -> dict:
+        return reward
 
     def fan_bonus_pct(self, full_state: dict, chara_info: dict) -> int:
         return 0

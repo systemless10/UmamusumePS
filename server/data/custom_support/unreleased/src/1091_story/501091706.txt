@@ -32,7 +32,7 @@
 23 Out now, both at once! The pistachio cream honeyade latte and the yuzu-apple honeyade smoothie!
 24 Whoa, they both look yummy...! But they're both pretty big...
 25 !
-26 Hey, hey, Tore-cchi! This time, let's split the drinks half and—
+26 Hey hey, Tore-cchi! This time, let's split the drinks half and—
 26> No, no, no! That's going too far!
 27 ...No good?
 28 ......... ...Okay.
@@ -48,7 +48,7 @@
 34 My, are you sure? Even for me, who was just passing by...
 35 My desperate measure was to somehow find one of Vivlos's friends nearby and have her split the drinks with her.
 35> Yes, please share half with Vivlos | Yes, please share half with Vivlos
-36 Hey, hey, Satono! Gimme a little of yours?
+36 Hey hey, Satono! Gimme a little of yours?
 37 Fufu, of course♪ Just a moment.
 38 Ehehe. ............
 39 Aren't you getting one for yourself, Tore-cchi? I want a sip of yours too?

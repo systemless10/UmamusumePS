@@ -96,7 +96,7 @@ def closing_pending(full_state: dict, chara_info: dict, turn: int) -> bool:
 
 def opening_events() -> list:
     out = [_beat(e, s, n_choices=n, priority=CE.PRIO_FRONT,
-                 resolver="cook_friends" if e == 208006 else None)
+                 resolver={208006: "cook_friends", 208009: "cook_opening_end"}.get(e))
            for e, s, n in OPENING]
     return [e for e in out if e is not None]
 
@@ -156,6 +156,9 @@ def cook_calendar(ctx: CE.Ctx) -> list:
     return [e for e in out if e is not None]
 
 
+CARE_AFTER_STORY = CE.PRIO_NORMAL + 1
+
+
 @CE.producer("cook_due", priority=CE.PRIO_SPECIAL, scenario=SCENARIO_ID)
 def cook_due(ctx: CE.Ctx) -> list:
     st = impl.state(ctx.full_state)
@@ -167,10 +170,10 @@ def cook_due(ctx: CE.Ctx) -> list:
         payload = {"key": kind, "turn": turn, "spec": d.get("spec")}
         if kind in ("rest", "outing"):
             ev = CARE_CAMP if camp and kind == "outing" else CARE
-            out.append(_beat(*ev, timing=6, from_endpoint=True, priority=CE.PRIO_SPECIAL,
+            out.append(_beat(*ev, timing=6, from_endpoint=True, priority=CARE_AFTER_STORY,
                              resolver="cook_care", payload=payload, once=f"cook:care:{turn}"))
         elif kind == "yayoi":
-            out.append(_beat(*CARE_YAYOI, timing=6, from_endpoint=True, priority=CE.PRIO_SPECIAL,
+            out.append(_beat(*CARE_YAYOI, timing=6, from_endpoint=True, priority=CARE_AFTER_STORY,
                              resolver="cook_care", payload=payload, once=f"cook:care:{turn}"))
         elif kind == "race":
             ev = CARE_CAMP if camp else CARE
@@ -189,9 +192,18 @@ def cook_due(ctx: CE.Ctx) -> list:
 def _friends(full_state, chara_info, event, choice_number, **kw):
     st = impl.state(full_state)
     impl.recruit_friends(full_state, chara_info)
+    st["opened"] = True
+    st["cook_flags"]["new_dish"] = 1
     n = (impl.OPENING_MATERIALS_LINK if impl.trainee_chara(chara_info) in impl.LINK_TRAINEES
          else impl.OPENING_MATERIALS)
     impl.flag(st, "event_gain", impl.add_materials(st, n))
+    impl.RI.refresh_home(full_state, chara_info)
+    return {}
+
+
+@CE.resolver("cook_opening_end")
+def _opening_end(full_state, chara_info, event, choice_number, **kw):
+    impl.state(full_state)["reseated"] = True
     impl.RI.refresh_home(full_state, chara_info)
     return {}
 

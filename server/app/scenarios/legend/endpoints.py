@@ -139,7 +139,9 @@ def handle_race_end(payload: dict) -> dict:
         st["races"] = [r for r in st["races"] if int(r["turn"]) != turn] + [
             {"race_type": M.RACE_TYPE.get(group, 1), "turn": turn, "result_rank": rank}]
         sp["gained_fans"] = fans
-        sp["reward_info"] = smt._build_race_reward_info(program, rank, fans, cd.get("race_history"))
+        sp["reward_info"] = smt._apply_reward_campaigns(
+            smt._build_race_reward_info(program, rank, fans, cd.get("race_history")),
+            full_state, chara_info)
         if group == impl.LEGEND_RACE:
             st["route_id"] = impl.cm_route(cd.get("race_history") or [])
             sp["snapshot"] = impl.race_result_info(sp.get("race_start_info") or {}, sp.get("race_scenario"),

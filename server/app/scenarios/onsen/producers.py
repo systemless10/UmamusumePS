@@ -118,9 +118,13 @@ def complete_event(st: dict, kind: str, turn: int) -> CE.Event | None:
         event_id, story = first, COMPLETE_STORIES[0]
     else:
         event_id, story = later, COMPLETE_STORIES[1]
-    return _beat(event_id, story, timing=COMPLETE_TIMING[kind], priority=CE.PRIO_FRONT,
+    ev = _beat(event_id, story, timing=COMPLETE_TIMING[kind], priority=CE.PRIO_FRONT,
                  once=f"onsen:complete:{sel}", resolver="onsen_complete",
                  payload={"onsen_id": sel, "turn": int(turn)})
+    if ev and sel not in st["dug"]:
+        st["completion_pending"] = {"onsen_id": sel, "rank": impl.rank(st)}
+        st["dug"].append(sel)
+    return ev
 
 
 def link_choices(chara_info: dict) -> list:
@@ -190,6 +194,10 @@ def _first_pick(full_state, chara_info, event, choice_number, **kw):
             if isinstance(row, dict) and row.get("target_id") == k[0]:
                 row["is_appear"] = 1
     impl.open_springs(st, impl.SPRINGS_OPENED_BY[3])
+    st["enabled"] = True
+    if kw.get("viewer_id") is not None:
+        from .endpoints import _blue_groups
+        st["blue"] = _blue_groups(kw["viewer_id"], chara_info)
     impl.add_tickets(st, impl.FIRST_PICK_TICKETS)
     _ps(chara_info, 36)
     return {}
@@ -220,8 +228,11 @@ def _complete(full_state, chara_info, event, choice_number, **kw):
     st = impl.state(full_state)
     payload = event.payload or {}
     onsen = int(payload.get("onsen_id") or st["selected"])
+    pending = st.pop("completion_pending", None)
     if onsen not in st["dug"]:
         st["dug"].append(onsen)
+        st["completions"] = int(st["completions"]) + 1
+    elif pending and pending["onsen_id"] == onsen:
         st["completions"] = int(st["completions"]) + 1
     impl.add_tickets(st, impl.ticket_num(chara_info, M.TICKET_DIG_COMPLETE))
     st["hold_turn"] = int(payload.get("turn") or 0) or st["hold_turn"]

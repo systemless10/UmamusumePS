@@ -299,7 +299,7 @@ def _apply_unreleased(dst, b):
                         'SELECT 1 FROM text_data WHERE category=? AND [index]=?',
                         (row["category"], row["index"])).fetchone():
                     continue
-                same = [k for k in row if k not in ("start_date", "end_date", "start_time", "end_time")
+                same = [k for k in row if not k.endswith(("_date", "_time")) and k != "sort"
                         and not (table == "text_data" and k == "id")]
                 if same != list(row) and dst.execute(
                         f'SELECT 1 FROM "{table}" WHERE ' + " AND ".join(f'"{k}" IS ?' for k in same),
@@ -650,15 +650,15 @@ def _next(c, table):
     return int(c.execute(f'SELECT COALESCE(MAX(id),0)+1 FROM "{table}"').fetchone()[0])
 
 
-def publish(only_charas=None, activate=True, only_scenarios=(), only_supports=(), include_cards=False) -> dict:
+def publish(only_charas=None, activate=True, only_scenarios=(), only_supports=(), include_cards=False, preview=False) -> dict:
     from . import master_data as M
     from . import banner_lineup, date_sync, event_schedule
     with _lock:
         s = status()
         drafts = [validate(d, True) for d in s["cards"] if not d["retired"]] if only_charas is None or include_cards else []
-        events = event_schedule.validate(event_schedule.schedules(), M.get_connection())
-        sync = date_sync.setting()
-        lineup = banner_lineup.validate(banner_lineup.setting(), M.get_connection())
+        events = [] if preview else event_schedule.validate(event_schedule.schedules(), M.get_connection())
+        sync = {} if preview else date_sync.setting()
+        lineup = [] if preview else banner_lineup.validate(banner_lineup.setting(), M.get_connection())
         bundles = unreleased_bundles()
         if only_charas is not None:
             bundles = tuple(b for b in bundles if b.get("chara_id") in only_charas
@@ -677,7 +677,8 @@ def publish(only_charas=None, activate=True, only_scenarios=(), only_supports=()
                               "base_sha256": base, "cards": drafts, "events": events, "charas": charas,
                               **({"scenarios": scens} if scens else {}), **({"supports": supports} if supports else {}),
                               **({"shared": shared} if shared else {}), **({"sync": sync} if sync else {}), **({"banners": lineup} if lineup else {}),
-                              **({"events_rev": event_schedule.APPLY_REVISION} if events else {})},
+                              **({"events_rev": event_schedule.APPLY_REVISION} if events else {}),
+                              **({"preview": 1} if preview else {})},
                              sort_keys=True, separators=(",", ":"), ensure_ascii=False)
         digest = hashlib.sha256(encoded.encode()).hexdigest()
         directory = root() / "packs" / digest
@@ -790,12 +791,39 @@ def history():
         c.close()
 
 
+def preview_pack(m) -> dict | None:
+    charas = {c["chara_id"] for c in m.get("charas") or ()}
+    scens = {s["scenario_id"] for s in m.get("scenarios") or ()}
+    if not charas and not scens:
+        return None
+    from . import master_data as M
+    p = publish(only_charas=charas, only_scenarios=scens, activate=False, preview=True)
+    base = M.get_connection()
+    has = lambda table, i: base.execute(f"SELECT 1 FROM {table} WHERE id=?", (i,)).fetchone()
+    return {"digest": p["digest"], "master_sha256": p["master_sha256"],
+            "cards": sorted({c for b in p["charas"] for c in b["cards"] if not has("card_data", c)}),
+            "scenarios": sorted(b["scenario_id"] for b in p["scenarios"] if not has("single_mode_scenario", b["scenario_id"]))}
+
+
 def bootstrap(protocol, target_region, base_sha256):
+    from . import master_data as M
+    M.refresh_if_changed()
+    from . import umapack_sync
+    umapack_sync.auto_sync()
     m = manifest()
+    if (m and is_enabled() and protocol == PROTOCOL and str(base_sha256) != m["base_sha256"]
+            and str(base_sha256) == digest_file(M.MASTER_MDB_PATH)):
+        log.info("custom support: game master changed; republishing the pack")
+        publish()
+        m = manifest()
     if protocol != PROTOCOL or target_region != region.CURRENT_REGION.get() or not is_enabled() or not m:
         raise ValueError("Custom support cards are off or the plugin is incompatible")
     if not secrets.compare_digest(str(base_sha256), m["base_sha256"]):
         raise ValueError("Client and server master versions differ; custom cards remain hidden")
+    try:
+        preview = preview_pack(m)
+    except ValueError:
+        preview = None
     with _lock:
         now = time.time()
         for k in list(_challenges):
@@ -803,8 +831,9 @@ def bootstrap(protocol, target_region, base_sha256):
                 del _challenges[k]
         challenge = secrets.token_hex(32)
         _challenges[challenge] = {"digest": m["digest"], "expires": now + 300,
-                                  "region": region.CURRENT_REGION.get()}
-    return dict(m, challenge=challenge)
+                                  "region": region.CURRENT_REGION.get(),
+                                  "preview": preview and preview["digest"]}
+    return dict(m, challenge=challenge, **({"preview": preview} if preview else {}))
 
 
 def ready(challenge, digest, master_sha256, instance):
@@ -940,6 +969,9 @@ def preflight(endpoint, payload):
                 career = full["single_mode_team"]
                 if (not CURRENT_PACK.get() or _refs(career, set(definitions())) or _trainee_refs(career, hidden_cards, hidden_charas)
                         or _scenario_ref(career, hidden_scens) or _refs(career, known_ids() - visible_ids())):
+                    log.warning("custom_support: %s refused (open career was started under pack %s; "
+                                "the active pack %s lacks something it uses)", endpoint,
+                                str(full["_custom_support_pack"])[:8], (CURRENT_PACK.get() or "none")[:8])
                     return False
                 log.info("custom_support: career moved from pack %s to %s",
                          str(full["_custom_support_pack"])[:8], CURRENT_PACK.get()[:8])
@@ -956,7 +988,7 @@ def preflight(endpoint, payload):
     full = state.get_state(payload.get("viewer_id")) or {}
     career = full.get("single_mode_team") or {}
     for k, v in full.items():
-        if ("career" in k or "single_mode" in k) and _refs(v, ids):
+        if k != "career_save_slots" and ("career" in k or "single_mode" in k) and _refs(v, ids):
             career = v
             break
     if endpoint.split("/")[0].startswith("single_mode") and _refs(career, ids - allowed):
@@ -1006,6 +1038,9 @@ def project(response):
                     continue
                 if isinstance(x, dict) and key in ("summary_user_info_array", "directory_card_array") and _refs(x, hidden):
                     continue
+                if isinstance(x, dict) and key == "scenario_record_array" and (
+                        _refs(x, hidden) or _trainee_refs(x, hidden_cards, hidden_charas)):
+                    continue
                 out.append(walk(x, key))
             return out
         if isinstance(n, dict):
@@ -1014,14 +1049,17 @@ def project(response):
                 if "support_card_id" in k and isinstance(v, int) and v in hidden:
                     out[k] = 0
                 elif k in ("single_mode_chara_light", "single_mode_start_common", "single_mode_load_common") and (
-                        _refs(v, hidden) or _scenario_ref(v, hidden_scens)):
+                        _refs(v, hidden) or _scenario_ref(v, hidden_scens)
+                        or _trainee_refs(v, hidden_cards, hidden_charas)):
                     out[k] = None
                 elif k == "home_position_info" and isinstance(v, dict) and hidden_charas:
                     out[k] = dict(v)
                     for slot in range(1, 5):
                         if v.get(f"position{slot}_chara_id") in hidden_charas:
-                            out[k][f"position{slot}_chara_id"] = 1001
-                            out[k][f"position{slot}_cloth_id"] = 100101
+                            used = {out[k].get(f"position{i}_chara_id") for i in range(1, 5)}
+                            sub = next(c for c in range(1001, 1090) if c not in used)
+                            out[k][f"position{slot}_chara_id"] = sub
+                            out[k][f"position{slot}_cloth_id"] = 100101 if sub == 1001 else 2
                 else:
                     out[k] = walk(v, k)
             return out

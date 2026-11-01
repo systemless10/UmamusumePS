@@ -5,8 +5,10 @@ import copy
 import functools
 import logging
 import random
+import json
 
 from ... import master_data
+from ... import region
 from ... import rating_formula
 
 log = logging.getLogger("uma-server")
@@ -516,7 +518,9 @@ def _take_capped(st: dict) -> list:
 def rank_score(member: dict) -> int:
     stats = [member.get(s, 0) or 0 for s in STATS]
     skills = [{"skill_id": s} for s in member_race_skills(member)]
-    total = rating_formula.get_rating(stats) + rating_formula.get_skill_score(skills)
+    aptitudes = scout_pool().get(member.get("scout_id")) or {}
+    total = (rating_formula.get_rating(stats)
+             + rating_formula.get_skill_score(skills, aptitudes))
     return min(rating_formula.MAX_RANK_SCORE, total)
 
 
@@ -708,13 +712,33 @@ def power_up_resolved(st: dict, level: int) -> None:
 VETERAN_JOIN_FRACTION = 0.74
 
 
-_MEMBER_SKILLS_VERSION = 1
+_MEMBER_SKILLS_VERSION = 3
+
+_CAPTURED_SKILLS_NAME = "unity_cup_member_skills.json"
+_captured_skills = None
+_captured_support_skills = None
+
+
+def _captured_race_skills(chara_id: int):
+    global _captured_skills, _captured_support_skills
+    if _captured_skills is None:
+        try:
+            captured = json.loads((region.data_dir() / _CAPTURED_SKILLS_NAME).read_text())
+            _captured_skills = captured["skills"]
+            _captured_support_skills = captured.get("support_skills", {})
+        except (OSError, ValueError, KeyError):
+            _captured_skills = {}
+            _captured_support_skills = {}
+    return _captured_skills.get(str(chara_id))
 
 
 @functools.lru_cache(maxsize=256)
 def _chara_race_skills(chara_id: int) -> tuple:
     if not chara_id:
         return ()
+    captured = _captured_race_skills(chara_id)
+    if captured is not None:
+        return tuple(captured)
     row = master_data.query_one(
         "SELECT skill_set_id FROM single_mode_npc "
         "WHERE chara_id=? AND skill_set_id>0 ORDER BY id", (chara_id,))
@@ -727,7 +751,10 @@ def _chara_race_skills(chara_id: int) -> tuple:
 
 def member_race_skills(member: dict) -> list:
     if int(member.get("skills_version") or 0) != _MEMBER_SKILLS_VERSION:
-        member["skills"] = list(_chara_race_skills(int(member.get("chara_id") or 0)))
+        fallback = _chara_race_skills(int(member.get("chara_id") or 0))
+        scout = scout_pool().get(member.get("scout_id")) or {}
+        card = member.get("support_card_id") or scout.get("support_card_id") or 0
+        member["skills"] = list((_captured_support_skills or {}).get(str(card), fallback))
         member["skills_version"] = _MEMBER_SKILLS_VERSION
     return member.get("skills") or []
 
@@ -758,9 +785,22 @@ def _new_member(scout_id, target_id: int, state: int,
     return member
 
 
-ROSTER_GROWTH_AFTER_RACE = (2, 6, 9)
+EARLY_SCOUTS = 1
+ROSTER_WAVE_ADDS = (4, 2)
+ROSTER_FINAL_SIZE = 19
+EARLY_SCOUT_KEY = "early_scout_done"
+
+
+def early_scout_resolved(st: dict) -> None:
+    st[EARLY_SCOUT_KEY] = True
 
 JOIN_WAVES_KEY = "join_waves_done"
+
+
+def roster_target(base: int, early: int, waves: int) -> int:
+    if waves >= len(ROSTER_WAVE_ADDS) + 1:
+        return ROSTER_FINAL_SIZE
+    return min(ROSTER_FINAL_SIZE, base + early + sum(ROSTER_WAVE_ADDS[:waves]))
 
 
 def join_wave_resolved(st: dict, round_no) -> None:
@@ -915,11 +955,10 @@ def ensure_roster(st: dict, turn: int, chara_info=None) -> None:
                     m["state"] = MEMBER_STATE_TEAM
 
     waves = int(st.get(JOIN_WAVES_KEY) or 0)
-    if not waves:
+    early = EARLY_SCOUTS if st.get(EARLY_SCOUT_KEY) else 0
+    if not waves and not early:
         return
-    base = int(st.get("base_size") or len(members))
-    grown = ROSTER_GROWTH_AFTER_RACE[min(waves, len(ROSTER_GROWTH_AFTER_RACE)) - 1]
-    target = base + grown
+    target = roster_target(int(st.get("base_size") or len(members)), early, waves)
     if len(members) >= target:
         return
     pool = [sid for sid in sorted(pool_rows)
@@ -1197,8 +1236,20 @@ def is_active(chara_info) -> bool:
         int(chara_info.get("scenario_id") or 0) == SCENARIO_ID
 
 
+SERVED_MEMBERS_KEY = "served_member_ids"
+
+
+def _served_order(st: dict, members: list) -> list:
+    served = st.get(SERVED_MEMBERS_KEY)
+    ids = [m["target_id"] for m in members]
+    st[SERVED_MEMBERS_KEY] = ids
+    new = [m for m in members if served is not None and m["target_id"] not in served]
+    rest = sorted((m for m in members if m not in new), key=lambda m: int(m["target_id"]))
+    return new + rest
+
+
 def _team_info(st: dict, command_info_array=None, chara_info=None) -> dict:
-    members = active_members(st)
+    members = _served_order(st, active_members(st))
     turn = chara_info.get("turn") if isinstance(chara_info, dict) else None
     ranks = ratcheted_ranks(st)
     return {
@@ -1254,7 +1305,7 @@ def _evaluation_info_array(st: dict, chara_info=None) -> list:
             continue
         in_deck.add(chara_id)
         rows.append({"target_id": position, "chara_id": chara_id,
-                     "member_state": MEMBER_STATE_NONE,
+                     "member_state": 2,
                      "soul_threshold_id": 1, "soul_event_state": SOUL_NONE})
     on_team = {m["chara_id"] for m in (st.get("members") or ())} | in_deck
     rows += [{"target_id": tid, "chara_id": cid,
@@ -1316,7 +1367,14 @@ def _command_result(st: dict, endpoint: str):
     if not (endpoint or "").endswith(_COMMAND_RESULT_ENDPOINTS):
         return None
     banked = st.pop("command_result", None)
-    return banked if isinstance(banked, dict) else dict(_EMPTY_COMMAND_RESULT)
+    trained = st.pop("trained", None)
+    if isinstance(banked, dict):
+        return banked
+    return dict(_EMPTY_COMMAND_RESULT) if trained else []
+
+
+def mark_training_result(full_state: dict) -> None:
+    state(full_state)["trained"] = 1
 
 
 def _sync_chara_evaluation(data: dict, st: dict) -> None:
@@ -1424,6 +1482,45 @@ def _sync_facility_levels(full_state: dict, chara_info: dict, st: dict,
             array.append({"command_id": cmd, "level": level})
 
 
+def _reprice_for_levels(data: dict, full_state: dict, chara_info: dict) -> None:
+    from ...handlers import single_mode_team as smt
+    career = full_state.get(smt.STATE_KEY) or {}
+    stored = (career.get("data") or {}).get("chara_info") or {}
+    home = (career.get("data") or {}).get("home_info")
+    served = data.get("chara_info") if isinstance(data.get("chara_info"), dict) else chara_info
+    if not isinstance(home, dict) or served.get("turn") != stored.get("turn"):
+        return
+    gains = smt._repriced_gains(full_state, stored, home)
+    levels = smt._training_levels(served)
+    for board in {id(home): home, id(data.get("home_info")): data.get("home_info")}.values():
+        if not isinstance(board, dict):
+            continue
+        for c in board.get("command_info_array") or ():
+            if c.get("command_type") != 1:
+                continue
+            if gains.get(c.get("command_id")) is not None:
+                c["params_inc_dec_info_array"] = copy.deepcopy(gains[c["command_id"]])
+            if c.get("command_id") in levels:
+                c["level"] = levels[c["command_id"]]
+
+
+def _replace_board_for_joiners(data: dict, full_state: dict, chara_info: dict) -> bool:
+    from ...handlers import single_mode_team as smt
+    from . import preview
+    career = full_state.get(smt.STATE_KEY) or {}
+    stored = (career.get("data") or {}).get("chara_info") or {}
+    served = data.get("chara_info") if isinstance(data.get("chara_info"), dict) else chara_info
+    if not isinstance(data.get("home_info"), dict) or served.get("turn") != stored.get("turn"):
+        return False
+    full_state.pop(preview.PREVIEW_KEY, None)
+    if not smt.refresh_board(full_state, stored, career):
+        return False
+    home = career["data"]["home_info"]
+    data["home_info"] = dict(data["home_info"],
+                             command_info_array=copy.deepcopy(home.get("command_info_array")))
+    return True
+
+
 def attach(response: dict, full_state: dict, chara_info: dict,
            command_info_array=None, endpoint: str = "") -> dict:
     if not is_active(chara_info):
@@ -1434,11 +1531,23 @@ def attach(response: dict, full_state: dict, chara_info: dict,
     st = state(full_state)
     turn = chara_info.get("turn")
     st["trainee_stats"] = {s: int(chara_info.get(s) or 0) for s in STATS}
+    before = {m["target_id"] for m in active_members(st)}
     ensure_roster(st, turn, chara_info)
+    if {m["target_id"] for m in active_members(st)} - before:
+        if _replace_board_for_joiners(data, full_state, chara_info):
+            from . import preview
+            command_info_array = preview.command_info(
+                full_state, chara_info,
+                data["home_info"].get("command_info_array"))[0]
     if st.get("power_turn") != turn:
         st["power_turn"] = turn
         refresh_power(st)
+    from ...handlers import single_mode_team as smt
+    career = full_state.get(smt.STATE_KEY) or {}
+    levels_before = dict((career.get("data") or {}).get(smt.FACILITY_LEVELS_KEY) or {})
     _sync_facility_levels(full_state, chara_info, st, endpoint)
+    if levels_before and levels_before != facility_levels_shown(st):
+        _reprice_for_levels(data, full_state, chara_info)
     data.pop("ura_data_set", None)
     data.pop("live_data_set", None)
     data["team_data_set"] = build_team_data_set(full_state, chara_info,

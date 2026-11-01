@@ -8,6 +8,7 @@ pub struct Trigger {
 pub type Condition=Vec<Vec<Trigger>>;
 fn opt(name:&str)->bool {std::env::var(name).is_ok_and(|v|v=="1")}
 fn lot(r:&mut RaceRandom,lo:f32,hi:f32,tag:&str)->(f32,f32) {
+    if std::env::var("RX_LOTDBG").is_ok() {let exact=r.peek_double()*((hi-10.0).max(lo)-lo).abs() as f64+lo as f64;eprintln!("LOT64 {tag} {exact:.15}");}
     let x=r.float_range(lo,(hi-10.0).max(lo),&||tag.into());if std::env::var("RX_LOTDBG").is_ok() {eprintln!("LOT {tag} {lo} {hi} {x}");}(x,x+10.0)
 }
 pub fn build(text:&str,c:&Course,r:&mut RaceRandom,tag:&str)->Condition {
@@ -19,7 +20,7 @@ pub fn build(text:&str,c:&Course,r:&mut RaceRandom,tag:&str)->Condition {
         let mut t=Trigger {name:n.into(),op:op.into(),rhs:v,windows:vec![],randomized:false,lot:None,previous:false,prev_count:0,this_count:0};
         match n {
             "corner_random"=>{t.randomized=true;if let Some(s)=c.corner(v) {t.windows.push(lot(r,s.start,s.end,tag));}},
-            "is_finalcorner_random"=>{t.randomized=true;if let Some(s)=c.final_corner() {t.windows.push(lot(r,s.start,s.end,tag));}},
+            "is_finalcorner_random"=>{t.randomized=true;if let Some(s)=c.lottery_final_corner() {t.windows.push(lot(r,s.start,s.end,tag));}},
             "straight_random"|"while_in_straight_random"=>{
                 t.randomized=true;
                 if !c.straights.is_empty() {
@@ -29,7 +30,7 @@ pub fn build(text:&str,c:&Course,r:&mut RaceRandom,tag:&str)->Condition {
             },
             "last_straight_random"=>{
                 t.randomized=true;
-                if let Some(fc)=c.final_corner() {
+                if let Some(fc)=c.lottery_final_corner() {
                     for s in c.straights.iter().rev().filter(|s|s.start>=fc.start) {
                         t.windows=vec![lot(r,s.start,s.end,tag)];
                     }

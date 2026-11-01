@@ -851,9 +851,11 @@ def _live_members(chara_info: dict, full_state: dict = None) -> list:
             out.append({"target_id": int(card.get("position") or 0),
                         "chara_id": chara_id,
                         "member_state": _member_state(chara_id, seated)})
+    deck_charas = {r["chara_id"] for r in out if 1 <= r["target_id"] <= 6}
     for target_id, chara_id in ((101, 9001), (102, 9002), (103, 9003),
                                 (104, 9004), (105, 9008), (106, 9006)):
-        out.append({"target_id": target_id, "chara_id": chara_id, "member_state": 0})
+        if chara_id not in deck_charas:
+            out.append({"target_id": target_id, "chara_id": chara_id, "member_state": 0})
 
     seen = {r["chara_id"] for r in out}
     for chara_id in career_producers.supporters_for(full_state or {}):

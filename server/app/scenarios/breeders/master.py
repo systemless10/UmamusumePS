@@ -117,10 +117,13 @@ def schedule(schedule_id: int) -> tuple | None:
 
 
 def level_limit_at(turn: int) -> int:
-    for _sid, _m, start, end, _need, lv in schedules():
+    rows = schedules()
+    if rows and int(turn) < rows[0][2]:
+        return rows[0][5]
+    for _sid, _m, start, end, _need, lv in rows:
         if start <= int(turn) <= (end or 99):
             return lv
-    return schedules()[-1][5] if schedules() else 3
+    return rows[-1][5] if rows else 3
 
 
 @functools.lru_cache(maxsize=1)

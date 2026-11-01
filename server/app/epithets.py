@@ -27,7 +27,7 @@ _BANDS = ((1400, "sprint"), (1800, "mile"), (2400, "medium"))
 _MOODS = {1: "Awful", 2: "Bad", 3: "Normal", 4: "Good", 5: "Great"}
 _MOOD_ORDER = {"Awful": 0, "Bad": 1, "Normal": 2, "Good": 3, "Great": 4}
 
-_DISTANCE_MARGIN_LENGTHS = 10.0
+_DISTANCE_MARGIN_LENGTHS = 11.0
 
 
 def _mood_name(code):
@@ -124,6 +124,7 @@ def build_facts(career_data: dict, chara_info: dict, full_state: dict) -> dict:
     f["fans"] = chara_info.get("fans") or 0
     f["skill_count"] = len(chara_info.get("skill_array") or ())
     f["career_complete"] = True
+    f["chara_id"] = (chara_info.get("card_id") or 0) // 100
     f["scenario_name"] = _scenario_name(chara_info.get("scenario_id"))
     f["scenario_id"] = chara_info.get("scenario_id")
     f["implemented_scenarios"] = implemented_scenarios()
@@ -141,6 +142,11 @@ def build_facts(career_data: dict, chara_info: dict, full_state: dict) -> dict:
     worst_finish = 0
     wins = losses = graded_runs = 0
     streak = best_streak = 0
+    graded_run = best_graded_run = 0
+    streak_grade_wins: dict = {}
+    best_streak_grade_wins: dict = {}
+    grade_win_distances: dict = {}
+    grade_win_courses: dict = {}
     losing_streak = longest_losing_before_win = 0
 
     for entry in history:
@@ -155,6 +161,8 @@ def build_facts(career_data: dict, chara_info: dict, full_state: dict) -> dict:
         if info is None:
             continue
         grade = info["grade"]
+        if _finale_leg(entry.get("program_id")):
+            grade = "finale"
         _bump(f, "runs_grade_" + grade)
         if grade in _GRADED:
             graded_runs += 1
@@ -188,6 +196,15 @@ def build_facts(career_data: dict, chara_info: dict, full_state: dict) -> dict:
             longest_losing_before_win = max(longest_losing_before_win, losing_streak)
             losing_streak = 0
             _bump(f, "wins_grade_" + grade)
+            grade_win_distances.setdefault(grade, []).append(info["distance"] or 0)
+            grade_win_courses.setdefault(grade, []).append(info["track_name"])
+            for k in (grade, "graded") if grade in _GRADED else (grade,):
+                streak_grade_wins[k] = streak_grade_wins.get(k, 0) + 1
+                best_streak_grade_wins[k] = max(best_streak_grade_wins.get(k, 0),
+                                                streak_grade_wins[k])
+            if grade in _GRADED:
+                graded_run += 1
+                best_graded_run = max(best_graded_run, graded_run)
             _bump(f, "wins_surface_" + info["surface"])
             _bump(f, "wins_time_" + info["time_of_day"])
             if weather:
@@ -220,6 +237,8 @@ def build_facts(career_data: dict, chara_info: dict, full_state: dict) -> dict:
         else:
             losses += 1
             streak = 0
+            graded_run = 0
+            streak_grade_wins = {}
             losing_streak += 1
             _bump(f, "losses_grade_" + grade)
 
@@ -229,6 +248,10 @@ def build_facts(career_data: dict, chara_info: dict, full_state: dict) -> dict:
     f["undefeated"] = bool(history) and losses == 0
     f["winning_streak"] = best_streak >= 2
     f["consecutive"] = best_streak >= 2
+    f["best_graded_win_run"] = best_graded_run
+    f["best_streak_grade_wins"] = best_streak_grade_wins
+    f["grade_win_distances"] = grade_win_distances
+    f["grade_win_courses"] = grade_win_courses
     f["longest_losing_streak_before_win"] = longest_losing_before_win
     f["races_won_names"] = tuple(won_names)
     f["races_run_names"] = tuple(run_names)
@@ -323,7 +346,8 @@ def build_facts(career_data: dict, chara_info: dict, full_state: dict) -> dict:
 
     per_race = _per_race_records(history)
     f["_race_view"] = lambda name: [
-        {**f, **rec} for rec in per_race.get(_fold_name(name), ())]
+        {**f, **rec} for rec in per_race.get(_fold_name(name), ())
+        if _year_ok(name, rec)]
     f["epithets_owned"] = _owned_names(f)
     return f
 
@@ -349,6 +373,14 @@ def _owned_names(facts: dict) -> frozenset:
         owned = frozenset(grown)
     facts["epithets_owned"] = owned
     return owned
+
+
+def _year_ok(name: str, rec: dict) -> bool:
+    from . import epithet_conditions as _ec
+    m = _ec._QUALIFIER.search(name or "")
+    if not m:
+        return True
+    return rec.get("_year") == m.group(0).strip(" ()").split()[0].lower()
 
 
 def _fold_name(name: str) -> str:
@@ -382,6 +414,7 @@ def _per_race_records(history) -> dict:
             "distance_bands_won": (info["band"],),
             "racecourses_won": ((info["track_name"],) if info["track_name"] else ()),
             "race_mood": mood,
+            "_year": _career_year(entry.get("turn")),
             "min_race_mood": mood,
             "max_race_distance": info["distance"],
             "min_race_distance": info["distance"],
@@ -517,6 +550,11 @@ def _year_index(turn) -> int:
 def _career_year(turn) -> str:
     idx = (int(turn or 1) - 1) // _TURNS_PER_YEAR
     return _YEAR_NAMES[min(max(idx, 0), len(_YEAR_NAMES) - 1)]
+
+
+def _finale_leg(program_id) -> bool:
+    p = int(program_id or 0)
+    return 2001 <= p <= 2241 or 2301 <= p <= 2541
 
 
 def _finals_program_ids() -> frozenset:
@@ -766,8 +804,16 @@ def _training_level(career_data: dict, key: str) -> int:
     return 0
 
 
+@functools.lru_cache(maxsize=1)
+def _bound_chara() -> dict:
+    return {r["id"]: r["chara_data_id"] for r in master_data.query(
+        "SELECT id, chara_data_id FROM nickname WHERE chara_data_id != 0")}
+
+
 def earned_ids(facts: dict) -> list:
-    return [nid for nid, _name, _cond, tree in catalogue() if tree.evaluate(facts)]
+    bound, chara = _bound_chara(), facts.get("chara_id")
+    return [nid for nid, _name, _cond, tree in catalogue()
+            if bound.get(nid, chara) == chara and tree.evaluate(facts)]
 
 
 def all_owned_ids(full_state: dict) -> list:

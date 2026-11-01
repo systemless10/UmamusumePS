@@ -7,7 +7,7 @@ import logging
 import os
 import secrets
 
-from .. import accounts, config
+from .. import accounts, client_versions, config
 from .. import state as state_store
 from ..handlers import load as load_mod
 from ..handlers import account_link
@@ -36,7 +36,7 @@ def _ok(data: dict) -> dict:
 
 
 def resource_version() -> str:
-    return str(config.get("resource_version", ""))
+    return client_versions.resource_version()
 
 
 def handle_pre_signup(payload: dict) -> dict:
@@ -64,6 +64,8 @@ def handle_signup(payload: dict) -> dict:
 
 
 def handle_start_session(payload: dict) -> dict:
+    from .. import master_data
+    master_data.refresh_if_changed()
     viewer_id = payload.get("viewer_id")
     full_state = state_store.get_state(viewer_id) or {}
     data = load_mod.get_or_seed_data(full_state, viewer_id)

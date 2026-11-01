@@ -12,6 +12,7 @@ class UnityCup(Scenario):
 
     endpoint_prefix = "single_mode_team"
     data_set_key = "team_data_set"
+    held_board_keys = (("team_data_set", "command_info_array"),)
 
     state_keys = (impl.STATE_KEY, preview.PREVIEW_KEY)
 
@@ -74,7 +75,12 @@ class UnityCup(Scenario):
         return preview.training_award_bonus(full_state, chara_info, command_id)
 
     def award_training_gains(self, full_state, chara_info, payload) -> None:
+        if payload.get("command_type") == 1:
+            impl.mark_training_result(full_state)
         preview.award_training_gains(full_state, chara_info, payload)
+
+    def on_training_failed(self, full_state, chara_info, payload) -> None:
+        impl.mark_training_result(full_state)
 
     def interstitial_pending(self, full_state, chara_info, turn) -> bool:
         return impl.race_turn_pending(impl.state(full_state), turn)
@@ -117,6 +123,8 @@ class UnityCup(Scenario):
             impl.scenario_intro_resolved(st)
         elif event_id == producers.TEAM_SUPPORT_EVENT:
             impl.team_support_resolved(st, chara_info)
+        elif event_id == producers.EARLY_SCOUT_EVENT:
+            impl.early_scout_resolved(st)
         elif producers.team_race_join_round(event_id):
             impl.join_wave_resolved(st, producers.team_race_join_round(event_id))
         elif event_id in producers.RACE_GATE_EVENTS:
@@ -179,6 +187,10 @@ class UnityCup(Scenario):
                 len(races) >= len(impl.TEAM_RACE_TURNS)
                 and int((races[-1] or {}).get("result_state") or 0) == 1),
         }
+
+    def npc_training_partners(self, chara_info: dict) -> frozenset:
+        riko = impl.riko_target(chara_info)
+        return frozenset((riko,)) if riko == impl.RIKO_NPC_TARGET else frozenset()
 
     def reset(self, full_state: dict) -> None:
         impl.reset(full_state)

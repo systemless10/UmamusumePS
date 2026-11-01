@@ -44,9 +44,13 @@ LINK_WIRE = {30305: {LINK_FIRST: (21245, 6), LINK_UNLOCK: (21253, 1),
                      11: (21163, 6), 12: (21164, 6), 13: (21165, 6),
                      14: (21166, 6), 15: (21167, 6)}}
 
-LINK_KIT_OFFSET = {30276: 0, 30290: 0, 10141: 0, 10138: 0, 30257: 0, 10128: 0}
-LINK_UNLOCK_SUFFIX = {10141: 2, 10138: 3, 10128: 3}
-LINK_PRE_UNLOCK_SUFFIX = {10138: 2, 10128: 2}
+LINK_KIT_OFFSET = {30276: 0, 30290: 0, 10141: 0, 10138: 0, 30257: 0, 10128: 0, 30323: 0, 10149: 0}
+LINK_UNLOCK_SUFFIX = {10141: 2, 10138: 3, 10128: 3, 10149: 3}
+LINK_PRE_UNLOCK_SUFFIX = {10138: 2, 10128: 2, 10149: 2}
+
+LINK_WIRE[30323] = {1:(21256,6),4:(21268,1),11:(21257,6),12:(21258,6),
+                    13:(21259,6),14:(21260,6),15:(21261,6),21:(21262,1),
+                    22:(45,3),31:(20000,1),32:(21263,6)}
 _LINK_BASE = 100
 
 
@@ -266,6 +270,8 @@ def pre_unlock_story(card_id: int) -> int | None:
 
 
 def random_story(card_id: int) -> int | None:
+    if card_id == 10149:
+        return story_id(card_id,33)
     if "random" in group_kit(card_id):
         suffix = group_kit(card_id)["random"]
         return story_id(card_id, suffix) if suffix else None

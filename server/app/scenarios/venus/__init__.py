@@ -35,6 +35,7 @@ class Venus(Scenario):
     camp_lists_rest = True
     playing_states = frozenset({5, 12, 13, 14, 15})
     turn_end_hold_state = 5
+    held_board_keys = (("venus_data_set", "venus_chara_command_info_array"),)
     @property
     def locked_npc_rows(self) -> tuple:
         return _partner_rows()
@@ -149,12 +150,12 @@ class Venus(Scenario):
         st = impl.state(full_state)
         sp = st["sprace"]
         rsi = scenario = reward = None
-        if call in ("venus_race_entry", "venus_race_start") or (
-                call == "load" and live_ps in (13, 14)):
+        if call in ("venus_race_entry", "venus_race_start", "venus_race_continue") or (
+                call == "load" and live_ps in (13, 14, 15)):
             rsi = sp.get("race_start_info")
-        if call == "venus_race_start":
+        if call == "venus_race_start" or (call == "load" and live_ps in (14, 15)):
             scenario = sp.get("race_scenario")
-        if call == "venus_race_end":
+        if call == "venus_race_end" or (call == "load" and live_ps == 15):
             reward = sp.get("race_reward_info")
         venus = impl.data_set(full_state, chara_info, home, impl.reply_is_full(endpoint, data),
                               race_start_info=rsi, race_scenario=scenario, race_reward_info=reward)
@@ -217,9 +218,12 @@ class Venus(Scenario):
             if impl.wisdom_on(st, turn, M.GODOLPHIN):
                 st["godolphin"] = {"turn": turn, "command_id": cmd, "partners": partners}
             k = impl.link_card(chara_info)
-            if k and k[0] in partners and \
-                    impl.rng_for(full_state, "card003-roll", turn).random() < producers.CARD_TRAINING_CHANCE:
-                st["card003_due"] = turn
+            if k and k[0] in partners:
+                passion = M.PURE_PASSION in set(chara_info.get("chara_effect_id_array") or ())
+                if passion or impl.wisdom_on(st, turn, M.GODOLPHIN) or \
+                        impl.rng_for(full_state, "card003-roll", turn).random() < producers.CARD_TRAINING_CHANCE:
+                    st["card003_due"] = turn
+                    st["card003_passion"] = passion
             return
         if ctype in (3, 7) and offer:
             sid, count = offer
@@ -305,7 +309,10 @@ class Venus(Scenario):
             return out
         if not ev.choices or len(ev.choices) < 2:
             return None
-        arr = event_engine.choice_reward_array(ev.engine_event(), chara_info or {})
+        arr = event_engine.choice_reward_array(
+            ev.engine_event(), chara_info or {},
+            default_char_id=M.DARLEY if ev.support_card_id == M.LINK_CARD else None,
+            source_card_id=ev.support_card_id or None)
         if int(ev.story_id or 0) == producers.CARD_TRAINING[2]:
             for row in arr:
                 i = int(row.get("select_index") or 1)
