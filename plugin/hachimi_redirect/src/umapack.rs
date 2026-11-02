@@ -29,6 +29,13 @@ fn status(s: impl Into<String>) {
 }
 
 pub fn install() {
+    if !redirected() {
+        match unsafe { install_cleanup_hook() } {
+            Ok(()) => status("off (official server); pack rows are removed from meta"),
+            Err(e) => status(format!("off (official server); meta cleanup unavailable: {e}")),
+        }
+        return;
+    }
     let Some(dir) = config_path().and_then(|p| p.parent().map(|d| d.join("umapacks"))) else { return };
     let mut paths: Vec<PathBuf> = std::fs::read_dir(&dir).into_iter().flatten().flatten()
         .map(|e| e.path()).filter(|p| p.extension().is_some_and(|x| x == "umapack")).collect();
@@ -122,6 +129,33 @@ fn ensure_file(p: &Packs, h: &[u8; 32], e: &Entry) -> Option<PathBuf> {
     }
     e.ready.store(true, Ordering::Release);
     Some(path)
+}
+
+fn redirected() -> bool {
+    let cfg = CONFIG.read().unwrap_or_else(|e| e.into_inner());
+    cfg.enabled && !OFFICIAL_ORIGINS.iter().any(|o| cfg.server.starts_with(o))
+}
+
+unsafe fn install_cleanup_hook() -> Result<(), String> {
+    let conn = class(c"LibNative.Runtime.dll", c"LibNative.Sqlite3", c"Connection")?;
+    let open = method(conn, c"OpenWritable", 7)?;
+    let handle = method(conn, c"get_DBHandle", 0)?;
+    if export("libnative.dll", "sqlite3_exec", true) == 0 { return Err("sqlite3_exec not exported".into()); }
+    DB_HANDLE.store(*(handle as *const usize), Ordering::Release);
+    hook(open, hk_open_writable as *mut c_void, &OPEN_WRITABLE)
+}
+
+fn strip_meta(db: *mut c_void) {
+    let n = exec(db, "SELECT COUNT(*) FROM a WHERE i < 0").ok()
+        .and_then(|r| r.into_iter().next()).and_then(|r| r[0].clone()).unwrap_or_default();
+    if n == "0" { return; }
+    let r = exec(db, "BEGIN IMMEDIATE; DELETE FROM r WHERE f < 0 OR t < 0; DELETE FROM a WHERE i < 0;
+        DELETE FROM i WHERE k = 'umaps'; COMMIT;");
+    if r.is_err() { let _ = exec(db, "ROLLBACK"); }
+    match r {
+        Ok(_) => status(format!("off (official server); removed {n} pack rows from meta")),
+        Err(e) => status(format!("off (official server); meta cleanup failed: {e}")),
+    }
 }
 
 unsafe fn install_hooks() -> Result<(), String> {
@@ -244,7 +278,7 @@ fn exec(db: *mut c_void, sql: &str) -> Result<Vec<Vec<Option<String>>>, String> 
 fn sql_text(s: &str) -> String { s.replace('\'', "''") }
 
 fn sync_meta(db: *mut c_void) {
-    let Some(p) = PACKS.get() else { return };
+    let Some(p) = PACKS.get() else { strip_meta(db); return };
     let t = Instant::now();
     let marker = exec(db, "SELECT (SELECT v FROM i WHERE k='umaps'), (SELECT COUNT(*) FROM a WHERE i < 0)")
         .ok().and_then(|r| r.into_iter().next())
