@@ -47,11 +47,30 @@ _CANDIDATES = [
 ]
 
 
+def locallow_mdb(install: str = _INSTALL) -> Path | None:
+    base = Path(os.path.expanduser("~")) / "AppData" / "LocalLow" / "Cygames"
+    if not base.is_dir():
+        return None
+    jp = install.endswith("_Jpn")
+    for game in sorted(base.iterdir()):
+        name = game.name.lower()
+        if not game.is_dir() or not name.startswith("umamusume") or ("jp" in name) != jp:
+            continue
+        for depth in ("master/master.mdb", "*/master/master.mdb", "*/*/master/master.mdb"):
+            hits = sorted(game.glob(depth), key=lambda h: h.stat().st_mtime, reverse=True)
+            if hits:
+                return hits[0]
+    return None
+
+
 def _resolve_mdb_path() -> Path:
     for candidate in _CANDIDATES:
         path = Path(candidate)
         if path.is_file():
             return path
+    found = locallow_mdb()
+    if found:
+        return found
     return Path(_CANDIDATES[0])
 
 

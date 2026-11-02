@@ -66,6 +66,16 @@ def detect_master(r: str, game_dir: Path | None = None) -> Path | None:
     d = game_dir or detect_game_dir(r)
     if d and master_in(d, r).is_file():
         return master_in(d, r)
+    base = Path.home() / "AppData" / "LocalLow" / "Cygames"
+    if base.is_dir():
+        jp = r == "jp"
+        for game in sorted(base.iterdir()):
+            name = game.name.lower()
+            if game.is_dir() and name.startswith("umamusume") and ("jp" in name) == jp:
+                for depth in ("master/master.mdb", "*/master/master.mdb", "*/*/master/master.mdb"):
+                    hits = sorted(game.glob(depth), key=lambda h: h.stat().st_mtime, reverse=True)
+                    if hits:
+                        return hits[0]
     return None
 
 
