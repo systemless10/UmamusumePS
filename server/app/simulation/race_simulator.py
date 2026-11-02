@@ -706,10 +706,11 @@ def simulate_race(
     horses = [dict(h, is_viewer=True) for h in primary] + [dict(h, is_viewer=False) for h in opponents[: field - len(primary)]]
     metadata = race_context_for_instance(race_instance_id)
     metadata.update(race_context or {})
+    gate_count = min(course_entry_num, len(horses))
     sim_result = run_simulation(horses, course_set_id, ground_condition, weather, season, seed,
-                                 gate_count=course_entry_num, gate_assignment=gate_assignment,
+                                 gate_count=gate_count, gate_assignment=gate_assignment,
                                  single_mode=single_mode, race_context=metadata)
-    scenario_b64, frame_count, raw_frame_count = build_race_scenario(sim_result, len(horses), course_entry_num)
+    scenario_b64, frame_count, raw_frame_count = build_race_scenario(sim_result, len(horses), gate_count)
     return {
         "race_scenario": scenario_b64,
         "frame_count": frame_count,
@@ -719,7 +720,7 @@ def simulate_race(
         "course_set_id": course_set_id,
         "horses": horses,
         "gate_assignment": sim_result.get("gate_assignment"),
-        "gate_count": course_entry_num,
+        "gate_count": gate_count,
         "skill_events": sim_result.get("skillEvents") or [],
         "final_stretch_overtakes": sim_result.get("finalStretchOvertakes") or [],
     }

@@ -97,7 +97,11 @@ def _career_support_array(viewer_id, start_chara: dict) -> list[dict]:
         lender = next((e for e in full.get(FRIEND_SUPPORT_INJECT_KEY) or []
                        if e.get("viewer_id") == requested_owner
                        and (e.get("user_support_card") or {}).get("support_card_id") == friend), None)
-        o = (lender.get("user_support_card") if lender else owned.get(friend)) or {}
+        o = lender.get("user_support_card") if lender else None
+        if o is None and requested_owner:
+            o = _lent_support(requested_owner, friend)
+            lender = lender or o
+        o = o or owned.get(friend) or {}
         out.append({
             "position": len(out) + 1,
             "support_card_id": friend,
@@ -106,6 +110,16 @@ def _career_support_array(viewer_id, start_chara: dict) -> list[dict]:
             "owner_viewer_id": requested_owner if lender else 0,
         })
     return out
+
+
+def _lent_support(owner_viewer_id, support_card_id) -> dict | None:
+    from . import directory
+    owner = str(owner_viewer_id)
+    card = directory.cards_for([owner]).get(owner) or {}
+    lent = card.get("user_support_card") or {}
+    if lent.get("support_card_id") == support_card_id:
+        return lent
+    return _owned_support(owner).get(support_card_id)
 
 
 def _owned_card(viewer_id, card_id: int) -> dict:
